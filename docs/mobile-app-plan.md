@@ -6,7 +6,7 @@ Bu doküman ayrı bir oturuma verilmek için yazıldı. Tek başına okunduğund
 
 - **Ürün:** WoW Forever için resmi olmayan yardımcı uygulama. İçeriği TR/EN patch notları ve tooltip'ler, talent planlayıcı, race ve class ekranları, yeni yazı geldiğinde push bildirimi.
 - **Kaynak site:** https://burakztrk.github.io/wow-forever-notes/ (repo `burakztrk/wow-forever-notes`, yerel `~/claudee/wow-forever-notes`). Uygulama bu sitenin ürettiği veriyi okur, ayrı bir backend yok.
-- **Marka:** [branding/README.md](../branding/README.md). Ad **Forever Codex**, paket `com.booapps.forevercodex`, ikon dosyaları `branding/` klasöründe.
+- **Marka:** Çalışma adı **Forever Codex** (mağaza çakışması bulunmadı; "Forever Notes" Apple Notes için bilinen bir yöntemle çakışıyor). Paket `com.booapps.forevercodex`. **İkon tasarımı açık iş** (bkz. §7).
 - **Wiki:** `wiki/projects/wow-forever-notes.md` ve `wiki/syntheses/wow-forever-mobil-uygulama-arastirmasi.md` (rakipler, mağaza ve IP riskleri). Kanban kartı `#wow-forever`.
 - **Hedef tarih:** WoW Forever 2026-11-04'te çıkıyor. Lansman haftasında en az Android'in açık test kanalında olmak.
 
@@ -19,7 +19,8 @@ Bu doküman ayrı bir oturuma verilmek için yazıldı. Tek başına okunduğund
 | Sıra | Önce Android (kapalı test, sonra açık test), ardından iOS |
 | Backend | Yok. Statik JSON (GitHub Pages) + FCM topic bildirimleri |
 | Ücret | İlk sürüm ücretsiz ve reklamsız (Blizzard'ın tolere ettiği ticari olmayan alan) |
-| Ad ve ikon | Adda "WoW/Warcraft" yok; ikon özgün; mağaza metninde "unofficial" uyarısı var |
+| Ad | Forever Codex (çalışma adı). Adda "WoW/Warcraft" yok; mağaza metninde "unofficial" uyarısı var |
+| İkon | Henüz yok; özgün tasarım olacak (Blizzard logosu/görseli yok). Geçici olarak düz renk + "FC" monogram kullanılabilir |
 
 ## 2. Veri sözleşmesi (`/data/v1/`)
 
@@ -80,9 +81,9 @@ Taban adres: `https://burakztrk.github.io/wow-forever-notes/data/v1/`. Tüm dosy
 shared/
   data/      Ktor client, kotlinx.serialization DTO'ları, disk önbelleği (Okio), repository'ler
   domain/    TalentRules (talent-rules.ts'in Kotlin karşılığı), BuildCode, Glossary lookup
-  ui/        Compose ekranları, tema (renk token'ları branding/README.md'de), tooltip bottom sheet
-androidApp/  FCM, App Links, uygulama ikonu (adaptive: android-foreground + #131620)
-iosApp/      APNs/FCM, ikon (app-icon-1024.png)
+  ui/        Compose ekranları, tema (sitenin renkleri: zemin #0e1015, panel #161922, altın #c8a656, metin #e8e2d0), tooltip bottom sheet
+androidApp/  FCM, App Links, uygulama ikonu (adaptive icon; tasarım açık iş)
+iosApp/      APNs/FCM, uygulama ikonu (1024×1024)
 ```
 
 - **Kütüphaneler:** Ktor, kotlinx.serialization, Coil 3 (ikonlar), Navigation Compose, Koin (veya elle DI), Okio.
@@ -95,7 +96,7 @@ iosApp/      APNs/FCM, ikon (app-icon-1024.png)
 
 | # | Faz | Bitti kriteri | Süre |
 |---|---|---|---|
-| M1 | Repo iskeleti, tema, ikonlar, veri katmanı ve önbellek | Uygulama `manifest`'i okuyor, offline açılıyor | ~0,5 gün |
+| M1 | Repo iskeleti, tema, geçici ikon, veri katmanı ve önbellek | Uygulama `manifest`'i okuyor, offline açılıyor | ~0,5 gün |
 | M2 | Notlar akışı, detay, tooltip bottom sheet, TR/EN | 15 Ekim yazısı tooltip'leriyle okunuyor | ~1 gün |
 | M3 | Talent planlayıcı, paylaşım kodu, App Links | Web'deki bir build linki uygulamada aynı build'i açıyor | ~1,5 gün |
 | M4 | Irk ve class ekranları | Human → racial'lar ve seçilebilen class'lar görünüyor | ~0,5 gün |
@@ -108,7 +109,8 @@ iosApp/      APNs/FCM, ikon (app-icon-1024.png)
 1. Firebase projesi oluşturmak ve service account JSON'unu GitHub Actions secret'ı olarak eklemek (değer sohbete yazılmaz).
 2. Google Play Console'da yeni uygulama kaydı (mevcut geliştirici hesabı).
 3. iOS için Apple Developer hesabı (yıllık 99 $) ve APNs anahtarı.
-4. **Skill ikonları kararı:** MVP'de ikonlar siteden yüklenecek (Blizzard varlıkları; risk orta-yüksek). Alternatif, okul rengine göre sade ikonlar. Mağaza ekran görüntülerinde Blizzard ikonu kullanılmaz.
+4. **Uygulama ikonu:** özgün tasarım (1024×1024 App Store, 512×512 Play, Android adaptive foreground 66dp güvenli alan içinde). Kullanıcı karar verecek; M6'dan önce hazır olmalı.
+5. **Skill ikonları kararı:** MVP'de ikonlar siteden yüklenecek (Blizzard varlıkları; risk orta-yüksek). Alternatif, okul rengine göre sade ikonlar. Mağaza ekran görüntülerinde Blizzard ikonu kullanılmaz.
 
 ## 8. Mağaza uyumluluğu kontrol listesi
 
