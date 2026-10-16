@@ -25,6 +25,14 @@ const ROOT = process.cwd();
 const STATE_FILE = path.join(ROOT, 'src/data/state.json');
 const OUT_FILE = path.join(ROOT, '.cache/updates.json');
 const markSeen = process.argv.includes('--mark-seen');
+// Test mode: pretend the last published build is <id> (e.g. 1.60.1.70374) so a
+// real, already-published update shows up as new. Never touches state.json.
+const sinceIdx = process.argv.indexOf('--since');
+const since = sinceIdx > 0 ? process.argv[sinceIdx + 1] : undefined;
+if (since && markSeen) {
+  console.error('ERROR --since (test mode) cannot be combined with --mark-seen');
+  process.exit(2);
+}
 
 async function readState(): Promise<UpdateState> {
   try {
@@ -72,7 +80,17 @@ try {
     `${dataBase}buding.json`,
   );
   const devNotes = await devNotesTopic();
-  const state = await readState();
+  let state = await readState();
+  if (since) {
+    const base = builds.find((b) => b.id === since);
+    if (!base) {
+      console.error(`ERROR --since ${since}: unknown build (known: ${builds.map((b) => b.id).join(', ')})`);
+      process.exit(2);
+    }
+    // everything after that build's day counts as new
+    state = { lastBuild: since, lastBluePostAt: `${base.date}T23:59:59.999Z`, devNotesLastPostedAt: null };
+    console.log(`TEST MODE: state treated as lastBuild=${since}; src/data/state.json is not used or changed`);
+  }
 
   if (markSeen) {
     const next = nextState(state, builds, bluePosts, devNotes, new Date());

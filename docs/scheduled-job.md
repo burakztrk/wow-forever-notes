@@ -128,6 +128,20 @@ npm run check-updates -- --mark-seen    # src/data/state.json güncellenir, ayn�
 3. `build` check'i geçince PR merge olur. main'e gelen push sonrası GitHub Actions siteyi GitHub Pages'e deploy eder.
 4. GitHub erişimi yoksa ya da push/PR başarısız olursa: iki dosyanın tam metnini çıktıya yaz ve hatayı açıkça bildir.
 
+## Test modu
+
+Job'a verilen talimatta **"TEST MODU"** geçiyorsa akış aynıdır, yalnızca şu farklar uygulanır:
+
+| Adım | Normal | Test modu |
+|---|---|---|
+| 0 | `npm run check-updates` | `npm run check-updates -- --since 1.60.1.70374`: zaten yayınlanmış 15 Ekim güncellemesini yeni gibi gösterir. `state.json`'a dokunmaz. |
+| 2 | `wow-forever-YYYY-MM-DD.md`, `draft: false` | `wow-forever-YYYY-MM-DD-test.md`, `draft: true` (canlı sitede görünmez) |
+| 4 | `--mark-seen` çalışır | `--mark-seen` **çalıştırılmaz** |
+| 5 | Branch `blog/…`, PR, `--auto --squash` | Branch `test/wow-forever-YYYY-MM-DD`, `gh pr create --draft`, auto-merge **yok** |
+| Bildirim | Schedule tarafı karar verir | Gönderilmez |
+
+Test bitince PR'ı inceleyip kapat; branch silinebilir.
+
 ## Bildirim
 
 - `NO_UPDATES` günlerinde bildirim gönderilmez.
