@@ -27,14 +27,14 @@ Node 22.12+.
 - `src/lib/remark-glossary.ts` — `:spell[…]`, `:talent[…]`, `:racial[…]`, `:tip[…]` directives → tooltip spans;
   auto-links unambiguous multi-word names; unknown names fail the build.
 - `src/scripts/tooltip.ts` + `src/lib/tooltip-render.ts` — client tooltip (event delegation, floating-ui).
-- `scripts/sync/` — wclbox parsers (`parse.ts`) and the sync entry point. `scripts/check-updates.ts`.
+- `scripts/sync/` — wclbox parsers (`parse.ts`), wowforevertools chunk reader (`wowforevertools.ts`, acorn, literals only — never eval) and the sync entry point. `scripts/check-updates.ts`.
 - `docs/scheduled-job.md` — instructions for the daily scheduled writer job.
 
 ## Rules
 
 - Every hardcoded root-relative URL goes through `withBase()` (`src/utils/url.ts`); the site lives under `/wow-forever-notes/`.
 - Posts: TR and EN together, game names stay English in both, no copied source text, nothing that is not in the sources.
-- Credit wclbox ("新手盒子·魔兽世界无限数据库" + page URL) — already in the footer and every tooltip.
+- Credit wclbox ("新手盒子·魔兽世界无限数据库" + page URL) — already in the footer and every tooltip. wowforevertools (description text) is credited in the footer and README.
 - Sync etiquette: ≤2 requests/second, identifying User-Agent, cache on disk. bluetracker.gg and mobalytics.gg block bots.
 - Public repo: no secrets, `.env*` is gitignored; scan before pushing.
 - Code comments and UI strings in English; Turkish lives in `src/i18n` and `src/content/blog/tr`.

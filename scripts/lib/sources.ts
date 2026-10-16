@@ -5,6 +5,8 @@ import { fetchJson } from './http';
 // release-specific prefix announced in /site-version.json.
 
 export const WCLBOX = 'https://wowforever.wclbox.com';
+// Official English client text for spells and talents (robots.txt: Allow /).
+export const WOWFOREVERTOOLS = 'https://wowforevertools.com';
 export const BLIZZARD_FORUM = 'https://us.forums.blizzard.com/en/wow';
 // "WoW Forever Beta Development Notes – Updated <date>" (title changes, id does not)
 export const DEV_NOTES_TOPIC_ID = 2360696;

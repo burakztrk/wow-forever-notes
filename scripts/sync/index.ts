@@ -1,7 +1,8 @@
-// npm run sync [-- --class mage] [-- --no-icons] [-- --fresh]
+// npm run sync [-- --class mage] [-- --no-icons] [-- --fresh] [-- --no-wft]
 //
 // Snapshots WoW Forever spell, talent and race data from wclbox into
-// src/data/*.json and icons into public/icons/. The output is committed, so
+// src/data/*.json and icons into public/icons/, then replaces spell and talent
+// descriptions with the official client text from wowforevertools.com. The output is committed, so
 // the site build never depends on the network. Re-run when a new build lands.
 import { existsSync } from 'node:fs';
 import { mkdir, rm, writeFile } from 'node:fs/promises';
@@ -15,8 +16,18 @@ import {
   type RaceInfo,
 } from '../../src/lib/glossary-types';
 import { fetchBinary, fetchJson, fetchText } from '../lib/http';
-import { WCLBOX, wclboxDataBase, wclboxIcon, wclboxPage, wclboxRelease } from '../lib/sources';
+import { WCLBOX, WOWFOREVERTOOLS, wclboxDataBase, wclboxIcon, wclboxPage, wclboxRelease } from '../lib/sources';
 import { parseSpellDetail, parseSpellList, parseTalentPage, statusFromText } from './parse';
+import {
+  applyWftTexts,
+  readChunkData,
+  wftAppScript,
+  wftChunkMap,
+  wftClassTexts,
+  type WftAbilitiesFile,
+  type WftClassTexts,
+  type WftTalentsFile,
+} from './wowforevertools';
 
 const ROOT = process.cwd();
 const DATA_DIR = path.join(ROOT, 'src/data');
@@ -25,6 +36,7 @@ const ICON_DIR = path.join(ROOT, 'public/icons');
 const args = process.argv.slice(2);
 const onlyClass = args.includes('--class') ? (args[args.indexOf('--class') + 1] as ClassId) : undefined;
 const withIcons = !args.includes('--no-icons');
+const withWft = !args.includes('--no-wft');
 
 // Page cache is per wclbox release: a new release means fresh pages, while
 // re-running against the same release costs no requests.
@@ -190,6 +202,32 @@ async function downloadIcons(icons: Set<string>) {
   log(`icons: ${fetched} downloaded, ${icons.size} referenced`);
 }
 
+// ---------- official English text (wowforevertools JS chunks) ----------
+
+async function syncWftTexts(classes: ClassId[]): Promise<Partial<Record<ClassId, WftClassTexts>>> {
+  // index.html is never cached: it names the current (content-hashed) app script.
+  const app = wftAppScript(await fetchText(`${WOWFOREVERTOOLS}/`));
+  if (!app) throw new Error('app script not found in index.html');
+  const opts = { cacheDir: CACHE_DIR };
+  const chunks = wftChunkMap(await fetchText(`${WOWFOREVERTOOLS}/assets/${app}`, opts));
+  const load = async <T>(key: string) => {
+    const file = chunks.get(key);
+    if (!file) {
+      log(`  wft: no chunk for ${key}`);
+      return undefined;
+    }
+    return readChunkData<T>(await fetchText(`${WOWFOREVERTOOLS}/assets/${file}`, opts));
+  };
+  const out: Partial<Record<ClassId, WftClassTexts>> = {};
+  for (const cls of classes) {
+    out[cls] = wftClassTexts(
+      await load<WftAbilitiesFile>(`abilities/${cls}`),
+      await load<WftTalentsFile>(`talents/${cls}`),
+    );
+  }
+  return out;
+}
+
 // ---------- main ----------
 
 const dataBase = await wclboxDataBase(release);
@@ -208,10 +246,20 @@ for (const cls of classes) {
   classInfos.push(info);
 }
 
+if (withWft) {
+  try {
+    const replaced = applyWftTexts(entries, await syncWftTexts(classes));
+    const total = entries.filter((e) => e.kind !== 'racial').length;
+    log(`wft: official text for ${replaced}/${total} spells+talents (rest keep wclbox text)`);
+  } catch (err) {
+    log(`wft: skipped, keeping wclbox text: ${(err as Error).message}`);
+  }
+}
+
 const glossary: GlossaryFile = {
   generatedAt: new Date().toISOString(),
   build: meta.foreverBuild ?? null,
-  source: `${WCLBOX}/en (新手盒子·魔兽世界无限数据库)`,
+  source: `${WCLBOX}/en (新手盒子·魔兽世界无限数据库)${withWft ? `; descriptions: ${WOWFOREVERTOOLS}` : ''}`,
   entries: entries.sort((a, b) => a.id.localeCompare(b.id)),
 };
 

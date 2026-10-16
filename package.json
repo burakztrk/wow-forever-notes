@@ -24,6 +24,7 @@
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
+    "acorn": "^8.19.0",
     "cheerio": "^1.2.0",
     "rehype-stringify": "^10.0.1",
     "remark-parse": "^11.0.0",
