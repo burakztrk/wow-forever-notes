@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applyTranslations, pruneCache, textKey, validateTranslation } from '../scripts/lib/translations';
+import { applyTranslations, deriveRankTr, pruneCache, textKey, validateTranslation } from '../scripts/lib/translations';
 import type { GlossaryEntry } from '../src/lib/glossary-types';
 
 const entry = (desc: string, change?: string): GlossaryEntry => ({
@@ -19,6 +19,22 @@ describe('validateTranslation', () => {
   it('rejects translations that drop or change a number', () => {
     expect(validateTranslation('Deals 364 to 424 damage.', '364 hasar verir.')).toMatch(/424/);
     expect(validateTranslation('x', '')).toMatch(/empty/);
+  });
+});
+
+describe('deriveRankTr', () => {
+  it('swaps rank numbers into the Turkish top-rank text', () => {
+    const top = 'Gives you a 100% chance while channeling and a 70% chance while casting.';
+    const tr = 'Kanallarken şansın %100, cast ederken %70 olur.';
+    expect(deriveRankTr(top, tr, 'Gives you a 20% chance while channeling and a 14% chance while casting.')).toBe(
+      'Kanallarken şansın %20, cast ederken %14 olur.',
+    );
+  });
+  it('keeps decimal commas and gives up when the wording differs', () => {
+    expect(deriveRankTr('Reduces cast time by 0.5 sec.', 'Cast süresini 0,5 sn kısaltır.', 'Reduces cast time by 0.3 sec.')).toBe(
+      'Cast süresini 0,3 sn kısaltır.',
+    );
+    expect(deriveRankTr('Deals 10 damage.', '10 hasar verir.', 'Deals 5 damage and stuns.')).toBeUndefined();
   });
 });
 

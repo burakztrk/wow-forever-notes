@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { ui } from '../../../i18n';
+import type { ClassId } from '../../../lib/glossary-types';
+import { MAX_POINTS } from '../../../lib/talent-rules';
+import { arrowPath, classes, GRID, gridViewBox, talentPage } from '../../../lib/talents';
+import { islandJson } from '../../../lib/tooltip-payload';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => classes.map((c) => ({ params: { lang, cls: c.id } })));
+}
+
+const lang = Astro.params.lang as Lang;
+const cls = Astro.params.cls as ClassId;
+const t = ui(lang);
+const info = classes.find((c) => c.id === cls)!;
+const data = talentPage(cls, lang);
+const byId = new Map(data.nodes.map((n) => [n.id, n]));
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/talents/${cls}/`)])) as Record<Lang, string>;
+const title = `${info.name} · ${t.talentsTitle}`;
+---
+
+<BaseLayout title={title} lang={lang} alternates={alternates} wide>
+  <a class="back-nav" href={withBase(`/${lang}/talents/`)}>← {t.talentsTitle}</a>
+  <header class="calc-head" style={`--class-color: var(--class-${cls})`}>
+    <h1>{info.name}</h1>
+    <div class="calc-summary">
+      <span>{t.pointsLeft}: <strong data-points-left>{MAX_POINTS}</strong></span>
+      <span>{t.reqLevel}: <strong data-req-level>–</strong></span>
+      <span class="calc-split" data-split>0 / 0 / 0</span>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="calc-btn" data-remove-mode aria-pressed="false">{t.removeMode}</button>
+      <button type="button" class="calc-btn" data-reset-all>{t.resetAll}</button>
+      <button type="button" class="calc-btn primary" data-share>{t.share}</button>
+    </div>
+    <p class="muted calc-help">{t.talentHelp}</p>
+  </header>
+
+  <div class="trees" style={`--class-color: var(--class-${cls})`}>
+    {
+      data.trees.map((tree, ti) => (
+        <section class="tree" data-tree={ti}>
+          <header class="tree-head">
+            <h2>{tree}</h2>
+            <span class="tree-points" data-tree-points={ti}>0</span>
+            <button type="button" class="calc-btn small" data-reset-tree={ti}>
+              {t.resetTree}
+            </button>
+          </header>
+          <div class="tree-grid" style={`--rows: ${GRID.rows}; --cols: ${GRID.cols}`}>
+            <svg class="tree-arrows" viewBox={gridViewBox} preserveAspectRatio="none" aria-hidden="true">
+              {data.nodes
+                .filter((n) => n.tree === ti && n.requires && byId.has(n.requires))
+                .map((n) => (
+                  <path d={arrowPath(byId.get(n.requires!)!, n)} data-arrow-to={n.id} />
+                ))}
+            </svg>
+            {data.nodes
+              .filter((n) => n.tree === ti)
+              .map((n) => (
+                <button
+                  type="button"
+                  class="talent locked"
+                  data-talent={n.id}
+                  style={`grid-row: ${n.row}; grid-column: ${n.col}`}
+                  aria-label={`${n.name} 0/${n.maxRank}`}
+                >
+                  {n.icon && <img src={`${data.iconBase}${n.icon}.jpg`} alt="" width="44" height="44" loading="lazy" />}
+                  <span class="talent-rank" data-rank-of={n.id}>
+                    0/{n.maxRank}
+                  </span>
+                </button>
+              ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <script slot="after" type="application/json" id="wf-talents" is:inline set:html={islandJson(data)} />
+</BaseLayout>
+
+<script>
+  import '../../../scripts/talents';
+</script>
+
+<style>
+  .back-nav {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-mute);
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+  .calc-head h1 {
+    color: var(--class-color);
+    margin-bottom: 8px;
+  }
+  .calc-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    color: var(--text-dim);
+  }
+  .calc-summary strong {
+    color: var(--text);
+  }
+  .calc-split {
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .calc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0 6px;
+  }
+  .calc-help {
+    font-size: 0.82rem;
+    margin: 0 0 18px;
+  }
+</style>

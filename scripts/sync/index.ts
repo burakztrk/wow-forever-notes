@@ -7,7 +7,7 @@
 import { existsSync } from 'node:fs';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { applyTranslations, type TranslationCache } from '../lib/translations';
+import { applyRankTranslations, applyTranslations, type TranslationCache } from '../lib/translations';
 import {
   CLASSES,
   type ClassId,
@@ -173,6 +173,8 @@ async function syncClass(cls: ClassId) {
     desc: t.desc,
     status: t.status,
     change: t.change,
+    ranks: t.ranks.length ? t.ranks : undefined,
+    tierPoints: t.tierPoints,
     sourceUrl: `${talentUrl}#t=${t.id}`,
   }));
 
@@ -247,6 +249,27 @@ for (const cls of classes) {
   classInfos.push(info);
 }
 
+// Talent prerequisites (the arrows): { class: [[prerequisite, talent], …] }
+try {
+  const links = await fetchJson<Record<string, [string, string][]>>(`${dataBase}talent-links.json`, {
+    cacheDir: CACHE_DIR,
+  });
+  const byId = new Map(entries.map((e) => [e.id, e]));
+  let linked = 0;
+  for (const pairs of Object.values(links)) {
+    for (const [from, to] of pairs) {
+      const target = byId.get(`talent/${to}`);
+      if (target && byId.has(`talent/${from}`)) {
+        target.requires = `talent/${from}`;
+        linked++;
+      }
+    }
+  }
+  log(`talent prerequisites: ${linked}`);
+} catch (err) {
+  log(`talent prerequisites skipped: ${(err as Error).message}`);
+}
+
 if (withWft) {
   try {
     const replaced = applyWftTexts(entries, await syncWftTexts(classes));
@@ -270,6 +293,7 @@ const trCache = JSON.parse(
   await readFile(path.join(DATA_DIR, 'i18n/tr.json'), 'utf8').catch(() => '{}'),
 ) as TranslationCache;
 const untranslated = applyTranslations(glossary.entries, trCache);
+applyRankTranslations(glossary.entries);
 await mkdir(path.join(ROOT, '.cache'), { recursive: true });
 await writeFile(path.join(ROOT, '.cache/translate-pending.json'), JSON.stringify(untranslated, null, 2) + '\n');
 log(

@@ -9,6 +9,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { GlossaryFile } from '../src/lib/glossary-types';
 import {
+  applyRankTranslations,
   applyTranslations,
   pruneCache,
   textKey,
@@ -64,6 +65,7 @@ if (applyIdx > 0) {
 }
 
 const missing = applyTranslations(glossary.entries, cache);
+applyRankTranslations(glossary.entries);
 cache = Object.fromEntries(Object.entries(pruneCache(glossary.entries, cache)).sort(([a], [b]) => a.localeCompare(b)));
 
 await mkdir(path.dirname(CACHE), { recursive: true });

@@ -46,6 +46,11 @@ export interface GlossaryEntry {
   status: ChangeStatus;
   change?: string; // short English note on what changed vs Classic
   changeTr?: string;
+  // talents (talent builder)
+  ranks?: string[]; // English text for rank 1..maxRank
+  ranksTr?: string[]; // Turkish, derived from descTr by swapping numbers
+  requires?: string; // glossary id of the prerequisite talent (arrow)
+  tierPoints?: number; // points needed in this tree before this row unlocks
   sourceUrl: string;
 }
 

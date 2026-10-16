@@ -141,14 +141,25 @@ function byName(items: { name: string; status?: string; text?: string }[]): Map<
 export interface WftClassTexts {
   spells: Map<string, string>;
   talents: Map<string, string>;
+  talentRanks: Map<string, string[]>; // every rank's text, rank 1 first
+}
+
+function allTexts(ranks: (string | { text?: string })[] | undefined): string[] {
+  const out = (ranks ?? []).map((r) => clean(typeof r === 'string' ? r : (r?.text ?? '')));
+  return out.every(Boolean) ? out : [];
 }
 
 export function wftClassTexts(abilities?: WftAbilitiesFile, talents?: WftTalentsFile): WftClassTexts {
+  const talentList = (talents?.trees ?? []).flatMap((t) => t.talents ?? []);
+  const talentRanks = new Map<string, string[]>();
+  for (const t of talentList) {
+    const texts = allTexts(t.ranks);
+    if (texts.length && (t.status !== 'removed' || !talentRanks.has(norm(t.name)))) talentRanks.set(norm(t.name), texts);
+  }
   return {
     spells: byName((abilities?.abilities ?? []).map((a) => ({ ...a, text: lastText(a.ranks) }))),
-    talents: byName(
-      (talents?.trees ?? []).flatMap((t) => t.talents ?? []).map((t) => ({ ...t, text: lastText(t.ranks) })),
-    ),
+    talents: byName(talentList.map((t) => ({ ...t, text: lastText(t.ranks) }))),
+    talentRanks,
   };
 }
 
@@ -169,6 +180,9 @@ export function applyWftTexts(entries: GlossaryEntry[], texts: Partial<Record<Cl
       e.desc = t;
       replaced++;
     }
+    // per-rank official text, only when it matches the talent's rank count
+    const ranks = e.kind === 'talent' ? cls.talentRanks?.get(key) : undefined;
+    if (ranks && (!e.maxRank || ranks.length === e.maxRank)) e.ranks = ranks;
   }
   return replaced;
 }
