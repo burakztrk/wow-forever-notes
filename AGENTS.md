@@ -13,6 +13,8 @@ npm test               # vitest: parsers, update detection, glossary/remark plug
 npm run sync           # refresh src/data/*.json + public/icons/ from wclbox (~10 min first run, cached in .cache/http)
 npm run check-updates  # NO_UPDATES | UPDATES_FOUND (details in .cache/updates.json) | ERROR
 npm run check-updates -- --mark-seen   # advance src/data/state.json after publishing
+npm run translate      # apply src/data/i18n/tr.json to the glossary; lists missing Turkish texts
+npm run translate -- --apply <file.json>   # merge new translations (validated: numbers must survive)
 ```
 
 Node 22.12+.

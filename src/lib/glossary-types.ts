@@ -42,9 +42,10 @@ export interface GlossaryEntry {
   cooldown?: string; // "2 min"
   passive?: boolean;
   desc: string; // English, Forever text, highest rank
-  descTr?: string; // optional hand/LLM translation
+  descTr?: string; // Turkish, from src/data/i18n/tr.json (npm run translate)
   status: ChangeStatus;
   change?: string; // short English note on what changed vs Classic
+  changeTr?: string;
   sourceUrl: string;
 }
 

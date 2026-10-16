@@ -29,6 +29,15 @@ for (const rel of files) {
   }
 }
 
+// Turkish tooltip coverage: a warning, not a failure (tooltips fall back to English).
+const glossary = JSON.parse(readFileSync(path.join(process.cwd(), 'src/data/glossary.json'), 'utf8')) as {
+  entries: { desc?: string; descTr?: string }[];
+};
+const untranslated = glossary.entries.filter((e) => e.desc?.trim() && !e.descTr).length;
+if (untranslated) {
+  console.warn(`check-content: warning: ${untranslated} glossary entries have no Turkish text — run \`npm run translate\``);
+}
+
 if (problems.length) {
   console.error(`check-content: ${problems.length} problem(s)\n\n${problems.join('\n\n')}`);
   process.exit(1);

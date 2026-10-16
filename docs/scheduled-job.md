@@ -96,6 +96,13 @@ Uyulacak kurallar:
   ```
 
 - Sync'ten sonra da glossary'de olmayan yeni bir isim için direktif kullanma, düz metin yaz.
+- **Türkçe tooltip metinleri:** Sync çıktısında `TRANSLATE_PENDING <n>` görünürse yeni veya değişen İngilizce açıklamalar var demektir. Yazıya geçmeden önce bunları çevir:
+  1. `.cache/translate-pending.json` dosyasını oku.
+  2. [docs/translation-style.md](translation-style.md) kurallarına göre `{ "<key>": "<Türkçe>" }` biçiminde bir dosya yaz.
+  3. `npm run translate -- --apply <dosya>` çalıştır.
+  4. `TRANSLATIONS_COMPLETE` görene kadar tekrarla.
+
+  Sayı kaybeden çeviri reddedilir. Değişen `src/data/i18n/tr.json` dosyası aynı PR'a girer.
 
 ## Adım 4: Doğrula ve state'i ilerlet
 
@@ -111,7 +118,7 @@ npm run check-updates -- --mark-seen    # src/data/state.json güncellenir, ayn�
 
    ```bash
    git checkout -b blog/wow-forever-YYYY-MM-DD
-   git add src/content src/data public/icons
+   git add src/content src/data public/icons   # src/data/i18n/tr.json dahil
    git commit -m "Blog: WoW Forever notları YYYY-MM-DD"
    git push -u origin HEAD
    gh pr create --title "Blog: WoW Forever notları YYYY-MM-DD" --body "<özet + kaynaklar>"

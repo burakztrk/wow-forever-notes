@@ -4,7 +4,7 @@ date: 2026-10-16
 tags: [wow-forever, patch-notes]
 accent: warning
 excerpt: "Irk yeteneklerinde geniş çaplı düzenleme, Mage için Arcane Blast yeniden tasarımı ve yeni Frost Blast, Hunter'da Auto Shot için sabit durma şartı."
-draft: true
+draft: false
 build: "1.60.1.70425"
 sources:
   - https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6
