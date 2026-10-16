@@ -1,7 +1,9 @@
 ---
+import glossaryData from '../../../data/glossary.json';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
+import type { GlossaryFile } from '../../../lib/glossary-types';
 import { classes } from '../../../lib/talents';
 import { withBase } from '../../../utils/url';
 
@@ -12,18 +14,53 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/talents/`)])) as Record<Lang, string>;
+const fill = (tpl: string, vars: Record<string, string | number>) => tpl.replace(/\{(\w+)\}/g, (_, k) => String(vars[k]));
+const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
+
+const talents = (glossaryData as GlossaryFile).entries.filter((e) => e.kind === 'talent');
+const cards = classes.map((c) => {
+  const own = talents.filter((e) => e.class === c.id);
+  return {
+    ...c,
+    href: withBase(`/${lang}/talents/${c.id}/`),
+    total: own.length,
+    fresh: own.filter((e) => e.status === 'new').length,
+    trees: c.trees.map((name, i) => ({
+      name,
+      icon: icon(c.treeIcons?.[i]),
+      count: own.filter((e) => e.tree === name).length,
+    })),
+  };
+});
 ---
 
-<BaseLayout title={t.talentsTitle} description={t.talentsIntro} lang={lang} alternates={alternates}>
+<BaseLayout title={t.talentsTitle} description={t.talentsIntro} lang={lang} alternates={alternates} wide>
   <h1>{t.talentsTitle}</h1>
   <p class="muted">{t.talentsIntro}</p>
   <ul class="class-grid">
     {
-      classes.map((c) => (
+      cards.map((c) => (
         <li>
-          <a class="class-card" href={withBase(`/${lang}/talents/${c.id}/`)} style={`--class-color: var(--class-${c.id})`}>
-            <span class="class-name">{c.name}</span>
-            <span class="class-trees">{c.trees.join(' · ')}</span>
+          <a class="class-card" href={c.href} style={`--class-color: var(--class-${c.id})`}>
+            <div class="card-head">
+              {c.icon && <img class="class-icon" src={icon(c.icon)} alt="" width="52" height="52" loading="lazy" />}
+              <h2>{fill(t.classCalc, { cls: c.name })}</h2>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+            <p class="card-meta">
+              {fill(t.talentCount, { n: c.total })}
+              {c.fresh > 0 && <> · <span class="fresh">{fill(t.newCount, { n: c.fresh })}</span></>}
+            </p>
+            <ul class="tree-list">
+              {c.trees.map((tree) => (
+                <li>
+                  {tree.icon && <img src={tree.icon} alt="" width="26" height="26" loading="lazy" />}
+                  <span class="tree-name">{tree.name}</span>
+                  <span class="tree-count">{fill(t.talentCount, { n: tree.count })}</span>
+                </li>
+              ))}
+            </ul>
+            <span class="card-cta">{t.startPlanning}</span>
           </a>
         </li>
       ))
@@ -37,34 +74,93 @@ const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/talen
     padding: 0;
     margin: 24px 0 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .class-grid > li {
+    display: flex;
   }
   .class-card {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 16px 18px;
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--class-color);
-    border-radius: var(--radius);
+    padding: 20px 22px 18px;
+    background: linear-gradient(180deg, #1a1712, #121014);
+    border: 1px solid #3b3222;
+    border-radius: var(--radius-sm);
+    color: inherit;
     text-decoration: none;
     transition: border-color 0.15s, transform 0.15s;
   }
   .class-card:hover,
   .class-card:focus-visible {
-    border-color: var(--class-color);
-    transform: translateY(-1px);
+    border-color: var(--gold-dim);
+    transform: translateY(-2px);
   }
-  .class-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.2rem;
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .class-icon {
+    flex: none;
+    border-radius: 6px;
+    border: 1px solid #000;
+    box-shadow: 0 0 0 1px var(--gold-dim);
+  }
+  .card-head h2 {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.15rem;
     color: var(--class-color);
   }
-  .class-trees {
+  .card-arrow {
+    color: var(--gold);
+    font-size: 1.2rem;
+    transition: transform 0.15s;
+  }
+  .class-card:hover .card-arrow {
+    transform: translate(2px, -2px);
+  }
+  .card-meta {
+    margin: 12px 0 0;
     color: var(--text-mute);
     font-size: 0.85rem;
+  }
+  .fresh {
+    color: var(--status-new);
+  }
+  .tree-list {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    border-top: 1px solid #2c2619;
+  }
+  .tree-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #2c2619;
+  }
+  .tree-list img {
+    border-radius: 4px;
+    border: 1px solid #000;
+  }
+  .tree-name {
+    flex: 1;
+    color: var(--text);
+  }
+  .tree-count {
+    color: var(--text-mute);
+    font-size: 0.82rem;
+  }
+  .card-cta {
+    margin-top: auto;
+    padding-top: 14px;
+    color: var(--gold);
+    font-size: 0.9rem;
   }
 </style>

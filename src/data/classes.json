@@ -2,10 +2,16 @@
   {
     "id": "warrior",
     "name": "Warrior",
+    "icon": "classicon_warrior",
     "trees": [
       "Arms",
       "Fury",
       "Protection"
+    ],
+    "treeIcons": [
+      "ability_rogue_eviscerate",
+      "ability_warrior_innerrage",
+      "inv_shield_06"
     ],
     "spells": [
       "spell/warrior-battle-stance",
@@ -109,10 +115,16 @@
   {
     "id": "paladin",
     "name": "Paladin",
+    "icon": "classicon_paladin",
     "trees": [
       "Holy",
       "Protection",
       "Retribution"
+    ],
+    "treeIcons": [
+      "spell_holy_holybolt",
+      "spell_holy_devotionaura",
+      "spell_holy_auraoflight"
     ],
     "spells": [
       "spell/paladin-holy-light",
@@ -229,10 +241,16 @@
   {
     "id": "hunter",
     "name": "Hunter",
+    "icon": "classicon_hunter",
     "trees": [
       "Beast Mastery",
       "Marksmanship",
       "Survival"
+    ],
+    "treeIcons": [
+      "ability_hunter_beasttaming",
+      "ability_marksmanship",
+      "ability_hunter_swiftstrike"
     ],
     "spells": [
       "spell/hunter-aspect-of-the-monkey",
@@ -351,10 +369,16 @@
   {
     "id": "rogue",
     "name": "Rogue",
+    "icon": "classicon_rogue",
     "trees": [
       "Assassination",
       "Combat",
       "Subtlety"
+    ],
+    "treeIcons": [
+      "ability_rogue_eviscerate",
+      "ability_backstab",
+      "ability_stealth"
     ],
     "spells": [
       "spell/rogue-eviscerate",
@@ -474,10 +498,16 @@
   {
     "id": "priest",
     "name": "Priest",
+    "icon": "classicon_priest",
     "trees": [
       "Discipline",
       "Holy",
       "Shadow"
+    ],
+    "treeIcons": [
+      "spell_holy_wordfortitude",
+      "spell_holy_guardianspirit",
+      "spell_shadow_shadowwordpain"
     ],
     "spells": [
       "spell/priest-power-word-fortitude",
@@ -595,10 +625,16 @@
   {
     "id": "shaman",
     "name": "Shaman",
+    "icon": "classicon_shaman",
     "trees": [
       "Elemental",
       "Enhancement",
       "Restoration"
+    ],
+    "treeIcons": [
+      "spell_nature_lightning",
+      "spell_nature_lightningshield",
+      "spell_nature_magicimmunity"
     ],
     "spells": [
       "spell/shaman-lightning-bolt",
@@ -715,10 +751,16 @@
   {
     "id": "mage",
     "name": "Mage",
+    "icon": "classicon_mage",
     "trees": [
       "Arcane",
       "Fire",
       "Frost"
+    ],
+    "treeIcons": [
+      "spell_holy_magicalsentry",
+      "spell_fire_firebolt02",
+      "spell_frost_frostbolt02"
     ],
     "spells": [
       "spell/mage-arcane-intellect",
@@ -845,10 +887,16 @@
   {
     "id": "warlock",
     "name": "Warlock",
+    "icon": "classicon_warlock",
     "trees": [
       "Affliction",
       "Demonology",
       "Destruction"
+    ],
+    "treeIcons": [
+      "spell_shadow_deathcoil",
+      "spell_shadow_metamorphosis",
+      "spell_shadow_rainoffire"
     ],
     "spells": [
       "spell/warlock-corruption",
@@ -966,10 +1014,16 @@
   {
     "id": "druid",
     "name": "Druid",
+    "icon": "classicon_druid",
     "trees": [
       "Balance",
       "Feral Combat",
       "Restoration"
+    ],
+    "treeIcons": [
+      "spell_nature_starfall",
+      "ability_racial_bearform",
+      "spell_nature_healingtouch"
     ],
     "spells": [
       "spell/druid-wrath",

@@ -73,7 +73,9 @@ export interface RaceInfo {
 export interface ClassInfo {
   id: ClassId;
   name: string;
+  icon?: string; // class icon, e.g. "classicon_mage"
   trees: string[]; // talent tree names in display order
+  treeIcons?: string[]; // icon per tree, same order
   spells: string[]; // glossary ids
   talents: string[]; // glossary ids
 }
