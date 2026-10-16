@@ -43,6 +43,14 @@ const talentPage = `
   <p class="talent-reference-condition">Maximum 2 levels · Tier 1 · No tier point requirement</p>
   <p class="talent-reference-effect"><b>Level 2 : </b>Increases the damage dealt by your wand by 25%.</p>
   <p class="talent-reference-change">Change summary: Move from Tier 2 to Tier 1.</p>
+  <details><dl><dt> Forever · Rank 1</dt><dd>Increases wand damage by 13%.</dd>
+  <dt> Forever · Rank 2</dt><dd>Increases wand damage by 25%.</dd>
+  <dt> Classic Era · Rank 2</dt><dd>Old text.</dd></dl></details>
+</article>
+<article class="talent-reference-entry" id="talent-info-calc-mage-arcane-arcane-power">
+  <div class="talent-reference-name"><h4>Arcane Power</h4></div>
+  <p class="talent-reference-condition">Maximum 1 levels · Tier 7 · Requires Arcane points in lower tiers 30 points</p>
+  <p class="talent-reference-effect">x</p>
 </article>`;
 
 describe('normalizers', () => {
@@ -111,6 +119,9 @@ describe('parseTalentPage', () => {
       status: 'changed',
       desc: 'Increases the damage dealt by your wand by 25%.',
       change: 'Move from Tier 2 to Tier 1.',
+      ranks: ['Increases wand damage by 13%.', 'Increases wand damage by 25%.'],
+      tierPoints: 0,
     });
+    expect(talents[1]).toMatchObject({ name: 'Arcane Power', tierPoints: 30, ranks: [] });
   });
 });

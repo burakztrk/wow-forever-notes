@@ -1,0 +1,177 @@
+/* Talent calculator */
+.calc-btn {
+  padding: 0.35em 0.9em;
+  border: 1px solid var(--gold-dim);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev-2);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.calc-btn:hover {
+  border-color: var(--gold);
+}
+.calc-btn.primary {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+  font-weight: 600;
+}
+.calc-btn.small {
+  padding: 0.15em 0.6em;
+  font-size: 0.75rem;
+}
+.calc-btn[aria-pressed='true'] {
+  background: var(--rage);
+  border-color: var(--rage);
+  color: #fff;
+}
+
+.trees {
+  --cell: 52px;
+  --gap: calc(var(--cell) * 0.24);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.tree {
+  padding: 12px 14px 18px;
+  background:
+    radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--class-color) 14%, transparent), transparent 70%),
+    var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.tree-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.tree-head h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1.1rem;
+  flex: 1;
+}
+.tree-points {
+  min-width: 2ch;
+  padding: 0 0.5em;
+  border-radius: 999px;
+  background: var(--bg-elev-2);
+  color: var(--gold);
+  font-weight: 700;
+  text-align: center;
+}
+.tree-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell));
+  grid-template-rows: repeat(var(--rows), var(--cell));
+  gap: var(--gap);
+  justify-content: center;
+  width: max-content;
+  margin: 0 auto;
+}
+.tree-arrows {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.tree-arrows path {
+  fill: none;
+  stroke: #3a3f4d;
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+}
+.tree-arrows path.active {
+  stroke: var(--gold);
+}
+
+.talent {
+  position: relative;
+  width: var(--cell);
+  height: var(--cell);
+  padding: 0;
+  border: 2px solid #3a3f4d;
+  border-radius: 8px;
+  background: #000;
+  cursor: pointer;
+  z-index: 1;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.talent img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  pointer-events: none;
+}
+.talent.locked img {
+  filter: grayscale(1);
+  opacity: 0.45;
+}
+.talent.available {
+  border-color: #4f9a4a;
+}
+.talent.partial {
+  border-color: #7bdc5c;
+  box-shadow: 0 0 8px rgba(123, 220, 92, 0.35);
+}
+.talent.max {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(200, 166, 86, 0.45);
+}
+.talent:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+.talent-rank {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  padding: 0 4px;
+  border: 1px solid #3a3f4d;
+  border-radius: 4px;
+  background: #0b0c10;
+  color: var(--text-dim);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.talent.partial .talent-rank {
+  color: #9be37f;
+  border-color: #4f9a4a;
+}
+.talent.max .talent-rank {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+}
+
+/* talent tooltip extras */
+.wft-next {
+  margin: 8px 0 0;
+  color: var(--text-dim);
+}
+.wft-next b {
+  color: var(--text-mute);
+  font-weight: 600;
+}
+.wft-req {
+  margin: 8px 0 0;
+  color: var(--rage);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 380px) {
+  .trees {
+    --cell: 46px;
+  }
+}

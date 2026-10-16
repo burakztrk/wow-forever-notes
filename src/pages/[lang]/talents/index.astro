@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { ui } from '../../../i18n';
+import { classes } from '../../../lib/talents';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = ui(lang);
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/talents/`)])) as Record<Lang, string>;
+---
+
+<BaseLayout title={t.talentsTitle} description={t.talentsIntro} lang={lang} alternates={alternates}>
+  <h1>{t.talentsTitle}</h1>
+  <p class="muted">{t.talentsIntro}</p>
+  <ul class="class-grid">
+    {
+      classes.map((c) => (
+        <li>
+          <a class="class-card" href={withBase(`/${lang}/talents/${c.id}/`)} style={`--class-color: var(--class-${c.id})`}>
+            <span class="class-name">{c.name}</span>
+            <span class="class-trees">{c.trees.join(' · ')}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .class-grid {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .class-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 18px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--class-color);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .class-card:hover,
+  .class-card:focus-visible {
+    border-color: var(--class-color);
+    transform: translateY(-1px);
+  }
+  .class-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--class-color);
+  }
+  .class-trees {
+    color: var(--text-mute);
+    font-size: 0.85rem;
+  }
+</style>

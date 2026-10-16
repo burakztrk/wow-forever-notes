@@ -220,6 +220,8 @@ export interface TalentRow {
   status: ChangeStatus;
   desc: string;
   change?: string;
+  ranks: string[]; // Forever text per rank, rank 1 first
+  tierPoints?: number; // "Requires <tree> points in lower tiers N points"
 }
 
 export function parseTalentPage(html: string): { trees: string[]; talents: TalentRow[] } {
@@ -255,7 +257,17 @@ export function parseTalentPage(html: string): { trees: string[]; talents: Talen
     const effect = clean($el.find('.talent-reference-effect').text()).replace(/^Level\s*\d+\s*:\s*/i, '');
     const change = clean($el.find('.talent-reference-change').text()).replace(/^Change summary:\s*/i, '');
     const pos = position.get(id);
+    const ranks: string[] = [];
+    $el.find('details dt').each((_, dt) => {
+      const label = clean($(dt).text()); // "Forever · Rank 2"
+      const n = Number(label.match(/^Forever\s*·\s*Rank\s*(\d+)/i)?.[1]);
+      if (n) ranks[n - 1] = clean($(dt).next('dd').text());
+    });
     talents.push({
+      ranks: ranks.filter(Boolean).length === ranks.length ? ranks : [],
+      tierPoints: /no tier point requirement/i.test(condition)
+        ? 0
+        : Number(condition.match(/lower tiers\s*(\d+)\s*points?/i)?.[1]) || undefined,
       id,
       name: clean($el.find('.talent-reference-name h4').text()),
       icon: iconFromSrc($el.find('.talent-reference-name img').attr('src')),

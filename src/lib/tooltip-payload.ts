@@ -30,7 +30,7 @@ export function tooltipPayload(ids: string[], lang: Lang): TipPayload {
   for (const id of ids) {
     const e = byId.get(id);
     if (!e) continue;
-    const { descTr, changeTr, races, ...rest } = e;
+    const { descTr, changeTr, races, ranks, ranksTr, requires, tierPoints, ...rest } = e;
     entries[id] = {
       ...rest,
       desc: lang === 'tr' && descTr ? descTr : e.desc,
