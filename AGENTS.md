@@ -13,6 +13,7 @@ npm test               # vitest: parsers, update detection, glossary/remark plug
 npm run sync           # refresh src/data/*.json + public/icons/ from wclbox (~10 min first run, cached in .cache/http)
 npm run check-updates  # NO_UPDATES | UPDATES_FOUND (details in .cache/updates.json) | ERROR
 npm run check-updates -- --mark-seen   # advance src/data/state.json after publishing
+npm run check-updates -- --from 2026-10-01   # backfill: one group per build since that date; skips builds that already have a post
 npm run check-updates -- --since 1.60.1.70374   # test mode: treat that build as last published; state.json untouched
 npm run translate      # apply src/data/i18n/tr.json to the glossary; lists missing Turkish texts
 npm run translate -- --apply <file.json>   # merge new translations (validated: numbers must survive)

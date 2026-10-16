@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { diffUpdates, nextState, type UpdateState, type WclBluePost, type WclBuild } from '../scripts/lib/updates';
+import {
+  diffUpdates,
+  groupByBuild,
+  nextState,
+  stateFromDate,
+  type UpdateState,
+  type WclBluePost,
+  type WclBuild,
+} from '../scripts/lib/updates';
 
 const builds: WclBuild[] = [
   { id: '1.60.1.70425', date: '2026-10-15' },
@@ -59,6 +67,30 @@ describe('diffUpdates', () => {
     });
     expect(d.devNotesChanged).toBe(true);
     expect(d.hasUpdates).toBe(true);
+  });
+});
+
+describe('backfill', () => {
+  it('stateFromDate treats everything on or after the date as unpublished', () => {
+    const s = stateFromDate('2026-10-14', builds);
+    expect(s.lastBuild).toBe('1.60.1.70338');
+    const d = diffUpdates(s, builds, posts);
+    expect(d.newBuilds.map((b) => b.id)).toEqual(['1.60.1.70374', '1.60.1.70425']);
+    expect(d.newPosts.map((p) => p.id)).toEqual([1, 2, 3]);
+  });
+
+  it('groupByBuild gives each post to the latest build released by its day', () => {
+    const d = diffUpdates(stateFromDate('2026-10-14', builds), builds, posts);
+    const g = groupByBuild(d.newBuilds, d.newPosts);
+    expect(g.map((x) => [x.build?.id, x.date, x.posts.map((p) => p.id)])).toEqual([
+      ['1.60.1.70374', '2026-10-14', [1]],
+      ['1.60.1.70425', '2026-10-15', [2, 3]],
+    ]);
+  });
+
+  it('keeps posts older than every new build in their own group', () => {
+    const g = groupByBuild([builds[0]], [posts[2]]);
+    expect(g[0]).toMatchObject({ build: null, date: '2026-10-14' });
   });
 });
 

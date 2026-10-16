@@ -76,6 +76,43 @@ export function diffUpdates(
   return { newBuilds, newPosts, devNotesChanged, maintenanceOnly, hasUpdates };
 }
 
+// Backfill: a virtual state in which nothing on or after `from` (YYYY-MM-DD)
+// has been published yet.
+export function stateFromDate(from: string, builds: WclBuild[]): UpdateState {
+  const before = builds
+    .filter((b) => b.date < from)
+    .sort((a, b) => buildNumber(b.id) - buildNumber(a.id))[0];
+  return {
+    lastBuild: before?.id ?? null,
+    lastBluePostAt: new Date(Date.parse(`${from}T00:00:00.000Z`) - 1).toISOString(),
+    devNotesLastPostedAt: null,
+  };
+}
+
+export interface UpdateGroup {
+  build: WclBuild | null; // null: posts that came before the first new build
+  date: string; // YYYY-MM-DD the post is dated with (the build's date)
+  posts: WclBluePost[];
+}
+
+// One blog post per build: each blue post goes to the latest new build released
+// on or before its day. Posts older than every new build form their own group.
+export function groupByBuild(newBuilds: WclBuild[], newPosts: WclBluePost[]): UpdateGroup[] {
+  const builds = [...newBuilds].sort((a, b) => buildNumber(a.id) - buildNumber(b.id));
+  const groups: UpdateGroup[] = builds.map((b) => ({ build: b, date: b.date, posts: [] }));
+  const orphans: WclBluePost[] = [];
+  for (const p of newPosts) {
+    const day = p.date.slice(0, 10);
+    const owner = [...groups].reverse().find((g) => g.date <= day);
+    (owner ? owner.posts : orphans).push(p);
+  }
+  if (orphans.length) {
+    const last = orphans.map((p) => p.date.slice(0, 10)).sort().at(-1)!;
+    groups.unshift({ build: null, date: last, posts: orphans });
+  }
+  return groups;
+}
+
 // State after the found updates have been published.
 export function nextState(
   state: UpdateState,
