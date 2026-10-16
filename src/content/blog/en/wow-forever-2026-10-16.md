@@ -4,7 +4,7 @@ date: 2026-10-16
 tags: [wow-forever, patch-notes]
 accent: warning
 excerpt: "A broad pass over racial abilities, a reworked Arcane Blast and the new Frost Blast for Mages, and a stand-still rule for Hunter Auto Shot."
-draft: true
+draft: false
 build: "1.60.1.70425"
 sources:
   - https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6

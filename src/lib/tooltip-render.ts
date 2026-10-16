@@ -42,6 +42,13 @@ export interface TipStrings {
   statusUnchanged: string;
   statusRemoved: string;
   source: string;
+  // unit / resource words in chips, e.g. { sec: 'sn', Rage: 'Öfke' }
+  units: Record<string, string>;
+}
+
+// Swap whole words in chip values ("3 sec" → "3 sn", "15 Rage" → "15 Öfke").
+function localize(value: string, units: Record<string, string>): string {
+  return value.replace(/[A-Za-z()]+/g, (w) => units[w] ?? w);
 }
 
 export interface TipPayload {
@@ -77,10 +84,10 @@ export function renderTooltip(e: TipEntry, p: TipPayload): string {
   if (e.kind === 'spell' && e.class) {
     chips.push(`<span class="wft-chip class-${esc(e.class)}">${esc(cap(e.class))}</span>`);
   }
-  if (e.cast) chips.push(`<span class="wft-chip">${esc(e.cast === 'Instant' ? s.instant : e.cast)}</span>`);
-  if (e.cost) chips.push(`<span class="wft-chip wft-cost--${esc(e.costType ?? 'other')}">${esc(e.cost)}</span>`);
-  if (e.range) chips.push(`<span class="wft-chip">${esc(e.range)}</span>`);
-  if (e.cooldown) chips.push(`<span class="wft-chip">${esc(s.cooldown)} ${esc(e.cooldown)}</span>`);
+  if (e.cast) chips.push(`<span class="wft-chip">${esc(e.cast === 'Instant' ? s.instant : localize(e.cast, s.units))}</span>`);
+  if (e.cost) chips.push(`<span class="wft-chip wft-cost--${esc(e.costType ?? 'other')}">${esc(localize(e.cost, s.units))}</span>`);
+  if (e.range) chips.push(`<span class="wft-chip">${esc(localize(e.range, s.units))}</span>`);
+  if (e.cooldown) chips.push(`<span class="wft-chip">${esc(s.cooldown)} ${esc(localize(e.cooldown, s.units))}</span>`);
 
   const rankPill =
     e.kind === 'talent' && e.maxRank ? `<span class="wft-pill">${esc(e.maxRank)} ${esc(s.points)}</span>` : '';

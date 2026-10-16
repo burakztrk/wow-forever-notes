@@ -5,8 +5,9 @@
 // descriptions with the official client text from wowforevertools.com. The output is committed, so
 // the site build never depends on the network. Re-run when a new build lands.
 import { existsSync } from 'node:fs';
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { applyTranslations, type TranslationCache } from '../lib/translations';
 import {
   CLASSES,
   type ClassId,
@@ -262,6 +263,20 @@ const glossary: GlossaryFile = {
   source: `${WCLBOX}/en (新手盒子·魔兽世界无限数据库)${withWft ? `; descriptions: ${WOWFOREVERTOOLS}` : ''}`,
   entries: entries.sort((a, b) => a.id.localeCompare(b.id)),
 };
+
+// Turkish texts: reuse cached translations; new/changed English is listed for
+// `npm run translate` (see docs/translation-style.md).
+const trCache = JSON.parse(
+  await readFile(path.join(DATA_DIR, 'i18n/tr.json'), 'utf8').catch(() => '{}'),
+) as TranslationCache;
+const untranslated = applyTranslations(glossary.entries, trCache);
+await mkdir(path.join(ROOT, '.cache'), { recursive: true });
+await writeFile(path.join(ROOT, '.cache/translate-pending.json'), JSON.stringify(untranslated, null, 2) + '\n');
+log(
+  untranslated.length
+    ? `TRANSLATE_PENDING ${untranslated.length} Turkish texts → run \`npm run translate\` (.cache/translate-pending.json)`
+    : 'translations: all Turkish texts present',
+);
 
 await mkdir(DATA_DIR, { recursive: true });
 const json = (v: unknown) => JSON.stringify(v, null, 2) + '\n';
