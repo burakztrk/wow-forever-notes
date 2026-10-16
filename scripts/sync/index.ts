@@ -158,7 +158,7 @@ async function syncClass(cls: ClassId) {
   }
 
   const talentUrl = wclboxPage(`tianfu/${cls}`);
-  const { trees, talents } = parseTalentPage(await fetchText(talentUrl, opts));
+  const { trees, treeIcons, talents } = parseTalentPage(await fetchText(talentUrl, opts));
   const talentEntries: GlossaryEntry[] = talents.map((t) => ({
     id: `talent/${t.id}`,
     kind: 'talent',
@@ -182,7 +182,9 @@ async function syncClass(cls: ClassId) {
   const info: ClassInfo = {
     id: cls,
     name: cap(cls),
+    icon: `classicon_${cls}`,
     trees,
+    treeIcons,
     spells: spells.map((s) => s.id),
     talents: talentEntries.map((t) => t.id),
   };
@@ -310,6 +312,10 @@ await writeFile(path.join(DATA_DIR, 'classes.json'), json(classInfos));
 log(`wrote ${entries.length} glossary entries`);
 
 if (withIcons) {
-  const icons = new Set(entries.map((e) => e.icon).filter((i): i is string => !!i));
+  const icons = new Set(
+    [...entries.map((e) => e.icon), ...classInfos.flatMap((c) => [c.icon, ...(c.treeIcons ?? [])])].filter(
+      (i): i is string => !!i,
+    ),
+  );
   await downloadIcons(icons);
 }

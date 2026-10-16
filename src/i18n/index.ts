@@ -46,6 +46,10 @@ const strings = {
     tierNeed: '{tree} ağacında {n} puan gerekir',
     requiresTalent: 'Gerekli: {name} ({max}/{max})',
     nextRank: 'Sonraki rank',
+    classCalc: '{cls} Talent Hesaplayıcı',
+    talentCount: '{n} talent',
+    newCount: '{n} yeni',
+    startPlanning: 'Planlamaya başla →',
   },
   en: {
     langName: 'English',
@@ -88,6 +92,10 @@ const strings = {
     tierNeed: 'Requires {n} points in {tree}',
     requiresTalent: 'Requires {name} ({max}/{max})',
     nextRank: 'Next rank',
+    classCalc: '{cls} Talent Calculator',
+    talentCount: '{n} talents',
+    newCount: '{n} new',
+    startPlanning: 'Start planning →',
   },
 } as const satisfies Record<Lang, Record<string, string>>;
 

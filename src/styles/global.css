@@ -107,3 +107,13 @@ img {
 .class-mage { color: var(--class-mage); }
 .class-warlock { color: var(--class-warlock); }
 .class-druid { color: var(--class-druid); }
+
+/* Game names are English: keep Cinzel's Turkish localized forms (dotted İ)
+   off so "Paladin" does not render as "PALADİN" on Turkish pages. */
+.wft-name,
+.tree-head h2,
+.calc-head h1,
+.card-head h2,
+.brand {
+  font-feature-settings: 'locl' 0;
+}

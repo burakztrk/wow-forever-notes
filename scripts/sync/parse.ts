@@ -224,15 +224,17 @@ export interface TalentRow {
   tierPoints?: number; // "Requires <tree> points in lower tiers N points"
 }
 
-export function parseTalentPage(html: string): { trees: string[]; talents: TalentRow[] } {
+export function parseTalentPage(html: string): { trees: string[]; treeIcons: string[]; talents: TalentRow[] } {
   const $ = cheerio.load(html);
   const trees: string[] = [];
+  const treeIcons: string[] = [];
   const position = new Map<string, { tree: string; row?: number; col?: number; maxRank?: number }>();
 
   $('.tf-tree-header').each((_, header) => {
     const tree = clean($(header).find('h2').first().text());
     if (!tree) return;
     trees.push(tree);
+    treeIcons.push(iconFromSrc($(header).find('.tf-spec-icon img').attr('src')) ?? '');
     $(header)
       .nextAll('.tf-grid')
       .first()
@@ -281,5 +283,5 @@ export function parseTalentPage(html: string): { trees: string[]; talents: Talen
       change: change || undefined,
     });
   });
-  return { trees, talents };
+  return { trees, treeIcons, talents };
 }
