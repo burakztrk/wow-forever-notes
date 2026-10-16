@@ -30,6 +30,8 @@ type Node = { type: string; value?: string; name?: string; children?: Node[]; at
 
 const textOf = (n: Node): string => (n.value ?? '') + (n.children ?? []).map(textOf).join('');
 const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// smartypants has already curled apostrophes in the text by the time we run
+const namePattern = (name: string) => escapeRe(name).replace(/'/g, "['\u2019]");
 
 let cached: { file: string; glossary: Glossary } | undefined;
 function defaultGlossary(): Glossary {
@@ -118,7 +120,7 @@ export default function remarkGlossary(options: RemarkGlossaryOptions = {}) {
     const names = options.autoLink === false ? [] : glossary.autoLinkNames();
     if (names.length) {
       const pattern = new RegExp(
-        `(?<![\\p{L}\\p{N}])(?:${names.sort((a, b) => b.length - a.length).map(escapeRe).join('|')})(?![\\p{L}\\p{N}])`,
+        `(?<![\\p{L}\\p{N}])(?:${names.sort((a, b) => b.length - a.length).map(namePattern).join('|')})(?![\\p{L}\\p{N}])`,
         'gu',
       );
       visit(tree as any, (node: Node, index, parent: Node | undefined) => {

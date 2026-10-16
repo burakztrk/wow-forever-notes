@@ -2,6 +2,7 @@ import rehypeStringify from 'rehype-stringify';
 import remarkDirective from 'remark-directive';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import remarkSmartypants from 'remark-smartypants';
 import { unified } from 'unified';
 import { describe, expect, it } from 'vitest';
 import { createGlossary } from '../src/lib/glossary';
@@ -19,12 +20,14 @@ const entries: GlossaryEntry[] = [
   { ...base, id: 'talent/mage-presence-of-mind', kind: 'talent', name: 'Presence of Mind', class: 'mage' },
   { ...base, id: 'talent/warrior-shield-spec', kind: 'talent', name: 'Shield Specialization', class: 'warrior' },
   { ...base, id: 'talent/paladin-shield-spec', kind: 'talent', name: 'Shield Specialization', class: 'paladin' },
+  { ...base, id: 'talent/mage-winters-chill', kind: 'talent', name: "Winter's Chill", class: 'mage' },
   { ...base, id: 'racial/racial-orc-blood-fury', kind: 'racial', name: 'Blood Fury', races: ['horde-orc'] },
 ];
 
-async function render(md: string) {
+async function render(md: string, { smartypants = false } = {}) {
   const file = await unified()
     .use(remarkParse)
+    .use(smartypants ? remarkSmartypants : [])
     .use(remarkDirective)
     .use(remarkGlossary, { entries, base: '/wow-forever-notes' })
     .use(remarkRehype)
@@ -83,6 +86,16 @@ describe('remarkGlossary', () => {
     expect(html).toContain('<h2>Aimed Shot</h2>');
     expect(html).toContain('<code>Arcane Shot</code>');
     expect(ids).toEqual(['talent/mage-improved-channeling']);
+  });
+
+  it('matches names whose apostrophe smartypants has curled (as in astro build)', async () => {
+    const { html, ids } = await render(":talent[Winter's Chill] changed. Later, Winter's Chill again.", {
+      smartypants: true,
+    });
+    expect(html).toContain('data-tip="talent/mage-winters-chill"');
+    expect(ids).toEqual(['talent/mage-winters-chill']);
+    const auto = await render("Winter's Chill stacks faster.", { smartypants: true });
+    expect(auto.html).toMatch(/data-tip="talent\/mage-winters-chill"[^>]*>Winter’s Chill<\/span>/);
   });
 
   it('restores colon text that is not a glossary directive', async () => {
