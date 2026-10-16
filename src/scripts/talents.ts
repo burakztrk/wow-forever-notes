@@ -31,7 +31,6 @@ function init(data: TalentPagePayload) {
     return (m && decodeBuild(nodes, m[1], trees.length)) || {};
   };
   let ranks: Ranks = fromHash();
-  let removeMode = false;
 
   // ---------- tooltip ----------
   const tip = document.createElement('div');
@@ -110,6 +109,11 @@ function init(data: TalentPagePayload) {
       const state = r === n.maxRank ? 'max' : r > 0 ? 'partial' : addBlock(nodes, ranks, n) ? 'locked' : 'available';
       el.className = `talent ${state}`;
       el.setAttribute('aria-label', `${n.name} ${r}/${n.maxRank}`);
+      const minus = $<HTMLButtonElement>(`[data-minus="${n.id}"]`);
+      if (minus) {
+        minus.hidden = r === 0;
+        minus.disabled = r > 0 && !canRemove(nodes, ranks, n);
+      }
       const badge = $(`[data-rank-of="${n.id}"]`);
       if (badge) badge.textContent = `${r}/${n.maxRank}`;
       const arrow = $(`[data-arrow-to="${n.id}"]`);
@@ -155,10 +159,19 @@ function init(data: TalentPagePayload) {
   const trees$ = $('.trees')!;
 
   trees$.addEventListener('click', (e) => {
+    const minus = e.target instanceof Element ? e.target.closest<HTMLElement>('[data-minus]') : null;
+    if (minus) {
+      const n = byId.get(minus.dataset.minus!);
+      if (n) remove(n);
+      const el = $<HTMLElement>(`[data-talent="${minus.dataset.minus}"]`);
+      if (el && n && (ranks[n.id] ?? 0) > 0) showTip(el);
+      else hideTip();
+      return;
+    }
     const el = talentFrom(e.target);
     const n = el && byId.get(el.dataset.talent!);
     if (!el || !n) return;
-    if (removeMode || e.shiftKey) remove(n);
+    if (e.shiftKey) remove(n);
     else add(n);
     showTip(el);
   });
@@ -190,16 +203,13 @@ function init(data: TalentPagePayload) {
     if (el) showTip(el);
   });
   document.addEventListener('click', (e) => {
-    if (!talentFrom(e.target)) hideTip();
+    const onMinus = e.target instanceof Element && !!e.target.closest('[data-minus]');
+    if (!talentFrom(e.target) && !onMinus) hideTip();
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') hideTip();
   });
 
-  $('[data-remove-mode]')?.addEventListener('click', (e) => {
-    removeMode = !removeMode;
-    (e.currentTarget as HTMLElement).setAttribute('aria-pressed', String(removeMode));
-  });
   $('[data-reset-all]')?.addEventListener('click', () => {
     ranks = {};
     render();

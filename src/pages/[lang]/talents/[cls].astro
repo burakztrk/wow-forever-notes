@@ -32,7 +32,6 @@ const title = `${info.name} · ${t.talentsTitle}`;
       <span class="calc-split" data-split>0 / 0 / 0</span>
     </div>
     <div class="calc-actions">
-      <button type="button" class="calc-btn" data-remove-mode aria-pressed="false">{t.removeMode}</button>
       <button type="button" class="calc-btn" data-reset-all>{t.resetAll}</button>
       <button type="button" class="calc-btn primary" data-share>{t.share}</button>
     </div>
@@ -61,18 +60,24 @@ const title = `${info.name} · ${t.talentsTitle}`;
             {data.nodes
               .filter((n) => n.tree === ti)
               .map((n) => (
-                <button
-                  type="button"
-                  class="talent locked"
-                  data-talent={n.id}
-                  style={`grid-row: ${n.row}; grid-column: ${n.col}`}
-                  aria-label={`${n.name} 0/${n.maxRank}`}
-                >
-                  {n.icon && <img src={`${data.iconBase}${n.icon}.jpg`} alt="" width="44" height="44" loading="lazy" />}
-                  <span class="talent-rank" data-rank-of={n.id}>
-                    0/{n.maxRank}
-                  </span>
-                </button>
+                <div class="talent-slot" style={`grid-row: ${n.row}; grid-column: ${n.col}`}>
+                  <button type="button" class="talent locked" data-talent={n.id} aria-label={`${n.name} 0/${n.maxRank}`}>
+                    {n.icon && <img src={`${data.iconBase}${n.icon}.jpg`} alt="" width="44" height="44" loading="lazy" />}
+                    <span class="talent-rank" data-rank-of={n.id}>
+                      0/{n.maxRank}
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    class="talent-minus"
+                    data-minus={n.id}
+                    aria-label={`${t.removePoint}: ${n.name}`}
+                    title={t.removePoint}
+                    hidden
+                  >
+                    −
+                  </button>
+                </div>
               ))}
           </div>
         </section>
