@@ -1,0 +1,185 @@
+/* Inline references inside posts */
+.wf-tip {
+  display: inline;
+  font-weight: 500;
+  cursor: help;
+  border-radius: 3px;
+  text-decoration: none;
+  outline-offset: 2px;
+  white-space: nowrap;
+}
+.wf-tip--spell,
+.wf-tip--talent {
+  color: var(--spell);
+}
+.wf-tip--racial {
+  color: #8fc7ff;
+}
+.wf-tip:hover,
+.wf-tip:focus-visible,
+.wf-tip[aria-describedby] {
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+.wf-tip-icon {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.3em;
+  vertical-align: -0.18em;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 1px var(--gold-dim);
+}
+
+/* Floating tooltip */
+#wf-tooltip {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 16px));
+  padding: 14px 16px 12px;
+  background: linear-gradient(180deg, #1a1d27, #0c0e13);
+  border: 1px solid var(--gold-dim);
+  border-radius: 12px;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+#wf-tooltip[hidden] {
+  display: none;
+}
+.wft-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.wft-icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #000;
+  box-shadow: 0 0 0 1px var(--gold-dim);
+}
+.wft-icon--empty {
+  display: inline-block;
+  background: var(--bg-elev-2);
+}
+.wft-title {
+  flex: 1;
+  min-width: 0;
+}
+.wft-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.12rem;
+  line-height: 1.2;
+}
+.wft-name--spell,
+.wft-name--talent {
+  color: var(--spell);
+}
+.wft-name--racial {
+  color: #8fc7ff;
+}
+.wft-sub {
+  color: var(--text-mute);
+  font-size: 0.8rem;
+}
+.wft-pill {
+  flex: none;
+  align-self: flex-start;
+  padding: 0.1em 0.6em;
+  border-radius: 6px;
+  background: rgba(200, 166, 86, 0.15);
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.wft-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.wft-chip {
+  padding: 0.12em 0.6em;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.wft-cost--mana {
+  color: var(--mana);
+}
+.wft-cost--rage {
+  color: var(--rage);
+}
+.wft-cost--energy {
+  color: var(--energy);
+}
+.wft-desc {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(200, 166, 86, 0.35);
+  color: var(--text);
+}
+.wft-note {
+  margin: 6px 0 0;
+  color: var(--text-mute);
+  font-size: 0.8rem;
+}
+.wft-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  font-size: 0.78rem;
+}
+.wft-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+}
+.wft-status i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.wft-status--new i {
+  background: var(--status-new);
+}
+.wft-status--changed i {
+  background: var(--status-changed);
+}
+.wft-status--unchanged i {
+  background: var(--status-unchanged);
+}
+.wft-status--removed i {
+  background: var(--status-removed);
+}
+.wft-source {
+  color: var(--text-mute);
+  text-decoration: none;
+}
+.wft-source:hover {
+  color: var(--text);
+}
+.wft-change {
+  margin: 6px 0 0;
+  color: var(--text-mute);
+  font-size: 0.76rem;
+}

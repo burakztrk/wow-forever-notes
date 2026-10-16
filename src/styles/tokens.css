@@ -1,0 +1,47 @@
+/* Design tokens. Dark, gold-trimmed look in the spirit of WoW Forever fan
+   tools. Use these variables instead of ad-hoc values. */
+:root {
+  color-scheme: dark;
+
+  --bg: #0e1015;
+  --bg-elev: #161922;
+  --bg-elev-2: #1d2130;
+  --border: #2a2f3d;
+  --gold: #c8a656;
+  --gold-dim: #8a7440;
+
+  --text: #e8e2d0;
+  --text-dim: #b3ac9c;
+  --text-mute: #7f7a6c;
+
+  --link: #d9bf7a;
+  --spell: #a6d06a;
+
+  --mana: #5aa9ff;
+  --rage: #e0614f;
+  --energy: #f2d94e;
+
+  --status-new: #d0453a;
+  --status-changed: #d9a33a;
+  --status-unchanged: #5f9e5a;
+  --status-removed: #7f7a6c;
+
+  /* official class colours */
+  --class-warrior: #c69b6d;
+  --class-paladin: #f48cba;
+  --class-hunter: #aad372;
+  --class-rogue: #fff468;
+  --class-priest: #ffffff;
+  --class-shaman: #0070dd;
+  --class-mage: #3fc7eb;
+  --class-warlock: #8788ee;
+  --class-druid: #ff7c0a;
+
+  --font-display: 'Cinzel', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --gutter: 16px;
+  --content-width: 760px;
+}

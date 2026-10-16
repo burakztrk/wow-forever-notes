@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+import LangSwitch from '../components/LangSwitch.astro';
+import { LANGS, SITE_TITLE, type Lang } from '../config';
+import { ui } from '../i18n';
+import { langHome, withBase } from '../utils/url';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang: Lang;
+  alternates: Record<Lang, string>;
+}
+
+const { title, description, lang, alternates } = Astro.props;
+const t = ui(lang);
+const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description ?? t.tagline} />
+    {LANGS.map((l) => <link rel="alternate" hreflang={l} href={new URL(alternates[l], Astro.site)} />)}
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href={langHome(lang)}>WoW Forever <span>Notes</span></a>
+        <LangSwitch lang={lang} alternates={alternates} />
+      </div>
+    </header>
+
+    <main class="container site-main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>{t.disclaimer}</p>
+        <p>
+          {t.dataCredit}:
+          <a href="https://wowforever.wclbox.com/en" rel="noopener">新手盒子·魔兽世界无限数据库 (wclbox)</a>
+          ·
+          <a href="https://us.forums.blizzard.com/en/wow/" rel="noopener">Blizzard Forums</a>
+        </p>
+      </div>
+    </footer>
+
+    <slot name="after" />
+    <script>
+      import '../scripts/tooltip';
+    </script>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(22, 25, 34, 0.95), rgba(14, 16, 21, 0.95));
+    position: relative;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.6;
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 60px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .brand span {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .site-main {
+    flex: 1;
+    padding-top: 28px;
+    padding-bottom: 56px;
+  }
+  .site-footer {
+    border-top: 1px solid var(--border);
+    color: var(--text-mute);
+    font-size: 0.8rem;
+    padding: 18px 0 28px;
+  }
+  .site-footer p {
+    margin: 0.3em 0;
+  }
+  .site-footer a {
+    color: var(--text-dim);
+  }
+</style>

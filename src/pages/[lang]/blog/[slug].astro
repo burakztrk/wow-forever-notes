@@ -1,0 +1,117 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { formatDate, ui } from '../../../i18n';
+import { getAllPosts, type Post } from '../../../lib/blog';
+import { islandJson, tooltipPayload } from '../../../lib/tooltip-payload';
+import { langHome, postUrl } from '../../../utils/url';
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+  return posts.map((post) => {
+    // same slug in the other language, or that language's home as a fallback
+    const alternates = Object.fromEntries(
+      LANGS.map((l) => [
+        l,
+        posts.some((p) => p.lang === l && p.slug === post.slug) ? postUrl(l, post.slug) : langHome(l),
+      ]),
+    ) as Record<Lang, string>;
+    return { params: { lang: post.lang, slug: post.slug }, props: { post, alternates } };
+  });
+}
+
+interface Props {
+  post: Post;
+  alternates: Record<Lang, string>;
+}
+
+const { post, alternates } = Astro.props;
+const lang = post.lang;
+const t = ui(lang);
+const { Content, remarkPluginFrontmatter } = await render(post);
+// entries referenced by this post (collected by remark-glossary)
+const tips = tooltipPayload((remarkPluginFrontmatter.glossaryIds as string[] | undefined) ?? [], lang);
+---
+
+<BaseLayout title={post.data.title} description={post.data.excerpt} lang={lang} alternates={alternates}>
+  <article class="post">
+    <a class="back-nav" href={langHome(lang)}>{t.backToList}</a>
+    <header>
+      <div class="post-meta">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, lang)}</time>
+        {
+          post.data.build && (
+            <span class="chip">
+              {t.build} {post.data.build}
+            </span>
+          )
+        }
+        {post.data.draft && <span class="chip">{t.draft}</span>}
+      </div>
+      <h1>{post.data.title}</h1>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    {
+      post.data.sources.length > 0 && (
+        <section class="sources">
+          <h2>{t.sources}</h2>
+          <ul>
+            {post.data.sources.map((s) => (
+              <li>
+                <a href={s} rel="noopener">
+                  {s}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+</BaseLayout>
+
+<style>
+  .back-nav {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-mute);
+    text-decoration: none;
+    margin-bottom: 14px;
+  }
+  .back-nav:hover {
+    color: var(--text);
+  }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-mute);
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .prose :global(ul) {
+    padding-left: 1.3em;
+  }
+  .prose :global(li) {
+    margin: 0.3em 0;
+  }
+  .prose :global(blockquote) {
+    margin: 1em 0;
+    padding: 0.4em 1em;
+    border-left: 3px solid var(--gold-dim);
+    background: var(--bg-elev);
+    color: var(--text-dim);
+  }
+  .sources ul {
+    padding-left: 1.2em;
+    font-size: 0.85rem;
+    word-break: break-all;
+  }
+</style>

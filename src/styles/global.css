@@ -1,0 +1,108 @@
+@import './tokens.css';
+@import './tooltip.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(1200px 500px at 50% -200px, rgba(200, 166, 86, 0.1), transparent 70%),
+    var(--bg);
+}
+
+a {
+  color: var(--link);
+  text-decoration-color: rgba(217, 191, 122, 0.4);
+  text-underline-offset: 3px;
+}
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin: 0 0 0.4em;
+}
+h2 {
+  font-size: 1.45rem;
+  margin: 2em 0 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+h3 {
+  font-size: 1.15rem;
+  margin: 1.6em 0 0.4em;
+}
+
+code {
+  font-size: 0.9em;
+  background: var(--bg-elev-2);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--content-width) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.muted {
+  color: var(--text-mute);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.15em 0.6em;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev-2);
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* class name colours, usable as .class-mage etc. */
+.class-warrior { color: var(--class-warrior); }
+.class-paladin { color: var(--class-paladin); }
+.class-hunter { color: var(--class-hunter); }
+.class-rogue { color: var(--class-rogue); }
+.class-priest { color: var(--class-priest); }
+.class-shaman { color: var(--class-shaman); }
+.class-mage { color: var(--class-mage); }
+.class-warlock { color: var(--class-warlock); }
+.class-druid { color: var(--class-druid); }

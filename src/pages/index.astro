@@ -1,0 +1,26 @@
+---
+// Root URL: static redirect to the default language (see DEFAULT_LANG in
+// src/config.ts). GitHub Pages has no server redirects, so this uses a meta
+// refresh plus location.replace.
+import { DEFAULT_LANG, SITE_TITLE } from '../config';
+import { langHome } from '../utils/url';
+
+const target = langHome(DEFAULT_LANG);
+---
+
+<!doctype html>
+<html lang={DEFAULT_LANG}>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+    <title>{SITE_TITLE}</title>
+  </head>
+  <body style="background:#0e1015;color:#e8e2d0;font-family:system-ui,sans-serif">
+    <a href={target} style="color:#d9bf7a">{SITE_TITLE}</a>
+    <script is:inline define:vars={{ target }}>
+      location.replace(target);
+    </script>
+  </body>
+</html>

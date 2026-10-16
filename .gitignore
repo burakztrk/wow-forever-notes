@@ -1,0 +1,20 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# check-updates output and sync HTTP cache
+.cache/
+
+# env / secrets — never commit
+.env
+.env.*
+!.env.example
+
+# logs
+npm-debug.log*
+
+# macOS
+.DS_Store

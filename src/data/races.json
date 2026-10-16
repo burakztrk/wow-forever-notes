@@ -1,0 +1,198 @@
+[
+  {
+    "id": "horde-orc",
+    "name": "Orc",
+    "faction": "Horde",
+    "icon": "race_orc_male",
+    "classes": [
+      "warrior",
+      "hunter",
+      "mage",
+      "rogue",
+      "warlock",
+      "shaman"
+    ],
+    "racials": [
+      "racial/racial-orc-blood-fury",
+      "racial/racial-orc-shatter-curse",
+      "racial/racial-orc-savage",
+      "racial/racial-orc-hardiness"
+    ]
+  },
+  {
+    "id": "horde-undead",
+    "name": "Undead",
+    "faction": "Horde",
+    "icon": "race_scourge_male",
+    "classes": [
+      "warrior",
+      "mage",
+      "rogue",
+      "priest",
+      "warlock",
+      "paladin"
+    ],
+    "racials": [
+      "racial/racial-undead-will-of-the-forsaken",
+      "racial/racial-undead-cannibalize",
+      "racial/racial-undead-underwater-breathing",
+      "racial/racial-undead-touch-of-the-grave"
+    ]
+  },
+  {
+    "id": "horde-tauren",
+    "name": "Tauren",
+    "faction": "Horde",
+    "icon": "race_tauren_male",
+    "classes": [
+      "warrior",
+      "hunter",
+      "druid",
+      "shaman"
+    ],
+    "racials": [
+      "racial/racial-tauren-war-stomp",
+      "racial/racial-tauren-cultivation",
+      "racial/racial-tauren-plainsrunning",
+      "racial/racial-tauren-endurance"
+    ]
+  },
+  {
+    "id": "horde-troll",
+    "name": "Troll",
+    "faction": "Horde",
+    "icon": "race_troll_male",
+    "classes": [
+      "warrior",
+      "hunter",
+      "mage",
+      "rogue",
+      "priest",
+      "warlock",
+      "shaman"
+    ],
+    "racials": [
+      "racial/racial-troll-berserking",
+      "racial/racial-troll-rapid-regeneration",
+      "racial/racial-troll-beast-slaying",
+      "racial/racial-troll-regeneration"
+    ]
+  },
+  {
+    "id": "horde-skyborne-windshaper",
+    "name": "Skyborne",
+    "faction": "Horde",
+    "icon": "inv_misc_head_elf_02",
+    "classes": [
+      "warrior",
+      "hunter",
+      "rogue",
+      "druid",
+      "shaman"
+    ],
+    "racials": [
+      "racial/racial-skyborne-both-factions-walk-on-air",
+      "racial/racial-windshaper-skyborne-skysight",
+      "racial/racial-skyborne-both-factions-wind-blessed",
+      "racial/racial-skyborne-both-factions-elemental-insight"
+    ]
+  },
+  {
+    "id": "alliance-human",
+    "name": "Human",
+    "faction": "Alliance",
+    "icon": "race_human_male",
+    "classes": [
+      "warrior",
+      "hunter",
+      "mage",
+      "rogue",
+      "priest",
+      "warlock",
+      "paladin"
+    ],
+    "racials": [
+      "racial/racial-human-will-to-survive",
+      "racial/racial-human-perception",
+      "racial/racial-human-ruthless",
+      "racial/racial-human-the-human-spirit"
+    ]
+  },
+  {
+    "id": "alliance-dwarf",
+    "name": "Dwarf",
+    "faction": "Alliance",
+    "icon": "race_dwarf_male",
+    "classes": [
+      "warrior",
+      "hunter",
+      "rogue",
+      "priest",
+      "paladin",
+      "shaman"
+    ],
+    "racials": [
+      "racial/racial-dwarf-stoneform",
+      "racial/racial-dwarf-find-treasure",
+      "racial/racial-dwarf-earth-fury",
+      "racial/racial-dwarf-big-game-hunter"
+    ]
+  },
+  {
+    "id": "alliance-night-elf",
+    "name": "Night elves",
+    "faction": "Alliance",
+    "icon": "race_nightelf_male",
+    "classes": [
+      "warrior",
+      "hunter",
+      "rogue",
+      "priest",
+      "druid"
+    ],
+    "racials": [
+      "racial/racial-night-elf-elune-s-light",
+      "racial/racial-night-elf-shadowmeld",
+      "racial/racial-night-elf-quickness",
+      "racial/racial-night-elf-wisp-spirit"
+    ]
+  },
+  {
+    "id": "alliance-gnome",
+    "name": "Gnomes",
+    "faction": "Alliance",
+    "icon": "race_gnome_male",
+    "classes": [
+      "warrior",
+      "mage",
+      "rogue",
+      "priest",
+      "warlock"
+    ],
+    "racials": [
+      "racial/racial-gnome-escape-artist",
+      "racial/racial-gnome-eureka",
+      "racial/racial-gnome-expansive-mind",
+      "racial/racial-gnome-engineering-specialization"
+    ]
+  },
+  {
+    "id": "alliance-skyborne-high-order",
+    "name": "Skyborne (High Order)",
+    "faction": "Alliance",
+    "icon": "inv_misc_head_elf_01",
+    "classes": [
+      "warrior",
+      "hunter",
+      "mage",
+      "rogue",
+      "druid"
+    ],
+    "racials": [
+      "racial/racial-skyborne-both-factions-walk-on-air",
+      "racial/racial-high-order-skyborne-read-leyline",
+      "racial/racial-skyborne-both-factions-wind-blessed",
+      "racial/racial-skyborne-both-factions-elemental-insight"
+    ]
+  }
+]
