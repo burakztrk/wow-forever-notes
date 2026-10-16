@@ -128,6 +128,32 @@ npm run check-updates -- --mark-seen    # src/data/state.json güncellenir, ayn�
 3. `build` check'i geçince PR merge olur. main'e gelen push sonrası GitHub Actions siteyi GitHub Pages'e deploy eder.
 4. GitHub erişimi yoksa ya da push/PR başarısız olursa: iki dosyanın tam metnini çıktıya yaz ve hatayı açıkça bildir.
 
+## Geriye dönük yayın ("şu tarihten itibaren")
+
+Talimatta **"GERİYE DÖNÜK: YYYY-MM-DD"** geçiyorsa o tarihten bu yana gelen tüm notlar yayınlanır. Akış normal akışla aynıdır, aşağıdaki farklar uygulanır:
+
+1. Adım 0'da şunu çalıştır:
+
+   ```bash
+   npm run check-updates -- --from YYYY-MM-DD
+   ```
+
+   Bu mod `state.json`'ı okumaz.
+2. Çıktı build başına bir grup listeler: `build … → post wow-forever-<tarih>`. **Her grup için ayrı bir TR + EN yazı çifti** yazılır. `.cache/updates.json` içindeki `groups[]` dizisinde her grup için şunlar bulunur:
+   - `build`: sınıf ve ırk değişiklikleri; `notes` alanında resmi dev notes linkleri.
+   - `posts[]`: resmi metinler (`official`).
+   - `date`: yazının tarihi. Dosya adı `wow-forever-<date>.md`, frontmatter'da `date: <date>`.
+3. `alreadyPublished: true` olan grupları atla. Bu build'lerin yazısı zaten var (frontmatter `build:` alanından tespit edilir).
+4. Grubun kendi postları azsa veya hiç yoksa resmi kaynağa git:
+   - `build.notes` içindeki dev notes linkleri.
+   - Discourse JSON: `us.forums.blizzard.com/en/wow/posts/<id>.json` ya da `…/t/<id>.json`.
+   - Sadece bakım duyurusu olan ve değişiklik içermeyen bir grup için yazı yazma.
+5. Tüm yazılar **tek PR'da** toplanır:
+   - Branch: `blog/wow-forever-backfill-YYYY-MM-DD`
+   - PR başlığı: "Blog: WoW Forever notları (YYYY-MM-DD'den itibaren)"
+   - `--auto --squash`
+6. Adım 4'teki `npm run check-updates -- --mark-seen` **normal şekilde** çalıştırılır. State en yeni build'e ilerler ve günlük job kaldığı yerden devam eder.
+
 ## Test modu
 
 Job'a verilen talimatta **"TEST MODU"** geçiyorsa akış aynıdır, yalnızca şu farklar uygulanır:

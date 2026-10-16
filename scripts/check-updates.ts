@@ -8,12 +8,14 @@
 // NO_UPDATES: nothing is written anywhere.
 // UPDATES_FOUND: details (new builds with per-class/race changes, official post
 // texts) go to .cache/updates.json (gitignored) for the writer to read.
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fetchJson } from './lib/http';
 import { DEV_NOTES_TOPIC_ID, forumPostJson, forumTopicJson, wclboxDataBase, BLIZZARD_FORUM } from './lib/sources';
 import {
   diffUpdates,
+  groupByBuild,
+  stateFromDate,
   nextState,
   type DevNotesTopic,
   type UpdateState,
@@ -32,6 +34,25 @@ const since = sinceIdx > 0 ? process.argv[sinceIdx + 1] : undefined;
 if (since && markSeen) {
   console.error('ERROR --since (test mode) cannot be combined with --mark-seen');
   process.exit(2);
+}
+// Backfill: --from YYYY-MM-DD lists every build and blue post on or after that
+// date (one group per build) so older notes can be published too. Builds that
+// already have a post (frontmatter `build:`) are marked and skipped.
+const fromIdx = process.argv.indexOf('--from');
+const from = fromIdx > 0 ? process.argv[fromIdx + 1] : undefined;
+if (from && (!/^\d{4}-\d{2}-\d{2}$/.test(from) || since || markSeen)) {
+  console.error('ERROR --from needs YYYY-MM-DD and cannot be combined with --since or --mark-seen');
+  process.exit(2);
+}
+
+async function publishedBuilds(): Promise<Set<string>> {
+  const dir = path.join(ROOT, 'src/content/blog/tr');
+  const out = new Set<string>();
+  for (const f of await readdir(dir).catch(() => [] as string[])) {
+    const m = (await readFile(path.join(dir, f), 'utf8')).match(/^build:\s*"?([\d.]+)"?\s*$/m);
+    if (m) out.add(m[1]);
+  }
+  return out;
 }
 
 async function readState(): Promise<UpdateState> {
@@ -91,6 +112,10 @@ try {
     state = { lastBuild: since, lastBluePostAt: `${base.date}T23:59:59.999Z`, devNotesLastPostedAt: null };
     console.log(`TEST MODE: state treated as lastBuild=${since}; src/data/state.json is not used or changed`);
   }
+  if (from) {
+    state = stateFromDate(from, builds);
+    console.log(`BACKFILL MODE: everything on or after ${from}; src/data/state.json is not read`);
+  }
 
   if (markSeen) {
     const next = nextState(state, builds, bluePosts, devNotes, new Date());
@@ -107,21 +132,41 @@ try {
     process.exit(0);
   }
 
-  const posts = [];
-  for (const p of diff.newPosts) posts.push({ ...p, official: await officialText(p.id) });
+  const published = await publishedBuilds();
+  const groups = groupByBuild(diff.newBuilds, diff.newPosts).map((g) => ({
+    ...g,
+    alreadyPublished: !!g.build && published.has(g.build.id),
+  }));
+  const todo = groups.filter((g) => !g.alreadyPublished);
+  if (!todo.length) {
+    console.log('NO_UPDATES');
+    console.log(`(every build in range already has a post: ${groups.map((g) => g.build?.id).join(', ')})`);
+    process.exit(0);
+  }
+
+  // official Blizzard text only for the groups that still need a post
+  const official = new Map<number, string | null>();
+  for (const g of todo) for (const p of g.posts) official.set(p.id, await officialText(p.id));
+  const withText = (p: WclBluePost) => ({ ...p, official: official.get(p.id) ?? null });
   const report = {
     generatedAt: new Date().toISOString(),
+    mode: from ? `backfill from ${from}` : since ? `test since ${since}` : 'daily',
     state,
+    // one blog post (TR + EN) per group, dated with group.date
+    groups: groups.map((g) => ({ ...g, posts: g.posts.map(withText) })),
     newBuilds: diff.newBuilds,
-    newPosts: posts,
+    newPosts: diff.newPosts.map(withText),
     devNotes: diff.devNotesChanged ? devNotes : null,
   };
   await mkdir(path.dirname(OUT_FILE), { recursive: true });
   await writeFile(OUT_FILE, JSON.stringify(report, null, 2) + '\n');
 
   console.log('UPDATES_FOUND');
-  for (const b of diff.newBuilds) console.log(`build ${b.id} (${b.date})`);
-  for (const p of diff.newPosts) console.log(`post ${p.date} ${p.topic} — ${p.url}`);
+  for (const g of groups) {
+    const head = g.build ? `build ${g.build.id} (${g.date})` : `posts before the first new build (${g.date})`;
+    console.log(`${head}${g.alreadyPublished ? ' — already published, skip' : ` → post wow-forever-${g.date}`}`);
+    for (const p of g.posts) console.log(`  post ${p.date} ${p.topic} — ${p.url}`);
+  }
   if (diff.devNotesChanged && devNotes) console.log(`dev notes: ${devNotes.title}`);
   console.log(`details: ${path.relative(ROOT, OUT_FILE)}`);
 } catch (err) {
