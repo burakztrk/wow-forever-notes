@@ -175,3 +175,42 @@
     --cell: 46px;
   }
 }
+
+/* per-talent remove button (shown when the talent has points) */
+.talent-slot {
+  position: relative;
+  width: var(--cell);
+  height: var(--cell);
+  z-index: 1;
+}
+.talent-minus {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid #000;
+  border-radius: 50%;
+  background: #c8372d;
+  color: #fff;
+  font: 700 15px/18px var(--font-body);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.talent-minus:hover {
+  background: #e0473c;
+}
+.talent-minus:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 1px;
+}
+.talent-minus:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.talent-minus[hidden] {
+  display: none;
+}
