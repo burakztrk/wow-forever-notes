@@ -28,6 +28,9 @@ Default language: `DEFAULT_LANG` in [src/config.ts](src/config.ts).
 
 - Game data (spells, talents, races) and build change lists:
   [新手盒子·魔兽世界无限数据库 (wclbox)](https://wowforever.wclbox.com/en), refreshed with `npm run sync`.
+- Spell and talent descriptions: official English client text from
+  [WoW Forever Tools](https://wowforevertools.com/) (also pulled by `npm run sync`; entries it does not
+  have keep the wclbox text).
 - Official notes: [Blizzard forums](https://us.forums.blizzard.com/en/wow/).
 
 Unofficial fan site. World of Warcraft and related names, icons and data are property of Blizzard Entertainment.
