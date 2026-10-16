@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Android adaptive icon foreground (transparent). Background colour: #131620 -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="38%" r="75%">
+      <stop offset="0" stop-color="#232838"/>
+      <stop offset="0.6" stop-color="#131620"/>
+      <stop offset="1" stop-color="#0a0b10"/>
+    </radialGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f1d896"/>
+      <stop offset="1" stop-color="#c39a45"/>
+    </linearGradient>
+    <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a4622"/>
+      <stop offset="1" stop-color="#2e2410"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffe9a8" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g transform="translate(512 512) scale(0.58) translate(-512 -508)">
+  <g id="mark">
+    <!-- glow + star -->
+    <circle cx="512" cy="300" r="190" fill="url(#glow)"/>
+    <path d="M512 176 L540 272 L636 300 L540 328 L512 424 L484 328 L388 300 L484 272 Z" fill="#fff3cf"/>
+    <!-- cover -->
+    <path d="M512 452 C 420 404, 296 398, 196 428 L 196 812 C 296 784, 420 790, 512 840 C 604 790, 728 784, 828 812 L 828 428 C 728 398, 604 404, 512 452 Z" fill="url(#cover)" stroke="#1a140a" stroke-width="10" stroke-linejoin="round"/>
+    <!-- pages -->
+    <path d="M512 438 C 428 394, 316 388, 228 414 L 228 774 C 316 750, 428 756, 512 800 Z" fill="url(#page)" stroke="#6e5726" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M512 438 C 596 394, 708 388, 796 414 L 796 774 C 708 750, 596 756, 512 800 Z" fill="url(#page)" stroke="#6e5726" stroke-width="8" stroke-linejoin="round"/>
+    <!-- text lines -->
+    <g stroke="#8a6c2e" stroke-width="10" stroke-linecap="round" opacity="0.55" fill="none">
+      <path d="M282 494 C 352 480, 418 484, 470 504"/>
+      <path d="M282 560 C 352 546, 418 550, 470 570"/>
+      <path d="M282 626 C 352 612, 418 616, 470 636"/>
+      <path d="M282 692 C 336 682, 386 684, 430 696"/>
+      <path d="M554 504 C 606 484, 672 480, 742 494"/>
+      <path d="M554 570 C 606 550, 672 546, 742 560"/>
+      <path d="M554 636 C 606 616, 672 612, 742 626"/>
+      <path d="M594 696 C 638 684, 688 682, 742 692"/>
+    </g>
+    <!-- spine -->
+    <path d="M512 438 L512 800" stroke="#6e5726" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  </g>
+</svg>
