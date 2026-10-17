@@ -42,6 +42,7 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
     data-combo
     data-default-race={defaultRace.id}
     data-faction={defaultRace.faction.toLowerCase()}
+    style={`--bg-alliance: url(${withBase('/img/bg-alliance.svg')}); --bg-horde: url(${withBase('/img/bg-horde.svg')})`}
     data-unavailable-text={t.classUnavailable}
     data-playable-tpl={t.comboPlayable}
     aria-label={t.comboTitle}
