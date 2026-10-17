@@ -20,6 +20,12 @@ export interface Glossary {
   autoLinkNames(): string[];
 }
 
+// Astro's markdown pipeline runs remark-smartypants before our plugin, so
+// "Winter's Chill" reaches the glossary as "Winter’s Chill". Names are compared
+// with typographic quotes folded back to ASCII.
+export const normalizeName = (name: string) =>
+  name.replace(/[\u2018\u2019\u02BC]/g, "'").replace(/[\u201C\u201D]/g, '"').trim().toLowerCase();
+
 function suggestions(name: string, names: string[]): string {
   const needle = name.toLowerCase();
   const words = needle.split(/\s+/).filter((w) => w.length > 2);
@@ -34,20 +40,20 @@ export function createGlossary(entries: GlossaryEntry[]): Glossary {
   const byId = new Map(entries.map((e) => [e.id, e]));
   const byName = new Map<string, GlossaryEntry[]>();
   for (const e of entries) {
-    const key = e.name.toLowerCase();
+    const key = normalizeName(e.name);
     byName.set(key, [...(byName.get(key) ?? []), e]);
   }
   const allNames = [...new Set(entries.map((e) => e.name))];
 
   function resolve(name: string, opts: ResolveOptions = {}): Resolved {
-    let candidates = byName.get(name.trim().toLowerCase()) ?? [];
+    let candidates = byName.get(normalizeName(name)) ?? [];
     if (!candidates.length) return { error: `unknown name "${name}"${suggestions(name, allNames)}` };
     if (opts.kind) candidates = candidates.filter((e) => e.kind === opts.kind);
     if (opts.cls) candidates = candidates.filter((e) => e.class === opts.cls);
     if (opts.race) candidates = candidates.filter((e) => e.races?.includes(opts.race!));
     if (!candidates.length) {
       const filters = [opts.kind, opts.cls, opts.race].filter(Boolean).join(', ');
-      const have = (byName.get(name.trim().toLowerCase()) ?? []).map((e) => `${e.kind}/${e.class ?? e.races?.[0]}`);
+      const have = (byName.get(normalizeName(name)) ?? []).map((e) => `${e.kind}/${e.class ?? e.races?.[0]}`);
       return { error: `"${name}" has no match for {${filters}} (available: ${have.join(', ')})` };
     }
     candidates = [...candidates].sort(

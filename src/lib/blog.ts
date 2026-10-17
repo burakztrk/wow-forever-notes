@@ -10,6 +10,16 @@ const showDrafts = import.meta.env.DEV;
 export async function getAllPosts(): Promise<Post[]> {
   const entries = await getCollection('blog');
   assertTranslationsComplete(entries.map((e) => e.id));
+  // The glob loader logs a markdown render error and keeps the entry with no
+  // HTML; fail the build instead of publishing an empty post. The content
+  // cache keeps that empty render until the .md changes, so after fixing a
+  // plugin delete node_modules/.astro/data-store.json. The content
+  // cache keeps that empty render until the .md changes, so after fixing a
+  // plugin delete node_modules/.astro/data-store.json.
+  const empty = entries.filter((e) => !e.data.draft && !e.rendered?.html?.trim()).map((e) => e.id);
+  if (empty.length) {
+    throw new Error(`Blog posts rendered to empty HTML (see the markdown error above; after a plugin fix delete node_modules/.astro/data-store.json): ${empty.join(', ')}`);
+  }
   return entries
     .filter((e) => showDrafts || !e.data.draft)
     .map((e) => ({ ...e, ...splitId(e.id) }))
