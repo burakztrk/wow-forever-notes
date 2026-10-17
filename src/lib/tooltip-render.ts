@@ -1,4 +1,4 @@
-import type { GlossaryEntry } from './glossary-types';
+import type { ChangeStatus, GlossaryEntry } from './glossary-types';
 
 // Tooltip markup, built in the browser from the page's JSON island.
 // Three looks share one template: spell (chips row), talent (tree + points),
@@ -51,10 +51,21 @@ function localize(value: string, units: Record<string, string>): string {
   return value.replace(/[A-Za-z()]+/g, (w) => units[w] ?? w);
 }
 
+// A talent tree (class panel on the home page). All text is built at build
+// time in the page language.
+export interface TreeTip {
+  name: string;
+  icon?: string;
+  sub: string; // "17 talents · 5 new · 8 changed"
+  items: { name: string; icon?: string; status: ChangeStatus; meta: string }[];
+  more?: string; // "+9 more"
+}
+
 export interface TipPayload {
   iconBase: string; // ".../icons/"
   strings: TipStrings;
   entries: Record<string, TipEntry>;
+  trees?: Record<string, TreeTip>;
 }
 
 const esc = (s: string | number | undefined) =>
@@ -115,4 +126,26 @@ export function renderTooltip(e: TipEntry, p: TipPayload): string {
       <a class="wft-source" href="${esc(e.sourceUrl)}" target="_blank" rel="noopener">${esc(s.source)} ↗</a>
     </div>
     ${change}`;
+}
+
+export function renderTreeTooltip(t: TreeTip, p: TipPayload): string {
+  const icon = t.icon
+    ? `<img class="wft-icon" src="${esc(p.iconBase + t.icon)}.jpg" alt="" width="44" height="44">`
+    : `<span class="wft-icon wft-icon--empty"></span>`;
+  const rows = t.items
+    .map((i) => {
+      const img = i.icon ? `<img src="${esc(p.iconBase + i.icon)}.jpg" alt="" width="24" height="24">` : '<span></span>';
+      return `<li>${img}<span class="wft-li-name">${esc(i.name)}<i class="g-dot g-dot--${esc(i.status)}"></i></span><span class="wft-li-meta">${esc(i.meta)}</span></li>`;
+    })
+    .join('');
+  return `
+    <div class="wft-head">
+      ${icon}
+      <div class="wft-title">
+        <div class="wft-name wft-name--talent">${esc(t.name)}</div>
+        <div class="wft-sub">${esc(t.sub)}</div>
+      </div>
+    </div>
+    <ul class="wft-list">${rows}</ul>
+    ${t.more ? `<p class="wft-note">${esc(t.more)}</p>` : ''}`;
 }

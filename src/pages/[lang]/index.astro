@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../config';
 import { fill, ui } from '../../i18n';
 import { canPlay, classList, classSummary, classesOf, racesByFaction, racialsOf, races } from '../../lib/codex';
-import { islandJson, tooltipPayload } from '../../lib/tooltip-payload';
+import { islandJson, tooltipPayload, treeTipId } from '../../lib/tooltip-payload';
 import { langHome, withBase } from '../../utils/url';
 
 export function getStaticPaths() {
@@ -30,6 +30,7 @@ const tips = tooltipPayload(
     ...[...summaries.values()].flatMap((s) => s.newSpells.map((e) => e.id)),
   ],
   lang,
+  classList,
 );
 const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descTr ? e.descTr : e.desc);
 ---
@@ -161,7 +162,7 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
               <p class="panel-sub">{t.classTrees}</p>
               <ul class="tree-list">
                 {s.trees.map((tree) => (
-                  <li>
+                  <li class="wf-tip" data-tip={treeTipId(cls, tree.name)} tabindex="0">
                     {tree.icon && <img src={icon(tree.icon)} alt="" width="32" height="32" loading="lazy" />}
                     <span>{tree.name}</span>
                     <small>{fill(t.talentsInTree, { n: tree.talents })}</small>

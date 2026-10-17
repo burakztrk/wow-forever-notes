@@ -25,6 +25,9 @@ const navItems = [
   { key: 'talents', href: withBase(`/${lang}/talents/`) },
   { key: 'search', href: withBase(`/${lang}/search/`) },
 ];
+// Footer text stays English on every language page.
+const DISCLAIMER =
+  'Unofficial fan site. World of Warcraft and related names, icons and data are the property of Blizzard Entertainment.';
 const t = ui(lang);
 const labels: Record<string, string> = { '': t.navHome, notes: t.navNotes, races: t.navRaces, classes: t.navClasses, talents: t.navTalents, search: t.navSearch };
 const isCurrent = (key: string) =>
@@ -71,10 +74,10 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 
     <footer class="site-footer">
       <div class="container">
-        <p>{t.disclaimer}</p>
+        <p>{DISCLAIMER}</p>
         <p>
-          {t.dataCredit}:
-          <a href="https://wowforever.wclbox.com/en" rel="noopener">新手盒子·魔兽世界无限数据库 (wclbox)</a>
+          Game data:
+          <a href="https://wowforever.wclbox.com/en" rel="noopener">wclbox</a>
           ·
           <a href="https://wowforevertools.com/" rel="noopener">WoW Forever Tools</a>
           ·

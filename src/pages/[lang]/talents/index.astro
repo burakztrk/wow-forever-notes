@@ -46,7 +46,7 @@ const cards = classes.map((c) => {
           <a class="class-card" href={c.href} style={`--class-color: var(--class-${c.id})`}>
             <div class="card-head">
               {c.icon && <img class="class-icon" src={icon(c.icon)} alt="" width="52" height="52" loading="lazy" />}
-              <h2>{fill(t.classCalc, { cls: c.name })}</h2>
+              <h2>{c.name}</h2>
               <span class="card-arrow" aria-hidden="true">↗</span>
             </div>
             <p class="card-meta">
