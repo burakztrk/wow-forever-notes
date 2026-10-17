@@ -1,4 +1,4 @@
-import { browserStore, loadBuilds, removeBuild, saveBuild, type SavedBuild } from '../lib/saved-builds';
+import { browserStore, loadBuilds, removeBuild, saveBuild, updateBuild, type SavedBuild } from '../lib/saved-builds';
 
 // Saved builds UI: the list on the talents page and the save dialog on a
 // class's calculator. Config comes from #wf-saved-builds.
@@ -22,7 +22,9 @@ function init(config: Config) {
   const esc = (v: unknown) =>
     String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
-  const href = (b: SavedBuild) => `${config.talentsBase}${b.cls}/${b.code ? `#b=${b.code}` : ''}`;
+  // ?saved=<id> tells the calculator which saved build it edits, so Save overwrites it.
+  const href = (b: SavedBuild) =>
+    `${config.talentsBase}${b.cls}/?saved=${encodeURIComponent(b.id)}${b.code ? `#b=${b.code}` : ''}`;
 
   function render(builds: SavedBuild[] = loadBuilds(store)) {
     if (!section || !list) return;
@@ -48,13 +50,46 @@ function init(config: Config) {
     if (btn) render(removeBuild(store, btn.dataset.delete!));
   });
   // a save in another tab
-  window.addEventListener('storage', () => render());
+  window.addEventListener('storage', () => {
+    render();
+    if (current) setCurrent(current.id);
+  });
 
   // save dialog (class page only)
   const dialog = document.querySelector<HTMLDialogElement>('[data-save-dialog]');
   const nameInput = dialog?.querySelector<HTMLInputElement>('input[name="name"]');
   const note = document.querySelector<HTMLElement>('[data-saved-note]');
+  const nameEl = document.querySelector<HTMLElement>('[data-saved-name]');
+  const currentCode = () => location.hash.match(/b=([0-9-]*)/)?.[1] ?? '';
+
+  // The saved build this calculator edits (from ?saved=), shown under the class name.
+  let current: SavedBuild | undefined;
+  function setCurrent(id: string | null) {
+    current = id ? loadBuilds(store).find((b) => b.id === id && b.cls === config.cls) : undefined;
+    if (nameEl) {
+      nameEl.textContent = current?.name ?? '';
+      nameEl.hidden = !current;
+    }
+    const url = new URL(location.href);
+    if (current) url.searchParams.set('saved', current.id);
+    else url.searchParams.delete('saved');
+    if (url.href !== location.href) history.replaceState(history.state, '', url);
+  }
+  function saved() {
+    if (!note) return;
+    note.textContent = config.strings.buildSaved;
+    note.hidden = false;
+    setTimeout(() => (note.hidden = true), 2500);
+  }
+  if (config.cls) setCurrent(new URLSearchParams(location.search).get('saved'));
+
   document.querySelector('[data-save-open]')?.addEventListener('click', () => {
+    if (current && config.cls) {
+      // already a saved build: overwrite it, no name prompt
+      render(updateBuild(store, current.id, currentCode()));
+      saved();
+      return;
+    }
     if (!dialog || !nameInput) return;
     nameInput.value = '';
     dialog.showModal();
@@ -64,14 +99,11 @@ function init(config: Config) {
   dialog?.querySelector('form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!config.cls || !nameInput) return;
-    const code = location.hash.match(/b=([0-9-]*)/)?.[1] ?? '';
-    render(saveBuild(store, config.cls, nameInput.value, code));
+    const builds = saveBuild(store, config.cls, nameInput.value, currentCode());
+    render(builds);
     dialog.close();
-    if (note) {
-      note.textContent = config.strings.buildSaved;
-      note.hidden = false;
-      setTimeout(() => (note.hidden = true), 2500);
-    }
+    setCurrent(builds[0].id); // from now on Save overwrites this one
+    saved();
   });
 
   render();

@@ -48,6 +48,15 @@ export function saveBuild(store: KeyValue | null, cls: string, name: string, cod
   return write(store, [{ id, cls, name: clean, code }, ...builds.filter((b) => b.id !== id)]);
 }
 
+// Overwrites a saved build's code, keeping its name, and moves it to the top.
+// Unknown ids leave the list as it is.
+export function updateBuild(store: KeyValue | null, id: string, code: string): SavedBuild[] {
+  const builds = loadBuilds(store);
+  const build = builds.find((b) => b.id === id);
+  if (!build) return builds;
+  return write(store, [{ ...build, code }, ...builds.filter((b) => b.id !== id)]);
+}
+
 export function removeBuild(store: KeyValue | null, id: string): SavedBuild[] {
   return write(
     store,

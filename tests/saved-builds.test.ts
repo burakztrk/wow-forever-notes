@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { loadBuilds, removeBuild, saveBuild, type KeyValue } from '../src/lib/saved-builds';
+import { loadBuilds, removeBuild, saveBuild, updateBuild, type KeyValue } from '../src/lib/saved-builds';
 
 // Same vectors as the mobile app's BuildStoreTest.kt.
 
@@ -37,5 +37,14 @@ describe('saved builds', () => {
     const broken: KeyValue = { getItem: () => '{not json', setItem: () => {} };
     expect(loadBuilds(broken)).toEqual([]);
     expect(saveBuild(null, 'mage', 'x', '5').map((b) => b.name)).toEqual(['x']);
+  });
+
+  it('update overwrites the code and keeps the name', () => {
+    const store = memory();
+    const [frost] = saveBuild(store, 'mage', 'Frost', '05');
+    saveBuild(store, 'mage', 'Fire', '-5');
+    expect(updateBuild(store, frost.id, '055')[0].name).toBe('Frost');
+    expect(loadBuilds(store).map((b) => [b.name, b.code])).toEqual([['Frost', '055'], ['Fire', '-5']]);
+    expect(updateBuild(store, 'missing', '1')).toEqual(loadBuilds(store));
   });
 });
