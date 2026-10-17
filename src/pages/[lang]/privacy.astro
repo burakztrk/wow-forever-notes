@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../config';
+import { privacy } from '../../i18n/privacy';
+import { withBase } from '../../utils/url';
+
+// /tr/privacy/ and /en/privacy/: linked from the app's store listings.
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const page = privacy[lang];
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/privacy/`)])) as Record<Lang, string>;
+---
+
+<BaseLayout title={page.title} description={page.intro} lang={lang} alternates={alternates}>
+  <article class="privacy">
+    <h1>{page.title}</h1>
+    <p class="muted">{page.updated}</p>
+    <p>{page.intro}</p>
+    {
+      page.sections.map((section) => (
+        <section>
+          <h2>{section.heading}</h2>
+          {section.paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+          {section.links && (
+            <ul>
+              {section.links.map((link) => (
+                <li>
+                  <a href={link.href} rel="noopener">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+  </article>
+</BaseLayout>
