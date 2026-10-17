@@ -185,3 +185,31 @@
   color: var(--text-mute);
   font-size: 0.76rem;
 }
+
+/* talent tree tooltip (home page class panel) */
+.wft-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.wft-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+}
+.wft-list img {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid #000;
+}
+.wft-li-name {
+  flex: 1;
+}
+.wft-li-meta {
+  color: var(--text-mute);
+  font-size: 0.78rem;
+}

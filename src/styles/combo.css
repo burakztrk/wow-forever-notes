@@ -413,6 +413,10 @@
   gap: 6px;
 }
 .tree-list li {
+  cursor: help;
+  text-decoration: none;
+  font-weight: 400;
+  white-space: normal;
   display: flex;
   align-items: center;
   gap: 10px;
