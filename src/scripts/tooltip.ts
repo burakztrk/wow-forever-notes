@@ -71,8 +71,12 @@ function hide(immediately = false) {
 const tipFrom = (t: EventTarget | null) => (t instanceof Element ? t.closest<HTMLElement>(TIP_SELECTOR) : null);
 const inTooltip = (t: EventTarget | null) => t instanceof Element && !!t.closest('#wf-tooltip');
 
+let openAtPointerDown: HTMLElement | null = null;
+
 document.addEventListener('pointerdown', (e) => {
   lastPointerType = e.pointerType;
+  // Tapping a focusable tip focuses it (opening the tooltip) before the click arrives.
+  openAtPointerDown = current;
 });
 
 document.addEventListener('pointerover', (e) => {
@@ -102,7 +106,7 @@ document.addEventListener('click', (e) => {
   const tip = tipFrom(e.target);
   if (tip) {
     // touch: tap toggles; mouse: hover already shows it
-    if (lastPointerType !== 'mouse' && current === tip) hide(true);
+    if (lastPointerType !== 'mouse' && openAtPointerDown === tip) hide(true);
     else show(tip);
     return;
   }

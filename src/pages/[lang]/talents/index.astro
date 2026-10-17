@@ -5,6 +5,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
 import type { GlossaryFile } from '../../../lib/glossary-types';
+import { classList } from '../../../lib/codex';
+import { islandJson, tooltipPayload, treeTipId } from '../../../lib/tooltip-payload';
 import { classes } from '../../../lib/talents';
 import { withBase } from '../../../utils/url';
 
@@ -19,6 +21,9 @@ const fill = (tpl: string, vars: Record<string, string | number>) => tpl.replace
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 
 const talents = (glossaryData as GlossaryFile).entries.filter((e) => e.kind === 'talent');
+// Tree tooltips only: no spell/talent ids needed.
+const tips = tooltipPayload([], lang, classList);
+const tipClass = new Map(classList.map((c) => [c.id, c]));
 const cards = classes.map((c) => {
   const own = talents.filter((e) => e.class === c.id);
   return {
@@ -28,6 +33,7 @@ const cards = classes.map((c) => {
     fresh: own.filter((e) => e.status === 'new').length,
     trees: c.trees.map((name, i) => ({
       name,
+      tip: tipClass.has(c.id) ? treeTipId(tipClass.get(c.id)!, name) : undefined,
       icon: icon(c.treeIcons?.[i]),
       count: own.filter((e) => e.tree === name).length,
     })),
@@ -55,7 +61,7 @@ const cards = classes.map((c) => {
             </p>
             <ul class="tree-list">
               {c.trees.map((tree) => (
-                <li>
+                <li class="wf-tip" data-tip={tree.tip} tabindex={tree.tip ? '0' : undefined}>
                   {tree.icon && <img src={tree.icon} alt="" width="26" height="26" loading="lazy" />}
                   <span class="tree-name">{tree.name}</span>
                   <span class="tree-count">{fill(t.talentCount, { n: tree.count })}</span>
@@ -68,7 +74,26 @@ const cards = classes.map((c) => {
       ))
     }
   </ul>
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
 </BaseLayout>
+
+<script>
+  // Touch: the first tap on a tree row shows its tooltip; a second tap follows the card link.
+  // Focus (on tap) already opens the tooltip before the click, so remember the state at pointerdown.
+  document.querySelectorAll<HTMLElement>('.tree-list .wf-tip').forEach((row) => {
+    let wasOpen = false;
+    row.addEventListener(
+      'pointerdown',
+      (e) => {
+        wasOpen = e.pointerType !== 'mouse' && row.hasAttribute('aria-describedby');
+      },
+      true,
+    );
+    row.addEventListener('click', (e) => {
+      if ((e as PointerEvent).pointerType !== 'mouse' && !wasOpen) e.preventDefault();
+    });
+  });
+</script>
 
 <style>
   .class-grid {
@@ -142,6 +167,9 @@ const cards = classes.map((c) => {
   }
   .tree-list li {
     display: flex;
+    white-space: normal;
+    font-weight: 400;
+    text-decoration: none;
     align-items: center;
     gap: 10px;
     padding: 9px 0;
