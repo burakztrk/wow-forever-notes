@@ -1,7 +1,7 @@
 import classesData from '../data/classes.json';
 import glossaryData from '../data/glossary.json';
 import racesData from '../data/races.json';
-import type { GlossaryFile } from './glossary-types';
+import { inClassOrder, type ClassInfo, type GlossaryFile } from './glossary-types';
 import { getAllPosts } from './blog';
 import { postUrl } from '../utils/url';
 
@@ -60,7 +60,7 @@ export async function manifestPayload() {
 export const respond = {
   manifest: async () => json(await manifestPayload()),
   glossary: () => json({ schema: DATA_SCHEMA, ...glossary }),
-  classes: () => json({ schema: DATA_SCHEMA, classes: classesData }),
+  classes: () => json({ schema: DATA_SCHEMA, classes: inClassOrder(classesData as ClassInfo[]) }),
   races: () => json({ schema: DATA_SCHEMA, races: racesData }),
   posts: async () => json(await postsPayload()),
 };

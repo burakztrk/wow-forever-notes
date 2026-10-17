@@ -3,12 +3,12 @@ import glossaryData from '../data/glossary.json';
 import type { Lang } from '../config';
 import { ui } from '../i18n';
 import { withBase } from '../utils/url';
-import type { ClassId, ClassInfo, GlossaryEntry, GlossaryFile } from './glossary-types';
+import { inClassOrder, type ClassId, type ClassInfo, type GlossaryEntry, type GlossaryFile } from './glossary-types';
 import type { TalentNode } from './talent-rules';
 
 // Server-side data for the talent calculator pages.
 
-export const classes = classesData as ClassInfo[];
+export const classes = inClassOrder(classesData as ClassInfo[]);
 const glossary = glossaryData as GlossaryFile;
 
 export interface TalentView extends TalentNode {
