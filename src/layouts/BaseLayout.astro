@@ -14,8 +14,18 @@ interface Props {
 }
 
 const { title, description, lang, alternates, wide = false } = Astro.props;
-const onTalents = Astro.url.pathname.includes('/talents');
+// which nav item is current: the first path segment after /<lang>/
+const section = Astro.url.pathname.split(`/${lang}/`)[1]?.split('/')[0] ?? '';
+const navItems = [
+  { key: '', href: langHome(lang) },
+  { key: 'races', href: withBase(`/${lang}/races/`) },
+  { key: 'classes', href: withBase(`/${lang}/classes/`) },
+  { key: 'talents', href: withBase(`/${lang}/talents/`) },
+  { key: 'search', href: withBase(`/${lang}/search/`) },
+];
 const t = ui(lang);
+const labels: Record<string, string> = { '': t.navNotes, races: t.navRaces, classes: t.navClasses, talents: t.navTalents, search: t.navSearch };
+const isCurrent = (key: string) => (key === '' ? section === '' || section === 'blog' : section === key);
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 ---
 
@@ -40,8 +50,13 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
       <div class="container header-row">
         <a class="brand" href={langHome(lang)}>WoW Forever <span>Notes</span></a>
         <nav class="main-nav">
-          <a href={langHome(lang)} aria-current={!onTalents ? 'page' : undefined}>{t.navNotes}</a>
-          <a href={withBase(`/${lang}/talents/`)} aria-current={onTalents ? 'page' : undefined}>{t.navTalents}</a>
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={isCurrent(item.key) ? 'page' : undefined}>
+                {labels[item.key]}
+              </a>
+            ))
+          }
         </nav>
         <LangSwitch lang={lang} alternates={alternates} />
       </div>

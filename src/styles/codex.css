@@ -1,0 +1,276 @@
+/* Race, class and search pages (same layout ideas as the mobile app). */
+.back-nav {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--text-mute);
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.codex-section {
+  margin: 28px 0 10px;
+  font-size: 1.15rem;
+  color: var(--gold);
+  border: 0;
+  padding: 0;
+}
+.codex-list {
+  margin: 0;
+  padding: 0;
+}
+
+/* race / class header */
+.codex-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.codex-head h1 {
+  margin: 0;
+}
+.codex-head-icon {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  box-shadow: 0 0 0 1px var(--gold-dim);
+  background: var(--bg-elev-2);
+}
+.codex-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 4px;
+  color: var(--text-mute);
+  font-size: 0.9rem;
+}
+.faction {
+  display: inline-block;
+  padding: 1px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+.faction--alliance {
+  color: #4a8fe7;
+  background: rgba(74, 143, 231, 0.12);
+}
+.faction--horde {
+  color: #e0503c;
+  background: rgba(224, 80, 60, 0.12);
+}
+.faction-title--alliance {
+  color: #4a8fe7;
+}
+.faction-title--horde {
+  color: #e0503c;
+}
+
+/* tiles: icon above a coloured name */
+.tile-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 10px;
+}
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 8px 12px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--tile-color, var(--text));
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  transition: border-color 0.15s;
+}
+.tile:hover,
+.tile:focus-visible {
+  border-color: var(--gold-dim);
+}
+.tile img {
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
+  border: 1px solid #000;
+}
+.tile small {
+  color: var(--text-mute);
+  font-weight: 400;
+  font-size: 0.78rem;
+}
+
+/* race cards on the races page */
+.race-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.race-card {
+  display: block;
+  padding: 14px 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--faction-color);
+  border-radius: var(--radius);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.race-card:hover,
+.race-card:focus-visible {
+  border-color: var(--gold-dim);
+  border-top-color: var(--faction-color);
+}
+.race-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.race-card-head img,
+.race-card-head .blank {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 1px solid #000;
+  background: var(--bg-elev-2);
+}
+.mini-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+}
+.mini-icons img {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 1px solid #000;
+}
+
+/* chips: playable races, spell filter */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chip-link,
+.filter-chip {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 0.88rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.chip-link:hover,
+.filter-chip:hover {
+  border-color: var(--gold-dim);
+  color: var(--text);
+}
+.filter-chip[aria-pressed='true'] {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(200, 166, 86, 0.1);
+}
+.planner-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--gold);
+  text-decoration: none;
+}
+.empty-note {
+  color: var(--text-mute);
+}
+
+/* glossary rows (components/GlossaryRow.astro and the search page) */
+.g-row {
+  list-style: none;
+}
+.g-tip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 6px;
+  border-radius: var(--radius-sm);
+  white-space: normal;
+  font-weight: 400;
+  cursor: pointer;
+}
+.g-tip:hover,
+.g-tip:focus-visible,
+.g-tip[aria-describedby] {
+  background: var(--bg-elev);
+  text-decoration: none;
+}
+.g-icon {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  box-shadow: 0 0 0 1px var(--gold-dim);
+  background: var(--bg-elev-2);
+}
+.g-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+.g-name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.g-desc {
+  color: var(--text-mute);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.g-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 6px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.g-dot--new {
+  background: var(--status-new);
+}
+.g-dot--changed {
+  background: var(--status-changed);
+}
+.g-dot--removed {
+  background: var(--status-removed);
+}
+.g-level {
+  flex: none;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}

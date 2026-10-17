@@ -1,0 +1,41 @@
+---
+import type { Lang } from '../config';
+import { fill, ui } from '../i18n';
+import type { GlossaryEntry } from '../lib/glossary-types';
+import { withBase } from '../utils/url';
+
+// One spell / racial in a list, like the app's GlossaryRow: icon, name, status
+// dot, first line of the description and level. The whole row is a tooltip
+// target (hover, tap or focus), so the page needs a #wf-glossary island.
+// Styles live in styles/codex.css: the search page renders the same markup in
+// the browser.
+
+interface Props {
+  entry: GlossaryEntry;
+  lang: Lang;
+}
+
+const { entry, lang } = Astro.props;
+const t = ui(lang);
+const desc = lang === 'tr' && entry.descTr ? entry.descTr : entry.desc;
+---
+
+<li class="g-row" data-status={entry.status}>
+  <span class:list={['g-tip', 'wf-tip', `wf-tip--${entry.kind}`]} data-tip={entry.id} tabindex="0">
+    {
+      entry.icon ? (
+        <img class="g-icon" src={withBase(`/icons/${entry.icon}.jpg`)} alt="" width="36" height="36" loading="lazy" />
+      ) : (
+        <span class="g-icon" />
+      )
+    }
+    <span class="g-text">
+      <span class="g-name">
+        {entry.name}
+        {entry.status !== 'unchanged' && <i class={`g-dot g-dot--${entry.status}`} aria-hidden="true" />}
+      </span>
+      <span class="g-desc">{desc}</span>
+    </span>
+    {entry.learnedAt != null && <span class="g-level">{fill(t.level, { n: entry.learnedAt })}</span>}
+  </span>
+</li>

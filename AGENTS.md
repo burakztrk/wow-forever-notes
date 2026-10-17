@@ -31,6 +31,9 @@ Node 22.12+.
 - `src/lib/remark-glossary.ts` — `:spell[…]`, `:talent[…]`, `:racial[…]`, `:tip[…]` directives → tooltip spans;
   auto-links unambiguous multi-word names; unknown names fail the build.
 - `src/scripts/tooltip.ts` + `src/lib/tooltip-render.ts` — client tooltip (event delegation, floating-ui).
+- `src/pages/[lang]/{races,classes,search}/` — race, class and search pages, same rules as the mobile app (`src/lib/codex.ts`,
+  `src/lib/search.ts`; vectors in `tests/codex.test.ts`, `tests/search.test.ts`). Saved talent builds live in localStorage
+  (`src/lib/saved-builds.ts`, same shape as the app's `BuildStore`). Change both sides together.
 - `scripts/sync/` — wclbox parsers (`parse.ts`), wowforevertools chunk reader (`wowforevertools.ts`, acorn, literals only — never eval) and the sync entry point. `scripts/check-updates.ts`.
 - `docs/scheduled-job.md` — instructions for the daily scheduled writer job.
 

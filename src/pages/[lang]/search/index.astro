@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { ui } from '../../../i18n';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = ui(lang);
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/search/`)])) as Record<Lang, string>;
+const config = { index: withBase(`/${lang}/search.json`), level: t.level, noResults: t.noResults, loading: t.loading };
+---
+
+<BaseLayout title={t.searchTitle} description={t.searchHint} lang={lang} alternates={alternates}>
+  <h1>{t.searchTitle}</h1>
+  <form class="search-form" role="search" data-search-form>
+    <input
+      type="search"
+      name="q"
+      placeholder={t.searchHint}
+      aria-label={t.searchHint}
+      autocomplete="off"
+      spellcheck="false"
+      autofocus
+      data-search-input
+    />
+  </form>
+  <p class="empty-note" data-search-status hidden></p>
+  <ul class="codex-list" data-search-results></ul>
+  <script type="application/json" id="wf-search-config" is:inline set:html={JSON.stringify(config)} />
+</BaseLayout>
+
+<script>
+  import { searchEntries } from '../../../lib/search';
+  import type { TipEntry, TipPayload } from '../../../lib/tooltip-render';
+
+  // Client-side glossary search with the app's ranking. The index is the
+  // tooltip payload for every entry, so results get the same tooltips.
+  const config = JSON.parse(document.getElementById('wf-search-config')!.textContent!) as {
+    index: string;
+    level: string;
+    noResults: string;
+    loading: string;
+  };
+  const input = document.querySelector<HTMLInputElement>('[data-search-input]')!;
+  const results = document.querySelector<HTMLElement>('[data-search-results]')!;
+  const status = document.querySelector<HTMLElement>('[data-search-status]')!;
+  let payload: Promise<TipPayload> | null = null;
+
+  const esc = (v: unknown) =>
+    String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+
+  function load(): Promise<TipPayload> {
+    payload ??= fetch(config.index)
+      .then((r) => r.json() as Promise<TipPayload>)
+      .then((data) => {
+        // the shared tooltip script reads #wf-glossary
+        const island = document.createElement('script');
+        island.type = 'application/json';
+        island.id = 'wf-glossary';
+        island.textContent = JSON.stringify(data);
+        document.body.append(island);
+        return data;
+      });
+    return payload;
+  }
+
+  function row(e: TipEntry, iconBase: string): string {
+    const icon = e.icon
+      ? `<img class="g-icon" src="${esc(iconBase + e.icon)}.jpg" alt="" width="36" height="36" loading="lazy" />`
+      : '<span class="g-icon"></span>';
+    const dot = e.status !== 'unchanged' ? `<i class="g-dot g-dot--${esc(e.status)}" aria-hidden="true"></i>` : '';
+    const level = e.learnedAt != null ? `<span class="g-level">${esc(config.level.replace('{n}', String(e.learnedAt)))}</span>` : '';
+    return `<li class="g-row"><span class="g-tip wf-tip wf-tip--${esc(e.kind)}" data-tip="${esc(e.id)}" tabindex="0">${icon}<span class="g-text"><span class="g-name">${esc(e.name)}${dot}</span><span class="g-desc">${esc(e.desc)}</span></span>${level}</span></li>`;
+  }
+
+  let seq = 0;
+  async function run() {
+    const q = input.value;
+    const url = new URL(location.href);
+    if (q.trim()) url.searchParams.set('q', q);
+    else url.searchParams.delete('q');
+    history.replaceState(null, '', url);
+    const mine = ++seq;
+    if (q.trim().length < 2) {
+      results.innerHTML = '';
+      status.hidden = true;
+      return;
+    }
+    if (!payload) {
+      status.textContent = config.loading;
+      status.hidden = false;
+    }
+    const data = await load();
+    if (mine !== seq) return;
+    const hits = searchEntries(q, Object.values(data.entries));
+    results.innerHTML = hits.map((h) => row(h.entry, data.iconBase)).join('');
+    status.textContent = config.noResults;
+    status.hidden = hits.length > 0;
+  }
+
+  input.addEventListener('input', run);
+  document.querySelector('[data-search-form]')!.addEventListener('submit', (e) => e.preventDefault());
+  const initial = new URLSearchParams(location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    run();
+  }
+</script>
+
+<style>
+  .search-form input {
+    width: 100%;
+    padding: 10px 14px;
+    font: inherit;
+    color: var(--text);
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .search-form input:focus {
+    outline: none;
+    border-color: var(--gold-dim);
+  }
+  [data-search-status] {
+    margin-top: 16px;
+  }
+  [data-search-results] {
+    margin-top: 12px;
+  }
+</style>

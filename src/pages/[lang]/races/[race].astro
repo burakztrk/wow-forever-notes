@@ -1,0 +1,63 @@
+---
+import GlossaryRow from '../../../components/GlossaryRow.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { ui } from '../../../i18n';
+import { classesOf, racialsOf, races } from '../../../lib/codex';
+import type { RaceInfo } from '../../../lib/glossary-types';
+import { islandJson, tooltipPayload } from '../../../lib/tooltip-payload';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => races.map((race) => ({ params: { lang, race: race.id }, props: { race } })));
+}
+
+interface Props {
+  race: RaceInfo;
+}
+
+const lang = Astro.params.lang as Lang;
+const { race } = Astro.props;
+const t = ui(lang);
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/races/${race.id}/`)])) as Record<Lang, string>;
+const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
+const racials = racialsOf(race);
+const tips = tooltipPayload(
+  racials.map((e) => e.id),
+  lang,
+);
+---
+
+<BaseLayout title={`${race.name} · ${t.racesTitle}`} lang={lang} alternates={alternates}>
+  <a class="back-nav" href={withBase(`/${lang}/races/`)}>← {t.racesTitle}</a>
+  <header class="codex-head">
+    {race.icon ? <img class="codex-head-icon" src={icon(race.icon)} alt="" width="64" height="64" /> : <span class="codex-head-icon" />}
+    <div>
+      <h1>{race.name}</h1>
+      <div class="codex-meta">
+        <span class:list={['faction', `faction--${race.faction.toLowerCase()}`]}>{race.faction}</span>
+      </div>
+    </div>
+  </header>
+
+  <h2 class="codex-section">{t.racials}</h2>
+  <ul class="codex-list">
+    {racials.map((entry) => <GlossaryRow entry={entry} lang={lang} />)}
+  </ul>
+
+  <h2 class="codex-section">{t.playableClasses}</h2>
+  <ul class="tile-grid">
+    {
+      classesOf(race).map((c) => (
+        <li>
+          <a class="tile" href={withBase(`/${lang}/classes/${c.id}/`)} style={`--tile-color: var(--class-${c.id})`}>
+            <img src={icon(c.icon)} alt="" width="44" height="44" loading="lazy" />
+            {c.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+</BaseLayout>

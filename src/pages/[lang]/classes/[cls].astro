@@ -1,0 +1,120 @@
+---
+import GlossaryRow from '../../../components/GlossaryRow.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { fill, ui } from '../../../i18n';
+import { classList, racesFor, spellGroups } from '../../../lib/codex';
+import type { ClassInfo } from '../../../lib/glossary-types';
+import { islandJson, tooltipPayload } from '../../../lib/tooltip-payload';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => classList.map((info) => ({ params: { lang, cls: info.id }, props: { info } })));
+}
+
+interface Props {
+  info: ClassInfo;
+}
+
+const lang = Astro.params.lang as Lang;
+const { info } = Astro.props;
+const t = ui(lang);
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/classes/${info.id}/`)])) as Record<Lang, string>;
+const groups = spellGroups(info);
+const total = groups.reduce((n, g) => n + g.spells.length, 0);
+const tips = tooltipPayload(
+  groups.flatMap((g) => g.spells.map((s) => s.id)),
+  lang,
+);
+---
+
+<BaseLayout title={`${info.name} · ${t.classesTitle}`} lang={lang} alternates={alternates}>
+  <a class="back-nav" href={withBase(`/${lang}/classes/`)}>← {t.classesTitle}</a>
+  <header class="codex-head">
+    {info.icon && <img class="codex-head-icon" src={withBase(`/icons/${info.icon}.jpg`)} alt="" width="64" height="64" />}
+    <div>
+      <h1 style={`color: var(--class-${info.id})`}>{info.name}</h1>
+      <div class="codex-meta">{fill(t.spellCount, { n: total })}</div>
+    </div>
+  </header>
+  <a class="planner-link" href={withBase(`/${lang}/talents/${info.id}/`)}>{t.openPlanner}</a>
+
+  <h2 class="codex-section">{t.playableRaces}</h2>
+  <ul class="chip-row">
+    {
+      racesFor(info).map((r) => (
+        <li>
+          <a class="chip-link" href={withBase(`/${lang}/races/${r.id}/`)}>
+            {r.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 class="codex-section">{t.spells}</h2>
+  <div class="chip-row" role="group" data-spell-filter>
+    <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">{t.filterAll}</button>
+    <button type="button" class="filter-chip" data-filter="new" aria-pressed="false">{t.filterNew}</button>
+    <button type="button" class="filter-chip" data-filter="changed" aria-pressed="false">{t.filterChanged}</button>
+  </div>
+  {
+    groups.map((g) => (
+      <section class="school" data-school>
+        {g.school && <h3 class="school-title">{g.school}</h3>}
+        <ul class="codex-list">
+          {g.spells.map((entry) => (
+            <GlossaryRow entry={entry} lang={lang} />
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+  <p class="empty-note" data-no-spells hidden>{t.noSpells}</p>
+
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+</BaseLayout>
+
+<script>
+  // Spell filter (All / New / Changed), like the app's filter chips. The
+  // choice lives in the hash so a filtered view can be linked.
+  const group = document.querySelector<HTMLElement>('[data-spell-filter]');
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const apply = (filter: string) => {
+    for (const c of chips) c.setAttribute('aria-pressed', String(c.dataset.filter === filter));
+    let shown = 0;
+    for (const school of document.querySelectorAll<HTMLElement>('[data-school]')) {
+      let visible = 0;
+      for (const row of school.querySelectorAll<HTMLElement>('.g-row')) {
+        const show = filter === 'all' || row.dataset.status === filter;
+        row.hidden = !show;
+        if (show) visible++;
+      }
+      school.hidden = visible === 0;
+      shown += visible;
+    }
+    document.querySelector<HTMLElement>('[data-no-spells]')!.hidden = shown > 0;
+  };
+  const fromHash = () => (['new', 'changed'].includes(location.hash.slice(1)) ? location.hash.slice(1) : 'all');
+  group?.addEventListener('click', (e) => {
+    const chip = (e.target as Element).closest<HTMLButtonElement>('[data-filter]');
+    if (!chip) return;
+    const filter = chip.dataset.filter!;
+    history.replaceState(null, '', filter === 'all' ? location.pathname : `#${filter}`);
+    apply(filter);
+  });
+  apply(fromHash());
+</script>
+
+<style>
+  .school-title {
+    margin: 18px 0 4px;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    border: 0;
+    padding: 0;
+  }
+  [data-spell-filter] {
+    margin-bottom: 6px;
+  }
+</style>
