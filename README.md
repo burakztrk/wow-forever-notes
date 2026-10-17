@@ -3,7 +3,7 @@
 Daily summaries of official **World of Warcraft: Forever** beta patch and development notes, in Turkish and English.
 Spell, talent and racial names in posts show a tooltip on hover (tap on mobile).
 
-**Site:** https://burakztrk.github.io/wow-forever-notes/
+**Site:** https://foreverwow.app/
 
 ## How it works
 
@@ -17,7 +17,7 @@ Spell, talent and racial names in posts show a tooltip on hover (tap on mobile).
 
 ```bash
 npm ci
-npm run dev     # http://localhost:4321/wow-forever-notes/
+npm run dev     # http://localhost:4321/
 npm test
 npm run build
 ```

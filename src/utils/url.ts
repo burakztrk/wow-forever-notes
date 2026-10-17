@@ -1,5 +1,6 @@
-// GitHub Pages serves this site from /wow-forever-notes/ (astro.config's
-// `base`), so every hardcoded root-relative href/src needs that prefix.
+// The site is served from the domain root (astro.config's `base`), but
+// every hardcoded root-relative href/src still goes through this helper so a
+// sub-path deploy keeps working.
 // Astro rewrites its own generated routes automatically; it does NOT rewrite
 // literal strings in our markup, hence this helper.
 export function withBase(path: string): string {

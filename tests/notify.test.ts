@@ -79,7 +79,7 @@ describe('buildMessage', () => {
       type: 'post',
       lang: 'tr',
       slug: 'wow-forever-2026-10-16',
-      url: 'https://burakztrk.github.io/wow-forever-notes/tr/blog/wow-forever-2026-10-16/',
+      url: 'https://foreverwow.app/tr/blog/wow-forever-2026-10-16/',
     });
   });
 

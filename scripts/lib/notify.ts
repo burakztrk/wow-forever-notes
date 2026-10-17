@@ -4,7 +4,7 @@ import { createSign } from 'node:crypto';
 // message for each looks like, and the OAuth assertion for the service
 // account. No network here, so everything is unit-tested.
 
-export const SITE = 'https://burakztrk.github.io/wow-forever-notes';
+export const SITE = 'https://foreverwow.app';
 export const LANGS = ['tr', 'en'] as const;
 export type NotifyLang = (typeof LANGS)[number];
 

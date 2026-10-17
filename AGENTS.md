@@ -7,7 +7,7 @@ Turkish and English, plus hover tooltips for spells, talents and racials.
 
 ```bash
 npm ci
-npm run dev            # http://localhost:4321/wow-forever-notes/ (drafts visible)
+npm run dev            # http://localhost:4321/ (drafts visible)
 npm run build          # production build (drafts skipped); fails on bad glossary references or missing translations
 npm test               # vitest: parsers, update detection, glossary/remark plugin, TR/EN pairing
 npm run sync           # refresh src/data/*.json + public/icons/ from wclbox (~10 min first run, cached in .cache/http)
@@ -36,7 +36,7 @@ Node 22.12+.
 
 ## Rules
 
-- Every hardcoded root-relative URL goes through `withBase()` (`src/utils/url.ts`); the site lives under `/wow-forever-notes/`.
+- Every hardcoded root-relative URL goes through `withBase()` (`src/utils/url.ts`); the site is served from the root of foreverwow.app (base `/`).
 - Posts: TR and EN together, game names stay English in both, no copied source text, nothing that is not in the sources.
 - Credit wclbox ("新手盒子·魔兽世界无限数据库" + page URL) — already in the footer and every tooltip. wowforevertools (description text) is credited in the footer and README.
 - Sync etiquette: ≤2 requests/second, identifying User-Agent, cache on disk. bluetracker.gg and mobalytics.gg block bots.
