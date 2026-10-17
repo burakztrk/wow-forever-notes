@@ -91,12 +91,7 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
       }
     </div>
 
-    <div class="combo-stage">
-      <div class="stage-art" aria-hidden="true">
-        <div class="stage-glow"></div>
-        <div class="stage-moon"></div>
-        <div class="stage-ground"></div>
-      </div>
+    <div class="combo-main">
       <div class="class-bar" role="group" aria-label={t.comboClasses}>
         {
           classList.map((cls) => (
@@ -114,35 +109,8 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
           ))
         }
       </div>
-
-      <div class="stage-sigil">
-        <div class="sigil-ring">
-          <img class="sigil-race" data-stage-race-icon alt="" width="128" height="128" />
-          <img class="sigil-class" data-stage-class-icon alt="" width="64" height="64" />
-        </div>
-        <p class="stage-faction" data-stage-faction></p>
-        <p class="stage-title"><span data-stage-race></span> <span data-stage-class></span></p>
-        <p class="stage-sub" data-stage-sub></p>
-      </div>
-    </div>
-
-    <div class="combo-panels">
-      {
-        factions.map(([faction]) => {
-          const n = factionNumbers(faction);
-          return (
-            <section class={`panel panel--faction panel--${faction.toLowerCase()}`} data-faction-panel={faction.toLowerCase()} hidden>
-              <h2>{faction}</h2>
-              <ul class="panel-facts">
-                <li>{fill(t.comboFactionCount, { n: n.races })}</li>
-                <li>{fill(t.comboFactionRacials, { n: n.racials })}</li>
-                <li>{fill(t.comboFactionNew, { n: n.fresh })}</li>
-              </ul>
-            </section>
-          );
-        })
-      }
-
+      <div class="combo-info">
+        <div class="info-slot">
       {
         races.map((race) => (
           <section class="panel panel--race" data-race-panel={race.id} hidden>
@@ -176,7 +144,8 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
           </section>
         ))
       }
-
+        </div>
+        <div class="info-slot">
       {
         classList.map((cls) => {
           const s = summaries.get(cls.id)!;
@@ -225,7 +194,44 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
           );
         })
       }
+        </div>
+      </div>
+    </div>
 
+    <div class="combo-side">
+      <div class="side-faction">
+      {
+        factions.map(([faction]) => {
+          const n = factionNumbers(faction);
+          return (
+            <section class={`panel panel--faction panel--${faction.toLowerCase()}`} data-faction-panel={faction.toLowerCase()} hidden>
+              <h2>{faction}</h2>
+              <ul class="panel-facts">
+                <li>{fill(t.comboFactionCount, { n: n.races })}</li>
+                <li>{fill(t.comboFactionRacials, { n: n.racials })}</li>
+                <li>{fill(t.comboFactionNew, { n: n.fresh })}</li>
+              </ul>
+            </section>
+          );
+        })
+      }
+      </div>
+      <div class="combo-stage">
+      <div class="stage-art" aria-hidden="true">
+        <div class="stage-glow"></div>
+        <div class="stage-moon"></div>
+        <div class="stage-ground"></div>
+      </div>
+      <div class="stage-sigil">
+        <div class="sigil-ring">
+          <img class="sigil-race" data-stage-race-icon alt="" width="128" height="128" />
+          <img class="sigil-class" data-stage-class-icon alt="" width="64" height="64" />
+        </div>
+        <p class="stage-faction" data-stage-faction></p>
+        <p class="stage-title"><span data-stage-race></span> <span data-stage-class></span></p>
+        <p class="stage-sub" data-stage-sub></p>
+      </div>
+      </div>
       <a class="customize-btn" data-planner-link href={withBase(`/${lang}/talents/`)}>
         {t.comboCustomize} <span aria-hidden="true">›</span>
       </a>
