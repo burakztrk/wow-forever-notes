@@ -1,18 +1,29 @@
 // Shared data model for src/data/*.json. Written by `npm run sync`, read by
 // the site (tooltips) and later by class/race pages.
 
+// Class display order everywhere on the site, in classes.json and in the
+// mobile app (domain/Codex.kt CLASS_ORDER). Change both sides together.
 export const CLASSES = [
   'warrior',
-  'paladin',
   'hunter',
+  'mage',
   'rogue',
   'priest',
-  'shaman',
-  'mage',
   'warlock',
+  'paladin',
   'druid',
+  'shaman',
 ] as const;
 export type ClassId = (typeof CLASSES)[number];
+
+const classRank = (id: string) => {
+  const i = (CLASSES as readonly string[]).indexOf(id);
+  return i < 0 ? CLASSES.length : i;
+};
+
+// Classes sorted by CLASSES; unknown ids keep their order after the known ones.
+export const inClassOrder = <T extends { id: string }>(list: readonly T[]): T[] =>
+  [...list].sort((a, b) => classRank(a.id) - classRank(b.id));
 
 export type GlossaryKind = 'spell' | 'talent' | 'racial';
 

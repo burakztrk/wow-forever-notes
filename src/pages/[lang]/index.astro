@@ -71,7 +71,7 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
                     data-race={race.id}
                     data-faction={faction.toLowerCase()}
                     data-race-name={race.name}
-                    data-classes={race.classes.join(',')}
+                    data-classes={classesOf(race).map((c) => c.id).join(',')}
                     aria-pressed="false"
                     title={race.name}
                   >
