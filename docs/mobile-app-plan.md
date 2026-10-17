@@ -5,7 +5,7 @@ Bu doküman ayrı bir oturuma verilmek için yazıldı. Tek başına okunduğund
 ## 0. Bağlam
 
 - **Ürün:** WoW Forever için resmi olmayan yardımcı uygulama. İçeriği TR/EN patch notları ve tooltip'ler, talent planlayıcı, race ve class ekranları, yeni yazı geldiğinde push bildirimi.
-- **Kaynak site:** https://burakztrk.github.io/wow-forever-notes/ (repo `burakztrk/wow-forever-notes`, yerel `~/claudee/wow-forever-notes`). Uygulama bu sitenin ürettiği veriyi okur, ayrı bir backend yok.
+- **Kaynak site:** https://foreverwow.app/ (repo `burakztrk/wow-forever-notes`, yerel `~/claudee/wow-forever-notes`). Uygulama bu sitenin ürettiği veriyi okur, ayrı bir backend yok.
 - **Marka:** Çalışma adı **Forever Codex** (mağaza çakışması bulunmadı; "Forever Notes" Apple Notes için bilinen bir yöntemle çakışıyor). Paket `com.booapps.forevercodex`. **İkon tasarımı açık iş** (bkz. §7).
 - **Wiki:** `wiki/projects/wow-forever-notes.md` ve `wiki/syntheses/wow-forever-mobil-uygulama-arastirmasi.md` (rakipler, mağaza ve IP riskleri). Kanban kartı `#wow-forever`.
 - **Hedef tarih:** WoW Forever 2026-11-04'te çıkıyor. Lansman haftasında en az Android'in açık test kanalında olmak.
@@ -24,7 +24,7 @@ Bu doküman ayrı bir oturuma verilmek için yazıldı. Tek başına okunduğund
 
 ## 2. Veri sözleşmesi (`/data/v1/`)
 
-Taban adres: `https://burakztrk.github.io/wow-forever-notes/data/v1/`. Tüm dosyalar `schema: 1` taşır. Alan **eklemek** geriye uyumludur; alan silinirse ya da anlamı değişirse `v2` yayınlanır.
+Taban adres: `https://foreverwow.app/data/v1/`. Tüm dosyalar `schema: 1` taşır. Alan **eklemek** geriye uyumludur; alan silinirse ya da anlamı değişirse `v2` yayınlanır.
 
 | Dosya | İçerik |
 |---|---|
@@ -61,7 +61,7 @@ Taban adres: `https://burakztrk.github.io/wow-forever-notes/data/v1/`. Tüm dosy
    - Ekranda 3 ağaç bulunur; mobilde yatay pager ya da sekmeler.
    - Dokunma puan ekler, kırmızı − puan çıkarır, uzun basma tooltip açar.
    - Paylaş butonu web linki üretir.
-   - **App Links:** `https://burakztrk.github.io/wow-forever-notes/*/talents/*` uygulamada açılır. Pages'e `.well-known/assetlinks.json` eklemek gerekir (site reposunda küçük bir iş).
+   - **App Links:** `https://foreverwow.app/*/talents/*` uygulamada açılır. Pages'e `.well-known/assetlinks.json` eklemek gerekir (site reposunda küçük bir iş).
 3. **Irklar:** Faction'a göre ırk listesi. Irk seçilince racial'ları ve seçilebilecek class'ları gösterir (WoW karakter yaratma ekranı hissi).
 4. **Class'lar:** Ağaca (`school`) göre gruplanmış spell listesi ve tooltip'ler; talent planlayıcıya kısayol.
 5. **Ayarlar:** Dil; bildirim konuları (genel patch notları ve isteğe bağlı class bazlı); veri kaynakları ve "unofficial" uyarısı; gizlilik politikası linki.

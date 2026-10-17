@@ -9,7 +9,7 @@ import remarkGlossary from './remark-glossary';
 // Astro 7's default processor (Sätteri) has no remark plugins; the unified
 // processor runs ours: :spell[…] / :talent[…] / :racial[…] → tooltip spans
 // (see src/lib/remark-glossary.ts)
-export const SITE_BASE = '/wow-forever-notes';
+export const SITE_BASE = '';
 
 export const markdownProcessor = unified({
   remarkPlugins: [remarkDirective, [remarkGlossary, { base: SITE_BASE }]],
