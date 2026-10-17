@@ -53,3 +53,31 @@ export function spellGroups(
       .sort((a, b) => (a.learnedAt ?? Infinity) - (b.learnedAt ?? Infinity) || (a.name < b.name ? -1 : a.name > b.name ? 1 : 0)),
   }));
 }
+
+export interface ClassSummary {
+  spells: number;
+  talents: number;
+  newSpells: GlossaryEntry[];
+  changedSpells: number;
+  trees: { name: string; icon?: string; talents: number }[];
+}
+
+// Numbers for the home page class panel. Entries missing from the glossary are skipped.
+export function classSummary(cls: ClassInfo, lookup: (id: string) => GlossaryEntry | undefined = glossaryEntry): ClassSummary {
+  const spells = cls.spells.map(lookup).filter((e): e is GlossaryEntry => !!e);
+  const talents = cls.talents.map(lookup).filter((e): e is GlossaryEntry => !!e);
+  return {
+    spells: spells.length,
+    talents: talents.length,
+    newSpells: spells.filter((s) => s.status === 'new'),
+    changedSpells: spells.filter((s) => s.status === 'changed').length,
+    trees: cls.trees.map((name, i) => ({
+      name,
+      icon: cls.treeIcons?.[i],
+      talents: talents.filter((t) => t.tree === name).length,
+    })),
+  };
+}
+
+// Whether a race can play a class (home page class bar).
+export const canPlay = (race: RaceInfo, cls: ClassInfo) => race.classes.includes(cls.id);

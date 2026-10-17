@@ -11,9 +11,10 @@ interface Props {
   lang: Lang;
   alternates: Record<Lang, string>;
   wide?: boolean; // wider main column (talent calculator)
+  full?: boolean; // widest main column (home page race/class screen)
 }
 
-const { title, description, lang, alternates, wide = false } = Astro.props;
+const { title, description, lang, alternates, wide = false, full = false } = Astro.props;
 // which nav item is current: the first path segment after /<lang>/
 const section = Astro.url.pathname.split(`/${lang}/`)[1]?.split('/')[0] ?? '';
 const navItems = [
@@ -62,7 +63,7 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
       </div>
     </header>
 
-    <main class:list={['container', 'site-main', { wide }]}>
+    <main class:list={['container', 'site-main', { wide, full }]}>
       <slot />
     </main>
 
@@ -150,6 +151,9 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
   }
   .site-main.wide {
     max-width: calc(1060px + 2 * var(--gutter));
+  }
+  .site-main.full {
+    max-width: calc(1400px + 2 * var(--gutter));
   }
   .site-main {
     flex: 1;
