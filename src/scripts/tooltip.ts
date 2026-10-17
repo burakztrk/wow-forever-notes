@@ -6,7 +6,7 @@ import { renderTooltip, type TipPayload } from '../lib/tooltip-render';
 // Keyboard: focus shows, Escape hides.
 
 const TIP_SELECTOR = '.wf-tip';
-let payload: TipPayload | null | undefined;
+let payload: TipPayload | null = null;
 let current: HTMLElement | null = null;
 let stopAutoUpdate: (() => void) | null = null;
 let hideTimer: number | undefined;
@@ -19,7 +19,8 @@ tooltip.hidden = true;
 document.body.append(tooltip);
 
 function getPayload(): TipPayload | null {
-  if (payload === undefined) {
+  // a page may add the island later (search), so only a found payload is cached
+  if (!payload) {
     const island = document.getElementById('wf-glossary');
     payload = island?.textContent ? (JSON.parse(island.textContent) as TipPayload) : null;
   }

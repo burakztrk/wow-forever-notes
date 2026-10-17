@@ -1,0 +1,152 @@
+---
+import type { Lang } from '../config';
+import { ui } from '../i18n';
+import { classes } from '../lib/talents';
+import { withBase } from '../utils/url';
+
+// Saved talent builds (localStorage), like the app's list on the Talents
+// screen. With `cls` it shows only that class and adds the save dialog.
+
+interface Props {
+  lang: Lang;
+  cls?: string;
+}
+
+const { lang, cls } = Astro.props;
+const t = ui(lang);
+const config = {
+  cls,
+  talentsBase: withBase(`/${lang}/talents/`),
+  iconBase: withBase('/icons/'),
+  classIcons: Object.fromEntries(classes.map((c) => [c.id, c.icon ?? ''])),
+  classNames: Object.fromEntries(classes.map((c) => [c.id, c.name])),
+  strings: { delete: t.delete, buildSaved: t.buildSaved },
+};
+---
+
+<section class="saved-section" data-saved-section hidden>
+  <h2 class="codex-section">{t.savedBuilds}</h2>
+  <ul class="saved-list" data-saved-list></ul>
+  <p class="saved-hint">{t.savedHere}</p>
+</section>
+<p class="saved-note" data-saved-note role="status" hidden></p>
+
+{
+  cls && (
+    <dialog class="save-dialog" data-save-dialog>
+      <form method="dialog">
+        <h2>{t.saveBuild}</h2>
+        <input name="name" type="text" maxlength="60" placeholder={t.buildName} aria-label={t.buildName} autocomplete="off" />
+        <div class="save-actions">
+          <button type="button" class="calc-btn" data-save-cancel>
+            {t.cancel}
+          </button>
+          <button type="submit" class="calc-btn primary">
+            {t.save}
+          </button>
+        </div>
+      </form>
+    </dialog>
+  )
+}
+
+<script type="application/json" id="wf-saved-builds" is:inline set:html={JSON.stringify(config).replace(/</g, '\\u003c')} />
+<script>
+  import '../scripts/saved-builds';
+</script>
+
+<style is:global>
+  .saved-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .saved-build {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .saved-build a {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 4px;
+    color: inherit;
+    text-decoration: none;
+  }
+  .saved-build a:hover .saved-name {
+    text-decoration: underline;
+  }
+  .saved-build img {
+    border-radius: 4px;
+    border: 1px solid #000;
+  }
+  .saved-name {
+    color: var(--class-color);
+    font-weight: 500;
+  }
+  .saved-meta {
+    margin-left: auto;
+    color: var(--text-mute);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .saved-delete {
+    flex: none;
+    background: none;
+    border: 0;
+    padding: 6px 8px;
+    cursor: pointer;
+    opacity: 0.6;
+    font-size: 1rem;
+  }
+  .saved-delete:hover {
+    opacity: 1;
+  }
+  .saved-hint {
+    color: var(--text-mute);
+    font-size: 0.8rem;
+    margin: 6px 0 0;
+  }
+  .saved-note {
+    color: var(--status-unchanged);
+    font-size: 0.9rem;
+  }
+  .save-dialog {
+    background: var(--bg-elev);
+    color: var(--text);
+    border: 1px solid var(--gold-dim);
+    border-radius: var(--radius);
+    padding: 20px;
+    width: min(360px, calc(100vw - 32px));
+  }
+  .save-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .save-dialog h2 {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+    border: 0;
+    padding: 0;
+  }
+  .save-dialog input {
+    width: 100%;
+    padding: 8px 12px;
+    font: inherit;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+  .save-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 14px;
+  }
+</style>

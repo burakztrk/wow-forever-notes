@@ -1,5 +1,6 @@
 ---
 import glossaryData from '../../../data/glossary.json';
+import SavedBuilds from '../../../components/SavedBuilds.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
@@ -37,6 +38,7 @@ const cards = classes.map((c) => {
 <BaseLayout title={t.talentsTitle} description={t.talentsIntro} lang={lang} alternates={alternates} wide>
   <h1>{t.talentsTitle}</h1>
   <p class="muted">{t.talentsIntro}</p>
+  <SavedBuilds lang={lang} />
   <ul class="class-grid">
     {
       cards.map((c) => (
