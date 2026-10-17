@@ -18,6 +18,7 @@
   --frame: #6b5426;
   --frame-hi: #e8c768;
   --panel-bg: rgba(14, 10, 6, 0.9);
+  --bar-h: 124px; /* class bar and faction panel share this height */
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 14px;
@@ -40,7 +41,9 @@
   .combo {
     grid-template-columns: 220px minmax(0, 1fr) 360px;
     gap: 18px;
-    align-items: start;
+  }
+  .combo-banners {
+    align-self: start;
   }
 }
 
@@ -509,7 +512,6 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 12px;
-  align-items: start;
 }
 .info-slot {
   min-width: 0;
@@ -543,4 +545,64 @@
   .side-faction > .panel { order: 3; }
   .info-slot > .panel { order: 4; }
   .customize-btn { order: 5; }
+}
+
+/* ---- equal box sizes ---- */
+.class-bar {
+  height: var(--bar-h);
+  align-items: center;
+}
+.panel--faction {
+  height: var(--bar-h);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.panel--faction h2 {
+  margin-bottom: 2px;
+}
+.panel--faction .panel-facts {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+/* Every race (or class) panel sits in one grid cell, so the cell is as tall as
+   the tallest one and the race and class boxes always match. */
+.info-slot {
+  display: grid;
+}
+.info-slot > .panel {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+}
+.info-slot > .panel[hidden] {
+  display: flex;
+  visibility: hidden;
+  pointer-events: none;
+}
+/* push the links to the bottom edge */
+.info-slot > .panel > :last-child {
+  margin-top: auto;
+}
+.info-slot > .panel > .panel-links,
+.info-slot > .panel > .panel-link {
+  padding-top: 12px;
+}
+.combo-side .combo-stage {
+  flex: 1;
+  justify-content: center;
+}
+@media (max-width: 999px) {
+  .info-slot > .panel {
+    grid-area: auto;
+  }
+  .info-slot > .panel[hidden] {
+    display: none;
+  }
+  .class-bar,
+  .panel--faction {
+    height: auto;
+  }
 }
