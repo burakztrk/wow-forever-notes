@@ -1,13 +1,13 @@
 import classesData from '../data/classes.json';
 import glossaryData from '../data/glossary.json';
 import racesData from '../data/races.json';
-import type { ClassInfo, GlossaryEntry, GlossaryFile, RaceInfo } from './glossary-types';
+import { inClassOrder, type ClassInfo, type GlossaryEntry, type GlossaryFile, type RaceInfo } from './glossary-types';
 
 // Lookups for the race and class pages, same rules as the mobile app's
 // domain/Codex.kt.
 
 export const races = racesData as RaceInfo[];
-export const classList = classesData as ClassInfo[];
+export const classList = inClassOrder(classesData as ClassInfo[]);
 const byId = new Map((glossaryData as GlossaryFile).entries.map((e) => [e.id, e]));
 
 export const glossaryEntry = (id: string) => byId.get(id);
@@ -21,7 +21,7 @@ export function racesByFaction(list: RaceInfo[] = races): [string, RaceInfo[]][]
 export const racialsOf = (race: RaceInfo, lookup: (id: string) => GlossaryEntry | undefined = glossaryEntry) =>
   race.racials.map(lookup).filter((e): e is GlossaryEntry => !!e);
 
-// Playable classes in classes.json order.
+// Playable classes in CLASSES order (when the list is classList).
 export const classesOf = (race: RaceInfo, list: ClassInfo[] = classList) => list.filter((c) => race.classes.includes(c.id));
 
 export const racesFor = (cls: ClassInfo, list: RaceInfo[] = races) => list.filter((r) => r.classes.includes(cls.id));

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { canPlay, classSummary, classesOf, racesByFaction, racesFor, racialsOf, spellGroups } from '../src/lib/codex';
-import type { ClassInfo, GlossaryEntry, RaceInfo } from '../src/lib/glossary-types';
+import { inClassOrder, type ClassInfo, type GlossaryEntry, type RaceInfo } from '../src/lib/glossary-types';
 
 // Same vectors as the mobile app's CodexTest.kt.
 
@@ -48,6 +48,13 @@ describe('codex', () => {
     expect(racialsOf(orc, lookup).map((e) => e.id)).toEqual(['racial/blood-fury']);
     expect(classesOf(orc, [warrior, mage]).map((c) => c.id)).toEqual(['warrior', 'mage']); // classes.json order
     expect(racesFor(mage, races).map((r) => r.id)).toEqual(['horde-orc', 'alliance-human']);
+  });
+
+  it('sorts classes in the app order', () => {
+    const fileOrder = ['warrior', 'paladin', 'hunter', 'rogue', 'priest', 'shaman', 'mage', 'warlock', 'druid', 'monk', 'bard'];
+    expect(inClassOrder(fileOrder.map((id) => ({ id }))).map((c) => c.id)).toEqual(
+      ['warrior', 'hunter', 'mage', 'rogue', 'priest', 'warlock', 'paladin', 'druid', 'shaman', 'monk', 'bard'], // unknown classes keep file order at the end
+    );
   });
 
   it('groups spells by school and level', () => {
