@@ -16,6 +16,9 @@ export interface KeyValue {
 
 const KEY = 'wf-saved-builds';
 
+// Longest build name; the app's MAX_NAME_LENGTH.
+export const MAX_NAME_LENGTH = 50;
+
 export function loadBuilds(store: KeyValue | null): SavedBuild[] {
   try {
     const list = JSON.parse(store?.getItem(KEY) ?? '[]');
@@ -36,7 +39,7 @@ function write(store: KeyValue | null, list: SavedBuild[]): SavedBuild[] {
 
 export function saveBuild(store: KeyValue | null, cls: string, name: string, code: string): SavedBuild[] {
   const builds = loadBuilds(store);
-  const clean = name.trim() || code || '—';
+  const clean = name.trim().slice(0, MAX_NAME_LENGTH) || code || '—';
   const existing = builds.find((b) => b.cls === cls && b.name.toLowerCase() === clean.toLowerCase());
   let id = existing?.id;
   if (!id) {

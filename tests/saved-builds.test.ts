@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { loadBuilds, removeBuild, saveBuild, updateBuild, type KeyValue } from '../src/lib/saved-builds';
+import { MAX_NAME_LENGTH, loadBuilds, removeBuild, saveBuild, updateBuild, type KeyValue } from '../src/lib/saved-builds';
 
 // Same vectors as the mobile app's BuildStoreTest.kt.
 
@@ -46,5 +46,9 @@ describe('saved builds', () => {
     expect(updateBuild(store, frost.id, '055')[0].name).toBe('Frost');
     expect(loadBuilds(store).map((b) => [b.name, b.code])).toEqual([['Frost', '055'], ['Fire', '-5']]);
     expect(updateBuild(store, 'missing', '1')).toEqual(loadBuilds(store));
+  });
+
+  it('caps names at 50 characters like the app', () => {
+    expect(saveBuild(memory(), 'mage', ` ${'a'.repeat(80)} `, '5')[0].name).toHaveLength(MAX_NAME_LENGTH);
   });
 });
