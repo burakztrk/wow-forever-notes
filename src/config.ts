@@ -6,7 +6,7 @@ export type Lang = (typeof LANGS)[number];
 
 export const DEFAULT_LANG: Lang = 'tr';
 
-export const SITE_TITLE = 'WoW Forever Notes';
+export const SITE_TITLE = 'Forever Campfire: Codex';
 
 export function isLang(value: string | undefined): value is Lang {
   return (LANGS as readonly string[]).includes(value ?? '');

@@ -1,4 +1,4 @@
-# WoW Forever Notes
+# Forever Campfire: Codex
 
 Daily summaries of official **World of Warcraft: Forever** beta patch and development notes, in Turkish and English.
 Spell, talent and racial names in posts show a tooltip on hover (tap on mobile).

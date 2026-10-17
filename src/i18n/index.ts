@@ -35,6 +35,7 @@ const strings = {
     statusRemoved: 'Forever’da yok',
     source: 'Kaynak',
     // talent calculator
+    navHome: 'Ana sayfa',
     navNotes: 'Notlar',
     navTalents: 'Talentlar',
     talentsTitle: 'Talent hesaplayıcı',
@@ -128,6 +129,7 @@ const strings = {
     statusUnchanged: 'Same as Classic',
     statusRemoved: 'Not in Forever',
     source: 'Source',
+    navHome: 'Home',
     navNotes: 'Notes',
     navTalents: 'Talents',
     talentsTitle: 'Talent calculator',

@@ -268,9 +268,9 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin: 14px auto 0;
+  margin: 0;
   padding: 10px 12px 8px;
-  max-width: 100%;
+  width: 100%;
   background: rgba(14, 10, 6, 0.88);
   border: 2px solid var(--frame);
   border-radius: 8px;
@@ -488,4 +488,55 @@
 .customize-btn:hover,
 .customize-btn:focus-visible {
   filter: brightness(1.2);
+}
+
+/* ---- layout: banners | classes + race/class panels | faction, stage, button ---- */
+.combo-main,
+.combo-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.side-faction {
+  display: contents;
+}
+.combo-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.info-slot {
+  min-width: 0;
+}
+.combo-side .combo-stage {
+  align-self: stretch;
+}
+.combo-side .stage-sigil {
+  padding-bottom: 24px;
+}
+.combo-side .customize-btn {
+  margin-top: 0;
+}
+@media (min-width: 1250px) {
+  .combo-info {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 999px) {
+  /* one column: banners, classes, stage, faction, race, class, button */
+  .combo-main,
+  .combo-side,
+  .combo-info,
+  .info-slot,
+  .side-faction {
+    display: contents;
+  }
+  .combo-banners { order: 0; }
+  .class-bar { order: 1; }
+  .combo-stage { order: 2; }
+  .side-faction > .panel { order: 3; }
+  .info-slot > .panel { order: 4; }
+  .customize-btn { order: 5; }
 }

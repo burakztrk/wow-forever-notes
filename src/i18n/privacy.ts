@@ -28,7 +28,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
     title: 'Gizlilik politikası',
     updated: 'Son güncelleme: 17 Ekim 2026',
     intro:
-      'Bu politika WoW Forever Notes web sitesi ve Forever Campfire: Codex mobil uygulaması için geçerlidir. İkisi de resmi olmayan, hayranlar tarafından yapılmış ve ücretsiz projelerdir. Hesap, reklam, analitik ya da izleme yoktur.',
+      'Bu politika Forever Campfire: Codex web sitesi ve mobil uygulaması için geçerlidir. İkisi de resmi olmayan, hayranlar tarafından yapılmış ve ücretsiz projelerdir. Hesap, reklam, analitik ya da izleme yoktur.',
     sections: [
       {
         heading: 'Toplanan veriler',
@@ -79,7 +79,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
     title: 'Privacy policy',
     updated: 'Last updated: 17 October 2026',
     intro:
-      'This policy covers the WoW Forever Notes website and the Forever Campfire: Codex mobile app. Both are unofficial, fan-made and free. There are no accounts, ads, analytics or tracking.',
+      'This policy covers the Forever Campfire: Codex website and mobile app. Both are unofficial, fan-made and free. There are no accounts, ads, analytics or tracking.',
     sections: [
       {
         heading: 'Data we collect',
