@@ -18,6 +18,7 @@ import {
 } from '../../src/lib/glossary-types';
 import { fetchBinary, fetchJson, fetchText } from '../lib/http';
 import { WCLBOX, WOWFOREVERTOOLS, wclboxDataBase, wclboxIcon, wclboxPage, wclboxRelease } from '../lib/sources';
+import { referencedIcons } from './icons';
 import { parseSpellDetail, parseSpellList, parseTalentPage, statusFromText } from './parse';
 import {
   applyWftTexts,
@@ -312,10 +313,5 @@ await writeFile(path.join(DATA_DIR, 'classes.json'), json(classInfos));
 log(`wrote ${entries.length} glossary entries`);
 
 if (withIcons) {
-  const icons = new Set(
-    [...entries.map((e) => e.icon), ...classInfos.flatMap((c) => [c.icon, ...(c.treeIcons ?? [])])].filter(
-      (i): i is string => !!i,
-    ),
-  );
-  await downloadIcons(icons);
+  await downloadIcons(referencedIcons(entries, classInfos, raceInfos));
 }
