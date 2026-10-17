@@ -27,6 +27,7 @@ const title = `${info.name} · ${t.talentsTitle}`;
   <a class="back-nav" href={withBase(`/${lang}/talents/`)}>← {t.talentsTitle}</a>
   <header class="calc-head" style={`--class-color: var(--class-${cls})`}>
     <h1>{info.name}</h1>
+    <p class="calc-build-name" data-saved-name hidden></p>
     <div class="calc-summary">
       <span>{t.pointsLeft}: <strong data-points-left>{MAX_POINTS}</strong></span>
       <span>{t.reqLevel}: <strong data-req-level>–</strong></span>
@@ -34,8 +35,8 @@ const title = `${info.name} · ${t.talentsTitle}`;
     </div>
     <div class="calc-actions">
       <button type="button" class="calc-btn" data-reset-all>{t.resetAll}</button>
-      <button type="button" class="calc-btn primary" data-share>{t.share}</button>
-      <button type="button" class="calc-btn" data-save-open>{t.saveBuild}</button>
+      <button type="button" class="calc-btn primary" data-save-open>{t.saveBuild}</button>
+      <button type="button" class="calc-btn" data-share>{t.share}</button>
     </div>
     <p class="muted calc-help">{t.talentHelp}</p>
   </header>
@@ -107,6 +108,10 @@ const title = `${info.name} · ${t.talentsTitle}`;
   .calc-head h1 {
     color: var(--class-color);
     margin-bottom: 8px;
+  }
+  .calc-build-name {
+    color: var(--text-dim);
+    margin: -6px 0 8px;
   }
   .calc-summary {
     display: flex;
