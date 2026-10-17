@@ -43,7 +43,7 @@ Node 22.12+.
 
 - Every hardcoded root-relative URL goes through `withBase()` (`src/utils/url.ts`); the site is served from the root of foreverwow.app (base `/`).
 - Posts: TR and EN together, game names stay English in both, no copied source text, nothing that is not in the sources.
-- Credit wclbox ("新手盒子·魔兽世界无限数据库" + page URL) — already in the footer and every tooltip. wowforevertools (description text) is credited in the footer and README.
+- Credit wclbox (named "wclbox" in the footer, with a link; every tooltip links the source page) — already in place. wowforevertools (description text) is credited in the footer and README.
 - Sync etiquette: ≤2 requests/second, identifying User-Agent, cache on disk. bluetracker.gg and mobalytics.gg block bots.
 - Public repo: no secrets, `.env*` is gitignored; scan before pushing.
 - Code comments and UI strings in English; Turkish lives in `src/i18n` and `src/content/blog/tr`.

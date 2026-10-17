@@ -18,9 +18,6 @@ const strings = {
     sources: 'Kaynaklar',
     backToList: '← Tüm notlar',
     switchTo: 'Dili değiştir',
-    disclaimer:
-      'Resmi olmayan bir hayran sitesidir. World of Warcraft ve ilgili isim, ikon ve veriler Blizzard Entertainment’ın mülkiyetindedir.',
-    dataCredit: 'Oyun verisi',
     // tooltip labels
     instant: 'Anında',
     castSec: 'sn',
@@ -114,9 +111,6 @@ const strings = {
     sources: 'Sources',
     backToList: '← All notes',
     switchTo: 'Switch language',
-    disclaimer:
-      'Unofficial fan site. World of Warcraft and related names, icons and data are property of Blizzard Entertainment.',
-    dataCredit: 'Game data',
     instant: 'Instant',
     castSec: 'sec',
     yd: 'yd',
