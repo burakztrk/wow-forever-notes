@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classesOf, racesByFaction, racesFor, racialsOf, spellGroups } from '../src/lib/codex';
+import { canPlay, classSummary, classesOf, racesByFaction, racesFor, racialsOf, spellGroups } from '../src/lib/codex';
 import type { ClassInfo, GlossaryEntry, RaceInfo } from '../src/lib/glossary-types';
 
 // Same vectors as the mobile app's CodexTest.kt.
@@ -60,5 +60,18 @@ describe('codex', () => {
   it('filters by status', () => {
     expect(spellGroups(mage, lookup, 'new').flatMap((g) => g.spells.map((s) => s.name))).toEqual(['blizzard']);
     expect(spellGroups(mage, lookup, 'changed').map((g) => g.school)).toEqual(['Fire']);
+  });
+
+  it('summarises a class for the home page', () => {
+    const sum = classSummary(mage, lookup);
+    expect(sum.spells).toBe(6);
+    expect(sum.newSpells.map((e) => e.id)).toEqual(['spell/blizzard']);
+    expect(sum.changedSpells).toBe(1);
+    expect(sum.trees.map((t) => t.name)).toEqual(['Arcane', 'Fire', 'Frost']);
+  });
+
+  it('knows which classes a race can play', () => {
+    expect(canPlay(races[1], mage)).toBe(true);
+    expect(canPlay(races[1], warrior)).toBe(false);
   });
 });

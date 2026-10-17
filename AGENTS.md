@@ -34,6 +34,8 @@ Node 22.12+.
 - `src/pages/[lang]/{races,classes,search}/` — race, class and search pages, same rules as the mobile app (`src/lib/codex.ts`,
   `src/lib/search.ts`; vectors in `tests/codex.test.ts`, `tests/search.test.ts`). Saved talent builds live in localStorage
   (`src/lib/saved-builds.ts`, same shape as the app's `BuildStore`). Change both sides together.
+- `src/pages/[lang]/index.astro` + `src/scripts/combo.ts` + `src/styles/combo.css` — home page: in-game style race/class screen (races left,
+  classes bottom, racial/class panels right; state in `#race=…&class=…`). Web only for now; the app gets it later.
 - `scripts/sync/` — wclbox parsers (`parse.ts`), wowforevertools chunk reader (`wowforevertools.ts`, acorn, literals only — never eval) and the sync entry point. `scripts/check-updates.ts`.
 - `docs/scheduled-job.md` — instructions for the daily scheduled writer job.
 
