@@ -1,5 +1,8 @@
 # Forever Codex — mobil uygulama planı
 
+> **2026-10-17:** Bildirimler (FCM, §4, M5) iptal edildi. `notify.yml`, `scripts/notify.ts` ve uygulamadaki Firebase kodu silindi;
+> `FCM_SERVICE_ACCOUNT_JSON` secret'ı artık kullanılmıyor.
+
 Bu doküman ayrı bir oturuma verilmek için yazıldı. Tek başına okunduğunda işe başlamaya yetecek şekilde hazırlandı.
 
 ## 0. Bağlam
