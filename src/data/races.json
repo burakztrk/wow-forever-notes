@@ -82,7 +82,7 @@
     "id": "horde-skyborne-windshaper",
     "name": "Skyborne",
     "faction": "Horde",
-    "icon": "inv_misc_head_elf_02",
+    "icon": "race_skyborne",
     "classes": [
       "warrior",
       "hunter",
@@ -180,7 +180,7 @@
     "id": "alliance-skyborne-high-order",
     "name": "Skyborne (High Order)",
     "faction": "Alliance",
-    "icon": "inv_misc_head_elf_01",
+    "icon": "race_skyborne",
     "classes": [
       "warrior",
       "hunter",
