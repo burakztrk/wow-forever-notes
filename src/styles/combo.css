@@ -24,12 +24,14 @@
   position: relative;
 }
 .combo[data-faction='horde'] {
+  --stage-bg: var(--bg-horde);
   --accent: #e0503c;
   --accent-deep: #5a1410;
   --scene-a: #0f3a3a;
   --scene-b: #06161a;
 }
 .combo[data-faction='alliance'] {
+  --stage-bg: var(--bg-alliance);
   --scene-a: #11283f;
   --scene-b: #060d18;
 }
@@ -38,7 +40,7 @@
   .combo {
     grid-template-columns: 220px minmax(0, 1fr) 360px;
     gap: 18px;
-    min-height: 700px;
+    align-items: start;
   }
 }
 
@@ -156,14 +158,13 @@
 /* ---- stage ---- */
 .combo-stage {
   position: relative;
-  min-height: 460px;
+  align-self: start;
   border: 2px solid var(--frame);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(180deg, var(--scene-a), var(--scene-b));
+  background: var(--scene-b) var(--stage-bg) center / cover no-repeat;
 }
 .stage-art {
   position: absolute;
@@ -173,16 +174,15 @@
 .stage-glow {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(500px 360px at 50% 38%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 70%),
-    radial-gradient(900px 500px at 50% 110%, rgba(0, 0, 0, 0.7), transparent 70%);
+  background: radial-gradient(420px 320px at 50% 36%, rgba(0, 0, 0, 0.45), transparent 75%);
 }
 .stage-moon {
+  display: none;
   position: absolute;
-  top: 10%;
+  top: 90px;
   left: 50%;
-  width: 280px;
-  height: 280px;
+  width: 240px;
+  height: 240px;
   transform: translateX(-50%);
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
@@ -196,8 +196,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 38%;
-  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.78));
+  height: 45%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.55));
 }
 .stage-sigil {
   min-width: 0;
@@ -206,7 +206,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 28px;
+  padding: 26px 0 28px;
   text-align: center;
 }
 .sigil-ring {
@@ -268,7 +268,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin: 24px auto 14px;
+  margin: 14px auto 0;
   padding: 10px 12px 8px;
   max-width: 100%;
   background: rgba(14, 10, 6, 0.88);

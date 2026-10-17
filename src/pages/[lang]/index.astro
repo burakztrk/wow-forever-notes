@@ -42,6 +42,7 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
     data-combo
     data-default-race={defaultRace.id}
     data-faction={defaultRace.faction.toLowerCase()}
+    style={`--bg-alliance: url(${withBase('/img/bg-alliance.svg')}); --bg-horde: url(${withBase('/img/bg-horde.svg')})`}
     data-unavailable-text={t.classUnavailable}
     data-playable-tpl={t.comboPlayable}
     aria-label={t.comboTitle}
@@ -98,16 +99,6 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
         <div class="stage-moon"></div>
         <div class="stage-ground"></div>
       </div>
-      <div class="stage-sigil">
-        <div class="sigil-ring">
-          <img class="sigil-race" data-stage-race-icon alt="" width="128" height="128" />
-          <img class="sigil-class" data-stage-class-icon alt="" width="64" height="64" />
-        </div>
-        <p class="stage-faction" data-stage-faction></p>
-        <p class="stage-title"><span data-stage-race></span> <span data-stage-class></span></p>
-        <p class="stage-sub" data-stage-sub></p>
-      </div>
-
       <div class="class-bar" role="group" aria-label={t.comboClasses}>
         {
           classList.map((cls) => (
@@ -124,6 +115,16 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
             </button>
           ))
         }
+      </div>
+
+      <div class="stage-sigil">
+        <div class="sigil-ring">
+          <img class="sigil-race" data-stage-race-icon alt="" width="128" height="128" />
+          <img class="sigil-class" data-stage-class-icon alt="" width="64" height="64" />
+        </div>
+        <p class="stage-faction" data-stage-faction></p>
+        <p class="stage-title"><span data-stage-race></span> <span data-stage-class></span></p>
+        <p class="stage-sub" data-stage-sub></p>
       </div>
     </div>
 

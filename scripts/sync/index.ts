@@ -33,6 +33,11 @@ import {
 
 const ROOT = process.cwd();
 const DATA_DIR = path.join(ROOT, 'src/data');
+// wclbox only has a generic elf head for the Skyborne races; this is the in-game portrait (public/icons, committed).
+const RACE_ICON_OVERRIDES: Record<string, string> = {
+  'horde-skyborne-windshaper': 'race_skyborne',
+  'alliance-skyborne-high-order': 'race_skyborne',
+};
 const ICON_DIR = path.join(ROOT, 'public/icons');
 
 const args = process.argv.slice(2);
@@ -110,7 +115,7 @@ async function syncRaces(dataBase: string) {
       id: r.id,
       name: r.race,
       faction: r.faction,
-      icon: r.icon,
+      icon: RACE_ICON_OVERRIDES[r.id] ?? r.icon,
       classes: r.classes,
       racials: r.abilities.map((a) => `racial/${a.id}`),
     };
