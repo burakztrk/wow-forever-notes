@@ -19,14 +19,16 @@ const { title, description, lang, alternates, wide = false, full = false } = Ast
 const section = Astro.url.pathname.split(`/${lang}/`)[1]?.split('/')[0] ?? '';
 const navItems = [
   { key: '', href: langHome(lang) },
+  { key: 'notes', href: withBase(`/${lang}/notes/`) },
   { key: 'races', href: withBase(`/${lang}/races/`) },
   { key: 'classes', href: withBase(`/${lang}/classes/`) },
   { key: 'talents', href: withBase(`/${lang}/talents/`) },
   { key: 'search', href: withBase(`/${lang}/search/`) },
 ];
 const t = ui(lang);
-const labels: Record<string, string> = { '': t.navNotes, races: t.navRaces, classes: t.navClasses, talents: t.navTalents, search: t.navSearch };
-const isCurrent = (key: string) => (key === '' ? section === '' || section === 'blog' : section === key);
+const labels: Record<string, string> = { '': t.navHome, notes: t.navNotes, races: t.navRaces, classes: t.navClasses, talents: t.navTalents, search: t.navSearch };
+const isCurrent = (key: string) =>
+  key === '' ? section === '' : key === 'notes' ? section === 'notes' || section === 'blog' : section === key;
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 ---
 
@@ -49,7 +51,7 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
   <body>
     <header class="site-header">
       <div class="container header-row">
-        <a class="brand" href={langHome(lang)}>WoW Forever <span>Notes</span></a>
+        <a class="brand" href={langHome(lang)}>Forever Campfire <span>Codex</span></a>
         <nav class="main-nav">
           {
             navItems.map((item) => (

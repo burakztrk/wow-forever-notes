@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { formatDate, ui } from '../../../i18n';
+import { getPosts } from '../../../lib/blog';
+import { postUrl, withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = ui(lang);
+const posts = await getPosts(lang);
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/notes/`)])) as Record<Lang, string>;
+---
+
+<BaseLayout title={t.navNotes} description={t.tagline} lang={lang} alternates={alternates}>
+  <section class="hero">
+    <h1>{t.navNotes}</h1>
+    <p class="muted">{t.tagline}</p>
+  </section>
+
+  <h2>{t.latest}</h2>
+  {
+    posts.length === 0 ? (
+      <p class="muted">{t.noPosts}</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((p) => (
+          <li>
+            <a class="post-card" href={postUrl(lang, p.slug)}>
+              <div class="post-meta">
+                <time datetime={p.data.date.toISOString()}>{formatDate(p.data.date, lang)}</time>
+                {p.data.build && (
+                  <span class="chip">
+                    {t.build} {p.data.build}
+                  </span>
+                )}
+                {p.data.draft && <span class="chip draft">{t.draft}</span>}
+              </div>
+              <h3>{p.data.title}</h3>
+              {p.data.excerpt && <p>{p.data.excerpt}</p>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 12px 0 4px;
+  }
+  .hero p {
+    margin: 0;
+  }
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 14px;
+  }
+  .post-card {
+    display: block;
+    padding: 16px 18px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: inherit;
+    text-decoration: none;
+    transition:
+      border-color 0.15s,
+      transform 0.15s;
+  }
+  .post-card:hover,
+  .post-card:focus-visible {
+    border-color: var(--gold-dim);
+    transform: translateY(-1px);
+  }
+  .post-card h3 {
+    margin: 0.35em 0 0.2em;
+  }
+  .post-card p {
+    margin: 0;
+    color: var(--text-dim);
+  }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-mute);
+    font-size: 0.85rem;
+  }
+  .draft {
+    border-color: var(--status-changed);
+    color: var(--status-changed);
+  }
+</style>
