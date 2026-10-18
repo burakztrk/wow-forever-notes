@@ -9,6 +9,7 @@ build: "1.60.1.70425"
 sources:
   - https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6
   - https://us.forums.blizzard.com/en/wow/t/beta-realm-maintenance-october-15/2383475/1169
+  - https://us.forums.blizzard.com/en/wow/t/druid-cat-form-quest/2384010/56
   - https://wowforever.wclbox.com/en/buding
 ---
 
@@ -74,6 +75,7 @@ The October 15 maintenance moved the beta realm to build **1.60.1.70425**. Playe
 - Fixed Horde players being able to earn Kirin Tor reputation.
 - Creatures regenerate health properly out of combat again.
 - Some drink tooltips showed the wrong total mana regeneration. This is fixed.
+- An October 16 hotfix fixed Druids being unable to loot the relics needed to learn :spell[Cat Form].
 
 ## New features / system changes
 
