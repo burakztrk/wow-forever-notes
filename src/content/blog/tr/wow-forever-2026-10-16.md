@@ -9,6 +9,7 @@ build: "1.60.1.70425"
 sources:
   - https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes-%E2%80%93-updated-october-15/2360696/6
   - https://us.forums.blizzard.com/en/wow/t/beta-realm-maintenance-october-15/2383475/1169
+  - https://us.forums.blizzard.com/en/wow/t/druid-cat-form-quest/2384010/56
   - https://wowforever.wclbox.com/en/buding
 ---
 
@@ -70,6 +71,7 @@ Beta realm 15 Ekim bakımında **1.60.1.70425** build'ine güncellendi. Eski bui
 - Horde oyuncularının Kirin Tor itibarı kazanabilmesine yol açan hata giderildi.
 - Yaratıklar savaş dışındayken canlarını yine doğru şekilde yeniliyor.
 - Bazı içeceklerin tooltip'inde toplam mana yenileme miktarı yanlış görünüyordu, düzeltildi.
+- 16 Ekim'deki bir hotfix'le Druid'lerin :spell[Cat Form]'u öğrenmek için gereken relic'leri loot'layamaması hatası düzeltildi.
 
 ## Yeni geliştirmeler / sistem değişiklikleri
 
