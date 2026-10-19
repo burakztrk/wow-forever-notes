@@ -199,6 +199,7 @@ describe('Legacy tree rules (talent rules with a 16-point cap)', () => {
     expect(isValid(nodes, ranks, max)).toBe(true);
     expect(addBlock(nodes, ranks, byName('Gourmand'), max)).toEqual({ kind: 'points' });
     const code = encodeBuild(nodes, ranks, legacy.trees.length);
+    expect(code).toBe('5502001-3'); // same vector as the app's LegacyTest.kt
     expect(decodeBuild(nodes, code, legacy.trees.length, max)).toEqual(ranks);
     // the same code with one more point is over the cap
     expect(decodeBuild(nodes, code.replace('-3', '-4'), legacy.trees.length, max)).toBeUndefined();
