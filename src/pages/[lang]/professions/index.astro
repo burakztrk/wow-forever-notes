@@ -1,9 +1,11 @@
 ---
 import ItemTip from '../../../components/ItemTip.astro';
+import PatchNotes from '../../../components/PatchNotes.astro';
 import RichText from '../../../components/RichText.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { fill, ui } from '../../../i18n';
+import { getPatchNotes, patchNoteGlossaryIds } from '../../../lib/blog';
 import { classList } from '../../../lib/codex';
 import {
   campObject,
@@ -55,8 +57,10 @@ const buffRow = (b: CampBuff) => ({
   prof: professionBySlug.get(b.profession)!,
 });
 const campfireItems = guide.camping.campfires.map((f) => itemByName(f.material));
+const notes = await getPatchNotes(lang, 'profession');
 const tips = professionTips(lang, {
   glossary: [
+    ...patchNoteGlossaryIds(notes),
     ...conflictEntries.filter((e) => !!e).map((e) => e!.id),
     ...guideGlossaryIds(
       [
@@ -90,6 +94,7 @@ const tips = professionTips(lang, {
     <a class="chip-link" href="#buffs">{t.secBuffs}</a>
     <a class="chip-link" href="#primary">{t.secPrimary}</a>
     <a class="chip-link" href="#secondary">{t.secSecondary}</a>
+    <a class="chip-link" href="#patch-notes">{t.patchNotes}</a>
     <a class="chip-link" href={withBase(`/${lang}/legacy/#tree`)}>{t.openLegacy}</a>
   </nav>
 
@@ -373,6 +378,8 @@ const tips = professionTips(lang, {
       }
     </ul>
   </section>
+
+  <PatchNotes lang={lang} notes={notes} empty={t.noProfessionNotes} nameBySection />
 
   <footer class="prof-sources">
     <h2>{t.sources}</h2>

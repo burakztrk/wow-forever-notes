@@ -68,10 +68,14 @@ export function createSectionResolver(data: SectionData) {
       if (key === 'camping') return ['camping'];
       return data.professions.filter((p) => p.slug === key || sectionKey(p.name) === key).map((p) => p.slug);
     }
-    const exact = data.races.filter((r) => r.id === key || raceSuffix(r.id) === key || sectionKey(r.name) === key);
-    if (exact.length) return exact.map((r) => r.id);
-    // "Skyborne" covers "skyborne-high-order" and "skyborne-windshaper"
-    return data.races.filter((r) => raceSuffix(r.id).startsWith(`${key}-`)).map((r) => r.id);
+    // "Skyborne" covers "skyborne-high-order" and "skyborne-windshaper" (one
+    // of them is also named plain "Skyborne")
+    return data.races
+      .filter(
+        (r) =>
+          r.id === key || raceSuffix(r.id) === key || sectionKey(r.name) === key || raceSuffix(r.id).startsWith(`${key}-`),
+      )
+      .map((r) => r.id);
   }
 
   return {

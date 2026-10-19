@@ -1,0 +1,105 @@
+/* Collapsible class / race / profession sections in posts
+   (src/lib/remark-sections.ts) and the patch-note lists at the bottom of the
+   class, race and professions pages (components/PatchNotes.astro). */
+
+.note-section,
+.patch-note {
+  margin: 0.6em 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-elev);
+}
+.note-section > summary,
+.patch-note > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  list-style: none;
+}
+.note-section > summary::-webkit-details-marker,
+.patch-note > summary::-webkit-details-marker {
+  display: none;
+}
+/* chevron: points right when closed, down when open */
+.note-section > summary::before,
+.patch-note > summary::before {
+  content: '';
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--gold-dim);
+  border-bottom: 2px solid var(--gold-dim);
+  transform: rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+.note-section[open] > summary::before,
+.patch-note[open] > summary::before {
+  transform: rotate(45deg);
+}
+.note-section > summary:focus-visible,
+.patch-note > summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.note-section > summary h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  scroll-margin-top: 12px;
+}
+.note-section--class[data-ids~='warrior'] > summary h3 { color: var(--class-warrior); }
+.note-section--class[data-ids~='paladin'] > summary h3 { color: var(--class-paladin); }
+.note-section--class[data-ids~='hunter'] > summary h3 { color: var(--class-hunter); }
+.note-section--class[data-ids~='rogue'] > summary h3 { color: var(--class-rogue); }
+.note-section--class[data-ids~='priest'] > summary h3 { color: var(--class-priest); }
+.note-section--class[data-ids~='shaman'] > summary h3 { color: var(--class-shaman); }
+.note-section--class[data-ids~='mage'] > summary h3 { color: var(--class-mage); }
+.note-section--class[data-ids~='warlock'] > summary h3 { color: var(--class-warlock); }
+.note-section--class[data-ids~='druid'] > summary h3 { color: var(--class-druid); }
+
+.note-section > :not(summary),
+.patch-note-body {
+  margin: 0;
+  padding: 0 12px 4px;
+}
+.note-section > ul,
+.patch-note-body ul {
+  padding-left: 2.3em;
+}
+.note-section li,
+.patch-note-body li {
+  margin: 0.3em 0;
+}
+
+.patch-notes {
+  margin-top: 32px;
+}
+.patch-note > summary {
+  flex-wrap: wrap;
+  color: var(--text);
+  font-weight: 600;
+}
+.patch-note-build {
+  margin-left: auto;
+  color: var(--text-mute);
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+.patch-note-link {
+  display: inline-block;
+  margin: 2px 12px 10px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .note-section > ul,
+  .patch-note-body ul {
+    padding-left: 1.6em;
+  }
+  .patch-note-build {
+    margin-left: 0;
+    flex-basis: 100%;
+    padding-left: 15px;
+  }
+}

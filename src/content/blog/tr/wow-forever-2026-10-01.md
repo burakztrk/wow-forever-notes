@@ -17,7 +17,7 @@ Beta realm 1 Ekim bakımında **1.60.1.70170** build'ine güncellendi. Bu günce
 
 ## Karakter & Sınıf değişiklikleri
 
-### Warrior
+::class[Warrior]
 
 - Temel saldırılarla kritik vuruş yapıldığında üretilen ek Öfke miktarı %100'e çıkarıldı.
 - Rend ve :spell[Sunder Armor] artık düşmanları anında Warrior'a etiketliyor.
@@ -35,7 +35,7 @@ Beta realm 1 Ekim bakımında **1.60.1.70170** build'ine güncellendi. Bu günce
 - **Protection:**
   - :talent[Iron Will] ve :talent[Improved Bloodrage] 1. sıraya taşındı. :talent[Anticipation]{class=warrior} ve :talent[Improved Revenge] 2. sıraya alındı. Toughness talent'ı kaldırıldı.
 
-### Druid
+::class[Druid]
 
 - :spell[Bear Form] ve :spell[Dire Bear Form] artık kritik vuruşlarda %75 artırılmış Öfke üretiyor.
 - :spell[Swipe] hatası düzeltildi; artık Druid'in Attack Power'ının %3'ü oranında ek hasar alıyor.
@@ -46,40 +46,40 @@ Beta realm 1 Ekim bakımında **1.60.1.70170** build'ine güncellendi. Bu günce
   - King of the Jungle ve Tiger's Fury talent'ları kaldırıldı.
   - 4. sıraya yeni Shifting Power talent'ı eklendi (Cat Form'da temel manayı anında 40 Enerjiye dönüştürür). 5. sıraya bekleme süresini azaltan Improved Shifting Power eklendi.
 
-### Hunter
+::class[Hunter]
 
 - **Marksmanship:** 31. talent olan :spell[Sniper Shot] artık 45 yard menzile sahip ve sonraki 3 atışın menzilini 10 yard artırıyor.
 - **Survival:** :talent[Deflection]{class=hunter}'ın Parry artışı seviye başına %1'e (%1-5) çekildi.
 - Pet'ler için Aggressive modu tekrar kullanıma sunuldu.
 
-### Mage
+::class[Mage]
 
 - Parşömenler hareket halindeyken kullanılamayacak şekilde dengelendi.
 - **Fire:** Hot Streak talent'ı Heating Up olarak yeniden adlandırıldı. Combustion şarj sayısı tekrar 3'e döndürüldü. :talent[Improved Scorch]'un Fire Vulnerability etkisi artık direnç için ikinci kez zar atmıyor.
 - **Frost:** :talent[Winter's Chill] uygulamasının dirence takılma ihtimali kaldırıldı.
 
-### Paladin
+::class[Paladin]
 
 - **Protection:** :talent[Redoubt]'un blok şansı %4-20 aralığına çekildi. :spell[Holy Shield]'ın blok şansı %30'a yükseltildi (önceden %20).
 - **Retribution:** :talent[Champion of the Light]'ın Intellect'i büyü hasarına dönüştürme oranı %20/%40/%60 olarak ayarlandı.
 
-### Priest
+::class[Priest]
 
 - :spell[Devouring Plague] artık kritik vurabiliyor.
 - Inner Focus artık periyodik etkilere (DoT) kritik vuruş şansı vermiyor.
 - :talent[Shadow Weaving]'in uygulanamama sorunu giderildi.
 
-### Rogue
+::class[Rogue]
 
 - :spell[Expose Armor] ıska geçtiğinde tüm kombo puanlarının kaybedilmesine neden olan hata düzeltildi.
 - Setup artık yalnızca kaçınılan veya direnilen hedefe kombo puanı ekliyor.
 
-### Shaman
+::class[Shaman]
 
 - :spell[Ghost Wolf] aydınlık alanlarda daha görünür kılındı.
 - :spell[Disease Cleansing Totem] süresi 5 dakikaya sabitlendi ve :spell[Totemic Recall]'un mana yenilememe sorunu giderildi.
 
-### Warlock
+::class[Warlock]
 
 - :spell[Drain Soul] başka büyü cast edildiğinde doğru şekilde kesiliyor.
 - :spell[Hellfire] artık kritik vuruş yapabiliyor.
@@ -87,8 +87,13 @@ Beta realm 1 Ekim bakımında **1.60.1.70170** build'ine güncellendi. Bu günce
 
 ## Irk değişiklikleri
 
-- **Gnome:** :racial[Eureka!] artık periyodik etkilerden yararlanmıyor (kanallanan büyüler periyodik sayılmaz).
-- **Undead:** :racial[Cannibalize], kullanan kişi fiziksel hasara bağışıkken kullanılamaz.
+::race[Gnome]
+
+- :racial[Eureka!] artık periyodik etkilerden yararlanmıyor (kanallanan büyüler periyodik sayılmaz).
+
+::race[Undead]
+
+- :racial[Cannibalize], kullanan kişi fiziksel hasara bağışıkken kullanılamaz.
 
 ## Önemli bug fix'ler
 

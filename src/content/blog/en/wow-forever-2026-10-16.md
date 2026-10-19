@@ -21,7 +21,7 @@ The October 15 maintenance moved the beta realm to build **1.60.1.70425**. Playe
 
 - Wands now need you to stand still for 0.5 seconds before firing, the way early World of Warcraft worked.
 
-### Hunter
+::class[Hunter]
 
 - :spell[Auto Shot] has the same 0.5 second stand-still requirement. It keeps firing while you cast spells such as :spell[Aimed Shot].
 - :talent[Trueshot Aura] now affects the whole raid.
@@ -30,7 +30,7 @@ The October 15 maintenance moved the beta realm to build **1.60.1.70425**. Playe
 - :spell[Summon Hawk] spawns the hawk on the target you cast it on and keeps it attached to that target.
 - Pet abilities were toned down. Dismember now reduces healing by 25% (was 50%). Sonic Blast now slows casting by 30% (was 60%). Both last for less time and have longer cooldowns.
 
-### Mage
+::class[Mage]
 
 - New spell: :spell[Frost Blast], learned at level 24. It's a 1.5 second cast that deals damage and slows the target by 40%. Every talent that affects Frostbolt also affects it. The developers added it to cover what Rank 1 :spell[Frostbolt] used to do, now that down-ranking is penalized.
 - :spell[Arcane Blast] has been redesigned:
@@ -42,7 +42,7 @@ The October 15 maintenance moved the beta realm to build **1.60.1.70425**. Playe
 - New 16-point talent: :talent[Arcane Wrath]. It's a 3.5 second cast on a 6 second cooldown. Its damage is calculated as if the Mage had extra spell power equal to 5% of their maximum mana.
 - Fixed :talent[Presence of Mind] not being consumed by spell casts.
 
-### Druid
+::class[Druid]
 
 - :talent[Leader of the Pack] now grants only melee and ranged crit chance, and it affects the whole raid. The aura from :spell[Moonkin Form] now grants only spell crit chance, also raid-wide.
 - :spell[Shred] (Rank 1) is learned at level 20 (was 22).
@@ -50,24 +50,44 @@ The October 15 maintenance moved the beta realm to build **1.60.1.70425**. Playe
 
 ## Racial changes
 
-- **Tauren:**
-  - :racial[Endurance] now grants 2% critical damage and healing (was 1% hit).
-  - :racial[Plainsrunning] adds 3% mounted speed. Keeping the effect now requires covering a minimum distance per second.
-  - :racial[War Stomp] cooldown is down to 90 seconds.
-  - :racial[Cultivation] cooldown is down to 15 minutes.
-- **Orc:**
-  - :racial[Blood Fury] cooldown is up to 3 minutes (was 2).
-  - :racial[Shatter Curse] no longer grants immunity. It dispels curses and banes, and its magic damage reduction is 5% (was 15%).
-  - Axe Specialization is replaced by Savage: 1% crit chance.
-- **Troll:** :racial[Regeneration] health regeneration bonus is up to 20% (was 10%).
-- **Skyborne:**
-  - :racial[Wind Blessed] haste goes to 3% (was 1%).
-  - :racial[Walk on Air] cooldown is down to 90 seconds.
-  - Skysight and Read Leyline can now be used while moving.
-- **Human:** Sword Specialization is replaced by Ruthless: 2% crit chance.
-- **Dwarf:** Mace Specialization is replaced by Earth Fury: 2% critical damage and healing.
-- **Gnome:** :racial[Eureka!] is now an 8 second buff with no charges. It also works with Power Word: Shield.
-- **Undead:** :racial[Touch of the Grave] was tuned to be more consistent: a 30% proc chance for casters, 20% for Paladins, Rogues and Warriors, and a 25 second internal cooldown.
+::race[Tauren]
+
+- :racial[Endurance] now grants 2% critical damage and healing (was 1% hit).
+- :racial[Plainsrunning] adds 3% mounted speed. Keeping the effect now requires covering a minimum distance per second.
+- :racial[War Stomp] cooldown is down to 90 seconds.
+- :racial[Cultivation] cooldown is down to 15 minutes.
+
+::race[Orc]
+
+- :racial[Blood Fury] cooldown is up to 3 minutes (was 2).
+- :racial[Shatter Curse] no longer grants immunity. It dispels curses and banes, and its magic damage reduction is 5% (was 15%).
+- Axe Specialization is replaced by Savage: 1% crit chance.
+
+::race[Troll]
+
+- :racial[Regeneration] health regeneration bonus is up to 20% (was 10%).
+
+::race[Skyborne]
+
+- :racial[Wind Blessed] haste goes to 3% (was 1%).
+- :racial[Walk on Air] cooldown is down to 90 seconds.
+- Skysight and Read Leyline can now be used while moving.
+
+::race[Human]
+
+- Sword Specialization is replaced by Ruthless: 2% crit chance.
+
+::race[Dwarf]
+
+- Mace Specialization is replaced by Earth Fury: 2% critical damage and healing.
+
+::race[Gnome]
+
+- :racial[Eureka!] is now an 8 second buff with no charges. It also works with Power Word: Shield.
+
+::race[Undead]
+
+- :racial[Touch of the Grave] was tuned to be more consistent: a 30% proc chance for casters, 20% for Paladins, Rogues and Warriors, and a 25 second internal cooldown.
 
 ## Notable bug fixes
 

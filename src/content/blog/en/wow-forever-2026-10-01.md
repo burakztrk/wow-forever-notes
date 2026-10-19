@@ -17,7 +17,7 @@ The WoW Forever Beta realm was updated to build **1.60.1.70170** following the O
 
 ## Character & Class changes
 
-### Warrior
+::class[Warrior]
 
 - Additional Rage generated from landing Critical Strikes with basic attacks increased to 100% increased Rage (was 75%).
 - Rend and :spell[Sunder Armor] now instantly tap enemies to the Warrior.
@@ -35,7 +35,7 @@ The WoW Forever Beta realm was updated to build **1.60.1.70170** following the O
 - **Protection:**
   - :talent[Iron Will] and :talent[Improved Bloodrage] moved to Row 1. :talent[Anticipation]{class=warrior} and :talent[Improved Revenge] moved to Row 2. The Toughness talent has been removed.
 
-### Druid
+::class[Druid]
 
 - :spell[Bear Form] and :spell[Dire Bear Form] generate 75% increased Rage when landing a Critical Strike.
 - :spell[Swipe] now correctly scales with 3% of the Druid's Attack Power.
@@ -46,40 +46,40 @@ The WoW Forever Beta realm was updated to build **1.60.1.70170** following the O
   - King of the Jungle and Tiger's Fury talents have been removed.
   - New Talent Shifting Power in Row 4 (converts 55% of Base Mana into 40 Energy in Cat Form). Connected in Row 5 is Improved Shifting Power to reduce its cooldown.
 
-### Hunter
+::class[Hunter]
 
 - **Marksmanship:** The 31st talent :spell[Sniper Shot] now has a 45-yard range and increases the range of your next 3 shots by 10 yards.
 - **Survival:** :talent[Deflection]{class=hunter} Parry increase changed to 1% to 5% (was 2% to 10%).
 - Aggressive Mode is back for pets under the spellbook pet tab.
 
-### Mage
+::class[Mage]
 
 - All Mage comprehension scrolls received a balance pass and can no longer be cast while moving.
 - **Fire:** Hot Streak renamed to Heating Up. Combustion charges returned to 3 (was 4). :talent[Improved Scorch]'s Fire Vulnerability no longer rolls a second resist check.
 - **Frost:** :talent[Winter's Chill] application no longer rolls a resist check.
 
-### Paladin
+::class[Paladin]
 
 - **Protection:** :talent[Redoubt] block chance changed to 4%–20% (was 6%–30%). :spell[Holy Shield] block chance increased to 30% (was 20%).
 - **Retribution:** :talent[Champion of the Light] Intellect to Spell Damage ratio adjusted to 20%/40%/60%.
 
-### Priest
+::class[Priest]
 
 - :spell[Devouring Plague] can now critically strike.
 - Inner Focus no longer applies its critical strike increase to periodic effects.
 - :talent[Shadow Weaving] can no longer fail to apply.
 
-### Rogue
+::class[Rogue]
 
 - Fixed an issue where missing with :spell[Expose Armor] caused all combo points to be lost.
 - Setup now only adds combo points to the target you dodged or resisted a spell from.
 
-### Shaman
+::class[Shaman]
 
 - :spell[Ghost Wolf] visibility improved in well-lit areas.
 - :spell[Disease Cleansing Totem] fixed to 5-minute duration and :spell[Totemic Recall] now properly restores Mana.
 
-### Warlock
+::class[Warlock]
 
 - :spell[Drain Soul] is correctly interrupted when beginning to cast another spell.
 - :spell[Hellfire] can now critically strike.
@@ -87,8 +87,13 @@ The WoW Forever Beta realm was updated to build **1.60.1.70170** following the O
 
 ## Racial changes
 
-- **Gnome:** :racial[Eureka!] no longer benefits periodic effects (channeled spells do not count as periodics).
-- **Undead:** :racial[Cannibalize] cannot be used while immune to Physical damage.
+::race[Gnome]
+
+- :racial[Eureka!] no longer benefits periodic effects (channeled spells do not count as periodics).
+
+::race[Undead]
+
+- :racial[Cannibalize] cannot be used while immune to Physical damage.
 
 ## Important bug fixes
 
