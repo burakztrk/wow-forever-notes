@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { fill, ui, type UiKey } from '../../../i18n';
+import { iconUrl, itemTipId, legacy, LEGACY_GRID, legacyPage, professionTips } from '../../../lib/professions';
+import { arrowPath, gridViewBoxFor } from '../../../lib/talents';
+import { islandJson } from '../../../lib/tooltip-payload';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = ui(lang);
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/legacy/`)])) as Record<Lang, string>;
+const data = legacyPage(lang);
+const byId = new Map(data.nodes.map((n) => [n.id, n]));
+const viewBox = gridViewBoxFor(LEGACY_GRID.rows, LEGACY_GRID.cols);
+const CHALLENGE_LABEL: Record<string, UiKey> = {
+  classes: 'chClasses',
+  professions: 'chProfessions',
+  dungeons: 'chDungeons',
+  raids: 'chRaids',
+  pvp: 'chPvp',
+  adventure: 'chAdventure',
+};
+const tips = professionTips(lang, { items: legacy.rewards.flatMap((r) => (r.item ? [r.item] : [])) });
+const steps = [
+  { title: t.legacyEarn, text: fill(t.legacyEarnText, { total: legacy.totalChallenges, level: legacy.unlockLevel }) },
+  { title: t.legacySpend, text: fill(t.legacySpendText, { max: legacy.maxPoints }) },
+  { title: t.legacyCollect, text: fill(t.legacyCollectText, { max: legacy.maxPoints }) },
+];
+---
+
+<BaseLayout title={t.legacyTitle} description={t.legacyIntro} lang={lang} alternates={alternates} wide>
+  <h1>{t.legacyTitle}</h1>
+  <p class="lead">{t.legacyIntro}</p>
+
+  <ol class="legacy-steps">
+    {
+      steps.map((s, i) => (
+        <li>
+          <span class="legacy-step-n">{i + 1}</span>
+          <div>
+            <strong>{s.title}</strong>
+            <p>{s.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="legacy-facts">
+    <section>
+      <h2>{t.legacyRewards}</h2>
+      <ul class="reward-list">
+        {
+          legacy.rewards.map((r) => (
+            <li>
+              <span class:list={[{ 'wf-tip wf-tip--item': !!r.item }, 'reward']} data-tip={r.item ? itemTipId(r.item) : undefined} tabindex={r.item ? 0 : undefined}>
+                <img src={iconUrl(r.icon)} alt="" width="36" height="36" loading="lazy" />
+                <span>
+                  <b>{fill(t.pointsN, { n: r.points })}</b>
+                  <span>{r.name}</span>
+                </span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section>
+      <h2>{t.legacyChallenges}</h2>
+      <ul class="challenge-list">
+        {
+          legacy.challenges.map((c) => (
+            <li>
+              <span>{CHALLENGE_LABEL[c.key] ? t[CHALLENGE_LABEL[c.key]] : c.name}</span>
+              <span class="muted">{fill(t.challengeCount, { n: c.count, p: c.points })}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+
+  <h2 id="tree">{t.legacyTreeTitle}</h2>
+  <header class="calc-head legacy-head">
+    <div class="calc-summary">
+      <span>{t.pointsLeft}: <strong data-points-left>{legacy.maxPoints}</strong></span>
+      <span class="calc-split" data-split>0 / 0 / 0</span>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="calc-btn" data-reset-all>{t.resetAll}</button>
+      <button type="button" class="calc-btn" data-share>{t.share}</button>
+    </div>
+    <p class="muted calc-help">{t.legacyTreeHelp}</p>
+  </header>
+
+  <div class="trees legacy-trees" style="--class-color: #c2a265">
+    {
+      legacy.trees.map((tree, ti) => (
+        <section class="tree" data-tree={ti}>
+          <header class="tree-head">
+            <img class="tree-icon" src={iconUrl(tree.icon)} alt="" width="28" height="28" loading="lazy" />
+            <h2>{tree.name}</h2>
+            <span class="tree-points" data-tree-points={ti}>
+              0
+            </span>
+            <button type="button" class="calc-btn small" data-reset-tree={ti}>
+              {t.resetTree}
+            </button>
+          </header>
+          <div class="tree-grid" style={`--rows: ${LEGACY_GRID.rows}; --cols: ${LEGACY_GRID.cols}`}>
+            <svg class="tree-arrows" viewBox={viewBox} preserveAspectRatio="none" aria-hidden="true">
+              {data.nodes
+                .filter((n) => n.tree === ti && n.requires && byId.has(n.requires))
+                .map((n) => (
+                  <path d={arrowPath(byId.get(n.requires!)!, n)} data-arrow-to={n.id} />
+                ))}
+            </svg>
+            {data.nodes
+              .filter((n) => n.tree === ti)
+              .map((n) => (
+                <div class="talent-slot" style={`grid-row: ${n.row}; grid-column: ${n.col}`}>
+                  <button type="button" class="talent locked" data-talent={n.id} aria-label={`${n.name} 0/${n.maxRank}`}>
+                    {n.icon && <img src={`${data.iconBase}${n.icon}.jpg`} alt="" width="44" height="44" loading="lazy" />}
+                    <span class="talent-rank" data-rank-of={n.id}>
+                      0/{n.maxRank}
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    class="talent-minus"
+                    data-minus={n.id}
+                    aria-label={`${t.removePoint}: ${n.name}`}
+                    title={t.removePoint}
+                    hidden
+                  >
+                    −
+                  </button>
+                </div>
+              ))}
+            {legacy.reserved
+              .filter((r) => r.tree === ti)
+              .map((r) => (
+                <div class="talent-slot" style={`grid-row: ${r.tier}; grid-column: ${r.lane}`}>
+                  <span class="talent reserved" title={t.legacyUnrevealed} aria-label={t.legacyUnrevealed}>
+                    <img src={iconUrl('inv_misc_questionmark')} alt="" width="44" height="44" loading="lazy" />
+                  </span>
+                </div>
+              ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+  <p class="muted small">{fill(t.legacyCapNote, { max: legacy.maxPoints })}</p>
+
+  <footer class="prof-sources">
+    <h2>{t.sources}</h2>
+    <ul>
+      <li><a href="https://wowforevertools.com/" rel="noopener">WoW Forever Tools — Legacy</a></li>
+      <li><a href="https://wowforever.wclbox.com/en/chuancheng" rel="noopener">wclbox — Legacy</a></li>
+      <li><a href="https://classicwowforever.com/legacy/" rel="noopener">Classic WoW Forever — Legacy (CC BY 4.0)</a></li>
+    </ul>
+    <p class="muted">Build {legacy.build ?? '?'}</p>
+  </footer>
+
+  <script slot="after" type="application/json" id="wf-talents" is:inline set:html={islandJson(data)} />
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+</BaseLayout>
+
+<script>
+  import '../../../scripts/talents';
+</script>

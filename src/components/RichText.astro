@@ -1,0 +1,23 @@
+---
+import { segments } from '../lib/professions';
+
+// Plain guide text with tooltips on the spell and talent names it mentions.
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+{
+  segments(text).map((s) =>
+    s.tip ? (
+      <span class={`wf-tip wf-tip--${s.kind}`} data-tip={s.tip} tabindex="0">
+        {s.text}
+      </span>
+    ) : (
+      s.text
+    ),
+  )
+}

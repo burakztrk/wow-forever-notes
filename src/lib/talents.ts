@@ -14,15 +14,17 @@ const glossary = glossaryData as GlossaryFile;
 export interface TalentView extends TalentNode {
   name: string;
   icon?: string;
-  status: GlossaryEntry['status'];
+  status?: GlossaryEntry['status']; // Legacy perks have none
+  meta?: string; // extra tooltip subtitle, e.g. "25 sec cast · 23 hr cooldown"
   ranks: string[]; // text per rank in the page language
   change?: string;
 }
 
 export interface TalentPagePayload {
-  cls: ClassId;
+  cls: ClassId | 'legacy';
   trees: string[];
   nodes: TalentView[];
+  maxPoints?: number; // default MAX_POINTS (51)
   iconBase: string;
   strings: Record<string, string>;
 }
@@ -83,7 +85,8 @@ const CELL = 100;
 const GAP = 24;
 const cx = (col: number) => (col - 1) * (CELL + GAP) + CELL / 2;
 const top = (row: number) => (row - 1) * (CELL + GAP);
-export const gridViewBox = `0 0 ${colCount * (CELL + GAP) - GAP} ${rowCount * (CELL + GAP) - GAP}`;
+export const gridViewBoxFor = (rows: number, cols: number) => `0 0 ${cols * (CELL + GAP) - GAP} ${rows * (CELL + GAP) - GAP}`;
+export const gridViewBox = gridViewBoxFor(rowCount, colCount);
 
 export function arrowPath(from: TalentNode, to: TalentNode): string {
   if (from.row === to.row) {

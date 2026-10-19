@@ -1,8 +1,12 @@
 import classesData from '../data/classes.json';
 import glossaryData from '../data/glossary.json';
 import racesData from '../data/races.json';
+import guideData from '../data/professions-guide.json';
+import legacyData from '../data/legacy.json';
+import professionsData from '../data/professions.json';
 import { inClassOrder, type ClassInfo, type GlossaryFile } from './glossary-types';
 import { getAllPosts } from './blog';
+import { guideGlossaryTerms } from './professions';
 import { postUrl } from '../utils/url';
 
 // Public read-only data API for the mobile app: /data/v1/*.json, generated at
@@ -10,7 +14,7 @@ import { postUrl } from '../utils/url';
 // field is removed or changes meaning; adding fields is backwards compatible.
 
 export const DATA_SCHEMA = 1;
-export const DATA_FILES = ['glossary', 'classes', 'races', 'posts'] as const;
+export const DATA_FILES = ['glossary', 'classes', 'races', 'posts', 'professions', 'legacy'] as const;
 
 const glossary = glossaryData as GlossaryFile;
 
@@ -52,7 +56,14 @@ export async function manifestPayload() {
     assetBase: siteRoot(),
     iconUrl: `${siteRoot()}/icons/{icon}.jpg`,
     files: Object.fromEntries(DATA_FILES.map((f) => [f, `${siteRoot()}/data/v1/${f}.json`])),
-    counts: { glossary: glossary.entries.length, classes: classesData.length, races: racesData.length, posts: posts.length },
+    counts: {
+      glossary: glossary.entries.length,
+      classes: classesData.length,
+      races: racesData.length,
+      posts: posts.length,
+      professions: professionsData.professions.length,
+      legacyPerks: legacyData.perks.length,
+    },
     latestPost: latest ? { slug: latest.slug, date: latest.date, build: latest.build } : null,
   };
 }
@@ -63,4 +74,7 @@ export const respond = {
   classes: () => json({ schema: DATA_SCHEMA, classes: inClassOrder(classesData as ClassInfo[]) }),
   races: () => json({ schema: DATA_SCHEMA, races: racesData }),
   posts: async () => json(await postsPayload()),
+  // synced profession data plus the hand-edited guide (TR + EN text) the pages use
+  professions: () => json({ schema: DATA_SCHEMA, ...professionsData, guide: guideData, glossaryTerms: guideGlossaryTerms() }),
+  legacy: () => json({ schema: DATA_SCHEMA, ...legacyData }),
 };

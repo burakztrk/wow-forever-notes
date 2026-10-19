@@ -1,10 +1,10 @@
-// npm run sync [-- --class mage] [-- --no-icons] [-- --fresh] [-- --no-wft]
+// npm run sync [-- --class mage] [-- --no-icons] [-- --fresh] [-- --no-wft] [-- --no-professions]
 //
 // Snapshots WoW Forever spell, talent and race data from wclbox into
 // src/data/*.json and icons into public/icons/, then replaces spell and talent
-// descriptions with the official client text from wowforevertools.com. The output is committed, so
+// descriptions with the official client text from wowforevertools.com. Also
+// refreshes professions.json and legacy.json (see professions-run.ts). The output is committed, so
 // the site build never depends on the network. Re-run when a new build lands.
-import { existsSync } from 'node:fs';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { applyRankTranslations, applyTranslations, type TranslationCache } from '../lib/translations';
@@ -16,9 +16,10 @@ import {
   type GlossaryFile,
   type RaceInfo,
 } from '../../src/lib/glossary-types';
-import { fetchBinary, fetchJson, fetchText } from '../lib/http';
-import { WCLBOX, WOWFOREVERTOOLS, wclboxDataBase, wclboxIcon, wclboxPage, wclboxRelease } from '../lib/sources';
-import { referencedIcons } from './icons';
+import { fetchJson, fetchText } from '../lib/http';
+import { WCLBOX, WOWFOREVERTOOLS, wclboxDataBase, wclboxPage, wclboxRelease } from '../lib/sources';
+import { downloadIcons, referencedIcons } from './icons';
+import { syncProfessions } from './professions-run';
 import { parseSpellDetail, parseSpellList, parseTalentPage, statusFromText } from './parse';
 import {
   applyWftTexts,
@@ -197,22 +198,6 @@ async function syncClass(cls: ClassId) {
   return { spells, talents: talentEntries, info };
 }
 
-async function downloadIcons(icons: Set<string>) {
-  await mkdir(ICON_DIR, { recursive: true });
-  let fetched = 0;
-  for (const icon of [...icons].sort()) {
-    const file = path.join(ICON_DIR, `${icon}.jpg`);
-    if (existsSync(file)) continue;
-    try {
-      await writeFile(file, await fetchBinary(wclboxIcon(icon)));
-      fetched++;
-    } catch (err) {
-      log(`  icon ${icon}: ${(err as Error).message}`);
-    }
-  }
-  log(`icons: ${fetched} downloaded, ${icons.size} referenced`);
-}
-
 // ---------- official English text (wowforevertools JS chunks) ----------
 
 async function syncWftTexts(classes: ClassId[]): Promise<Partial<Record<ClassId, WftClassTexts>>> {
@@ -244,6 +229,9 @@ async function syncWftTexts(classes: ClassId[]): Promise<Partial<Record<ClassId,
 const dataBase = await wclboxDataBase(release);
 const meta = await fetchJson<{ foreverBuild?: string }>(`${dataBase}meta.json`, { cacheDir: CACHE_DIR }).catch(
   () => ({}) as { foreverBuild?: string },
+);
+const itemMeta = await fetchJson<{ shard?: number }>(`${dataBase}items/meta.json`, { cacheDir: CACHE_DIR }).catch(
+  () => ({}) as { shard?: number },
 );
 log(`release ${release}, build ${meta.foreverBuild ?? 'unknown'}`);
 
@@ -317,6 +305,18 @@ await writeFile(path.join(DATA_DIR, 'races.json'), json(raceInfos));
 await writeFile(path.join(DATA_DIR, 'classes.json'), json(classInfos));
 log(`wrote ${entries.length} glossary entries`);
 
-if (withIcons) {
-  await downloadIcons(referencedIcons(entries, classInfos, raceInfos));
+const icons = referencedIcons(entries, classInfos, raceInfos);
+if (!args.includes('--no-professions') && !onlyClass) {
+  const prof = await syncProfessions({
+    root: ROOT,
+    dataBase,
+    cacheDir: CACHE_DIR,
+    build: meta.foreverBuild ?? null,
+    itemShards: itemMeta.shard,
+    log,
+  });
+  prof.icons.forEach((i) => icons.add(i));
+  if (prof.pending.length) log(`TRANSLATE_PENDING ${prof.pending.length} Legacy texts → run \`npm run translate\``);
 }
+
+if (withIcons) await downloadIcons(ICON_DIR, icons, log);

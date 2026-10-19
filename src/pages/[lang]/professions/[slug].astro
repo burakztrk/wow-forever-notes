@@ -1,0 +1,342 @@
+---
+import ItemTip from '../../../components/ItemTip.astro';
+import RichText from '../../../components/RichText.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { fill, ui } from '../../../i18n';
+import {
+  classBuffEntry,
+  guide,
+  guideGlossaryIds,
+  iconUrl,
+  item,
+  perkById,
+  perkText,
+  pick,
+  professions,
+  professionTips,
+  sectionLabel,
+} from '../../../lib/professions';
+import type { ItemCount, Profession, Shopping } from '../../../lib/profession-types';
+import { islandJson } from '../../../lib/tooltip-payload';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => professions.map((p) => ({ params: { lang, slug: p.slug }, props: { p } })));
+}
+
+interface Props {
+  p: Profession;
+}
+
+const lang = Astro.params.lang as Lang;
+const { p } = Astro.props;
+const t = ui(lang);
+const g = guide.professions[p.slug];
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/professions/${p.slug}/`)])) as Record<Lang, string>;
+const buffs = guide.buffs.filter((b) => b.profession === p.slug);
+const perks = p.perks.map((id) => perkById.get(id)).filter((x) => !!x);
+const cap = p.routeCap ?? 225;
+const shopLists = (s: Shopping) =>
+  [
+    { label: t.shopGather, list: s.gather },
+    { label: t.shopBuy, list: s.buy },
+    { label: t.shopMake, list: s.make },
+  ].filter((x) => x.list.length);
+const gatherLabel = (band: NonNullable<Profession['gathering']>[number]) =>
+  band.levels ? fill(t.levelsRange, { a: band.levels[0], b: band.levels[1] }) : fill(t.skillPlus, { n: band.skill ?? 0 });
+const hasSource = !!p.gathering?.some((b) => b.name || b.items.length);
+const cwfSlug = p.slug === 'first-aid' ? 'bandages' : p.slug;
+const title = `${p.name} · ${t.professionsTitle}`;
+const conflictEntry = (name?: string) => (name ? classBuffEntry(name) : undefined);
+
+// every item, spell and talent the page shows gets a tooltip
+const itemIds = new Set<number>([
+  ...(g?.tools ?? []),
+  ...p.campObjects.flatMap((o) => o.reagents.map(([id]) => id)),
+  ...(p.route ?? []).flatMap((s) => [...(s.item ? [s.item] : []), ...s.reagents.map(([id]) => id)]),
+  ...[p.shopping?.toCap, p.shopping?.afterCap].flatMap((sh) => (sh ? [...sh.buy, ...sh.gather, ...sh.make].map(([id]) => id) : [])),
+  ...(p.gathering ?? []).flatMap((b) => b.items),
+]);
+const tips = professionTips(lang, {
+  items: [...itemIds],
+  glossary: [
+    ...guideGlossaryIds([g?.summary, g?.materials], lang),
+    ...buffs.flatMap((b) => {
+      const e = conflictEntry(b.conflictTip ?? b.conflict);
+      return e ? [e.id] : [];
+    }),
+  ],
+});
+---
+
+<BaseLayout title={title} description={pick(g?.summary, lang)} lang={lang} alternates={alternates}>
+  <a class="back-nav" href={withBase(`/${lang}/professions/`)}>{t.backToProfessions}</a>
+  <header class="codex-head">
+    <img class="codex-head-icon" src={iconUrl(p.icon)} alt="" width="64" height="64" />
+    <div>
+      <h1>{p.name}</h1>
+      <div class="codex-meta">
+        {sectionLabel(p, lang)}
+        {p.newRecipes > 0 && <> · {fill(t.newRecipes, { n: p.newRecipes })}</>}
+      </div>
+    </div>
+  </header>
+  <p class="lead"><RichText text={pick(g?.summary, lang)} /></p>
+
+  <h2 class="codex-section">{t.toolsTitle}</h2>
+  {
+    g?.tools.length ? (
+      <ul class="item-list">
+        {g.tools.map((id) => (
+          <li class="item-chip">
+            <ItemTip id={id} size={28} />
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="muted">{t.noTools}</p>
+    )
+  }
+
+  <h2 class="codex-section">{t.campObjectsTitle}</h2>
+  <ul class="camp-list">
+    {
+      p.campObjects.map((o) => {
+        const buff = buffs.find((b) => b.object === o.name);
+        const drop = g?.blueprints?.[o.name];
+        return (
+          <li class="camp-card">
+            <div class="camp-head">
+              {o.icon && <img src={iconUrl(o.icon)} alt="" width="40" height="40" loading="lazy" />}
+              <div>
+                <strong>{o.name}</strong>
+                <span class="muted">
+                  {fill(t.skillN, { n: o.skill })}
+                  {o.replaces && <> · {fill(t.canReplace, { name: o.replaces })}</>}
+                </span>
+              </div>
+            </div>
+            {buff && (
+              <p class="camp-buff">
+                <span class="muted">{t.campBuffLabel}:</span> {pick(buff.bonus, lang)}
+                {buff.conflict && (
+                  <span class="muted">
+                    {' '}
+                    · {t.colConflict}:{' '}
+                    {conflictEntry(buff.conflictTip ?? buff.conflict) ? (
+                      <span
+                        class={`wf-tip wf-tip--${conflictEntry(buff.conflictTip ?? buff.conflict)!.kind}`}
+                        data-tip={conflictEntry(buff.conflictTip ?? buff.conflict)!.id}
+                        tabindex="0"
+                      >
+                        {buff.conflict}
+                      </span>
+                    ) : (
+                      buff.conflict
+                    )}
+                  </span>
+                )}
+              </p>
+            )}
+            <ul class="reagents">
+              {o.reagents.map(([id, n]) => (
+                <li>
+                  <ItemTip id={id} count={n} />
+                </li>
+              ))}
+            </ul>
+            {(o.blueprint || drop) && (
+              <p class="camp-bp muted">{fill(t.blueprintFrom, { src: drop ? pick(drop, lang) : t.sourceUnknown })}</p>
+            )}
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  {
+    p.shopping && (
+      <>
+        <h2 class="codex-section">{t.shoppingTitle}</h2>
+        {g?.materials && (
+          <p class="muted">
+            <RichText text={pick(g.materials, lang)} />
+          </p>
+        )}
+        <div class="shop-cols">
+          {[
+            { range: `1–${cap}`, s: p.shopping.toCap },
+            { range: `${cap}–300`, s: p.shopping.afterCap },
+          ].map(({ range, s }) => (
+            <section class="shop-col">
+              <h3>{fill(t.skillN, { n: range })}</h3>
+              {shopLists(s).map(({ label, list }) => (
+                <>
+                  <h4>{label}</h4>
+                  <ul class="shop-list">
+                    {list.map(([id, n]: ItemCount) => (
+                      <li>
+                        <ItemTip id={id} size={22} />
+                        <b>{n}</b>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ))}
+            </section>
+          ))}
+        </div>
+        <p class="muted small">{t.betaCapNote}</p>
+      </>
+    )
+  }
+
+  {
+    p.gathering && (
+      <>
+        <h2 class="codex-section">{t.gatherTitle}</h2>
+        {g?.materials && <p class="muted">{pick(g.materials, lang)}</p>}
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                {hasSource && <th>{t.colSource}</th>}
+                <th>{p.gathering.some((b) => b.levels) ? t.colLevel : t.colSkill}</th>
+                <th>{t.colZones}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {p.gathering.map((band) => (
+                <tr>
+                  {hasSource && (
+                    <td>
+                      <span class="icon-name gather-src">
+                        {band.items.slice(0, 4).map((id) => (
+                          <ItemTip id={id} size={22} iconOnly />
+                        ))}
+                        {band.name ?? band.items.map((id) => item(id).name).slice(0, 3).join(', ')}
+                      </span>
+                    </td>
+                  )}
+                  <td class="nowrap">{gatherLabel(band)}</td>
+                  <td>{band.zones.join(', ')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )
+  }
+
+  {
+    p.route && (
+      <details class="route">
+        <summary>
+          <h2 class="codex-section">{t.routeTitle}</h2>
+          <span class="muted">({p.route.length})</span>
+        </summary>
+        <p class="muted small">{t.routeIntro}</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>{t.colSkill}</th>
+                <th>{t.colRecipe}</th>
+                <th class="num">{t.colCrafts}</th>
+                <th>{t.colPerCraft}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {p.route.map((s) => (
+                <tr>
+                  <td class="nowrap">
+                    {s.from}–{s.to}
+                  </td>
+                  <td>
+                    {s.item ? (
+                      <ItemTip id={s.item} size={22} />
+                    ) : (
+                      <span class="icon-name">
+                        <img src={iconUrl(p.icon)} alt="" width="22" height="22" loading="lazy" />
+                        {s.recipe}
+                      </span>
+                    )}
+                  </td>
+                  <td class="num">{s.crafts}</td>
+                  <td class="reagent-cell">
+                    {s.reagents.map(([id, n]) => (
+                      <ItemTip id={id} count={n} size={18} small />
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
+    )
+  }
+
+  {
+    p.kind === 'primary' && (
+      <>
+        <h2 class="codex-section">{t.trainerTitle}</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>{t.colRank}</th>
+                <th class="num">{t.colSkillCap}</th>
+                <th>{t.colRequires}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {guide.trainerRanks.map((r) => (
+                <tr>
+                  <td>{r.name}</td>
+                  <td class="num">{r.to}</td>
+                  <td class="muted">{r.level ? fill(t.reqSkillLevel, { skill: r.skill, level: r.level }) : '–'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )
+  }
+
+  <h2 class="codex-section">{t.legacyTitle}</h2>
+  {p.milestones.length > 0 && <p>{fill(t.legacyMilestones, { skills: p.milestones.map((m) => m.skill).join(' / ') })}</p>}
+  {p.certification && <p>{t.certificationNote}</p>}
+  {
+    perks.length > 0 && (
+      <ul class="perk-list">
+        {perks.map((perk) => (
+          <li>
+            <a class="perk-row" href={withBase(`/${lang}/legacy/#tree`)}>
+              <img src={iconUrl(perk!.icon)} alt="" width="32" height="32" loading="lazy" />
+              <span>
+                <strong>{perk!.name}</strong> <span class="muted">({perk!.maxRank})</span>
+                <span class="perk-desc">{perkText(perk!, lang)}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <footer class="prof-sources">
+    <h2>{t.sources}</h2>
+    <ul>
+      <li><a href={p.sourceUrl} rel="noopener">wclbox — {p.name}</a></li>
+      <li>
+        <a href={`https://classicwowforever.com/professions/${cwfSlug}/`} rel="noopener">Classic WoW Forever — {p.name} (CC BY 4.0)</a>
+      </li>
+    </ul>
+  </footer>
+
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+</BaseLayout>

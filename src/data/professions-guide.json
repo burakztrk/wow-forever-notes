@@ -1,0 +1,438 @@
+{
+  "updated": "2026-10-19",
+  "sources": [
+    { "label": "wclbox — Professions", "url": "https://wowforever.wclbox.com/en/zhuanye" },
+    { "label": "wclbox — Legacy", "url": "https://wowforever.wclbox.com/en/chuancheng" },
+    { "label": "Classic WoW Forever — Professions (CC BY 4.0)", "url": "https://classicwowforever.com/professions/" },
+    { "label": "Classic WoW Forever — Camping (CC BY 4.0)", "url": "https://classicwowforever.com/professions/camping/" },
+    { "label": "Classic WoW Forever — Best for your class (CC BY 4.0)", "url": "https://classicwowforever.com/professions/best/" },
+    { "label": "wow-professions.com — Camping guide", "url": "https://www.wow-professions.com/forever/camping-guide" },
+    { "label": "WoW Forever Tools — Legacy", "url": "https://wowforevertools.com/" }
+  ],
+  "camping": {
+    "intro": {
+      "en": "Camping is new in WoW Forever. Someone with Cooking builds a campfire, other players add one object each from their profession, and everyone who rests by the fire for one minute gets the buffs of every object in the camp for one hour. You do not need those professions yourself to get the buffs.",
+      "tr": "Camping, WoW Forever'ın yeni ortak kamp sistemi. Cooking bilen biri kamp ateşi yakar, diğer oyuncular mesleklerinden birer obje ekler; ateşin yanında 1 dakika dinlenen herkes kamptaki tüm objelerin bufflarını 1 saat boyunca alır. Buffları almak için o mesleklere sahip olman gerekmez."
+    },
+    "steps": [
+      {
+        "en": "Build the fire: the Basic Campfire Kit comes with Cooking at skill 1. Craft it from 1 Simple Wood with Flint and Tinder in your bags, then place it outdoors.",
+        "tr": "Ateşi yak: Basic Campfire Kit, Cooking ile skill 1'de gelir. Çantanda Flint and Tinder varken 1 Simple Wood ile kiti yap ve açık alanda yere koy."
+      },
+      {
+        "en": "Add objects: at skill 20 every profession learns its first camp object from the trainer or the Camping 101 quests. Each player places one, which starts a shared 1-hour cooldown on all your camp features.",
+        "tr": "Obje ekle: her meslek 20 skill'de ilk kamp objesini trainer'dan ya da Camping 101 görevlerinden öğrenir. Her oyuncu bir obje koyar; bu, tüm kamp özelliklerin için ortak 1 saatlik bekleme süresi başlatır."
+      },
+      {
+        "en": "Rest: sit, lie down, sleep, kneel or craft near the fire for 1 minute. Camp Benefits — the buffs of every object placed — then last 1 hour, and you can cast and buff while you wait.",
+        "tr": "Dinlen: ateşin yanında 1 dakika otur, uzan, uyu, diz çök ya da craft yap. Kamptaki tüm objelerin bufflarını toplayan Camp Benefits 1 saat sürer; beklerken büyü ve buff atabilirsin."
+      }
+    ],
+    "rules": [
+      {
+        "en": "A camp buff does not stack with its matching class buff (Fish Bowl and Blessing of Kings, for example). Bring the object your group is missing.",
+        "tr": "Kamp buffı, karşılığı olan class buffıyla birikmez (ör. Fish Bowl ve Blessing of Kings). Grubunda eksik olan buffı veren objeyi koy."
+      },
+      {
+        "en": "Tier 2 (skill 140) and tier 3 (skill 300) objects are learned from Blueprints, mostly dungeon boss drops. They keep the tier 1 object's buff and add a crafting station or a service.",
+        "tr": "2. kademe (140 skill) ve 3. kademe (300 skill) objeler Blueprint ile öğrenilir, çoğu dungeon bosslarından düşer. 1. kademe objenin buffını korur, üstüne craft istasyonu ya da hizmet ekler."
+      },
+      {
+        "en": "Fish Bowl (Fishing) and First Aid Kit (First Aid) come from secondary skills, so any character can bring them without using a profession slot.",
+        "tr": "Fish Bowl (Fishing) ve First Aid Kit (First Aid) ikincil mesleklerden gelir; meslek slotu harcamadan her karakter getirebilir."
+      },
+      {
+        "en": "Camps are outdoors only: not in dungeons, raids or arenas, and not in combat or while shapeshifted.",
+        "tr": "Kamp sadece açık alanda kurulur: dungeon, raid ve arenada olmaz; savaşta ya da form değiştirmişken kurulamaz."
+      },
+      {
+        "en": "Camp Tent tops your rested XP up to 5% of a level and does nothing if you already have more. Only the Repair Bot (Engineering 140) repairs gear.",
+        "tr": "Camp Tent dinlenmiş XP'ni bir seviyenin %5'ine tamamlar, zaten daha fazlası varsa etkisi olmaz. Ekipman tamiri yalnızca Repair Bot'ta (Engineering 140) var."
+      }
+    ],
+    "campfires": [
+      {
+        "name": "Basic Campfire",
+        "learn": 1,
+        "use": 1,
+        "slots": 3,
+        "material": "Simple Wood",
+        "blueprintFrom": { "en": "Comes with Cooking", "tr": "Cooking ile gelir" }
+      },
+      {
+        "name": "Journeyman Campfire",
+        "learn": 90,
+        "use": 140,
+        "slots": 5,
+        "material": "Star Wood",
+        "blueprintFrom": { "en": "Lord Serpentis, Wailing Caverns", "tr": "Lord Serpentis, Wailing Caverns" }
+      },
+      {
+        "name": "Expert Campfire",
+        "learn": 200,
+        "use": 220,
+        "slots": 10,
+        "material": "Thick Logs",
+        "blueprintFrom": { "en": "Source not known yet", "tr": "Kaynağı henüz bilinmiyor" }
+      }
+    ]
+  },
+  "buffs": [
+    {
+      "key": "stats",
+      "kind": "combat",
+      "buff": { "en": "All attributes", "tr": "Tüm statlar" },
+      "bonus": { "en": "+8% all attributes", "tr": "Tüm statlara +%8" },
+      "object": "Fish Bowl",
+      "profession": "fishing",
+      "conflict": "Blessing of Kings"
+    },
+    {
+      "key": "crit",
+      "kind": "combat",
+      "buff": { "en": "Critical strike", "tr": "Kritik vuruş" },
+      "bonus": { "en": "+2% crit for attacks and spells", "tr": "Saldırı ve büyülere +%2 kritik" },
+      "object": "Camp Chair",
+      "profession": "skinning",
+      "conflict": "Moonkin Aura",
+      "conflictTip": "Moonkin Form"
+    },
+    {
+      "key": "stamina",
+      "kind": "combat",
+      "buff": { "en": "Stamina", "tr": "Stamina" },
+      "bonus": { "en": "+3–56 Stamina", "tr": "+3–56 Stamina" },
+      "object": "First Aid Kit",
+      "profession": "first-aid",
+      "conflict": "Power Word: Fortitude"
+    },
+    {
+      "key": "strength",
+      "kind": "combat",
+      "buff": { "en": "Strength", "tr": "Strength" },
+      "bonus": { "en": "+6–34 Strength", "tr": "+6–34 Strength" },
+      "object": "Sharpening Wheel",
+      "profession": "blacksmithing",
+      "conflict": "Strength of Earth Totem"
+    },
+    {
+      "key": "intellect",
+      "kind": "combat",
+      "buff": { "en": "Intellect", "tr": "Intellect" },
+      "bonus": { "en": "+2–25 Intellect", "tr": "+2–25 Intellect" },
+      "object": "Incense Candle",
+      "profession": "herbalism",
+      "conflict": "Arcane Intellect"
+    },
+    {
+      "key": "melee-ap",
+      "kind": "combat",
+      "buff": { "en": "Melee attack power", "tr": "Melee attack power" },
+      "bonus": { "en": "+12–90 melee attack power", "tr": "+12–90 melee attack power" },
+      "object": "Lodestone",
+      "profession": "mining",
+      "conflict": "Blessing of Might"
+    },
+    {
+      "key": "mp5",
+      "kind": "combat",
+      "buff": { "en": "Mana regeneration", "tr": "Mana yenilenmesi" },
+      "bonus": { "en": "10–29 mana every 5 sec", "tr": "5 saniyede 10–29 mana" },
+      "object": "Mana Well",
+      "profession": "alchemy",
+      "conflict": "Blessing of Wisdom"
+    },
+    {
+      "key": "spirit",
+      "kind": "combat",
+      "buff": { "en": "Spirit", "tr": "Spirit" },
+      "bonus": { "en": "+14–32 Spirit", "tr": "+14–32 Spirit" },
+      "object": "Faction Banner",
+      "profession": "tailoring",
+      "conflict": "Divine Spirit",
+      "note": { "en": "Only for your own faction.", "tr": "Sadece kendi fraksiyonundakilere." }
+    },
+    {
+      "key": "armor",
+      "kind": "combat",
+      "buff": { "en": "Armor, stats, resistances", "tr": "Zırh, stat, direnç" },
+      "bonus": {
+        "en": "+28–308 Armor, +2–13 all stats, +6–22 all resistances",
+        "tr": "+28–308 zırh, tüm statlara +2–13, tüm dirençlere +6–22"
+      },
+      "object": "Enchanted Lute",
+      "profession": "enchanting",
+      "conflict": "Mark of the Wild",
+      "note": { "en": "Stats and resistances start at higher levels.", "tr": "Stat ve direnç bonusu daha yüksek seviyelerde başlar." }
+    },
+    {
+      "key": "rested",
+      "kind": "utility",
+      "buff": { "en": "Rested experience", "tr": "Dinlenmiş XP" },
+      "bonus": { "en": "Tops rested XP up to 5% of a level", "tr": "Dinlenmiş XP'yi seviyenin %5'ine tamamlar" },
+      "object": "Camp Tent",
+      "profession": "leatherworking"
+    },
+    {
+      "key": "vendor",
+      "kind": "utility",
+      "buff": { "en": "Reagent vendor", "tr": "Reagent satıcısı" },
+      "bonus": {
+        "en": "Sells reagents at camp; the Repair Bot (skill 140) also repairs",
+        "tr": "Kampta reagent satar; Repair Bot (140 skill) tamir de yapar"
+      },
+      "object": "Reagent Bot",
+      "profession": "engineering"
+    },
+    {
+      "key": "food",
+      "kind": "utility",
+      "buff": { "en": "Stamina food", "tr": "Stamina yemeği" },
+      "bonus": { "en": "Food for everyone at camp", "tr": "Kamptaki herkese yemek" },
+      "object": "Cookie's Feast",
+      "profession": "cooking"
+    }
+  ],
+  "trainerRanks": [
+    { "name": "Apprentice", "to": 75, "skill": 0, "level": 0 },
+    { "name": "Journeyman", "to": 150, "skill": 50, "level": 10 },
+    { "name": "Expert", "to": 225, "skill": 125, "level": 20 },
+    { "name": "Artisan", "to": 300, "skill": 200, "level": 35 }
+  ],
+  "classes": {
+    "warrior": {
+      "leveling": ["blacksmithing", "mining"],
+      "gold": ["skinning", "mining"],
+      "raids": ["engineering", "alchemy"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Blacksmithing makes 40 rare Warrior pieces that bind on pickup, so only you can make them: Arms and Fury share one line, Protection has its own, starting at level 10. Mining supplies the bars, and its Lodestone adds melee attack power at camp.",
+        "tr": "Blacksmithing, bind on pickup olduğu için sadece senin yapabileceğin 40 rare Warrior parçası üretir: Arms ve Fury aynı seriyi, Protection kendi serisini giyer, seviye 10'dan itibaren. Mining barları sağlar; kamptaki Lodestone'u da melee attack power verir."
+      }
+    },
+    "hunter": {
+      "leveling": ["leatherworking", "skinning"],
+      "gold": ["skinning", "mining"],
+      "raids": ["engineering", "alchemy"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Leatherworking makes 18 rare Hunter pieces that bind on pickup; every spec wears the same line, starting at level 10. Skinning supplies the leather, including the Scarce Pristine leathers the new sets need, and its Camp Chair adds 2% crit at camp.",
+        "tr": "Leatherworking, bind on pickup 18 rare Hunter parçası üretir; tüm spec'ler aynı seriyi giyer, seviye 10'dan itibaren. Skinning, yeni setlerin istediği Scarce Pristine deriler dahil deriyi sağlar; kamptaki Camp Chair'i de %2 kritik verir."
+      }
+    },
+    "mage": {
+      "leveling": ["tailoring", "enchanting"],
+      "gold": ["skinning", "mining"],
+      "raids": ["tailoring", "enchanting"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Tailoring makes 52 rare Mage pieces that bind on pickup, one line per spec from level 10, and cloth drops while you quest. Enchanting adds three staves, two off-hands, a wand and a trinket for you from level 25, and disenchants the greens you sew on the way to 300.",
+        "tr": "Tailoring, her spec için ayrı seride bind on pickup 52 rare Mage parçası üretir (seviye 10'dan itibaren); kumaş zaten görev yaparken düşer. Enchanting seviye 25'ten itibaren sana üç asa, iki off-hand, bir wand ve bir trinket yapar; 300'e giderken diktiğin yeşilleri de disenchant eder."
+      }
+    },
+    "rogue": {
+      "leveling": ["leatherworking", "skinning"],
+      "gold": ["skinning", "mining"],
+      "raids": ["engineering", "alchemy"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Leatherworking makes 18 rare Rogue pieces that bind on pickup; every spec wears the same line, starting at level 10. Skinning supplies the leather, including the Scarce Pristine leathers the new sets need, and its Camp Chair adds 2% crit at camp.",
+        "tr": "Leatherworking, bind on pickup 18 rare Rogue parçası üretir; tüm spec'ler aynı seriyi giyer, seviye 10'dan itibaren. Skinning, yeni setlerin istediği Scarce Pristine deriler dahil deriyi sağlar; kamptaki Camp Chair'i de %2 kritik verir."
+      }
+    },
+    "priest": {
+      "leveling": ["tailoring", "enchanting"],
+      "gold": ["skinning", "mining"],
+      "raids": ["tailoring", "enchanting"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Tailoring makes 35 rare Priest pieces that bind on pickup: Discipline and Holy share one line and Shadow has its own, from level 10. Enchanting adds four staves, four off-hands, a wand and two trinkets for you from level 25, and disenchants the greens you sew.",
+        "tr": "Tailoring, bind on pickup 35 rare Priest parçası üretir: Discipline ve Holy aynı seriyi, Shadow kendi serisini giyer (seviye 10'dan itibaren). Enchanting seviye 25'ten itibaren sana dört asa, dört off-hand, bir wand ve iki trinket yapar; diktiğin yeşilleri de disenchant eder."
+      }
+    },
+    "warlock": {
+      "leveling": ["tailoring", "enchanting"],
+      "gold": ["skinning", "mining"],
+      "raids": ["tailoring", "enchanting"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Tailoring makes 18 rare Warlock pieces that bind on pickup; every spec wears the same line, starting at level 10. Enchanting adds three staves, two off-hands, a wand and a trinket for you from level 25, and disenchants the greens you sew.",
+        "tr": "Tailoring, bind on pickup 18 rare Warlock parçası üretir; tüm spec'ler aynı seriyi giyer, seviye 10'dan itibaren. Enchanting seviye 25'ten itibaren sana üç asa, iki off-hand, bir wand ve bir trinket yapar; diktiğin yeşilleri de disenchant eder."
+      }
+    },
+    "paladin": {
+      "leveling": ["blacksmithing", "mining"],
+      "gold": ["skinning", "mining"],
+      "raids": ["alchemy", "herbalism"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Blacksmithing makes 56 rare Paladin pieces that bind on pickup, one line per spec from level 10. Mining supplies the bars, and its Lodestone adds melee attack power at camp.",
+        "tr": "Blacksmithing, her spec için ayrı seride bind on pickup 56 rare Paladin parçası üretir (seviye 10'dan itibaren). Mining barları sağlar; kamptaki Lodestone'u da melee attack power verir."
+      }
+    },
+    "druid": {
+      "leveling": ["leatherworking", "skinning"],
+      "gold": ["skinning", "mining"],
+      "raids": ["alchemy", "herbalism"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Leatherworking makes 72 rare Druid pieces that bind on pickup, one line per spec from level 10. Skinning supplies the leather, including the Scarce Pristine leathers the new sets need, and its Camp Chair adds 2% crit at camp.",
+        "tr": "Leatherworking, her spec için ayrı seride bind on pickup 72 rare Druid parçası üretir (seviye 10'dan itibaren). Skinning, yeni setlerin istediği Scarce Pristine deriler dahil deriyi sağlar; kamptaki Camp Chair'i de %2 kritik verir."
+      }
+    },
+    "shaman": {
+      "leveling": ["leatherworking", "skinning"],
+      "gold": ["skinning", "mining"],
+      "raids": ["alchemy", "herbalism"],
+      "pvp": ["engineering", "alchemy"],
+      "why": {
+        "en": "Leatherworking makes 53 rare Shaman pieces that bind on pickup, leather and mail, one line per spec from level 10. Skinning supplies the leather, including the Scarce Pristine leathers the new sets need, and its Camp Chair adds 2% crit at camp.",
+        "tr": "Leatherworking, her spec için ayrı seride leather ve mail olmak üzere bind on pickup 53 rare Shaman parçası üretir (seviye 10'dan itibaren). Skinning, yeni setlerin istediği Scarce Pristine deriler dahil deriyi sağlar; kamptaki Camp Chair'i de %2 kritik verir."
+      }
+    }
+  },
+  "goalNotes": {
+    "gold": {
+      "en": "Two gathering trades: leather goes into 788 crafting recipes, ore and bars into 606, and both fill supply crates for Merchant's Favor.",
+      "tr": "İki toplama mesleği: deri 788, cevher ve bar 606 tarifte kullanılıyor; ikisi de Merchant's Favor için tedarik sandıklarını doldurur."
+    },
+    "pvp": {
+      "en": "Engineering for Net-o-Matic, Rocket Boots, the Mind Control Cap and Sapper Charges; Alchemy for Free Action and Limited Invulnerability Potions.",
+      "tr": "Engineering: Net-o-Matic, Rocket Boots, Mind Control Cap ve Sapper Charge. Alchemy: Free Action ve Limited Invulnerability Potion."
+    },
+    "raids": {
+      "tailoring+enchanting": {
+        "en": "Cloth raid pieces only you can make at level 50+, plus Enchanting's Brilliant Wand and Frozen Heart of the Mountain.",
+        "tr": "Seviye 50+ sadece senin yapabileceğin cloth raid parçaları, ayrıca Enchanting'den Brilliant Wand ve Frozen Heart of the Mountain."
+      },
+      "engineering+alchemy": {
+        "en": "Explosives and engineer-only gadgets, plus your own flasks and potions.",
+        "tr": "Patlayıcılar ve sadece engineer'ların kullanabildiği aletler, ayrıca kendi flask ve iksirlerin."
+      },
+      "alchemy+herbalism": {
+        "en": "Flasks, elixirs and potions from herbs you pick yourself.",
+        "tr": "Kendi topladığın bitkilerden flask, elixir ve iksir."
+      }
+    }
+  },
+  "professions": {
+    "alchemy": {
+      "summary": {
+        "en": "Brews potions, elixirs, flasks and oils from herbs and vials. In Forever the Healing Potions moved to First Aid; Alchemy keeps mana potions, protection potions and raid flasks.",
+        "tr": "Bitki ve şişelerden iksir, elixir, flask ve yağ yapar. Forever'da Healing Potion'lar First Aid'e geçti; mana iksirleri, koruma iksirleri ve raid flaskları Alchemy'de kaldı."
+      },
+      "tools": [],
+      "materials": { "en": "Herbs (Herbalism) and vials from vendors.", "tr": "Bitkiler (Herbalism) ve vendor'dan şişeler." },
+      "blueprints": { "Fermenter": { "en": "Rath'mael, Ruins of Lordaeron", "tr": "Rath'mael, Ruins of Lordaeron" } }
+    },
+    "blacksmithing": {
+      "summary": {
+        "en": "Forges mail and plate armor, weapons and sharpening and weight stones from metal bars. Forever adds rare bind-on-pickup sets for Warriors and Paladins.",
+        "tr": "Metal barlardan mail ve plate zırh, silah, bileme ve ağırlık taşları döver. Forever, Warrior ve Paladin için bind on pickup rare setler ekliyor."
+      },
+      "tools": [5956],
+      "materials": {
+        "en": "Bars smelted with Mining and stone, plus some leather, gems and vendor flux.",
+        "tr": "Mining ile eritilen barlar ve taşlar; bazı tariflerde deri, mücevher ve vendor malzemeleri."
+      },
+      "blueprints": { "Anvil": { "en": "Gilnid, The Deadmines", "tr": "Gilnid, The Deadmines" } }
+    },
+    "enchanting": {
+      "summary": {
+        "en": "Disenchants unwanted magic items into dust, essences and shards, then uses them to enchant gear and to make rods, wands and staves.",
+        "tr": "İstemediğin büyülü eşyaları toz, esans ve shard'a ayırır (disenchant); bunlarla ekipmana enchant basar, rod, wand ve asa yapar."
+      },
+      "tools": [6218, 6339, 11130, 11145, 16207],
+      "materials": {
+        "en": "Dust, essences and shards from disenchanting; rods and vials from vendors.",
+        "tr": "Disenchant'tan toz, esans ve shard; vendor'dan rod ve şişe."
+      },
+      "blueprints": {
+        "Arcane Salvager": { "en": "Shade of the Archmage, City of Dalaran", "tr": "Shade of the Archmage, City of Dalaran" }
+      }
+    },
+    "engineering": {
+      "summary": {
+        "en": "Builds gadgets, explosives, goggles, scopes and guns from metal parts. Many of its items can only be used by engineers, and it is strong in PvP.",
+        "tr": "Metal parçalardan alet, patlayıcı, gözlük, dürbün ve silah yapar. Eşyalarının çoğunu sadece engineer'lar kullanabilir; PvP'de güçlü."
+      },
+      "tools": [5956, 6219, 10498],
+      "materials": {
+        "en": "Bars and stone from Mining; some cloth and leather for parts.",
+        "tr": "Mining'den bar ve taş; bazı parçalar için kumaş ve deri."
+      },
+      "blueprints": { "Repair Bot": { "en": "Sneed, The Deadmines", "tr": "Sneed, The Deadmines" } }
+    },
+    "leatherworking": {
+      "summary": {
+        "en": "Turns leather and hides into leather and mail armor, armor kits and bags. Forever adds rare bind-on-pickup sets for Druids, Hunters, Rogues and Shamans.",
+        "tr": "Deri ve postlardan leather ve mail zırh, armor kit ve çanta yapar. Forever, Druid, Hunter, Rogue ve Shaman için bind on pickup rare setler ekliyor."
+      },
+      "tools": [],
+      "materials": {
+        "en": "Leather and hides from Skinning; thread, dyes and salt from vendors.",
+        "tr": "Skinning'den deri ve post; vendor'dan iplik, boya ve tuz."
+      },
+      "blueprints": { "Tanning Rack": { "en": "Razorclaw the Butcher, Shadowfang Keep", "tr": "Razorclaw the Butcher, Shadowfang Keep" } }
+    },
+    "tailoring": {
+      "summary": {
+        "en": "Sews cloth armor, bags and shirts from cloth that humanoids drop. Forever adds rare bind-on-pickup sets for Mages, Priests and Warlocks.",
+        "tr": "İnsansı düşmanlardan düşen kumaşlardan cloth zırh, çanta ve gömlek diker. Forever, Mage, Priest ve Warlock için bind on pickup rare setler ekliyor."
+      },
+      "tools": [],
+      "materials": { "en": "Cloth drops; thread and dyes from vendors.", "tr": "Düşen kumaşlar; vendor'dan iplik ve boya." },
+      "blueprints": { "Spinning Wheel": { "en": "Unstable Sentinel, City of Dalaran", "tr": "Unstable Sentinel, City of Dalaran" } }
+    },
+    "mining": {
+      "summary": {
+        "en": "Mines ore and stone from veins and smelts them into bars for Blacksmithing and Engineering. Forever adds Azerothium and Heavy Thorium smelts.",
+        "tr": "Damarlardan cevher ve taş çıkarır, Blacksmithing ve Engineering için bara eritir. Azerothium ve Heavy Thorium eritme tarifleri Forever'da yeni."
+      },
+      "tools": [2901],
+      "blueprints": { "Rock Garden": { "en": "Relic Guardian, Excavation Site: Wetlands", "tr": "Relic Guardian, Excavation Site: Wetlands" } }
+    },
+    "herbalism": {
+      "summary": {
+        "en": "Picks herbs in the open world for Alchemy and First Aid. With the Greenhouse you can grow seeds at camp.",
+        "tr": "Açık dünyada Alchemy ve First Aid için bitki toplar. Greenhouse ile kampta tohum yetiştirebilirsin."
+      },
+      "tools": [],
+      "blueprints": { "Greenhouse": { "en": "Shadetooth, Excavation Site: Wetlands", "tr": "Shadetooth, Excavation Site: Wetlands" } }
+    },
+    "skinning": {
+      "summary": {
+        "en": "Skins beasts for leather, hides and scales. Scarce Pristine leathers go into the new Leatherworking sets.",
+        "tr": "Hayvanlardan deri, post ve pul çıkarır. Scarce Pristine deriler yeni Leatherworking setlerinde kullanılır."
+      },
+      "tools": [7005],
+      "blueprints": { "Field Guide": { "en": "Lady Anacondra, Wailing Caverns", "tr": "Lady Anacondra, Wailing Caverns" } }
+    },
+    "cooking": {
+      "summary": {
+        "en": "Cooks food from meat, fish and spices, and builds the campfire every camp starts from. Most foods give a new Well Fed buff.",
+        "tr": "Et, balık ve baharattan yemek pişirir; her kampın başladığı kamp ateşini de Cooking kurar. Çoğu yemek yeni bir Well Fed buffı verir."
+      },
+      "tools": [4471],
+      "materials": { "en": "Meat and fish you collect; spices and water from vendors.", "tr": "Topladığın et ve balık; vendor'dan baharat ve su." },
+      "blueprints": { "Cookie's Feast": { "en": "Cookie, The Deadmines", "tr": "Cookie, The Deadmines" } }
+    },
+    "fishing": {
+      "summary": {
+        "en": "Catches fish for Cooking and Alchemy. Find Fish tracking shows the pools, and the Fish Bowl gives +8% to all attributes at camp.",
+        "tr": "Cooking ve Alchemy için balık tutar. Find Fish ile balık havuzları görünür; kamptaki Fish Bowl tüm statlara %8 verir."
+      },
+      "tools": [6256],
+      "blueprints": { "Fishing Rack": { "en": "Gelihast, Blackfathom Deeps", "tr": "Gelihast, Blackfathom Deeps" } }
+    },
+    "first-aid": {
+      "summary": {
+        "en": "Makes bandages and anti-venoms and, new in Forever, the Healing Potions that used to be Alchemy's. Useful for every class.",
+        "tr": "Bandaj ve anti-venom yapar; Forever'da eskiden Alchemy'nin olan Healing Potion'ları da First Aid yapıyor. Her class için faydalı."
+      },
+      "tools": [],
+      "materials": { "en": "Cloth for bandages; vials, spices and herbs for potions.", "tr": "Bandaj için kumaş; iksir için şişe, baharat ve bitki." },
+      "blueprints": { "Toxin Study": { "en": "Commander Springvale, Shadowfang Keep", "tr": "Commander Springvale, Shadowfang Keep" } }
+    }
+  }
+}

@@ -2,7 +2,8 @@
 //
 //   - a talent needs `tierPoints` points spent in *lower rows* of its own tree
 //   - a talent with `requires` needs that talent at max rank
-//   - total points are capped at MAX_POINTS (level 60: 51 points)
+//   - total points are capped at MAX_POINTS (level 60: 51 points); the Legacy
+//     tree reuses these rules with its own cap (`max`)
 // A point can only be removed if every other spent point stays valid.
 
 export const MAX_POINTS = 51;
@@ -33,9 +34,9 @@ export const requiredLevel = (points: number) => (points > 0 ? FIRST_TALENT_LEVE
 // Why a talent cannot take a point right now (undefined = it can).
 export type Block = { kind: 'max' } | { kind: 'points' } | { kind: 'tier'; need: number; have: number } | { kind: 'requires'; id: string };
 
-export function addBlock(nodes: TalentNode[], ranks: Ranks, node: TalentNode): Block | undefined {
+export function addBlock(nodes: TalentNode[], ranks: Ranks, node: TalentNode, max = MAX_POINTS): Block | undefined {
   if ((ranks[node.id] ?? 0) >= node.maxRank) return { kind: 'max' };
-  if (totalPoints(ranks) >= MAX_POINTS) return { kind: 'points' };
+  if (totalPoints(ranks) >= max) return { kind: 'points' };
   const have = treePoints(nodes, ranks, node.tree, node.row);
   if (have < node.tierPoints) return { kind: 'tier', need: node.tierPoints, have };
   if (node.requires) {
@@ -46,8 +47,8 @@ export function addBlock(nodes: TalentNode[], ranks: Ranks, node: TalentNode): B
 }
 
 // Every spent point still satisfies its tier and prerequisite rules.
-export function isValid(nodes: TalentNode[], ranks: Ranks): boolean {
-  if (totalPoints(ranks) > MAX_POINTS) return false;
+export function isValid(nodes: TalentNode[], ranks: Ranks, max = MAX_POINTS): boolean {
+  if (totalPoints(ranks) > max) return false;
   for (const n of nodes) {
     const r = ranks[n.id] ?? 0;
     if (!r) continue;
@@ -61,10 +62,10 @@ export function isValid(nodes: TalentNode[], ranks: Ranks): boolean {
   return true;
 }
 
-export function canRemove(nodes: TalentNode[], ranks: Ranks, node: TalentNode): boolean {
+export function canRemove(nodes: TalentNode[], ranks: Ranks, node: TalentNode, max = MAX_POINTS): boolean {
   const r = ranks[node.id] ?? 0;
   if (!r) return false;
-  return isValid(nodes, { ...ranks, [node.id]: r - 1 });
+  return isValid(nodes, { ...ranks, [node.id]: r - 1 }, max);
 }
 
 // ---------- share code: one digit per talent, trees joined by "-" ----------
@@ -90,7 +91,7 @@ export function encodeBuild(nodes: TalentNode[], ranks: Ranks, treeCount: number
 }
 
 // Returns undefined for a code that does not fit this class or breaks the rules.
-export function decodeBuild(nodes: TalentNode[], code: string, treeCount: number): Ranks | undefined {
+export function decodeBuild(nodes: TalentNode[], code: string, treeCount: number, max = MAX_POINTS): Ranks | undefined {
   if (!/^[0-9-]*$/.test(code)) return undefined;
   const parts = code.split('-');
   if (parts.length > treeCount) return undefined;
@@ -105,5 +106,5 @@ export function decodeBuild(nodes: TalentNode[], code: string, treeCount: number
       if (r) ranks[n.id] = r;
     });
   }
-  return isValid(nodes, ranks) ? ranks : undefined;
+  return isValid(nodes, ranks, max) ? ranks : undefined;
 }
