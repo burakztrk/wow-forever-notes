@@ -13,22 +13,23 @@ import {
 } from '../lib/talent-rules';
 import type { TalentPagePayload, TalentView } from '../lib/talents';
 
-// Talent calculator: click adds a point, right click / Shift+click / remove
-// mode takes one away. The build lives in the URL hash (#b=…) so the address
-// bar is always a shareable link.
+// Talent calculator (class trees and the Legacy tree): click adds a point,
+// right click / Shift+click / the red − takes one away. The build lives in the
+// URL hash (#b=…) so the address bar is always a shareable link.
 
 const island = document.getElementById('wf-talents');
 if (island?.textContent) init(JSON.parse(island.textContent) as TalentPagePayload);
 
 function init(data: TalentPagePayload) {
   const { nodes, trees, strings: s } = data;
+  const max = data.maxPoints ?? MAX_POINTS;
   const byId = new Map(nodes.map((n) => [n.id, n]));
   const $ = <T extends Element>(sel: string) => document.querySelector<T>(sel);
   const $$ = <T extends Element>(sel: string) => [...document.querySelectorAll<T>(sel)];
 
   const fromHash = () => {
     const m = location.hash.match(/b=([0-9-]*)/);
-    return (m && decodeBuild(nodes, m[1], trees.length)) || {};
+    return (m && decodeBuild(nodes, m[1], trees.length, max)) || {};
   };
   let ranks: Ranks = fromHash();
 
@@ -60,19 +61,21 @@ function init(data: TalentPagePayload) {
     const r = ranks[n.id] ?? 0;
     const current = n.ranks[Math.max(r, 1) - 1];
     const next = r > 0 && r < n.maxRank ? n.ranks[r] : '';
-    const req = blockText(n, addBlock(nodes, ranks, n));
-    const status = { new: s.statusNew, changed: s.statusChanged, unchanged: s.statusUnchanged, removed: s.statusRemoved }[n.status];
+    const req = blockText(n, addBlock(nodes, ranks, n, max));
+    const status = n.status
+      ? { new: s.statusNew, changed: s.statusChanged, unchanged: s.statusUnchanged, removed: s.statusRemoved }[n.status]
+      : '';
     const icon = n.icon ? `<img class="wft-icon" src="${esc(data.iconBase + n.icon)}.jpg" alt="" width="44" height="44">` : '';
     return `
       <div class="wft-head">${icon}
         <div class="wft-title"><div class="wft-name wft-name--talent">${esc(n.name)}</div>
-        <div class="wft-sub">${esc(trees[n.tree])}, ${esc(s.row)} ${n.row}</div></div>
+        <div class="wft-sub">${esc(trees[n.tree])}, ${esc(s.row)} ${n.row}${n.meta ? ` · ${esc(n.meta)}` : ''}</div></div>
         <span class="wft-pill">${r}/${n.maxRank}</span>
       </div>
       <p class="wft-desc">${esc(current)}</p>
       ${next ? `<p class="wft-next"><b>${esc(s.nextRank)}:</b> ${esc(next)}</p>` : ''}
       ${req ? `<p class="wft-req">${esc(req)}</p>` : ''}
-      <div class="wft-foot"><span class="wft-status wft-status--${esc(n.status)}"><i></i>${esc(status)}</span></div>
+      ${status ? `<div class="wft-foot"><span class="wft-status wft-status--${esc(n.status)}"><i></i>${esc(status)}</span></div>` : ''}
       ${n.status === 'changed' && n.change ? `<p class="wft-change">${esc(n.change)}</p>` : ''}`;
   }
 
@@ -106,13 +109,13 @@ function init(data: TalentPagePayload) {
       const el = $<HTMLElement>(`[data-talent="${n.id}"]`);
       if (!el) continue;
       const r = ranks[n.id] ?? 0;
-      const state = r === n.maxRank ? 'max' : r > 0 ? 'partial' : addBlock(nodes, ranks, n) ? 'locked' : 'available';
+      const state = r === n.maxRank ? 'max' : r > 0 ? 'partial' : addBlock(nodes, ranks, n, max) ? 'locked' : 'available';
       el.className = `talent ${state}`;
       el.setAttribute('aria-label', `${n.name} ${r}/${n.maxRank}`);
       const minus = $<HTMLButtonElement>(`[data-minus="${n.id}"]`);
       if (minus) {
         minus.hidden = r === 0;
-        minus.disabled = r > 0 && !canRemove(nodes, ranks, n);
+        minus.disabled = r > 0 && !canRemove(nodes, ranks, n, max);
       }
       const badge = $(`[data-rank-of="${n.id}"]`);
       if (badge) badge.textContent = `${r}/${n.maxRank}`;
@@ -128,24 +131,26 @@ function init(data: TalentPagePayload) {
       if (el) el.textContent = String(p);
     });
     const total = totalPoints(ranks);
-    $('[data-points-left]')!.textContent = String(MAX_POINTS - total);
-    $('[data-req-level]')!.textContent = total ? String(requiredLevel(total)) : '–';
+    $('[data-points-left]')!.textContent = String(max - total);
+    const level = $('[data-req-level]');
+    if (level) level.textContent = total ? String(requiredLevel(total)) : '–';
     $('[data-split]')!.textContent = split.join(' / ');
 
     const code = encodeBuild(nodes, ranks, trees.length);
-    const hash = code ? `#b=${code}` : '';
+    // keep a plain anchor (#tree) until the first point is spent
+    const hash = code ? `#b=${code}` : /b=/.test(location.hash) ? '' : location.hash;
     history.replaceState(null, '', location.pathname + location.search + hash);
     for (const a of $$<HTMLAnchorElement>('.lang-switch a')) a.href = a.href.split('#')[0] + hash;
     if (tipFor && !tip.hidden) showTip(tipFor);
   }
 
   function add(n: TalentView) {
-    if (addBlock(nodes, ranks, n)) return;
+    if (addBlock(nodes, ranks, n, max)) return;
     ranks = { ...ranks, [n.id]: (ranks[n.id] ?? 0) + 1 };
     render();
   }
   function remove(n: TalentView) {
-    if (!canRemove(nodes, ranks, n)) return;
+    if (!canRemove(nodes, ranks, n, max)) return;
     const next = { ...ranks };
     const r = (next[n.id] ?? 0) - 1;
     if (r > 0) next[n.id] = r;

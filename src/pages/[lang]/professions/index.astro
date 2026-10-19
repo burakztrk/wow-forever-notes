@@ -1,0 +1,394 @@
+---
+import ItemTip from '../../../components/ItemTip.astro';
+import RichText from '../../../components/RichText.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { fill, ui } from '../../../i18n';
+import { classList } from '../../../lib/codex';
+import {
+  campObject,
+  campTipId,
+  classBuffEntry,
+  guide,
+  guideGlossaryIds,
+  iconUrl,
+  itemByName,
+  pairKey,
+  perkById,
+  pick,
+  primaryProfessions,
+  professionBySlug,
+  professionsFile,
+  professionTips,
+  secondaryProfessions,
+  sectionLabel,
+} from '../../../lib/professions';
+import type { CampBuff, Goal } from '../../../lib/profession-types';
+import { islandJson } from '../../../lib/tooltip-payload';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = ui(lang);
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/professions/`)])) as Record<Lang, string>;
+const profUrl = (slug: string) => withBase(`/${lang}/professions/${slug}/`);
+
+const combat = guide.buffs.filter((b) => b.kind === 'combat');
+const utility = guide.buffs.filter((b) => b.kind === 'utility');
+const conflictEntries = combat.map((b) => (b.conflict ? classBuffEntry(b.conflictTip ?? b.conflict) : undefined));
+
+const goals: { key: Goal; label: string }[] = [
+  { key: 'gold', label: t.goalGold },
+  { key: 'raids', label: t.goalRaids },
+  { key: 'pvp', label: t.goalPvp },
+];
+const raidPairs = [...new Set(classList.map((c) => pairKey(guide.classes[c.id].raids)))];
+const campingPerks = professionsFile.campingPerks.map((id) => perkById.get(id)).filter((p) => !!p);
+const firstObject = (slug: string) => professionBySlug.get(slug)?.campObjects[0];
+
+const buffRow = (b: CampBuff) => ({
+  b,
+  obj: campObject(b.profession, b.object),
+  prof: professionBySlug.get(b.profession)!,
+});
+const campfireItems = guide.camping.campfires.map((f) => itemByName(f.material));
+const tips = professionTips(lang, {
+  glossary: [
+    ...conflictEntries.filter((e) => !!e).map((e) => e!.id),
+    ...guideGlossaryIds(
+      [
+        guide.camping.intro,
+        ...guide.camping.steps,
+        ...guide.camping.rules,
+        ...guide.buffs.map((b) => b.note),
+        ...Object.values(guide.classes).map((c) => c.why),
+        guide.goalNotes.gold,
+        guide.goalNotes.pvp,
+        ...Object.values(guide.goalNotes.raids),
+      ],
+      lang,
+    ),
+  ],
+  items: campfireItems.filter((id) => id != null) as number[],
+  camps: guide.buffs.flatMap((b) => {
+    const o = campObject(b.profession, b.object);
+    return o ? [[o, b.profession] as [typeof o, string]] : [];
+  }),
+  perks: professionsFile.campingPerks,
+});
+---
+
+<BaseLayout title={t.professionsTitle} description={t.professionsIntro} lang={lang} alternates={alternates} wide>
+  <h1>{t.professionsTitle}</h1>
+  <p class="muted">{t.professionsIntro}</p>
+  <nav class="jump-nav" aria-label={t.professionsTitle}>
+    <a class="chip-link" href="#camping">{t.secCamping}</a>
+    <a class="chip-link" href="#best">{t.secBest}</a>
+    <a class="chip-link" href="#buffs">{t.secBuffs}</a>
+    <a class="chip-link" href="#primary">{t.secPrimary}</a>
+    <a class="chip-link" href="#secondary">{t.secSecondary}</a>
+    <a class="chip-link" href={withBase(`/${lang}/legacy/#tree`)}>{t.openLegacy}</a>
+  </nav>
+
+  <!-- 1. Camping -->
+  <section id="camping" class="prof-section">
+    <h2 class="with-icon">
+      <img src={iconUrl('inv_camelot_camping_welcomingcampfire')} alt="" width="32" height="32" />
+      {t.secCamping}
+    </h2>
+    <p class="lead"><RichText text={pick(guide.camping.intro, lang)} /></p>
+    <h3>{t.howItWorks}</h3>
+    <ol class="step-list">
+      {
+        guide.camping.steps.map((s) => (
+          <li>
+            <RichText text={pick(s, lang)} />
+          </li>
+        ))
+      }
+    </ol>
+
+    <h3>{t.campfiresTitle}</h3>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>{t.colCampfire}</th>
+            <th>{t.colLearn}</th>
+            <th>{t.colUse}</th>
+            <th class="num">{t.colSlots}</th>
+            <th>{t.colMaterial}</th>
+            <th>{t.colBlueprint}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            guide.camping.campfires.map((f, i) => (
+              <tr>
+                <td class="nowrap">{f.name}</td>
+                <td class="nowrap">{fill(t.cookingSkill, { n: f.learn })}</td>
+                <td class="nowrap">{fill(t.cookingSkill, { n: f.use })}</td>
+                <td class="num">{f.slots}</td>
+                <td class="nowrap">{campfireItems[i] != null ? <ItemTip id={campfireItems[i]!} /> : f.material}</td>
+                <td class="muted">{pick(f.blueprintFrom, lang)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <h3>{t.goodToKnow}</h3>
+    <ul class="rule-list">
+      {
+        guide.camping.rules.map((r) => (
+          <li>
+            <RichText text={pick(r, lang)} />
+          </li>
+        ))
+      }
+    </ul>
+    {
+      campingPerks.length > 0 && (
+        <p class="perk-line">
+          <span class="muted">{t.usefulPerks}:</span>
+          {campingPerks.map((p) => (
+            <span class="perk-chip wf-tip wf-tip--perk" data-tip={p!.id} tabindex="0">
+              <img src={iconUrl(p!.icon)} alt="" width="20" height="20" loading="lazy" />
+              {p!.name}
+            </span>
+          ))}
+          <a href={withBase(`/${lang}/legacy/#tree`)}>{t.openLegacy}</a>
+        </p>
+      )
+    }
+  </section>
+
+  <!-- 2. Best professions for each class -->
+  <section id="best" class="prof-section">
+    <h2>{t.secBest}</h2>
+    <p>{t.bestIntro}</p>
+    <ul class="pick-grid">
+      {
+        classList.map((c) => {
+          const pickFor = guide.classes[c.id];
+          return (
+            <li class="pick-card" style={`--class-color: var(--class-${c.id})`}>
+              <a class="pick-head" href={withBase(`/${lang}/classes/${c.id}/`)}>
+                {c.icon && <img src={iconUrl(c.icon)} alt="" width="32" height="32" loading="lazy" />}
+                <span>{c.name}</span>
+              </a>
+              <div class="pick-pair">
+                <span class="pick-goal">{t.goalLeveling}</span>
+                {pickFor.leveling.map((slug) => {
+                  const p = professionBySlug.get(slug)!;
+                  return (
+                    <a class="prof-pill" href={profUrl(slug)}>
+                      <img src={iconUrl(p.icon)} alt="" width="22" height="22" loading="lazy" />
+                      {p.name}
+                    </a>
+                  );
+                })}
+              </div>
+              <p class="pick-why">
+                <RichText text={pick(pickFor.why, lang)} />
+              </p>
+              <dl class="pick-goals">
+                {goals.map((g) => (
+                  <div>
+                    <dt>{g.label}</dt>
+                    <dd>
+                      {pickFor[g.key].map((slug) => {
+                        const p = professionBySlug.get(slug)!;
+                        return (
+                          <a href={profUrl(slug)} title={p.name}>
+                            <img src={iconUrl(p.icon)} alt={p.name} width="20" height="20" loading="lazy" />
+                          </a>
+                        );
+                      })}
+                      <span>{pickFor[g.key].map((slug) => professionBySlug.get(slug)!.name).join(' + ')}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <dl class="goal-notes">
+      <div>
+        <dt>{t.goalGold}</dt>
+        <dd><RichText text={pick(guide.goalNotes.gold, lang)} /></dd>
+      </div>
+      {
+        raidPairs.map((key) => (
+          <div>
+            <dt>
+              {t.goalRaids}: {key.split('+').map((s) => professionBySlug.get(s)?.name).join(' + ')}
+            </dt>
+            <dd><RichText text={pick(guide.goalNotes.raids[key], lang)} /></dd>
+          </div>
+        ))
+      }
+      <div>
+        <dt>{t.goalPvp}</dt>
+        <dd><RichText text={pick(guide.goalNotes.pvp, lang)} /></dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- 3. Camp buffs: which profession gives which buff -->
+  <section id="buffs" class="prof-section">
+    <h2>{t.secBuffs}</h2>
+    <p class="muted">{t.buffsNote}</p>
+    <h3>{t.combatBuffs}</h3>
+    <div class="table-wrap">
+      <table class="data-table buff-table">
+        <thead>
+          <tr>
+            <th>{t.colBuff}</th>
+            <th>{t.colBonus}</th>
+            <th>{t.colObject}</th>
+            <th>{t.colProfession}</th>
+            <th>{t.colConflict}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            combat.map(buffRow).map(({ b, obj, prof }, i) => {
+              const entry = conflictEntries[i];
+              return (
+                <tr>
+                  <td class="strong">{pick(b.buff, lang)}</td>
+                  <td data-label={t.colBonus}>
+                    {pick(b.bonus, lang)}
+                    {b.note && (
+                      <small class="cell-note">
+                        <RichText text={pick(b.note, lang)} />
+                      </small>
+                    )}
+                  </td>
+                  <td class="nowrap" data-label={t.colObject}>
+                    <span class="icon-name wf-tip wf-tip--camp" data-tip={obj ? campTipId(obj) : undefined} tabindex="0">
+                      {obj?.icon && <img src={iconUrl(obj.icon)} alt="" width="24" height="24" loading="lazy" />}
+                      {b.object}
+                    </span>
+                  </td>
+                  <td class="nowrap" data-label={t.colProfession}>
+                    <a class="icon-name" href={profUrl(prof.slug)}>
+                      <img src={iconUrl(prof.icon)} alt="" width="20" height="20" loading="lazy" />
+                      {prof.name} 20
+                    </a>
+                  </td>
+                  <td data-label={t.colConflict}>
+                    {entry ? (
+                      <span class={`wf-tip wf-tip--${entry.kind}`} data-tip={entry.id} tabindex="0">
+                        {b.conflict}
+                      </span>
+                    ) : (
+                      b.conflict
+                    )}
+                  </td>
+                </tr>
+              );
+            })
+          }
+        </tbody>
+      </table>
+    </div>
+    <h3>{t.utilityBuffs}</h3>
+    <div class="table-wrap">
+      <table class="data-table buff-table">
+        <thead>
+          <tr>
+            <th>{t.colBuff}</th>
+            <th>{t.colBonus}</th>
+            <th>{t.colObject}</th>
+            <th>{t.colProfession}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            utility.map(buffRow).map(({ b, obj, prof }) => (
+              <tr>
+                <td class="strong">{pick(b.buff, lang)}</td>
+                <td data-label={t.colBonus}>{pick(b.bonus, lang)}</td>
+                <td class="nowrap" data-label={t.colObject}>
+                  <span class="icon-name wf-tip wf-tip--camp" data-tip={obj ? campTipId(obj) : undefined} tabindex="0">
+                    {obj?.icon && <img src={iconUrl(obj.icon)} alt="" width="24" height="24" loading="lazy" />}
+                    {b.object}
+                  </span>
+                </td>
+                <td class="nowrap" data-label={t.colProfession}>
+                  <a class="icon-name" href={profUrl(prof.slug)}>
+                    <img src={iconUrl(prof.icon)} alt="" width="20" height="20" loading="lazy" />
+                    {prof.name} {obj?.skill ?? ''}
+                  </a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4. Primary and secondary professions -->
+  <section id="primary" class="prof-section">
+    <h2>{t.secPrimary}</h2>
+    <ul class="tile-grid prof-tiles">
+      {
+        primaryProfessions.map((p) => (
+          <li>
+            <a class="tile" href={profUrl(p.slug)}>
+              <img src={iconUrl(p.icon)} alt="" width="44" height="44" loading="lazy" />
+              {p.name}
+              <small>{sectionLabel(p, lang)}</small>
+              {firstObject(p.slug) && <small class="tile-camp">{firstObject(p.slug)!.name}</small>}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <section id="secondary" class="prof-section">
+    <h2>{t.secSecondary}</h2>
+    <p class="muted">{t.secondaryNote}</p>
+    <ul class="tile-grid prof-tiles">
+      {
+        secondaryProfessions.map((p) => (
+          <li>
+            <a class="tile" href={profUrl(p.slug)}>
+              <img src={iconUrl(p.icon)} alt="" width="44" height="44" loading="lazy" />
+              {p.name}
+              <small>{sectionLabel(p, lang)}</small>
+              {firstObject(p.slug) && <small class="tile-camp">{firstObject(p.slug)!.name}</small>}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <footer class="prof-sources">
+    <h2>{t.sources}</h2>
+    <ul>
+      {
+        guide.sources.map((s) => (
+          <li>
+            <a href={s.url} rel="noopener">
+              {s.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="muted">Build {professionsFile.build ?? '?'} · {guide.updated}</p>
+  </footer>
+
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+</BaseLayout>

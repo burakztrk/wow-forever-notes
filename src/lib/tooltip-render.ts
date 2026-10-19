@@ -61,11 +61,26 @@ export interface TreeTip {
   more?: string; // "+9 more"
 }
 
+// A free-form card: items, camp objects and Legacy perks. All text is built at
+// build time in the page language (item lines stay in the client's English).
+export interface CardTip {
+  name: string;
+  icon?: string;
+  kind: 'item' | 'camp' | 'perk';
+  quality?: number; // item name colour, 0 poor … 5 legendary
+  sub?: string;
+  pill?: string;
+  lines: string[];
+  note?: string; // muted line under the text
+  sourceUrl?: string;
+}
+
 export interface TipPayload {
   iconBase: string; // ".../icons/"
   strings: TipStrings;
   entries: Record<string, TipEntry>;
   trees?: Record<string, TreeTip>;
+  cards?: Record<string, CardTip>;
 }
 
 const esc = (s: string | number | undefined) =>
@@ -148,4 +163,27 @@ export function renderTreeTooltip(t: TreeTip, p: TipPayload): string {
     </div>
     <ul class="wft-list">${rows}</ul>
     ${t.more ? `<p class="wft-note">${esc(t.more)}</p>` : ''}`;
+}
+
+export function renderCardTooltip(c: CardTip, p: TipPayload): string {
+  const icon = c.icon
+    ? `<img class="wft-icon" src="${esc(p.iconBase + c.icon)}.jpg" alt="" width="44" height="44">`
+    : `<span class="wft-icon wft-icon--empty"></span>`;
+  const quality = c.quality != null ? ` wft-q${esc(c.quality)}` : '';
+  const lines = c.lines.map((l) => `<p class="wft-line">${esc(l)}</p>`).join('');
+  const source = c.sourceUrl
+    ? `<div class="wft-foot"><span></span><a class="wft-source" href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">${esc(p.strings.source)} ↗</a></div>`
+    : '';
+  return `
+    <div class="wft-head">
+      ${icon}
+      <div class="wft-title">
+        <div class="wft-name wft-name--${esc(c.kind)}${quality}">${esc(c.name)}</div>
+        ${c.sub ? `<div class="wft-sub">${esc(c.sub)}</div>` : ''}
+      </div>
+      ${c.pill ? `<span class="wft-pill">${esc(c.pill)}</span>` : ''}
+    </div>
+    <div class="wft-lines">${lines}</div>
+    ${c.note ? `<p class="wft-note">${esc(c.note)}</p>` : ''}
+    ${source}`;
 }

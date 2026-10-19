@@ -1,0 +1,28 @@
+---
+import { iconUrl, item, itemTipId } from '../lib/professions';
+
+// An item name (optionally "3 × " and an icon) with its tooltip card. The page
+// needs a #wf-glossary island built with professionTips({ items }).
+
+interface Props {
+  id: number;
+  count?: number;
+  size?: number;
+  iconOnly?: boolean;
+  small?: boolean;
+}
+
+const { id, count, size = 20, iconOnly = false, small = false } = Astro.props;
+const it = item(id);
+const q = it.quality != null && it.quality >= 2 ? `q${it.quality}` : undefined;
+---
+
+<span
+  class:list={['wf-tip', 'wf-tip--item', 'icon-name', q, { small }]}
+  data-tip={itemTipId(id)}
+  tabindex="0"
+  aria-label={iconOnly ? it.name : undefined}
+>
+  {it.icon && <img src={iconUrl(it.icon)} alt="" width={size} height={size} loading="lazy" />}
+  {!iconOnly && <span>{count != null && `${count} × `}{it.name}</span>}
+</span>

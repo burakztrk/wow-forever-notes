@@ -1,5 +1,4 @@
 import { createHash } from 'node:crypto';
-import type { GlossaryEntry } from '../../src/lib/glossary-types';
 
 // Turkish tooltip text. Translations live in src/data/i18n/tr.json keyed by a
 // hash of the exact English text, so a sync only leaves *new or changed*
@@ -20,6 +19,19 @@ export interface PendingText {
   class?: string;
 }
 
+// Anything with tooltip text: glossary entries and Legacy perks.
+export interface Translatable {
+  name: string;
+  kind?: string;
+  class?: string;
+  desc: string;
+  descTr?: string;
+  change?: string;
+  changeTr?: string;
+  ranks?: string[];
+  ranksTr?: string[];
+}
+
 export const textKey = (en: string) => createHash('sha1').update(en.trim()).digest('hex').slice(0, 16);
 
 const FIELDS = [
@@ -29,7 +41,7 @@ const FIELDS = [
 
 // Fills descTr/changeTr from the cache (clears them when there is no
 // translation for the current English text). Returns texts still missing.
-export function applyTranslations(entries: GlossaryEntry[], cache: TranslationCache): PendingText[] {
+export function applyTranslations(entries: Translatable[], cache: TranslationCache): PendingText[] {
   const pending = new Map<string, PendingText>();
   for (const e of entries) {
     for (const [src, dst] of FIELDS) {
@@ -43,7 +55,7 @@ export function applyTranslations(entries: GlossaryEntry[], cache: TranslationCa
       if (hit?.tr) e[dst] = hit.tr;
       else {
         delete e[dst];
-        if (!pending.has(key)) pending.set(key, { key, en, name: e.name, kind: e.kind, class: e.class });
+        if (!pending.has(key)) pending.set(key, { key, en, name: e.name, kind: e.kind ?? 'legacy', class: e.class });
       }
     }
   }
@@ -73,7 +85,7 @@ export function deriveRankTr(topEn: string, topTr: string, rankEn: string): stri
   });
 }
 
-export function applyRankTranslations(entries: GlossaryEntry[]): void {
+export function applyRankTranslations(entries: Translatable[]): void {
   for (const e of entries) {
     delete e.ranksTr;
     if (!e.ranks?.length || !e.descTr) continue;
@@ -105,7 +117,7 @@ export function validateTranslation(en: string, tr: string): string | undefined 
 }
 
 // Drops cache records no entry uses any more (old builds' wording).
-export function pruneCache(entries: GlossaryEntry[], cache: TranslationCache): TranslationCache {
+export function pruneCache(entries: Translatable[], cache: TranslationCache): TranslationCache {
   const used = new Set<string>();
   for (const e of entries) for (const [src] of FIELDS) if (e[src]?.trim()) used.add(textKey(e[src]!));
   return Object.fromEntries(Object.entries(cache).filter(([k]) => used.has(k)));

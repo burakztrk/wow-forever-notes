@@ -1,5 +1,5 @@
 import { autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { renderTooltip, renderTreeTooltip, type TipPayload } from '../lib/tooltip-render';
+import { renderCardTooltip, renderTooltip, renderTreeTooltip, type TipPayload } from '../lib/tooltip-render';
 
 // One shared tooltip element driven by event delegation, so it keeps working
 // whatever content is on the page. Mouse: hover. Touch: tap to toggle.
@@ -45,10 +45,11 @@ function show(target: HTMLElement) {
   const id = target.dataset.tip ?? '';
   const entry = data?.entries[id];
   const tree = data?.trees?.[id];
-  if (!data || !(entry || tree)) return;
+  const card = data?.cards?.[id];
+  if (!data || !(entry || tree || card)) return;
   current?.removeAttribute('aria-describedby');
   current = target;
-  tooltip.innerHTML = tree ? renderTreeTooltip(tree, data) : renderTooltip(entry!, data);
+  tooltip.innerHTML = card ? renderCardTooltip(card, data) : tree ? renderTreeTooltip(tree, data) : renderTooltip(entry!, data);
   tooltip.hidden = false;
   target.setAttribute('aria-describedby', tooltip.id);
   stopAutoUpdate?.();

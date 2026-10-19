@@ -23,13 +23,24 @@ const navItems = [
   { key: 'races', href: withBase(`/${lang}/races/`) },
   { key: 'classes', href: withBase(`/${lang}/classes/`) },
   { key: 'talents', href: withBase(`/${lang}/talents/`) },
+  { key: 'professions', href: withBase(`/${lang}/professions/`) },
+  { key: 'legacy', href: withBase(`/${lang}/legacy/`) },
   { key: 'search', href: withBase(`/${lang}/search/`) },
 ];
 // Footer text stays English on every language page.
 const DISCLAIMER =
   'Unofficial fan site. World of Warcraft and related names, icons and data are the property of Blizzard Entertainment.';
 const t = ui(lang);
-const labels: Record<string, string> = { '': t.navHome, notes: t.navNotes, races: t.navRaces, classes: t.navClasses, talents: t.navTalents, search: t.navSearch };
+const labels: Record<string, string> = {
+  '': t.navHome,
+  notes: t.navNotes,
+  races: t.navRaces,
+  classes: t.navClasses,
+  talents: t.navTalents,
+  professions: t.navProfessions,
+  legacy: t.navLegacy,
+  search: t.navSearch,
+};
 const isCurrent = (key: string) =>
   key === '' ? section === '' : key === 'notes' ? section === 'notes' || section === 'blog' : section === key;
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
@@ -82,6 +93,8 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
           <a href="https://wowforevertools.com/" rel="noopener">WoW Forever Tools</a>
           ·
           <a href="https://us.forums.blizzard.com/en/wow/" rel="noopener">Blizzard Forums</a>
+          ·
+          <a href="https://classicwowforever.com/" rel="noopener">Classic WoW Forever</a> (CC BY 4.0)
         </p>
       </div>
     </footer>
@@ -155,6 +168,8 @@ const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
       order: 3;
       width: 100%;
       margin: 0 0 10px;
+      flex-wrap: wrap;
+      gap: 4px 14px;
     }
   }
   .site-main.wide {

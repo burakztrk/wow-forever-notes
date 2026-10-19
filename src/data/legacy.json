@@ -1,0 +1,618 @@
+{
+  "generatedAt": "2026-10-19T20:12:17.810Z",
+  "source": "https://wowforevertools.com/legacy (client text); https://wowforever.wclbox.com/en/chuancheng (rewards, challenges)",
+  "build": "1.60.1.70450",
+  "maxPoints": 16,
+  "pointsPerTier": 5,
+  "unlockLevel": 25,
+  "totalChallenges": 81,
+  "challenges": [
+    {
+      "key": "classes",
+      "name": "Classes",
+      "count": 27,
+      "points": 27
+    },
+    {
+      "key": "professions",
+      "name": "Trade Skills",
+      "count": 18,
+      "points": 18
+    },
+    {
+      "key": "dungeons",
+      "name": "Dungeons",
+      "count": 3,
+      "points": 3
+    },
+    {
+      "key": "raids",
+      "name": "Raids",
+      "count": 3,
+      "points": 3
+    },
+    {
+      "key": "pvp",
+      "name": "Player vs. Player",
+      "count": 12,
+      "points": 12
+    },
+    {
+      "key": "adventure",
+      "name": "Adventure",
+      "count": 3,
+      "points": 18
+    }
+  ],
+  "trees": [
+    {
+      "name": "Professions",
+      "slug": "professions",
+      "icon": "inv_misc_gear_02"
+    },
+    {
+      "name": "Adventure",
+      "slug": "adventure",
+      "icon": "inv_misc_map02"
+    },
+    {
+      "name": "Resourcefulness",
+      "slug": "resourcefulness",
+      "icon": "inv_misc_coin_01"
+    }
+  ],
+  "perks": [
+    {
+      "id": "legacy/master-chef",
+      "name": "Master Chef",
+      "icon": "achievement_profession_chefhat",
+      "tree": 0,
+      "tier": 2,
+      "lane": 1,
+      "maxRank": 5,
+      "tierPoints": 5,
+      "ranks": [
+        "Your cooking recipes have a 10% chance to create an extra result.",
+        "Your cooking recipes have a 20% chance to create an extra result.",
+        "Your cooking recipes have a 30% chance to create an extra result.",
+        "Your cooking recipes have a 40% chance to create an extra result.",
+        "Your cooking recipes have a 50% chance to create an extra result."
+      ],
+      "desc": "Your cooking recipes have a 50% chance to create an extra result.",
+      "descTr": "Cooking tariflerinin ekstra ürün çıkarma şansı %50 olur.",
+      "ranksTr": [
+        "Cooking tariflerinin ekstra ürün çıkarma şansı %10 olur.",
+        "Cooking tariflerinin ekstra ürün çıkarma şansı %20 olur.",
+        "Cooking tariflerinin ekstra ürün çıkarma şansı %30 olur.",
+        "Cooking tariflerinin ekstra ürün çıkarma şansı %40 olur.",
+        "Cooking tariflerinin ekstra ürün çıkarma şansı %50 olur."
+      ]
+    },
+    {
+      "id": "legacy/working-overtime",
+      "name": "Working Overtime",
+      "icon": "inv_misc_pocketwatch_03",
+      "tree": 0,
+      "tier": 1,
+      "lane": 2,
+      "maxRank": 5,
+      "tierPoints": 0,
+      "ranks": [
+        "Increases your chance to gain a skill increase from using any primary, secondary, or class-based tradeskill by 4%.",
+        "Increases your chance to gain a skill increase from using any primary, secondary, or class-based tradeskill by 8%.",
+        "Increases your chance to gain a skill increase from using any primary, secondary, or class-based tradeskill by 12%.",
+        "Increases your chance to gain a skill increase from using any primary, secondary, or class-based tradeskill by 16%.",
+        "Increases your chance to gain a skill increase from using any primary, secondary, or class-based tradeskill by 20%."
+      ],
+      "desc": "Increases your chance to gain a skill increase from using any primary, secondary, or class-based tradeskill by 20%.",
+      "descTr": "Ana, ikincil veya class'a özel bir meslek becerisini kullanırken skill artışı kazanma şansın %20 artar.",
+      "ranksTr": [
+        "Ana, ikincil veya class'a özel bir meslek becerisini kullanırken skill artışı kazanma şansın %4 artar.",
+        "Ana, ikincil veya class'a özel bir meslek becerisini kullanırken skill artışı kazanma şansın %8 artar.",
+        "Ana, ikincil veya class'a özel bir meslek becerisini kullanırken skill artışı kazanma şansın %12 artar.",
+        "Ana, ikincil veya class'a özel bir meslek becerisini kullanırken skill artışı kazanma şansın %16 artar.",
+        "Ana, ikincil veya class'a özel bir meslek becerisini kullanırken skill artışı kazanma şansın %20 artar."
+      ]
+    },
+    {
+      "id": "legacy/bartering",
+      "name": "Bartering",
+      "icon": "inv_misc_coin_06",
+      "tree": 0,
+      "tier": 2,
+      "lane": 2,
+      "maxRank": 2,
+      "tierPoints": 5,
+      "ranks": [
+        "Reduces the gold price of items from all vendors by 5%.",
+        "Reduces the gold price of items from all vendors by 10%."
+      ],
+      "desc": "Reduces the gold price of items from all vendors by 10%.",
+      "descTr": "Tüm vendor'lardaki eşyaların altın fiyatı %10 düşer.",
+      "ranksTr": [
+        "Tüm vendor'lardaki eşyaların altın fiyatı %5 düşer.",
+        "Tüm vendor'lardaki eşyaların altın fiyatı %10 düşer."
+      ]
+    },
+    {
+      "id": "legacy/dedicated-study",
+      "name": "Dedicated Study",
+      "icon": "inv_misc_book_08",
+      "tree": 0,
+      "tier": 3,
+      "lane": 2,
+      "maxRank": 1,
+      "tierPoints": 10,
+      "requires": "legacy/bartering",
+      "ranks": [
+        "Increases your skill by 1 in your lowest tradeskill among your Primary and Secondary tradeskills. If you have already reached 300 skill in your two current Primary Tradeskills and all three Secondary Tradeskills, you will gain 2 to 4 of a random Elemental Essence."
+      ],
+      "desc": "Increases your skill by 1 in your lowest tradeskill among your Primary and Secondary tradeskills. If you have already reached 300 skill in your two current Primary Tradeskills and all three Secondary Tradeskills, you will gain 2 to 4 of a random Elemental Essence.",
+      "cast": "25 sec",
+      "cooldown": "23 hr",
+      "descTr": "Ana ve ikincil mesleklerin arasında en düşük olanın skill'ini 1 artırır. İki ana mesleğin ve üç ikincil mesleğin zaten 300'deyse rastgele bir Elemental Essence'tan 2 ila 4 adet kazanırsın.",
+      "ranksTr": [
+        "Ana ve ikincil mesleklerin arasında en düşük olanın skill'ini 1 artırır. İki ana mesleğin ve üç ikincil mesleğin zaten 300'deyse rastgele bir Elemental Essence'tan 2 ila 4 adet kazanırsın."
+      ]
+    },
+    {
+      "id": "legacy/bountiful-harvest",
+      "name": "Bountiful Harvest",
+      "icon": "inv_misc_bag_18",
+      "tree": 0,
+      "tier": 1,
+      "lane": 3,
+      "maxRank": 5,
+      "tierPoints": 0,
+      "ranks": [
+        "You discover 20% more Scarce materials from Mining, Herbalism, and Skinning.",
+        "You discover 40% more Scarce materials from Mining, Herbalism, and Skinning.",
+        "You discover 60% more Scarce materials from Mining, Herbalism, and Skinning.",
+        "You discover 80% more Scarce materials from Mining, Herbalism, and Skinning.",
+        "You discover 100% more Scarce materials from Mining, Herbalism, and Skinning."
+      ],
+      "desc": "You discover 100% more Scarce materials from Mining, Herbalism, and Skinning.",
+      "descTr": "Mining, Herbalism ve Skinning ile %100 daha fazla Scarce malzeme bulursun.",
+      "ranksTr": [
+        "Mining, Herbalism ve Skinning ile %20 daha fazla Scarce malzeme bulursun.",
+        "Mining, Herbalism ve Skinning ile %40 daha fazla Scarce malzeme bulursun.",
+        "Mining, Herbalism ve Skinning ile %60 daha fazla Scarce malzeme bulursun.",
+        "Mining, Herbalism ve Skinning ile %80 daha fazla Scarce malzeme bulursun.",
+        "Mining, Herbalism ve Skinning ile %100 daha fazla Scarce malzeme bulursun."
+      ]
+    },
+    {
+      "id": "legacy/performance-bonus",
+      "name": "Performance Bonus",
+      "icon": "racial_dwarf_findtreasure",
+      "tree": 0,
+      "tier": 2,
+      "lane": 3,
+      "maxRank": 3,
+      "tierPoints": 5,
+      "requires": "legacy/bountiful-harvest",
+      "ranks": [
+        "You have a 5% chance to receive 100% increased Merchant's Favor when you turn in a crate to the Azeroth Commerce Authority or Durotar Supply and Logistics.",
+        "You have a 10% chance to receive 100% increased Merchant's Favor when you turn in a crate to the Azeroth Commerce Authority or Durotar Supply and Logistics.",
+        "You have a 15% chance to receive 100% increased Merchant's Favor when you turn in a crate to the Azeroth Commerce Authority or Durotar Supply and Logistics."
+      ],
+      "desc": "You have a 15% chance to receive 100% increased Merchant's Favor when you turn in a crate to the Azeroth Commerce Authority or Durotar Supply and Logistics.",
+      "descTr": "Azeroth Commerce Authority'ye veya Durotar Supply and Logistics'e sandık teslim ettiğinde %15 ihtimalle %100 fazla Merchant's Favor alırsın.",
+      "ranksTr": [
+        "Azeroth Commerce Authority'ye veya Durotar Supply and Logistics'e sandık teslim ettiğinde %5 ihtimalle %100 fazla Merchant's Favor alırsın.",
+        "Azeroth Commerce Authority'ye veya Durotar Supply and Logistics'e sandık teslim ettiğinde %10 ihtimalle %100 fazla Merchant's Favor alırsın.",
+        "Azeroth Commerce Authority'ye veya Durotar Supply and Logistics'e sandık teslim ettiğinde %15 ihtimalle %100 fazla Merchant's Favor alırsın."
+      ]
+    },
+    {
+      "id": "legacy/luremaster",
+      "name": "Luremaster",
+      "icon": "inv_misc_basket_04",
+      "tree": 0,
+      "tier": 2,
+      "lane": 4,
+      "maxRank": 2,
+      "tierPoints": 5,
+      "ranks": [
+        "While fishing with a Lure active, you have a 25% chance to catch an extra fish.",
+        "While fishing with a Lure active, you have a 50% chance to catch an extra fish."
+      ],
+      "desc": "While fishing with a Lure active, you have a 50% chance to catch an extra fish.",
+      "descTr": "Aktif bir Lure ile balık tutarken %50 ihtimalle fazladan bir balık yakalarsın.",
+      "ranksTr": [
+        "Aktif bir Lure ile balık tutarken %25 ihtimalle fazladan bir balık yakalarsın.",
+        "Aktif bir Lure ile balık tutarken %50 ihtimalle fazladan bir balık yakalarsın."
+      ]
+    },
+    {
+      "id": "legacy/high-alert",
+      "name": "High Alert",
+      "icon": "spell_shadow_detectlesserinvisibility",
+      "tree": 1,
+      "tier": 2,
+      "lane": 1,
+      "maxRank": 2,
+      "tierPoints": 5,
+      "ranks": [
+        "Increases your ability to detect nearby targets with Stealth as if your level were increased by 1. Ineffective in Battlegrounds.",
+        "Increases your ability to detect nearby targets with Stealth as if your level were increased by 2. Ineffective in Battlegrounds."
+      ],
+      "desc": "Increases your ability to detect nearby targets with Stealth as if your level were increased by 2. Ineffective in Battlegrounds.",
+      "descTr": "Yakındaki Stealth'teki hedefleri, seviyen 2 fazlaymış gibi fark edersin. Battleground'larda çalışmaz.",
+      "ranksTr": [
+        "Yakındaki Stealth'teki hedefleri, seviyen 1 fazlaymış gibi fark edersin. Battleground'larda çalışmaz.",
+        "Yakındaki Stealth'teki hedefleri, seviyen 2 fazlaymış gibi fark edersin. Battleground'larda çalışmaz."
+      ]
+    },
+    {
+      "id": "legacy/well-rested",
+      "name": "Well Rested",
+      "icon": "spell_nature_sleep",
+      "tree": 1,
+      "tier": 1,
+      "lane": 2,
+      "maxRank": 5,
+      "tierPoints": 0,
+      "ranks": [
+        "Your rested experience accumulates 4% faster and your rested experience cap is increased by 4%.",
+        "Your rested experience accumulates 8% faster and your rested experience cap is increased by 8%.",
+        "Your rested experience accumulates 12% faster and your rested experience cap is increased by 12%.",
+        "Your rested experience accumulates 16% faster and your rested experience cap is increased by 16%.",
+        "Your rested experience accumulates 20% faster and your rested experience cap is increased by 20%."
+      ],
+      "desc": "Your rested experience accumulates 20% faster and your rested experience cap is increased by 20%.",
+      "descTr": "Dinlenmiş XP'n %20 daha hızlı birikir ve dinlenmiş XP sınırın %20 artar.",
+      "ranksTr": [
+        "Dinlenmiş XP'n %4 daha hızlı birikir ve dinlenmiş XP sınırın %4 artar.",
+        "Dinlenmiş XP'n %8 daha hızlı birikir ve dinlenmiş XP sınırın %8 artar.",
+        "Dinlenmiş XP'n %12 daha hızlı birikir ve dinlenmiş XP sınırın %12 artar.",
+        "Dinlenmiş XP'n %16 daha hızlı birikir ve dinlenmiş XP sınırın %16 artar.",
+        "Dinlenmiş XP'n %20 daha hızlı birikir ve dinlenmiş XP sınırın %20 artar."
+      ]
+    },
+    {
+      "id": "legacy/talented",
+      "name": "Talented",
+      "icon": "ability_marksmanship",
+      "tree": 1,
+      "tier": 2,
+      "lane": 2,
+      "maxRank": 5,
+      "tierPoints": 5,
+      "requires": "legacy/well-rested",
+      "ranks": [
+        "You gain talent points every level starting at level 9 instead of starting at level 10, but you still may not have more than 51 total talent points.",
+        "You gain talent points every level starting at level 8 instead of starting at level 10, but you still may not have more than 51 total talent points.",
+        "You gain talent points every level starting at level 7 instead of starting at level 10, but you still may not have more than 51 total talent points.",
+        "You gain talent points every level starting at level 6 instead of starting at level 10, but you still may not have more than 51 total talent points.",
+        "You gain talent points every level starting at level 5 instead of starting at level 10, but you still may not have more than 51 total talent points."
+      ],
+      "desc": "You gain talent points every level starting at level 5 instead of starting at level 10, but you still may not have more than 51 total talent points.",
+      "descTr": "Talent puanlarını seviye 10 yerine seviye 5 itibarıyla her seviyede kazanırsın; toplam talent puanın yine de 51'i geçemez.",
+      "ranksTr": [
+        "Talent puanlarını seviye 10 yerine seviye 9 itibarıyla her seviyede kazanırsın; toplam talent puanın yine de 51'i geçemez.",
+        "Talent puanlarını seviye 10 yerine seviye 8 itibarıyla her seviyede kazanırsın; toplam talent puanın yine de 51'i geçemez.",
+        "Talent puanlarını seviye 10 yerine seviye 7 itibarıyla her seviyede kazanırsın; toplam talent puanın yine de 51'i geçemez.",
+        "Talent puanlarını seviye 10 yerine seviye 6 itibarıyla her seviyede kazanırsın; toplam talent puanın yine de 51'i geçemez.",
+        "Talent puanlarını seviye 10 yerine seviye 5 itibarıyla her seviyede kazanırsın; toplam talent puanın yine de 51'i geçemez."
+      ]
+    },
+    {
+      "id": "legacy/thrill-of-adventure",
+      "name": "Thrill of Adventure",
+      "icon": "ability_hunter_huntervswild",
+      "tree": 1,
+      "tier": 1,
+      "lane": 3,
+      "maxRank": 5,
+      "tierPoints": 0,
+      "ranks": [
+        "You gain 1% of your maximum Health and Mana over 10 sec each time you deliver the killing blow to a non-trivial enemy. Ineffective in dungeons, raids, and battlegrounds.",
+        "You gain 2% of your maximum Health and Mana over 10 sec each time you deliver the killing blow to a non-trivial enemy. Ineffective in dungeons, raids, and battlegrounds.",
+        "You gain 3% of your maximum Health and Mana over 10 sec each time you deliver the killing blow to a non-trivial enemy. Ineffective in dungeons, raids, and battlegrounds.",
+        "You gain 4% of your maximum Health and Mana over 10 sec each time you deliver the killing blow to a non-trivial enemy. Ineffective in dungeons, raids, and battlegrounds.",
+        "You gain 5% of your maximum Health and Mana over 10 sec each time you deliver the killing blow to a non-trivial enemy. Ineffective in dungeons, raids, and battlegrounds."
+      ],
+      "desc": "You gain 5% of your maximum Health and Mana over 10 sec each time you deliver the killing blow to a non-trivial enemy. Ineffective in dungeons, raids, and battlegrounds.",
+      "descTr": "Önemsiz olmayan bir düşmana son vuruşu her yaptığında 10 saniye boyunca maksimum can ve Mana'nın %5'ini kazanırsın. Dungeon, raid ve battleground'larda çalışmaz.",
+      "ranksTr": [
+        "Önemsiz olmayan bir düşmana son vuruşu her yaptığında 10 saniye boyunca maksimum can ve Mana'nın %1'ini kazanırsın. Dungeon, raid ve battleground'larda çalışmaz.",
+        "Önemsiz olmayan bir düşmana son vuruşu her yaptığında 10 saniye boyunca maksimum can ve Mana'nın %2'ini kazanırsın. Dungeon, raid ve battleground'larda çalışmaz.",
+        "Önemsiz olmayan bir düşmana son vuruşu her yaptığında 10 saniye boyunca maksimum can ve Mana'nın %3'ini kazanırsın. Dungeon, raid ve battleground'larda çalışmaz.",
+        "Önemsiz olmayan bir düşmana son vuruşu her yaptığında 10 saniye boyunca maksimum can ve Mana'nın %4'ini kazanırsın. Dungeon, raid ve battleground'larda çalışmaz.",
+        "Önemsiz olmayan bir düşmana son vuruşu her yaptığında 10 saniye boyunca maksimum can ve Mana'nın %5'ini kazanırsın. Dungeon, raid ve battleground'larda çalışmaz."
+      ]
+    },
+    {
+      "id": "legacy/field-guide",
+      "name": "Field Guide",
+      "icon": "inv_fishingchair",
+      "tree": 1,
+      "tier": 2,
+      "lane": 3,
+      "maxRank": 3,
+      "tierPoints": 5,
+      "ranks": [
+        "Reduces your cooldown on adding Camp features by 8%.",
+        "Reduces your cooldown on adding Camp features by 17%.",
+        "Reduces your cooldown on adding Camp features by 25%."
+      ],
+      "desc": "Reduces your cooldown on adding Camp features by 25%.",
+      "descTr": "Kampa özellik eklemenin bekleme süresi %25 kısalır.",
+      "ranksTr": [
+        "Kampa özellik eklemenin bekleme süresi %8 kısalır.",
+        "Kampa özellik eklemenin bekleme süresi %17 kısalır.",
+        "Kampa özellik eklemenin bekleme süresi %25 kısalır."
+      ]
+    },
+    {
+      "id": "legacy/frequent-flier",
+      "name": "Frequent Flier",
+      "icon": "achievement_guild_ridelikethewind",
+      "tree": 1,
+      "tier": 3,
+      "lane": 3,
+      "maxRank": 1,
+      "tierPoints": 10,
+      "requires": "legacy/field-guide",
+      "ranks": [
+        "You receive a 50% discount on all flight paths, and your flight path mount flies 20% faster."
+      ],
+      "desc": "You receive a 50% discount on all flight paths, and your flight path mount flies 20% faster.",
+      "descTr": "Tüm uçuş yollarında %50 indirim alırsın ve uçuş hayvanın %20 daha hızlı uçar.",
+      "ranksTr": [
+        "Tüm uçuş yollarında %50 indirim alırsın ve uçuş hayvanın %20 daha hızlı uçar."
+      ]
+    },
+    {
+      "id": "legacy/field-medicine",
+      "name": "Field Medicine",
+      "icon": "inv_misc_bandage_05",
+      "tree": 1,
+      "tier": 2,
+      "lane": 4,
+      "maxRank": 2,
+      "tierPoints": 5,
+      "ranks": [
+        "Reduces the duration of the Recently Bandaged effect by 5 sec when you use a Bandage. Ineffective in dungeons, raids, and battlegrounds.",
+        "Reduces the duration of the Recently Bandaged effect by 10 sec when you use a Bandage. Ineffective in dungeons, raids, and battlegrounds."
+      ],
+      "desc": "Reduces the duration of the Recently Bandaged effect by 10 sec when you use a Bandage. Ineffective in dungeons, raids, and battlegrounds.",
+      "descTr": "Bandaj kullandığında Recently Bandaged etkisinin süresi 10 saniye kısalır. Dungeon, raid ve battleground'larda çalışmaz.",
+      "ranksTr": [
+        "Bandaj kullandığında Recently Bandaged etkisinin süresi 5 saniye kısalır. Dungeon, raid ve battleground'larda çalışmaz.",
+        "Bandaj kullandığında Recently Bandaged etkisinin süresi 10 saniye kısalır. Dungeon, raid ve battleground'larda çalışmaz."
+      ]
+    },
+    {
+      "id": "legacy/for-great-honor",
+      "name": "For Great Honor",
+      "icon": "achievement_bg_winwsg",
+      "tree": 2,
+      "tier": 2,
+      "lane": 1,
+      "maxRank": 5,
+      "tierPoints": 5,
+      "ranks": [
+        "Increases Honor Points gained by 2%.",
+        "Increases Honor Points gained by 4%.",
+        "Increases Honor Points gained by 6%.",
+        "Increases Honor Points gained by 8%.",
+        "Increases Honor Points gained by 10%."
+      ],
+      "desc": "Increases Honor Points gained by 10%.",
+      "descTr": "Kazandığın Honor Point'ler %10 artar.",
+      "ranksTr": [
+        "Kazandığın Honor Point'ler %2 artar.",
+        "Kazandığın Honor Point'ler %4 artar.",
+        "Kazandığın Honor Point'ler %6 artar.",
+        "Kazandığın Honor Point'ler %8 artar.",
+        "Kazandığın Honor Point'ler %10 artar."
+      ]
+    },
+    {
+      "id": "legacy/gourmand",
+      "name": "Gourmand",
+      "icon": "inv_misc_food_64",
+      "tree": 2,
+      "tier": 1,
+      "lane": 2,
+      "maxRank": 3,
+      "tierPoints": 0,
+      "ranks": [
+        "Increases the duration of beneficial effects from eating food by 33%.",
+        "Increases the duration of beneficial effects from eating food by 67%.",
+        "Increases the duration of beneficial effects from eating food by 100%."
+      ],
+      "desc": "Increases the duration of beneficial effects from eating food by 100%.",
+      "descTr": "Yemekten gelen faydalı etkilerin süresi %100 uzar.",
+      "ranksTr": [
+        "Yemekten gelen faydalı etkilerin süresi %33 uzar.",
+        "Yemekten gelen faydalı etkilerin süresi %67 uzar.",
+        "Yemekten gelen faydalı etkilerin süresi %100 uzar."
+      ]
+    },
+    {
+      "id": "legacy/permanence",
+      "name": "Permanence",
+      "icon": "spell_misc_emotionhappy",
+      "tree": 2,
+      "tier": 2,
+      "lane": 2,
+      "maxRank": 2,
+      "tierPoints": 5,
+      "requires": "legacy/gourmand",
+      "ranks": [
+        "Your class abilities which grant long-duration stat or attribute benefits to all party or raid members last 50% longer, and the benefits you gain from resting at a camp last 50% longer.",
+        "Your class abilities which grant long-duration stat or attribute benefits to all party or raid members last 100% longer, and the benefits you gain from resting at a camp last 100% longer."
+      ],
+      "desc": "Your class abilities which grant long-duration stat or attribute benefits to all party or raid members last 100% longer, and the benefits you gain from resting at a camp last 100% longer.",
+      "descTr": "Tüm parti veya raid üyelerine uzun süreli stat veren class yeteneklerin %100 daha uzun sürer; kampta dinlenerek kazandığın bonuslar da %100 daha uzun sürer.",
+      "ranksTr": [
+        "Tüm parti veya raid üyelerine uzun süreli stat veren class yeteneklerin %50 daha uzun sürer; kampta dinlenerek kazandığın bonuslar da %50 daha uzun sürer.",
+        "Tüm parti veya raid üyelerine uzun süreli stat veren class yeteneklerin %100 daha uzun sürer; kampta dinlenerek kazandığın bonuslar da %100 daha uzun sürer."
+      ]
+    },
+    {
+      "id": "legacy/the-quick-and-the-dead",
+      "name": "The Quick and the Dead",
+      "icon": "spell_shadow_deadofnight",
+      "tree": 2,
+      "tier": 1,
+      "lane": 3,
+      "maxRank": 2,
+      "tierPoints": 0,
+      "ranks": [
+        "Increases movement speed while dead by 5% and your helpful spells and abilities cost no resources for 1 min after being resurrected or until you enter combat.",
+        "Increases movement speed while dead by 10% and your helpful spells and abilities cost no resources for 2 min after being resurrected or until you enter combat."
+      ],
+      "desc": "Increases movement speed while dead by 10% and your helpful spells and abilities cost no resources for 2 min after being resurrected or until you enter combat.",
+      "descTr": "Ölüyken hareket hızın %10 artar; diriltildikten sonra 2 dakika boyunca ya da savaşa girene kadar yardımcı büyü ve yeteneklerin kaynak harcamaz.",
+      "ranksTr": [
+        "Ölüyken hareket hızın %5 artar; diriltildikten sonra 1 dakika boyunca ya da savaşa girene kadar yardımcı büyü ve yeteneklerin kaynak harcamaz.",
+        "Ölüyken hareket hızın %10 artar; diriltildikten sonra 2 dakika boyunca ya da savaşa girene kadar yardımcı büyü ve yeteneklerin kaynak harcamaz."
+      ]
+    },
+    {
+      "id": "legacy/reagent-economy",
+      "name": "Reagent Economy",
+      "icon": "inv_misc_candle_02",
+      "tree": 2,
+      "tier": 3,
+      "lane": 3,
+      "maxRank": 1,
+      "tierPoints": 10,
+      "requires": "legacy/the-quick-and-the-dead",
+      "ranks": [
+        "Your class abilities no longer require reagents purchasable from vendors."
+      ],
+      "desc": "Your class abilities no longer require reagents purchasable from vendors.",
+      "descTr": "Class yeteneklerin artık vendor'dan alınabilen reagent'lara ihtiyaç duymaz.",
+      "ranksTr": [
+        "Class yeteneklerin artık vendor'dan alınabilen reagent'lara ihtiyaç duymaz."
+      ]
+    },
+    {
+      "id": "legacy/reinforce",
+      "name": "Reinforce",
+      "icon": "inv_misc_armorkit_17",
+      "tree": 2,
+      "tier": 1,
+      "lane": 4,
+      "maxRank": 5,
+      "tierPoints": 0,
+      "ranks": [
+        "You take 8% less durability loss when you die.",
+        "You take 16% less durability loss when you die.",
+        "You take 24% less durability loss when you die.",
+        "You take 32% less durability loss when you die.",
+        "You take 40% less durability loss when you die."
+      ],
+      "desc": "You take 40% less durability loss when you die.",
+      "descTr": "Öldüğünde %40 daha az dayanıklılık (durability) kaybedersin.",
+      "ranksTr": [
+        "Öldüğünde %8 daha az dayanıklılık (durability) kaybedersin.",
+        "Öldüğünde %16 daha az dayanıklılık (durability) kaybedersin.",
+        "Öldüğünde %24 daha az dayanıklılık (durability) kaybedersin.",
+        "Öldüğünde %32 daha az dayanıklılık (durability) kaybedersin.",
+        "Öldüğünde %40 daha az dayanıklılık (durability) kaybedersin."
+      ]
+    },
+    {
+      "id": "legacy/diplomat",
+      "name": "Diplomat",
+      "icon": "inv_scroll_03",
+      "tree": 2,
+      "tier": 2,
+      "lane": 4,
+      "maxRank": 5,
+      "tierPoints": 5,
+      "ranks": [
+        "Increases your reputation gains by 2%.",
+        "Increases your reputation gains by 4%.",
+        "Increases your reputation gains by 6%.",
+        "Increases your reputation gains by 8%.",
+        "Increases your reputation gains by 10%."
+      ],
+      "desc": "Increases your reputation gains by 10%.",
+      "descTr": "Kazandığın itibar (reputation) %10 artar.",
+      "ranksTr": [
+        "Kazandığın itibar (reputation) %2 artar.",
+        "Kazandığın itibar (reputation) %4 artar.",
+        "Kazandığın itibar (reputation) %6 artar.",
+        "Kazandığın itibar (reputation) %8 artar.",
+        "Kazandığın itibar (reputation) %10 artar."
+      ]
+    }
+  ],
+  "reserved": [
+    {
+      "id": "legacy/reserved-113508",
+      "tree": 0,
+      "tier": 3,
+      "lane": 3,
+      "reserved": true
+    },
+    {
+      "id": "legacy/reserved-113506",
+      "tree": 0,
+      "tier": 4,
+      "lane": 3,
+      "reserved": true
+    },
+    {
+      "id": "legacy/reserved-113511",
+      "tree": 1,
+      "tier": 3,
+      "lane": 2,
+      "reserved": true
+    },
+    {
+      "id": "legacy/reserved-113510",
+      "tree": 1,
+      "tier": 4,
+      "lane": 2,
+      "reserved": true
+    },
+    {
+      "id": "legacy/reserved-113513",
+      "tree": 2,
+      "tier": 3,
+      "lane": 2,
+      "reserved": true
+    },
+    {
+      "id": "legacy/reserved-113512",
+      "tree": 2,
+      "tier": 4,
+      "lane": 2,
+      "reserved": true
+    }
+  ],
+  "rewards": [
+    {
+      "points": 15,
+      "name": "Holstered Replica Ironforge Air Rifle",
+      "icon": "inv_weapon_rifle_22",
+      "item": 276236
+    },
+    {
+      "points": 25,
+      "name": "Spectral Bear Cub",
+      "icon": "inv_pet_babyblizzardbear",
+      "item": 277714
+    },
+    {
+      "points": 40,
+      "name": "Spectral Bear Tabard",
+      "icon": "inv_tabard_legacyc60_b_01",
+      "item": 277717
+    },
+    {
+      "points": 55,
+      "name": "Reins of the Spectral Bear",
+      "icon": "inv_bearmountblizzard",
+      "item": 277718
+    }
+  ]
+}

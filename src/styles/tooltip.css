@@ -213,3 +213,60 @@
   color: var(--text-mute);
   font-size: 0.78rem;
 }
+
+/* Card tooltips: items (quality colours), camp objects, Legacy perks */
+.wft-name--camp {
+  color: var(--gold);
+}
+.wft-name--perk {
+  color: #c2a265;
+}
+.wft-q0 {
+  color: #9d9d9d;
+}
+.wft-q1 {
+  color: #ffffff;
+}
+.wft-q2 {
+  color: #1eff00;
+}
+.wft-q3 {
+  color: #0070dd;
+}
+.wft-q4 {
+  color: #a335ee;
+}
+.wft-q5 {
+  color: #ff8000;
+}
+.wft-lines {
+  margin: 12px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(200, 166, 86, 0.35);
+}
+.wft-line {
+  margin: 2px 0;
+  color: var(--text);
+}
+
+/* inline item / perk references on profession pages */
+.wf-tip--item,
+.wf-tip--camp,
+.wf-tip--perk {
+  color: inherit;
+  white-space: normal;
+}
+.wf-tip--item:hover,
+.wf-tip--camp:hover,
+.wf-tip--perk:hover {
+  color: var(--link);
+}
+.wf-tip.q2 {
+  color: #1eff00;
+}
+.wf-tip.q3 {
+  color: #3d9bff;
+}
+.wf-tip.q4 {
+  color: #b86bff;
+}

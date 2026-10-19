@@ -3,6 +3,7 @@
 @import './talents.css';
 @import './codex.css';
 @import './combo.css';
+@import './professions.css';
 
 *,
 *::before,
@@ -116,6 +117,10 @@ img {
 .tree-head h2,
 .calc-head h1,
 .card-head h2,
+.codex-head h1,
+.pick-head,
+h2.with-icon,
+.shop-col h3,
 .brand {
   font-feature-settings: 'locl' 0;
 }

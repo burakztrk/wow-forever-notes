@@ -8,6 +8,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { GlossaryFile } from '../src/lib/glossary-types';
+import type { LegacyFile } from '../src/lib/profession-types';
 import {
   applyRankTranslations,
   applyTranslations,
@@ -19,6 +20,7 @@ import {
 
 const ROOT = process.cwd();
 const GLOSSARY = path.join(ROOT, 'src/data/glossary.json');
+const LEGACY = path.join(ROOT, 'src/data/legacy.json');
 const CACHE = path.join(ROOT, 'src/data/i18n/tr.json');
 const PENDING = path.join(ROOT, '.cache/translate-pending.json');
 
@@ -32,6 +34,9 @@ const readJson = async <T>(file: string, fallback: T): Promise<T> => {
 };
 
 const glossary = await readJson<GlossaryFile>(GLOSSARY, { entries: [] } as unknown as GlossaryFile);
+const legacy = await readJson<LegacyFile | null>(LEGACY, null);
+// Legacy perk tooltips share the cache with the glossary.
+const texts = [...glossary.entries, ...(legacy?.perks ?? [])];
 let cache = await readJson<TranslationCache>(CACHE, {});
 
 const applyIdx = process.argv.indexOf('--apply');
@@ -41,8 +46,7 @@ if (applyIdx > 0) {
   const pending = await readJson<{ key: string; en: string }[]>(PENDING, []);
   const enByKey = new Map(pending.map((p) => [p.key, p.en]));
   // English text can also come from the glossary itself
-  for (const e of glossary.entries)
-    for (const t of [e.desc, e.change]) if (t?.trim()) enByKey.set(textKey(t), t);
+  for (const e of texts) for (const t of [e.desc, e.change]) if (t?.trim()) enByKey.set(textKey(t), t);
 
   let added = 0;
   const rejected: string[] = [];
@@ -64,13 +68,14 @@ if (applyIdx > 0) {
   if (rejected.length) console.log(rejected.map((r) => `  - ${r}`).join('\n'));
 }
 
-const missing = applyTranslations(glossary.entries, cache);
-applyRankTranslations(glossary.entries);
-cache = Object.fromEntries(Object.entries(pruneCache(glossary.entries, cache)).sort(([a], [b]) => a.localeCompare(b)));
+const missing = applyTranslations(texts, cache);
+applyRankTranslations(texts);
+cache = Object.fromEntries(Object.entries(pruneCache(texts, cache)).sort(([a], [b]) => a.localeCompare(b)));
 
 await mkdir(path.dirname(CACHE), { recursive: true });
 await writeFile(CACHE, json(cache));
 await writeFile(GLOSSARY, json(glossary));
+if (legacy) await writeFile(LEGACY, json(legacy));
 await mkdir(path.dirname(PENDING), { recursive: true });
 await writeFile(PENDING, json(missing));
 

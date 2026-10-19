@@ -1,0 +1,8029 @@
+{
+  "generatedAt": "2026-10-19T20:12:17.600Z",
+  "build": "1.60.1.70450",
+  "source": "https://wowforever.wclbox.com/en/zhuanye (新手盒子·魔兽世界无限数据库)",
+  "professions": [
+    {
+      "slug": "alchemy",
+      "name": "Alchemy",
+      "icon": "trade_alchemy",
+      "kind": "primary",
+      "section": "crafting",
+      "newRecipes": 58,
+      "milestones": [
+        {
+          "skill": 150,
+          "points": 1
+        },
+        {
+          "skill": 225,
+          "points": 1
+        },
+        {
+          "skill": 300,
+          "points": 1
+        }
+      ],
+      "certification": true,
+      "campObjects": [
+        {
+          "id": 279956,
+          "name": "Mana Well",
+          "icon": "spell_arcane_manatap",
+          "skill": 20,
+          "reagents": [
+            [
+              2447,
+              1
+            ],
+            [
+              3371,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279970,
+          "name": "Fermenter",
+          "icon": "inv_alchemy_90_cauldron",
+          "skill": 140,
+          "replaces": "Mana Well",
+          "reagents": [
+            [
+              3372,
+              1
+            ],
+            [
+              3356,
+              1
+            ],
+            [
+              2452,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Fermenter"
+        },
+        {
+          "id": 279990,
+          "name": "Alchemy Laboratory",
+          "icon": "10prof_portabletable_alchemy01",
+          "skill": 300,
+          "replaces": "Mana Well",
+          "reagents": [
+            [
+              273125,
+              1
+            ],
+            [
+              8925,
+              1
+            ],
+            [
+              13463,
+              2
+            ]
+          ],
+          "blueprint": "Blueprint: Alchemy Laboratory"
+        }
+      ],
+      "route": [
+        {
+          "from": 1,
+          "to": 15,
+          "recipe": "Minor Arcane Elixir",
+          "item": 247754,
+          "crafts": 21,
+          "reagents": [
+            [
+              2447,
+              1
+            ],
+            [
+              3371,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 15,
+          "to": 70,
+          "recipe": "Minor Troll's Blood Elixir",
+          "item": 3382,
+          "crafts": 57,
+          "reagents": [
+            [
+              2447,
+              1
+            ],
+            [
+              2449,
+              2
+            ],
+            [
+              3371,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 70,
+          "to": 100,
+          "recipe": "Elixir of Minor Fortitude",
+          "item": 2458,
+          "crafts": 38,
+          "reagents": [
+            [
+              2449,
+              2
+            ],
+            [
+              2447,
+              1
+            ],
+            [
+              3371,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 100,
+          "to": 135,
+          "recipe": "Holy Protection Potion",
+          "item": 6051,
+          "crafts": 36,
+          "reagents": [
+            [
+              2453,
+              1
+            ],
+            [
+              2452,
+              1
+            ],
+            [
+              3371,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 135,
+          "to": 155,
+          "recipe": "Discolored Healing Potion",
+          "item": 247240,
+          "crafts": 28,
+          "reagents": [
+            [
+              3372,
+              1
+            ],
+            [
+              2453,
+              1
+            ],
+            [
+              730,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 155,
+          "to": 164,
+          "recipe": "Shadow Protection Potion",
+          "item": 6048,
+          "crafts": 10,
+          "reagents": [
+            [
+              3369,
+              1
+            ],
+            [
+              3356,
+              1
+            ],
+            [
+              3372,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 164,
+          "to": 196,
+          "recipe": "Mana Potion",
+          "item": 3827,
+          "crafts": 37,
+          "reagents": [
+            [
+              3820,
+              1
+            ],
+            [
+              3356,
+              1
+            ],
+            [
+              3372,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 196,
+          "to": 225,
+          "recipe": "Nature Protection Potion",
+          "item": 6052,
+          "crafts": 33,
+          "reagents": [
+            [
+              3357,
+              1
+            ],
+            [
+              3820,
+              1
+            ],
+            [
+              3372,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 225,
+          "to": 230,
+          "recipe": "Nature Protection Potion",
+          "item": 6052,
+          "crafts": 9,
+          "reagents": [
+            [
+              3357,
+              1
+            ],
+            [
+              3820,
+              1
+            ],
+            [
+              3372,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 230,
+          "to": 250,
+          "recipe": "Draught of Detect Undead",
+          "item": 9154,
+          "crafts": 21,
+          "reagents": [
+            [
+              8836,
+              1
+            ],
+            [
+              8925,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 250,
+          "to": 256,
+          "recipe": "Stonescale Oil",
+          "item": 13423,
+          "crafts": 9,
+          "reagents": [
+            [
+              13422,
+              1
+            ],
+            [
+              3372,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 256,
+          "to": 270,
+          "recipe": "Draught of Detect Undead",
+          "item": 9154,
+          "crafts": 26,
+          "reagents": [
+            [
+              8836,
+              1
+            ],
+            [
+              8925,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 270,
+          "to": 300,
+          "recipe": "Elixir of Greater Defense",
+          "item": 13445,
+          "crafts": 38,
+          "reagents": [
+            [
+              13423,
+              2
+            ],
+            [
+              8838,
+              1
+            ],
+            [
+              8925,
+              1
+            ]
+          ],
+          "source": "vendor"
+        }
+      ],
+      "routeCap": 225,
+      "shopping": {
+        "toCap": {
+          "buy": [
+            [
+              2449,
+              190
+            ],
+            [
+              3371,
+              152
+            ],
+            [
+              3372,
+              108
+            ],
+            [
+              2453,
+              64
+            ],
+            [
+              3356,
+              47
+            ],
+            [
+              3357,
+              33
+            ]
+          ],
+          "gather": [
+            [
+              2447,
+              116
+            ],
+            [
+              3820,
+              70
+            ],
+            [
+              2452,
+              36
+            ],
+            [
+              730,
+              28
+            ],
+            [
+              3369,
+              10
+            ]
+          ],
+          "make": []
+        },
+        "afterCap": {
+          "buy": [
+            [
+              8925,
+              85
+            ],
+            [
+              3372,
+              47
+            ],
+            [
+              3357,
+              9
+            ]
+          ],
+          "gather": [
+            [
+              8836,
+              47
+            ],
+            [
+              13422,
+              38
+            ],
+            [
+              8838,
+              38
+            ],
+            [
+              3820,
+              9
+            ]
+          ],
+          "make": [
+            [
+              13423,
+              58
+            ]
+          ]
+        }
+      },
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/performance-bonus"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/alchemy"
+    },
+    {
+      "slug": "blacksmithing",
+      "name": "Blacksmithing",
+      "icon": "trade_blacksmithing",
+      "kind": "primary",
+      "section": "crafting",
+      "newRecipes": 180,
+      "milestones": [
+        {
+          "skill": 150,
+          "points": 1
+        },
+        {
+          "skill": 225,
+          "points": 1
+        },
+        {
+          "skill": 300,
+          "points": 1
+        }
+      ],
+      "certification": true,
+      "campObjects": [
+        {
+          "id": 279944,
+          "name": "Sharpening Wheel",
+          "icon": "inv_stone_grindingstone_01",
+          "skill": 20,
+          "reagents": [
+            [
+              2835,
+              1
+            ],
+            [
+              2840,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279988,
+          "name": "Anvil",
+          "icon": "inv_blacksmith_anvil",
+          "skill": 140,
+          "replaces": "Sharpening Wheel",
+          "reagents": [
+            [
+              2841,
+              5
+            ],
+            [
+              3478,
+              2
+            ],
+            [
+              2319,
+              2
+            ]
+          ],
+          "blueprint": "Blueprint: Anvil"
+        },
+        {
+          "id": 279955,
+          "name": "Master Forge",
+          "icon": "inv_mace_1h_blacksmithing_b_01_black",
+          "skill": 300,
+          "replaces": "Sharpening Wheel",
+          "reagents": [
+            [
+              273127,
+              1
+            ],
+            [
+              12359,
+              5
+            ],
+            [
+              8170,
+              2
+            ]
+          ],
+          "blueprint": "Blueprint: Master Furnace"
+        }
+      ],
+      "route": [
+        {
+          "from": 1,
+          "to": 40,
+          "recipe": "Rough Sharpening Stone",
+          "item": 2862,
+          "crafts": 53,
+          "reagents": [
+            [
+              2835,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 40,
+          "to": 48,
+          "recipe": "Coarse Sharpening Stone",
+          "item": 2863,
+          "crafts": 11,
+          "reagents": [
+            [
+              2836,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 48,
+          "to": 79,
+          "recipe": "Rough Grinding Stone",
+          "item": 3470,
+          "crafts": 71,
+          "reagents": [
+            [
+              2835,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 79,
+          "to": 87,
+          "recipe": "Copper Chain Belt",
+          "item": 2851,
+          "crafts": 12,
+          "reagents": [
+            [
+              2840,
+              6
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 87,
+          "to": 100,
+          "recipe": "Rough Bronze Leggings",
+          "item": 2865,
+          "crafts": 13,
+          "reagents": [
+            [
+              2841,
+              6
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 100,
+          "to": 113,
+          "recipe": "Heavy Sharpening Stone",
+          "item": 2871,
+          "crafts": 28,
+          "reagents": [
+            [
+              2838,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 113,
+          "to": 125,
+          "recipe": "Rough Bronze Leggings",
+          "item": 2865,
+          "crafts": 13,
+          "reagents": [
+            [
+              2841,
+              6
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 125,
+          "to": 130,
+          "recipe": "Iron Buckle",
+          "item": 7071,
+          "crafts": 12,
+          "reagents": [
+            [
+              3575,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 130,
+          "to": 140,
+          "recipe": "Bronze Shortsword",
+          "item": 2850,
+          "crafts": 15,
+          "reagents": [
+            [
+              2841,
+              5
+            ],
+            [
+              2880,
+              4
+            ],
+            [
+              2319,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 140,
+          "to": 175,
+          "recipe": "Green Iron Bracers",
+          "item": 3835,
+          "crafts": 38,
+          "reagents": [
+            [
+              3575,
+              6
+            ],
+            [
+              2605,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 175,
+          "to": 185,
+          "recipe": "Solid Sharpening Stone",
+          "item": 7964,
+          "crafts": 30,
+          "reagents": [
+            [
+              7912,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 185,
+          "to": 193,
+          "recipe": "Golden Scale Bracers",
+          "item": 6040,
+          "crafts": 10,
+          "reagents": [
+            [
+              3859,
+              5
+            ],
+            [
+              3486,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 193,
+          "to": 211,
+          "recipe": "Heavy Mithril Gauntlet",
+          "item": 7919,
+          "crafts": 23,
+          "reagents": [
+            [
+              3860,
+              6
+            ],
+            [
+              4338,
+              4
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 211,
+          "to": 225,
+          "recipe": "Heavy Mithril Breastplate",
+          "item": 7930,
+          "crafts": 14,
+          "reagents": [
+            [
+              3860,
+              16
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 225,
+          "to": 235,
+          "recipe": "Dense Weightstone",
+          "item": 12643,
+          "crafts": 17,
+          "reagents": [
+            [
+              12365,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 235,
+          "to": 250,
+          "recipe": "Heavy Mithril Boots",
+          "item": 7933,
+          "crafts": 67,
+          "reagents": [
+            [
+              3860,
+              14
+            ],
+            [
+              4304,
+              4
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 250,
+          "to": 259,
+          "recipe": "Arcanite Skeleton Key",
+          "item": 15872,
+          "crafts": 20,
+          "reagents": [
+            [
+              12360,
+              1
+            ],
+            [
+              12644,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 259,
+          "to": 280,
+          "recipe": "Ornate Thorium Handaxe",
+          "item": 12773,
+          "crafts": 22,
+          "reagents": [
+            [
+              12359,
+              20
+            ],
+            [
+              12799,
+              2
+            ],
+            [
+              12644,
+              2
+            ],
+            [
+              8170,
+              4
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 280,
+          "to": 300,
+          "recipe": "Dark Iron Bracers",
+          "item": 17014,
+          "crafts": 24,
+          "reagents": [
+            [
+              11371,
+              4
+            ],
+            [
+              17010,
+              2
+            ],
+            [
+              17011,
+              2
+            ]
+          ],
+          "source": "vendor"
+        }
+      ],
+      "routeCap": 225,
+      "shopping": {
+        "toCap": {
+          "buy": [
+            [
+              2880,
+              60
+            ],
+            [
+              2605,
+              38
+            ]
+          ],
+          "gather": [
+            [
+              3860,
+              362
+            ],
+            [
+              3575,
+              240
+            ],
+            [
+              2841,
+              231
+            ],
+            [
+              2835,
+              195
+            ],
+            [
+              4338,
+              92
+            ],
+            [
+              2838,
+              88
+            ],
+            [
+              2840,
+              72
+            ],
+            [
+              3859,
+              50
+            ],
+            [
+              2319,
+              30
+            ],
+            [
+              7912,
+              30
+            ],
+            [
+              2836,
+              11
+            ]
+          ],
+          "make": [
+            [
+              3486,
+              20
+            ]
+          ]
+        },
+        "afterCap": {
+          "buy": [],
+          "gather": [
+            [
+              3860,
+              938
+            ],
+            [
+              12359,
+              440
+            ],
+            [
+              12365,
+              273
+            ],
+            [
+              4304,
+              268
+            ],
+            [
+              11371,
+              96
+            ],
+            [
+              8170,
+              88
+            ],
+            [
+              17010,
+              48
+            ],
+            [
+              17011,
+              48
+            ],
+            [
+              12799,
+              44
+            ],
+            [
+              12360,
+              20
+            ]
+          ],
+          "make": [
+            [
+              12644,
+              64
+            ]
+          ]
+        }
+      },
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/performance-bonus"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/blacksmithing"
+    },
+    {
+      "slug": "enchanting",
+      "name": "Enchanting",
+      "icon": "trade_engraving",
+      "kind": "primary",
+      "section": "crafting",
+      "newRecipes": 61,
+      "milestones": [
+        {
+          "skill": 150,
+          "points": 1
+        },
+        {
+          "skill": 225,
+          "points": 1
+        },
+        {
+          "skill": 300,
+          "points": 1
+        }
+      ],
+      "certification": true,
+      "campObjects": [
+        {
+          "id": 279976,
+          "name": "Enchanted Lute",
+          "icon": "inv_10_enchanting2_magicswirl_bronze",
+          "skill": 20,
+          "reagents": [
+            [
+              4470,
+              1
+            ],
+            [
+              10940,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279985,
+          "name": "Arcane Salvager",
+          "icon": "inv_eng_bottledelements",
+          "skill": 140,
+          "replaces": "Enchanted Lute",
+          "reagents": [
+            [
+              11137,
+              2
+            ],
+            [
+              11174,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Arcane Salvager"
+        },
+        {
+          "id": 279987,
+          "name": "Arcane Forge",
+          "icon": "inv_enchanting_modifiedcraftingreagent_indigo",
+          "skill": 300,
+          "replaces": "Enchanted Lute",
+          "reagents": [
+            [
+              273128,
+              1
+            ],
+            [
+              14344,
+              2
+            ],
+            [
+              16203,
+              4
+            ]
+          ],
+          "blueprint": "Blueprint: Arcane Forge"
+        }
+      ],
+      "route": [
+        {
+          "from": 1,
+          "to": 1,
+          "recipe": "Runed Copper Rod",
+          "item": 6218,
+          "crafts": 1,
+          "reagents": [
+            [
+              6217,
+              1
+            ],
+            [
+              247786,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 1,
+          "to": 24,
+          "recipe": "Enchant Bracer - Inferior Stamina",
+          "crafts": 26,
+          "reagents": [
+            [
+              247786,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 24,
+          "to": 95,
+          "recipe": "Enchant Chest - Inferior Stamina",
+          "crafts": 85,
+          "reagents": [
+            [
+              10940,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 95,
+          "to": 130,
+          "recipe": "Enchant Bracer - Minor Stamina",
+          "crafts": 59,
+          "reagents": [
+            [
+              10940,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 130,
+          "to": 130,
+          "recipe": "Runed Silver Rod",
+          "item": 6339,
+          "crafts": 1,
+          "reagents": [
+            [
+              6338,
+              1
+            ],
+            [
+              10940,
+              3
+            ],
+            [
+              10938,
+              4
+            ],
+            [
+              1210,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 130,
+          "to": 172,
+          "recipe": "Enchant Bracer - Lesser Stamina",
+          "crafts": 47,
+          "reagents": [
+            [
+              11083,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 172,
+          "to": 191,
+          "recipe": "Enchant Bracer - Lesser Strength",
+          "crafts": 34,
+          "reagents": [
+            [
+              11083,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 191,
+          "to": 191,
+          "recipe": "Runed Golden Rod",
+          "item": 11130,
+          "crafts": 1,
+          "reagents": [
+            [
+              11128,
+              1
+            ],
+            [
+              5500,
+              1
+            ],
+            [
+              11082,
+              1
+            ],
+            [
+              11083,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 191,
+          "to": 225,
+          "recipe": "Enchant Bracer - Strength",
+          "crafts": 48,
+          "reagents": [
+            [
+              11137,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 225,
+          "to": 226,
+          "recipe": "Enchant Bracer - Strength",
+          "crafts": 3,
+          "reagents": [
+            [
+              11137,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 226,
+          "to": 226,
+          "recipe": "Runed Truesilver Rod",
+          "item": 11145,
+          "crafts": 1,
+          "reagents": [
+            [
+              11144,
+              1
+            ],
+            [
+              7971,
+              1
+            ],
+            [
+              11135,
+              1
+            ],
+            [
+              11137,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 226,
+          "to": 260,
+          "recipe": "Enchant Gloves - Agility",
+          "crafts": 58,
+          "reagents": [
+            [
+              11137,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 260,
+          "to": 275,
+          "recipe": "Lesser Mana Oil",
+          "item": 20747,
+          "crafts": 27,
+          "reagents": [
+            [
+              11176,
+              1
+            ],
+            [
+              8831,
+              1
+            ],
+            [
+              8925,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 275,
+          "to": 294,
+          "recipe": "Wizard Oil",
+          "item": 20750,
+          "crafts": 22,
+          "reagents": [
+            [
+              16204,
+              3
+            ],
+            [
+              4625,
+              2
+            ],
+            [
+              8925,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 294,
+          "to": 300,
+          "recipe": "Enchant Shield - Greater Stamina",
+          "crafts": 9,
+          "reagents": [
+            [
+              11176,
+              6
+            ]
+          ],
+          "source": "vendor"
+        }
+      ],
+      "routeCap": 225,
+      "shopping": {
+        "toCap": {
+          "buy": [
+            [
+              10940,
+              216
+            ],
+            [
+              10938,
+              4
+            ],
+            [
+              6217,
+              1
+            ]
+          ],
+          "gather": [
+            [
+              11083,
+              82
+            ],
+            [
+              11137,
+              48
+            ],
+            [
+              6338,
+              1
+            ],
+            [
+              1210,
+              1
+            ],
+            [
+              11128,
+              1
+            ],
+            [
+              5500,
+              1
+            ],
+            [
+              11082,
+              1
+            ]
+          ],
+          "make": [
+            [
+              247786,
+              27
+            ]
+          ]
+        },
+        "afterCap": {
+          "buy": [
+            [
+              8925,
+              49
+            ]
+          ],
+          "gather": [
+            [
+              11176,
+              81
+            ],
+            [
+              16204,
+              66
+            ],
+            [
+              11137,
+              62
+            ],
+            [
+              4625,
+              44
+            ],
+            [
+              8831,
+              27
+            ],
+            [
+              11144,
+              1
+            ],
+            [
+              7971,
+              1
+            ],
+            [
+              11135,
+              1
+            ]
+          ],
+          "make": []
+        }
+      },
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/performance-bonus"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/enchanting"
+    },
+    {
+      "slug": "engineering",
+      "name": "Engineering",
+      "icon": "trade_engineering",
+      "kind": "primary",
+      "section": "crafting",
+      "newRecipes": 76,
+      "milestones": [
+        {
+          "skill": 150,
+          "points": 1
+        },
+        {
+          "skill": 225,
+          "points": 1
+        },
+        {
+          "skill": 300,
+          "points": 1
+        }
+      ],
+      "certification": true,
+      "campObjects": [
+        {
+          "id": 279950,
+          "name": "Reagent Bot",
+          "icon": "inv_misc_enggizmos_13",
+          "skill": 20,
+          "reagents": [
+            [
+              4359,
+              1
+            ],
+            [
+              4361,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279949,
+          "name": "Repair Bot",
+          "icon": "inv_robotpet",
+          "skill": 140,
+          "replaces": "Reagent Bot",
+          "reagents": [
+            [
+              4375,
+              2
+            ],
+            [
+              4371,
+              1
+            ],
+            [
+              4234,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Repair Bot"
+        },
+        {
+          "id": 279989,
+          "name": "Anarchist's Workbench",
+          "icon": "inv_10_specialization_professionbook_engineering_color1",
+          "skill": 300,
+          "reagents": [
+            [
+              273129,
+              1
+            ],
+            [
+              15994,
+              2
+            ]
+          ],
+          "blueprint": "Blueprint: Anarchist Workplace"
+        }
+      ],
+      "route": [
+        {
+          "from": 1,
+          "to": 30,
+          "recipe": "Rough Blasting Powder",
+          "item": 4357,
+          "crafts": 33,
+          "reagents": [
+            [
+              2835,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 30,
+          "to": 55,
+          "recipe": "Handful of Copper Bolts",
+          "item": 4359,
+          "crafts": 31,
+          "reagents": [
+            [
+              2840,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 55,
+          "to": 75,
+          "recipe": "Copper Tube",
+          "item": 4361,
+          "crafts": 20,
+          "reagents": [
+            [
+              2840,
+              2
+            ],
+            [
+              2880,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 75,
+          "to": 93,
+          "recipe": "Coarse Blasting Powder",
+          "item": 4364,
+          "crafts": 25,
+          "reagents": [
+            [
+              2836,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 93,
+          "to": 100,
+          "recipe": "Copper Tube",
+          "item": 4361,
+          "crafts": 16,
+          "reagents": [
+            [
+              2840,
+              2
+            ],
+            [
+              2880,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 100,
+          "to": 121,
+          "recipe": "Practice Lock",
+          "item": 6712,
+          "crafts": 23,
+          "reagents": [
+            [
+              2841,
+              1
+            ],
+            [
+              4359,
+              2
+            ],
+            [
+              2880,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 121,
+          "to": 125,
+          "recipe": "Bronze Tube",
+          "item": 4371,
+          "crafts": 7,
+          "reagents": [
+            [
+              2841,
+              2
+            ],
+            [
+              2880,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 125,
+          "to": 142,
+          "recipe": "Heavy Blasting Powder",
+          "item": 4377,
+          "crafts": 36,
+          "reagents": [
+            [
+              2838,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 142,
+          "to": 142,
+          "recipe": "Arclight Spanner",
+          "item": 6219,
+          "crafts": 1,
+          "reagents": [
+            [
+              2840,
+              6
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 142,
+          "to": 150,
+          "recipe": "Whirring Bronze Gizmo",
+          "item": 4375,
+          "crafts": 14,
+          "reagents": [
+            [
+              2841,
+              2
+            ],
+            [
+              2592,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 150,
+          "to": 160,
+          "recipe": "Red Firework",
+          "item": 9318,
+          "crafts": 13,
+          "reagents": [
+            [
+              4377,
+              1
+            ],
+            [
+              4234,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 160,
+          "to": 175,
+          "recipe": "Iron Strut",
+          "item": 4387,
+          "crafts": 27,
+          "reagents": [
+            [
+              3575,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 175,
+          "to": 187,
+          "recipe": "Solid Blasting Powder",
+          "item": 10505,
+          "crafts": 18,
+          "reagents": [
+            [
+              7912,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 187,
+          "to": 195,
+          "recipe": "Iron Grenade",
+          "item": 4390,
+          "crafts": 14,
+          "reagents": [
+            [
+              3575,
+              1
+            ],
+            [
+              4377,
+              1
+            ],
+            [
+              4306,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 195,
+          "to": 200,
+          "recipe": "Mithril Tube",
+          "item": 10559,
+          "crafts": 6,
+          "reagents": [
+            [
+              3860,
+              3
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 200,
+          "to": 205,
+          "recipe": "Inlaid Mithril Cylinder Plans",
+          "item": 10713,
+          "crafts": 5,
+          "reagents": [
+            [
+              10648,
+              1
+            ],
+            [
+              10647,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 205,
+          "to": 210,
+          "recipe": "Mithril Tube",
+          "item": 10559,
+          "crafts": 8,
+          "reagents": [
+            [
+              3860,
+              3
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 210,
+          "to": 225,
+          "recipe": "Hi-Impact Mithril Slugs",
+          "item": 10512,
+          "crafts": 19,
+          "reagents": [
+            [
+              3860,
+              1
+            ],
+            [
+              10505,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 225,
+          "to": 237,
+          "recipe": "Hi-Impact Mithril Slugs",
+          "item": 10512,
+          "crafts": 26,
+          "reagents": [
+            [
+              3860,
+              1
+            ],
+            [
+              10505,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 237,
+          "to": 245,
+          "recipe": "Mithril Casing",
+          "item": 10561,
+          "crafts": 23,
+          "reagents": [
+            [
+              3860,
+              3
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 245,
+          "to": 250,
+          "recipe": "Mithril Gyro-Shot",
+          "item": 10513,
+          "crafts": 6,
+          "reagents": [
+            [
+              3860,
+              2
+            ],
+            [
+              10505,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 250,
+          "to": 260,
+          "recipe": "Dense Blasting Powder",
+          "item": 15992,
+          "crafts": 30,
+          "reagents": [
+            [
+              12365,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 260,
+          "to": 290,
+          "recipe": "Thorium Widget",
+          "item": 15994,
+          "crafts": 34,
+          "reagents": [
+            [
+              12359,
+              3
+            ],
+            [
+              14047,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 290,
+          "to": 300,
+          "recipe": "Thorium Tube",
+          "item": 16000,
+          "crafts": 11,
+          "reagents": [
+            [
+              12359,
+              6
+            ]
+          ],
+          "source": "vendor"
+        }
+      ],
+      "routeCap": 225,
+      "shopping": {
+        "toCap": {
+          "buy": [
+            [
+              2880,
+              66
+            ],
+            [
+              10648,
+              5
+            ],
+            [
+              10647,
+              5
+            ]
+          ],
+          "gather": [
+            [
+              2840,
+              124
+            ],
+            [
+              3575,
+              68
+            ],
+            [
+              2841,
+              65
+            ],
+            [
+              3860,
+              61
+            ],
+            [
+              7912,
+              38
+            ],
+            [
+              2838,
+              36
+            ],
+            [
+              2835,
+              33
+            ],
+            [
+              2836,
+              25
+            ],
+            [
+              2592,
+              14
+            ],
+            [
+              4306,
+              14
+            ],
+            [
+              4234,
+              13
+            ]
+          ],
+          "make": [
+            [
+              4359,
+              15
+            ],
+            [
+              10505,
+              1
+            ]
+          ]
+        },
+        "afterCap": {
+          "buy": [],
+          "gather": [
+            [
+              12359,
+              168
+            ],
+            [
+              3860,
+              107
+            ],
+            [
+              7912,
+              76
+            ],
+            [
+              12365,
+              60
+            ],
+            [
+              14047,
+              34
+            ]
+          ],
+          "make": [
+            [
+              10505,
+              38
+            ]
+          ]
+        }
+      },
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/performance-bonus"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/engineering"
+    },
+    {
+      "slug": "leatherworking",
+      "name": "Leatherworking",
+      "icon": "trade_leatherworking",
+      "kind": "primary",
+      "section": "crafting",
+      "newRecipes": 269,
+      "milestones": [
+        {
+          "skill": 150,
+          "points": 1
+        },
+        {
+          "skill": 225,
+          "points": 1
+        },
+        {
+          "skill": 300,
+          "points": 1
+        }
+      ],
+      "certification": true,
+      "campObjects": [
+        {
+          "id": 279978,
+          "name": "Camp Tent",
+          "icon": "inv_misc_leatherscrap_01",
+          "skill": 20,
+          "reagents": [
+            [
+              2318,
+              5
+            ]
+          ]
+        },
+        {
+          "id": 279941,
+          "name": "Tanning Rack",
+          "icon": "inv_10_skinning_leather_rarehide_color1",
+          "skill": 140,
+          "replaces": "Camp Tent",
+          "reagents": [
+            [
+              2319,
+              5
+            ],
+            [
+              2321,
+              3
+            ],
+            [
+              4470,
+              2
+            ]
+          ],
+          "blueprint": "Blueprint: Tanning Rack"
+        },
+        {
+          "id": 279945,
+          "name": "Sewing Machine",
+          "icon": "inv_tailoring_modifiedcraftingreagent_orange",
+          "skill": 300,
+          "replaces": "Camp Tent",
+          "reagents": [
+            [
+              273130,
+              1
+            ],
+            [
+              8170,
+              5
+            ],
+            [
+              14341,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Sewing Machine"
+        }
+      ],
+      "route": [
+        {
+          "from": 1,
+          "to": 39,
+          "recipe": "Light Armor Kit",
+          "item": 2304,
+          "crafts": 40,
+          "reagents": [
+            [
+              2318,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 39,
+          "to": 65,
+          "recipe": "Cured Light Hide",
+          "item": 4231,
+          "crafts": 38,
+          "reagents": [
+            [
+              783,
+              1
+            ],
+            [
+              4289,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 65,
+          "to": 75,
+          "recipe": "Embossed Leather Gloves",
+          "item": 4239,
+          "crafts": 11,
+          "reagents": [
+            [
+              2318,
+              3
+            ],
+            [
+              2320,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 75,
+          "to": 103,
+          "recipe": "Cured Medium Hide",
+          "item": 4233,
+          "crafts": 43,
+          "reagents": [
+            [
+              4232,
+              1
+            ],
+            [
+              4289,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 103,
+          "to": 112,
+          "recipe": "Deviate Scale Gloves",
+          "item": 6467,
+          "crafts": 11,
+          "reagents": [
+            [
+              6471,
+              2
+            ],
+            [
+              6470,
+              6
+            ],
+            [
+              2321,
+              2
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 112,
+          "to": 125,
+          "recipe": "Hillman's Shoulders",
+          "item": 4251,
+          "crafts": 13,
+          "reagents": [
+            [
+              4233,
+              1
+            ],
+            [
+              2319,
+              4
+            ],
+            [
+              2321,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 125,
+          "to": 144,
+          "recipe": "Cured Heavy Hide",
+          "item": 4236,
+          "crafts": 30,
+          "reagents": [
+            [
+              4235,
+              1
+            ],
+            [
+              4289,
+              3
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 144,
+          "to": 155,
+          "recipe": "Heavy Armor Kit",
+          "item": 4265,
+          "crafts": 15,
+          "reagents": [
+            [
+              4234,
+              5
+            ],
+            [
+              2321,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 155,
+          "to": 162,
+          "recipe": "Green Leather Belt",
+          "item": 4257,
+          "crafts": 9,
+          "reagents": [
+            [
+              4236,
+              1
+            ],
+            [
+              4234,
+              5
+            ],
+            [
+              2321,
+              1
+            ],
+            [
+              2605,
+              1
+            ],
+            [
+              7071,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 162,
+          "to": 165,
+          "recipe": "Green Leather Bracers",
+          "item": 4259,
+          "crafts": 3,
+          "reagents": [
+            [
+              4236,
+              2
+            ],
+            [
+              4234,
+              6
+            ],
+            [
+              2605,
+              1
+            ],
+            [
+              2321,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 165,
+          "to": 192,
+          "recipe": "Guardian Gloves",
+          "item": 5966,
+          "crafts": 29,
+          "reagents": [
+            [
+              4234,
+              4
+            ],
+            [
+              4236,
+              1
+            ],
+            [
+              4291,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 192,
+          "to": 202,
+          "recipe": "Thick Armor Kit",
+          "item": 8173,
+          "crafts": 12,
+          "reagents": [
+            [
+              4304,
+              5
+            ],
+            [
+              4291,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 202,
+          "to": 215,
+          "recipe": "Nightscape Headband",
+          "item": 8176,
+          "crafts": 25,
+          "reagents": [
+            [
+              4304,
+              5
+            ],
+            [
+              4291,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 215,
+          "to": 225,
+          "recipe": "Thick Leather Ammo Pouch",
+          "item": 8218,
+          "crafts": 11,
+          "reagents": [
+            [
+              4304,
+              10
+            ],
+            [
+              8172,
+              1
+            ],
+            [
+              8951,
+              1
+            ],
+            [
+              4291,
+              6
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 225,
+          "to": 234,
+          "recipe": "Cured Rugged Hide",
+          "item": 15407,
+          "crafts": 20,
+          "reagents": [
+            [
+              8171,
+              1
+            ],
+            [
+              15409,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 234,
+          "to": 239,
+          "recipe": "Rugged Armor Kit",
+          "item": 15564,
+          "crafts": 12,
+          "reagents": [
+            [
+              8170,
+              5
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 239,
+          "to": 262,
+          "recipe": "Wicked Leather Gauntlets",
+          "item": 15083,
+          "crafts": 25,
+          "reagents": [
+            [
+              8170,
+              8
+            ],
+            [
+              2325,
+              1
+            ],
+            [
+              14341,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 262,
+          "to": 282,
+          "recipe": "Frostsaber Boots",
+          "item": 15071,
+          "crafts": 26,
+          "reagents": [
+            [
+              8170,
+              4
+            ],
+            [
+              15422,
+              6
+            ],
+            [
+              14341,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 282,
+          "to": 300,
+          "recipe": "Heavy Scorpid Helm",
+          "item": 15080,
+          "crafts": 22,
+          "reagents": [
+            [
+              8170,
+              8
+            ],
+            [
+              15408,
+              12
+            ],
+            [
+              15407,
+              1
+            ],
+            [
+              14341,
+              1
+            ]
+          ],
+          "source": "vendor"
+        }
+      ],
+      "routeCap": 225,
+      "shopping": {
+        "toCap": {
+          "buy": [
+            [
+              4289,
+              213
+            ],
+            [
+              4291,
+              157
+            ],
+            [
+              2321,
+              62
+            ],
+            [
+              2320,
+              22
+            ],
+            [
+              2605,
+              12
+            ]
+          ],
+          "gather": [
+            [
+              4304,
+              295
+            ],
+            [
+              4234,
+              254
+            ],
+            [
+              2318,
+              73
+            ],
+            [
+              6470,
+              66
+            ],
+            [
+              2319,
+              52
+            ],
+            [
+              4235,
+              44
+            ],
+            [
+              4232,
+              43
+            ],
+            [
+              783,
+              38
+            ],
+            [
+              6471,
+              22
+            ],
+            [
+              8169,
+              11
+            ],
+            [
+              8150,
+              11
+            ],
+            [
+              8951,
+              11
+            ],
+            [
+              7071,
+              9
+            ]
+          ],
+          "make": [
+            [
+              4236,
+              14
+            ],
+            [
+              8172,
+              11
+            ]
+          ]
+        },
+        "afterCap": {
+          "buy": [
+            [
+              14341,
+              73
+            ],
+            [
+              2325,
+              25
+            ]
+          ],
+          "gather": [
+            [
+              8170,
+              540
+            ],
+            [
+              15408,
+              264
+            ],
+            [
+              15422,
+              156
+            ],
+            [
+              8171,
+              20
+            ],
+            [
+              15409,
+              20
+            ]
+          ],
+          "make": []
+        }
+      },
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/performance-bonus"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/leatherworking"
+    },
+    {
+      "slug": "tailoring",
+      "name": "Tailoring",
+      "icon": "trade_tailoring",
+      "kind": "primary",
+      "section": "crafting",
+      "newRecipes": 192,
+      "milestones": [
+        {
+          "skill": 150,
+          "points": 1
+        },
+        {
+          "skill": 225,
+          "points": 1
+        },
+        {
+          "skill": 300,
+          "points": 1
+        }
+      ],
+      "certification": true,
+      "campObjects": [
+        {
+          "id": 279972,
+          "name": "Faction Banner",
+          "icon": "inv_banner_03",
+          "skill": 20,
+          "reagents": [
+            [
+              2996,
+              1
+            ],
+            [
+              2320,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279943,
+          "name": "Spinning Wheel",
+          "icon": "10prof_table_tailoring01",
+          "skill": 140,
+          "replaces": "Faction Banner",
+          "reagents": [
+            [
+              4470,
+              2
+            ],
+            [
+              4305,
+              5
+            ],
+            [
+              2321,
+              3
+            ]
+          ],
+          "blueprint": "Blueprint: Spinning Wheel"
+        },
+        {
+          "id": 279959,
+          "name": "Loom",
+          "icon": "inv_tailoring_80_tidespraylinen",
+          "skill": 300,
+          "replaces": "Faction Banner",
+          "reagents": [
+            [
+              273131,
+              1
+            ],
+            [
+              14048,
+              4
+            ],
+            [
+              4470,
+              4
+            ]
+          ],
+          "blueprint": "Blueprint: Loom"
+        }
+      ],
+      "route": [
+        {
+          "from": 1,
+          "to": 32,
+          "recipe": "Bolt of Linen Cloth",
+          "item": 2996,
+          "crafts": 33,
+          "reagents": [
+            [
+              2589,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 32,
+          "to": 52,
+          "recipe": "Brown Linen Vest",
+          "item": 2568,
+          "crafts": 22,
+          "reagents": [
+            [
+              2996,
+              1
+            ],
+            [
+              2320,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 52,
+          "to": 73,
+          "recipe": "Linen Belt",
+          "item": 7026,
+          "crafts": 35,
+          "reagents": [
+            [
+              2996,
+              1
+            ],
+            [
+              2320,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 73,
+          "to": 101,
+          "recipe": "Woolen Cape",
+          "item": 2584,
+          "crafts": 39,
+          "reagents": [
+            [
+              2997,
+              1
+            ],
+            [
+              2321,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 101,
+          "to": 114,
+          "recipe": "Bolt of Silk Cloth",
+          "item": 4305,
+          "crafts": 14,
+          "reagents": [
+            [
+              4306,
+              4
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 114,
+          "to": 126,
+          "recipe": "Bright Yellow Shirt",
+          "item": 4332,
+          "crafts": 15,
+          "reagents": [
+            [
+              4305,
+              1
+            ],
+            [
+              4341,
+              1
+            ],
+            [
+              2321,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 126,
+          "to": 135,
+          "recipe": "Azure Silk Hood",
+          "item": 7048,
+          "crafts": 11,
+          "reagents": [
+            [
+              4305,
+              2
+            ],
+            [
+              6260,
+              2
+            ],
+            [
+              2321,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 135,
+          "to": 140,
+          "recipe": "Lesser Wizard's Robe",
+          "item": 5766,
+          "crafts": 7,
+          "reagents": [
+            [
+              4305,
+              2
+            ],
+            [
+              2321,
+              2
+            ],
+            [
+              3182,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 140,
+          "to": 149,
+          "recipe": "Bolt of Mageweave",
+          "item": 4339,
+          "crafts": 12,
+          "reagents": [
+            [
+              4338,
+              5
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 149,
+          "to": 153,
+          "recipe": "Red Swashbuckler's Shirt",
+          "item": 6796,
+          "crafts": 5,
+          "reagents": [
+            [
+              4305,
+              3
+            ],
+            [
+              2604,
+              2
+            ],
+            [
+              4291,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 153,
+          "to": 167,
+          "recipe": "Earthen Vest",
+          "item": 7051,
+          "crafts": 17,
+          "reagents": [
+            [
+              4305,
+              3
+            ],
+            [
+              7067,
+              1
+            ],
+            [
+              2321,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 167,
+          "to": 172,
+          "recipe": "Crimson Silk Vest",
+          "item": 7058,
+          "crafts": 6,
+          "reagents": [
+            [
+              4305,
+              4
+            ],
+            [
+              2604,
+              2
+            ],
+            [
+              2321,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 172,
+          "to": 180,
+          "recipe": "Black Mageweave Vest",
+          "item": 9998,
+          "crafts": 8,
+          "reagents": [
+            [
+              4339,
+              2
+            ],
+            [
+              4291,
+              3
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 180,
+          "to": 191,
+          "recipe": "Orange Mageweave Shirt",
+          "item": 10056,
+          "crafts": 14,
+          "reagents": [
+            [
+              4339,
+              1
+            ],
+            [
+              6261,
+              1
+            ],
+            [
+              8343,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 191,
+          "to": 205,
+          "recipe": "Black Mageweave Gloves",
+          "item": 10003,
+          "crafts": 16,
+          "reagents": [
+            [
+              4339,
+              2
+            ],
+            [
+              8343,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 205,
+          "to": 214,
+          "recipe": "Bolt of Runecloth",
+          "item": 14048,
+          "crafts": 12,
+          "reagents": [
+            [
+              14047,
+              5
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 214,
+          "to": 225,
+          "recipe": "Runecloth Belt",
+          "item": 13856,
+          "crafts": 11,
+          "reagents": [
+            [
+              14048,
+              3
+            ],
+            [
+              14341,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 225,
+          "to": 240,
+          "recipe": "Runecloth Belt",
+          "item": 13856,
+          "crafts": 21,
+          "reagents": [
+            [
+              14048,
+              3
+            ],
+            [
+              14341,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 240,
+          "to": 253,
+          "recipe": "Runecloth Cloak",
+          "item": 13860,
+          "crafts": 17,
+          "reagents": [
+            [
+              14048,
+              4
+            ],
+            [
+              14227,
+              1
+            ],
+            [
+              14341,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 253,
+          "to": 267,
+          "recipe": "Runecloth Boots",
+          "item": 13864,
+          "crafts": 22,
+          "reagents": [
+            [
+              14048,
+              4
+            ],
+            [
+              14227,
+              2
+            ],
+            [
+              8170,
+              4
+            ],
+            [
+              14341,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 267,
+          "to": 282,
+          "recipe": "Satchel of Cenarius",
+          "item": 22252,
+          "crafts": 18,
+          "reagents": [
+            [
+              14048,
+              6
+            ],
+            [
+              14342,
+              2
+            ],
+            [
+              13468,
+              1
+            ],
+            [
+              14227,
+              4
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 282,
+          "to": 290,
+          "recipe": "Mooncloth Robe",
+          "item": 18486,
+          "crafts": 8,
+          "reagents": [
+            [
+              14048,
+              6
+            ],
+            [
+              14342,
+              4
+            ],
+            [
+              13926,
+              2
+            ],
+            [
+              14341,
+              2
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 290,
+          "to": 300,
+          "recipe": "Argent Shoulders",
+          "item": 19059,
+          "crafts": 10,
+          "reagents": [
+            [
+              14342,
+              5
+            ],
+            [
+              12809,
+              2
+            ],
+            [
+              14227,
+              2
+            ]
+          ],
+          "source": "vendor"
+        }
+      ],
+      "routeCap": 225,
+      "shopping": {
+        "toCap": {
+          "buy": [
+            [
+              2321,
+              125
+            ],
+            [
+              2320,
+              57
+            ],
+            [
+              8343,
+              46
+            ],
+            [
+              4291,
+              29
+            ],
+            [
+              6260,
+              22
+            ],
+            [
+              2604,
+              22
+            ],
+            [
+              4341,
+              15
+            ],
+            [
+              6261,
+              14
+            ],
+            [
+              14341,
+              11
+            ]
+          ],
+          "gather": [
+            [
+              4306,
+              564
+            ],
+            [
+              4338,
+              310
+            ],
+            [
+              14047,
+              165
+            ],
+            [
+              2592,
+              117
+            ],
+            [
+              2589,
+              114
+            ],
+            [
+              7067,
+              17
+            ],
+            [
+              3182,
+              14
+            ]
+          ],
+          "make": [
+            [
+              4305,
+              127
+            ],
+            [
+              4339,
+              50
+            ],
+            [
+              2997,
+              39
+            ],
+            [
+              2996,
+              24
+            ],
+            [
+              14048,
+              21
+            ]
+          ]
+        },
+        "afterCap": {
+          "buy": [
+            [
+              14341,
+              76
+            ]
+          ],
+          "gather": [
+            [
+              14047,
+              1875
+            ],
+            [
+              14256,
+              236
+            ],
+            [
+              14227,
+              153
+            ],
+            [
+              8170,
+              88
+            ],
+            [
+              12809,
+              20
+            ],
+            [
+              13468,
+              18
+            ],
+            [
+              13926,
+              16
+            ]
+          ],
+          "make": [
+            [
+              14048,
+              375
+            ],
+            [
+              14342,
+              118
+            ]
+          ]
+        }
+      },
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/performance-bonus"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/tailoring"
+    },
+    {
+      "slug": "mining",
+      "name": "Mining",
+      "icon": "trade_mining",
+      "kind": "primary",
+      "section": "gathering",
+      "newRecipes": 0,
+      "milestones": [],
+      "certification": false,
+      "campObjects": [
+        {
+          "id": 279960,
+          "name": "Lodestone",
+          "icon": "inv_misc_rune_06",
+          "skill": 20,
+          "reagents": [
+            [
+              2835,
+              1
+            ],
+            [
+              2840,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279948,
+          "name": "Rock Garden",
+          "icon": "inv_misc_powder_iron",
+          "skill": 140,
+          "replaces": "Lodestone",
+          "reagents": [
+            [
+              2838,
+              2
+            ],
+            [
+              2772,
+              1
+            ],
+            [
+              2842,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Rock Garden"
+        },
+        {
+          "id": 279952,
+          "name": "Molten Foundry",
+          "icon": "inv_blacksmithingalloys_red",
+          "skill": 300,
+          "replaces": "Lodestone",
+          "reagents": [
+            [
+              12359,
+              5
+            ],
+            [
+              12365,
+              2
+            ],
+            [
+              6037,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Molten Foundry"
+        }
+      ],
+      "gathering": [
+        {
+          "name": "Copper Vein",
+          "skill": 1,
+          "items": [
+            2770,
+            2835,
+            2798
+          ],
+          "zones": [
+            "Durotar",
+            "Westfall",
+            "Wetlands",
+            "Loch Modan"
+          ]
+        },
+        {
+          "name": "Incendicite Ore",
+          "skill": 65,
+          "items": [
+            3340
+          ],
+          "zones": [
+            "Wetlands"
+          ]
+        },
+        {
+          "name": "Tin Vein",
+          "skill": 65,
+          "items": [
+            2771,
+            2836,
+            2798
+          ],
+          "zones": [
+            "Arathi Highlands",
+            "Stranglethorn Vale",
+            "Westfall",
+            "Wetlands"
+          ]
+        },
+        {
+          "name": "Lesser Bloodstone Deposit",
+          "skill": 75,
+          "items": [
+            4278
+          ],
+          "zones": [
+            "Arathi Highlands"
+          ]
+        },
+        {
+          "name": "Silver Vein",
+          "skill": 75,
+          "items": [
+            2775
+          ],
+          "zones": [
+            "Arathi Highlands",
+            "Stranglethorn Vale",
+            "Westfall",
+            "Alterac Mountains"
+          ]
+        },
+        {
+          "name": "Iron Ore",
+          "skill": 125,
+          "items": [
+            2772,
+            2838
+          ],
+          "zones": [
+            "Arathi Highlands",
+            "Stranglethorn Vale",
+            "Alterac Mountains",
+            "Badlands"
+          ]
+        },
+        {
+          "name": "Gold Ore",
+          "skill": 155,
+          "items": [
+            2776,
+            11513
+          ],
+          "zones": [
+            "Arathi Highlands",
+            "Burning Steppes",
+            "Stranglethorn Vale",
+            "Alterac Mountains"
+          ]
+        },
+        {
+          "name": "Mithril Deposit",
+          "skill": 175,
+          "items": [
+            3858,
+            11513,
+            7912
+          ],
+          "zones": [
+            "Arathi Highlands",
+            "Burning Steppes",
+            "Stranglethorn Vale",
+            "Badlands"
+          ]
+        },
+        {
+          "name": "Truesilver Ore",
+          "skill": 230,
+          "items": [
+            7911,
+            11513
+          ],
+          "zones": [
+            "Arathi Highlands",
+            "Burning Steppes",
+            "Badlands",
+            "Blasted Lands"
+          ]
+        },
+        {
+          "name": "Dark Iron Deposit",
+          "skill": 230,
+          "items": [
+            11370
+          ],
+          "zones": [
+            "Burning Steppes",
+            "Searing Gorge",
+            "Molten Core"
+          ]
+        },
+        {
+          "name": "Small Thorium Vein",
+          "skill": 245,
+          "items": [
+            10620,
+            11513,
+            12365
+          ],
+          "zones": [
+            "Burning Steppes",
+            "Blasted Lands",
+            "The Hinterlands",
+            "Eastern Plaguelands"
+          ]
+        },
+        {
+          "name": "Rich Thorium Vein",
+          "skill": 275,
+          "items": [
+            10620,
+            12365,
+            12363
+          ],
+          "zones": [
+            "Burning Steppes",
+            "Eastern Plaguelands",
+            "Winterspring",
+            "Azshara"
+          ]
+        },
+        {
+          "name": "Ooze Covered Rich Thorium Vein",
+          "skill": 275,
+          "items": [
+            10620,
+            12365,
+            12363
+          ],
+          "zones": [
+            "Silithus"
+          ]
+        }
+      ],
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/bountiful-harvest"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/mining"
+    },
+    {
+      "slug": "herbalism",
+      "name": "Herbalism",
+      "icon": "trade_herbalism",
+      "kind": "primary",
+      "section": "gathering",
+      "newRecipes": 0,
+      "milestones": [],
+      "certification": false,
+      "campObjects": [
+        {
+          "id": 279962,
+          "name": "Incense Candle",
+          "icon": "inv_misc_candle_02",
+          "skill": 20,
+          "reagents": [
+            [
+              2447,
+              1
+            ],
+            [
+              765,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279964,
+          "name": "Greenhouse",
+          "icon": "inv_misc_herb_08",
+          "skill": 140,
+          "replaces": "Incense Candle",
+          "reagents": [
+            [
+              4470,
+              2
+            ],
+            [
+              8836,
+              1
+            ],
+            [
+              8831,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Greenhouse"
+        },
+        {
+          "id": 279947,
+          "name": "Seed Hybridizer",
+          "icon": "inv_farm_herbseed",
+          "skill": 300,
+          "replaces": "Incense Candle",
+          "reagents": [
+            [
+              13465,
+              4
+            ],
+            [
+              8925,
+              1
+            ],
+            [
+              14047,
+              2
+            ]
+          ],
+          "blueprint": "Blueprint: Seed Hybridizer"
+        }
+      ],
+      "gathering": [
+        {
+          "name": "Peacebloom",
+          "skill": 1,
+          "items": [
+            2447
+          ],
+          "zones": [
+            "The Barrens",
+            "Durotar",
+            "Mulgore",
+            "Tirisfal Glades"
+          ]
+        },
+        {
+          "name": "Doom Weed",
+          "skill": 1,
+          "items": [
+            13702
+          ],
+          "zones": [
+            "Tirisfal Glades"
+          ]
+        },
+        {
+          "name": "Silverleaf",
+          "skill": 1,
+          "items": [
+            765,
+            5056
+          ],
+          "zones": [
+            "Durotar",
+            "The Barrens",
+            "Mulgore",
+            "Loch Modan"
+          ]
+        },
+        {
+          "name": "Gloom Weed",
+          "skill": 1,
+          "items": [
+            12737
+          ],
+          "zones": [
+            "Tirisfal Glades"
+          ]
+        },
+        {
+          "name": "Earthroot",
+          "skill": 15,
+          "items": [
+            2449,
+            5056
+          ],
+          "zones": [
+            "The Barrens",
+            "Durotar",
+            "Tirisfal Glades",
+            "Dun Morogh"
+          ]
+        },
+        {
+          "name": "Mageroyal",
+          "skill": 50,
+          "items": [
+            785,
+            5056,
+            2452
+          ],
+          "zones": [
+            "The Barrens",
+            "Ashenvale",
+            "Darkshore",
+            "Westfall"
+          ]
+        },
+        {
+          "name": "Briarthorn",
+          "skill": 70,
+          "items": [
+            2450,
+            2452,
+            5056
+          ],
+          "zones": [
+            "The Barrens",
+            "Duskwood",
+            "Ashenvale",
+            "Westfall"
+          ]
+        },
+        {
+          "name": "Stranglekelp",
+          "skill": 85,
+          "items": [
+            3820
+          ],
+          "zones": [
+            "Stranglethorn Vale",
+            "Wetlands",
+            "Ashenvale",
+            "Darkshore"
+          ]
+        },
+        {
+          "name": "Bruiseweed",
+          "skill": 100,
+          "items": [
+            2453
+          ],
+          "zones": [
+            "Stonetalon Mountains",
+            "The Barrens",
+            "Hillsbrad Foothills",
+            "Wetlands"
+          ]
+        },
+        {
+          "name": "Wild Steelbloom",
+          "skill": 115,
+          "items": [
+            3355
+          ],
+          "zones": [
+            "Arathi Highlands",
+            "Stonetalon Mountains",
+            "Stranglethorn Vale",
+            "Wetlands"
+          ]
+        },
+        {
+          "name": "Grave Moss",
+          "skill": 120,
+          "items": [
+            3369
+          ],
+          "zones": [
+            "Duskwood",
+            "Desolace",
+            "Wetlands",
+            "Arathi Highlands"
+          ]
+        },
+        {
+          "name": "Kingsblood",
+          "skill": 125,
+          "items": [
+            3356
+          ],
+          "zones": [
+            "Stranglethorn Vale",
+            "Wetlands",
+            "Ashenvale",
+            "Hillsbrad Foothills"
+          ]
+        },
+        {
+          "name": "Liferoot",
+          "skill": 150,
+          "items": [
+            3357
+          ],
+          "zones": [
+            "Stranglethorn Vale",
+            "Wetlands",
+            "Arathi Highlands",
+            "Alterac Mountains"
+          ]
+        },
+        {
+          "name": "Fadeleaf",
+          "skill": 160,
+          "items": [
+            3818
+          ],
+          "zones": [
+            "Arathi Highlands",
+            "Swamp of Sorrows",
+            "Alterac Mountains",
+            "Stranglethorn Vale"
+          ]
+        },
+        {
+          "name": "Goldthorn",
+          "skill": 170,
+          "items": [
+            3821
+          ],
+          "zones": [
+            "Stranglethorn Vale",
+            "Arathi Highlands",
+            "Swamp of Sorrows",
+            "Alterac Mountains"
+          ]
+        },
+        {
+          "name": "Khadgar's Whisker",
+          "skill": 185,
+          "items": [
+            3358
+          ],
+          "zones": [
+            "Stranglethorn Vale",
+            "Arathi Highlands",
+            "Swamp of Sorrows",
+            "Alterac Mountains"
+          ]
+        },
+        {
+          "name": "Wintersbite",
+          "skill": 195,
+          "items": [
+            3819
+          ],
+          "zones": [
+            "Alterac Mountains"
+          ]
+        },
+        {
+          "name": "Firebloom",
+          "skill": 205,
+          "items": [
+            4625
+          ],
+          "zones": [
+            "Tanaris",
+            "Searing Gorge",
+            "Blasted Lands",
+            "Badlands"
+          ]
+        },
+        {
+          "name": "Purple Lotus",
+          "skill": 210,
+          "items": [
+            8831,
+            19726,
+            8153
+          ],
+          "zones": [
+            "Azshara",
+            "The Hinterlands",
+            "Tanaris",
+            "Feralas"
+          ]
+        },
+        {
+          "name": "Arthas' Tears",
+          "skill": 220,
+          "items": [
+            8836,
+            11514
+          ],
+          "zones": [
+            "Western Plaguelands",
+            "Eastern Plaguelands",
+            "Felwood",
+            "Razorfen Downs"
+          ]
+        },
+        {
+          "name": "Sungrass",
+          "skill": 230,
+          "items": [
+            8838,
+            19726,
+            11514
+          ],
+          "zones": [
+            "Azshara",
+            "The Hinterlands",
+            "Feralas",
+            "Eastern Plaguelands"
+          ]
+        },
+        {
+          "name": "Blindweed",
+          "skill": 235,
+          "items": [
+            8839
+          ],
+          "zones": [
+            "Swamp of Sorrows",
+            "Un'Goro Crater",
+            "Maraudon"
+          ]
+        },
+        {
+          "name": "Ghost Mushroom",
+          "skill": 245,
+          "items": [
+            8845
+          ],
+          "zones": [
+            "The Hinterlands",
+            "Desolace",
+            "Dire Maul",
+            "Maraudon"
+          ]
+        },
+        {
+          "name": "Gromsblood",
+          "skill": 250,
+          "items": [
+            8846,
+            11514
+          ],
+          "zones": [
+            "Felwood",
+            "Blasted Lands",
+            "Desolace",
+            "Ashenvale"
+          ]
+        },
+        {
+          "name": "Golden Sansam",
+          "skill": 260,
+          "items": [
+            13464,
+            19726,
+            11514
+          ],
+          "zones": [
+            "Un'Goro Crater",
+            "Azshara",
+            "Eastern Plaguelands",
+            "Felwood"
+          ]
+        },
+        {
+          "name": "Dreamfoil",
+          "skill": 270,
+          "items": [
+            13463,
+            19726,
+            11514
+          ],
+          "zones": [
+            "Azshara",
+            "Eastern Plaguelands",
+            "Un'Goro Crater",
+            "Felwood"
+          ]
+        },
+        {
+          "name": "Mountain Silversage",
+          "skill": 280,
+          "items": [
+            13465,
+            19726,
+            11514
+          ],
+          "zones": [
+            "Winterspring",
+            "Un'Goro Crater",
+            "Azshara",
+            "Burning Steppes"
+          ]
+        },
+        {
+          "name": "Plaguebloom",
+          "skill": 285,
+          "items": [
+            13466,
+            11514
+          ],
+          "zones": [
+            "Eastern Plaguelands",
+            "Felwood",
+            "Western Plaguelands"
+          ]
+        },
+        {
+          "name": "Icecap",
+          "skill": 290,
+          "items": [
+            13467
+          ],
+          "zones": [
+            "Winterspring"
+          ]
+        },
+        {
+          "name": "Black Lotus",
+          "skill": 300,
+          "items": [
+            13468
+          ],
+          "zones": [
+            "Burning Steppes",
+            "Winterspring",
+            "Eastern Plaguelands",
+            "Silithus"
+          ]
+        }
+      ],
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/bountiful-harvest"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/herbalism"
+    },
+    {
+      "slug": "skinning",
+      "name": "Skinning",
+      "icon": "inv_misc_pelt_wolf_01",
+      "kind": "primary",
+      "section": "gathering",
+      "newRecipes": 0,
+      "milestones": [],
+      "certification": false,
+      "campObjects": [
+        {
+          "id": 279979,
+          "name": "Camp Chair",
+          "icon": "inv_crate_01",
+          "skill": 20,
+          "reagents": [
+            [
+              2318,
+              3
+            ],
+            [
+              4470,
+              2
+            ]
+          ]
+        },
+        {
+          "id": 279969,
+          "name": "Field Guide",
+          "icon": "inv_misc_book_03",
+          "skill": 140,
+          "replaces": "Camp Chair",
+          "reagents": [
+            [
+              2319,
+              3
+            ],
+            [
+              5784,
+              2
+            ],
+            [
+              2321,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Field Guide"
+        },
+        {
+          "id": 279938,
+          "name": "Trapper's Workbench",
+          "icon": "inv_misc_kobysstools_knifetrap_color3",
+          "skill": 300,
+          "replaces": "Camp Chair",
+          "reagents": [
+            [
+              4470,
+              2
+            ],
+            [
+              4234,
+              4
+            ],
+            [
+              3575,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Trap Master Bench"
+        }
+      ],
+      "gathering": [
+        {
+          "levels": [
+            1,
+            10
+          ],
+          "items": [
+            2934,
+            2318,
+            783,
+            2592
+          ],
+          "zones": [
+            "Mulgore",
+            "Durotar",
+            "Dun Morogh",
+            "Elwynn Forest"
+          ]
+        },
+        {
+          "levels": [
+            11,
+            20
+          ],
+          "items": [
+            2318,
+            2934,
+            2319,
+            783
+          ],
+          "zones": [
+            "The Barrens",
+            "Darkshore",
+            "Silverpine Forest",
+            "Loch Modan"
+          ]
+        },
+        {
+          "levels": [
+            21,
+            30
+          ],
+          "items": [
+            2319,
+            2318,
+            4234,
+            4232
+          ],
+          "zones": [
+            "Wetlands",
+            "Ashenvale",
+            "Hillsbrad Foothills",
+            "Thousand Needles"
+          ]
+        },
+        {
+          "levels": [
+            31,
+            40
+          ],
+          "items": [
+            4234,
+            2319,
+            4304,
+            4235
+          ],
+          "zones": [
+            "Stranglethorn Vale",
+            "Dustwallow Marsh",
+            "Desolace",
+            "Badlands"
+          ]
+        },
+        {
+          "levels": [
+            41,
+            50
+          ],
+          "items": [
+            4304,
+            4234,
+            8170,
+            8167
+          ],
+          "zones": [
+            "Tanaris",
+            "Feralas",
+            "The Hinterlands",
+            "Felwood"
+          ]
+        },
+        {
+          "levels": [
+            51,
+            60
+          ],
+          "items": [
+            8170,
+            4304,
+            15408,
+            8171
+          ],
+          "zones": [
+            "Winterspring",
+            "Silithus",
+            "Eastern Plaguelands",
+            "Azshara"
+          ]
+        }
+      ],
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/bountiful-harvest"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/skinning"
+    },
+    {
+      "slug": "cooking",
+      "name": "Cooking",
+      "icon": "inv_misc_food_15",
+      "kind": "secondary",
+      "section": "secondary",
+      "newRecipes": 39,
+      "milestones": [],
+      "certification": false,
+      "campObjects": [
+        {
+          "id": 279981,
+          "name": "Basic Campfire Kit",
+          "icon": "inv_camelot_camping_welcomingcampfire",
+          "skill": 1,
+          "reagents": [
+            [
+              4470,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279957,
+          "name": "Cookie's Feast",
+          "icon": "inv_cooking_80_majorfeast",
+          "skill": 140,
+          "reagents": [
+            [
+              12037,
+              2
+            ],
+            [
+              12204,
+              1
+            ],
+            [
+              3713,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Cookie Feast"
+        },
+        {
+          "id": 279961,
+          "name": "Journeyman Campfire Kit",
+          "icon": "inv_camelot_camping_welcomingcampfire",
+          "skill": 140,
+          "reagents": [
+            [
+              11291,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Proficient Campfire"
+        },
+        {
+          "id": 279974,
+          "name": "Expert Campfire Kit",
+          "icon": "inv_camelot_camping_welcomingcampfire",
+          "skill": 220,
+          "reagents": [
+            [
+              272941,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Expert Campfire"
+        },
+        {
+          "id": 279982,
+          "name": "Iron Oven",
+          "icon": "achievement_cooking_masteroftheoven",
+          "skill": 300,
+          "reagents": [
+            [
+              10284,
+              10
+            ],
+            [
+              159,
+              5
+            ],
+            [
+              3713,
+              4
+            ]
+          ],
+          "blueprint": "Blueprint: Iron Oven"
+        }
+      ],
+      "route": [
+        {
+          "from": 1,
+          "to": 60,
+          "recipe": "Charred Wolf Meat",
+          "item": 2679,
+          "crafts": 63,
+          "reagents": [
+            [
+              2672,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 60,
+          "to": 103,
+          "recipe": "Coyote Steak",
+          "item": 2684,
+          "crafts": 46,
+          "reagents": [
+            [
+              2673,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 103,
+          "to": 129,
+          "recipe": "Crab Cake",
+          "item": 2683,
+          "crafts": 29,
+          "reagents": [
+            [
+              2674,
+              1
+            ],
+            [
+              2678,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 129,
+          "to": 143,
+          "recipe": "Clam Chowder",
+          "item": 5526,
+          "crafts": 17,
+          "reagents": [
+            [
+              5503,
+              1
+            ],
+            [
+              1179,
+              1
+            ],
+            [
+              2678,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 143,
+          "to": 181,
+          "recipe": "Lean Wolf Steak",
+          "item": 12209,
+          "crafts": 43,
+          "reagents": [
+            [
+              1015,
+              1
+            ],
+            [
+              2678,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 181,
+          "to": 225,
+          "recipe": "Goldthorn Tea",
+          "item": 10841,
+          "crafts": 46,
+          "reagents": [
+            [
+              3821,
+              1
+            ],
+            [
+              159,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 225,
+          "to": 231,
+          "recipe": "Goldthorn Tea",
+          "item": 10841,
+          "crafts": 9,
+          "reagents": [
+            [
+              3821,
+              1
+            ],
+            [
+              159,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 231,
+          "to": 276,
+          "recipe": "Spiced Chili Crab",
+          "item": 12216,
+          "crafts": 47,
+          "reagents": [
+            [
+              12206,
+              1
+            ],
+            [
+              2692,
+              2
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 276,
+          "to": 300,
+          "recipe": "Poached Sunscale Salmon",
+          "item": 13932,
+          "crafts": 26,
+          "reagents": [
+            [
+              13760,
+              1
+            ]
+          ],
+          "source": "vendor"
+        }
+      ],
+      "routeCap": 225,
+      "shopping": {
+        "toCap": {
+          "buy": [
+            [
+              2678,
+              89
+            ],
+            [
+              159,
+              46
+            ],
+            [
+              1179,
+              17
+            ]
+          ],
+          "gather": [
+            [
+              2672,
+              63
+            ],
+            [
+              2673,
+              46
+            ],
+            [
+              3821,
+              46
+            ],
+            [
+              1015,
+              43
+            ],
+            [
+              2674,
+              29
+            ],
+            [
+              5503,
+              17
+            ]
+          ],
+          "make": []
+        },
+        "afterCap": {
+          "buy": [
+            [
+              2692,
+              94
+            ],
+            [
+              159,
+              9
+            ]
+          ],
+          "gather": [
+            [
+              12206,
+              47
+            ],
+            [
+              13760,
+              26
+            ],
+            [
+              3821,
+              9
+            ]
+          ],
+          "make": []
+        }
+      },
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/master-chef",
+        "legacy/gourmand"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/cooking"
+    },
+    {
+      "slug": "fishing",
+      "name": "Fishing",
+      "icon": "trade_fishing",
+      "kind": "secondary",
+      "section": "secondary",
+      "newRecipes": 2,
+      "milestones": [],
+      "certification": false,
+      "campObjects": [
+        {
+          "id": 279967,
+          "name": "Fish Bowl",
+          "icon": "inv_magicalfishpet",
+          "skill": 20,
+          "reagents": [
+            [
+              6291,
+              1
+            ],
+            [
+              3371,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279965,
+          "name": "Fishing Rack",
+          "icon": "inv_misc_2h_draenorfishingpole_a_01",
+          "skill": 140,
+          "replaces": "Fish Bowl",
+          "reagents": [
+            [
+              4470,
+              2
+            ],
+            [
+              8925,
+              1
+            ],
+            [
+              8365,
+              2
+            ]
+          ],
+          "blueprint": "Blueprint: Fish rack"
+        },
+        {
+          "id": 279966,
+          "name": "Fishing Hut",
+          "icon": "inv_fishingchair",
+          "skill": 300,
+          "replaces": "Fish Bowl",
+          "reagents": [
+            [
+              4470,
+              5
+            ],
+            [
+              14048,
+              2
+            ],
+            [
+              273295,
+              1
+            ]
+          ],
+          "blueprint": "Blueprint: Fishing Hut"
+        }
+      ],
+      "gathering": [
+        {
+          "skill": 25,
+          "items": [],
+          "zones": [
+            "Dun Morogh",
+            "Elwynn Forest",
+            "Durotar",
+            "Tirisfal Glades",
+            "Teldrassil",
+            "Mulgore"
+          ]
+        },
+        {
+          "skill": 75,
+          "items": [],
+          "zones": [
+            "The Barrens",
+            "Loch Modan",
+            "Westfall",
+            "Silverpine Forest",
+            "Darkshore",
+            "Wailing Caverns"
+          ]
+        },
+        {
+          "skill": 150,
+          "items": [],
+          "zones": [
+            "Duskwood",
+            "Wetlands",
+            "Redridge Mountains",
+            "Hillsbrad Foothills",
+            "Ashenvale",
+            "Stonetalon Mountains"
+          ]
+        },
+        {
+          "skill": 225,
+          "items": [],
+          "zones": [
+            "Swamp of Sorrows",
+            "Dustwallow Marsh",
+            "Stranglethorn Vale",
+            "Alterac Mountains",
+            "Arathi Highlands",
+            "Thousand Needles"
+          ]
+        },
+        {
+          "skill": 300,
+          "items": [],
+          "zones": [
+            "Azshara",
+            "Western Plaguelands",
+            "The Hinterlands",
+            "Jaguero Isle",
+            "Feralas",
+            "Felwood"
+          ]
+        },
+        {
+          "skill": 425,
+          "items": [],
+          "zones": [
+            "Deadwind Pass",
+            "Burning Steppes",
+            "Eastern Plaguelands",
+            "Winterspring",
+            "Jademir Lake",
+            "Hetaera's Clutch"
+          ]
+        }
+      ],
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/luremaster"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/fishing"
+    },
+    {
+      "slug": "first-aid",
+      "name": "First Aid",
+      "icon": "spell_holy_sealofsacrifice",
+      "kind": "secondary",
+      "section": "secondary",
+      "newRecipes": 11,
+      "milestones": [],
+      "certification": false,
+      "campObjects": [
+        {
+          "id": 279968,
+          "name": "First Aid Kit",
+          "icon": "inv_misc_bandage_11",
+          "skill": 20,
+          "reagents": [
+            [
+              1251,
+              3
+            ],
+            [
+              159,
+              1
+            ]
+          ]
+        },
+        {
+          "id": 279940,
+          "name": "Toxin Study",
+          "icon": "inv_misc_potiona3",
+          "skill": 140,
+          "replaces": "First Aid Kit",
+          "reagents": [
+            [
+              6452,
+              1
+            ],
+            [
+              8544,
+              2
+            ],
+            [
+              4470,
+              2
+            ]
+          ],
+          "blueprint": "Blueprint: Toxin Research Station"
+        },
+        {
+          "id": 279951,
+          "name": "Plague Doctor's Laboratory",
+          "icon": "inv_10_alchemy_incenseholder_color1",
+          "skill": 300,
+          "replaces": "First Aid Kit",
+          "reagents": [
+            [
+              4470,
+              2
+            ],
+            [
+              6453,
+              2
+            ],
+            [
+              14530,
+              5
+            ]
+          ],
+          "blueprint": "Blueprint: Plague Doctor's Laboratory"
+        }
+      ],
+      "route": [
+        {
+          "from": 1,
+          "to": 49,
+          "recipe": "Linen Bandage",
+          "item": 1251,
+          "crafts": 59,
+          "reagents": [
+            [
+              2589,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 49,
+          "to": 55,
+          "recipe": "Heavy Linen Bandage",
+          "item": 2581,
+          "crafts": 7,
+          "reagents": [
+            [
+              2589,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 55,
+          "to": 80,
+          "recipe": "Minor Healing Potion",
+          "item": 118,
+          "crafts": 39,
+          "reagents": [
+            [
+              3371,
+              1
+            ],
+            [
+              2678,
+              1
+            ],
+            [
+              2447,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 80,
+          "to": 135,
+          "recipe": "Anti-Venom",
+          "item": 6452,
+          "crafts": 107,
+          "reagents": [
+            [
+              1475,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 135,
+          "to": 173,
+          "recipe": "Healing Potion",
+          "item": 929,
+          "crafts": 112,
+          "reagents": [
+            [
+              3372,
+              1
+            ],
+            [
+              2692,
+              1
+            ],
+            [
+              2453,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 173,
+          "to": 194,
+          "recipe": "Silk Bandage",
+          "item": 6450,
+          "crafts": 50,
+          "reagents": [
+            [
+              4306,
+              1
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 194,
+          "to": 210,
+          "recipe": "Heavy Silk Bandage",
+          "item": 6451,
+          "crafts": 26,
+          "reagents": [
+            [
+              4306,
+              2
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 210,
+          "to": 225,
+          "recipe": "Mageweave Bandage",
+          "item": 8544,
+          "crafts": 18,
+          "reagents": [
+            [
+              4338,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 225,
+          "to": 248,
+          "recipe": "Mageweave Bandage",
+          "item": 8544,
+          "crafts": 43,
+          "reagents": [
+            [
+              4338,
+              1
+            ]
+          ],
+          "source": "vendor"
+        },
+        {
+          "from": 248,
+          "to": 260,
+          "recipe": "Heavy Mageweave Bandage",
+          "item": 8545,
+          "crafts": 16,
+          "reagents": [
+            [
+              4338,
+              2
+            ]
+          ],
+          "source": "trainer"
+        },
+        {
+          "from": 260,
+          "to": 300,
+          "recipe": "Runecloth Bandage",
+          "item": 14529,
+          "crafts": 65,
+          "reagents": [
+            [
+              14047,
+              1
+            ]
+          ],
+          "source": "trainer"
+        }
+      ],
+      "routeCap": 225,
+      "shopping": {
+        "toCap": {
+          "buy": [
+            [
+              3372,
+              112
+            ],
+            [
+              2692,
+              112
+            ],
+            [
+              2453,
+              112
+            ],
+            [
+              3371,
+              39
+            ],
+            [
+              2678,
+              39
+            ]
+          ],
+          "gather": [
+            [
+              1475,
+              107
+            ],
+            [
+              4306,
+              102
+            ],
+            [
+              2589,
+              73
+            ],
+            [
+              2447,
+              39
+            ],
+            [
+              4338,
+              18
+            ]
+          ],
+          "make": []
+        },
+        "afterCap": {
+          "buy": [],
+          "gather": [
+            [
+              4338,
+              75
+            ],
+            [
+              14047,
+              65
+            ]
+          ],
+          "make": []
+        }
+      },
+      "perks": [
+        "legacy/working-overtime",
+        "legacy/dedicated-study",
+        "legacy/field-medicine"
+      ],
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhuanye/first-aid"
+    }
+  ],
+  "campingPerks": [
+    "legacy/field-guide",
+    "legacy/permanence",
+    "legacy/reagent-economy"
+  ],
+  "items": {
+    "118": {
+      "name": "Minor Healing Potion",
+      "icon": "inv_potion_49",
+      "quality": 1,
+      "lines": [
+        "Potions",
+        "Use: Restores 70 to 90 HP. (2 min cooldown)",
+        "Sell Price: 5c"
+      ]
+    },
+    "159": {
+      "name": "Refreshing Spring Water",
+      "icon": "inv_drink_07",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Use: Restores 151 mana in 18 seconds. Must remain seated while drinking.",
+        "Sell Price: 1c"
+      ]
+    },
+    "730": {
+      "name": "Murloc Eye",
+      "icon": "inv_misc_eye_01",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 16c"
+      ]
+    },
+    "765": {
+      "name": "Silverleaf",
+      "icon": "inv_misc_herb_10",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 10c"
+      ]
+    },
+    "783": {
+      "name": "Light Hide",
+      "icon": "inv_misc_pelt_wolf_ruin_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 50c"
+      ]
+    },
+    "785": {
+      "name": "Mageroyal",
+      "icon": "inv_jewelry_talisman_03",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 20c"
+      ]
+    },
+    "929": {
+      "name": "Healing Potion",
+      "icon": "inv_potion_51",
+      "quality": 1,
+      "lines": [
+        "Potions",
+        "Requires Level 12",
+        "Use: Heals 280 to 360 HP. (2 min cooldown)",
+        "Sell Price: 75c"
+      ]
+    },
+    "1015": {
+      "name": "Lean Wolf Flank",
+      "icon": "inv_misc_food_14",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 24c"
+      ]
+    },
+    "1179": {
+      "name": "Ice Cold Milk",
+      "icon": "inv_drink_milk_01",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Requires Level 5",
+        "Use: Restores 437 mana in 21 seconds. Must remain seated while drinking.",
+        "Sell Price: 6c"
+      ]
+    },
+    "1210": {
+      "name": "Shadowgem",
+      "icon": "inv_misc_gem_amethyst_01",
+      "quality": 2,
+      "lines": [
+        "Other",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "1251": {
+      "name": "Linen Bandage",
+      "icon": "inv_misc_bandage_15",
+      "quality": 1,
+      "lines": [
+        "Bandages",
+        "Requires First Aid (1)",
+        "Use: Restores 66 HP in 6 seconds.",
+        "Sell Price: 10c"
+      ]
+    },
+    "1475": {
+      "name": "Small Venom Sac",
+      "icon": "inv_misc_organ_02",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 82c"
+      ]
+    },
+    "2304": {
+      "name": "Light Armor Kit",
+      "icon": "inv_misc_armorkit_17",
+      "quality": 1,
+      "lines": [
+        "Permanent",
+        "Use: Permanently increases the stamina of an item on the chest, leg, hand, or foot by 1 and armor by 8.",
+        "Sell Price: 15c"
+      ]
+    },
+    "2318": {
+      "name": "Light Leather",
+      "icon": "inv_misc_leatherscrap_03",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 15c"
+      ]
+    },
+    "2319": {
+      "name": "Medium Leather",
+      "icon": "inv_misc_leatherscrap_05",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 50c"
+      ]
+    },
+    "2320": {
+      "name": "Coarse Thread",
+      "icon": "inv_fabric_linen_03",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 2c"
+      ]
+    },
+    "2321": {
+      "name": "Fine Thread",
+      "icon": "inv_fabric_wool_02",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 25c"
+      ]
+    },
+    "2325": {
+      "name": "Black Dye",
+      "icon": "inv_potion_63",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "2447": {
+      "name": "Peacebloom",
+      "icon": "inv_misc_flower_02",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 10c"
+      ]
+    },
+    "2449": {
+      "name": "Earthroot",
+      "icon": "inv_misc_herb_07",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 20c"
+      ]
+    },
+    "2450": {
+      "name": "Briarthorn",
+      "icon": "inv_misc_root_01",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 25c"
+      ]
+    },
+    "2452": {
+      "name": "Swiftthistle",
+      "icon": "inv_misc_herb_04",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 15c"
+      ]
+    },
+    "2453": {
+      "name": "Bruiseweed",
+      "icon": "inv_misc_herb_01",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 25c"
+      ]
+    },
+    "2458": {
+      "name": "Elixir of Minor Fortitude",
+      "icon": "inv_potion_42",
+      "quality": 1,
+      "lines": [
+        "Elixirs",
+        "Requires Level 2",
+        "Use: Increases player's max HP by 27 for 1 hour. (3 second cooldown)",
+        "Sell Price: 15c"
+      ]
+    },
+    "2568": {
+      "name": "Brown Linen Vest",
+      "icon": "inv_shirt_05",
+      "quality": 1,
+      "lines": [
+        "Chest · Cloth",
+        "15 Armor",
+        "Requires Level 3",
+        "Sell Price: 31c"
+      ]
+    },
+    "2581": {
+      "name": "Heavy Linen Bandage",
+      "icon": "inv_misc_bandage_18",
+      "quality": 1,
+      "lines": [
+        "Bandages",
+        "Requires First Aid (20)",
+        "Use: Restores 114 HP in 6 seconds.",
+        "Sell Price: 20c"
+      ]
+    },
+    "2584": {
+      "name": "Woolen Cape",
+      "icon": "inv_misc_cape_10",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Back · Cloth",
+        "15 Armor",
+        "+1 Spirit",
+        "Requires Level 11",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 1.",
+        "Sell Price: 1s 42c"
+      ]
+    },
+    "2589": {
+      "name": "Linen Cloth",
+      "icon": "inv_fabric_linen_01",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 13c"
+      ]
+    },
+    "2592": {
+      "name": "Wool Cloth",
+      "icon": "inv_fabric_wool_01",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 33c"
+      ]
+    },
+    "2604": {
+      "name": "Red Dye",
+      "icon": "inv_potion_11",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 12c"
+      ]
+    },
+    "2605": {
+      "name": "Green Dye",
+      "icon": "inv_potion_12",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 25c"
+      ]
+    },
+    "2672": {
+      "name": "Stringy Wolf Meat",
+      "icon": "inv_misc_food_14",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 4c"
+      ]
+    },
+    "2673": {
+      "name": "Coyote Meat",
+      "icon": "inv_misc_food_69",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 10c"
+      ]
+    },
+    "2674": {
+      "name": "Crawler Meat",
+      "icon": "inv_misc_food_51",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 12c"
+      ]
+    },
+    "2678": {
+      "name": "Mild Spices",
+      "icon": "inv_misc_food_wheat_02",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "\"To make the food taste slightly palatable.\"",
+        "Sell Price: 2c"
+      ]
+    },
+    "2679": {
+      "name": "Charred Wolf Meat",
+      "icon": "inv_misc_food_18",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Use: Restores a total of 17 health points in 18 seconds. Must remain seated while eating.",
+        "Sell Price: 5c"
+      ]
+    },
+    "2683": {
+      "name": "Crab Cake",
+      "icon": "inv_misc_food_08",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Requires Level 5",
+        "Use: Restores a total of 58 health in 21 seconds. You must remain seated while eating. If you spend at least 10 seconds eating, you gain the full effect of eating, increasing your Intelligence by 3 for 15 minutes.",
+        "Sell Price: 25c"
+      ]
+    },
+    "2684": {
+      "name": "Coyote Steak",
+      "icon": "inv_misc_food_65",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Requires Level 5",
+        "Use: Restores a total of 58 health in 21 seconds. You must remain seated when eating. If you spend at least 10 seconds eating, you gain the full effect of eating, increasing your agility by 3 for 15 minutes.",
+        "Sell Price: 20c"
+      ]
+    },
+    "2692": {
+      "name": "Hot Spices",
+      "icon": "inv_misc_food_legion_dalapenopepper",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "\"To make the food taste dangerous and delicious.\"",
+        "Sell Price: 10c"
+      ]
+    },
+    "2770": {
+      "name": "Copper Ore",
+      "icon": "inv_ore_copper_01",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 5c"
+      ]
+    },
+    "2771": {
+      "name": "Tin Ore",
+      "icon": "inv_ore_tin_01",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 25c"
+      ]
+    },
+    "2772": {
+      "name": "Iron Ore",
+      "icon": "inv_ore_iron_01",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 1s 50c"
+      ]
+    },
+    "2775": {
+      "name": "Silver Ore",
+      "icon": "inv_stone_16",
+      "quality": 2,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 75c"
+      ]
+    },
+    "2776": {
+      "name": "Gold Ore",
+      "icon": "inv_ore_gold_01",
+      "quality": 2,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 5s"
+      ]
+    },
+    "2798": {
+      "name": "Rethban Ore",
+      "icon": "inv_ore_iron_01",
+      "quality": 1,
+      "lines": [
+        "Quest items",
+        "Quest",
+        "Sell Price: 25c"
+      ]
+    },
+    "2835": {
+      "name": "Rough Stone",
+      "icon": "inv_stone_06",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 2c"
+      ]
+    },
+    "2836": {
+      "name": "Coarse Stone",
+      "icon": "inv_stone_09",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 15c"
+      ]
+    },
+    "2838": {
+      "name": "Heavy Stone",
+      "icon": "inv_stone_12",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 60c"
+      ]
+    },
+    "2840": {
+      "name": "Copper Bar",
+      "icon": "inv_ingot_02",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 10c"
+      ]
+    },
+    "2841": {
+      "name": "Bronze Bar",
+      "icon": "inv_ingot_bronze",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 50c"
+      ]
+    },
+    "2842": {
+      "name": "Silver Bar",
+      "icon": "inv_ingot_01",
+      "quality": 2,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 1s"
+      ]
+    },
+    "2850": {
+      "name": "Bronze Shortsword",
+      "icon": "inv_sword_04",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "One-Hand · Sword",
+        "21 - 40 Damage · Speed 2.50",
+        "(12.2 damage per second)",
+        "+3 Agility",
+        "Requires Level 19",
+        "Sell Price: 11s 36c"
+      ]
+    },
+    "2851": {
+      "name": "Copper Chain Belt",
+      "icon": "inv_belt_02",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Waist · Mail",
+        "65 Armor",
+        "+1 Stamina",
+        "Requires Level 6",
+        "Sell Price: 56c"
+      ]
+    },
+    "2862": {
+      "name": "Rough Sharpening Stone",
+      "icon": "inv_stone_sharpeningstone_01",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Use: Increases damage done by sharp weapons by 2 for 30 min.",
+        "Sell Price: 3c"
+      ]
+    },
+    "2863": {
+      "name": "Coarse Sharpening Stone",
+      "icon": "inv_stone_sharpeningstone_02",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Requires Level 5",
+        "Use: Increases damage done by sharp weapons by 3 for 30 min.",
+        "Sell Price: 10c"
+      ]
+    },
+    "2865": {
+      "name": "Rough Bronze Leggings",
+      "icon": "inv_pants_03",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Legs · Mail",
+        "149 Armor",
+        "+5 Stamina",
+        "+4 Spirit",
+        "Requires Level 16",
+        "Sell Price: 5s 77c"
+      ]
+    },
+    "2871": {
+      "name": "Heavy Sharpening Stone",
+      "icon": "inv_stone_sharpeningstone_03",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Requires Level 15",
+        "Use: Increases damage done by sharp weapons by 4 for 30 min.",
+        "Sell Price: 40c"
+      ]
+    },
+    "2880": {
+      "name": "Weak Flux",
+      "icon": "inv_misc_ammo_gunpowder_02",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "\"The blacksmith used this to remove impurities from the ore.\"",
+        "Sell Price: 25c"
+      ]
+    },
+    "2901": {
+      "name": "Mining Pick",
+      "icon": "inv_pick_02",
+      "quality": 1,
+      "lines": [
+        "Main Hand · Other",
+        "2 - 4 Damage · Speed 2.00",
+        "(1.5 damage per second)",
+        "\"The miner needs a hoe to mine.\"",
+        "Sell Price: 2c"
+      ]
+    },
+    "2934": {
+      "name": "Ruined Leather Scraps",
+      "icon": "inv_misc_pelt_bear_ruin_05",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 7c"
+      ]
+    },
+    "2996": {
+      "name": "Bolt of Linen Cloth",
+      "icon": "inv_fabric_linen_02",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 40c"
+      ]
+    },
+    "2997": {
+      "name": "Bolt of Woolen Cloth",
+      "icon": "inv_fabric_wool_03",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 1s"
+      ]
+    },
+    "3182": {
+      "name": "Spider's Silk",
+      "icon": "spell_nature_web",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 3s 87c"
+      ]
+    },
+    "3340": {
+      "name": "Incendicite Ore",
+      "icon": "inv_ore_thorium_01",
+      "quality": 1,
+      "lines": [
+        "Quest",
+        "Sell Price: 31c"
+      ]
+    },
+    "3355": {
+      "name": "Wild Steelbloom",
+      "icon": "inv_misc_flower_01",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 50c"
+      ]
+    },
+    "3356": {
+      "name": "Kingsblood",
+      "icon": "inv_misc_herb_03",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 30c"
+      ]
+    },
+    "3357": {
+      "name": "Liferoot",
+      "icon": "inv_misc_root_02",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 75c"
+      ]
+    },
+    "3358": {
+      "name": "Khadgar's Whisker",
+      "icon": "inv_misc_herb_08",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 1s 75c"
+      ]
+    },
+    "3369": {
+      "name": "Grave Moss",
+      "icon": "inv_misc_dust_02",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 25c"
+      ]
+    },
+    "3371": {
+      "name": "Empty Vial",
+      "icon": "inv_potion_84",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 1c"
+      ]
+    },
+    "3372": {
+      "name": "Leaded Vial",
+      "icon": "inv_potion_85",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 10c"
+      ]
+    },
+    "3382": {
+      "name": "Minor Troll's Blood Elixir",
+      "icon": "inv_potion_78",
+      "quality": 1,
+      "lines": [
+        "Elixirs",
+        "Use: Restores 2 HP every 5 seconds for 1 hour. (3 second cooldown)",
+        "Sell Price: 10c"
+      ]
+    },
+    "3470": {
+      "name": "Rough Grinding Stone",
+      "icon": "inv_stone_grindingstone_01",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 5c"
+      ]
+    },
+    "3478": {
+      "name": "Coarse Grinding Stone",
+      "icon": "inv_stone_grindingstone_02",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 10c"
+      ]
+    },
+    "3486": {
+      "name": "Heavy Grinding Stone",
+      "icon": "inv_stone_grindingstone_03",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 1s"
+      ]
+    },
+    "3575": {
+      "name": "Iron Bar",
+      "icon": "inv_ingot_iron",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 2s"
+      ]
+    },
+    "3713": {
+      "name": "Soothing Spices",
+      "icon": "inv_misc_food_vendor_rice",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "\"It's easy to improve the taste of food.\"",
+        "Sell Price: 40c"
+      ]
+    },
+    "3818": {
+      "name": "Fadeleaf",
+      "icon": "inv_misc_herb_12",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 1s 25c"
+      ]
+    },
+    "3819": {
+      "name": "Wintersbite",
+      "icon": "inv_misc_flower_03",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 1s"
+      ]
+    },
+    "3820": {
+      "name": "Stranglekelp",
+      "icon": "inv_misc_herb_11",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 1s"
+      ]
+    },
+    "3821": {
+      "name": "Goldthorn",
+      "icon": "inv_misc_herb_15",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 1s 50c"
+      ]
+    },
+    "3827": {
+      "name": "Mana Potion",
+      "icon": "inv_potion_72",
+      "quality": 1,
+      "lines": [
+        "Potions",
+        "Requires Level 22",
+        "Use: Restores 455 to 585 mana. (2 min cooldown)",
+        "Sell Price: 1s 20c"
+      ]
+    },
+    "3835": {
+      "name": "Green Iron Bracers",
+      "icon": "inv_bracer_06",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Wrist · Mail",
+        "91 Armor",
+        "+5 Stamina",
+        "+4 Strength",
+        "Requires Level 28",
+        "Sell Price: 11s 6c"
+      ]
+    },
+    "3858": {
+      "name": "Mithril Ore",
+      "icon": "inv_ore_mithril_02",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "3859": {
+      "name": "Steel Bar",
+      "icon": "inv_ingot_steel",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 60c"
+      ]
+    },
+    "3860": {
+      "name": "Mithril Bar",
+      "icon": "inv_ingot_06",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 4s"
+      ]
+    },
+    "4231": {
+      "name": "Cured Light Hide",
+      "icon": "inv_misc_pelt_wolf_01",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 1s 10c"
+      ]
+    },
+    "4232": {
+      "name": "Medium Hide",
+      "icon": "inv_misc_pelt_boar_ruin_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 1s 25c"
+      ]
+    },
+    "4233": {
+      "name": "Cured Medium Hide",
+      "icon": "inv_misc_pelt_bear_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 2s"
+      ]
+    },
+    "4234": {
+      "name": "Heavy Leather",
+      "icon": "inv_misc_leatherscrap_07",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 1s 50c"
+      ]
+    },
+    "4235": {
+      "name": "Heavy Hide",
+      "icon": "inv_misc_pelt_wolf_ruin_03",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 2s"
+      ]
+    },
+    "4236": {
+      "name": "Cured Heavy Hide",
+      "icon": "inv_misc_pelt_wolf_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 2s 25c"
+      ]
+    },
+    "4239": {
+      "name": "Embossed Leather Gloves",
+      "icon": "inv_gauntlets_05",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Hands · Leather",
+        "41 Armor",
+        "+1 Agility",
+        "+1 Stamina",
+        "Requires Level 8",
+        "Sell Price: 71c"
+      ]
+    },
+    "4251": {
+      "name": "Hillman's Shoulders",
+      "icon": "inv_shoulder_08",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Shoulder · Leather",
+        "65 Armor",
+        "+5 Stamina",
+        "+3 Spirit",
+        "Requires Level 21",
+        "Sell Price: 6s 59c"
+      ]
+    },
+    "4257": {
+      "name": "Green Leather Belt",
+      "icon": "inv_belt_17",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Waist · Leather",
+        "54 Armor",
+        "+6 Agility",
+        "+6 Intellect",
+        "Requires Level 27",
+        "Sell Price: 13s 11c"
+      ]
+    },
+    "4259": {
+      "name": "Green Leather Bracers",
+      "icon": "inv_bracer_12",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Wrist · Leather",
+        "45 Armor",
+        "+6 Agility",
+        "+5 Intellect",
+        "Requires Level 31",
+        "Sell Price: 19s 34c"
+      ]
+    },
+    "4265": {
+      "name": "Heavy Armor Kit",
+      "icon": "inv_misc_armorkit_16",
+      "quality": 1,
+      "lines": [
+        "Permanent",
+        "Requires Level 20",
+        "Sell Price: 6s 50c"
+      ]
+    },
+    "4278": {
+      "name": "Lesser Bloodstone Ore",
+      "icon": "inv_ore_thorium_01",
+      "quality": 1,
+      "lines": [
+        "Quest",
+        "Sell Price: 25c"
+      ]
+    },
+    "4289": {
+      "name": "Salt",
+      "icon": "inv_misc_dust_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 12c"
+      ]
+    },
+    "4291": {
+      "name": "Silken Thread",
+      "icon": "inv_fabric_silk_02",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 1s 25c"
+      ]
+    },
+    "4304": {
+      "name": "Thick Leather",
+      "icon": "inv_misc_leatherscrap_08",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 3s"
+      ]
+    },
+    "4305": {
+      "name": "Bolt of Silk Cloth",
+      "icon": "inv_fabric_silk_03",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 6s"
+      ]
+    },
+    "4306": {
+      "name": "Silk Cloth",
+      "icon": "inv_fabric_silk_01",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 1s 50c"
+      ]
+    },
+    "4332": {
+      "name": "Bright Yellow Shirt",
+      "icon": "inv_shirt_yellow_01",
+      "quality": 1,
+      "lines": [
+        "Shirt",
+        "Sell Price: 5s"
+      ]
+    },
+    "4338": {
+      "name": "Mageweave Cloth",
+      "icon": "inv_fabric_mageweave_01",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "4339": {
+      "name": "Bolt of Mageweave",
+      "icon": "inv_fabric_mageweave_03",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 12s 50c"
+      ]
+    },
+    "4341": {
+      "name": "Yellow Dye",
+      "icon": "inv_potion_12",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 1s 25c"
+      ]
+    },
+    "4357": {
+      "name": "Rough Blasting Powder",
+      "icon": "inv_misc_dust_01",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 4c"
+      ]
+    },
+    "4359": {
+      "name": "Handful of Copper Bolts",
+      "icon": "inv_misc_gear_06",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 12c"
+      ]
+    },
+    "4361": {
+      "name": "Copper Tube",
+      "icon": "inv_gizmo_pipe_02",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 1s 20c"
+      ]
+    },
+    "4364": {
+      "name": "Coarse Blasting Powder",
+      "icon": "inv_misc_dust_02",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 12c"
+      ]
+    },
+    "4371": {
+      "name": "Bronze Tube",
+      "icon": "inv_gizmo_pipe_01",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 2s"
+      ]
+    },
+    "4375": {
+      "name": "Whirring Bronze Gizmo",
+      "icon": "inv_gizmo_02",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 1s 15c"
+      ]
+    },
+    "4377": {
+      "name": "Heavy Blasting Powder",
+      "icon": "inv_misc_dust_06",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 1s 50c"
+      ]
+    },
+    "4387": {
+      "name": "Iron Strut",
+      "icon": "inv_spear_05",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 4s"
+      ]
+    },
+    "4390": {
+      "name": "Iron Grenade",
+      "icon": "inv_misc_bomb_08",
+      "quality": 1,
+      "lines": [
+        "Explosives",
+        "Requires Engineering (175)",
+        "Use: Deals 132 to 218 fire damage and stuns targets within a 3 yard radius for 3 seconds. Any damage will interrupt this effect. (1 minute cooldown)",
+        "Sell Price: 5s"
+      ]
+    },
+    "4470": {
+      "name": "Simple Wood",
+      "icon": "inv_tradeskillitem_01",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 9c"
+      ]
+    },
+    "4471": {
+      "name": "Flint and Tinder",
+      "icon": "inv_stone_11",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 33c"
+      ]
+    },
+    "4625": {
+      "name": "Firebloom",
+      "icon": "inv_misc_herb_19",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "5056": {
+      "name": "Root Sample",
+      "icon": "inv_misc_herb_07",
+      "quality": 1,
+      "lines": [
+        "Quest items",
+        "Quest"
+      ]
+    },
+    "5500": {
+      "name": "Iridescent Pearl",
+      "icon": "inv_misc_gem_pearl_02",
+      "quality": 2,
+      "lines": [
+        "Other",
+        "Sell Price: 7s 50c"
+      ]
+    },
+    "5503": {
+      "name": "Clam Meat",
+      "icon": "inv_misc_food_51",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 16c"
+      ]
+    },
+    "5526": {
+      "name": "Clam Chowder",
+      "icon": "inv_potion_01",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Requires Level 5",
+        "Use: Restores a total of 58 health points in 21 seconds. Must remain seated while eating.",
+        "Sell Price: 75c"
+      ]
+    },
+    "5766": {
+      "name": "Lesser Wizard's Robe",
+      "icon": "inv_chest_cloth_17",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Chest · Cloth",
+        "41 Armor",
+        "+8 Intellect",
+        "Requires Level 22",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 5.",
+        "Sell Price: 13s 38c"
+      ]
+    },
+    "5784": {
+      "name": "Slimy Murloc Scale",
+      "icon": "inv_misc_monsterscales_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 75c"
+      ]
+    },
+    "5956": {
+      "name": "Blacksmith Hammer",
+      "icon": "inv_hammer_20",
+      "quality": 1,
+      "lines": [
+        "Main Hand · Other",
+        "1 - 2 Damage · Speed 2.00",
+        "(0.8 damage per second)",
+        "Sell Price: 3c"
+      ]
+    },
+    "5966": {
+      "name": "Guardian Gloves",
+      "icon": "inv_gauntlets_05",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Hands · Leather",
+        "66 Armor",
+        "+8 Intellect",
+        "Requires Level 33",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 8.",
+        "Sell Price: 13s 74c"
+      ]
+    },
+    "6037": {
+      "name": "Truesilver Bar",
+      "icon": "inv_ingot_08",
+      "quality": 2,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 12s 50c"
+      ]
+    },
+    "6040": {
+      "name": "Golden Scale Bracers",
+      "icon": "inv_bracer_10",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Wrist · Mail",
+        "96 Armor",
+        "+5 Stamina",
+        "+6 Strength",
+        "Requires Level 32",
+        "Sell Price: 13s 15c"
+      ]
+    },
+    "6048": {
+      "name": "Shadow Protection Potion",
+      "icon": "inv_potion_44",
+      "quality": 1,
+      "lines": [
+        "Potions",
+        "Requires Level 17",
+        "Use: Absorbs 675 to 1125 Shadow damage for 2 minutes. (2 minute cooldown)",
+        "Sell Price: 1s"
+      ]
+    },
+    "6051": {
+      "name": "Holy Protection Potion",
+      "icon": "inv_potion_09",
+      "quality": 1,
+      "lines": [
+        "Potions",
+        "Requires Level 10",
+        "Use: Absorbs 300 to 500 Holy damage for 2 minutes. (2 minute cooldown)",
+        "Sell Price: 62c"
+      ]
+    },
+    "6052": {
+      "name": "Nature Protection Potion",
+      "icon": "inv_potion_06",
+      "quality": 1,
+      "lines": [
+        "Potions",
+        "Requires Level 28",
+        "Use: Absorbs 1350 to 2250 Nature Damage for 2 minutes. (2 minute cooldown)",
+        "Sell Price: 3s"
+      ]
+    },
+    "6217": {
+      "name": "Copper Rod",
+      "icon": "inv_misc_flute_01",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "\"Alchemists need it to make runic copper rods.\"",
+        "Sell Price: 24c"
+      ]
+    },
+    "6218": {
+      "name": "Runed Copper Rod",
+      "icon": "inv_staff_goldfeathered_01",
+      "quality": 1,
+      "lines": [
+        "Binds when picked up",
+        "Enchanting",
+        "Sell Price: 24c"
+      ]
+    },
+    "6219": {
+      "name": "Arclight Spanner",
+      "icon": "inv_misc_wrench_01",
+      "quality": 1,
+      "lines": [
+        "Main Hand · Other",
+        "7 - 14 Damage · Speed 2.40",
+        "(4.4 damage per second)",
+        "Requires Engineering (50)",
+        "Sell Price: 1s 44c"
+      ]
+    },
+    "6256": {
+      "name": "Fishing Pole",
+      "icon": "inv_fishingpole_02",
+      "quality": 1,
+      "lines": [
+        "Two-Hand · Fishing Pole",
+        "2 - 4 Damage · Speed 3.00",
+        "(1.0 damage per second)",
+        "Sell Price: 4c"
+      ]
+    },
+    "6260": {
+      "name": "Blue Dye",
+      "icon": "inv_potion_15",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 12c"
+      ]
+    },
+    "6261": {
+      "name": "Orange Dye",
+      "icon": "inv_potion_35",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "6291": {
+      "name": "Raw Brilliant Smallfish",
+      "icon": "inv_misc_fish_08",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Use: Restores a total of 10 health points in 15 seconds. Must remain seated while eating.",
+        "Sell Price: 1c"
+      ]
+    },
+    "6338": {
+      "name": "Silver Rod",
+      "icon": "inv_staff_01",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "\"A necessary tool for enchanters.\"",
+        "Sell Price: 1s 25c"
+      ]
+    },
+    "6339": {
+      "name": "Runed Silver Rod",
+      "icon": "inv_staff_01",
+      "quality": 1,
+      "lines": [
+        "Binds when picked up",
+        "Enchanting",
+        "Sell Price: 24c"
+      ]
+    },
+    "6450": {
+      "name": "Silk Bandage",
+      "icon": "inv_misc_bandage_01",
+      "quality": 1,
+      "lines": [
+        "Bandages",
+        "Requires First Aid (100)",
+        "Use: Recovers 400 health points in 8 seconds.",
+        "Sell Price: 2s"
+      ]
+    },
+    "6451": {
+      "name": "Heavy Silk Bandage",
+      "icon": "inv_misc_bandage_02",
+      "quality": 1,
+      "lines": [
+        "Bandages",
+        "Requires First Aid (125)",
+        "Use: Restores 640 HP in 8 seconds.",
+        "Sell Price: 4s"
+      ]
+    },
+    "6452": {
+      "name": "Anti-Venom",
+      "icon": "inv_misc_slime_01",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Use: Dispel poison effect on target. Dispel up to level 25 poison. (1 minute cooldown)",
+        "Sell Price: 28c"
+      ]
+    },
+    "6453": {
+      "name": "Potent Anti-Venom",
+      "icon": "inv_misc_slime_01",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Use: Dispel poison effect on target. Dispel up to level 35 poison. (1 minute cooldown)",
+        "Sell Price: 62c"
+      ]
+    },
+    "6467": {
+      "name": "Deviate Scale Gloves",
+      "icon": "inv_gauntlets_05",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Hands · Leather",
+        "49 Armor",
+        "+3 Stamina",
+        "+3 Agility",
+        "Requires Level 16",
+        "Sell Price: 4s 20c"
+      ]
+    },
+    "6470": {
+      "name": "Deviate Scale",
+      "icon": "inv_misc_monsterscales_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 20c"
+      ]
+    },
+    "6471": {
+      "name": "Perfect Deviate Scale",
+      "icon": "inv_misc_monsterscales_01",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 5s"
+      ]
+    },
+    "6712": {
+      "name": "Practice Lock",
+      "icon": "inv_box_01",
+      "quality": 1,
+      "lines": [
+        "Junk",
+        "Sell Price: 12c"
+      ]
+    },
+    "6796": {
+      "name": "Red Swashbuckler's Shirt",
+      "icon": "inv_shirt_red_01",
+      "quality": 1,
+      "lines": [
+        "Shirt",
+        "Sell Price: 7s 50c"
+      ]
+    },
+    "7005": {
+      "name": "Skinning Knife",
+      "icon": "inv_weapon_shortblade_01",
+      "quality": 1,
+      "lines": [
+        "One-Hand · Other",
+        "1 - 3 Damage · Speed 1.60",
+        "(1.2 damage per second)",
+        "Sell Price: 2c"
+      ]
+    },
+    "7026": {
+      "name": "Linen Belt",
+      "icon": "inv_belt_05",
+      "quality": 1,
+      "lines": [
+        "Waist · Cloth",
+        "9 Armor",
+        "Requires Level 4",
+        "Sell Price: 22c"
+      ]
+    },
+    "7048": {
+      "name": "Azure Silk Hood",
+      "icon": "inv_helmet_29",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Head · Cloth",
+        "34 Armor",
+        "+8 Stamina",
+        "Requires Level 24",
+        "Equip: Increases the damage dealt by Frost spells and effects by up to 10.",
+        "Sell Price: 7s 45c"
+      ]
+    },
+    "7051": {
+      "name": "Earthen Vest",
+      "icon": "inv_shirt_04",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Chest · Cloth",
+        "46 Armor",
+        "+10 Spirit",
+        "+6 Stamina",
+        "Requires Level 29",
+        "Sell Price: 26s 96c"
+      ]
+    },
+    "7058": {
+      "name": "Crimson Silk Vest",
+      "icon": "inv_shirt_04",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Chest · Cloth",
+        "49 Armor",
+        "+10 Intellect",
+        "Requires Level 32",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 12.",
+        "Sell Price: 20s 52c"
+      ]
+    },
+    "7067": {
+      "name": "Elemental Earth",
+      "icon": "inv_ore_iron_01",
+      "quality": 1,
+      "lines": [
+        "Elemental",
+        "Sell Price: 4s"
+      ]
+    },
+    "7071": {
+      "name": "Iron Buckle",
+      "icon": "inv_misc_armorkit_12",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 1s"
+      ]
+    },
+    "7911": {
+      "name": "Truesilver Ore",
+      "icon": "inv_ore_truesilver_01",
+      "quality": 2,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 5s"
+      ]
+    },
+    "7912": {
+      "name": "Solid Stone",
+      "icon": "inv_stone_10",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 1s"
+      ]
+    },
+    "7919": {
+      "name": "Heavy Mithril Gauntlet",
+      "icon": "inv_gauntlets_27",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Hands · Plate",
+        "268 Armor",
+        "+8 Stamina",
+        "Requires Level 40",
+        "Sell Price: 24s 76c"
+      ]
+    },
+    "7930": {
+      "name": "Heavy Mithril Breastplate",
+      "icon": "inv_chest_plate10",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Chest · Plate",
+        "536 Armor",
+        "+15 Stamina",
+        "Requires Level 41",
+        "Sell Price: 70s 45c"
+      ]
+    },
+    "7933": {
+      "name": "Heavy Mithril Boots",
+      "icon": "inv_boots_plate_01",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Feet · Plate",
+        "382 Armor",
+        "+12 Stamina",
+        "Requires Level 42",
+        "Sell Price: 57s 69c"
+      ]
+    },
+    "7964": {
+      "name": "Solid Sharpening Stone",
+      "icon": "inv_stone_sharpeningstone_04",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Requires Level 25",
+        "Use: Increases damage done by sharp weapons by 6 for 30 min.",
+        "Sell Price: 40c"
+      ]
+    },
+    "7971": {
+      "name": "Black Pearl",
+      "icon": "inv_misc_gem_pearl_01",
+      "quality": 2,
+      "lines": [
+        "Other",
+        "Sell Price: 10s"
+      ]
+    },
+    "8150": {
+      "name": "Deeprock Salt",
+      "icon": "inv_misc_dust_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "8153": {
+      "name": "Wildvine",
+      "icon": "inv_misc_herb_03",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 5c"
+      ]
+    },
+    "8167": {
+      "name": "Turtle Scale",
+      "icon": "inv_misc_monsterscales_11",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 1s"
+      ]
+    },
+    "8169": {
+      "name": "Thick Hide",
+      "icon": "inv_misc_pelt_bear_ruin_01",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 5s"
+      ]
+    },
+    "8170": {
+      "name": "Rugged Leather",
+      "icon": "inv_misc_leatherscrap_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 5s"
+      ]
+    },
+    "8171": {
+      "name": "Rugged Hide",
+      "icon": "inv_misc_pelt_bear_ruin_02",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 5s"
+      ]
+    },
+    "8172": {
+      "name": "Cured Thick Hide",
+      "icon": "inv_misc_pelt_bear_01",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 5s"
+      ]
+    },
+    "8173": {
+      "name": "Thick Armor Kit",
+      "icon": "inv_misc_armorkit_07",
+      "quality": 1,
+      "lines": [
+        "Permanent",
+        "Requires Level 30",
+        "Sell Price: 10s"
+      ]
+    },
+    "8176": {
+      "name": "Nightscape Headband",
+      "icon": "inv_belt_24",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Head · Leather",
+        "91 Armor",
+        "+12 Agility",
+        "+11 Stamina",
+        "Requires Level 36",
+        "Sell Price: 29s 22c"
+      ]
+    },
+    "8218": {
+      "name": "Thick Leather Ammo Pouch",
+      "icon": "inv_misc_bag_09_black",
+      "quality": 2,
+      "lines": [
+        "Bag · Ammo Pouch",
+        "16-compartment ammo bag",
+        "Requires Level 40",
+        "Equip: Increases ranged attack speed by 13%.",
+        "Sell Price: 10s"
+      ]
+    },
+    "8343": {
+      "name": "Heavy Silken Thread",
+      "icon": "inv_fabric_silk_02",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 5s"
+      ]
+    },
+    "8365": {
+      "name": "Raw Mithril Head Trout",
+      "icon": "inv_misc_fish_02",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Requires Level 25",
+        "Use: Recovers a total of 115 health points in 24 seconds. You must remain seated while eating.",
+        "Sell Price: 4c"
+      ]
+    },
+    "8544": {
+      "name": "Mageweave Bandage",
+      "icon": "inv_misc_bandage_19",
+      "quality": 1,
+      "lines": [
+        "Bandages",
+        "Requires First Aid (150)",
+        "Use: Restores 800 HP in 8 seconds.",
+        "Sell Price: 4s"
+      ]
+    },
+    "8545": {
+      "name": "Heavy Mageweave Bandage",
+      "icon": "inv_misc_bandage_20",
+      "quality": 1,
+      "lines": [
+        "Bandages",
+        "Requires First Aid (175)",
+        "Use: Restores 1104 HP in 8 seconds.",
+        "Sell Price: 6s"
+      ]
+    },
+    "8831": {
+      "name": "Purple Lotus",
+      "icon": "inv_misc_herb_17",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 3s"
+      ]
+    },
+    "8836": {
+      "name": "Arthas' Tears",
+      "icon": "inv_misc_herb_13",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 95c"
+      ]
+    },
+    "8838": {
+      "name": "Sungrass",
+      "icon": "inv_misc_herb_18",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 60c"
+      ]
+    },
+    "8839": {
+      "name": "Blindweed",
+      "icon": "inv_misc_herb_14",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 3s 75c"
+      ]
+    },
+    "8845": {
+      "name": "Ghost Mushroom",
+      "icon": "inv_mushroom_08",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 3s 75c"
+      ]
+    },
+    "8846": {
+      "name": "Gromsblood",
+      "icon": "inv_misc_herb_16",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "8925": {
+      "name": "Crystal Vial",
+      "icon": "inv_potion_86",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 1s 25c"
+      ]
+    },
+    "8951": {
+      "name": "Elixir of Defense",
+      "icon": "inv_potion_65",
+      "quality": 1,
+      "lines": [
+        "Elixirs",
+        "Requires Level 29",
+        "Use: Increases armor by 250 for 1 hour. (3 sec cooldown)",
+        "Sell Price: 2s"
+      ]
+    },
+    "9154": {
+      "name": "Draught of Detect Undead",
+      "icon": "inv_potion_53",
+      "quality": 1,
+      "lines": [
+        "Elixirs",
+        "Requires Level 36",
+        "Use: Displays the location of all nearby undead on the Miniature Map for 1 hour. (3 sec cooldown)",
+        "Sell Price: 3s"
+      ]
+    },
+    "9318": {
+      "name": "Red Firework",
+      "icon": "spell_fire_fireball02",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Use: Fires a firework into the air that can burst into countless red stars.",
+        "Sell Price: 5c"
+      ]
+    },
+    "9998": {
+      "name": "Black Mageweave Vest",
+      "icon": "inv_chest_leather_03",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Chest · Cloth",
+        "54 Armor",
+        "+12 Spirit",
+        "Requires Level 36",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 11.",
+        "Sell Price: 48s 15c"
+      ]
+    },
+    "10003": {
+      "name": "Black Mageweave Gloves",
+      "icon": "inv_gauntlets_05",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Hands · Cloth",
+        "35 Armor",
+        "Requires Level 38",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 15.",
+        "Sell Price: 28s 59c"
+      ]
+    },
+    "10056": {
+      "name": "Orange Mageweave Shirt",
+      "icon": "inv_shirt_orange_01",
+      "quality": 1,
+      "lines": [
+        "Shirt",
+        "Sell Price: 15s"
+      ]
+    },
+    "10284": {
+      "name": "Simple Flour",
+      "icon": "inv_misc_food_wheat_01",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 50c"
+      ]
+    },
+    "10498": {
+      "name": "Gyromatic Micro-Adjustor",
+      "icon": "inv_misc_screwdriver_02",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 16c"
+      ]
+    },
+    "10505": {
+      "name": "Solid Blasting Powder",
+      "icon": "inv_misc_powder_black",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "10512": {
+      "name": "Hi-Impact Mithril Slugs",
+      "icon": "inv_ammo_bullet_01",
+      "quality": 2,
+      "lines": [
+        "Ammo · Bullet",
+        "Damage per second increased by 12.55",
+        "Requires Level 37",
+        "Sell Price: 2c"
+      ]
+    },
+    "10513": {
+      "name": "Mithril Gyro-Shot",
+      "icon": "inv_ammo_bullet_01",
+      "quality": 2,
+      "lines": [
+        "Ammo · Bullet",
+        "Damage per second increased by 15.24",
+        "Requires Level 44",
+        "Sell Price: 5c"
+      ]
+    },
+    "10559": {
+      "name": "Mithril Tube",
+      "icon": "inv_musket_01",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 7s 50c"
+      ]
+    },
+    "10561": {
+      "name": "Mithril Casing",
+      "icon": "inv_gizmo_mithrilcasing_01",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 10s"
+      ]
+    },
+    "10620": {
+      "name": "Thorium Ore",
+      "icon": "inv_ore_thorium_02",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "10647": {
+      "name": "Engineer's Ink",
+      "icon": "inv_potion_65",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 5s"
+      ]
+    },
+    "10648": {
+      "name": "Blank Parchment",
+      "icon": "inv_misc_note_02",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 1s 25c"
+      ]
+    },
+    "10713": {
+      "name": "Plans: Inlaid Mithril Cylinder",
+      "icon": "inv_scroll_05",
+      "quality": 1,
+      "lines": [
+        "Blacksmithing",
+        "Requires Blacksmithing (200)",
+        "\" Teaches you how to make Mithril Rod. This item can be used by Gnome Engineers.\"",
+        "Sell Price: 5s"
+      ]
+    },
+    "10841": {
+      "name": "Goldthorn Tea",
+      "icon": "inv_drink_15",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Requires Level 25",
+        "Sell Price: 85c"
+      ]
+    },
+    "10938": {
+      "name": "Lesser Magic Essence",
+      "icon": "inv_enchant_essencemagicsmall",
+      "quality": 2,
+      "lines": [
+        "Enchanting",
+        "Use: Convert three Lesser Magic Essences into one Greater Magic Essence.",
+        "Sell Price: 1c"
+      ]
+    },
+    "10940": {
+      "name": "Strange Dust",
+      "icon": "inv_enchant_duststrange",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "Sell Price: 1c"
+      ]
+    },
+    "11082": {
+      "name": "Greater Astral Essence",
+      "icon": "inv_enchant_essenceastrallarge",
+      "quality": 2,
+      "lines": [
+        "Enchanting",
+        "Use: Transform one piece of powerful astral essence into three pieces of secondary astral essence.",
+        "Sell Price: 1c"
+      ]
+    },
+    "11083": {
+      "name": "Soul Dust",
+      "icon": "inv_enchant_dustsoul",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "Sell Price: 1c"
+      ]
+    },
+    "11128": {
+      "name": "Golden Rod",
+      "icon": "inv_staff_10",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "\"A necessary tool for enchanters.\"",
+        "Sell Price: 5s"
+      ]
+    },
+    "11130": {
+      "name": "Runed Golden Rod",
+      "icon": "inv_staff_10",
+      "quality": 1,
+      "lines": [
+        "Binds when picked up",
+        "Enchanting",
+        "Sell Price: 5s"
+      ]
+    },
+    "11135": {
+      "name": "Greater Mystic Essence",
+      "icon": "inv_enchant_essencemysticallarge",
+      "quality": 2,
+      "lines": [
+        "Enchanting",
+        "Use: Convert one piece of Strong Secret Technique Essence into three pieces of Secondary Secret Technique Essence.",
+        "Sell Price: 1c"
+      ]
+    },
+    "11137": {
+      "name": "Vision Dust",
+      "icon": "inv_enchant_dustvision",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "Sell Price: 1c"
+      ]
+    },
+    "11144": {
+      "name": "Truesilver Rod",
+      "icon": "inv_staff_11",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "\"A necessary tool for enchanters.\"",
+        "Sell Price: 10s"
+      ]
+    },
+    "11145": {
+      "name": "Runed Truesilver Rod",
+      "icon": "inv_staff_11",
+      "quality": 1,
+      "lines": [
+        "Binds when picked up",
+        "Enchanting",
+        "Sell Price: 12s 50c"
+      ]
+    },
+    "11174": {
+      "name": "Lesser Nether Essence",
+      "icon": "inv_enchant_essencenethersmall",
+      "quality": 2,
+      "lines": [
+        "Enchanting",
+        "Use: Convert three pieces of Secondary Void Essence into a powerful Void Essence.",
+        "Sell Price: 1c"
+      ]
+    },
+    "11176": {
+      "name": "Dream Dust",
+      "icon": "inv_enchant_dustdream",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "Sell Price: 1c"
+      ]
+    },
+    "11291": {
+      "name": "Star Wood",
+      "icon": "inv_tradeskillitem_03",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 11s 25c"
+      ]
+    },
+    "11370": {
+      "name": "Dark Iron Ore",
+      "icon": "inv_ore_mithril_01",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 5s"
+      ]
+    },
+    "11371": {
+      "name": "Dark Iron Bar",
+      "icon": "inv_ingot_mithril",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 6s"
+      ]
+    },
+    "11513": {
+      "name": "Tainted Vitriol",
+      "icon": "inv_misc_gem_pearl_01",
+      "quality": 1,
+      "lines": [
+        "Binds when picked up",
+        "Quest",
+        "Sell Price: 1c"
+      ]
+    },
+    "11514": {
+      "name": "Fel Creep",
+      "icon": "spell_nature_acid_01",
+      "quality": 1,
+      "lines": [
+        "Binds when picked up",
+        "Quest",
+        "Sell Price: 1c"
+      ]
+    },
+    "12037": {
+      "name": "Mystery Meat",
+      "icon": "inv_misc_food_67",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 87c"
+      ]
+    },
+    "12204": {
+      "name": "Heavy Kodo Meat",
+      "icon": "inv_misc_food_70",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 1s 12c"
+      ]
+    },
+    "12206": {
+      "name": "Tender Crab Meat",
+      "icon": "inv_misc_food_51",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Sell Price: 1s 12c"
+      ]
+    },
+    "12209": {
+      "name": "Lean Wolf Steak",
+      "icon": "inv_misc_food_47",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Requires Level 15",
+        "Sell Price: 95c"
+      ]
+    },
+    "12216": {
+      "name": "Spiced Chili Crab",
+      "icon": "inv_misc_food_48",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Requires Level 25",
+        "Sell Price: 3s"
+      ]
+    },
+    "12359": {
+      "name": "Thorium Bar",
+      "icon": "inv_ingot_07",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 6s"
+      ]
+    },
+    "12360": {
+      "name": "Arcanite Bar",
+      "icon": "inv_misc_stonetablet_05",
+      "quality": 2,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 50 Silver"
+      ]
+    },
+    "12363": {
+      "name": "Arcane Crystal",
+      "icon": "inv_misc_gem_topaz_01",
+      "quality": 2,
+      "lines": [
+        "Other",
+        "Sell Price: 20s"
+      ]
+    },
+    "12365": {
+      "name": "Dense Stone",
+      "icon": "inv_misc_stonetablet_07",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "12643": {
+      "name": "Dense Weightstone",
+      "icon": "inv_stone_weightstone_05",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Requires Level 35",
+        "Use: Increases blunt weapon damage by 8 for 30 min.",
+        "Sell Price: 75c"
+      ]
+    },
+    "12644": {
+      "name": "Dense Grinding Stone",
+      "icon": "inv_stone_grindingstone_05",
+      "quality": 1,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 2s"
+      ]
+    },
+    "12737": {
+      "name": "Gloom Weed",
+      "icon": "inv_misc_herb_05",
+      "quality": 1,
+      "lines": [
+        "Quest items",
+        "Quest"
+      ]
+    },
+    "12773": {
+      "name": "Ornate Thorium Handaxe",
+      "icon": "inv_axe_12",
+      "quality": 2,
+      "lines": [
+        "Binds when picked up",
+        "One-Hand · Axe",
+        "43 - 81 Damage · Speed 1.90",
+        "(32.6 damage per second)",
+        "+10 Strength",
+        "Requires Level 50",
+        "Sell Price: 3g 30s 79c"
+      ]
+    },
+    "12799": {
+      "name": "Large Opal",
+      "icon": "inv_misc_gem_opal_01",
+      "quality": 2,
+      "lines": [
+        "Other",
+        "Sell Price: 70s"
+      ]
+    },
+    "12809": {
+      "name": "Guardian Stone",
+      "icon": "inv_stone_02",
+      "quality": 2,
+      "lines": [
+        "Metal & Stone",
+        "Sell Price: 1g"
+      ]
+    },
+    "13422": {
+      "name": "Stonescale Eel",
+      "icon": "inv_misc_fish_11",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 10c"
+      ]
+    },
+    "13423": {
+      "name": "Stonescale Oil",
+      "icon": "inv_potion_68",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 1s 25c"
+      ]
+    },
+    "13445": {
+      "name": "Elixir of Greater Defense",
+      "icon": "inv_potion_66",
+      "quality": 1,
+      "lines": [
+        "Elixirs",
+        "Requires Level 43",
+        "Use: Armor increased by 450 for 1 hour. (3 sec cooldown)",
+        "Sell Price: 5s"
+      ]
+    },
+    "13463": {
+      "name": "Dreamfoil",
+      "icon": "inv_misc_herb_dreamfoil",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 1s"
+      ]
+    },
+    "13464": {
+      "name": "Golden Sansam",
+      "icon": "inv_misc_herb_sansamroot",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 1s"
+      ]
+    },
+    "13465": {
+      "name": "Mountain Silversage",
+      "icon": "inv_misc_herb_mountainsilversage",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 1s 50c"
+      ]
+    },
+    "13466": {
+      "name": "Plaguebloom",
+      "icon": "inv_misc_herb_plaguebloom",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "13467": {
+      "name": "Icecap",
+      "icon": "inv_misc_herb_icecap",
+      "quality": 1,
+      "lines": [
+        "Herbs",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "13468": {
+      "name": "Black Lotus",
+      "icon": "inv_misc_herb_blacklotus",
+      "quality": 2,
+      "lines": [
+        "Herbs",
+        "Sell Price: 10s"
+      ]
+    },
+    "13702": {
+      "name": "Doom Weed",
+      "icon": "inv_misc_herb_13",
+      "quality": 1,
+      "lines": [
+        "Quest items",
+        "Quest"
+      ]
+    },
+    "13760": {
+      "name": "Raw Sunscale Salmon",
+      "icon": "inv_misc_fish_19",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Requires Level 35",
+        "Use: Restores 162 HP in 27 seconds. Must remain seated while eating.",
+        "Sell Price: 10c"
+      ]
+    },
+    "13856": {
+      "name": "Runecloth Belt",
+      "icon": "inv_belt_15",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Waist · Cloth",
+        "37 Armor",
+        "+12 Intellect",
+        "Requires Level 46",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 8.",
+        "Sell Price: 51s 12c"
+      ]
+    },
+    "13860": {
+      "name": "Runecloth Cloak",
+      "icon": "inv_misc_cape_10",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Back · Cloth",
+        "34 Armor",
+        "+8 Intellect",
+        "Requires Level 48",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 9.",
+        "Sell Price: 87s 41c"
+      ]
+    },
+    "13864": {
+      "name": "Runecloth Boots",
+      "icon": "inv_boots_05",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Feet · Cloth",
+        "50 Armor",
+        "+14 Spirit",
+        "Requires Level 51",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 11.",
+        "Sell Price: 95s 53c"
+      ]
+    },
+    "13926": {
+      "name": "Golden Pearl",
+      "icon": "inv_misc_gem_pearl_04",
+      "quality": 2,
+      "lines": [
+        "Other",
+        "Sell Price: 1g"
+      ]
+    },
+    "13932": {
+      "name": "Poached Sunscale Salmon",
+      "icon": "inv_misc_fish_19",
+      "quality": 1,
+      "lines": [
+        "Food & Drink",
+        "Requires Level 35",
+        "Sell Price: 12c"
+      ]
+    },
+    "14047": {
+      "name": "Runecloth",
+      "icon": "inv_fabric_purplefire_01",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 4s"
+      ]
+    },
+    "14048": {
+      "name": "Bolt of Runecloth",
+      "icon": "inv_fabric_purplefire_02",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 20s"
+      ]
+    },
+    "14227": {
+      "name": "Ironweb Spider Silk",
+      "icon": "spell_nature_web",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 25s"
+      ]
+    },
+    "14256": {
+      "name": "Felcloth",
+      "icon": "inv_fabric_felrag",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 20s"
+      ]
+    },
+    "14341": {
+      "name": "Rune Thread",
+      "icon": "spell_shadow_antimagicshell",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 12s 50c"
+      ]
+    },
+    "14342": {
+      "name": "Mooncloth",
+      "icon": "inv_fabric_moonrag_01",
+      "quality": 1,
+      "lines": [
+        "Cloth Materials",
+        "Sell Price: 40s"
+      ]
+    },
+    "14344": {
+      "name": "Large Brilliant Shard",
+      "icon": "inv_enchant_shardbrilliantlarge",
+      "quality": 3,
+      "lines": [
+        "Enchanting",
+        "Sell Price: 1c"
+      ]
+    },
+    "14529": {
+      "name": "Runecloth Bandage",
+      "icon": "inv_misc_bandage_11",
+      "quality": 1,
+      "lines": [
+        "Bandages",
+        "Requires First Aid (200)",
+        "Use: Restores 1360 HP in 8 seconds.",
+        "Sell Price: 5s"
+      ]
+    },
+    "14530": {
+      "name": "Heavy Runecloth Bandage",
+      "icon": "inv_misc_bandage_12",
+      "quality": 1,
+      "lines": [
+        "Bandages",
+        "Requires First Aid (225)",
+        "Use: Restores 2000 HP in 8 seconds.",
+        "Sell Price: 10s"
+      ]
+    },
+    "15071": {
+      "name": "Frostsaber Boots",
+      "icon": "inv_boots_05",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Feet · Leather",
+        "99 Armor",
+        "+9 Stamina",
+        "+12 Fire Resistance",
+        "+12 Shadow Resistance",
+        "Requires Level 50",
+        "Sell Price: 1g 14s 43c"
+      ]
+    },
+    "15080": {
+      "name": "Heavy Scorpid Helm",
+      "icon": "inv_helmet_20",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Head · Mail",
+        "258 Armor",
+        "+20 Stamina",
+        "+13 Agility",
+        "Requires Level 54",
+        "Sell Price: 1g 82s 30c"
+      ]
+    },
+    "15083": {
+      "name": "Wicked Leather Gauntlets",
+      "icon": "inv_gauntlets_31",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Hands · Leather",
+        "86 Armor",
+        "+12 Agility",
+        "+11 Stamina",
+        "Requires Level 47",
+        "Sell Price: 68s 72c"
+      ]
+    },
+    "15407": {
+      "name": "Cured Rugged Hide",
+      "icon": "inv_misc_pelt_bear_03",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 5s"
+      ]
+    },
+    "15408": {
+      "name": "Heavy Scorpid Scale",
+      "icon": "inv_misc_monsterscales_03",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 5s"
+      ]
+    },
+    "15409": {
+      "name": "Refined Deeprock Salt",
+      "icon": "inv_misc_dust_01",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 10s"
+      ]
+    },
+    "15422": {
+      "name": "Frostsaber Leather",
+      "icon": "inv_misc_pelt_06",
+      "quality": 1,
+      "lines": [
+        "Leather",
+        "Sell Price: 5s"
+      ]
+    },
+    "15564": {
+      "name": "Rugged Armor Kit",
+      "icon": "inv_misc_armorkit_09",
+      "quality": 1,
+      "lines": [
+        "Permanent",
+        "Requires Level 40",
+        "Sell Price: 10s"
+      ]
+    },
+    "15872": {
+      "name": "Arcanite Skeleton Key",
+      "icon": "inv_misc_key_08",
+      "quality": 2,
+      "lines": [
+        "Other",
+        "Requires Blacksmithing (250)",
+        "Use: Complex locks can be opened, requiring a master key.",
+        "Sell Price: 6s 25c"
+      ]
+    },
+    "15992": {
+      "name": "Dense Blasting Powder",
+      "icon": "inv_misc_ammo_gunpowder_01",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 2s 50c"
+      ]
+    },
+    "15994": {
+      "name": "Thorium Widget",
+      "icon": "inv_gizmo_04",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 25s"
+      ]
+    },
+    "16000": {
+      "name": "Thorium Tube",
+      "icon": "inv_gizmo_pipe_04",
+      "quality": 1,
+      "lines": [
+        "Parts",
+        "Sell Price: 37s 50c"
+      ]
+    },
+    "16203": {
+      "name": "Greater Eternal Essence",
+      "icon": "inv_enchant_essenceeternallarge",
+      "quality": 2,
+      "lines": [
+        "Enchanting",
+        "Use: Transforms one piece of Strong Immortal Essence into three pieces of Secondary Immortal Essence.",
+        "Sell Price: 1c"
+      ]
+    },
+    "16204": {
+      "name": "Illusion Dust",
+      "icon": "inv_enchant_dustillusion",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "Sell Price: 1c"
+      ]
+    },
+    "16207": {
+      "name": "Runed Arcanite Rod",
+      "icon": "inv_wand_09",
+      "quality": 1,
+      "lines": [
+        "Binds when picked up",
+        "Enchanting",
+        "Sell Price: 12s 50c"
+      ]
+    },
+    "17010": {
+      "name": "Fiery Core",
+      "icon": "spell_fire_flamebolt",
+      "quality": 3,
+      "lines": [
+        "Other",
+        "Sell Price: 20s"
+      ]
+    },
+    "17011": {
+      "name": "Lava Core",
+      "icon": "spell_nature_earthquake",
+      "quality": 3,
+      "lines": [
+        "Other",
+        "Sell Price: 20s"
+      ]
+    },
+    "17014": {
+      "name": "Dark Iron Bracers",
+      "icon": "inv_bracer_07",
+      "quality": 4,
+      "lines": [
+        "Binds when equipped",
+        "Wrist · Plate",
+        "394 Armor",
+        "+7 Stamina",
+        "+18 Fire Resistance",
+        "Requires Level 54",
+        "Sell Price: 1g 26s 37c"
+      ]
+    },
+    "18486": {
+      "name": "Mooncloth Robe",
+      "icon": "inv_chest_cloth_04",
+      "quality": 3,
+      "lines": [
+        "Binds when equipped",
+        "Chest · Cloth",
+        "87 Armor",
+        "+25 Intellect",
+        "+12 Stamina",
+        "Requires Level 56",
+        "Equip: Increases the healing effect of all spells and magic effects by up to 26 points, and the damage effect by up to 9 points.",
+        "Sell Price: 2g 16s 83c"
+      ]
+    },
+    "19059": {
+      "name": "Argent Shoulders",
+      "icon": "inv_shoulder_13",
+      "quality": 3,
+      "lines": [
+        "Binds when equipped",
+        "Shoulder · Cloth",
+        "65 Armor",
+        "+7 Spirit",
+        "+5 Shadow Resistance",
+        "Requires Level 56",
+        "Equip: Increases the damage and healing of all spells and magic effects by up to 25.",
+        "Sell Price: 1g 75s 41c"
+      ]
+    },
+    "19726": {
+      "name": "Bloodvine",
+      "icon": "inv_misc_herb_09",
+      "quality": 2,
+      "lines": [
+        "Herbs",
+        "Sell Price: 5s"
+      ]
+    },
+    "20747": {
+      "name": "Lesser Mana Oil",
+      "icon": "inv_potion_99",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "Requires Level 40",
+        "Use: When applied to a target weapon, restores the caster 10 mana every 5 seconds and increases healing by up to 20. Lasts 30 minutes.",
+        "Sell Price: 10s"
+      ]
+    },
+    "20750": {
+      "name": "Wizard Oil",
+      "icon": "inv_potion_104",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Requires Level 40",
+        "Sell Price: 10s"
+      ]
+    },
+    "22252": {
+      "name": "Satchel of Cenarius",
+      "icon": "inv_misc_bag_satchelofcenarius",
+      "quality": 2,
+      "lines": [
+        "Binds when equipped",
+        "Bag · Herb Bags",
+        "32-cell herbal bag",
+        "Sell Price: 3g"
+      ]
+    },
+    "247240": {
+      "name": "Discolored Healing Potion",
+      "icon": "inv_potion_37",
+      "quality": 1,
+      "lines": [
+        "Potions",
+        "Requires Level 12",
+        "Sell Price: 75c"
+      ]
+    },
+    "247754": {
+      "name": "Minor Arcane Elixir",
+      "icon": "inv_potion_106",
+      "quality": 1,
+      "lines": [
+        "Elixirs",
+        "Use: Increases spell damage by up to 5 for 30 min. (3 sec cooldown)",
+        "Sell Price: 25c"
+      ]
+    },
+    "247786": {
+      "name": "Mote of Magic",
+      "icon": "inv_elemental_mote_mana",
+      "quality": 1,
+      "lines": [
+        "Enchanting",
+        "\" Can be purchased from enchantment suppliers.\"",
+        "Sell Price: 1c"
+      ]
+    },
+    "272941": {
+      "name": "Thick Logs",
+      "icon": "inv_tradeskillitem_03",
+      "quality": 1,
+      "lines": [
+        "Other",
+        "Sell Price: 5g"
+      ]
+    },
+    "273125": {
+      "name": "Lich's Index Finger",
+      "icon": "inv_misc_bone_10",
+      "quality": 2,
+      "lines": [
+        "Materials",
+        "\" An item necessary for fine work in the alchemy laboratory.\"",
+        "Sell Price: 2g 50s"
+      ]
+    },
+    "273127": {
+      "name": "Golem Heart",
+      "icon": "inv_ore_blackrock_ore",
+      "quality": 2,
+      "lines": [
+        "Materials",
+        "\"This Molten Heart is enough to fuel a Master Furnace.\"",
+        "Sell Price: 2g 50s"
+      ]
+    },
+    "273128": {
+      "name": "Maker's Spark",
+      "icon": "inv_enchant_essencecosmicgreater",
+      "quality": 2,
+      "lines": [
+        "Materials",
+        "\" The tiny spark of the Creator's power is enough to provide energy for an arcane furnace.\"",
+        "Sell Price: 2g 50s"
+      ]
+    },
+    "273129": {
+      "name": "Essence of Anarchy",
+      "icon": "inv_misc_bomb_04",
+      "quality": 2,
+      "lines": [
+        "Materials",
+        "\"The unstable particles of chaos are exactly what the anarchist workbench needs.\"",
+        "Sell Price: 2g 50s"
+      ]
+    },
+    "273130": {
+      "name": "Undeath Engine",
+      "icon": "inv_axe_2h_undeadguitar_c_01",
+      "quality": 2,
+      "lines": [
+        "Materials",
+        "\"Use the bound souls of the dead to power Victus 'sewing machine.\"",
+        "Sell Price: 2g 50s"
+      ]
+    },
+    "273131": {
+      "name": "Bottled Screams",
+      "icon": "spell_holy_senseundead",
+      "quality": 2,
+      "lines": [
+        "Materials",
+        "\"The many banshees in the bottle scream in unison, enough to power the Baroness 'mysterious loom.\"",
+        "Sell Price: 2g 50s"
+      ]
+    },
+    "273295": {
+      "name": "Seasonal Fish Steaks",
+      "icon": "inv_misc_food_156_fish_79",
+      "quality": 1,
+      "lines": [
+        "Cooking",
+        "Requires Level 35",
+        "\"A refreshing dish made from seasonal fish that can be used in recipes.\"",
+        "Sell Price: 7c"
+      ]
+    },
+    "276236": {
+      "name": "Holstered Replica Ironforge Air Rifle",
+      "icon": "inv_weapon_rifle_22",
+      "quality": 3,
+      "lines": [
+        "Binds when picked up",
+        "Unique",
+        "Other",
+        "Use: Unplug Ironforge Airgun Reissue for Friendship Shooting Competition. (10 sec cooldown)",
+        "\" Officially licensed version, with a built-in compass in the stock and a scoring device made by dwarfs.\""
+      ]
+    },
+    "277714": {
+      "name": "Spectral Bear Cub",
+      "icon": "inv_pet_babyblizzardbear",
+      "quality": 3,
+      "lines": [
+        "Binds when picked up",
+        "Pet",
+        "\"I'll teach you how to summon this kind of friend.\""
+      ]
+    },
+    "277717": {
+      "name": "Spectral Bear Tabard",
+      "icon": "inv_tabard_legacyc60_b_01",
+      "quality": 3,
+      "lines": [
+        "Binds when picked up",
+        "Unique",
+        "Tabard"
+      ]
+    },
+    "277718": {
+      "name": "Reins of the Spectral Bear",
+      "icon": "inv_bearmountblizzard",
+      "quality": 4,
+      "lines": [
+        "Binds when picked up",
+        "Mounts",
+        "Requires Level 60",
+        "\"I'll teach you how to summon this mount.\""
+      ]
+    }
+  }
+}
