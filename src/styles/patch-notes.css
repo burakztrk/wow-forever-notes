@@ -76,9 +76,20 @@
   margin-top: 32px;
 }
 .patch-note > summary {
-  flex-wrap: wrap;
+  align-items: flex-start;
   color: var(--text);
   font-weight: 600;
+}
+.patch-note > summary::before {
+  margin-top: 0.5em;
+}
+.patch-note-head {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  min-width: 0;
 }
 .patch-note-build {
   margin-left: auto;
@@ -99,7 +110,5 @@
   }
   .patch-note-build {
     margin-left: 0;
-    flex-basis: 100%;
-    padding-left: 15px;
   }
 }

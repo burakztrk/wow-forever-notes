@@ -29,6 +29,10 @@ Node 22.12+.
 - `src/data/glossary.json` — spells, talents, racials (generated; do not hand-edit except `descTr`).
   `races.json`, `classes.json` — race→class matrix, talent trees (for the future class/race pages).
   `state.json` — what check-updates has already seen.
+- `src/lib/remark-sections.ts` + `src/lib/post-sections.ts` — `::class[…]`, `::race[…]`, `::profession[…]` leaf directives
+  split a post into collapsible `<details class="note-section">` blocks (unknown names fail the build; TR and EN must
+  have the same sections). `components/PatchNotes.astro` lists them at the bottom of the class, race and professions
+  pages (collapsed, newest first). `/data/v1/posts.json` sends them as `<section>` in `html` plus a `sections` array.
 - `src/lib/remark-glossary.ts` — `:spell[…]`, `:talent[…]`, `:racial[…]`, `:tip[…]` directives → tooltip spans;
   auto-links unambiguous multi-word names; unknown names fail the build.
 - `src/scripts/tooltip.ts` + `src/lib/tooltip-render.ts` — client tooltip (event delegation, floating-ui).
