@@ -226,3 +226,11 @@ describe('item tooltip data', () => {
     }
   });
 });
+
+describe('spell names in guide text', () => {
+  it('links whole names only', async () => {
+    const { segments } = await import('../src/lib/professions');
+    expect(segments('does not stack with Blessing of Kings.').find((s) => s.tip)?.tip).toBe('spell/paladin-blessing-of-kings');
+    expect(segments('Rocket Boots, the Mind Control Cap and Sapper Charges').some((s) => s.tip)).toBe(false);
+  });
+});

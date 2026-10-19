@@ -129,6 +129,8 @@ export function segments(text: string): Segment[] {
   const out: Segment[] = [];
   let last = 0;
   for (const m of text.matchAll(linkRe)) {
+    // part of a longer name ("Mind Control Cap" is an item, not the spell)
+    if (/^ [A-Z]/.test(text.slice(m.index! + m[0].length, m.index! + m[0].length + 2))) continue;
     const entry = glossary.resolve(m[0]).entry;
     if (!entry) continue;
     if (m.index! > last) out.push({ text: text.slice(last, m.index) });
@@ -223,4 +225,31 @@ export function legacyPage(lang: Lang): TalentPagePayload {
       statusRemoved: t.statusRemoved,
     },
   };
+}
+
+// Spell / talent names the guide mentions (prose and the buff table's class
+// buffs) → glossary id, for the app: it splits the same text on these names.
+export function guideGlossaryTerms(): Record<string, string> {
+  const texts = [
+    guide.camping.intro,
+    ...guide.camping.steps,
+    ...guide.camping.rules,
+    ...guide.buffs.flatMap((b) => [b.buff, b.bonus, b.note]),
+    ...Object.values(guide.classes).map((c) => c.why),
+    guide.goalNotes.gold,
+    guide.goalNotes.pvp,
+    ...Object.values(guide.goalNotes.raids),
+    ...Object.values(guide.professions).flatMap((p) => [p.summary, p.materials]),
+  ];
+  const out: Record<string, string> = {};
+  for (const t of texts) {
+    for (const lang of ['en', 'tr'] as const) {
+      for (const seg of segments(t?.[lang] ?? '')) if (seg.tip) out[seg.text] = seg.tip;
+    }
+  }
+  for (const b of guide.buffs) {
+    const e = b.conflict ? classBuffEntry(b.conflictTip ?? b.conflict) : undefined;
+    if (b.conflict && e) out[b.conflict] = e.id;
+  }
+  return Object.fromEntries(Object.entries(out).sort(([a], [b]) => a.localeCompare(b)));
 }

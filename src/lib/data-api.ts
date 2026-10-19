@@ -6,6 +6,7 @@ import legacyData from '../data/legacy.json';
 import professionsData from '../data/professions.json';
 import { inClassOrder, type ClassInfo, type GlossaryFile } from './glossary-types';
 import { getAllPosts } from './blog';
+import { guideGlossaryTerms } from './professions';
 import { postUrl } from '../utils/url';
 
 // Public read-only data API for the mobile app: /data/v1/*.json, generated at
@@ -74,6 +75,6 @@ export const respond = {
   races: () => json({ schema: DATA_SCHEMA, races: racesData }),
   posts: async () => json(await postsPayload()),
   // synced profession data plus the hand-edited guide (TR + EN text) the pages use
-  professions: () => json({ schema: DATA_SCHEMA, ...professionsData, guide: guideData }),
+  professions: () => json({ schema: DATA_SCHEMA, ...professionsData, guide: guideData, glossaryTerms: guideGlossaryTerms() }),
   legacy: () => json({ schema: DATA_SCHEMA, ...legacyData }),
 };
