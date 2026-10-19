@@ -3,7 +3,13 @@ import path from 'node:path';
 import type { ItemRef, LegacyFile, ProfessionsFile, ProfessionsGuide } from '../../src/lib/profession-types';
 import { fetchJson, fetchText } from '../lib/http';
 import { WCLBOX, WOWFOREVERTOOLS } from '../lib/sources';
-import { applyRankTranslations, applyTranslations, type PendingText, type TranslationCache } from '../lib/translations';
+import {
+  applyRankTranslations,
+  applyRewardTranslations,
+  applyTranslations,
+  type PendingText,
+  type TranslationCache,
+} from '../lib/translations';
 import {
   buildLegacy,
   buildProfession,
@@ -121,7 +127,7 @@ export async function syncProfessions(o: ProfessionSyncOptions): Promise<Profess
   const trCache = JSON.parse(
     await readFile(path.join(dataDir, 'i18n/tr.json'), 'utf8').catch(() => '{}'),
   ) as TranslationCache;
-  const pending = applyTranslations(legacy.perks, trCache);
+  const pending = [...applyTranslations(legacy.perks, trCache), ...applyRewardTranslations(legacy.rewards, items, trCache)];
   applyRankTranslations(legacy.perks);
   o.log(`legacy: ${legacy.trees.length} trees, ${legacy.perks.length} perks, ${legacy.reserved.length} unrevealed`);
 

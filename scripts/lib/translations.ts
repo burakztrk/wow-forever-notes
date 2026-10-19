@@ -117,6 +117,34 @@ export function validateTranslation(en: string, tr: string): string | undefined 
 }
 
 // Drops cache records no entry uses any more (old builds' wording).
+// Legacy reward items: their client lines (professions.json items) are
+// translated through the same cache, one entry per line, and stored as
+// rewards[].linesTr once every line has a translation.
+export interface RewardLike {
+  name: string;
+  item?: number;
+  linesTr?: string[];
+}
+export type ItemLines = Record<string, { lines?: string[] } | undefined>;
+
+export function rewardLineTexts(rewards: RewardLike[], items: ItemLines): Translatable[] {
+  return rewards.flatMap((r) =>
+    (r.item ? (items[String(r.item)]?.lines ?? []) : []).map((line) => ({ name: r.name, kind: 'item', desc: line })),
+  );
+}
+
+export function applyRewardTranslations(rewards: RewardLike[], items: ItemLines, cache: TranslationCache): PendingText[] {
+  const pending = new Map<string, PendingText>();
+  for (const r of rewards) {
+    delete r.linesTr;
+    const lines = rewardLineTexts([r], items);
+    if (!lines.length) continue;
+    for (const p of applyTranslations(lines, cache)) pending.set(p.key, p);
+    if (lines.every((l) => l.descTr)) r.linesTr = lines.map((l) => l.descTr!);
+  }
+  return [...pending.values()];
+}
+
 export function pruneCache(entries: Translatable[], cache: TranslationCache): TranslationCache {
   const used = new Set<string>();
   for (const e of entries) for (const [src] of FIELDS) if (e[src]?.trim()) used.add(textKey(e[src]!));

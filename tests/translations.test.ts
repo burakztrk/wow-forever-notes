@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { applyTranslations, deriveRankTr, pruneCache, textKey, validateTranslation } from '../scripts/lib/translations';
+import {
+  applyRewardTranslations,
+  applyTranslations,
+  deriveRankTr,
+  pruneCache,
+  rewardLineTexts,
+  textKey,
+  validateTranslation,
+  type RewardLike,
+} from '../scripts/lib/translations';
 import type { GlossaryEntry } from '../src/lib/glossary-types';
 
 const entry = (desc: string, change?: string): GlossaryEntry => ({
@@ -60,5 +69,26 @@ describe('applyTranslations', () => {
       [textKey('old')]: { en: 'old', tr: 'eski' },
     };
     expect(Object.keys(pruneCache([entry('a')], cache))).toEqual([textKey('a')]);
+  });
+});
+
+describe('Legacy reward item lines', () => {
+  const items = { '1': { lines: ['Binds when picked up', 'Requires Level 60'] } };
+  const cache = { [textKey('Binds when picked up')]: { en: 'Binds when picked up', tr: 'Alınca bağlanır' } };
+
+  it('stores linesTr only when every line is translated', () => {
+    const rewards: RewardLike[] = [{ name: 'Mount', item: 1, linesTr: ['stale'] }];
+    const pending = applyRewardTranslations(rewards, items, cache);
+    expect(rewards[0].linesTr).toBeUndefined();
+    expect(pending.map((p) => p.en)).toEqual(['Requires Level 60']);
+
+    const full = { ...cache, [textKey('Requires Level 60')]: { en: 'Requires Level 60', tr: 'Seviye 60 gerektirir' } };
+    expect(applyRewardTranslations(rewards, items, full)).toEqual([]);
+    expect(rewards[0].linesTr).toEqual(['Alınca bağlanır', 'Seviye 60 gerektirir']);
+  });
+
+  it('keeps the reward lines in the cache when pruning', () => {
+    const texts = rewardLineTexts([{ name: 'Mount', item: 1 }], items);
+    expect(Object.keys(pruneCache(texts, cache))).toEqual([textKey('Binds when picked up')]);
   });
 });

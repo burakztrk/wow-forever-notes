@@ -62,7 +62,8 @@ export interface TreeTip {
 }
 
 // A free-form card: items, camp objects and Legacy perks. All text is built at
-// build time in the page language (item lines stay in the client's English).
+// build time in the page language (item lines stay in the client's English,
+// except the Legacy rewards' Turkish lines).
 export interface CardTip {
   name: string;
   icon?: string;
@@ -71,6 +72,7 @@ export interface CardTip {
   sub?: string;
   pill?: string;
   lines: string[];
+  lineKinds?: ItemLineKind[]; // per line, from the English text (itemLineKind)
   note?: string; // muted line under the text
   sourceUrl?: string;
 }
@@ -165,12 +167,27 @@ export function renderTreeTooltip(t: TreeTip, p: TipPayload): string {
     ${t.more ? `<p class="wft-note">${esc(t.more)}</p>` : ''}`;
 }
 
+// Item lines styled like the game client / wclbox: effects ("Equip: …",
+// "Use: …", "Chance on hit: …") green; "Requires Level …" and "Sell Price: …"
+// small and muted.
+export type ItemLineKind = 'effect' | 'meta' | '';
+export function itemLineKind(en: string): ItemLineKind {
+  if (/^(Equip|Use|Chance on hit):/.test(en)) return 'effect';
+  if (/^(Requires Level \d|Sell Price:)/.test(en)) return 'meta';
+  return '';
+}
+
 export function renderCardTooltip(c: CardTip, p: TipPayload): string {
   const icon = c.icon
     ? `<img class="wft-icon" src="${esc(p.iconBase + c.icon)}.jpg" alt="" width="44" height="44">`
     : `<span class="wft-icon wft-icon--empty"></span>`;
   const quality = c.quality != null ? ` wft-q${esc(c.quality)}` : '';
-  const lines = c.lines.map((l) => `<p class="wft-line">${esc(l)}</p>`).join('');
+  const lines = c.lines
+    .map((l, i) => {
+      const kind = c.lineKinds?.[i];
+      return `<p class="wft-line${kind ? ` wft-line--${kind}` : ''}">${esc(l)}</p>`;
+    })
+    .join('');
   const source = c.sourceUrl
     ? `<div class="wft-foot"><span></span><a class="wft-source" href="${esc(c.sourceUrl)}" target="_blank" rel="noopener">${esc(p.strings.source)} ↗</a></div>`
     : '';

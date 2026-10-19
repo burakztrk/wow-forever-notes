@@ -235,3 +235,28 @@ describe('spell names in guide text', () => {
     expect(segments('Rocket Boots, the Mind Control Cap and Sapper Charges').some((s) => s.tip)).toBe(false);
   });
 });
+
+describe('item tooltip cards', () => {
+  it('marks effect and level / price lines like wclbox', async () => {
+    const { itemLineKind } = await import('../src/lib/tooltip-render');
+    expect(itemLineKind('Equip: Increases ranged attack speed by 13%.')).toBe('effect');
+    expect(itemLineKind('Use: Restores 100 mana.')).toBe('effect');
+    expect(itemLineKind('Requires Level 40')).toBe('meta');
+    expect(itemLineKind('Sell Price: 10s')).toBe('meta');
+    expect(itemLineKind('Requires Leatherworking (150)')).toBe('');
+    expect(itemLineKind('Bag')).toBe('');
+  });
+
+  it('shows the Legacy rewards in Turkish, other items in English', async () => {
+    const { itemCard } = await import('../src/lib/professions');
+    const legacy = legacyData as LegacyFile;
+    for (const r of legacy.rewards.filter((r) => r.item)) {
+      const tr = itemCard(r.item!, 'tr');
+      expect(tr.lines, r.name).toEqual(r.linesTr);
+      expect(tr.lineKinds).toHaveLength(tr.lines.length);
+      expect(itemCard(r.item!, 'en').lines).not.toEqual(r.linesTr);
+    }
+    const mount = itemCard(277718, 'tr');
+    expect(mount.lineKinds![mount.lines.indexOf('Seviye 60 gerektirir')]).toBe('meta');
+  });
+});

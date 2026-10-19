@@ -19,7 +19,7 @@ import type {
 } from './profession-types';
 import type { TalentPagePayload, TalentView } from './talents';
 import { tooltipPayload } from './tooltip-payload';
-import type { CardTip, TipPayload } from './tooltip-render';
+import { itemLineKind, type CardTip, type TipPayload } from './tooltip-render';
 
 // Server-side data for the profession and Legacy pages: the synced files
 // (professions.json, legacy.json) joined with the hand-edited guide.
@@ -60,14 +60,20 @@ export const itemTipId = (id: number) => `item/${id}`;
 export const campTipId = (o: CampObject) => `camp/${o.id}`;
 const ITEM_PAGE = 'https://wowforever.wclbox.com/en/wupin/';
 
-export function itemCard(id: number): CardTip {
+// Turkish item lines exist only for the Legacy rewards (npm run translate)
+const rewardLinesTr = new Map(legacy.rewards.flatMap((r) => (r.item && r.linesTr ? [[r.item, r.linesTr]] : [])));
+
+export function itemCard(id: number, lang: Lang = 'en'): CardTip {
   const it = item(id);
+  const lines = it.lines ?? [];
+  const tr = lang === 'tr' ? rewardLinesTr.get(id) : undefined;
   return {
     kind: 'item',
     name: it.name,
     icon: it.icon,
     quality: it.quality,
-    lines: it.lines ?? [],
+    lines: tr?.length === lines.length ? tr : lines,
+    lineKinds: lines.map(itemLineKind),
     sourceUrl: ITEM_PAGE + id,
   };
 }
@@ -149,7 +155,7 @@ export function professionTips(
 ): TipPayload {
   const payload = tooltipPayload([...new Set(refs.glossary ?? [])], lang);
   const cards: Record<string, CardTip> = {};
-  for (const id of refs.items ?? []) cards[itemTipId(id)] = itemCard(id);
+  for (const id of refs.items ?? []) cards[itemTipId(id)] = itemCard(id, lang);
   for (const [o, slug] of refs.camps ?? []) cards[campTipId(o)] = campCard(o, slug, lang);
   for (const id of refs.perks ?? []) {
     const perk = perkById.get(id);

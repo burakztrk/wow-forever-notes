@@ -447,6 +447,10 @@
     "en": "Increases the damage done by your Frost spells by 6%.",
     "tr": "Frost büyülerinin verdiği hasarı %6 artırır."
   },
+  "1b5ee499c2b309c9": {
+    "en": "Binds when picked up",
+    "tr": "Alınca bağlanır"
+  },
   "1b664a13094e6793": {
     "en": "Immerse a weapon with poison. Lasts for 30 minutes.\nEach attack has a 30% chance to poison the enemy, dealing 72 Nature damage over 12 seconds. Can stack up to 5 times on a single target. Can be used 160 times.",
     "tr": "Silaha zehir sürer. 30 dakika sürer.\nHer saldırının düşmanı zehirleme şansı %30'dur; zehir 12 saniye boyunca 72 Nature hasarı verir. Tek bir hedefte en fazla 5 kez birikir. 160 kez kullanılabilir."
@@ -1079,6 +1083,10 @@
     "en": "Summons a Magma Totem with 5 health at the feet of the caster for 20 sec that causes 73 (+3.3% of spell power) Fire damage to creatures within 8 yards every 2 seconds.",
     "tr": "Cast edenin ayağının dibine 20 saniyeliğine 5 canlı bir Magma Totem çağırır; 8 yard içindeki yaratıklara her 2 saniyede 73 (+büyü gücünün %3.3'ü) Fire hasarı verir."
   },
+  "401f19528d2ff381": {
+    "en": "\" Officially licensed version, with a built-in compass in the stock and a scoring device made by dwarfs.\"",
+    "tr": "\"Resmî lisanslı sürüm; dipçiğinde yerleşik bir pusula ve cücelerin yaptığı bir puanlama aygıtı var.\""
+  },
   "4042e0e8b36d4edb": {
     "en": "Reduces the global cooldown by 0.5 seconds on your Rejuvenation, Swiftmend, and Wild Growth spells.",
     "tr": "Rejuvenation, Swiftmend ve Wild Growth büyülerinde global bekleme süresini 0.5 saniye azaltır."
@@ -1303,6 +1311,10 @@
     "en": "Grants you a 100% chance to generate 5 Rage when you Dodge or Parry while a shield is equipped.",
     "tr": "Kalkan kuşanılmışken Dodge veya Parry yaptığında %100 şansla 5 Öfke üretirsin."
   },
+  "4c008a554ac6cdd5": {
+    "en": "\"I'll teach you how to summon this mount.\"",
+    "tr": "\"Bu bineği nasıl çağıracağını sana öğreteceğim.\""
+  },
   "4c200530bad01257": {
     "en": "Rank 4:Value: 5 minutes (Classic Era: 1 minute), 30 yards (Classic Era: 20 yards)",
     "tr": "Rank 4: Değer 5 dakika (Classic Era: 1 dakika), 30 yard (Classic Era: 20 yard)"
@@ -1378,6 +1390,10 @@
   "50247ee133445b79": {
     "en": "Banishes the enemy target, preventing all action but making it invulnerable for up to 30 sec. Only one target can be banished at a time. Only works on Demons and Elementals.",
     "tr": "Düşman hedefi sürgün eder; en fazla 30 saniye boyunca hiçbir şey yapamaz ama hasar almaz. Aynı anda yalnızca bir hedef sürgün edilebilir. Yalnızca Demon ve Elemental'lerde çalışır."
+  },
+  "50cfa795dc31dafd": {
+    "en": "\"I'll teach you how to summon this kind of friend.\"",
+    "tr": "\"Bu türden bir dostu nasıl çağıracağını sana öğreteceğim.\""
   },
   "5161fd83d10ef0c1": {
     "en": "Improves your chance to hit with Arcane spells by 5%.",
@@ -1922,6 +1938,10 @@
   "6e2c0aa5b24ca126": {
     "en": "Increases the effect of your Succubus' and Incubus' Lash of Pain and Soothing Kiss spells by 30%, and increases the duration of your Succubus' and Incubus' Seduction and Lesser Invisibility spells by 30%.",
     "tr": "Succubus ve Incubus'unun Lash of Pain ve Soothing Kiss büyülerinin etkisini %30, Seduction ve Lesser Invisibility büyülerinin süresini %30 artırır."
+  },
+  "6e6a6f2086bb5fe5": {
+    "en": "Other",
+    "tr": "Diğer"
   },
   "6e778eb702902a94": {
     "en": "Deals 99 to 115 (+71.4% of spell power) Fire damage to your target and an additional 25% damage if the target is afflicted by Immolate.",
@@ -2515,6 +2535,14 @@
     "en": "Places a Blessing on the friendly target, granting immunity to movement impairing effects for 10 sec. Players may only have one Blessing on them per Paladin at any one time.",
     "tr": "Dost hedefe bir Blessing koyar; 10 saniye boyunca hareket kısıtlayan etkilere bağışıklık verir. Bir oyuncunun üzerinde her Paladin'den aynı anda yalnızca bir Blessing olabilir."
   },
+  "87c6f410754d2f5d": {
+    "en": "Unique",
+    "tr": "Eşsiz"
+  },
+  "87cc41cfc7ea13d7": {
+    "en": "Requires Level 60",
+    "tr": "Seviye 60 gerektirir"
+  },
   "8803d3c4f36db20f": {
     "en": "Fade out, discouraging enemies from attacking you for 10 sec. More effective than Fade (rank 5).",
     "tr": "Silikleşir ve 10 saniye boyunca düşmanların sana saldırma isteğini azaltır. Fade'den (rank 5) daha etkilidir."
@@ -2754,6 +2782,10 @@
   "9507e25c1e8d7441": {
     "en": "Improves your chance to get a critical strike with melee attacks by 5%.",
     "tr": "Yakın dövüş saldırılarıyla kritik vuruş şansını %5 artırır."
+  },
+  "9516ba19e620407d": {
+    "en": "Mounts",
+    "tr": "Binekler"
   },
   "952e8d1c9ad45a73": {
     "en": "Summons a Stoneclaw Totem with 480 health at the feet of the caster for 15 sec that taunts creatures within 8 yards to attack it.",
@@ -3207,6 +3239,10 @@
     "en": "When activated, increases the critical strike chance of your next Sinister Strike, Backstab, Ambush, Eviscerate, or Mutilate by 100%.",
     "tr": "Etkinleştirildiğinde bir sonraki Sinister Strike, Backstab, Ambush, Eviscerate veya Mutilate'in kritik vuruş şansını %100 artırır."
   },
+  "abd5f9ace874828d": {
+    "en": "Use: Unplug Ironforge Airgun Reissue for Friendship Shooting Competition. (10 sec cooldown)",
+    "tr": "Kullanım: Dostluk atış yarışması için Ironforge Airgun Reissue'yu kılıfından çıkarır. (10 sn bekleme süresi)"
+  },
   "ac309b8623e8de90": {
     "en": "Move from level 2 to level 3.",
     "tr": "Seviye 2'den seviye 3'e taşındı."
@@ -3562,6 +3598,10 @@
   "bff7da6c8ff804db": {
     "en": "When activated, your fire damage spells increase your fire damage spell critical strike chance by 10% for each hit. This effect lasts until you make 3 nonperiodic critical strikes with fire spells.",
     "tr": "Etkinleştirildiğinde Fire hasar büyülerinin her isabeti, Fire hasar büyülerinin kritik vuruş şansını %10 artırır. Etki, Fire büyüleriyle 3 periyodik olmayan kritik vuruş yapana kadar sürer."
+  },
+  "c037afa21786e121": {
+    "en": "Tabard",
+    "tr": "Tabard"
   },
   "c05e65b96024d162": {
     "en": "You gain talent points every level starting at level 5 instead of starting at level 10, but you still may not have more than 51 total talent points.",
@@ -4166,6 +4206,10 @@
   "df1c3869db7007fc": {
     "en": "Gives your Concussive Shot a 20% chance to stun the target for 3 sec.",
     "tr": "Concussive Shot'a hedefi 3 saniye sersemletme şansı %20 verir."
+  },
+  "df26241195d7fcfb": {
+    "en": "Pet",
+    "tr": "Evcil hayvan"
   },
   "df29b36f0f1b1179": {
     "en": "Non-periodic critical strikes with Fireball, Frostfire Bolt, Fire Blast, and Scorch reduce the cast time of your next Pyroblast cast within 20 sec by 25%, stacking up to 3 times.",

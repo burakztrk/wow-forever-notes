@@ -124,6 +124,7 @@ export interface LegacyReward {
   name: string;
   icon: string;
   item?: number; // item id (tooltip data in professions.json items)
+  linesTr?: string[]; // Turkish item lines, same order (npm run translate)
 }
 
 export interface LegacyFile {
