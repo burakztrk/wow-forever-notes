@@ -1,4 +1,5 @@
 ---
+import GameKey from '../../../components/GameKey.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { fill, ui, type UiKey } from '../../../i18n';
@@ -35,6 +36,7 @@ const steps = [
 
 <BaseLayout title={t.legacyTitle} description={t.legacyIntro} lang={lang} alternates={alternates} wide>
   <h1>{t.legacyTitle}</h1>
+  <GameKey lang={lang} keyName="Y" />
   <p class="lead">{t.legacyIntro}</p>
 
   <ol class="legacy-steps">

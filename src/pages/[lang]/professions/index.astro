@@ -1,4 +1,5 @@
 ---
+import GameKey from '../../../components/GameKey.astro';
 import ItemTip from '../../../components/ItemTip.astro';
 import RichText from '../../../components/RichText.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
@@ -83,6 +84,7 @@ const tips = professionTips(lang, {
 
 <BaseLayout title={t.professionsTitle} description={t.professionsIntro} lang={lang} alternates={alternates} wide>
   <h1>{t.professionsTitle}</h1>
+  <GameKey lang={lang} keyName="K" />
   <p class="muted">{t.professionsIntro}</p>
   <nav class="jump-nav" aria-label={t.professionsTitle}>
     <a class="chip-link" href="#camping">{t.secCamping}</a>
