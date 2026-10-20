@@ -1,6 +1,6 @@
 /* Collapsible class / race / profession sections in posts
-   (src/lib/remark-sections.ts) and the patch-note lists at the bottom of the
-   class, race and professions pages (components/PatchNotes.astro). */
+   (src/lib/remark-sections.ts) and the patch-note lists on the class, race
+   (near the top) and professions (bottom) pages (components/PatchNotes.astro). */
 
 .note-section,
 .patch-note {
