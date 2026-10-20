@@ -14,6 +14,7 @@ import { getPosts } from '../../lib/blog';
 import { classList, races } from '../../lib/codex';
 import type { CodexIconName } from '../../lib/codex-icons';
 import { professionsFile } from '../../lib/professions';
+import { websiteJsonLd } from '../../lib/seo';
 import { creatorUrl, langHome, postUrl, withBase } from '../../utils/url';
 
 export function getStaticPaths() {
@@ -45,7 +46,7 @@ const features: { icon: CodexIconName; title: string; hint: string; stat?: strin
 const dataLine = [glossaryData.build && `${t.dataTitle} ${glossaryData.build}`, formatDate(new Date(), lang)].filter(Boolean).join(' · ');
 ---
 
-<BaseLayout lang={lang} alternates={alternates}>
+<BaseLayout lang={lang} alternates={alternates} jsonLd={websiteJsonLd(lang, t.tagline, Astro.site)}>
   <script is:inline define:vars={{ creator: creatorUrl(lang) }}>
     // the race/class screen used to be the home page: keep its old links working
     if (/(^#|&)(race|class)=/.test(location.hash)) location.replace(creator + location.hash);

@@ -39,7 +39,7 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
 const why = [t.whyCharacter1, t.whyCharacter2, t.whyCharacter3];
 ---
 
-<BaseLayout title={t.comboTitle} lang={lang} alternates={alternates} full>
+<BaseLayout title={t.comboTitle} description={t.creatorHint} lang={lang} alternates={alternates} full>
   <section
     class="combo"
     data-combo

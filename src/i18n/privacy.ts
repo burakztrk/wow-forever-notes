@@ -1,8 +1,9 @@
 import type { Lang } from '../config';
 
 // Privacy policy for the website and the Forever Campfire: Codex app (the
-// store listings link to /<lang>/privacy/). Keep it in line with what the app
-// actually does: no accounts, ads, analytics or notifications.
+// store listings link to /<lang>/privacy/). Keep it in line with what the site
+// and the app actually do. The website counts visits with Cloudflare Web
+// Analytics (cookie-free, no personal data); BaseLayout.astro adds it.
 
 export interface PrivacySection {
   heading: string;
@@ -19,19 +20,32 @@ export interface PrivacyPage {
 
 const GITHUB_PRIVACY = 'https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement';
 const GOOGLE_PRIVACY = 'https://policies.google.com/privacy';
+const CLOUDFLARE_WEB_ANALYTICS = 'https://www.cloudflare.com/web-analytics/';
+const CLOUDFLARE_PRIVACY = 'https://www.cloudflare.com/privacypolicy/';
 const ISSUES = 'https://github.com/burakztrk/wow-forever-notes/issues';
 
 export const privacy: Record<Lang, PrivacyPage> = {
   tr: {
     title: 'Gizlilik politikası',
-    updated: 'Son güncelleme: 17 Ekim 2026',
+    updated: 'Son güncelleme: 20 Ekim 2026',
     intro:
-      'Bu politika Forever Campfire: Codex web sitesi ve mobil uygulaması için geçerlidir. İkisi de resmi olmayan, hayranlar tarafından yapılmış ve ücretsiz projelerdir. Hesap, reklam, analitik ya da izleme yoktur.',
+      'Bu politika Forever Campfire: Codex web sitesi ve mobil uygulaması için geçerlidir. İkisi de resmi olmayan, hayranlar tarafından yapılmış ve ücretsiz projelerdir. Hesap, reklam ya da çerez yoktur; web sitesi yalnızca kişisel veri içermeyen ziyaret istatistikleri tutar.',
     sections: [
       {
         heading: 'Toplanan veriler',
         paragraphs: [
           'Senden ad, e-posta, konum ya da benzeri kişisel bilgi istemiyoruz ve toplamıyoruz. Uygulamada giriş yapılan bir hesap yok.',
+        ],
+      },
+      {
+        heading: 'Web sitesi ziyaret istatistikleri',
+        paragraphs: [
+          'Web sitesi kaç kişinin ziyaret ettiğini, hangi sayfaların okunduğunu ve ziyaretlerin hangi ülkelerden geldiğini görmek için Cloudflare Web Analytics kullanır. Çerez kullanmaz, tarayıcında bir şey saklamaz, seni tanımlayan bir kimlik oluşturmaz ve siteler arasında izleme yapmaz.',
+          'Ölçüm sırasında Cloudflare sayfa adresini, yönlendiren sayfayı, tarayıcı ve cihaz türünü ve sayfa yükleme süresini alır. Ülke bilgisi IP adresinden çıkarılır; IP adresi istatistiklerde saklanmaz. Bize yalnızca toplu sayılar ulaşır.',
+        ],
+        links: [
+          { label: 'Cloudflare Web Analytics', href: CLOUDFLARE_WEB_ANALYTICS },
+          { label: 'Cloudflare gizlilik politikası', href: CLOUDFLARE_PRIVACY },
         ],
       },
       {
@@ -67,14 +81,25 @@ export const privacy: Record<Lang, PrivacyPage> = {
   },
   en: {
     title: 'Privacy policy',
-    updated: 'Last updated: 17 October 2026',
+    updated: 'Last updated: 20 October 2026',
     intro:
-      'This policy covers the Forever Campfire: Codex website and mobile app. Both are unofficial, fan-made and free. There are no accounts, ads, analytics or tracking.',
+      'This policy covers the Forever Campfire: Codex website and mobile app. Both are unofficial, fan-made and free. There are no accounts, ads or cookies; the website keeps only visit statistics that contain no personal data.',
     sections: [
       {
         heading: 'Data we collect',
         paragraphs: [
           'We do not ask for or collect your name, email, location or any similar personal information. The app has no sign-in.',
+        ],
+      },
+      {
+        heading: 'Website visit statistics',
+        paragraphs: [
+          'The website uses Cloudflare Web Analytics to see how many people visit, which pages they read and which countries visits come from. It sets no cookies, stores nothing in your browser, creates no identifier for you and does not track you across sites.',
+          'For each page view Cloudflare receives the page address, the referring page, the browser and device type and the page load time. The country is derived from your IP address; the IP address is not stored in the statistics. We only see totals.',
+        ],
+        links: [
+          { label: 'Cloudflare Web Analytics', href: CLOUDFLARE_WEB_ANALYTICS },
+          { label: 'Cloudflare privacy policy', href: CLOUDFLARE_PRIVACY },
         ],
       },
       {

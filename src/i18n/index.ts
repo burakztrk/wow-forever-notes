@@ -10,6 +10,10 @@ const strings = {
   tr: {
     langName: 'Türkçe',
     tagline: 'WoW Forever beta yama ve geliştirme notları, Türkçe özetler.',
+    // meta descriptions ({name} = race or class name)
+    metaRace: '{name}: WoW Forever ırk yetenekleri, oynayabileceği class\'lar ve yama notlarındaki değişiklikler.',
+    metaClass: '{name}: WoW Forever büyüleri okula göre, Forever\'daki değişiklikler ve yama notları.',
+    metaTalents: '{name} talent hesaplayıcı: WoW Forever talent ağaçlarında puan dağıt ve build\'ini linkle paylaş.',
     latest: 'Son notlar',
     noPosts: 'Henüz yazı yok.',
     readMore: 'Devamı',
@@ -235,6 +239,10 @@ const strings = {
   en: {
     langName: 'English',
     tagline: 'WoW Forever beta patch and development notes, summarized.',
+    // meta descriptions ({name} = race or class name)
+    metaRace: '{name} in WoW Forever: racials, the classes it can play and what changed in the patch notes.',
+    metaClass: '{name} in WoW Forever: spells by school, what changed in Forever and the patch notes.',
+    metaTalents: '{name} talent calculator for WoW Forever: spend points in the talent trees and share your build as a link.',
     latest: 'Latest notes',
     noPosts: 'No posts yet.',
     readMore: 'Read more',
