@@ -2,7 +2,7 @@
 import SavedBuilds from '../../../components/SavedBuilds.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
-import { ui } from '../../../i18n';
+import { fill, ui } from '../../../i18n';
 import type { ClassId } from '../../../lib/glossary-types';
 import { MAX_POINTS } from '../../../lib/talent-rules';
 import { arrowPath, classes, GRID, gridViewBox, talentPage } from '../../../lib/talents';
@@ -23,7 +23,7 @@ const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/talen
 const title = `${info.name} · ${t.talentsTitle}`;
 ---
 
-<BaseLayout title={title} lang={lang} alternates={alternates} wide>
+<BaseLayout title={title} description={fill(t.metaTalents, { name: info.name })} lang={lang} alternates={alternates} wide>
   <a class="back-nav" href={withBase(`/${lang}/talents/`)}>← {t.talentsTitle}</a>
   <header class="calc-head" style={`--class-color: var(--class-${cls})`}>
     <h1>{info.name}</h1>

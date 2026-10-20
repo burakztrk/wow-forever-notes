@@ -3,7 +3,7 @@ import GlossaryRow from '../../../components/GlossaryRow.astro';
 import PatchNotes from '../../../components/PatchNotes.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
-import { ui } from '../../../i18n';
+import { fill, ui } from '../../../i18n';
 import { getPatchNotes, patchNoteGlossaryIds } from '../../../lib/blog';
 import { classesOf, racialsOf, races } from '../../../lib/codex';
 import type { RaceInfo } from '../../../lib/glossary-types';
@@ -28,7 +28,10 @@ const notes = await getPatchNotes(lang, 'race', race.id);
 const tips = tooltipPayload([...racials.map((e) => e.id), ...patchNoteGlossaryIds(notes)], lang);
 ---
 
-<BaseLayout title={`${race.name} · ${t.racesTitle}`} lang={lang} alternates={alternates}>
+<BaseLayout
+  title={`${race.name} · ${t.racesTitle}`}
+  description={fill(t.metaRace, { name: race.name })}
+  lang={lang} alternates={alternates}>
   <a class="back-nav" href={withBase(`/${lang}/races/`)}>← {t.racesTitle}</a>
   <header class="codex-head">
     {race.icon ? <img class="codex-head-icon" src={icon(race.icon)} alt="" width="64" height="64" /> : <span class="codex-head-icon" />}

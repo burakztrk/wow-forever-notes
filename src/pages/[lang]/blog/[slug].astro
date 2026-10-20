@@ -4,6 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { formatDate, ui } from '../../../i18n';
 import { getAllPosts, type Post } from '../../../lib/blog';
+import { blogPostingJsonLd } from '../../../lib/seo';
 import { islandJson, tooltipPayload } from '../../../lib/tooltip-payload';
 import { postUrl, withBase } from '../../../utils/url';
 
@@ -31,10 +32,29 @@ const lang = post.lang;
 const t = ui(lang);
 const { Content, remarkPluginFrontmatter } = await render(post);
 // entries referenced by this post (collected by remark-glossary)
+const jsonLd = blogPostingJsonLd(
+  {
+    title: post.data.title,
+    description: post.data.excerpt,
+    date: post.data.date,
+    url: postUrl(lang, post.slug),
+    lang,
+    tags: post.data.tags,
+  },
+  Astro.site,
+);
 const tips = tooltipPayload((remarkPluginFrontmatter.glossaryIds as string[] | undefined) ?? [], lang);
 ---
 
-<BaseLayout title={post.data.title} description={post.data.excerpt} lang={lang} alternates={alternates}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.excerpt}
+  lang={lang}
+  alternates={alternates}
+  ogType="article"
+  publishedTime={post.data.date}
+  jsonLd={jsonLd}
+>
   <article class="post">
     <a class="back-nav" href={withBase(`/${lang}/notes/`)}>{t.backToList}</a>
     <header>

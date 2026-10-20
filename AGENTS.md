@@ -60,6 +60,12 @@ Node 22.12+.
   card tooltips (`CardTip` in `tooltip-render.ts`, `ItemTip.astro`); spell names in the guide's prose become glossary
   tooltips (`RichText.astro`). The app reads the same data from `/data/v1/professions.json` (with the guide) and
   `/data/v1/legacy.json`.
+- SEO + analytics: `src/layouts/BaseLayout.astro` writes canonical, hreflang (+ x-default), Open Graph/Twitter
+  (`public/og/<lang>.png`) and an optional JSON-LD block (`src/lib/seo.ts`: `WebSite` + SearchAction on the home pages,
+  `BlogPosting` on posts). `@astrojs/sitemap` (astro.config, tr/en alternates; root redirect and 404 left out) and
+  `src/pages/robots.txt.ts`. Cloudflare Web Analytics (cookie-free) is added only in production builds when
+  `PUBLIC_CF_WEB_ANALYTICS_TOKEN` is set — the deploy workflow fills it from the `CF_WEB_ANALYTICS_TOKEN` repository
+  variable. Keep the privacy page (`src/i18n/privacy.ts`) in line with it.
 - `scripts/sync/` — wclbox parsers (`parse.ts`), wowforevertools chunk reader (`wowforevertools.ts`, acorn, literals only — never eval) and the sync entry point. `scripts/check-updates.ts`.
 - `docs/scheduled-job.md` — instructions for the daily scheduled writer job.
 

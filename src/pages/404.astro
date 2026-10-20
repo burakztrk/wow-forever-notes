@@ -6,7 +6,7 @@ import { langHome, withBase } from '../utils/url';
 const alternates = Object.fromEntries(LANGS.map((l) => [l, langHome(l)])) as Record<Lang, string>;
 ---
 
-<BaseLayout title="404" lang={DEFAULT_LANG} alternates={alternates}>
+<BaseLayout title="404" lang={DEFAULT_LANG} noindex alternates={alternates}>
   <h1>404</h1>
   <p>Sayfa bulunamadı · Page not found</p>
   <p>
