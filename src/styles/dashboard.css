@@ -135,10 +135,11 @@
   white-space: nowrap;
 }
 
-/* character creator: Alliance blue → Horde red as one gradient twice the tile's
-   size, its window circling it at a steady speed (12 s a turn), under a dark
-   veil and a faint film grain. The app's CreatorTile draws the same
-   (HomeScreen.kt: factionDrift, filmGrain). */
+/* character creator: a repeating Alliance blue → Horde red → Alliance blue band
+   at 120° (560 px period) that slides to the right forever, under a dark veil
+   and a faint film grain. One horizontal period is 560 / sin(120°) = 646.6 px,
+   so the jump back at the end of each 14 s loop is invisible. The app's
+   CreatorTile draws the same (HomeScreen.kt: factionFlow, filmGrain). */
 .creator-tile {
   position: relative;
   display: flex;
@@ -152,18 +153,29 @@
 .creator-bg {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(
+  overflow: hidden;
+}
+.creator-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -647px;
+  right: 0;
+  background-image: repeating-linear-gradient(
     120deg,
-    var(--alliance-dark) 0%,
-    var(--alliance-light) 22%,
-    var(--alliance-mid) 38%,
-    #2a1030 50%,
-    var(--horde-mid) 62%,
-    var(--horde-light) 78%,
-    var(--horde-dark) 100%
+    var(--alliance-dark) 0px,
+    var(--alliance-light) 78px,
+    var(--alliance-mid) 157px,
+    #2a1030 213px,
+    var(--horde-mid) 269px,
+    var(--horde-light) 347px,
+    var(--horde-dark) 426px,
+    #2a1030 493px,
+    var(--alliance-dark) 560px
   );
-  background-size: 200% 200%;
-  animation: gradient-orbit 12s linear infinite;
+  animation: flow-forward 14s linear infinite;
+  will-change: transform;
 }
 .creator-bg::after {
   content: '';
@@ -178,25 +190,13 @@
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* background-position on a circle (cos, sin), 16 steps, linear: no stops */
-@keyframes gradient-orbit {
-  0% { background-position: 100% 50%; }
-  6.25% { background-position: 96.2% 69.1%; }
-  12.5% { background-position: 85.4% 85.4%; }
-  18.75% { background-position: 69.1% 96.2%; }
-  25% { background-position: 50% 100%; }
-  31.25% { background-position: 30.9% 96.2%; }
-  37.5% { background-position: 14.6% 85.4%; }
-  43.75% { background-position: 3.8% 69.1%; }
-  50% { background-position: 0% 50%; }
-  56.25% { background-position: 3.8% 30.9%; }
-  62.5% { background-position: 14.6% 14.6%; }
-  68.75% { background-position: 30.9% 3.8%; }
-  75% { background-position: 50% 0%; }
-  81.25% { background-position: 69.1% 3.8%; }
-  87.5% { background-position: 85.4% 14.6%; }
-  93.75% { background-position: 96.2% 30.9%; }
-  100% { background-position: 100% 50%; }
+@keyframes flow-forward {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(646.6px);
+  }
 }
 .creator-text {
   position: relative;
@@ -307,7 +307,7 @@
   .feature-tile:hover {
     transform: none;
   }
-  .creator-bg {
+  .creator-bg::before {
     animation: none;
   }
 }
