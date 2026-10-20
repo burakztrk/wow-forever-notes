@@ -1,9 +1,10 @@
 ---
 // Home: a dashboard of everything on the site, the same as the app's Home
 // (ui/home/HomeScreen.kt): search, the latest patch note, the character
-// creator, then a tile per feature with a live count. The race and class
+// creator, the saved characters, then a tile per feature with a live count. The race and class
 // combination screen lives at /<lang>/creator/.
 import CodexIcon from '../../components/CodexIcon.astro';
+import SavedCharacters from '../../components/SavedCharacters.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../config';
 import glossaryData from '../../data/glossary.json';
@@ -94,6 +95,8 @@ const dataLine = [glossaryData.build && `${t.dataTitle} ${glossaryData.build}`, 
         </span>
       </a>
     </div>
+
+    <SavedCharacters lang={lang} newLink />
 
     <h2 class="codex-section">{t.explore}</h2>
     <ul class="feature-grid">

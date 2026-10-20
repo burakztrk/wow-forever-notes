@@ -125,6 +125,16 @@ const strings = {
     delete: 'Sil',
     buildSaved: 'Build kaydedildi.',
     savedHere: 'Bu tarayıcıda saklanır.',
+    saveCharacter: 'Karakteri kaydet',
+    characterName: 'Karakter adı',
+    characterSaved: 'Karakter kaydedildi.',
+    myCharacters: 'Karakterlerim',
+    noBuildYet: 'Henüz talent build\'i yok',
+    whyCharacterTitle: 'Neden karakter oluşturmalısın?',
+    whyCharacter1: 'Irkın, class\'ın ve talent build\'in tek kayıtta durur; Karakterlerim listesinden tek tıkla açılır.',
+    whyCharacter2:
+      'Talent planlayıcı yalnızca class\'a bakar, build\'i ırktan bağımsız saklar. Karakter ırkını da bilir: ırkının oynayamadığı bir class için build yapmazsın.',
+    whyCharacter3: 'Karakterden açtığın planlayıcıda Kaydet, build\'i isim sormadan doğrudan karaktere yazar.',
     // professions, camping, Legacy
     navProfessions: 'Meslekler',
     navLegacy: 'Legacy',
@@ -337,6 +347,16 @@ const strings = {
     delete: 'Delete',
     buildSaved: 'Build saved.',
     savedHere: 'Kept in this browser.',
+    saveCharacter: 'Save character',
+    characterName: 'Character name',
+    characterSaved: 'Character saved.',
+    myCharacters: 'My characters',
+    noBuildYet: 'No talent build yet',
+    whyCharacterTitle: 'Why create a character?',
+    whyCharacter1: 'Your race, class and talent build stay together in one entry, one click away in My characters.',
+    whyCharacter2:
+      'The talent planner only looks at the class and saves builds without a race. A character knows its race too, so you never plan for a class your race cannot play.',
+    whyCharacter3: 'In a planner opened from a character, Save writes the build straight into the character, no name prompt.',
     // professions, camping, Legacy
     navProfessions: 'Professions',
     navLegacy: 'Legacy',

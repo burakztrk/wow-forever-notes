@@ -1,7 +1,9 @@
 import { browserStore, loadBuilds, removeBuild, saveBuild, updateBuild, type SavedBuild } from '../lib/saved-builds';
+import { loadCharacters, updateCharacterBuild, type SavedCharacter } from '../lib/saved-characters';
 
 // Saved builds UI: the list on the talents page and the save dialog on a
-// class's calculator. Config comes from #wf-saved-builds.
+// class's calculator. Config comes from #wf-saved-builds. A calculator opened
+// from a saved character (?character=<id>) saves into that character instead.
 
 interface Config {
   cls?: string; // set on a class page: save dialog + only this class's builds
@@ -9,7 +11,8 @@ interface Config {
   iconBase: string;
   classIcons: Record<string, string>;
   classNames: Record<string, string>;
-  strings: { delete: string; buildSaved: string };
+  raceNames: Record<string, string>;
+  strings: { delete: string; buildSaved: string; characterSaved: string; saveCharacter: string };
 }
 
 const configEl = document.getElementById('wf-saved-builds');
@@ -62,28 +65,43 @@ function init(config: Config) {
   const nameEl = document.querySelector<HTMLElement>('[data-saved-name]');
   const currentCode = () => location.hash.match(/b=([0-9-]*)/)?.[1] ?? '';
 
-  // The saved build this calculator edits (from ?saved=), shown under the class name.
+  // The saved character (from ?character=) or saved build (from ?saved=) this
+  // calculator edits, shown under the class name.
+  const characterId = config.cls ? new URLSearchParams(location.search).get('character') : null;
+  const character = (): SavedCharacter | undefined =>
+    characterId ? loadCharacters(store).find((c) => c.id === characterId && c.cls === config.cls) : undefined;
   let current: SavedBuild | undefined;
   function setCurrent(id: string | null) {
     current = id ? loadBuilds(store).find((b) => b.id === id && b.cls === config.cls) : undefined;
+    const own = character();
+    // a character shows its race too: "Arthas · Human"
+    const name = own ? [own.name, config.raceNames[own.race]].filter(Boolean).join(' · ') : current?.name;
     if (nameEl) {
-      nameEl.textContent = current?.name ?? '';
-      nameEl.hidden = !current;
+      nameEl.textContent = name ?? '';
+      nameEl.hidden = !name;
     }
     const url = new URL(location.href);
     if (current) url.searchParams.set('saved', current.id);
     else url.searchParams.delete('saved');
     if (url.href !== location.href) history.replaceState(history.state, '', url);
   }
-  function saved() {
+  function saved(text = config.strings.buildSaved) {
     if (!note) return;
-    note.textContent = config.strings.buildSaved;
+    note.textContent = text;
     note.hidden = false;
     setTimeout(() => (note.hidden = true), 2500);
   }
   if (config.cls) setCurrent(new URLSearchParams(location.search).get('saved'));
+  const saveBtn = document.querySelector<HTMLElement>('[data-save-open]');
+  if (saveBtn && character()) saveBtn.textContent = config.strings.saveCharacter;
 
-  document.querySelector('[data-save-open]')?.addEventListener('click', () => {
+  saveBtn?.addEventListener('click', () => {
+    const own = character();
+    if (own) {
+      updateCharacterBuild(store, own.id, currentCode());
+      saved(config.strings.characterSaved);
+      return;
+    }
     if (current && config.cls) {
       // already a saved build: overwrite it, no name prompt
       render(updateBuild(store, current.id, currentCode()));

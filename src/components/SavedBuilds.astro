@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../config';
 import { ui } from '../i18n';
+import { races } from '../lib/codex';
 import { classes } from '../lib/talents';
 import { withBase } from '../utils/url';
 
@@ -20,7 +21,8 @@ const config = {
   iconBase: withBase('/icons/'),
   classIcons: Object.fromEntries(classes.map((c) => [c.id, c.icon ?? ''])),
   classNames: Object.fromEntries(classes.map((c) => [c.id, c.name])),
-  strings: { delete: t.delete, buildSaved: t.buildSaved },
+  raceNames: Object.fromEntries(races.map((r) => [r.id, r.name])),
+  strings: { delete: t.delete, buildSaved: t.buildSaved, characterSaved: t.characterSaved, saveCharacter: t.saveCharacter },
 };
 ---
 

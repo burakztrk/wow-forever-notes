@@ -39,7 +39,7 @@
 
 @media (min-width: 1000px) {
   .combo {
-    grid-template-columns: 220px minmax(0, 1fr) 360px;
+    grid-template-columns: 220px minmax(0, 1fr) 320px;
     gap: 18px;
   }
   .combo-banners {
@@ -214,12 +214,12 @@
 }
 .sigil-ring {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 128px;
+  height: 128px;
 }
 .sigil-race {
-  width: 150px;
-  height: 150px;
+  width: 128px;
+  height: 128px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--frame-hi);
@@ -232,8 +232,8 @@
   position: absolute;
   right: -10px;
   bottom: -6px;
-  width: 58px;
-  height: 58px;
+  width: 50px;
+  height: 50px;
   border-radius: 8px;
   border: 2px solid var(--frame-hi);
   box-shadow: 0 0 0 2px #000;
@@ -497,6 +497,119 @@
   filter: brightness(1.2);
 }
 
+/* ---- create a character: the main action, gold, above the planner button ---- */
+.create-wrap {
+  position: relative;
+}
+.create-btn {
+  width: 100%;
+  line-height: inherit;
+  cursor: pointer;
+}
+.combo[data-faction] .create-btn {
+  background: linear-gradient(180deg, #f2d27a, #a8792a);
+  color: #1c1206;
+}
+.create-tip {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  z-index: 30;
+  width: 330px;
+  padding: 12px 14px;
+  background: #140d06;
+  border: 1px solid var(--frame-hi);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  color: var(--text);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  text-align: left;
+}
+.create-tip-title {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--frame-hi);
+}
+.create-tip ul {
+  margin: 0;
+  padding-left: 1.1em;
+  display: grid;
+  gap: 4px;
+}
+@media (hover: hover) {
+  .create-wrap:hover .create-tip {
+    display: block;
+  }
+}
+.create-btn:focus-visible + .create-tip {
+  display: block;
+}
+
+.character-dialog {
+  background: #140d06;
+  color: var(--text);
+  border: 2px solid var(--frame-hi);
+  border-radius: 10px;
+  padding: 20px;
+  width: min(380px, calc(100vw - 32px));
+}
+.character-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+.character-dialog h2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--frame-hi);
+}
+.character-dialog-combo {
+  margin: 2px 0 12px;
+  color: var(--text-dim);
+}
+.character-dialog input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--frame);
+  border-radius: var(--radius-sm);
+}
+.character-dialog input:focus {
+  outline: none;
+  border-color: var(--frame-hi);
+}
+/* touch screens have no hover tip: the reasons are shown here instead */
+.character-dialog-why {
+  display: none;
+  margin: 12px 0 0;
+  padding-left: 1.1em;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+@media (hover: none) {
+  .character-dialog-why {
+    display: grid;
+    gap: 4px;
+  }
+}
+.character-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+.creator-characters {
+  margin-top: 24px;
+}
+
 /* ---- layout: banners | classes + race/class panels | faction, stage, button ---- */
 .combo-main,
 .combo-side {
@@ -544,7 +657,12 @@
   .combo-stage { order: 2; }
   .side-faction > .panel { order: 3; }
   .info-slot > .panel { order: 4; }
+  .create-wrap,
   .customize-btn { order: 5; }
+  .create-tip {
+    left: 0;
+    width: auto;
+  }
 }
 
 /* ---- equal box sizes ---- */

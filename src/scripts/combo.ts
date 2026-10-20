@@ -1,7 +1,11 @@
 // Home page race/class screen: picks a race and a class, shows the matching
 // panels. All panels are rendered at build time, this only toggles them.
 // State lives in the URL hash (#race=horde-undead&class=warlock) so a combo
-// can be linked.
+// can be linked. "Create a character" saves the pair under a name, like the
+// app's creator.
+
+import { browserStore } from '../lib/saved-builds';
+import { addCharacter } from '../lib/saved-characters';
 
 const root = document.querySelector<HTMLElement>('[data-combo]');
 
@@ -86,4 +90,24 @@ if (root) {
   const params = new URLSearchParams(location.hash.slice(1));
   const fromHash = raceBtn(params.get('race'));
   pick(fromHash ?? race, classBtn(params.get('class')) ?? cls);
+
+  // ---------- save as a character ----------
+  const dialog = q<HTMLDialogElement>('[data-character-dialog]');
+  const nameInput = dialog?.querySelector<HTMLInputElement>('input[name="name"]');
+  const dialogCombo = q('[data-character-title]');
+
+  q('[data-character-open]')?.addEventListener('click', () => {
+    if (!dialog || !nameInput) return;
+    if (dialogCombo) dialogCombo.textContent = `${race.dataset.raceName ?? ''} ${cls.dataset.className ?? ''}`;
+    nameInput.value = '';
+    dialog.showModal();
+    nameInput.focus();
+  });
+  dialog?.querySelector('[data-character-cancel]')?.addEventListener('click', () => dialog.close());
+  dialog?.querySelector('form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const [character] = addCharacter(browserStore(), nameInput?.value ?? '', race.dataset.race ?? '', cls.dataset.class ?? '');
+    // straight on to the character's talent trees; Save there writes into it
+    location.href = `${plannerBase}${character.cls}/?character=${encodeURIComponent(character.id)}`;
+  });
 }

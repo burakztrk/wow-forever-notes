@@ -1,4 +1,5 @@
 ---
+import SavedCharacters from '../../../components/SavedCharacters.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { fill, ui } from '../../../i18n';
@@ -33,6 +34,9 @@ const tips = tooltipPayload(
   classList,
 );
 const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descTr ? e.descTr : e.desc);
+// Why save a character instead of a bare planner build: the hover tip, and the
+// save dialog on touch screens where there is no hover.
+const why = [t.whyCharacter1, t.whyCharacter2, t.whyCharacter3];
 ---
 
 <BaseLayout title={t.comboTitle} lang={lang} alternates={alternates} full>
@@ -233,11 +237,37 @@ const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descT
         <p class="stage-sub" data-stage-sub></p>
       </div>
       </div>
+      <div class="create-wrap">
+        <button type="button" class="customize-btn create-btn" data-character-open aria-describedby="create-tip">
+          {t.creatorTitle} <span aria-hidden="true">+</span>
+        </button>
+        <div class="create-tip" id="create-tip" role="tooltip">
+          <p class="create-tip-title">{t.whyCharacterTitle}</p>
+          <ul>{why.map((line) => <li>{line}</li>)}</ul>
+        </div>
+      </div>
       <a class="customize-btn" data-planner-link href={withBase(`/${lang}/talents/`)}>
         {t.comboCustomize} <span aria-hidden="true">›</span>
       </a>
     </div>
+
+    <dialog class="character-dialog" data-character-dialog>
+      <form method="dialog">
+        <h2>{t.saveCharacter}</h2>
+        <p class="character-dialog-combo" data-character-title></p>
+        <input name="name" type="text" maxlength="50" placeholder={t.characterName} aria-label={t.characterName} autocomplete="off" />
+        <ul class="character-dialog-why">{why.map((line) => <li>{line}</li>)}</ul>
+        <div class="character-dialog-actions">
+          <button type="button" class="calc-btn" data-character-cancel>{t.cancel}</button>
+          <button type="submit" class="calc-btn primary">{t.save}</button>
+        </div>
+      </form>
+    </dialog>
   </section>
+
+  <div class="creator-characters">
+    <SavedCharacters lang={lang} />
+  </div>
 
   <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
   <script>

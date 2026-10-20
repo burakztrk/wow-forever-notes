@@ -1,0 +1,147 @@
+---
+import type { Lang } from '../config';
+import { ui } from '../i18n';
+import { classList, races } from '../lib/codex';
+import { creatorUrl, withBase } from '../utils/url';
+
+// Saved characters (localStorage), like the app's "My characters" list on the
+// home and creator screens. Hidden while there are none. A row opens the
+// character's class planner, where Save writes into the character.
+
+interface Props {
+  lang: Lang;
+  // show a "+ Create a character" link next to the heading (home page)
+  newLink?: boolean;
+}
+
+const { lang, newLink = false } = Astro.props;
+const t = ui(lang);
+const config = {
+  talentsBase: withBase(`/${lang}/talents/`),
+  iconBase: withBase('/icons/'),
+  races: Object.fromEntries(races.map((r) => [r.id, { name: r.name, icon: r.icon ?? '' }])),
+  classes: Object.fromEntries(classList.map((c) => [c.id, { name: c.name, icon: c.icon ?? '' }])),
+  strings: { delete: t.delete, noBuildYet: t.noBuildYet },
+};
+---
+
+<section class="characters-section" data-characters-section hidden>
+  <div class="characters-head">
+    <h2 class="codex-section">{t.myCharacters}</h2>
+    {newLink && <a class="characters-new" href={creatorUrl(lang)}>+ {t.creatorTitle}</a>}
+  </div>
+  <ul class="characters-list" data-characters-list></ul>
+  <p class="saved-hint">{t.savedHere}</p>
+</section>
+
+<script type="application/json" id="wf-saved-characters" is:inline set:html={JSON.stringify(config).replace(/</g, '\\u003c')} />
+<script>
+  import '../scripts/saved-characters';
+</script>
+
+<style is:global>
+  .characters-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .characters-head .codex-section {
+    flex: 1;
+  }
+  .characters-new {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .characters-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 8px;
+  }
+  .character-row {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elev);
+  }
+  .character-row:hover {
+    border-color: var(--gold-dim);
+  }
+  .character-row a {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 4px 8px 10px;
+    color: inherit;
+    text-decoration: none;
+  }
+  .character-portrait {
+    position: relative;
+    flex: none;
+    width: 40px;
+    height: 40px;
+  }
+  .character-portrait .race {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-dim);
+    object-fit: cover;
+  }
+  .character-portrait .cls {
+    position: absolute;
+    right: -4px;
+    bottom: -3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #000;
+  }
+  .character-text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .character-name {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .character-row a:hover .character-name {
+    text-decoration: underline;
+  }
+  .character-meta {
+    color: var(--text-mute);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .character-meta b {
+    color: var(--class-color);
+    font-weight: 500;
+  }
+  .character-delete {
+    flex: none;
+    background: none;
+    border: 0;
+    padding: 6px 10px;
+    cursor: pointer;
+    opacity: 0.6;
+    font-size: 1rem;
+  }
+  .character-delete:hover {
+    opacity: 1;
+  }
+  .characters-section .saved-hint {
+    color: var(--text-mute);
+    font-size: 0.8rem;
+    margin: 6px 0 0;
+  }
+</style>
