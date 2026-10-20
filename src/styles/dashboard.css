@@ -135,7 +135,10 @@
   white-space: nowrap;
 }
 
-/* character creator: both faction flags under a dark veil */
+/* character creator: Alliance blue → Horde red as one gradient twice the tile's
+   size, its window circling it at a steady speed (12 s a turn), under a dark
+   veil and a faint film grain. The app's CreatorTile draws the same
+   (HomeScreen.kt: factionDrift, filmGrain). */
 .creator-tile {
   position: relative;
   display: flex;
@@ -146,46 +149,54 @@
 .creator-tile:hover {
   border-color: var(--gold);
 }
-.creator-flags {
+.creator-bg {
   position: absolute;
   inset: 0;
-  display: flex;
+  background-image: linear-gradient(
+    120deg,
+    var(--alliance-dark) 0%,
+    var(--alliance-light) 22%,
+    var(--alliance-mid) 38%,
+    #2a1030 50%,
+    var(--horde-mid) 62%,
+    var(--horde-light) 78%,
+    var(--horde-dark) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradient-orbit 12s linear infinite;
 }
-.creator-flags::after {
+.creator-bg::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.65));
 }
-.flag {
-  flex: 1;
+.creator-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* the app's flagBrush: mid, light, mid, dark, mid, light, mid, dark */
-.flag--alliance {
-  background: linear-gradient(
-    90deg,
-    var(--alliance-mid) 0%,
-    var(--alliance-light) 12%,
-    var(--alliance-mid) 25%,
-    var(--alliance-dark) 40%,
-    var(--alliance-mid) 55%,
-    var(--alliance-light) 70%,
-    var(--alliance-mid) 85%,
-    var(--alliance-dark) 100%
-  );
-}
-.flag--horde {
-  background: linear-gradient(
-    90deg,
-    var(--horde-mid) 0%,
-    var(--horde-light) 12%,
-    var(--horde-mid) 25%,
-    var(--horde-dark) 40%,
-    var(--horde-mid) 55%,
-    var(--horde-light) 70%,
-    var(--horde-mid) 85%,
-    var(--horde-dark) 100%
-  );
+/* background-position on a circle (cos, sin), 16 steps, linear: no stops */
+@keyframes gradient-orbit {
+  0% { background-position: 100% 50%; }
+  6.25% { background-position: 96.2% 69.1%; }
+  12.5% { background-position: 85.4% 85.4%; }
+  18.75% { background-position: 69.1% 96.2%; }
+  25% { background-position: 50% 100%; }
+  31.25% { background-position: 30.9% 96.2%; }
+  37.5% { background-position: 14.6% 85.4%; }
+  43.75% { background-position: 3.8% 69.1%; }
+  50% { background-position: 0% 50%; }
+  56.25% { background-position: 3.8% 30.9%; }
+  62.5% { background-position: 14.6% 14.6%; }
+  68.75% { background-position: 30.9% 3.8%; }
+  75% { background-position: 50% 0%; }
+  81.25% { background-position: 69.1% 3.8%; }
+  87.5% { background-position: 85.4% 14.6%; }
+  93.75% { background-position: 96.2% 30.9%; }
+  100% { background-position: 100% 50%; }
 }
 .creator-text {
   position: relative;
@@ -295,5 +306,8 @@
 @media (prefers-reduced-motion: reduce) {
   .feature-tile:hover {
     transform: none;
+  }
+  .creator-bg {
+    animation: none;
   }
 }
