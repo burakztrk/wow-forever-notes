@@ -78,8 +78,8 @@ Uyulacak kurallar:
   5. `## Önemli bug fix'ler`
   6. `## Yeni geliştirmeler / sistem değişiklikleri`
   7. `## Bilinen sorunlar`: kısa tut.
-- **Bölümler (class / ırk / meslek):** yazıda açılır-kapanır blok olur; aynı not class, ırk ve Meslekler
-  sayfalarının en altında da listelenir. Kurallar:
+- **Bölümler (class / ırk / meslek):** yazıda açılır-kapanır blok olur; aynı not class ve ırk sayfalarının üst
+  kısmında, Meslekler sayfasının en altında da listelenir. Kurallar:
   - Direktif kendi satırında, en üst seviyede durur (liste içinde değil), önünde ve arkasında boş satır olur.
   - Bölüm bir sonraki bölüm direktifine, `##`/`###` başlığa ya da `---`'e kadar sürer. Bölümün içeriği
     madde listesidir; ağaç adları `- **Fury:**` gibi alt madde olarak kalır.

@@ -1,0 +1,313 @@
+/* Home dashboard (src/pages/[lang]/index.astro), laid out like the app's Home:
+   search, latest note + character creator, then the feature tiles. */
+.dash {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+  /* faction flag shades, the same as the app's AllianceShades / HordeShades */
+  --alliance-dark: #0a1d4a;
+  --alliance-mid: #16397f;
+  --alliance-light: #2757b8;
+  --horde-dark: #2c0605;
+  --horde-mid: #6e130e;
+  --horde-light: #a8261b;
+}
+.dash .codex-section {
+  margin: 12px 0 0;
+}
+
+/* search: a real form, so Enter goes to /<lang>/search/?q=… */
+.dash-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+}
+.dash-search:focus-within {
+  border-color: var(--gold-dim);
+}
+.dash-search svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  fill: var(--gold);
+}
+.dash-search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+.dash-search input::placeholder {
+  color: var(--text-dim);
+}
+
+.dash-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 680px) {
+  .dash-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+.note-card,
+.creator-tile,
+.feature-tile {
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.note-card:focus-visible,
+.creator-tile:focus-visible,
+.feature-tile:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* latest patch note */
+.note-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--gold-dim);
+  background: linear-gradient(var(--bg-elev), var(--bg));
+}
+.note-card:hover {
+  border-color: var(--gold);
+}
+.note-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow {
+  flex: 1;
+  color: var(--text-mute);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.chip--gold {
+  color: var(--gold);
+}
+.note-card-title {
+  font-weight: 600;
+  line-height: 1.35;
+}
+.note-card-excerpt {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.note-card-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-mute);
+  font-size: 0.82rem;
+}
+.note-card-foot time {
+  flex: 1;
+}
+.go {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+/* character creator: a repeating Alliance blue → Horde red → Alliance blue band
+   at 120° (560 px period) that slides to the right forever, under a dark veil
+   and a faint film grain. One horizontal period is 560 / sin(120°) = 646.6 px,
+   so the jump back at the end of each 14 s loop is invisible. The app's
+   CreatorTile draws the same (HomeScreen.kt: factionFlow, filmGrain). */
+.creator-tile {
+  position: relative;
+  display: flex;
+  min-height: 132px;
+  overflow: hidden;
+  border: 1px solid var(--gold-dim);
+}
+.creator-tile:hover {
+  border-color: var(--gold);
+}
+.creator-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.creator-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -647px;
+  right: 0;
+  background-image: repeating-linear-gradient(
+    120deg,
+    var(--alliance-dark) 0px,
+    var(--alliance-light) 78px,
+    var(--alliance-mid) 157px,
+    #2a1030 213px,
+    var(--horde-mid) 269px,
+    var(--horde-light) 347px,
+    var(--horde-dark) 426px,
+    #2a1030 493px,
+    var(--alliance-dark) 560px
+  );
+  animation: flow-forward 14s linear infinite;
+  will-change: transform;
+}
+.creator-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.65));
+}
+.creator-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@keyframes flow-forward {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(646.6px);
+  }
+}
+.creator-text {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+  padding: 16px;
+}
+.creator-label {
+  color: #f0e2b8;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.creator-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.creator-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.creator-hint {
+  flex: 1;
+  min-width: 0;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* feature tiles */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 680px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.feature-grid li {
+  display: flex;
+}
+.feature-tile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 132px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+}
+.feature-tile:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-1px);
+}
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
+  border-radius: 10px;
+  background: var(--bg-elev-2);
+}
+.feature-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--gold);
+}
+.feature-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.feature-hint {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+.feature-stat {
+  margin-top: auto;
+  padding-top: 6px;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.dash-data {
+  margin: 4px 0 0;
+  color: var(--text-mute);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-tile:hover {
+    transform: none;
+  }
+  .creator-bg::before {
+    animation: none;
+  }
+}

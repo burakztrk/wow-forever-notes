@@ -14,6 +14,12 @@ export function langHome(lang: string): string {
   return withBase(`/${lang}/`);
 }
 
+// The race and class combination screen (the home page until the dashboard).
+// Old links to /<lang>/#race=…&class=… are forwarded here by the dashboard.
+export function creatorUrl(lang: string): string {
+  return withBase(`/${lang}/creator/`);
+}
+
 export function postUrl(lang: string, slug: string): string {
   return withBase(`/${lang}/blog/${slug}/`);
 }

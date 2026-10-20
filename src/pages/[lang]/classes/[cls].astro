@@ -42,6 +42,8 @@ const tips = tooltipPayload(
   </header>
   <a class="planner-link" href={withBase(`/${lang}/talents/${info.id}/`)}>{t.openPlanner}</a>
 
+  <PatchNotes lang={lang} notes={notes} name={info.name} empty={t.noPatchNotes} />
+
   <h2 class="codex-section">{t.playableRaces}</h2>
   <ul class="chip-row">
     {
@@ -74,8 +76,6 @@ const tips = tooltipPayload(
     ))
   }
   <p class="empty-note" data-no-spells hidden>{t.noSpells}</p>
-
-  <PatchNotes lang={lang} notes={notes} name={info.name} empty={t.noPatchNotes} />
 
   <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
 </BaseLayout>

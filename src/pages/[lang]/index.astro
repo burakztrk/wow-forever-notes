@@ -1,10 +1,17 @@
 ---
+// Home: a dashboard of everything on the site, the same as the app's Home
+// (ui/home/HomeScreen.kt): search, the latest patch note, the character
+// creator, then a tile per feature with a live count. The race and class
+// combination screen lives at /<lang>/creator/.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../config';
-import { fill, ui } from '../../i18n';
-import { canPlay, classList, classSummary, classesOf, racesByFaction, racialsOf, races } from '../../lib/codex';
-import { islandJson, tooltipPayload, treeTipId } from '../../lib/tooltip-payload';
-import { langHome, withBase } from '../../utils/url';
+import glossaryData from '../../data/glossary.json';
+import legacyData from '../../data/legacy.json';
+import { fill, formatDate, ui } from '../../i18n';
+import { getPosts } from '../../lib/blog';
+import { classList, races } from '../../lib/codex';
+import { professionsFile } from '../../lib/professions';
+import { creatorUrl, langHome, postUrl, withBase } from '../../utils/url';
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -13,234 +20,129 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, langHome(l)])) as Record<Lang, string>;
-const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
+const posts = await getPosts(lang);
+const latest = posts[0];
+const href = (path: string) => withBase(`/${lang}/${path}/`);
 
-const factions = racesByFaction();
-const defaultRace = races.find((r) => r.faction === 'Alliance') ?? races[0];
-const summaries = new Map(classList.map((c) => [c.id, classSummary(c)]));
-const racialsByRace = new Map(races.map((r) => [r.id, racialsOf(r)]));
-const factionNumbers = (faction: string) => {
-  const list = races.filter((r) => r.faction === faction);
-  const racials = list.flatMap((r) => racialsByRace.get(r.id) ?? []);
-  return { races: list.length, racials: racials.length, fresh: racials.filter((e) => e.status !== 'unchanged').length };
-};
-const tips = tooltipPayload(
-  [
-    ...[...racialsByRace.values()].flat().map((e) => e.id),
-    ...[...summaries.values()].flatMap((s) => s.newSpells.map((e) => e.id)),
-  ],
-  lang,
-  classList,
-);
-const desc = (e: { desc: string; descTr?: string }) => (lang === 'tr' && e.descTr ? e.descTr : e.desc);
+// Material icons (Apache 2.0), the same ones the app uses for these features.
+const ICONS = {
+  search:
+    'M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z',
+  star: 'M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z',
+  list: 'M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z',
+  face: 'M9 11.75a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm6 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37A9.97 9.97 0 0 0 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z',
+  person: 'M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z',
+  build:
+    'M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z',
+  account:
+    'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 0 1-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z',
+} as const;
+
+const features: { icon: keyof typeof ICONS; title: string; hint: string; stat?: string; href: string; builds?: boolean }[] = [
+  { icon: 'star', title: t.navTalents, hint: t.tileTalents, href: href('talents'), builds: true },
+  { icon: 'list', title: t.navNotes, hint: t.tileNotes, stat: posts.length ? fill(t.notesN, { n: posts.length }) : undefined, href: href('notes') },
+  { icon: 'face', title: t.navRaces, hint: t.tileRaces, stat: fill(t.racesN, { n: races.length }), href: href('races') },
+  { icon: 'person', title: t.navClasses, hint: t.tileClasses, stat: fill(t.classesN, { n: classList.length }), href: href('classes') },
+  {
+    icon: 'build',
+    title: t.navProfessions,
+    hint: t.tileProfessions,
+    stat: fill(t.professionsN, { n: professionsFile.professions.length }),
+    href: href('professions'),
+  },
+  { icon: 'account', title: t.navLegacy, hint: t.tileLegacy, stat: fill(t.perksN, { n: legacyData.perks.length }), href: href('legacy') },
+];
+const dataLine = [glossaryData.build && `${t.dataTitle} ${glossaryData.build}`, formatDate(new Date(), lang)].filter(Boolean).join(' · ');
 ---
 
-<BaseLayout lang={lang} alternates={alternates} full>
-  <section
-    class="combo"
-    data-combo
-    data-default-race={defaultRace.id}
-    data-faction={defaultRace.faction.toLowerCase()}
-    style={`--bg-alliance: url(${withBase('/img/bg-alliance.svg')}); --bg-horde: url(${withBase('/img/bg-horde.svg')})`}
-    data-unavailable-text={t.classUnavailable}
-    data-playable-tpl={t.comboPlayable}
-    aria-label={t.comboTitle}
-  >
-    <h1 class="visually-hidden">{t.comboTitle}</h1>
+<BaseLayout lang={lang} alternates={alternates}>
+  <script is:inline define:vars={{ creator: creatorUrl(lang) }}>
+    // the race/class screen used to be the home page: keep its old links working
+    if (/(^#|&)(race|class)=/.test(location.hash)) location.replace(creator + location.hash);
+  </script>
 
-    <div class="combo-banners">
-      {
-        factions.map(([faction, list]) => (
-          <div class={`banner banner--${faction.toLowerCase()}`}>
-            <div class="banner-head">
-              <svg class="crest" viewBox="0 0 32 32" aria-hidden="true">
-                {faction === 'Horde' ? (
-                  <path d="M16 2 L19 11 L29 8 L23 16 L29 24 L19 21 L16 30 L13 21 L3 24 L9 16 L3 8 L13 11 Z" />
-                ) : (
-                  <path d="M16 2 L28 7 V16 C28 23 22 28 16 30 C10 28 4 23 4 16 V7 Z" />
-                )}
-              </svg>
-              <span class="banner-name">{faction}</span>
-            </div>
-            <ul class="race-list">
-              {list.map((race) => (
-                <li>
-                  <button
-                    type="button"
-                    class="race-btn"
-                    data-race={race.id}
-                    data-faction={faction.toLowerCase()}
-                    data-race-name={race.name}
-                    data-classes={classesOf(race).map((c) => c.id).join(',')}
-                    aria-pressed="false"
-                    title={race.name}
-                  >
-                    {race.icon ? (
-                      <img src={icon(race.icon)} alt="" width="56" height="56" loading="lazy" />
-                    ) : (
-                      <span class="race-fallback" aria-hidden="true">
-                        {race.name.charAt(0)}
-                      </span>
-                    )}
-                    <span class="visually-hidden">{race.name}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      }
-    </div>
+  <div class="dash">
+    <h1 class="visually-hidden">Forever Campfire: Codex</h1>
 
-    <div class="combo-main">
-      <div class="class-bar" role="group" aria-label={t.comboClasses}>
-        {
-          classList.map((cls) => (
-            <button
-              type="button"
-              class="class-btn"
-              data-class={cls.id}
-              data-class-name={cls.name}
-              aria-pressed="false"
-              style={`--class-color: var(--class-${cls.id})`}
-            >
-              <img src={icon(cls.icon)} alt="" width="56" height="56" loading="lazy" />
-              <span>{cls.name}</span>
-            </button>
-          ))
-        }
-      </div>
-      <div class="combo-info">
-        <div class="info-slot">
+    <form class="dash-search" action={href('search')} method="get" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d={ICONS.search} /></svg>
+      <label class="visually-hidden" for="dash-q">{t.navSearch}</label>
+      <input id="dash-q" name="q" type="search" placeholder={t.searchHint} autocomplete="off" enterkeyhint="search" />
+    </form>
+
+    <div class="dash-top">
       {
-        races.map((race) => (
-          <section class="panel panel--race" data-race-panel={race.id} hidden>
-            <h2>{race.name}</h2>
-            <p class="panel-sub">{t.racialTraits}</p>
-            <ul class="trait-list">
-              {(racialsByRace.get(race.id) ?? []).map((e) => (
-                <li>
-                  <span class="trait wf-tip wf-tip--racial" data-tip={e.id} tabindex="0">
-                    {e.icon ? <img src={icon(e.icon)} alt="" width="40" height="40" loading="lazy" /> : <span class="trait-blank" />}
-                    <span class="trait-text">
-                      <b>{e.name}</b>
-                      {e.status !== 'unchanged' && <i class={`g-dot g-dot--${e.status}`} aria-hidden="true" />}
-                      <span>{desc(e)}</span>
-                    </span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p class="panel-sub">{t.playableClasses}</p>
-            <ul class="mini-icons">
-              {classesOf(race).map((c) => (
-                <li>
-                  <img src={icon(c.icon)} alt={c.name} title={c.name} width="28" height="28" loading="lazy" />
-                </li>
-              ))}
-            </ul>
-            <a class="panel-link" href={withBase(`/${lang}/races/${race.id}/`)}>
-              {t.raceDetails}
-            </a>
-          </section>
-        ))
-      }
-        </div>
-        <div class="info-slot">
-      {
-        classList.map((cls) => {
-          const s = summaries.get(cls.id)!;
-          return (
-            <section class="panel panel--class" data-class-panel={cls.id} hidden>
-              <h2 style={`color: var(--class-${cls.id})`}>{cls.name}</h2>
-              <ul class="panel-facts">
-                <li>{fill(t.spellCount, { n: s.spells })}</li>
-                <li>{fill(t.talentCount, { n: s.talents })}</li>
-                <li>{fill(t.newCount, { n: s.newSpells.length })}</li>
-                <li>{fill(t.changedCount, { n: s.changedSpells })}</li>
-              </ul>
-              <p class="panel-sub">{t.classTrees}</p>
-              <ul class="tree-list">
-                {s.trees.map((tree) => (
-                  <li class="wf-tip" data-tip={treeTipId(cls, tree.name)} tabindex="0">
-                    {tree.icon && <img src={icon(tree.icon)} alt="" width="32" height="32" loading="lazy" />}
-                    <span>{tree.name}</span>
-                    <small>{fill(t.talentsInTree, { n: tree.talents })}</small>
-                  </li>
-                ))}
-              </ul>
-              {s.newSpells.length > 0 && (
-                <>
-                  <p class="panel-sub">{t.classNewSpells}</p>
-                  <ul class="mini-icons">
-                    {s.newSpells.slice(0, 12).map((e) => (
-                      <li>
-                        <span class="wf-tip wf-tip--spell" data-tip={e.id} tabindex="0">
-                          {e.icon ? <img src={icon(e.icon)} alt={e.name} width="32" height="32" loading="lazy" /> : e.name}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </>
+        latest && (
+          <a class="note-card" href={postUrl(lang, latest.slug)}>
+            <span class="note-card-head">
+              <span class="eyebrow">{t.latestNote}</span>
+              {latest.data.build && (
+                <span class="chip chip--gold">
+                  {t.build} {latest.data.build}
+                </span>
               )}
-              <p class="panel-links">
-                <a class="panel-link" data-class-link href={withBase(`/${lang}/classes/${cls.id}/`)}>
-                  {t.classDetails}
-                </a>
-                <a class="panel-link" href={withBase(`/${lang}/talents/${cls.id}/`)}>
-                  {t.openPlanner}
-                </a>
-              </p>
-            </section>
-          );
-        })
+            </span>
+            <span class="note-card-title">{latest.data.title}</span>
+            {latest.data.excerpt && <span class="note-card-excerpt">{latest.data.excerpt}</span>}
+            <span class="note-card-foot">
+              <time datetime={latest.data.date.toISOString()}>{formatDate(latest.data.date, lang)}</time>
+              <span class="go">{t.readNote} →</span>
+            </span>
+          </a>
+        )
       }
-        </div>
-      </div>
-    </div>
 
-    <div class="combo-side">
-      <div class="side-faction">
-      {
-        factions.map(([faction]) => {
-          const n = factionNumbers(faction);
-          return (
-            <section class={`panel panel--faction panel--${faction.toLowerCase()}`} data-faction-panel={faction.toLowerCase()} hidden>
-              <h2>{faction}</h2>
-              <ul class="panel-facts">
-                <li>{fill(t.comboFactionCount, { n: n.races })}</li>
-                <li>{fill(t.comboFactionRacials, { n: n.racials })}</li>
-                <li>{fill(t.comboFactionNew, { n: n.fresh })}</li>
-              </ul>
-            </section>
-          );
-        })
-      }
-      </div>
-      <div class="combo-stage">
-      <div class="stage-art" aria-hidden="true">
-        <div class="stage-glow"></div>
-        <div class="stage-moon"></div>
-        <div class="stage-ground"></div>
-      </div>
-      <div class="stage-sigil">
-        <div class="sigil-ring">
-          <img class="sigil-race" data-stage-race-icon alt="" width="128" height="128" />
-          <img class="sigil-class" data-stage-class-icon alt="" width="64" height="64" />
-        </div>
-        <p class="stage-faction" data-stage-faction></p>
-        <p class="stage-title"><span data-stage-race></span> <span data-stage-class></span></p>
-        <p class="stage-sub" data-stage-sub></p>
-      </div>
-      </div>
-      <a class="customize-btn" data-planner-link href={withBase(`/${lang}/talents/`)}>
-        {t.comboCustomize} <span aria-hidden="true">›</span>
+      <a class="creator-tile" href={creatorUrl(lang)}>
+        <span class="creator-bg" aria-hidden="true"></span>
+        <span class="creator-grain" aria-hidden="true"></span>
+        <span class="creator-text">
+          <span class="creator-label">Alliance · Horde</span>
+          <span class="creator-title">{t.creatorTitle}</span>
+          <span class="creator-row">
+            <span class="creator-hint">{t.creatorHint}</span>
+            <span class="go">{t.creatorStart} →</span>
+          </span>
+        </span>
       </a>
     </div>
-  </section>
 
-  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+    <h2 class="codex-section">{t.explore}</h2>
+    <ul class="feature-grid">
+      {
+        features.map((f) => (
+          <li>
+            <a class="feature-tile" href={f.href}>
+              <span class="feature-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d={ICONS[f.icon]} />
+                </svg>
+              </span>
+              <span class="feature-title">{f.title}</span>
+              <span class="feature-hint">{f.hint}</span>
+              {f.builds ? (
+                <span class="feature-stat" data-builds-stat data-tpl={t.buildsN} hidden />
+              ) : (
+                f.stat && <span class="feature-stat">{f.stat}</span>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="dash-data">{dataLine}</p>
+  </div>
+
   <script>
-    import '../../scripts/combo';
+    // Saved talent builds live in this browser only (localStorage), so their
+    // count is filled in here; the tile shows no number when there are none.
+    import { browserStore, loadBuilds } from '../../lib/saved-builds';
+
+    const stat = document.querySelector<HTMLElement>('[data-builds-stat]');
+    const n = loadBuilds(browserStore()).length;
+    if (stat && n > 0) {
+      stat.textContent = (stat.dataset.tpl ?? '').replace('{n}', String(n));
+      stat.hidden = false;
+    }
   </script>
 </BaseLayout>
