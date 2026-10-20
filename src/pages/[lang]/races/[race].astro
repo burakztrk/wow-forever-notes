@@ -59,7 +59,7 @@ const tips = tooltipPayload([...racials.map((e) => e.id), ...patchNoteGlossaryId
     }
   </ul>
 
-  <PatchNotes lang={lang} notes={notes} name={race.name} empty={t.noPatchNotes} />
+  <PatchNotes lang={lang} notes={notes} empty={t.noPatchNotes} />
 
   <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
 </BaseLayout>

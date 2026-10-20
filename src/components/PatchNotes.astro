@@ -12,6 +12,7 @@ interface Props {
   empty: string;
   // profession page: name each note by its section ("Mining", "General")
   nameBySection?: boolean;
+  // note title; defaults to the section's own heading ("Gnome", not the data's "Gnomes")
   name?: string;
   id?: string;
 }
@@ -21,7 +22,7 @@ const t = ui(lang);
 const items = notes.flatMap(({ post, sections }) =>
   nameBySection
     ? sections.map((s) => ({ post, sections: [s], title: s.title }))
-    : [{ post, sections, title: name }],
+    : [{ post, sections, title: name || sections[0].title }],
 );
 ---
 
