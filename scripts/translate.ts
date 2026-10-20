@@ -11,10 +11,13 @@ import type { GlossaryFile } from '../src/lib/glossary-types';
 import type { LegacyFile } from '../src/lib/profession-types';
 import {
   applyRankTranslations,
+  applyRewardTranslations,
   applyTranslations,
+  rewardLineTexts,
   pruneCache,
   textKey,
   validateTranslation,
+  type ItemLines,
   type TranslationCache,
 } from './lib/translations';
 
@@ -22,6 +25,7 @@ const ROOT = process.cwd();
 const GLOSSARY = path.join(ROOT, 'src/data/glossary.json');
 const LEGACY = path.join(ROOT, 'src/data/legacy.json');
 const CACHE = path.join(ROOT, 'src/data/i18n/tr.json');
+const PROFESSIONS = path.join(ROOT, 'src/data/professions.json');
 const PENDING = path.join(ROOT, '.cache/translate-pending.json');
 
 const json = (v: unknown) => JSON.stringify(v, null, 2) + '\n';
@@ -35,8 +39,11 @@ const readJson = async <T>(file: string, fallback: T): Promise<T> => {
 
 const glossary = await readJson<GlossaryFile>(GLOSSARY, { entries: [] } as unknown as GlossaryFile);
 const legacy = await readJson<LegacyFile | null>(LEGACY, null);
-// Legacy perk tooltips share the cache with the glossary.
-const texts = [...glossary.entries, ...(legacy?.perks ?? [])];
+const items = (await readJson<{ items: ItemLines } | null>(PROFESSIONS, null))?.items ?? {};
+// Legacy perk tooltips and the Legacy reward items' lines share the cache
+// with the glossary.
+const rewardLines = rewardLineTexts(legacy?.rewards ?? [], items);
+const texts = [...glossary.entries, ...(legacy?.perks ?? []), ...rewardLines];
 let cache = await readJson<TranslationCache>(CACHE, {});
 
 const applyIdx = process.argv.indexOf('--apply');
@@ -70,6 +77,7 @@ if (applyIdx > 0) {
 
 const missing = applyTranslations(texts, cache);
 applyRankTranslations(texts);
+if (legacy) applyRewardTranslations(legacy.rewards, items, cache);
 cache = Object.fromEntries(Object.entries(pruneCache(texts, cache)).sort(([a], [b]) => a.localeCompare(b)));
 
 await mkdir(path.dirname(CACHE), { recursive: true });

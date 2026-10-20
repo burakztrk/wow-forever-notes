@@ -594,25 +594,48 @@
       "points": 15,
       "name": "Holstered Replica Ironforge Air Rifle",
       "icon": "inv_weapon_rifle_22",
-      "item": 276236
+      "item": 276236,
+      "linesTr": [
+        "Alınca bağlanır",
+        "Eşsiz",
+        "Diğer",
+        "Kullanım: Dostluk atış yarışması için Ironforge Airgun Reissue'yu kılıfından çıkarır. (10 sn bekleme süresi)",
+        "\"Resmî lisanslı sürüm; dipçiğinde yerleşik bir pusula ve cücelerin yaptığı bir puanlama aygıtı var.\""
+      ]
     },
     {
       "points": 25,
       "name": "Spectral Bear Cub",
       "icon": "inv_pet_babyblizzardbear",
-      "item": 277714
+      "item": 277714,
+      "linesTr": [
+        "Alınca bağlanır",
+        "Evcil hayvan",
+        "\"Bu türden bir dostu nasıl çağıracağını sana öğreteceğim.\""
+      ]
     },
     {
       "points": 40,
       "name": "Spectral Bear Tabard",
       "icon": "inv_tabard_legacyc60_b_01",
-      "item": 277717
+      "item": 277717,
+      "linesTr": [
+        "Alınca bağlanır",
+        "Eşsiz",
+        "Tabard"
+      ]
     },
     {
       "points": 55,
       "name": "Reins of the Spectral Bear",
       "icon": "inv_bearmountblizzard",
-      "item": 277718
+      "item": 277718,
+      "linesTr": [
+        "Alınca bağlanır",
+        "Binekler",
+        "Seviye 60 gerektirir",
+        "\"Bu bineği nasıl çağıracağını sana öğreteceğim.\""
+      ]
     }
   ]
 }

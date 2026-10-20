@@ -248,6 +248,14 @@
   margin: 2px 0;
   color: var(--text);
 }
+/* item lines (itemLineKind in src/lib/tooltip-render.ts) */
+.wft-line--effect {
+  color: var(--item-effect);
+}
+.wft-line--meta {
+  color: var(--text-mute);
+  font-size: 0.78rem; /* same as the "Source" link */
+}
 
 /* inline item / perk references on profession pages */
 .wf-tip--item,

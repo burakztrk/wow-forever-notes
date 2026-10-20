@@ -1,0 +1,37 @@
+---
+// "Open it in game with N": the default key binding of the matching game
+// window (source: method.gg's WoW Forever UI guide, linked in the PR).
+import type { Lang } from '../config';
+import { ui } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  keyName: string;
+}
+
+const { lang, keyName } = Astro.props;
+const [before, after] = ui(lang).gameKey.split('{key}');
+---
+
+<p class="game-key">{before}<kbd>{keyName}</kbd>{after}</p>
+
+<style>
+  .game-key {
+    margin: -4px 0 10px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+  kbd {
+    display: inline-block;
+    min-width: 1.6em;
+    margin: 0 2px;
+    padding: 1px 6px;
+    border: 1px solid var(--gold-dim);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    background: var(--bg-elev-2);
+    color: var(--gold);
+    font: 600 0.85rem/1.4 var(--font-display, inherit);
+    text-align: center;
+  }
+</style>
