@@ -15,9 +15,12 @@ interface Props {
   // note title; defaults to the section's own heading ("Gnome", not the data's "Gnomes")
   name?: string;
   id?: string;
+  // professions page: a closed section that opens on its heading (.fold in professions.css)
+  collapsible?: boolean;
 }
 
-const { lang, notes, empty, nameBySection = false, name = '', id = 'patch-notes' } = Astro.props;
+const { lang, notes, empty, nameBySection = false, name = '', id = 'patch-notes', collapsible = false } = Astro.props;
+const Wrapper = collapsible ? 'details' : 'section';
 const t = ui(lang);
 const items = notes.flatMap(({ post, sections }) =>
   nameBySection
@@ -26,8 +29,16 @@ const items = notes.flatMap(({ post, sections }) =>
 );
 ---
 
-<section class="patch-notes" id={id}>
-  <h2 class="codex-section">{t.patchNotes}</h2>
+<Wrapper class:list={['patch-notes', { 'prof-section fold': collapsible }]} id={id}>
+  {
+    collapsible ? (
+      <summary>
+        <h2 class="codex-section">{t.patchNotes}</h2>
+      </summary>
+    ) : (
+      <h2 class="codex-section">{t.patchNotes}</h2>
+    )
+  }
   {items.length === 0 && <p class="empty-note">{empty}</p>}
   {
     items.map(({ post, sections, title }) => (
@@ -49,4 +60,4 @@ const items = notes.flatMap(({ post, sections }) =>
       </details>
     ))
   }
-</section>
+</Wrapper>
