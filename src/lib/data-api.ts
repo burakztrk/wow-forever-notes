@@ -8,6 +8,7 @@ import { inClassOrder, type ClassInfo, type GlossaryFile } from './glossary-type
 import { getAllPosts } from './blog';
 import { guideGlossaryTerms } from './professions';
 import { postUrl } from '../utils/url';
+import { parseSections, sectionsAsBlocks } from './post-sections';
 
 // Public read-only data API for the mobile app: /data/v1/*.json, generated at
 // build time and served by GitHub Pages (CORS: *). Bump DATA_SCHEMA when a
@@ -40,7 +41,17 @@ export async function postsPayload() {
       url: `${import.meta.env.SITE}${postUrl(p.lang, p.slug)}`,
       // rendered HTML: tooltip spans carry data-tip="<glossary id>"; image
       // paths are site-relative, resolve them against manifest.assetBase
-      html: p.rendered?.html ?? '',
+      // class / race / profession sections arrive as <section class="note-section">
+      // (older app parsers flatten <details>); `sections` lists them separately
+      html: sectionsAsBlocks(p.rendered?.html ?? ''),
+      sections: parseSections(p.rendered?.html ?? '').map(({ kind, ids, title, anchor, html, glossaryIds }) => ({
+        kind,
+        ids,
+        title,
+        anchor,
+        html,
+        glossaryIds,
+      })),
       glossaryIds: (p.rendered?.metadata?.frontmatter?.glossaryIds as string[] | undefined) ?? [],
     })),
   };

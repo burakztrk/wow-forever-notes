@@ -1,5 +1,6 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { Lang } from '../config';
+import { notesFor, parseSections, type PostSection, type SectionKind } from './post-sections';
 import { assertTranslationsComplete, splitId } from './posts';
 
 export type Post = CollectionEntry<'blog'> & { lang: Lang; slug: string };
@@ -29,3 +30,19 @@ export async function getAllPosts(): Promise<Post[]> {
 export async function getPosts(lang: Lang): Promise<Post[]> {
   return (await getAllPosts()).filter((p) => p.lang === lang);
 }
+
+export interface PatchNote {
+  post: Post & { date: Date };
+  sections: PostSection[];
+}
+
+// Class / race / profession sections of this language's posts, newest first
+// (see src/lib/post-sections.ts). `id` omitted: every section of that kind.
+export async function getPatchNotes(lang: Lang, kind: SectionKind, id?: string): Promise<PatchNote[]> {
+  const posts = (await getPosts(lang)).map((p) => ({ ...p, date: p.data.date, sections: parseSections(p.rendered?.html ?? '') }));
+  return notesFor(posts, kind, id);
+}
+
+export const patchNoteGlossaryIds = (notes: PatchNote[]) => [
+  ...new Set(notes.flatMap((n) => n.sections.flatMap((s) => s.glossaryIds))),
+];

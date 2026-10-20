@@ -21,7 +21,7 @@ Beta realm 15 Ekim bakımında **1.60.1.70425** build'ine güncellendi. Eski bui
 
 - Wand ile ateş etmeden önce artık 0,5 saniye sabit durmak gerekiyor. Bu davranış World of Warcraft'ın ilk sürümlerindeki gibi.
 
-### Hunter
+::class[Hunter]
 
 - :spell[Auto Shot] da ateş etmeden önce 0,5 saniye sabit durmayı istiyor. :spell[Aimed Shot] gibi büyüleri cast ederken Auto Shot atılmaya devam ediyor.
 - :talent[Trueshot Aura] artık bütün raid'i etkiliyor.
@@ -30,7 +30,7 @@ Beta realm 15 Ekim bakımında **1.60.1.70425** build'ine güncellendi. Eski bui
 - :spell[Summon Hawk] artık hawk'u büyünün atıldığı hedefte çağırıyor ve onu o hedefe bağlı tutuyor.
 - Pet yetenekleri zayıfladı: Dismember'ın iyileştirme azaltması %25'e (önceden %50), Sonic Blast'ın cast yavaşlatması %30'a (önceden %60) indi. İkisinin de süresi kısaldı, cooldown'u uzadı.
 
-### Mage
+::class[Mage]
 
 - Yeni büyü :spell[Frost Blast] 24. seviyede öğreniliyor. 1,5 saniyelik cast'le hasar veriyor ve hedefi %40 yavaşlatıyor. Frostbolt'u etkileyen tüm talentlerden yararlanıyor. Geliştiricilerin açıklaması: down-rank cezası yüzünden Rank 1 :spell[Frostbolt]'un gördüğü işi bu büyü üstleniyor.
 - :spell[Arcane Blast] yeniden tasarlandı. Artık 1,5 saniyelik cast. Her kullanımda Mage'e Intellect'inin %15'i kadar ek spell damage veriyor ve en fazla 4 kez stack oluyor. Etki ilk uygulandığı andan itibaren 15 saniye sürüyor. Hasar ve spell damage katsayıları %40 düşürüldü.
@@ -38,7 +38,7 @@ Beta realm 15 Ekim bakımında **1.60.1.70425** build'ine güncellendi. Eski bui
 - Yeni 16 puanlık talent :talent[Arcane Wrath]: 3,5 saniyelik cast, 6 saniye cooldown. Hasarı, Mage'in maksimum manasının %5'i kadar ek spell power'ı varmış gibi hesaplanıyor.
 - :talent[Presence of Mind]'ın cast'lerde tüketilmemesi hatası düzeltildi.
 
-### Druid
+::class[Druid]
 
 - :talent[Leader of the Pack] artık yalnızca melee ve ranged kritik şansı veriyor ve bütün raid'i etkiliyor. :spell[Moonkin Form]'un aurası da artık yalnızca spell kritik şansı veriyor ve raid genelinde.
 - :spell[Shred] (Rank 1) artık 20. seviyede öğreniliyor (önceden 22).
@@ -46,24 +46,43 @@ Beta realm 15 Ekim bakımında **1.60.1.70425** build'ine güncellendi. Eski bui
 
 ## Irk değişiklikleri
 
-- **Tauren:**
-  - :racial[Endurance] artık %2 kritik hasar ve iyileştirme veriyor (önceden %1 isabet).
-  - :racial[Plainsrunning] binekliyken %3 ek hız veriyor. Ama etkiyi korumak için artık saniyede belirli bir mesafe hareket etmek gerekiyor.
-  - :racial[War Stomp] cooldown'u 90 saniye, :racial[Cultivation] cooldown'u 15 dakika oldu.
-- **Orc:**
-  - :racial[Blood Fury] cooldown'u 3 dakikaya çıktı (önceden 2).
-  - :racial[Shatter Curse] artık bağışıklık vermiyor, curse ve bane etkilerini temizliyor. Büyü hasarı azaltması %5'e indi (önceden %15).
-  - Axe Specialization yerine %1 kritik şansı veren Savage geldi.
-- **Troll:** :racial[Regeneration]'ın can yenileme bonusu %20'ye çıktı (önceden %10).
-- **Skyborne:**
-  - :racial[Wind Blessed] haste bonusu %3'e çıktı (önceden %1).
-  - :racial[Walk on Air] cooldown'u 90 saniyeye indi.
-  - Skysight ve Read Leyline artık hareket halinde kullanılabiliyor.
-- **Human ve Dwarf:**
-  - Human'da Sword Specialization yerine %2 kritik şansı veren Ruthless geldi.
-  - Dwarf'ta Mace Specialization yerine %2 kritik hasar ve iyileştirme veren Earth Fury geldi.
-- **Gnome:** :racial[Eureka!] artık şarjsız, 8 saniyelik bir buff. Power Word: Shield'ı da etkiliyor.
-- **Undead:** :racial[Touch of the Grave] daha tutarlı çalışacak şekilde ayarlandı. Tetiklenme şansı caster'larda %30, Paladin/Rogue/Warrior'da %20. 25 saniyelik iç cooldown'u var.
+::race[Tauren]
+
+- :racial[Endurance] artık %2 kritik hasar ve iyileştirme veriyor (önceden %1 isabet).
+- :racial[Plainsrunning] binekliyken %3 ek hız veriyor. Ama etkiyi korumak için artık saniyede belirli bir mesafe hareket etmek gerekiyor.
+- :racial[War Stomp] cooldown'u 90 saniye, :racial[Cultivation] cooldown'u 15 dakika oldu.
+
+::race[Orc]
+
+- :racial[Blood Fury] cooldown'u 3 dakikaya çıktı (önceden 2).
+- :racial[Shatter Curse] artık bağışıklık vermiyor, curse ve bane etkilerini temizliyor. Büyü hasarı azaltması %5'e indi (önceden %15).
+- Axe Specialization yerine %1 kritik şansı veren Savage geldi.
+
+::race[Troll]
+
+- :racial[Regeneration]'ın can yenileme bonusu %20'ye çıktı (önceden %10).
+
+::race[Skyborne]
+
+- :racial[Wind Blessed] haste bonusu %3'e çıktı (önceden %1).
+- :racial[Walk on Air] cooldown'u 90 saniyeye indi.
+- Skysight ve Read Leyline artık hareket halinde kullanılabiliyor.
+
+::race[Human]
+
+- Human'da Sword Specialization yerine %2 kritik şansı veren Ruthless geldi.
+
+::race[Dwarf]
+
+- Dwarf'ta Mace Specialization yerine %2 kritik hasar ve iyileştirme veren Earth Fury geldi.
+
+::race[Gnome]
+
+- :racial[Eureka!] artık şarjsız, 8 saniyelik bir buff. Power Word: Shield'ı da etkiliyor.
+
+::race[Undead]
+
+- :racial[Touch of the Grave] daha tutarlı çalışacak şekilde ayarlandı. Tetiklenme şansı caster'larda %30, Paladin/Rogue/Warrior'da %20. 25 saniyelik iç cooldown'u var.
 
 ## Önemli bug fix'ler
 

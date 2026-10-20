@@ -69,11 +69,44 @@ Uyulacak kurallar:
 
 - Yazının bölümleri aşağıda. Boş kalan bölümü atla.
   1. Giriş: tarih ve build. Bakım duyurusuna en fazla bir cümle ayır.
-  2. `## Karakter & Sınıf değişiklikleri`: her sınıf için bir `### <Sınıf>` alt başlığı.
-  3. `## Irk değişiklikleri`
-  4. `## Önemli bug fix'ler`
-  5. `## Yeni geliştirmeler / sistem değişiklikleri`
-  6. `## Bilinen sorunlar`: kısa tut.
+  2. `## Karakter & Sınıf değişiklikleri`: her sınıf için bir `::class[<Sınıf>]` bölümü (aşağıya bak).
+     Birden çok sınıfı ilgilendiren genel notlar bölümlerden önce düz `### Genel` başlığının altına.
+  3. `## Irk değişiklikleri`: her ırk için bir `::race[<Irk>]` bölümü. İki ırkı tek maddede birleştirme
+     ("Human ve Dwarf" değil, iki ayrı bölüm).
+  4. `## Meslek değişiklikleri`: her meslek için `::profession[<Meslek>]`, camping için `::profession[Camping]`,
+     birden çok mesleği ilgilendiren notlar için `::profession[Genel]{id=general}` (EN: `::profession[General]{id=general}`).
+  5. `## Önemli bug fix'ler`
+  6. `## Yeni geliştirmeler / sistem değişiklikleri`
+  7. `## Bilinen sorunlar`: kısa tut.
+- **Bölümler (class / ırk / meslek):** yazıda açılır-kapanır blok olur; aynı not class, ırk ve Meslekler
+  sayfalarının en altında da listelenir. Kurallar:
+  - Direktif kendi satırında, en üst seviyede durur (liste içinde değil), önünde ve arkasında boş satır olur.
+  - Bölüm bir sonraki bölüm direktifine, `##`/`###` başlığa ya da `---`'e kadar sürer. Bölümün içeriği
+    madde listesidir; ağaç adları `- **Fury:**` gibi alt madde olarak kalır.
+  - Ad İngilizcedir ve sync verisindeki class / ırk / meslek adıyla eşleşir (`Night Elf`, `Gnome`, `Mining`).
+    `::race[Skyborne]` iki Skyborne ırkını da kapsar. Bilinmeyen ad **build'i kırar**; `{id=…}` ile kimlik
+    verilebilir (`{id=alliance-human}`).
+  - TR ve EN dosyasında aynı bölümler aynı sırada olmalı; `npm run build` ve `npm test` farkı hata sayar.
+
+  ```markdown
+  ## Karakter & Sınıf değişiklikleri
+
+  ### Genel
+
+  - Tüm sınıflara dokunan not.
+
+  ::class[Warrior]
+
+  - Rend artık …
+  - **Fury:**
+    - :talent[Booming Voice] …
+
+  ## Irk değişiklikleri
+
+  ::race[Gnome]
+
+  - :racial[Eureka!] …
+  ```
 - **Kaynaklar bölümü yazma.** Frontmatter'daki `sources` sayfanın sonunda otomatik listelenir.
 - Dil kuralları:
   - TR dosyası Türkçe, EN dosyası İngilizce yazılır.

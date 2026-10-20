@@ -1,8 +1,10 @@
 ---
 import GlossaryRow from '../../../components/GlossaryRow.astro';
+import PatchNotes from '../../../components/PatchNotes.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
+import { getPatchNotes, patchNoteGlossaryIds } from '../../../lib/blog';
 import { classesOf, racialsOf, races } from '../../../lib/codex';
 import type { RaceInfo } from '../../../lib/glossary-types';
 import { islandJson, tooltipPayload } from '../../../lib/tooltip-payload';
@@ -22,10 +24,8 @@ const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/races/${race.id}/`)])) as Record<Lang, string>;
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 const racials = racialsOf(race);
-const tips = tooltipPayload(
-  racials.map((e) => e.id),
-  lang,
-);
+const notes = await getPatchNotes(lang, 'race', race.id);
+const tips = tooltipPayload([...racials.map((e) => e.id), ...patchNoteGlossaryIds(notes)], lang);
 ---
 
 <BaseLayout title={`${race.name} · ${t.racesTitle}`} lang={lang} alternates={alternates}>
@@ -58,6 +58,8 @@ const tips = tooltipPayload(
       ))
     }
   </ul>
+
+  <PatchNotes lang={lang} notes={notes} name={race.name} empty={t.noPatchNotes} />
 
   <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
 </BaseLayout>
