@@ -17,7 +17,10 @@ export function referencedIcons(entries: GlossaryEntry[], classes: ClassInfo[], 
   );
 }
 
-// Downloads icons not yet in public/icons/ (existing files are kept).
+// Downloads icons not yet in public/icons/ (existing files are kept). The
+// race_*.jpg and classicon_*.jpg icons are 256px Real-ESRGAN (realesrgan-x4plus)
+// upscales of wclbox's 56px icons; deleting one brings back the low-resolution
+// original.
 export async function downloadIcons(iconDir: string, icons: Set<string>, log: (...m: unknown[]) => void) {
   await mkdir(iconDir, { recursive: true });
   let fetched = 0;
