@@ -1,0 +1,22 @@
+---
+// One of the app's navigation icons (src/lib/codex-icons.ts), drawn in currentColor.
+import { CODEX_ICONS, type CodexIconName } from '../lib/codex-icons';
+
+interface Props {
+  name: CodexIconName;
+}
+
+const { name } = Astro.props;
+---
+
+<svg viewBox="0 0 24 24" aria-hidden="true">
+  {
+    CODEX_ICONS[name].map((p) =>
+      'stroke' in p ? (
+        <path d={p.d} fill="none" stroke="currentColor" stroke-width={p.stroke} stroke-linecap="round" stroke-linejoin="round" />
+      ) : (
+        <path d={p.d} fill="currentColor" />
+      ),
+    )
+  }
+</svg>
