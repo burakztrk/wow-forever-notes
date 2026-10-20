@@ -22,45 +22,45 @@ Beta realm 8 Ekim bakımında **1.60.1.70291** build'ine güncellendi. Yeni zind
 - Hasar alırken üretilen Öfke (Rage) formülü düzeltildi. Artık oyuncunun kendi canı yerine yaratığın beklenen canı üzerinden hesaplanıyor; bu sayede daha fazla Stamina kuşanmak Öfke kazancını düşürmüyor.
 - Damage absorb kalkanları varken alınan hasarlar artık yok sayılmıyor ve Öfke kazandırmaya devam ediyor.
 
-### Druid
+::class[Druid]
 
 - Şekil değiştirmişken (Bear/Dire Bear/Cat Form) Mana Potion kullanılamama hatası giderildi.
 - :spell[Bear Form] ve :spell[Dire Bear Form] tehdit bonusu %30'dan %50'ye çıkarıldı.
 - :spell[Demoralizing Roar] artık etkilenen tüm hedeflere doğru şekilde tehdit uyguluyor.
 - **Feral:** Predatory Instincts talent'ı Natural Instinct olarak yeniden adlandırıldı ve Intellect'in %12/%25'i kadar büyü iyileştirmesi sağlama özelliği eklendi. Shifting Power artık Enerji doluyken harcanamıyor.
 
-### Hunter
+::class[Hunter]
 
 - :spell[Disengage] yeteneğinin amaçlanan iki kat tehdit azaltması uygulandı.
 - Evcil hayvanların düşük candayken tekrar tekrar can kazanmasına yol açan hata düzeltildi.
 - **Survival:** :talent[Expose Prey] süresi 10 saniyeye çıkarıldı (önceden 5). :talent[Entrapment] artık azalan verimlere (diminishing returns) tabi ve Frost Trap periyodik tetiklenmesinde değil sadece ilk açılışta çalışıyor.
 
-### Mage
+::class[Mage]
 
 - :talent[Impact] talent'ının Flamestrike'ın periyodik hasarından tetiklenmesi hatası giderildi.
 - :spell[Frostbolt], :spell[Fireball] ve :spell[Arcane Missiles] büyülerinin düşük seviyelerdeki hasar artış eğrisi daha tutarlı hale getirildi.
 
-### Paladin
+::class[Paladin]
 
 - :spell[Retribution Aura]'nın vuran hedefin büyü gücünü kullanması hatası giderildi; temel hasarı ve büyü gücü katsayısı Vanilla değerlerine döndürüldü.
 - **Protection:** :talent[Reckoning]{class=paladin} tetiklenmesine 1,5 saniyelik iç bekleme süresi eklendi. Seal of Fury ve Shield Specialization'ın mana yenilerken tehdit üretmesi kaldırıldı.
 
-### Priest
+::class[Priest]
 
 - **Discipline:** :spell[Penance] 3 saniyelik kanal yerine 2 saniyelik kanal olarak düzeltildi ve hasar/iyileştirme değerleri dengelendi; Rank 2 ve 4 iyileştirmeleri artırıldı.
 
-### Shaman
+::class[Shaman]
 
 - :spell[Flametongue Totem], şekil değiştirmiş hedeflerde silah hızını değil karakterin gerçek saldırı hızını esas alıyor.
 - Tüm silah geliştirmelerinin (:spell[Rockbiter Weapon], :spell[Flametongue Weapon], :spell[Frostbrand Weapon], :spell[Windfury Weapon]) süresi 60 dakikaya çıkarıldı ve bileme taşları/yağlarla birlikte kullanılabilir hale geldi.
 - :spell[Water Shield] mana yenileme miktarı tooltip'te doğru gösterildi.
 
-### Warlock
+::class[Warlock]
 
 - Yeni evcil hayvan çağrılırken mevcut pet artık sersemliyor (stun).
 - Demonology: Demonic Brand'in ek pet hasarı yalnızca Shadow hasarı vurduğunda yüksek tehdit üretiyor.
 
-### Warrior
+::class[Warrior]
 
 - :spell[Demoralizing Shout] artık etkilenen tüm hedeflerde tehdit üretiyor.
 - **Arms:** :talent[Deep Wounds] artık :talent[Impale]'e ulaşmak için zorunlu. Off-hand silahın Attack Power'ı ile ölçeklenmesi hatası giderildi.

@@ -1,8 +1,10 @@
 ---
 import GlossaryRow from '../../../components/GlossaryRow.astro';
+import PatchNotes from '../../../components/PatchNotes.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { fill, ui } from '../../../i18n';
+import { getPatchNotes, patchNoteGlossaryIds } from '../../../lib/blog';
 import { classList, racesFor, spellGroups } from '../../../lib/codex';
 import type { ClassInfo } from '../../../lib/glossary-types';
 import { islandJson, tooltipPayload } from '../../../lib/tooltip-payload';
@@ -22,8 +24,9 @@ const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/classes/${info.id}/`)])) as Record<Lang, string>;
 const groups = spellGroups(info);
 const total = groups.reduce((n, g) => n + g.spells.length, 0);
+const notes = await getPatchNotes(lang, 'class', info.id);
 const tips = tooltipPayload(
-  groups.flatMap((g) => g.spells.map((s) => s.id)),
+  [...groups.flatMap((g) => g.spells.map((s) => s.id)), ...patchNoteGlossaryIds(notes)],
   lang,
 );
 ---
@@ -71,6 +74,8 @@ const tips = tooltipPayload(
     ))
   }
   <p class="empty-note" data-no-spells hidden>{t.noSpells}</p>
+
+  <PatchNotes lang={lang} notes={notes} name={info.name} empty={t.noPatchNotes} />
 
   <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
 </BaseLayout>

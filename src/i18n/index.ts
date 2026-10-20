@@ -88,6 +88,11 @@ const strings = {
     filterChanged: 'Değişen',
     noSpells: 'Bu filtreye uyan büyü yok.',
     gameKey: 'Oyunda {key} tuşuyla açılır (varsayılan tuş).',
+    patchNotes: 'Patch notları',
+    patchNotesItem: '{date} — {name} patch notları',
+    noPatchNotes: 'Yazılarda henüz bununla ilgili patch notu yok.',
+    noProfessionNotes: 'Yazılarda henüz meslek notu yok.',
+    fullPost: 'Yazının tamamı →',
     searchTitle: 'Ara',
     searchHint: 'Büyü, talent ya da ırk yeteneği ara',
     noResults: 'Sonuç yok.',
@@ -275,6 +280,11 @@ const strings = {
     filterChanged: 'Changed',
     noSpells: 'No spells match this filter.',
     gameKey: 'In game, press {key} to open it (default key binding).',
+    patchNotes: 'Patch notes',
+    patchNotesItem: '{date} — {name} patch notes',
+    noPatchNotes: 'No patch notes about this in the posts yet.',
+    noProfessionNotes: 'No profession notes in the posts yet.',
+    fullPost: 'Full post →',
     searchTitle: 'Search',
     searchHint: 'Search spells, talents and racials',
     noResults: 'No results.',
@@ -396,6 +406,15 @@ export function ui(lang: Lang): UiStrings {
 export function formatDate(date: Date, lang: Lang): string {
   return date.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-GB', {
     year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'Europe/Istanbul',
+  });
+}
+
+// "16 Ekim" / "16 October": patch-note titles on class, race and profession pages
+export function formatDayMonth(date: Date, lang: Lang): string {
+  return date.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-GB', {
     month: 'long',
     day: 'numeric',
     timeZone: 'Europe/Istanbul',
