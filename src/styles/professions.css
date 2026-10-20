@@ -20,6 +20,52 @@
 .prof-section {
   scroll-margin-top: 16px;
 }
+/* The professions page's sections open and close on their heading, with a
+   chevron on the right that turns up when open (the app's ProfessionsScreen). */
+details.fold {
+  margin: 0;
+  border-bottom: 1px solid var(--border);
+}
+details.fold > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 2px;
+  cursor: pointer;
+  list-style: none;
+}
+details.fold > summary::-webkit-details-marker {
+  display: none;
+}
+details.fold > summary > h2 {
+  flex: 1;
+  margin: 0;
+  padding: 0.55em 0;
+  border: 0;
+  font-size: 1.3rem;
+}
+details.fold > summary::after {
+  content: '';
+  flex: none;
+  width: 9px;
+  height: 9px;
+  margin: 0 6px 4px;
+  border-right: 2px solid var(--text-dim);
+  border-bottom: 2px solid var(--text-dim);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+details.fold[open] > summary::after {
+  margin-bottom: -4px;
+  transform: rotate(-135deg);
+}
+details.fold > summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+details.fold[open] {
+  padding-bottom: 20px;
+}
 .with-icon {
   display: flex;
   align-items: center;
@@ -274,12 +320,8 @@ a.icon-name:hover {
   color: var(--text-dim);
 }
 
-.prof-sources {
-  margin-top: 40px;
+.prof-sources > :not(summary) {
   font-size: 0.85rem;
-}
-.prof-sources h2 {
-  font-size: 1.1rem;
 }
 .prof-sources ul {
   padding-left: 1.2em;

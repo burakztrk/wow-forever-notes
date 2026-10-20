@@ -91,21 +91,60 @@ const tips = professionTips(lang, {
   <GameKey lang={lang} keyName="K" />
   <p class="muted">{t.professionsIntro}</p>
   <nav class="jump-nav" aria-label={t.professionsTitle}>
-    <a class="chip-link" href="#camping">{t.secCamping}</a>
-    <a class="chip-link" href="#best">{t.secBest}</a>
-    <a class="chip-link" href="#buffs">{t.secBuffs}</a>
     <a class="chip-link" href="#primary">{t.secPrimary}</a>
     <a class="chip-link" href="#secondary">{t.secSecondary}</a>
+    <a class="chip-link" href="#camping">{t.secCamping}</a>
+    <a class="chip-link" href="#buffs">{t.secBuffs}</a>
+    <a class="chip-link" href="#best">{t.secBest}</a>
     <a class="chip-link" href="#patch-notes">{t.patchNotes}</a>
     <a class="chip-link" href={withBase(`/${lang}/legacy/#tree`)}>{t.openLegacy}</a>
   </nav>
 
-  <!-- 1. Camping -->
-  <section id="camping" class="prof-section">
-    <h2 class="with-icon">
-      <img src={iconUrl('inv_camelot_camping_welcomingcampfire')} alt="" width="32" height="32" />
-      {t.secCamping}
-    </h2>
+  <!-- 1. Primary and secondary professions, open -->
+  <details id="primary" class="prof-section fold" open>
+    <summary><h2>{t.secPrimary}</h2></summary>
+    <ul class="tile-grid prof-tiles">
+      {
+        primaryProfessions.map((p) => (
+          <li>
+            <a class="tile" href={profUrl(p.slug)}>
+              <img src={iconUrl(p.icon)} alt="" width="44" height="44" loading="lazy" />
+              {p.name}
+              <small>{sectionLabel(p, lang)}</small>
+              {firstObject(p.slug) && <small class="tile-camp">{firstObject(p.slug)!.name}</small>}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+  <details id="secondary" class="prof-section fold" open>
+    <summary><h2>{t.secSecondary}</h2></summary>
+    <p class="muted">{t.secondaryNote}</p>
+    <ul class="tile-grid prof-tiles">
+      {
+        secondaryProfessions.map((p) => (
+          <li>
+            <a class="tile" href={profUrl(p.slug)}>
+              <img src={iconUrl(p.icon)} alt="" width="44" height="44" loading="lazy" />
+              {p.name}
+              <small>{sectionLabel(p, lang)}</small>
+              {firstObject(p.slug) && <small class="tile-camp">{firstObject(p.slug)!.name}</small>}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </details>
+
+  <!-- 2. Camping; this and the sections below start closed -->
+  <details id="camping" class="prof-section fold">
+    <summary>
+      <h2 class="with-icon">
+        <img src={iconUrl('inv_camelot_camping_welcomingcampfire')} alt="" width="32" height="32" />
+        {t.secCamping}
+      </h2>
+    </summary>
     <p class="lead"><RichText text={pick(guide.camping.intro, lang)} /></p>
     <h3>{t.howItWorks}</h3>
     <ol class="step-list">
@@ -172,85 +211,11 @@ const tips = professionTips(lang, {
         </p>
       )
     }
-  </section>
-
-  <!-- 2. Best professions for each class -->
-  <section id="best" class="prof-section">
-    <h2>{t.secBest}</h2>
-    <p>{t.bestIntro}</p>
-    <ul class="pick-grid">
-      {
-        classList.map((c) => {
-          const pickFor = guide.classes[c.id];
-          return (
-            <li class="pick-card" style={`--class-color: var(--class-${c.id})`}>
-              <a class="pick-head" href={withBase(`/${lang}/classes/${c.id}/`)}>
-                {c.icon && <img src={iconUrl(c.icon)} alt="" width="32" height="32" loading="lazy" />}
-                <span>{c.name}</span>
-              </a>
-              <div class="pick-pair">
-                <span class="pick-goal">{t.goalLeveling}</span>
-                {pickFor.leveling.map((slug) => {
-                  const p = professionBySlug.get(slug)!;
-                  return (
-                    <a class="prof-pill" href={profUrl(slug)}>
-                      <img src={iconUrl(p.icon)} alt="" width="22" height="22" loading="lazy" />
-                      {p.name}
-                    </a>
-                  );
-                })}
-              </div>
-              <p class="pick-why">
-                <RichText text={pick(pickFor.why, lang)} />
-              </p>
-              <dl class="pick-goals">
-                {goals.map((g) => (
-                  <div>
-                    <dt>{g.label}</dt>
-                    <dd>
-                      {pickFor[g.key].map((slug) => {
-                        const p = professionBySlug.get(slug)!;
-                        return (
-                          <a href={profUrl(slug)} title={p.name}>
-                            <img src={iconUrl(p.icon)} alt={p.name} width="20" height="20" loading="lazy" />
-                          </a>
-                        );
-                      })}
-                      <span>{pickFor[g.key].map((slug) => professionBySlug.get(slug)!.name).join(' + ')}</span>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </li>
-          );
-        })
-      }
-    </ul>
-    <dl class="goal-notes">
-      <div>
-        <dt>{t.goalGold}</dt>
-        <dd><RichText text={pick(guide.goalNotes.gold, lang)} /></dd>
-      </div>
-      {
-        raidPairs.map((key) => (
-          <div>
-            <dt>
-              {t.goalRaids}: {key.split('+').map((s) => professionBySlug.get(s)?.name).join(' + ')}
-            </dt>
-            <dd><RichText text={pick(guide.goalNotes.raids[key], lang)} /></dd>
-          </div>
-        ))
-      }
-      <div>
-        <dt>{t.goalPvp}</dt>
-        <dd><RichText text={pick(guide.goalNotes.pvp, lang)} /></dd>
-      </div>
-    </dl>
-  </section>
+  </details>
 
   <!-- 3. Camp buffs: which profession gives which buff -->
-  <section id="buffs" class="prof-section">
-    <h2>{t.secBuffs}</h2>
+  <details id="buffs" class="prof-section fold">
+    <summary><h2>{t.secBuffs}</h2></summary>
     <p class="muted">{t.buffsNote}</p>
     <h3>{t.combatBuffs}</h3>
     <div class="table-wrap">
@@ -342,49 +307,86 @@ const tips = professionTips(lang, {
         </tbody>
       </table>
     </div>
-  </section>
+  </details>
 
-  <!-- 4. Primary and secondary professions -->
-  <section id="primary" class="prof-section">
-    <h2>{t.secPrimary}</h2>
-    <ul class="tile-grid prof-tiles">
+  <!-- 4. Best professions for each class -->
+  <details id="best" class="prof-section fold">
+    <summary><h2>{t.secBest}</h2></summary>
+    <p>{t.bestIntro}</p>
+    <ul class="pick-grid">
       {
-        primaryProfessions.map((p) => (
-          <li>
-            <a class="tile" href={profUrl(p.slug)}>
-              <img src={iconUrl(p.icon)} alt="" width="44" height="44" loading="lazy" />
-              {p.name}
-              <small>{sectionLabel(p, lang)}</small>
-              {firstObject(p.slug) && <small class="tile-camp">{firstObject(p.slug)!.name}</small>}
-            </a>
-          </li>
-        ))
+        classList.map((c) => {
+          const pickFor = guide.classes[c.id];
+          return (
+            <li class="pick-card" style={`--class-color: var(--class-${c.id})`}>
+              <a class="pick-head" href={withBase(`/${lang}/classes/${c.id}/`)}>
+                {c.icon && <img src={iconUrl(c.icon)} alt="" width="32" height="32" loading="lazy" />}
+                <span>{c.name}</span>
+              </a>
+              <div class="pick-pair">
+                <span class="pick-goal">{t.goalLeveling}</span>
+                {pickFor.leveling.map((slug) => {
+                  const p = professionBySlug.get(slug)!;
+                  return (
+                    <a class="prof-pill" href={profUrl(slug)}>
+                      <img src={iconUrl(p.icon)} alt="" width="22" height="22" loading="lazy" />
+                      {p.name}
+                    </a>
+                  );
+                })}
+              </div>
+              <p class="pick-why">
+                <RichText text={pick(pickFor.why, lang)} />
+              </p>
+              <dl class="pick-goals">
+                {goals.map((g) => (
+                  <div>
+                    <dt>{g.label}</dt>
+                    <dd>
+                      {pickFor[g.key].map((slug) => {
+                        const p = professionBySlug.get(slug)!;
+                        return (
+                          <a href={profUrl(slug)} title={p.name}>
+                            <img src={iconUrl(p.icon)} alt={p.name} width="20" height="20" loading="lazy" />
+                          </a>
+                        );
+                      })}
+                      <span>{pickFor[g.key].map((slug) => professionBySlug.get(slug)!.name).join(' + ')}</span>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </li>
+          );
+        })
       }
     </ul>
-  </section>
-  <section id="secondary" class="prof-section">
-    <h2>{t.secSecondary}</h2>
-    <p class="muted">{t.secondaryNote}</p>
-    <ul class="tile-grid prof-tiles">
+    <dl class="goal-notes">
+      <div>
+        <dt>{t.goalGold}</dt>
+        <dd><RichText text={pick(guide.goalNotes.gold, lang)} /></dd>
+      </div>
       {
-        secondaryProfessions.map((p) => (
-          <li>
-            <a class="tile" href={profUrl(p.slug)}>
-              <img src={iconUrl(p.icon)} alt="" width="44" height="44" loading="lazy" />
-              {p.name}
-              <small>{sectionLabel(p, lang)}</small>
-              {firstObject(p.slug) && <small class="tile-camp">{firstObject(p.slug)!.name}</small>}
-            </a>
-          </li>
+        raidPairs.map((key) => (
+          <div>
+            <dt>
+              {t.goalRaids}: {key.split('+').map((s) => professionBySlug.get(s)?.name).join(' + ')}
+            </dt>
+            <dd><RichText text={pick(guide.goalNotes.raids[key], lang)} /></dd>
+          </div>
         ))
       }
-    </ul>
-  </section>
+      <div>
+        <dt>{t.goalPvp}</dt>
+        <dd><RichText text={pick(guide.goalNotes.pvp, lang)} /></dd>
+      </div>
+    </dl>
+  </details>
 
-  <PatchNotes lang={lang} notes={notes} empty={t.noProfessionNotes} nameBySection />
+  <PatchNotes lang={lang} notes={notes} empty={t.noProfessionNotes} nameBySection collapsible />
 
-  <footer class="prof-sources">
-    <h2>{t.sources}</h2>
+  <details id="sources" class="prof-section prof-sources fold">
+    <summary><h2>{t.sources}</h2></summary>
     <ul>
       {
         guide.sources.map((s) => (
@@ -397,7 +399,24 @@ const tips = professionTips(lang, {
       }
     </ul>
     <p class="muted">Build {professionsFile.build ?? '?'} · {guide.updated}</p>
-  </footer>
+  </details>
+
+  <script>
+    // A jump link or a #section URL opens the closed section it points to.
+    function openSection(hash: string) {
+      const el = hash.length > 1 ? document.getElementById(decodeURIComponent(hash.slice(1))) : null;
+      if (!el) return;
+      for (let d = el.closest('details'); d; d = d.parentElement?.closest('details') ?? null) d.open = true;
+      el.scrollIntoView();
+    }
+    openSection(location.hash);
+    window.addEventListener('hashchange', () => openSection(location.hash));
+    // the same link twice fires no hashchange
+    document.addEventListener('click', (e) => {
+      const a = (e.target as Element).closest?.('a[href^="#"]');
+      if (a instanceof HTMLAnchorElement && a.hash === location.hash) openSection(a.hash);
+    });
+  </script>
 
   <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
 </BaseLayout>
