@@ -13,6 +13,8 @@ describe('blog posts', async () => {
 
   it.each(posts.filter((p) => !p.draft).map((p) => [p.file, p] as const))('%s has a body with tooltips', (_, post) => {
     expect(post.html.trim()).not.toBe('');
+    // Announcement-only posts (no class/race/profession sections) have nothing to tooltip.
+    if (!post.html.includes('note-section')) return;
     expect(post.html).toContain('data-tip=');
     expect(post.glossaryIds.length).toBeGreaterThan(0);
   });
