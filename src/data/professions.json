@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-19T20:12:17.600Z",
-  "build": "1.60.1.70450",
+  "generatedAt": "2026-10-23T19:40:44.648Z",
+  "build": "1.60.1.70532",
   "source": "https://wowforever.wclbox.com/en/zhuanye (新手盒子·魔兽世界无限数据库)",
   "professions": [
     {
@@ -4237,7 +4237,7 @@
       "icon": "inv_misc_food_15",
       "kind": "secondary",
       "section": "secondary",
-      "newRecipes": 39,
+      "newRecipes": 40,
       "milestones": [],
       "certification": false,
       "campObjects": [
@@ -7054,6 +7054,7 @@
       "lines": [
         "Food & Drink",
         "Requires Level 25",
+        "Use: Restores 1345 mana in 27 seconds. Drink while sitting. If you spend at least 10 seconds drinking, you gain a full feed effect that increases your Herbology skills by 15 for 15 minutes.",
         "Sell Price: 85c"
       ]
     },
@@ -7254,6 +7255,7 @@
       "lines": [
         "Food & Drink",
         "Requires Level 15",
+        "Use: Restores a total of 115 health in 24 seconds. You must remain seated while eating. If you spend at least 10 seconds eating, you gain the full effect of eating, increasing your agility by 5 for 15 minutes.",
         "Sell Price: 95c"
       ]
     },
@@ -7264,6 +7266,7 @@
       "lines": [
         "Food & Drink",
         "Requires Level 25",
+        "Use: Restores a total of 162 health points in 27 seconds. You must remain seated when eating. If you spend at least 10 seconds eating, you gain the full effect of eating, increasing your Intelligence by 10 points for 15 minutes.",
         "Sell Price: 3s"
       ]
     },
@@ -7525,6 +7528,7 @@
       "lines": [
         "Food & Drink",
         "Requires Level 35",
+        "Use: Restores a total of 358 health points in 30 seconds. You must remain seated when eating. If you spend at least 10 seconds eating, you gain the full effect of eating, increasing your attack power by 40 points for 15 minutes.",
         "Sell Price: 12c"
       ]
     },
@@ -7858,6 +7862,7 @@
       "lines": [
         "Other",
         "Requires Level 40",
+        "Use: When applied to a target weapon, increases spell damage and healing by up to 24. Lasts 30 minutes.",
         "Sell Price: 10s"
       ]
     },
@@ -7879,6 +7884,7 @@
       "lines": [
         "Potions",
         "Requires Level 12",
+        "Use: Instantly restores 600 to 680 health, but you gradually lose 75% of your healing. Symptoms of this effect may manifest as a 6 second poison or a 12 second disease. (2 minute cooldown)",
         "Sell Price: 75c"
       ]
     },
