@@ -13,3 +13,11 @@ const alternates = Object.fromEntries(LANGS.map((l) => [l, langHome(l)])) as Rec
     <a href={withBase('/tr/notes/')}>Türkçe notlar</a> · <a href={withBase('/en/notes/')}>English notes</a>
   </p>
 </BaseLayout>
+<script is:inline>
+  // Links from before the move to foreverwow.app carried a /wow-forever-notes
+  // prefix; GitHub Pages cannot redirect them server-side, so forward visitors.
+  var legacy = '/wow-forever-notes';
+  if (location.pathname === legacy || location.pathname.indexOf(legacy + '/') === 0) {
+    location.replace(location.pathname.slice(legacy.length) + location.search + location.hash || '/');
+  }
+</script>
