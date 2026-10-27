@@ -10,7 +10,7 @@ export interface StoryRace {
 export const STORY_RACES: StoryRace[] = [
   { id: 'alliance-gnome', name: 'Gnome', faction: 'a', slug: 'gnome' },
   { id: 'alliance-dwarf', name: 'Dwarf', faction: 'a', slug: 'dwarf' },
-  { id: 'alliance-human', name: 'Human', faction: 'a' },
+  { id: 'alliance-human', name: 'Human', faction: 'a', slug: 'human' },
   { id: 'alliance-night-elf', name: 'Night Elf', faction: 'a' },
   { id: 'horde-orc', name: 'Orc', faction: 'h' },
   { id: 'horde-troll', name: 'Troll', faction: 'h' },

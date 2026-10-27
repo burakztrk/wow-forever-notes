@@ -879,3 +879,581 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     images: 'Ironforge screenshot, Blackrock illustration and maps from WoW Forever. The Burning Steppes painting is by Peter Lee; the Ragnaros image belongs to Blizzard Entertainment. The earthen illustration (Jon Neilson) and the Bronzebeard image belong to Blizzard Entertainment.',
   },
 };
+
+// ---------------------------------------------------------------- Human
+
+export const HUMAN_ART_LABELS: Record<Lang, Record<string, string>> = {
+  tr: {
+    fromDraenor: 'Draenor’dan',
+    swBurns: 'Stormwind yanar',
+    exodus: 'Lothar ve mülteciler',
+    hordeNorth: 'Horde kuzeye',
+    portalFalls: 'Portal yıkılır',
+    toNorthrend: 'Northrend’e',
+    toKalimdor: 'Kalimdor’a',
+    kingdomsAria: 'Eastern Kingdoms haritası: Strom’dan yayılan yedi insan krallığı; Stromgarde, Lordaeron, Dalaran, Alterac, Gilneas, Kul Tiras ve Stormwind',
+    ekAria: 'Eastern Kingdoms haritası: Dark Portal ve Stormwind güneyde, Lordaeron kuzeyde; First War ve Second War adım adım',
+    plagueAria: 'Third War’da Lordaeron haritası: vebanın Andorhal’dan Stratholme’a yayılışı, Arthas’ın Northrend yolu ve dönüşü, Dalaran ve Jaina’nın batıya göçü',
+    westfallAria: 'Westfall haritası: Stormwind’den Moonbrook’a ustaların yolu, Sentinel Hill ve Saldean’s Farm',
+    worldAria: 'Azeroth haritası: Stormwind, Theramore, Southshore, Stromgarde, Scarlet Monastery ve Light’s Hope Chapel',
+  },
+  en: {
+    fromDraenor: 'From Draenor',
+    swBurns: 'Stormwind burns',
+    exodus: 'Lothar and the refugees',
+    hordeNorth: 'The Horde marches north',
+    portalFalls: 'The Portal falls',
+    toNorthrend: 'To Northrend',
+    toKalimdor: 'To Kalimdor',
+    kingdomsAria: 'Map of the Eastern Kingdoms: the seven human kingdoms that grew out of Strom; Stromgarde, Lordaeron, Dalaran, Alterac, Gilneas, Kul Tiras and Stormwind',
+    ekAria: 'Map of the Eastern Kingdoms: the Dark Portal and Stormwind in the south, Lordaeron in the north; the First and Second Wars step by step',
+    plagueAria: 'Map of Lordaeron in the Third War: the plague spreading from Andorhal to Stratholme, Arthas’s road to Northrend and back, Dalaran and Jaina’s journey west',
+    westfallAria: 'Map of Westfall: the stonemasons’ road from Stormwind to Moonbrook, Sentinel Hill and Saldean’s Farm',
+    worldAria: 'Map of Azeroth: Stormwind, Theramore, Southshore, Stromgarde, Scarlet Monastery and Light’s Hope Chapel',
+  },
+};
+
+type Card = { name: string; text: string; status: string; tone: Step['tone'] };
+
+export interface HumanStory {
+  metaDescription: string;
+  overline: string;
+  lead: string;
+  facts: { label: string; value: string; extra?: string }[];
+  chapters: Record<'origin' | 'arathor' | 'wars' | 'fall' | 'today', string>;
+  origin: { title: string; titleNote: string; paragraphs: string[]; stagesLabel: string; stages: Item[]; giant: string; human: string; note: string };
+  arathor: {
+    title: string;
+    intro: string;
+    more: string[];
+    statLabel: string;
+    statAria: string;
+    statUnit: string;
+    statText: string; // may hold <strong>
+    statDetail: string;
+    kingdomsLabel: string;
+    kingdomsTitle: string;
+    mapCaption: string;
+    routesKey: string;
+    legend: Item[];
+    note: string;
+  };
+  wars: { title: string; intro: string; mapLabel: string; steps: Step[]; cards: Card[]; note: string };
+  fall: {
+    title: string;
+    intro: string;
+    more: string[];
+    mapCaption: string;
+    plagueKey: string;
+    arthasKey: string;
+    jainaKey: string;
+    legend: Item[];
+    cards: Card[];
+    note: string;
+  };
+  today: {
+    title: string;
+    intro: string[];
+    throneLabel: string;
+    throneText: string;
+    throne: (Item & { role: string })[];
+    defiasLabel: string;
+    defiasTitle: string;
+    defiasText: string[];
+    westfallCaption: string;
+    defiasKey: string;
+    westfallLegend: Item[];
+    beyondLabel: string;
+    beyondTitle: string;
+    beyondText: string[];
+    mapCaption: string;
+    routesKey: string;
+    legend: Item[];
+    note: string;
+  };
+  outro: { title: string; text: string; nextText: string };
+  images: string;
+}
+
+export const HUMAN_STORY: Record<Lang, HumanStory> = {
+  tr: {
+    metaDescription:
+      'Human’ların hikayesi: vrykul kökeni, Arathor ve Troll Wars, yedi krallık, Stormwind’in düşüşü, Alliance of Lordaeron, Lordaeron’un çöküşü ve kralsız Stormwind.',
+    overline: 'Hikaye 03',
+    lead: 'Devlerin saklanan çocukları. Krallıkları iki kez yıkıldı, iki kez yeniden kuruldu; Alliance’ı bir arada tutan halk onlar.',
+    facts: [
+      { label: 'Yurt', value: 'Elwynn Forest', extra: 'Eastern Kingdoms' },
+      { label: 'Başkent', value: 'Stormwind City' },
+      { label: 'Hükümdar', value: 'Anduin Wrynn', extra: 'naip Bolvar Fordragon' },
+      { label: 'Kökler', value: 'Arathor', extra: 'Strom' },
+      { label: 'Binek', value: 'At' },
+      { label: 'En yakın müttefik', value: 'Ironforge Dwarf’ları' },
+    ],
+    chapters: { origin: 'Köken', arathor: 'Arathor', wars: 'Savaşlar', fall: 'Düşüş', today: 'Bugün' },
+    origin: {
+      title: 'Devlerin Çocukları',
+      titleNote: '(Curse of Flesh)',
+      paragraphs: [
+        'İnsanların hikayesi Northrend’in buzlu dağlarında, devlerle başlar. Titan’lar dünyayı korumaları için vrykul adında dev savaşçılar yarattı.',
+        'Old Gods’un Curse of Flesh’i vrykul’lara da ulaştı. Bir gün vrykul anneleri küçük, zayıf ve kısa ömürlü bebekler doğurmaya başladı. Kral Ymiron bu çocukların öldürülmesini emretti.',
+        'Bazı aileler emre karşı gelip çocuklarını sakladı. Kurtulan bu çocukların torunları zamanla güneye, Eastern Kingdoms’ın kuzeyine yayıldı ve dev atalarını unuttu. Onlar ilk insanlardı.',
+        'İlk insanlar küçük, dağınık kabileler hâlinde yaşadı; avlandılar, toprak için birbirleriyle savaştılar. Kabilelerin en güçlüsü, Lordaeron’un güneyindeki yaylalarda yaşayan Arathi’ydi.',
+      ],
+      stagesLabel: 'Human’ın doğuş aşamaları',
+      stages: [
+        { name: 'Titan', text: 'Dünyanın mimarları' },
+        { name: 'Vrykul', text: 'Northrend’in dev savaşçıları' },
+        { name: 'Curse of Flesh', text: 'Old Gods’un laneti, küçük ve ölümlü bebekler' },
+        { name: 'Human', text: 'Kısa ömür, hızlı uyum' },
+      ],
+      giant: 'Dev',
+      human: 'İnsan',
+      note: 'Gnome ve Dwarf gibi insanların kökü de Titan’lara uzanıyor; ama onlar taştan ya da metalden değil, Titan’ların dev savaşçılarından geliyor. Kısa ömürlerini hızla çoğalıp her yere yayılarak telafi ettiler.',
+    },
+    arathor: {
+      title: 'Strom’dan yedi krallığa',
+      intro:
+        'Dark Portal’dan yaklaşık 2.800 yıl önce Arathi şefi Thoradin, insan kabilelerini tek bayrak altında topladı. Arathi Highlands’te Strom şehrini kurdu ve ilk insan ulusunu ilan etti: Arathor.',
+      more: [
+        'Thoradin’in acelesi vardı: kuzeyde Amani trolleri büyük bir ordu topluyordu. Trollerin asıl hedefi Quel’Thalas’taki high elf’lerdi. Kuşatılan elf’ler yardım istemek için Strom’a geldi.',
+        'Thoradin bir şart koştu: elf’ler insanlara büyü öğretecekti. Elf’ler kabul etti. Troll Wars’da insan ve elf orduları Alterac Mountains’ın eteklerinde trollerle karşılaştı; büyücülerin yağdırdığı ateş trolleri dağıttı ve Amani imparatorluğu bir daha eski gücüne kavuşamadı.',
+        'Zaferden sonra elf’ler, Arathi soyuna her zaman yardım edeceklerine yemin etti. Bu yemin, binlerce yıl sonra Arathi soyunun son temsilcisi Anduin Lothar yardım istediğinde yeniden gündeme gelecekti.',
+        'Büyü insanlara güç verdi ama bir bedeli vardı: dikkatsizce kullanılan büyü Burning Legion’ın şeytanlarını Azeroth’a çekti. İnsan büyücüler ve elf’ler gizlice Council of Tirisfal’ı kurdu ve tek bir koruyucuya, Guardian of Tirisfal’a büyük bir güç emanet etti. Bu unvanın son sahibi Medivh olacaktı.',
+        'Arathor büyüdükçe dağıldı. Büyücüler kuzeyde kendi şehirleri Dalaran’ı kurdu, yeni şehirler kuzeye ve batıya yayıldı. Strom’un soylu ailelerinin bir kısmı güneye göçüp Azeroth krallığını ve başkenti Stormwind’i kurdu; Strom ise Stromgarde adıyla kaldı. Tek ulus, sonunda yedi krallığa bölündü.',
+      ],
+      statLabel: 'Elf’lerin pazarlığı',
+      statAria: '100 insan büyücü',
+      statUnit: 'büyücü',
+      statText: 'High elf’ler <strong>yüz insana</strong> büyü öğretti; Troll Wars’un kaderini bu ilk insan büyücüler değiştirdi.',
+      statDetail: 'Thoradin elf’lere yardımı, insanlara büyü öğretilmesi şartıyla kabul etti. İnsan büyücülüğünün ve sonradan Dalaran’ın kökü bu pazarlık.',
+      kingdomsLabel: 'Yedi krallık',
+      kingdomsTitle: 'Arathor’un mirasçıları',
+      mapCaption: 'Dark Portal açılmadan önce yedi insan krallığı. Kul Tiras’ın konumu yaklaşıktır.',
+      routesKey: 'Arathor’dan yayılış',
+      legend: [
+        { name: 'Stromgarde', text: 'Arathor’un eski başkenti Strom; King Thoras Trollbane' },
+        { name: 'Lordaeron', text: 'En büyük ve en güçlü krallık; King Terenas Menethil II' },
+        { name: 'Dalaran', text: 'Büyücüler şehri; Kirin Tor yönetir' },
+        { name: 'Alterac', text: 'Dağlardaki küçük krallık; Lord Aiden Perenolde' },
+        { name: 'Gilneas', text: 'Güneybatıdaki yarımada; King Genn Greymane' },
+        { name: 'Kul Tiras', text: 'Denizlerin hâkimi ada krallığı; Lord Admiral Daelin Proudmoore' },
+        { name: 'Stormwind', text: 'Güneydeki Azeroth krallığı; King Llane Wrynn' },
+      ],
+      note: 'Yedi krallık aynı kökten geldi ama hiçbir zaman tek bayrak altında birleşmedi. Bunu ancak dışarıdan gelen bir tehdit yapabilecekti.',
+    },
+    wars: {
+      title: 'Stormwind yandı, Alliance doğdu',
+      intro:
+        'Dark Portal’ın açılmasıyla yüzyıllardır birbirinden uzak duran krallıkların sessiz dönemi bitti. Kaydırdıkça harita, iki büyük savaşı adım adım gösteriyor.',
+      mapLabel: 'First War ve Second War haritası',
+      steps: [
+        {
+          era: 'Dark Portal',
+          title: 'Kapı açılır',
+          text: 'Son Guardian of Tirisfal olan Medivh, Sargeras’ın etkisi altındadır. Orc büyücüsü Gul’dan’la birlikte Black Morass’ta, Draenor’a açılan Dark Portal’ı açar. Horde, Azeroth krallığının topraklarına girer.',
+          status: 'İstila',
+          tone: 'no',
+        },
+        {
+          era: 'First War',
+          title: 'Stormwind düşer',
+          text: 'King Llane’in komutanı Anduin Lothar savunmayı yönetir; Lothar, genç büyücü Khadgar ve yarı-orc Garona, Karazhan’da Medivh’i öldürür. Ama Garona, Horde adına King Llane’i öldürür ve Horde Stormwind’i yakıp yıkar.',
+          status: 'Yıkım',
+          tone: 'no',
+        },
+        {
+          era: 'Exodus',
+          title: 'Denizi aşan halk',
+          text: 'Lothar, hayatta kalanları ve küçük Prince Varian’ı gemilere bindirip kuzeye, Lordaeron’a götürür. Azeroth krallığından geriye bir mülteci kafilesi kalmıştır.',
+          status: 'Sürgün',
+          tone: 'mute',
+        },
+        {
+          era: 'Alliance of Lordaeron',
+          title: 'Yedi sancak, tek ordu',
+          text: 'King Terenas Menethil II insan krallıklarını Lordaeron’da toplar ve Alliance of Lordaeron kurulur; komuta Lothar’a verilir. Lothar Arathi soyunun son temsilcisi olduğu için high elf’ler eski yeminlerine uyar; Ironforge Dwarf’ları ve Gnome’lar da saflara katılır.',
+          status: 'İttifak',
+          tone: 'al',
+        },
+        {
+          era: 'Second War',
+          title: 'Blackrock’ta zafer',
+          text: 'Horde Khaz Modan’dan Lordaeron’a kadar ilerler ve Quel’Thalas’ın ormanlarını yakar. Alliance onu güneye geri püskürtür. Lothar, Blackrock Spire önünde Orgrim Doomhammer’la dövüşürken ölür; komutayı alan Turalyon zaferi kazanır ve Dark Portal yıkılır.',
+          status: 'Zafer',
+          tone: 'ok',
+        },
+      ],
+      cards: [
+        {
+          name: 'Alterac’ın ihaneti',
+          text: 'Lord Aiden Perenolde krallığını kurtarmak için Horde’la gizlice anlaştı. İhanet ortaya çıkınca Perenolde tutuklandı ve Alterac, Lordaeron’un yönetimine geçti.',
+          status: 'İhanet',
+          tone: 'no',
+        },
+        {
+          name: 'Toplama kampları',
+          text: 'Savaştan sonra yakalanan orc’lar kamplara kapatıldı. Kampların masrafı Alliance krallıklarına vergi olarak yüklendi ve hoşnutsuzluk büyüdü.',
+          status: 'Ağır yük',
+          tone: 'mute',
+        },
+        {
+          name: 'Çatlayan ittifak',
+          text: 'Vergilerden bıkan Gilneas Alliance’tan ayrıldı ve Greymane Wall’u ördü. Stromgarde ve Quel’Thalas da çekildi; Alliance zaferden sonra dağılmaya başladı.',
+          status: 'Dağılma',
+          tone: 'no',
+        },
+        {
+          name: 'Stormwind yeniden',
+          text: 'Lordaeron’un desteğiyle Stormwind yeniden inşa edildi ve genç Varian Wrynn babasının tahtına oturdu. Şehri Stonemasons’ Guild ayağa kaldırdı.',
+          status: 'Yeniden doğuş',
+          tone: 'ok',
+        },
+      ],
+      note: 'Alliance, insan krallıklarını ilk kez aynı sancak altında topladı. Ama zafer, onu bir arada tutan korkuyu da ortadan kaldırdı.',
+    },
+    fall: {
+      title: 'Lordaeron’un düşüşü',
+      intro:
+        'Second War’dan yıllar sonra kuzeyde bir veba başladı. Kel’Thuzad’ın Cult of the Damned tarikatı Lordaeron’un köylerine zehirli tahıl dağıttı; tahılı yiyenler ölüp Scourge’un ölümsüz askerleri olarak kalktı.',
+      more: [
+        'Veliaht Prens Arthas Menethil ve genç büyücü Jaina Proudmoore vebanın izini Andorhal’dan Stratholme’a kadar sürdü. Stratholme halkının çoktan zehirlendiğini anlayan Arthas şehri arındırma kararı verdi; Uther ve Jaina ona sırtını döndü.',
+        'Arthas vebanın kaynağını yok etmek için Northrend’e gitti. Orada lanetli kılıç Frostmourne’u aldı ve Lich King’in hizmetine girdi. Lordaeron’a döndüğünde babası King Terenas’ı taht odasında öldürdü; en büyük insan krallığı Scourge’a düştü.',
+        'Sonra sıra Dalaran’a geldi: Scourge’un çağırdığı Burning Legion komutanı Archimonde, büyücüler şehrini yerle bir etti. Gizemli bir peygamberin uyarısına kulak veren Jaina, hayatta kalanları denizden batıya, Kalimdor’a götürdü.',
+        'Kalimdor’da insanlar, eski düşmanları orc’lar ve night elf’lerle omuz omuza Mount Hyjal’da Burning Legion’ı durdurdu. Savaştan sonra Jaina, Dustwallow Marsh kıyısında Theramore’u kurdu. Lordaeron’un yerinde bugün Plaguelands var.',
+      ],
+      mapCaption: 'Third War’da Lordaeron. Northrend ve Kalimdor haritanın dışında.',
+      plagueKey: 'Veba ve Scourge',
+      arthasKey: 'Arthas’ın yolu',
+      jainaKey: 'Jaina’nın göçü',
+      legend: [
+        { name: 'Andorhal', text: 'Vebalı tahılın dağıtıldığı kasaba' },
+        { name: 'Stratholme', text: 'Arthas’ın arındırdığı şehir' },
+        { name: 'Lordaeron', text: 'Başkent; King Terenas burada öldürüldü' },
+        { name: 'Dalaran', text: 'Archimonde’un yıktığı büyücüler şehri' },
+      ],
+      cards: [
+        {
+          name: 'Stratholme’un arındırılması',
+          text: 'Arthas, halkı ölümsüze dönüşmeden önce şehri kılıçtan geçirdi. Uther ve Jaina bu emre karşı çıktı.',
+          status: 'Arındırma',
+          tone: 'no',
+        },
+        {
+          name: 'Frostmourne',
+          text: 'Northrend’de Arthas lanetli kılıcı aldı. Yanındaki dwarf Muradin Bronzebeard, kılıcın laneti yüzünden yere yığıldı.',
+          status: 'Lanet',
+          tone: 'mute',
+        },
+        {
+          name: 'Kralın ölümü',
+          text: 'Lordaeron, dönen prensini zafer şenliğiyle karşıladı. Arthas taht odasında babasını öldürdü ve krallığı Lich King’e teslim etti.',
+          status: 'Düşüş',
+          tone: 'no',
+        },
+        {
+          name: 'Batıya göç',
+          text: 'Jaina Proudmoore hayatta kalanları Kalimdor’a götürdü ve savaştan sonra Theramore’u kurdu. Lordaeron’un mültecileri yeni bir yurt buldu.',
+          status: 'Yeni yurt',
+          tone: 'al',
+        },
+      ],
+      note: 'Lordaeron’un düşüşü insan dünyasının ağırlık merkezini güneye kaydırdı. Alliance’ın kalbi artık bir kez yıkılıp yeniden kurulan Stormwind’de atıyor.',
+    },
+    today: {
+      title: 'Kralsız taht',
+      intro: [
+        'Third War’dan sonra Stormwind, insanların en güçlü krallığı olarak kaldı. Ama şehrin kendi yaraları var: King Varian Wrynn, bir barış görüşmesi için Theramore’a giderken ortadan kayboldu.',
+        'Tahtta şimdi Varian’ın küçük oğlu Anduin oturuyor. Krallığı onun adına Highlord Bolvar Fordragon yönetiyor; sarayda ise soylu danışman Lady Katrana Prestor’un sözü giderek ağırlaşıyor.',
+        'Oyuncuların Elwynn Forest’ta ilk adımlarını attığı Stormwind işte bu Stormwind: başkent ayakta, ama sınırlarında Defias haydutları, Blackrock orc’ları ve Duskwood’un gölgeleri dolaşıyor.',
+      ],
+      throneLabel: 'Taht',
+      throneText: 'Stormwind tahtının bugünkü hâli.',
+      throne: [
+        {
+          role: 'Kayıp kral',
+          name: 'Varian Wrynn',
+          text: 'First War’da babasını kaybeden prens, yeniden kurulan Stormwind’in kralı oldu. Theramore yolunda kayboldu; nerede olduğunu kimse bilmiyor.',
+        },
+        { role: 'Çocuk kral', name: 'Anduin Wrynn', text: 'Varian’ın oğlu. Babası kaybolduğunda henüz çocuktu; taç onun adına korunuyor.' },
+        { role: 'Naip', name: 'Bolvar Fordragon', text: 'Stormwind’in paladin komutanı. Anduin büyüyene kadar krallığı naip olarak yönetiyor.' },
+      ],
+      defiasLabel: 'Defias Brotherhood',
+      defiasTitle: 'Ücreti ödenmeyen ustalar',
+      defiasText: [
+        'Stormwind’i küllerinden yeniden kuran Stonemasons’ Guild, iş bitince ücretini alamadı: House of Nobles ödemeyi reddetti. Çıkan karışıklıkta ustaların lideri Edwin VanCleef şehirden ayrıldı.',
+        'Ustalar Westfall’a çekilip Defias Brotherhood’u kurdu. Westfall’un çiftlikleri boşaldı, yollar haydutların eline geçti; Moonbrook’un altındaki Deadmines’ta gizli bir savaş gemisi inşa ediliyor. Sentinel Hill’deki People’s Militia direnmeye çalışıyor.',
+      ],
+      westfallCaption: 'Westfall.',
+      defiasKey: 'Ustaların yolu',
+      westfallLegend: [
+        { name: 'Sentinel Hill', text: 'People’s Militia’nın karargâhı' },
+        { name: 'Moonbrook', text: 'Deadmines’ın girişi; Defias’ın kalbi' },
+        { name: 'Saldean’s Farm', text: 'Westfall’da hâlâ ekilip biçilen birkaç çiftlikten biri' },
+      ],
+      beyondLabel: 'Stormwind’in ötesinde',
+      beyondTitle: 'Dağılmış bir halkın kaleleri',
+      beyondText: [
+        'Stormwind dışındaki insanlar da direniyor. Lordaeron’un hayatta kalanlarından Scarlet Crusade, ölümsüzlere karşı savaşı fanatizme vardırdı; Argent Dawn ise Light’s Hope Chapel’dan daha ölçülü bir mücadele yürütüyor.',
+        'Arathi Highlands’te Stromgarde, Syndicate’e ve ogre’lara karşı eski başkentini korumaya çalışıyor. Hillsbrad’deki Southshore ayakta; Gilneas ise Greymane Wall’un ardında kapılarını kapattı. Kalimdor’da Jaina Proudmoore’un Theramore’u, Alliance’ın batıdaki kalesi.',
+      ],
+      mapCaption: 'Azeroth’ta insan kaleleri. Konumlar yaklaşıktır.',
+      routesKey: 'Alliance yolları',
+      legend: [
+        { name: 'Stormwind', text: 'Alliance’ın başkenti' },
+        { name: 'Theramore', text: 'Jaina’nın Kalimdor’daki şehri' },
+        { name: 'Southshore', text: 'Hillsbrad’de ayakta kalan kasaba' },
+        { name: 'Stromgarde', text: 'Arathor’un eski başkenti, kuşatma altında' },
+        { name: 'Scarlet Monastery', text: 'Scarlet Crusade’in Tirisfal’daki kalesi' },
+        { name: 'Light’s Hope Chapel', text: 'Argent Dawn’ın Plaguelands’teki üssü' },
+      ],
+      note: 'Bölünmüş, kralı kayıp, ama ayakta. İnsanlar hiçbir zaman tek başına en güçlü halk olmadı; güçlerini bir araya getirdikleri halklardan aldılar.',
+    },
+    outro: {
+      title: 'İki kez yıkılan, iki kez kurulan',
+      text: 'Saklanan dev çocuklarından Alliance’ın kurucularına. Stormwind’in kapısında kahramanların heykelleri nöbet tutuyor; tahtın sahibi ise hâlâ yolda.',
+      nextText: 'Kalimdor’un en eski halkı: Kaldorei, Well of Eternity ve Teldrassil.',
+    },
+    images:
+      'Haritalar WoW Forever’dan. Stormwind kapısı görselindeki World of Warcraft karakterleri ve mekânları Blizzard Entertainment’a aittir.',
+  },
+  en: {
+    metaDescription:
+      'The humans’ story: vrykul origins, Arathor and the Troll Wars, the seven kingdoms, the fall of Stormwind, the Alliance of Lordaeron, the fall of Lordaeron and a Stormwind without its king.',
+    overline: 'Story 03',
+    lead: 'The hidden children of giants. Their kingdoms fell twice and rose twice; they are the people who hold the Alliance together.',
+    facts: [
+      { label: 'Homeland', value: 'Elwynn Forest', extra: 'Eastern Kingdoms' },
+      { label: 'Capital', value: 'Stormwind City' },
+      { label: 'Ruler', value: 'Anduin Wrynn', extra: 'regent Bolvar Fordragon' },
+      { label: 'Roots', value: 'Arathor', extra: 'Strom' },
+      { label: 'Mount', value: 'Horse' },
+      { label: 'Closest ally', value: 'The dwarves of Ironforge' },
+    ],
+    chapters: { origin: 'Origin', arathor: 'Arathor', wars: 'Wars', fall: 'The fall', today: 'Today' },
+    origin: {
+      title: 'Children of Giants',
+      titleNote: '(Curse of Flesh)',
+      paragraphs: [
+        'The human story begins with giants, in the frozen mountains of Northrend. The Titans created giant warriors called vrykul to guard the world.',
+        'The Curse of Flesh, spread by the Old Gods, reached the vrykul too. One day vrykul mothers began to give birth to small, weak, short-lived babies. King Ymiron ordered those children killed.',
+        'Some families defied the order and hid their children. The descendants of the children who survived spread south over time, into the north of the Eastern Kingdoms, and forgot their giant ancestors. They were the first humans.',
+        'The first humans lived as small, scattered tribes; they hunted and fought each other for land. The strongest tribe was the Arathi, who lived in the highlands south of Lordaeron.',
+      ],
+      stagesLabel: 'Stages of the humans’ beginning',
+      stages: [
+        { name: 'Titan', text: 'Architects of the world' },
+        { name: 'Vrykul', text: 'The giant warriors of Northrend' },
+        { name: 'Curse of Flesh', text: 'The Old Gods’ curse: small, mortal babies' },
+        { name: 'Human', text: 'A short life, quick to adapt' },
+      ],
+      giant: 'Giant',
+      human: 'Human',
+      note: 'Like gnomes and dwarves, humans trace their roots to the Titans; but they come not from stone or metal but from the Titans’ giant warriors. They made up for their short lives by multiplying fast and spreading everywhere.',
+    },
+    arathor: {
+      title: 'From Strom to seven kingdoms',
+      intro:
+        'About 2,800 years before the Dark Portal, Thoradin, chieftain of the Arathi, gathered the human tribes under one banner. He built the city of Strom in the Arathi Highlands and declared the first human nation: Arathor.',
+      more: [
+        'Thoradin was in a hurry: in the north the Amani trolls were raising a great army. Their real target was the high elves of Quel’Thalas. Besieged, the elves came to Strom to ask for help.',
+        'Thoradin set one condition: the elves would teach humans magic. The elves agreed. In the Troll Wars the human and elven armies met the trolls at the foot of the Alterac Mountains; the fire the magi called down broke the trolls, and the Amani empire never regained its old strength.',
+        'After the victory the elves swore to aid the bloodline of Arathor forever. That oath would come up again thousands of years later, when Anduin Lothar, the last of the Arathi line, asked for their help.',
+        'Magic made humans strong, but it had a price: careless use of it drew the demons of the Burning Legion to Azeroth. Human magi and elves secretly founded the Council of Tirisfal and entrusted great power to a single protector, the Guardian of Tirisfal. The last to hold that title would be Medivh.',
+        'As Arathor grew, it drifted apart. The magi founded their own city, Dalaran, in the north, and new cities spread north and west. Some of Strom’s noble families moved south and founded the kingdom of Azeroth and its capital, Stormwind; Strom itself lived on as Stromgarde. In the end the one nation split into seven kingdoms.',
+      ],
+      statLabel: 'The elves’ bargain',
+      statAria: '100 human magi',
+      statUnit: 'magi',
+      statText: 'The high elves taught magic to <strong>one hundred humans</strong>; those first human magi turned the tide of the Troll Wars.',
+      statDetail: 'Thoradin agreed to help the elves on the condition that humans be taught magic. Human sorcery, and later Dalaran itself, grew out of that bargain.',
+      kingdomsLabel: 'Seven kingdoms',
+      kingdomsTitle: 'The heirs of Arathor',
+      mapCaption: 'The seven human kingdoms before the Dark Portal opened. The position of Kul Tiras is approximate.',
+      routesKey: 'Spreading out from Arathor',
+      legend: [
+        { name: 'Stromgarde', text: 'Strom, Arathor’s old capital; King Thoras Trollbane' },
+        { name: 'Lordaeron', text: 'The largest and strongest kingdom; King Terenas Menethil II' },
+        { name: 'Dalaran', text: 'The city of magi, ruled by the Kirin Tor' },
+        { name: 'Alterac', text: 'A small kingdom in the mountains; Lord Aiden Perenolde' },
+        { name: 'Gilneas', text: 'The peninsula in the south-west; King Genn Greymane' },
+        { name: 'Kul Tiras', text: 'The island kingdom that ruled the seas; Lord Admiral Daelin Proudmoore' },
+        { name: 'Stormwind', text: 'The kingdom of Azeroth in the south; King Llane Wrynn' },
+      ],
+      note: 'The seven kingdoms came from the same root but never stood under one banner. Only a threat from outside could make them do that.',
+    },
+    wars: {
+      title: 'Stormwind burned, the Alliance was born',
+      intro:
+        'When the Dark Portal opened, the quiet age of kingdoms that had kept apart for centuries came to an end. As you scroll, the map shows the two great wars step by step.',
+      mapLabel: 'Map of the First and Second Wars',
+      steps: [
+        {
+          era: 'Dark Portal',
+          title: 'The gate opens',
+          text: 'Medivh, the last Guardian of Tirisfal, is under the sway of Sargeras. With the orc warlock Gul’dan he opens the Dark Portal to Draenor in the Black Morass. The Horde marches into the kingdom of Azeroth.',
+          status: 'Invasion',
+          tone: 'no',
+        },
+        {
+          era: 'First War',
+          title: 'Stormwind falls',
+          text: 'King Llane’s champion Anduin Lothar leads the defence; Lothar, the young mage Khadgar and the half-orc Garona slay Medivh in Karazhan. But Garona kills King Llane for the Horde, and the Horde burns Stormwind to the ground.',
+          status: 'Ruin',
+          tone: 'no',
+        },
+        {
+          era: 'Exodus',
+          title: 'A people across the sea',
+          text: 'Lothar puts the survivors and the young Prince Varian on ships and takes them north to Lordaeron. All that is left of the kingdom of Azeroth is a column of refugees.',
+          status: 'Exile',
+          tone: 'mute',
+        },
+        {
+          era: 'Alliance of Lordaeron',
+          title: 'Seven banners, one army',
+          text: 'King Terenas Menethil II gathers the human kingdoms at Lordaeron and the Alliance of Lordaeron is formed, with Lothar in command. Because Lothar is the last of the Arathi line, the high elves keep their old oath; the dwarves of Ironforge and the gnomes join the ranks too.',
+          status: 'Alliance',
+          tone: 'al',
+        },
+        {
+          era: 'Second War',
+          title: 'Victory at Blackrock',
+          text: 'The Horde pushes from Khaz Modan all the way to Lordaeron and burns the forests of Quel’Thalas. The Alliance drives it back south. Lothar falls before Blackrock Spire fighting Orgrim Doomhammer; Turalyon takes command and wins, and the Dark Portal is destroyed.',
+          status: 'Victory',
+          tone: 'ok',
+        },
+      ],
+      cards: [
+        {
+          name: 'Alterac’s betrayal',
+          text: 'To save his kingdom, Lord Aiden Perenolde made a secret deal with the Horde. When the betrayal came out, Perenolde was arrested and Alterac was placed under Lordaeron’s rule.',
+          status: 'Betrayal',
+          tone: 'no',
+        },
+        {
+          name: 'Internment camps',
+          text: 'After the war the captured orcs were locked in camps. The cost of the camps fell on the Alliance kingdoms as taxes, and resentment grew.',
+          status: 'Heavy burden',
+          tone: 'mute',
+        },
+        {
+          name: 'A cracking alliance',
+          text: 'Tired of the taxes, Gilneas left the Alliance and raised the Greymane Wall. Stromgarde and Quel’Thalas withdrew too; after its victory the Alliance began to come apart.',
+          status: 'Falling apart',
+          tone: 'no',
+        },
+        {
+          name: 'Stormwind rebuilt',
+          text: 'With Lordaeron’s support Stormwind was rebuilt, and the young Varian Wrynn took his father’s throne. The Stonemasons’ Guild raised the city again.',
+          status: 'Reborn',
+          tone: 'ok',
+        },
+      ],
+      note: 'The Alliance brought the human kingdoms under one banner for the first time. But victory also took away the fear that held it together.',
+    },
+    fall: {
+      title: 'The fall of Lordaeron',
+      intro:
+        'Years after the Second War a plague broke out in the north. Kel’Thuzad’s Cult of the Damned handed out tainted grain in the villages of Lordaeron; those who ate it died and rose again as undead soldiers of the Scourge.',
+      more: [
+        'Crown Prince Arthas Menethil and the young sorceress Jaina Proudmoore tracked the plague from Andorhal to Stratholme. Realising that the people of Stratholme were already poisoned, Arthas decided to purge the city; Uther and Jaina turned their backs on him.',
+        'Arthas went to Northrend to destroy the source of the plague. There he took up the cursed blade Frostmourne and entered the Lich King’s service. When he came home he killed his father, King Terenas, in the throne room, and the greatest human kingdom fell to the Scourge.',
+        'Then it was Dalaran’s turn: Archimonde, the Burning Legion commander summoned by the Scourge, levelled the city of magi. Heeding the warning of a mysterious prophet, Jaina led the survivors west across the sea to Kalimdor.',
+        'In Kalimdor humans stood shoulder to shoulder with their old enemies, the orcs, and with the night elves to stop the Burning Legion at Mount Hyjal. After the war Jaina founded Theramore on the coast of Dustwallow Marsh. Where Lordaeron stood there are now the Plaguelands.',
+      ],
+      mapCaption: 'Lordaeron in the Third War. Northrend and Kalimdor lie off the map.',
+      plagueKey: 'Plague and Scourge',
+      arthasKey: 'Arthas’s road',
+      jainaKey: 'Jaina’s exodus',
+      legend: [
+        { name: 'Andorhal', text: 'The town where the tainted grain was handed out' },
+        { name: 'Stratholme', text: 'The city Arthas purged' },
+        { name: 'Lordaeron', text: 'The capital, where King Terenas was killed' },
+        { name: 'Dalaran', text: 'The city of magi, levelled by Archimonde' },
+      ],
+      cards: [
+        {
+          name: 'The Culling of Stratholme',
+          text: 'Arthas put the city to the sword before its people could turn undead. Uther and Jaina opposed the order.',
+          status: 'Purge',
+          tone: 'no',
+        },
+        {
+          name: 'Frostmourne',
+          text: 'In Northrend Arthas took up the cursed blade. The dwarf at his side, Muradin Bronzebeard, was struck down by its curse.',
+          status: 'Curse',
+          tone: 'mute',
+        },
+        {
+          name: 'The death of a king',
+          text: 'Lordaeron welcomed its returning prince with a victory celebration. Arthas killed his father in the throne room and gave the kingdom to the Lich King.',
+          status: 'Fall',
+          tone: 'no',
+        },
+        {
+          name: 'The journey west',
+          text: 'Jaina Proudmoore led the survivors to Kalimdor and founded Theramore after the war. The refugees of Lordaeron found a new home.',
+          status: 'New home',
+          tone: 'al',
+        },
+      ],
+      note: 'The fall of Lordaeron moved the centre of the human world south. The heart of the Alliance now beats in Stormwind, a city destroyed once and built again.',
+    },
+    today: {
+      title: 'A throne without a king',
+      intro: [
+        'After the Third War Stormwind remained the strongest human kingdom. But the city has wounds of its own: King Varian Wrynn vanished on his way to peace talks in Theramore.',
+        'Varian’s young son Anduin now sits on the throne. Highlord Bolvar Fordragon rules the kingdom in his name, while at court the word of the noble adviser Lady Katrana Prestor carries more and more weight.',
+        'This is the Stormwind players see when they take their first steps in Elwynn Forest: the capital stands, but Defias bandits, Blackrock orcs and the shadows of Duskwood roam its borders.',
+      ],
+      throneLabel: 'The throne',
+      throneText: 'Where the throne of Stormwind stands today.',
+      throne: [
+        {
+          role: 'The lost king',
+          name: 'Varian Wrynn',
+          text: 'The prince who lost his father in the First War became king of the rebuilt Stormwind. He vanished on the road to Theramore, and no one knows where he is.',
+        },
+        { role: 'The boy king', name: 'Anduin Wrynn', text: 'Varian’s son. He was still a child when his father vanished; the crown is kept for him.' },
+        { role: 'The regent', name: 'Bolvar Fordragon', text: 'Stormwind’s paladin commander. He rules the kingdom as regent until Anduin comes of age.' },
+      ],
+      defiasLabel: 'The Defias Brotherhood',
+      defiasTitle: 'The masons who were never paid',
+      defiasText: [
+        'The Stonemasons’ Guild, which raised Stormwind from its ashes, was never paid once the work was done: the House of Nobles refused. In the unrest that followed, the masons’ leader Edwin VanCleef left the city.',
+        'The masons withdrew to Westfall and founded the Defias Brotherhood. Westfall’s farms emptied and its roads fell to bandits; in the Deadmines beneath Moonbrook a secret warship is being built. The People’s Militia at Sentinel Hill is trying to hold on.',
+      ],
+      westfallCaption: 'Westfall.',
+      defiasKey: 'The masons’ road',
+      westfallLegend: [
+        { name: 'Sentinel Hill', text: 'Headquarters of the People’s Militia' },
+        { name: 'Moonbrook', text: 'Entrance to the Deadmines; the heart of the Defias' },
+        { name: 'Saldean’s Farm', text: 'One of the few farms in Westfall still worked' },
+      ],
+      beyondLabel: 'Beyond Stormwind',
+      beyondTitle: 'The strongholds of a scattered people',
+      beyondText: [
+        'Humans outside Stormwind are holding on too. Among Lordaeron’s survivors, the Scarlet Crusade has turned the war on the undead into fanaticism, while the Argent Dawn fights a more measured fight from Light’s Hope Chapel.',
+        'In the Arathi Highlands Stromgarde is trying to hold its old capital against the Syndicate and the ogres. Southshore in Hillsbrad still stands; Gilneas has shut its gates behind the Greymane Wall. In Kalimdor, Jaina Proudmoore’s Theramore is the Alliance’s stronghold in the west.',
+      ],
+      mapCaption: 'Human strongholds on Azeroth. Positions are approximate.',
+      routesKey: 'Alliance roads',
+      legend: [
+        { name: 'Stormwind', text: 'Capital of the Alliance' },
+        { name: 'Theramore', text: 'Jaina’s city in Kalimdor' },
+        { name: 'Southshore', text: 'The town that still stands in Hillsbrad' },
+        { name: 'Stromgarde', text: 'Arathor’s old capital, under siege' },
+        { name: 'Scarlet Monastery', text: 'The Scarlet Crusade’s fortress in Tirisfal' },
+        { name: 'Light’s Hope Chapel', text: 'The Argent Dawn’s base in the Plaguelands' },
+      ],
+      note: 'Divided, their king lost, but still standing. Humans were never the strongest people on their own; their strength came from the peoples they brought together.',
+    },
+    outro: {
+      title: 'Fallen twice, built twice',
+      text: 'From the hidden children of giants to the founders of the Alliance. The statues of heroes keep watch at Stormwind’s gate; the king it belongs to is still out on the road.',
+      nextText: 'The oldest people of Kalimdor: the kaldorei, the Well of Eternity and Teldrassil.',
+    },
+    images:
+      'Maps from WoW Forever. The World of Warcraft characters and places in the Stormwind gate image belong to Blizzard Entertainment.',
+  },
+};

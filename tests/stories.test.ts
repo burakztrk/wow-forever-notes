@@ -3,15 +3,21 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { LANGS } from '../src/config';
-import { DWARF_ART_LABELS, DWARF_STORY, GNOME_ART_LABELS, GNOME_STORY, STORY_UI } from '../src/i18n/stories';
+import { DWARF_ART_LABELS, DWARF_STORY, GNOME_ART_LABELS, GNOME_STORY, HUMAN_ART_LABELS, HUMAN_STORY, STORY_UI } from '../src/i18n/stories';
 import { fillArt } from '../src/lib/stories/art';
 import { DWARF_ART } from '../src/lib/stories/dwarf-art';
 import { GNOME_ART } from '../src/lib/stories/gnome-art';
+import { HUMAN_ART } from '../src/lib/stories/human-art';
 import { STORY_RACES, storySlug } from '../src/lib/stories/races';
 
 const art = [
   { name: 'gnome', labels: GNOME_ART_LABELS, drawings: [GNOME_ART.gears, GNOME_ART.ek, GNOME_ART.scene, GNOME_ART.dm, GNOME_ART.world] },
   { name: 'dwarf', labels: DWARF_ART_LABELS, drawings: [DWARF_ART.crest, DWARF_ART.ek, DWARF_ART.kz, DWARF_ART.world] },
+  {
+    name: 'human',
+    labels: HUMAN_ART_LABELS,
+    drawings: [HUMAN_ART.kingdoms, HUMAN_ART.ek, HUMAN_ART.plague, HUMAN_ART.westfall, HUMAN_ART.world],
+  },
 ];
 
 const keys = (o: object) => Object.keys(o).sort();
@@ -37,6 +43,7 @@ describe('story art', () => {
     for (const lang of LANGS) {
       expect(cams(GNOME_ART.ek)).toHaveLength(GNOME_STORY[lang].wars.steps.length);
       expect(cams(DWARF_ART.ek)).toHaveLength(DWARF_STORY[lang].hammers.steps.length);
+      expect(cams(HUMAN_ART.ek)).toHaveLength(HUMAN_STORY[lang].wars.steps.length);
     }
   });
 });
@@ -70,6 +77,29 @@ describe('story copy', () => {
     expect(tr.wars.cards).toHaveLength(4);
   });
 
+  it('keeps TR and EN human stories in step', () => {
+    const [tr, en] = [HUMAN_STORY.tr, HUMAN_STORY.en];
+    expect(en.facts.length).toBe(tr.facts.length);
+    expect(en.origin.stages.map((s) => s.name)).toEqual(tr.origin.stages.map((s) => s.name));
+    expect(en.wars.steps.map((s) => s.tone)).toEqual(tr.wars.steps.map((s) => s.tone));
+    expect(en.wars.steps.map((s) => s.era)).toEqual(tr.wars.steps.map((s) => s.era));
+    expect(en.wars.cards.map((c) => c.tone)).toEqual(tr.wars.cards.map((c) => c.tone));
+    expect(en.fall.cards.map((c) => c.tone)).toEqual(tr.fall.cards.map((c) => c.tone));
+    expect(en.today.throne.map((c) => c.name)).toEqual(tr.today.throne.map((c) => c.name));
+    for (const key of ['arathor', 'fall', 'today'] as const) expect(en[key].legend.map((l) => l.name)).toEqual(tr[key].legend.map((l) => l.name));
+    expect(en.today.westfallLegend.map((l) => l.name)).toEqual(tr.today.westfallLegend.map((l) => l.name));
+    // the page pairs these lists with fixed icon sets and numbered map pins
+    expect(tr.origin.stages).toHaveLength(4);
+    expect(tr.wars.cards).toHaveLength(4);
+    expect(tr.fall.cards).toHaveLength(4);
+    expect(tr.today.throne).toHaveLength(3);
+    const pins = (svg: string) => (svg.match(/class="pnum"/g) ?? []).length;
+    expect(pins(HUMAN_ART.kingdoms)).toBe(tr.arathor.legend.length);
+    expect(pins(HUMAN_ART.plague)).toBe(tr.fall.legend.length);
+    expect(pins(HUMAN_ART.westfall)).toBe(tr.today.westfallLegend.length);
+    expect(pins(HUMAN_ART.world)).toBe(tr.today.legend.length);
+  });
+
   it('has the shared strings in every language', () => {
     expect(keys(STORY_UI.en)).toEqual(keys(STORY_UI.tr));
   });
@@ -86,6 +116,7 @@ describe('story races', () => {
       if (race.slug) expect(existsSync(join(root, 'src/pages/[lang]/stories', `${race.slug}.astro`)), race.slug).toBe(true);
     }
     expect(storySlug('alliance-dwarf')).toBe('dwarf');
+    expect(storySlug('alliance-human')).toBe('human');
     expect(storySlug('horde-orc')).toBeUndefined();
   });
 });
