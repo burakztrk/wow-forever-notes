@@ -134,11 +134,232 @@ function init(root: HTMLElement) {
       g.style.transform = `translate(${(dx * q).toFixed(1)}px,${(dy * q).toFixed(1)}px) rotate(${(deg * q).toFixed(1)}deg)`;
     });
   };
-  const tracks = $$('[data-p]').map((el) => {
-    const [s, e] = (el.dataset.p ?? '0.9,0.2').split(',').map(Number);
-    const fn = handlers[el.id] ?? ('routes' in el.dataset ? routeUpdate : 'moves' in el.dataset ? moveUpdate : undefined);
-    return { el, s, e, fn, last: -1 };
-  });
+  const tracks = $$('[data-p]')
+    .filter((el) => !('routes' in el.dataset))
+    .map((el) => {
+      const [s, e] = (el.dataset.p ?? '0.9,0.2').split(',').map(Number);
+      const fn = handlers[el.id] ?? ('moves' in el.dataset ? moveUpdate : undefined);
+      return { el, s, e, fn, last: -1 };
+    });
+
+  // [data-routes]: automatic path animation with play/pause button in top-right corner.
+  // When entering the screen, animation plays automatically for 3 cycles, then rests at 100%.
+  // Clicking the button toggles between play/pause/replay.
+  // Re-entering the screen after scrolling away restarts the 3 cycles.
+  // Excludes narrative stage-maps like Skyborne Chapter IV (Kriz).
+  const routeMaps = $$<HTMLElement>('[data-routes]', root).filter(
+    (el) => !el.closest('.story') && !el.classList.contains('stage-map') && !el.querySelector('#ek'),
+  );
+  if (routeMaps.length > 0) {
+    const isTr = (document.documentElement.lang || 'tr').startsWith('tr');
+    const LABELS = {
+      play: isTr ? 'Animasyonu oynat' : 'Play animation',
+      pause: isTr ? 'Animasyonu duraklat' : 'Pause animation',
+      replay: isTr ? 'Tekrar oynat' : 'Replay animation',
+    };
+
+    const ICONS = {
+      pause:
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1.5"/><rect x="14" y="4" width="4" height="16" rx="1.5"/></svg>',
+      play:
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>',
+      replay:
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>',
+    };
+
+    const DURATION = 2400; // ms per draw cycle
+    const HOLD_DURATION = 900; // ms to pause at 100% between cycles
+    const MAX_CYCLES = 3; // 3 cycles then stop
+
+    type MapAnim = {
+      el: HTMLElement;
+      btn: HTMLButtonElement;
+      playing: boolean;
+      cycle: number;
+      progress: number;
+      phase: 'draw' | 'hold';
+      lastTime: number;
+      holdElapsed: number;
+      inView: boolean;
+      manuallyPaused: boolean;
+    };
+
+    const anims: MapAnim[] = [];
+
+    const setButtonState = (anim: MapAnim, state: 'play' | 'pause' | 'replay') => {
+      anim.btn.innerHTML = ICONS[state];
+      anim.btn.setAttribute('aria-label', LABELS[state]);
+      anim.btn.title = LABELS[state];
+    };
+
+    let rafId = 0;
+    let running = false;
+
+    const tick = (now: number) => {
+      let anyActive = false;
+
+      for (const anim of anims) {
+        if (!anim.playing || !anim.inView) continue;
+        anyActive = true;
+
+        const dt = anim.lastTime > 0 ? Math.min(now - anim.lastTime, 100) : 16;
+        anim.lastTime = now;
+
+        if (anim.phase === 'draw') {
+          anim.progress = clamp(anim.progress + dt / DURATION);
+          routeUpdate(anim.progress, anim.el);
+          anim.el.style.setProperty('--p', anim.progress.toFixed(4));
+
+          if (anim.progress >= 1) {
+            anim.phase = 'hold';
+            anim.holdElapsed = 0;
+          }
+        } else if (anim.phase === 'hold') {
+          anim.holdElapsed += dt;
+          if (anim.holdElapsed >= HOLD_DURATION) {
+            anim.cycle += 1;
+            if (anim.cycle >= MAX_CYCLES) {
+              // 3 cycles finished: stop and keep at 100%
+              anim.playing = false;
+              anim.progress = 1;
+              routeUpdate(1, anim.el);
+              anim.el.style.setProperty('--p', '1');
+              setButtonState(anim, 'replay');
+            } else {
+              // Start next cycle
+              anim.phase = 'draw';
+              anim.progress = 0;
+              anim.holdElapsed = 0;
+              routeUpdate(0, anim.el);
+              anim.el.style.setProperty('--p', '0');
+            }
+          }
+        }
+      }
+
+      if (anyActive) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        running = false;
+      }
+    };
+
+    const requestTick = () => {
+      if (!running) {
+        running = true;
+        rafId = requestAnimationFrame(tick);
+      }
+    };
+
+    routeMaps.forEach((el) => {
+      // Initial state: reset to p=0
+      routeUpdate(0, el);
+      el.style.setProperty('--p', '0');
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'map-ctl';
+      el.appendChild(btn);
+
+      const anim: MapAnim = {
+        el,
+        btn,
+        playing: false,
+        cycle: 0,
+        progress: 0,
+        phase: 'draw',
+        lastTime: 0,
+        holdElapsed: 0,
+        inView: false,
+        manuallyPaused: false,
+      };
+
+      setButtonState(anim, 'pause');
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (anim.playing) {
+          // Pause at current position
+          anim.playing = false;
+          anim.manuallyPaused = true;
+          setButtonState(anim, 'play');
+        } else {
+          // Play / Resume / Replay
+          anim.manuallyPaused = false;
+          anim.playing = true;
+          setButtonState(anim, 'pause');
+          if (anim.cycle >= MAX_CYCLES) {
+            // Replay from start
+            anim.cycle = 0;
+            anim.progress = 0;
+            anim.phase = 'draw';
+            anim.holdElapsed = 0;
+            routeUpdate(0, el);
+            el.style.setProperty('--p', '0');
+          }
+          anim.lastTime = performance.now();
+          requestTick();
+        }
+      });
+
+      if (reduce) {
+        anim.progress = 1;
+        anim.playing = false;
+        routeUpdate(1, el);
+        el.style.setProperty('--p', '1');
+        setButtonState(anim, 'replay');
+      }
+
+      anims.push(anim);
+    });
+
+    if (!reduce && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const anim = anims.find((a) => a.el === entry.target);
+            if (!anim) return;
+
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.12) {
+              // Entered into viewport (at least 12% visible)
+              if (!anim.inView) {
+                anim.inView = true;
+                if (!anim.manuallyPaused) {
+                  anim.cycle = 0;
+                  anim.progress = 0;
+                  anim.phase = 'draw';
+                  anim.holdElapsed = 0;
+                  anim.playing = true;
+                  anim.lastTime = performance.now();
+                  routeUpdate(0, anim.el);
+                  anim.el.style.setProperty('--p', '0');
+                  setButtonState(anim, 'pause');
+                  requestTick();
+                }
+              }
+            } else if (!entry.isIntersecting || entry.intersectionRatio === 0) {
+              // Exited viewport completely
+              if (anim.inView) {
+                anim.inView = false;
+                anim.playing = false;
+                anim.cycle = 0;
+                anim.progress = 0;
+                anim.phase = 'draw';
+                anim.holdElapsed = 0;
+                anim.manuallyPaused = false;
+                routeUpdate(0, anim.el);
+                anim.el.style.setProperty('--p', '0');
+                setButtonState(anim, 'pause');
+              }
+            }
+          });
+        },
+        { threshold: [0, 0.12] },
+      );
+
+      anims.forEach((a) => io.observe(a.el));
+    }
+  }
 
   // the gear pair turns with the page; its lighting stays top-left
   const gearFig = $('.gears');
