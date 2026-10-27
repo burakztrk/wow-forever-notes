@@ -95,7 +95,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     </section>
 
     <!-- I · origin -->
-    <section class="chap" id="origin" aria-labelledby="h-origin">
+    <section class="chap chap-bg" id="origin" aria-labelledby="h-origin">
+      <div class="chap-art" aria-hidden="true"><img src={img('mechagnome.webp')} alt="" width="630" height="400" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">I</div>
@@ -105,7 +106,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           </div>
         </header>
         <div class="prose rv">{s.origin.paragraphs.map((p) => <p>{p}</p>)}</div>
-        <div class="evo-wrap" id="evo" data-p=".88,.38">
+        <div class="evo-wrap" id="evo" data-p=".95,.35">
           <ol class="evo" aria-label={s.origin.stagesLabel}>
             <li class="evo-line" aria-hidden="true"><i></i></li>
             {
@@ -215,7 +216,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
         </header>
         <div class="prose rv"><p>{s.fall.intro}</p></div>
         <div class="scene">
-          <figure class="map-fig rv" id="scene" data-p=".88,.12">
+          <figure class="map-fig rv" id="scene" data-p=".95,.35">
             <Fragment set:html={art(GNOME_ART.scene)} />
             <figcaption>{s.fall.sceneCaption}</figcaption>
           </figure>
@@ -229,7 +230,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
         </div>
 
         <div class="sub rv"><p class="ov">{s.fall.exileLabel}</p><h3 class="h3">{s.fall.exileTitle}</h3></div>
-        <figure class="map-fig rv" id="dm" data-p=".9,.22" data-routes>
+        <figure class="map-fig rv" id="dm" data-p=".95,.35" data-routes>
           <Fragment set:html={art(GNOME_ART.dm)} />
           <figcaption>
             <span>{s.fall.mapCaption}</span>
@@ -305,7 +306,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
         </div>
 
         <div class="sub rv"><p class="ov">{s.today.beyondLabel}</p><h3 class="h3">{s.today.beyondTitle}</h3></div>
-        <figure class="map-fig rv" id="world" data-p=".9,.22" data-routes>
+        <figure class="map-fig rv" id="world" data-p=".95,.35" data-routes>
           <Fragment set:html={art(GNOME_ART.world)} />
           <figcaption>
             <span>{s.today.mapCaption}</span>

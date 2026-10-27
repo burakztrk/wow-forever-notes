@@ -11,7 +11,7 @@ import { STORY_RACES, storySlug } from '../src/lib/stories/races';
 
 const art = [
   { name: 'gnome', labels: GNOME_ART_LABELS, drawings: [GNOME_ART.gears, GNOME_ART.ek, GNOME_ART.scene, GNOME_ART.dm, GNOME_ART.world] },
-  { name: 'dwarf', labels: DWARF_ART_LABELS, drawings: [DWARF_ART.crest, DWARF_ART.ek, DWARF_ART.scene, DWARF_ART.kz, DWARF_ART.world] },
+  { name: 'dwarf', labels: DWARF_ART_LABELS, drawings: [DWARF_ART.crest, DWARF_ART.ek, DWARF_ART.kz, DWARF_ART.world] },
 ];
 
 const keys = (o: object) => Object.keys(o).sort();

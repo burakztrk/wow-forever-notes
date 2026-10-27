@@ -1,7 +1,7 @@
 // Scroll-driven effects of a race story page (src/pages/[lang]/stories/).
 // Everything starts from a complete, readable page: these only animate it.
-// - [data-p="start,end"] elements get --p (0..1) as their top crosses
-//   start → end (fractions of the viewport height) and run their handler.
+// - [data-p="start,end"] elements get --p (0..1) as their anchor (a point partway down
+//   the element) crosses start → end (fractions of the viewport height) and run their handler.
 // - Chapter III's map follows the step nearest the reading line and moves its
 //   "camera" (viewBox); labels keep their screen size through --k.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
@@ -24,7 +24,7 @@ function init(root: HTMLElement) {
   const scaled = $$<SVGSVGElement>('svg.map').filter((s) => s.id !== 'ek');
   const sizeK = (svg: SVGSVGElement) => {
     const w = svg.getBoundingClientRect().width;
-    if (w) svg.style.setProperty('--k', clamp(svg.viewBox.baseVal.width / w, 0.75, 2.2).toFixed(3));
+    if (w) svg.style.setProperty('--k', clamp(svg.viewBox.baseVal.width / w, 0.1, 2.2).toFixed(3));
   };
   scaled.forEach(sizeK);
 
@@ -151,7 +151,10 @@ function init(root: HTMLElement) {
     for (const t of tracks) {
       const r = t.el.getBoundingClientRect();
       if (r.bottom < -vh * 0.3 || r.top > vh * 1.3) continue;
-      const p = reduce ? 1 : clamp((t.s * vh - r.top) / ((t.s - t.e) * vh));
+      // anchor: a point a little below the element's top (at most 35% of the viewport),
+      // so a figure finishes animating when it is in front of the reader, not on its way in
+      const anchor = r.top + Math.min(r.height, vh * 0.7) * 0.5;
+      const p = reduce ? 1 : clamp((t.s * vh - anchor) / ((t.s - t.e) * vh));
       if (Math.abs(p - t.last) < 0.0005) continue;
       t.last = p;
       t.el.style.setProperty('--p', p.toFixed(4));

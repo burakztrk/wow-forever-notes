@@ -437,7 +437,7 @@ export const GNOME_STORY: Record<Lang, GnomeStory> = {
       text: 'A people who learn from their losses, never give up and never stop exploring. A light still burns at the gate of Gnomeregan.',
       nextText: 'The other half of Khaz Modan: Ironforge, the Titan legacy and the story of three clans.',
     },
-    images: 'Ironforge screenshot from WoW Forever. The Gelbin Mekkatorque, Sicco Thermaplugg and troglodyte images belong to Blizzard Entertainment (troglodyte model sheet: Matthew McKeown).',
+    images: 'Ironforge screenshot from WoW Forever. The Mechagnome image, Gelbin Mekkatorque, Sicco Thermaplugg and troglodyte images belong to Blizzard Entertainment (troglodyte model sheet: Matthew McKeown).',
   },
 };
 
@@ -449,20 +449,18 @@ export const DWARF_ART_LABELS: Record<Lang, Record<string, string>> = {
     siege: 'Kuşatma',
     gryphons: 'Grifon binicileri',
     crestAria: 'Üç çekiç: Wildhammer, Bronzebeard ve Dark Iron; kaydırdıkça birbirinden ayrılıyor',
-    ekAria: 'Eastern Kingdoms şematik haritası: Ironforge, Grim Batol, Thaurissan ve Blackrock Mountain, Aerie Peak ve Thandol Span',
-    sceneAria: 'Blackrock Mountain kesiti: Spire, Depths, Shadowforge ve Molten Core; kaydırdıkça lav yükselir',
-    kzAria: 'Second War’da Khaz Modan: Horde’un Ironforge’a ilerleyişi ve Wildhammer grifon binicilerinin yolu',
-    worldAria: 'Azeroth ve Outland şematik haritası: Ulduar, Frosthold, Ironforge, Uldaman, Aerie Peak ve Wildhammer Stronghold',
+    ekAria: 'Eastern Kingdoms haritası: Ironforge, Grim Batol, Thaurissan ve Blackrock Mountain, Aerie Peak ve Thandol Span',
+    kzAria: 'Second War’da Khaz Modan haritası: Horde’un Ironforge’a ilerleyişi ve Wildhammer grifon binicilerinin yolu',
+    worldAria: 'Azeroth haritası: Ironforge, Uldaman ve Aerie Peak',
   },
   en: {
     oneThrone: 'One throne, three clans',
     siege: 'Siege',
     gryphons: 'Gryphon riders',
     crestAria: 'Three hammers: Wildhammer, Bronzebeard and Dark Iron; they drift apart as you scroll',
-    ekAria: 'Schematic map of the Eastern Kingdoms: Ironforge, Grim Batol, Thaurissan and Blackrock Mountain, Aerie Peak and Thandol Span',
-    sceneAria: 'Cross-section of Blackrock Mountain: Spire, Depths, Shadowforge and Molten Core; the lava rises as you scroll',
-    kzAria: 'Khaz Modan in the Second War: the Horde’s advance on Ironforge and the route of the Wildhammer gryphon riders',
-    worldAria: 'Schematic map of Azeroth and Outland: Ulduar, Frosthold, Ironforge, Uldaman, Aerie Peak and Wildhammer Stronghold',
+    ekAria: 'Map of the Eastern Kingdoms: Ironforge, Grim Batol, Thaurissan and Blackrock Mountain, Aerie Peak and Thandol Span',
+    kzAria: 'Map of Khaz Modan in the Second War: the Horde’s advance on Ironforge and the route of the Wildhammer gryphon riders',
+    worldAria: 'Map of Azeroth: Ironforge, Uldaman and Aerie Peak',
   },
 };
 
@@ -476,11 +474,12 @@ export interface DwarfStory {
   facts: { label: string; value: string; extra?: string }[];
   chapters: Record<'origin' | 'hammers' | 'fire' | 'wars' | 'today', string>;
   origin: { title: string; titleNote: string; paragraphs: string[]; stagesLabel: string; stages: Item[]; stone: string; flesh: string; note: string };
-  hammers: { title: string; intro: string; crestCaption: string; clans: Clan[]; mapLabel: string; steps: Step[]; note: string };
+  hammers: { title: string; intro: string; more: string[]; crestCaption: string; clans: Clan[]; mapLabel: string; steps: Step[]; note: string };
   fire: {
     title: string;
     intro: string;
-    sceneCaption: string;
+    more: string[];
+    ragnaros: { label: string; title: string; caption: string; paragraphs: string[] };
     statLabel: string;
     statAria: string;
     statUnit: string;
@@ -492,6 +491,7 @@ export interface DwarfStory {
   wars: {
     title: string;
     intro: string;
+    more: string[];
     mapCaption: string;
     hordeKey: string;
     gryphonKey: string;
@@ -501,14 +501,13 @@ export interface DwarfStory {
   };
   today: {
     title: string;
-    leaderLabel: string;
-    leaderRole: string;
-    leaderText: string;
+    intro: string[];
     councilLabel: string;
     councilText: string;
-    council: Clan[];
+    council: (Clan & { image?: string })[];
     beyondLabel: string;
     beyondTitle: string;
+    beyondText: string[];
     mapCaption: string;
     routesKey: string;
     legend: Item[];
@@ -526,7 +525,7 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     facts: [
       { label: 'Yurt', value: 'Dun Morogh', extra: 'Khaz Modan' },
       { label: 'Başkent', value: 'Ironforge' },
-      { label: 'Kral', value: 'Magni Bronzebeard' },
+      { label: 'Yönetim', value: 'Üç Çekiç Konseyi' },
       { label: 'Klanlar', value: 'Bronzebeard · Wildhammer · Dark Iron' },
       { label: 'Binek', value: 'Ram' },
       { label: 'En yakın müttefik', value: 'Gnomeregan Gnome’ları' },
@@ -538,6 +537,8 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       paragraphs: [
         'İlk dwarf’lar taştandı. Titan’lar, dünyanın derinliklerini şekillendirmek için earthen adında taş gövdeli işçiler yarattı.',
         'Old Gods’un Curse of Flesh’i bu taş gövdeleri ete ve kemiğe çevirdi. Uldaman gibi Titan kasalarında uykuya dalan earthen’lar uyandıklarında kendilerine dwarf dedi. Buz trollerini yenip bu topraklara Khaz Modan adını verdiler ve Ironforge’u dağın altına oydular.',
+        'Earthen’lar Titan’ların derinlikteki işçileriydi: taştan ve madenden yapılmışlar, dağların altındaki Titan yapılarını işletmek için yaratılmışlardı. Old Gods’un laneti onları yalnızca değiştirmedi; yarattığı yeni halklar arasında trogg’lar, gnome’lar ve dwarf’lar vardı. Dwarf’lar bu yüzden gnome’ları ve trogg’ları uzak akraba sayar.',
+        'Uyanan earthen’lar önce Khaz Modan’ın karlı dağlarında yaşayan buz trolleriyle çarpıştı. Zaferden sonra dağın kalbine, Great Forge’un çevresine kendi şehirlerini kurdular. Madencilik, demircilik ve taş işçiliği o günden beri dwarf kimliğinin özüdür.',
       ],
       stagesLabel: 'Dwarf’ın dönüşüm aşamaları',
       stages: [
@@ -553,6 +554,11 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     hammers: {
       title: 'Üç Çekiç Savaşı',
       intro: 'Dark Portal açılmadan yaklaşık 230 yıl önce High King Modimus Anvilmar yaşlılıktan öldü. Taht boş kalınca Ironforge’un üç büyük klanı birbirine girdi.',
+      more: [
+        'Dwarf toplumu o dönemde belirgin çizgilerle ayrılmıştı. Bronzebeard’lar şehirlerin ve orduların, Wildhammer’lar dağların ve açık gökyüzünün, Dark Iron’lar ise büyünün ve madenciliğin klanıydı. Anvilmar’ın ölümüyle bu denge bozuldu: kralın ardından kimin yöneteceğine karar verecek kimse yoktu.',
+        'Her klan tahtın kendi hakkı olduğunu savundu. Ironforge’un salonlarında önce tartışma, sonra tehdit, en sonunda kılıç konuştu. Sorcerer-Thane Thaurissan büyüsünü ve zenginliğini kullanarak şehirde güç toplamaya çalıştı; karşısında Bronzebeard’ların kalabalık ordusu ve Wildhammer savaşçıları duruyordu.',
+        'Bu savaş yalnızca bir taht kavgası değildi. Aynı kandan gelen halkın üçe bölünmesi, yüzyıllar sonra bile Ironforge siyasetinde hissedilecek bir yara bıraktı: Wildhammer ile Bronzebeard arasındaki güvensizlik de, Dark Iron’lara duyulan öfke de bu yıllardan kaldı.',
+      ],
       crestCaption: 'Kaydırdıkça üç çekiç birbirinden ayrılıyor.',
       clans: [
         { name: 'Bronzebeard', leader: 'Thane Madoran Bronzebeard', text: 'En kalabalık ve en savaşçı klan. Ironforge’un ordusu ve tüccarları onlardandı.' },
@@ -564,35 +570,35 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
         {
           era: 'Ironforge',
           title: 'Tek taht, üç klan',
-          text: 'Dark Iron’ların darbe girişimi başarısız olur ve Ironforge’un salonlarında yıllar sürecek bir iç savaş başlar.',
+          text: 'Thaurissan şehirde yönetimi ele geçirmeye çalışır; Bronzebeard ve Wildhammer savaşçıları darbeyi püskürtür. Ama barış gelmez: sokaklarda, surlarda ve madenlerde yıllarca sürecek bir iç savaş başlar.',
           status: 'İç savaş',
           tone: 'no',
         },
         {
           era: 'Bölünme',
           title: 'Bronzebeard’lar kazanır',
-          text: 'Bronzebeard’lar şehri elinde tutar. Wildhammer’lar doğuda Grim Batol’a yerleşir, Dark Iron’lar güneyde, Redridge dağlarında Thaurissan’ı kurar.',
+          text: 'Madoran’ın Bronzebeard’ları Ironforge’u elinde tutar. Wildhammer’lar kendi yollarına gidip doğuda, Wetlands’deki Grim Batol’a yerleşir. Dark Iron’lar şehirden sürülür; Thaurissan güneyde, Redridge dağlarında kendi karargâhını kurar.',
           status: 'Sürgün',
           tone: 'mute',
         },
         {
           era: 'Thaurissan’s War',
           title: 'İki cepheli saldırı',
-          text: 'Thaurissan Ironforge’a, karısı Modgud Grim Batol’a saldırır. Madoran şehri savunur, Khardros Modgud’u öldürür ve kaçan Dark Iron ordusu güneyde kıstırılır.',
+          text: 'Thaurissan Ironforge’a, karısı Modgud ise Grim Batol’a saldırır. Madoran şehri savunur; Khardros, Modgud’la dövüşüp onu öldürür. Komutanını kaybeden Dark Iron ordusu geri çekilir ve güneyde kıstırılır.',
           status: 'Zafer',
           tone: 'ok',
         },
         {
           era: 'Ragnaros',
           title: 'Ateşin Lordu uyanır',
-          text: 'Yenilginin eşiğindeki Thaurissan, Elemental Plane’i yarıp Firelord Ragnaros’u çağırır. Patlama onu öldürür ve dağları parçalar; yerinde Blackrock Mountain yükselir.',
+          text: 'Yenilginin eşiğindeki Thaurissan son kozunu oynar: Elemental Plane’i yarıp Firelord Ragnaros’u çağırır. Ragnaros emir almaya gelmemişti; ortaya çıkışı Thaurissan’ı öldürür, dağları parçalar ve yerinde Blackrock Mountain yükselir. Ayrıntısı bir sonraki bölümde.',
           status: 'Felaket',
           tone: 'no',
         },
         {
           era: 'Thandol Span',
           title: 'Yeni bir ittifak',
-          text: 'Modgud’un ölümüyle lanetlenen Grim Batol’u terk eden Wildhammer’lar Hinterlands’te Aerie Peak’i kurar. İki klan dostluklarının simgesi olarak Thandol Span’i inşa eder.',
+          text: 'Modgud’un ölümüyle lanetlenen Grim Batol’u terk eden Wildhammer’lar Hinterlands’te Aerie Peak’i kurar. Savaşın düşmanlığını geride bırakmak isteyen Bronzebeard ve Wildhammer’lar dostluklarının simgesi olarak Thandol Span’i inşa eder.',
           status: 'İttifak',
           tone: 'al',
         },
@@ -602,7 +608,21 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     fire: {
       title: 'Blackrock’ın altında',
       intro: 'Ragnaros’un gelişi Redridge’in dağlarını parçaladı. Yeni volkan Blackrock Mountain’ın kuzeyinde Searing Gorge, güneyinde Burning Steppes oluştu; geride küllü bir çorak kaldı.',
-      sceneCaption: 'Blackrock Mountain, şematik kesit. Kaydırdıkça lav yükselir.',
+      more: [
+        'Thaurissan’ın yaptığı ritüel, Elemental Plane’in ateş ayağına açılan bir kapıydı. Kapının açıldığı yerde yer kabuğu çatladı: lav, kül ve zehirli gazlar yüzeye fırladı; dağlar bu baskıyla yukarı itilerek Blackrock Mountain’ı oluşturdu.',
+        'Çevredeki bozkırlar ve vadiler önce yandı, sonra kül altında kaldı. Dwarf yerleşimleri, madenler ve Dark Iron ordusunun büyük bölümü ilk dalgada yok oldu; hayatta kalanlar Ragnaros’un esiri oldu.',
+        'Bu yüzden Blackrock bölgesi bugün de iki ayrı yara gibi duruyor: kuzeyde Searing Gorge, güneyde Burning Steppes.',
+      ],
+      ragnaros: {
+        label: 'Ragnaros’un gelişi',
+        title: 'Dağ neden parçalandı?',
+        caption: 'Firelord Ragnaros.',
+        paragraphs: [
+          'Ragnaros Azeroth’un yüzeyinde değil, Elemental Plane’in ateş ayağında, Firelands’de yaşayan bir Elemental Lord’du; yüzeye çıkması için dünyanın dokusunu yırtması gerekiyordu. Thaurissan’ın ritüeli tam bunu yaptı: iki dünya arasındaki perdeyi inceltip Ragnaros’u içeri çekti.',
+          'Sorun şuydu ki Redridge’in dağları o kadar ısıya ve basınca dayanamazdı. Ragnaros ortaya çıktığında altındaki kaya eridi, üstündeki sıra dağlar çöküp birbirine geçti ve geriye tek bir devasa, hâlâ yanan volkan kaldı. Dwarf’lar buna Blackrock Mountain dedi.',
+          'Thaurissan Ragnaros’u hizmetkâr olarak çağırmıştı ama Firelord kimseye boyun eğmedi. Dark Iron liderinin ölümüyle ritüel kontrolsüz kaldı; Ragnaros hayatta kalan Dark Iron’ları esir alıp dağın içine bağladı. Shadowforge City, bu esir halkın dağın altında kurduğu şehirdi.',
+        ],
+      },
       statLabel: 'Savaşın başlangıcı',
       statAria: '230 yıl',
       statUnit: 'yıl',
@@ -610,16 +630,20 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       statDetail:
         'Ragnaros hayatta kalan Dark Iron’ları köleleştirdi. Dağın altında Shadowforge City’yi kuran bu dwarf’lar, diğer klanlara duydukları nefreti yüzyıllar boyunca taşıdı.',
       places: [
-        { tag: 'Kuzey', name: 'Searing Gorge', text: 'Volkanın kuzeyinde yanıp kavrulan vadi.' },
+        { tag: 'Kuzey', name: 'Searing Gorge', text: 'Volkanın hemen kuzeyindeki vadi: patlamanın sıcak kül ve lav yağmuruna tutulup kavruldu. Toprak sertleşti, bitki kalmadı; bugün kızıl taşlı, dumanlı bir kanyon.' },
         { tag: 'Merkez', name: 'Blackrock Mountain', text: 'Ragnaros’un yükselttiği volkan; altında Shadowforge City ve Molten Core.' },
-        { tag: 'Güney', name: 'Burning Steppes', text: 'Güneyde küle dönen bozkır.' },
+        { tag: 'Güney', name: 'Burning Steppes', text: 'Güneydeki bozkır: Ragnaros’un çıkışıyla gelen ateş yağmuru ve volkanik küller yüzünden önce yandı, sonra kül altında kaldı. Kızıl toprağı ve sürekli tüten ufku bu yüzden.' },
       ],
       note: 'Bir klanın hırsı bütün bölgeyi yaktı. Blackrock Mountain, sonraki yüzyıllarda Azeroth’u tehdit eden pek çok gücün kalesi olacaktı.',
     },
     wars: {
       title: 'Dağ düşmedi',
       intro: 'Second War’da Horde Khaz Modan’ı baştan sona istila etti. Ironforge kuşatıldı ama şehir hiç düşmedi.',
-      mapCaption: 'Second War’da Khaz Modan, şematik harita.',
+      more: [
+        'Horde’un Khaz Modan’daki en büyük gücü Dragonmaw ve Blackrock klanlarıydı. Wildhammer’ların terk ettiği Grim Batol’u kendilerine karargâh yaptılar ve ejderha kraliçesi Alexstrasza’yı orada tutsak ettiler; ejderhalarını savaş makinesi gibi kullandılar.',
+        'Ironforge’un savunması şehrin yapısından geliyordu: dağın içine oyulmuş, dar geçitlerle çevrili bir kale. Orc’ların kuşatma silahları dar tünellerde işe yaramadı; Bronzebeard ve Wildhammer’lar yan yana dövüştü.',
+      ],
+      mapCaption: 'Second War’da Khaz Modan.',
       hordeKey: 'Horde ilerleyişi',
       gryphonKey: 'Wildhammer grifonları',
       legend: [
@@ -640,12 +664,13 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     },
     today: {
       title: 'Üç Çekiç Konseyi',
-      leaderLabel: 'Kral',
-      leaderRole: 'King of Ironforge',
-      leaderText:
-        'Cataclysm sırasında Magni, Khaz Modan’ı kurtarmak için Old Ironforge’da bir ritüel yaptı ve elmasa dönüştü. Yıllar sonra Azeroth’un sesi, Speaker olarak uyandı.',
+      intro: [
+        'Ironforge’un bugün tek bir kralı yok. Magni Bronzebeard, Cataclysm sırasında Khaz Modan’ı kurtarmak için Old Ironforge’da bir ritüel yaptı ve elmasa dönüştü; yıllar sonra Azeroth’un sesi, Speaker olarak uyandı.',
+        'Magni’nin yokluğunda tahtı kızı Moira Thaurissan kısa süreliğine ele geçirdi. Dark Iron’lara duyulan eski öfke yeniden alevlendi; King Varian Wrynn’in araya girmesiyle yönetim üç klana bölüştürüldü.',
+        'Böylece Üç Çekiç Savaşı’nı başlatan üç klan, yüzyıllar sonra aynı salonda, aynı masaya oturdu.',
+      ],
       councilLabel: 'Konsey',
-      councilText: 'Magni’nin yokluğunda kızı Moira tahtı kısa süreliğine ele geçirdi. King Varian Wrynn’in aracılığıyla Ironforge’un yönetimi üç klana bölündü.',
+      councilText: 'Üç Çekiç Konseyi’nde her klanın bir temsilcisi var.',
       council: [
         { name: 'Muradin Bronzebeard', leader: 'Bronzebeard', text: 'Northrend’den dönen kardeş; Bronzebeard’ları temsil eder.' },
         { name: 'Falstad Wildhammer', leader: 'Wildhammer', text: 'Aerie Peak’in lideri; Wildhammer’ları temsil eder.' },
@@ -653,15 +678,16 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       ],
       beyondLabel: 'Explorers’ League',
       beyondTitle: 'Uldaman’dan Ulduar’a dwarf izleri',
-      mapCaption: 'Azeroth ve Outland, şematik harita. Ölçek ve konumlar temsilidir.',
+      beyondText: [
+        'Dwarf’ların geçmişe merakı Khaz Modan’la sınırlı kalmadı. Explorers’ League, Titan kalıntılarının peşinde Uldaman’ın kasalarını kazıyor; Northrend’de Ulduar’ı ve Storm Peaks’teki Frostborn dwarf’larının dostluğunu buldu.',
+        'Wildhammer’lar da gökyüzüne bağlılıklarını sürdürüyor: Hinterlands’deki Aerie Peak’in yanında Outland’de, Shadowmoon Valley’de bir üs kurdular. Northrend ve Outland yolculukları bu haritanın dışında kalıyor.',
+      ],
+      mapCaption: 'Azeroth’ta dwarf izleri. Konumlar yaklaşıktır.',
       routesKey: 'Keşif yolları',
       legend: [
-        { name: 'Ulduar', text: 'Storm Peaks’teki Titan şehri; Explorers’ League’in en büyük keşfi' },
-        { name: 'Frosthold', text: 'Storm Peaks’te Explorers’ League’in dost olduğu Frostborn dwarf’ları' },
         { name: 'Ironforge', text: 'Hall of Explorers, Explorers’ League’in merkezi' },
         { name: 'Uldaman', text: 'Badlands’teki Titan kasası; Explorers’ League kazıyor' },
         { name: 'Aerie Peak', text: 'Hinterlands’te Wildhammer yuvası' },
-        { name: 'Wildhammer Stronghold', text: 'Outland, Shadowmoon Valley’deki Wildhammer üssü' },
       ],
       note: 'Üç Çekiç Savaşı’yla bölünen klanlar sonunda aynı masaya oturdu. Dwarf tarihi, bu yaranın kapanmasının hikayesi.',
     },
@@ -670,7 +696,7 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       text: 'Bölünen, yanan, kuşatılan ama hiç diz çökmeyen bir halk. Great Forge’un ateşi hâlâ yanıyor.',
       nextText: 'Stormwind’den Lordaeron’a: Alliance’ı kuran halkın hikayesi.',
     },
-    images: 'Ironforge ekran görüntüsü WoW Forever’dan. Magni Bronzebeard görseli Blizzard Entertainment’a aittir.',
+    images: 'Ironforge ekran görüntüsü, Blackrock illüstrasyonu ve haritalar WoW Forever’dan. Burning Steppes çizimi Peter Lee’ye, Ragnaros görseli Blizzard Entertainment’a aittir. Earthen illüstrasyonu (Jon Neilson) ve Bronzebeard görseli Blizzard Entertainment’a aittir.',
   },
   en: {
     metaDescription: 'The dwarves’ story: earthen origins, the War of the Three Hammers, the coming of Ragnaros, the wars of Khaz Modan and the Council of Three Hammers.',
@@ -679,7 +705,7 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     facts: [
       { label: 'Homeland', value: 'Dun Morogh', extra: 'Khaz Modan' },
       { label: 'Capital', value: 'Ironforge' },
-      { label: 'King', value: 'Magni Bronzebeard' },
+      { label: 'Rule', value: 'Council of Three Hammers' },
       { label: 'Clans', value: 'Bronzebeard · Wildhammer · Dark Iron' },
       { label: 'Mount', value: 'Ram' },
       { label: 'Closest ally', value: 'The gnomes of Gnomeregan' },
@@ -691,6 +717,8 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       paragraphs: [
         'The first dwarves were made of stone. The Titans created stone-bodied workers called earthen to shape the depths of the world.',
         'The Curse of Flesh, spread by the Old Gods, turned those stone bodies into flesh and bone. The earthen slept in Titan vaults such as Uldaman, and when they woke they called themselves dwarves. They drove off the ice trolls, named the land Khaz Modan and carved Ironforge beneath the mountain.',
+        'The earthen were the Titans’ workers of the deep, built of stone and metal to run the Titan works beneath the mountains. The Old Gods’ curse did not simply change them; the peoples it created include the troggs, the gnomes and the dwarves. That is why dwarves count gnomes and troggs as distant kin.',
+        'The awakened earthen first clashed with the ice trolls of Khaz Modan’s snowy peaks. After their victory they built their city at the heart of the mountain, around the Great Forge. Mining, smithing and stonework have been the core of dwarven identity ever since.',
       ],
       stagesLabel: 'Stages of the dwarves’ transformation',
       stages: [
@@ -706,6 +734,11 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     hammers: {
       title: 'The War of the Three Hammers',
       intro: 'About 230 years before the Dark Portal opened, High King Modimus Anvilmar died of old age. With the throne empty, Ironforge’s three great clans turned on each other.',
+      more: [
+        'Dwarven society was sharply divided. The Bronzebeards were the clan of cities and armies, the Wildhammers of mountains and open sky, the Dark Irons of sorcery and mining. Anvilmar’s death broke that balance: no one was left to decide who should rule after the king.',
+        'Each clan claimed the throne as its right. In the halls of Ironforge it began with arguments, then threats, and finally swords. Sorcerer-Thane Thaurissan used his magic and wealth to gather power in the city, while the large Bronzebeard army and the Wildhammer warriors stood against him.',
+        'It was more than a fight over a throne. A people of one blood split three ways, and the wound would be felt in Ironforge politics for centuries: the distrust between Wildhammer and Bronzebeard, and the anger at the Dark Irons, both date from these years.',
+      ],
       crestCaption: 'As you scroll, the three hammers drift apart.',
       clans: [
         { name: 'Bronzebeard', leader: 'Thane Madoran Bronzebeard', text: 'The largest and most martial clan. Most of Ironforge’s army and merchants were Bronzebeards.' },
@@ -717,35 +750,35 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
         {
           era: 'Ironforge',
           title: 'One throne, three clans',
-          text: 'A Dark Iron coup fails, and a civil war that will last for years breaks out in the halls of Ironforge.',
+          text: 'Thaurissan tries to seize control of the city; Bronzebeard and Wildhammer warriors beat the coup back. Peace does not follow: a civil war that will last for years begins in the streets, on the walls and in the mines.',
           status: 'Civil war',
           tone: 'no',
         },
         {
           era: 'The split',
           title: 'The Bronzebeards win',
-          text: 'The Bronzebeards keep the city. The Wildhammers settle Grim Batol to the east; the Dark Irons found Thaurissan in the Redridge Mountains to the south.',
+          text: 'Madoran’s Bronzebeards keep Ironforge. The Wildhammers go their own way and settle Grim Batol in the Wetlands to the east. The Dark Irons are driven out of the city; Thaurissan makes his own stronghold in the Redridge Mountains to the south.',
           status: 'Exile',
           tone: 'mute',
         },
         {
           era: 'Thaurissan’s War',
           title: 'A two-pronged attack',
-          text: 'Thaurissan strikes Ironforge while his wife Modgud strikes Grim Batol. Madoran holds the city, Khardros kills Modgud, and the fleeing Dark Iron army is trapped in the south.',
+          text: 'Thaurissan strikes Ironforge while his wife Modgud strikes Grim Batol. Madoran holds the city; Khardros fights Modgud and kills her. Leaderless, the Dark Iron army falls back and is trapped in the south.',
           status: 'Victory',
           tone: 'ok',
         },
         {
           era: 'Ragnaros',
           title: 'The Firelord wakes',
-          text: 'Facing defeat, Thaurissan breaches the Elemental Plane and summons the Firelord Ragnaros. The blast kills him and shatters the mountains; Blackrock Mountain rises in their place.',
+          text: 'Facing defeat, Thaurissan plays his last card: he breaches the Elemental Plane and summons the Firelord Ragnaros. Ragnaros had not come to take orders; his arrival kills Thaurissan, shatters the mountains and raises Blackrock Mountain in their place. The next chapter has the details.',
           status: 'Cataclysm',
           tone: 'no',
         },
         {
           era: 'Thandol Span',
           title: 'A new alliance',
-          text: 'Leaving Grim Batol, cursed by Modgud’s death, the Wildhammers found Aerie Peak in the Hinterlands. The two clans build the Thandol Span as a sign of their friendship.',
+          text: 'Leaving Grim Batol, cursed by Modgud’s death, the Wildhammers found Aerie Peak in the Hinterlands. Wanting to leave the war’s hostility behind, the Bronzebeards and Wildhammers build the Thandol Span as a sign of their friendship.',
           status: 'Alliance',
           tone: 'al',
         },
@@ -755,7 +788,21 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     fire: {
       title: 'Beneath Blackrock',
       intro: 'Ragnaros’s arrival shattered the Redridge peaks. Searing Gorge formed north of the new volcano, Blackrock Mountain, and the Burning Steppes to its south; an ashen waste was left behind.',
-      sceneCaption: 'Blackrock Mountain, schematic cross-section. As you scroll, the lava rises.',
+      more: [
+        'Thaurissan’s ritual was a door opened onto the fire side of the Elemental Plane. Where it opened, the crust cracked: lava, ash and poisonous gas burst out, and the mountains were pushed upward by the pressure into Blackrock Mountain.',
+        'The steppes and valleys around it burned first, then lay buried in ash. Dwarven settlements, the mines and most of the Dark Iron army were lost in the first wave; the survivors became Ragnaros’s captives.',
+        'That is why the Blackrock region still looks like two separate wounds: Searing Gorge to the north and the Burning Steppes to the south.',
+      ],
+      ragnaros: {
+        label: 'The coming of Ragnaros',
+        title: 'Why did the mountain break?',
+        caption: 'The Firelord Ragnaros.',
+        paragraphs: [
+          'Ragnaros was an Elemental Lord who lived not on the surface of Azeroth but in the Firelands, on the fire side of the Elemental Plane; to reach the surface he had to tear the fabric of the world. Thaurissan’s ritual did exactly that: it thinned the veil between the two worlds and pulled Ragnaros through.',
+          'The trouble was that the mountains of Redridge could not take that much heat and pressure. When Ragnaros emerged, the rock beneath him melted, the ranges above collapsed and folded into each other, and what was left was a single huge volcano that is still burning. The dwarves named it Blackrock Mountain.',
+          'Thaurissan had summoned Ragnaros as a servant, but the Firelord bowed to no one. With the Dark Iron leader dead, the ritual was out of control; Ragnaros took the surviving Dark Irons captive and bound them to the mountain. Shadowforge City was the city that enslaved people built beneath it.',
+        ],
+      },
       statLabel: 'When the war began',
       statAria: '230 years',
       statUnit: 'years',
@@ -763,16 +810,20 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       statDetail:
         'Ragnaros enslaved the surviving Dark Irons. Under the mountain they built Shadowforge City and carried their hatred of the other clans for centuries.',
       places: [
-        { tag: 'North', name: 'Searing Gorge', text: 'The scorched valley north of the volcano.' },
+        { tag: 'North', name: 'Searing Gorge', text: 'The valley just north of the volcano: the blast rained hot ash and lava on it and scorched it. The ground hardened and the plants died; today it is a smoking canyon of red stone.' },
         { tag: 'Centre', name: 'Blackrock Mountain', text: 'The volcano Ragnaros raised; Shadowforge City and the Molten Core lie beneath it.' },
-        { tag: 'South', name: 'Burning Steppes', text: 'The steppe to the south, burned to ash.' },
+        { tag: 'South', name: 'Burning Steppes', text: 'The steppe to the south: the fire rain and volcanic ash from Ragnaros’s arrival burned it first and buried it after. That is why its soil is red and its horizon never stops smoking.' },
       ],
       note: 'One clan’s ambition set a whole region on fire. In the centuries that followed, Blackrock Mountain became the stronghold of many powers that threatened Azeroth.',
     },
     wars: {
       title: 'The mountain held',
       intro: 'In the Second War the Horde overran Khaz Modan from end to end. Ironforge was besieged, but the city never fell.',
-      mapCaption: 'Khaz Modan in the Second War, schematic map.',
+      more: [
+        'The Horde’s greatest force in Khaz Modan was the Dragonmaw and Blackrock clans. They made Grim Batol, abandoned by the Wildhammers, their stronghold and held the Dragonqueen Alexstrasza captive there, using her dragons as war machines.',
+        'Ironforge’s defence came from the city’s shape: a fortress carved into the mountain and ringed by narrow passes. The orcs’ siege engines were useless in tight tunnels, and Bronzebeards and Wildhammers fought side by side.',
+      ],
+      mapCaption: 'Khaz Modan in the Second War.',
       hordeKey: 'Horde advance',
       gryphonKey: 'Wildhammer gryphons',
       legend: [
@@ -793,12 +844,13 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
     },
     today: {
       title: 'The Council of Three Hammers',
-      leaderLabel: 'King',
-      leaderRole: 'King of Ironforge',
-      leaderText:
-        'During the Cataclysm Magni performed a ritual in Old Ironforge to save Khaz Modan and was turned to diamond. Years later he awoke as the voice of Azeroth, the Speaker.',
+      intro: [
+        'Ironforge no longer has a single king. During the Cataclysm Magni Bronzebeard performed a ritual in Old Ironforge to save Khaz Modan and was turned to diamond; years later he awoke as the voice of Azeroth, the Speaker.',
+        'With Magni gone, his daughter Moira Thaurissan briefly seized the throne. Old anger at the Dark Irons flared again; with King Varian Wrynn’s help, the rule of Ironforge was divided among the three clans.',
+        'So the three clans that began the War of the Three Hammers sat, centuries later, in the same hall at the same table.',
+      ],
       councilLabel: 'Council',
-      councilText: 'With Magni gone, his daughter Moira briefly seized the throne. With King Varian Wrynn’s help, the rule of Ironforge was divided among the three clans.',
+      councilText: 'In the Council of Three Hammers each clan has a representative.',
       council: [
         { name: 'Muradin Bronzebeard', leader: 'Bronzebeard', text: 'The brother who came back from Northrend; speaks for the Bronzebeards.' },
         { name: 'Falstad Wildhammer', leader: 'Wildhammer', text: 'Leader of Aerie Peak; speaks for the Wildhammers.' },
@@ -806,15 +858,16 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       ],
       beyondLabel: 'Explorers’ League',
       beyondTitle: 'Dwarven footprints from Uldaman to Ulduar',
-      mapCaption: 'Azeroth and Outland, schematic map. Scale and positions are approximate.',
+      beyondText: [
+        'The dwarves’ curiosity about the past did not stop at Khaz Modan. The Explorers’ League digs the vaults of Uldaman in search of Titan remains; in Northrend it found Ulduar and the friendship of the Frostborn dwarves of the Storm Peaks.',
+        'The Wildhammers still hold to the sky: besides Aerie Peak in the Hinterlands they built a base in Outland, in Shadowmoon Valley. The journeys to Northrend and Outland fall outside this map.',
+      ],
+      mapCaption: 'Dwarven footprints on Azeroth. Positions are approximate.',
       routesKey: 'Expeditions',
       legend: [
-        { name: 'Ulduar', text: 'The Titan city in the Storm Peaks; the Explorers’ League’s greatest find' },
-        { name: 'Frosthold', text: 'Frostborn dwarves in the Storm Peaks, friends of the Explorers’ League' },
         { name: 'Ironforge', text: 'The Hall of Explorers, home of the Explorers’ League' },
         { name: 'Uldaman', text: 'Titan vault in the Badlands, dug by the Explorers’ League' },
         { name: 'Aerie Peak', text: 'The Wildhammer home in the Hinterlands' },
-        { name: 'Wildhammer Stronghold', text: 'Wildhammer base in Outland’s Shadowmoon Valley' },
       ],
       note: 'The clans split by the War of the Three Hammers finally sat at one table. Dwarven history is the story of that wound closing.',
     },
@@ -823,6 +876,6 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       text: 'A people split, burned and besieged who never bent the knee. The fire of the Great Forge still burns.',
       nextText: 'From Stormwind to Lordaeron: the people who founded the Alliance.',
     },
-    images: 'Ironforge screenshot from WoW Forever. The Magni Bronzebeard image belongs to Blizzard Entertainment.',
+    images: 'Ironforge screenshot, Blackrock illustration and maps from WoW Forever. The Burning Steppes painting is by Peter Lee; the Ragnaros image belongs to Blizzard Entertainment. The earthen illustration (Jon Neilson) and the Bronzebeard image belong to Blizzard Entertainment.',
   },
 };
