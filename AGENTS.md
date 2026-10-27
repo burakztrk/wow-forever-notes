@@ -74,7 +74,9 @@ Node 22.12+.
   `snow` (blizzard), `embers` (forge sparks), `void` (violet motes) or `wisps` (moonlit wisps). Styles in `src/styles/stories.css`, all scoped under `.lore`; images
   in `public/stories/<race>/`. Proper names in the Gnome, Dwarf, Human and Night Elf stories get lore cards: `src/i18n/lore.ts` (TR + EN, `aliases` are
   the exact spellings in the copy, `icon` from `public/icons`) and `src/lib/stories/lore.ts` (`loreHtml()` wraps the first
-  mention of each name per text block, `loreTips()` builds the `#wf-glossary` island; `CardTip` kind `lore`).
+  mention of each name per text block, `loreTips()` builds the `#wf-glossary` island; `CardTip` kind `lore`). Lore cards
+  are searchable too: `loreSearch()` adds them, with their aliases and story links, to `/<lang>/search.json`;
+  a new written story goes into `LORE_STORIES` (the lore test checks it against `STORY_RACES`).
 - SEO + analytics: `src/layouts/BaseLayout.astro` writes canonical, hreflang (+ x-default), Open Graph/Twitter
   (`public/og/<lang>.png`) and an optional JSON-LD block (`src/lib/seo.ts`: `WebSite` + SearchAction on the home pages,
   `BlogPosting` on posts). `@astrojs/sitemap` (astro.config, tr/en alternates; root redirect and 404 left out) and

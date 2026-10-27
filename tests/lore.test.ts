@@ -3,8 +3,8 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { LORE } from '../src/i18n/lore';
-import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY } from '../src/i18n/stories';
-import { loreHtml, loreIds, loreTips } from '../src/lib/stories/lore';
+import { LORE_STORIES, loreHtml, loreIds, loreSearch, loreTips } from '../src/lib/stories/lore';
+import { STORY_RACES } from '../src/lib/stories/races';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const plain = (html: string) =>
@@ -34,12 +34,26 @@ describe('lore entries', () => {
 
   it('are each named in a story, and every story names the same ones in both languages', () => {
     const named = new Set<string>();
-    for (const story of [GNOME_STORY, DWARF_STORY, HUMAN_STORY, NIGHT_ELF_STORY]) {
+    expect(Object.keys(LORE_STORIES)).toEqual(STORY_RACES.flatMap((r) => (r.slug ? [r.slug] : [])));
+    for (const story of Object.values(LORE_STORIES)) {
       const tr = loreIds(story.tr).sort();
       expect(loreIds(story.en).sort()).toEqual(tr);
       tr.forEach((id) => named.add(id));
     }
     expect([...named].sort()).toEqual(LORE.map((e) => e.id).sort());
+  });
+});
+
+describe('loreSearch', () => {
+  it('indexes every card under its name and aliases, with the stories that name it', () => {
+    const { cards, lore } = loreSearch('tr');
+    expect(lore.map((l) => l.id).sort()).toEqual(Object.keys(cards).sort());
+    expect(lore).toHaveLength(LORE.length);
+    for (const l of lore) expect(l.stories.length, l.id).toBeGreaterThan(0);
+    const bolvar = lore.find((l) => l.id === 'lore:bolvar')!;
+    expect(bolvar.names).toContain('Bolvar Fordragon');
+    expect(bolvar.stories).toEqual([{ name: 'Human', url: '/tr/stories/human/' }]);
+    expect(loreSearch('en').lore.find((l) => l.id === 'lore:bolvar')!.stories[0].url).toBe('/en/stories/human/');
   });
 });
 

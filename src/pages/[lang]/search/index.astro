@@ -34,11 +34,15 @@ const config = { index: withBase(`/${lang}/search.json`), level: t.level, noResu
 </BaseLayout>
 
 <script>
-  import { searchEntries } from '../../../lib/search';
+  import { searchEntries, type Searchable } from '../../../lib/search';
+  import type { LoreSearchEntry } from '../../../lib/stories/lore';
   import type { TipEntry, TipPayload } from '../../../lib/tooltip-render';
 
   // Client-side glossary search with the app's ranking. The index is the
-  // tooltip payload for every entry, so results get the same tooltips.
+  // tooltip payload for every entry, so results get the same tooltips. The
+  // stories' lore cards are searched too, under their name and every alias.
+  type SearchIndex = TipPayload & { lore?: LoreSearchEntry[] };
+  type Item = Searchable & { tip: string };
   const config = JSON.parse(document.getElementById('wf-search-config')!.textContent!) as {
     index: string;
     level: string;
@@ -48,15 +52,23 @@ const config = { index: withBase(`/${lang}/search.json`), level: t.level, noResu
   const input = document.querySelector<HTMLInputElement>('[data-search-input]')!;
   const results = document.querySelector<HTMLElement>('[data-search-results]')!;
   const status = document.querySelector<HTMLElement>('[data-search-status]')!;
-  let payload: Promise<TipPayload> | null = null;
+  let payload: Promise<SearchIndex> | null = null;
+  let items: Item[] = [];
 
   const esc = (v: unknown) =>
     String(v ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
 
-  function load(): Promise<TipPayload> {
+  function load(): Promise<SearchIndex> {
     payload ??= fetch(config.index)
-      .then((r) => r.json() as Promise<TipPayload>)
+      .then((r) => r.json() as Promise<SearchIndex>)
       .then((data) => {
+        items = Object.values(data.entries).map((e) => ({ name: e.name, desc: e.desc, status: e.status, tip: e.id }));
+        for (const l of data.lore ?? []) {
+          const card = data.cards?.[l.id];
+          if (!card) continue;
+          const desc = [card.sub, ...card.lines].join(' ');
+          for (const name of l.names) items.push({ name, desc, status: 'unchanged', tip: l.id });
+        }
         // the shared tooltip script reads #wf-glossary
         const island = document.createElement('script');
         island.type = 'application/json';
@@ -75,6 +87,16 @@ const config = { index: withBase(`/${lang}/search.json`), level: t.level, noResu
     const dot = e.status !== 'unchanged' ? `<i class="g-dot g-dot--${esc(e.status)}" aria-hidden="true"></i>` : '';
     const level = e.learnedAt != null ? `<span class="g-level">${esc(config.level.replace('{n}', String(e.learnedAt)))}</span>` : '';
     return `<li class="g-row"><span class="g-tip wf-tip wf-tip--${esc(e.kind)}" data-tip="${esc(e.id)}" tabindex="0">${icon}<span class="g-text"><span class="g-name">${esc(e.name)}${dot}</span><span class="g-desc">${esc(e.desc)}</span></span>${level}</span></li>`;
+  }
+
+  // a lore card: its tooltip, plus links to the stories that tell it
+  function loreRow(l: LoreSearchEntry, data: SearchIndex): string {
+    const c = data.cards![l.id];
+    const icon = c.icon
+      ? `<img class="g-icon" src="${esc(data.iconBase + c.icon)}.jpg" alt="" width="36" height="36" loading="lazy" />`
+      : '<span class="g-icon"></span>';
+    const stories = l.stories.map((s) => `<a href="${esc(s.url)}">${esc(s.name)}</a>`).join('');
+    return `<li class="g-row g-row--lore"><span class="g-tip wf-tip wf-tip--lore" data-tip="${esc(l.id)}" tabindex="0">${icon}<span class="g-text"><span class="g-name">${esc(c.name)}</span><span class="g-desc">${esc(c.sub)}</span></span></span><span class="g-stories">${stories}</span></li>`;
   }
 
   let seq = 0;
@@ -96,8 +118,15 @@ const config = { index: withBase(`/${lang}/search.json`), level: t.level, noResu
     }
     const data = await load();
     if (mine !== seq) return;
-    const hits = searchEntries(q, Object.values(data.entries));
-    results.innerHTML = hits.map((h) => row(h.entry, data.iconBase)).join('');
+    // a lore card can match under several names: keep its best one
+    const seen = new Set<string>();
+    const hits = searchEntries(q, items, Infinity)
+      .filter((h) => !seen.has(h.entry.tip) && seen.add(h.entry.tip))
+      .slice(0, 50);
+    const lore = new Map((data.lore ?? []).map((l) => [l.id, l]));
+    results.innerHTML = hits
+      .map(({ entry: { tip } }) => (lore.has(tip) ? loreRow(lore.get(tip)!, data) : row(data.entries[tip], data.iconBase)))
+      .join('');
     status.textContent = config.noResults;
     status.hidden = hits.length > 0;
   }
@@ -130,5 +159,23 @@ const config = { index: withBase(`/${lang}/search.json`), level: t.level, noResu
   }
   [data-search-results] {
     margin-top: 12px;
+  }
+  [data-search-results] :global(.g-row--lore) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  [data-search-results] :global(.g-row--lore .g-tip) {
+    flex: 1;
+    min-width: 0;
+  }
+  [data-search-results] :global(.g-row--lore .g-name) {
+    color: var(--gold);
+  }
+  [data-search-results] :global(.g-stories) {
+    flex: none;
+    display: flex;
+    gap: 10px;
+    font-size: 0.82rem;
   }
 </style>

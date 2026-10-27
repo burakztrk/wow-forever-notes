@@ -2,6 +2,9 @@
 // drawn by the site's shared tooltip (src/scripts/tooltip.ts, CardTip with kind "lore").
 import type { Lang } from '../../config';
 import { LORE, LORE_UI, type LoreEntry } from '../../i18n/lore';
+import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY } from '../../i18n/stories';
+import { withBase } from '../../utils/url';
+import { STORY_RACES } from './races';
 import type { CardTip, TipPayload } from '../tooltip-render';
 import { tooltipPayload } from '../tooltip-payload';
 
@@ -68,4 +71,37 @@ export function loreTips(lang: Lang, ids: string[]): TipPayload {
     if (e) cards[loreTipId(id)] = loreCard(e, lang);
   }
   return { ...tooltipPayload([], lang), cards };
+}
+
+/** The stories whose text gets lore cards, by page slug (src/pages/[lang]/stories/<slug>.astro). */
+export const LORE_STORIES: Record<string, Record<Lang, unknown>> = {
+  gnome: GNOME_STORY,
+  dwarf: DWARF_STORY,
+  human: HUMAN_STORY,
+  'night-elf': NIGHT_ELF_STORY,
+};
+
+export interface LoreSearchEntry {
+  id: string; // card id, "lore:<id>"
+  names: string[]; // the card name and every alias
+  stories: { name: string; url: string }[]; // in race-strip order
+}
+
+/** Every lore card for the search index (/<lang>/search.json), with the stories that name it. */
+export function loreSearch(lang: Lang): { cards: Record<string, CardTip>; lore: LoreSearchEntry[] } {
+  const named = Object.entries(LORE_STORIES).map(([slug, story]) => ({
+    name: STORY_RACES.find((r) => r.slug === slug)?.name ?? slug,
+    url: withBase(`/${lang}/stories/${slug}/`),
+    ids: new Set(loreIds(story[lang])),
+  }));
+  const cards: Record<string, CardTip> = {};
+  const lore = LORE.map((e) => {
+    cards[loreTipId(e.id)] = loreCard(e, lang);
+    return {
+      id: loreTipId(e.id),
+      names: [...new Set([e.name, ...e.aliases])],
+      stories: named.filter((s) => s.ids.has(e.id)).map(({ name, url }) => ({ name, url })),
+    };
+  });
+  return { cards, lore };
 }
