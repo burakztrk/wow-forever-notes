@@ -17,6 +17,8 @@ import {
   ORC_ART_LABELS,
   ORC_STORY,
   STORY_UI,
+  TROLL_ART_LABELS,
+  TROLL_STORY,
 } from '../src/i18n/stories';
 import { fillArt } from '../src/lib/stories/art';
 import { CURSE_ART } from '../src/lib/stories/curse-art';
@@ -25,6 +27,7 @@ import { GNOME_ART } from '../src/lib/stories/gnome-art';
 import { HUMAN_ART } from '../src/lib/stories/human-art';
 import { NIGHT_ELF_ART } from '../src/lib/stories/night-elf-art';
 import { ORC_ART } from '../src/lib/stories/orc-art';
+import { TROLL_ART } from '../src/lib/stories/troll-art';
 import { STORY_RACES, storySlug } from '../src/lib/stories/races';
 
 const art = [
@@ -46,6 +49,7 @@ const art = [
     labels: ORC_ART_LABELS,
     drawings: [ORC_ART.hero, ORC_ART.portal, ORC_ART.chains, ORC_ART.ek, ORC_ART.durotar, ORC_ART.world],
   },
+  { name: 'troll', labels: TROLL_ART_LABELS, drawings: [TROLL_ART.amani, TROLL_ART.gurubashi, TROLL_ART.ek, TROLL_ART.world] },
 ];
 
 const keys = (o: object) => Object.keys(o).sort();
@@ -74,6 +78,7 @@ describe('story art', () => {
       expect(cams(HUMAN_ART.ek)).toHaveLength(HUMAN_STORY[lang].wars.steps.length);
       expect(cams(NIGHT_ELF_ART.ek)).toHaveLength(NIGHT_ELF_STORY[lang].hyjal.steps.length);
       expect(cams(ORC_ART.ek)).toHaveLength(ORC_STORY[lang].exodus.steps.length);
+      expect(cams(TROLL_ART.ek)).toHaveLength(TROLL_STORY[lang].darkspear.steps.length);
     }
   });
 });
@@ -171,6 +176,29 @@ describe('story copy', () => {
     expect(pins(ORC_ART.world)).toBe(tr.today.legend.length);
   });
 
+  it('keeps TR and EN troll stories in step', () => {
+    const [tr, en] = [TROLL_STORY.tr, TROLL_STORY.en];
+    expect(en.facts.length).toBe(tr.facts.length);
+    expect(en.origin.stages.map((s) => s.name)).toEqual(tr.origin.stages.map((s) => s.name));
+    for (const key of ['amani', 'gurubashi'] as const) {
+      expect(en[key].cards.map((c) => [c.name, c.tone])).toEqual(tr[key].cards.map((c) => [c.name, c.tone]));
+      expect(en[key].legend.map((l) => l.name)).toEqual(tr[key].legend.map((l) => l.name));
+    }
+    expect(en.darkspear.steps.map((s) => [s.era, s.tone])).toEqual(tr.darkspear.steps.map((s) => [s.era, s.tone]));
+    expect(en.today.leaders.map((l) => l.name)).toEqual(tr.today.leaders.map((l) => l.name));
+    expect(en.today.tribes.map((t) => [t.name, t.place, t.tone])).toEqual(tr.today.tribes.map((t) => [t.name, t.place, t.tone]));
+    expect(en.today.legend.map((l) => l.name)).toEqual(tr.today.legend.map((l) => l.name));
+    // the page pairs these lists with fixed icon sets and numbered map pins
+    expect(tr.origin.stages).toHaveLength(4);
+    expect(tr.amani.cards).toHaveLength(4);
+    expect(tr.gurubashi.cards).toHaveLength(4);
+    expect(tr.today.leaders).toHaveLength(3);
+    const pins = (svg: string) => (svg.match(/class="pnum"/g) ?? []).length;
+    expect(pins(TROLL_ART.amani)).toBe(tr.amani.legend.length);
+    expect(pins(TROLL_ART.gurubashi)).toBe(tr.gurubashi.legend.length);
+    expect(pins(TROLL_ART.world)).toBe(tr.today.legend.length);
+  });
+
   it('keeps TR and EN Curse of Flesh pages in step', () => {
     const [tr, en] = [CURSE_STORY.tr, CURSE_STORY.en];
     expect(en.facts.length).toBe(tr.facts.length);
@@ -204,6 +232,7 @@ describe('story races', () => {
     expect(storySlug('alliance-dwarf')).toBe('dwarf');
     expect(storySlug('alliance-human')).toBe('human');
     expect(storySlug('horde-orc')).toBe('orc');
+    expect(storySlug('horde-troll')).toBe('troll');
   });
 
   it('reaches the Curse of Flesh page only from the stories that mention the curse', () => {
@@ -215,6 +244,6 @@ describe('story races', () => {
     for (const slug of ['gnome', 'dwarf', 'human']) {
       expect(readFileSync(join(pages, `${slug}.astro`), 'utf8'), slug).toMatch(/<CurseLink /);
     }
-    expect(storySlug('horde-troll')).toBeUndefined();
+    expect(storySlug('horde-tauren')).toBeUndefined();
   });
 });

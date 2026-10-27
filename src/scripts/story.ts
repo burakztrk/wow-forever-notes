@@ -7,7 +7,7 @@
 //   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
 //   and calm, and "dust" the same wind carrying red sand; "embers" are forge sparks drifting up;
-//   "void" and "wisps" are the same motes in violet and in pale green.
+//   "void", "wisps" and "voodoo" are the same motes in violet, pale green and jungle green.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -245,6 +245,7 @@ function init(root: HTMLElement) {
     else if (fx.dataset.fx === 'void') embers(fx, ['#d2b8ff', '#9b6fe0']);
     else if (fx.dataset.fx === 'wisps') embers(fx, ['#effff8', '#8fe3c8']);
     else if (fx.dataset.fx === 'dust') blizzard(fx, '#e2a06a');
+    else if (fx.dataset.fx === 'voodoo') embers(fx, ['#e6ffd0', '#6fcf5a']);
     else blizzard(fx);
   }
 }

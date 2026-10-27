@@ -13,7 +13,7 @@ export const STORY_RACES: StoryRace[] = [
   { id: 'alliance-human', name: 'Human', faction: 'a', slug: 'human' },
   { id: 'alliance-night-elf', name: 'Night Elf', faction: 'a', slug: 'night-elf' },
   { id: 'horde-orc', name: 'Orc', faction: 'h', slug: 'orc' },
-  { id: 'horde-troll', name: 'Troll', faction: 'h' },
+  { id: 'horde-troll', name: 'Troll', faction: 'h', slug: 'troll' },
   { id: 'horde-tauren', name: 'Tauren', faction: 'h' },
   { id: 'horde-undead', name: 'Undead', faction: 'h' },
 ];

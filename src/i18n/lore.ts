@@ -3537,7 +3537,7 @@ export const LORE: LoreEntry[] = [
     id: 'stranglethorn',
     name: 'Stranglethorn Vale',
     icon: 'ability_mount_jungletiger',
-    aliases: ['Stranglethorn Vale'],
+    aliases: ['Stranglethorn Vale', 'Stranglethorn'],
     tr: {
       sub: 'Bölge · Eastern Kingdoms’un güneyi',
       text: 'Eastern Kingdoms’un güneyindeki sık orman; troll kabileleri, korsanlar ve avcılar burada.',
@@ -3621,6 +3621,444 @@ export const LORE: LoreEntry[] = [
     en: {
       sub: 'The undead of the Horde',
       text: 'Undead who broke free of the Lich King’s control. Led by Sylvanas Windrunner, they live in Undercity and have allied with the Horde.',
+    },
+  },
+
+  // ---------------------------------------------------------------- Troll story
+  {
+    id: 'zandalar',
+    name: 'Zandalar',
+    icon: 'spell_holy_spiritualguidence',
+    aliases: ['Zandalar Tribe', 'Zandalari', 'Zandalar'],
+    tr: {
+      sub: 'Güney Denizleri’ndeki troll ülkesi',
+      text: 'Güney Denizleri’ndeki Zandalar adasının Zandalari trolleri, trollerin en eski ve en bilge kabilesi sayılır. Classic’te Zandalar Tribe, Hakkar’ın dönüşünü durdurmak için Yojamba Isle’a yerleşti ve maceracılardan yardım istiyor.',
+      note: 'Yojamba Isle',
+    },
+    en: {
+      sub: 'The troll land of the South Seas',
+      text: 'The Zandalari trolls of the isle of Zandalar in the South Seas are held to be the oldest and wisest of the troll tribes. In Classic the Zandalar Tribe has settled on Yojamba Isle to stop Hakkar’s return and asks adventurers for help.',
+      note: 'Yojamba Isle',
+    },
+  },
+  {
+    id: 'loa',
+    name: 'Loa',
+    icon: 'spell_nature_invisibilitytotem',
+    aliases: ['loa', 'Loa'],
+    tr: {
+      sub: 'Trollerin tanrı-ruhları',
+      text: 'Trollerin taptığı ve adaklarla çağırdığı ruhlar. Her kabilenin kendi loa’sı vardır; kimi loa’lar bilgelik ve koruma verir, kimileri kan ister. Trollerin büyüsü voodoo bu bağa dayanır.',
+    },
+    en: {
+      sub: 'The trolls’ god-spirits',
+      text: 'The spirits the trolls worship and call with offerings. Every tribe has its own loa; some give wisdom and protection, some demand blood. The trolls’ magic, voodoo, rests on this bond.',
+    },
+  },
+  {
+    id: 'aqir',
+    name: 'Aqir',
+    icon: 'spell_nature_insectswarm',
+    aliases: ['aqir', 'Aqir'],
+    tr: {
+      sub: 'Böcek halkı',
+      text: 'Kalimdor’da troll imparatorluklarına karşı savaşan böcek halkı. Yenilip güneye çekildiler; torunları Ahn’Qiraj’da qiraji olarak yaşıyor.',
+    },
+    en: {
+      sub: 'The insect people',
+      text: 'The insect people who fought the troll empires in Kalimdor. Beaten, they withdrew south; their descendants live on in Ahn’Qiraj as the qiraji.',
+    },
+  },
+  {
+    id: 'gurubashi',
+    name: 'Gurubashi',
+    icon: 'inv_spear_04',
+    aliases: ['Gurubashi'],
+    tr: {
+      sub: 'Cengel trollerinin imparatorluğu',
+      text: 'Stranglethorn’un cengellerinde yaşayan cengel trollerinin imparatorluğu; başkenti Zul’Gurub’du. Hakkar’la kurduğu karanlık bağ ve ardından gelen ayaklanma imparatorluğu kabilelere böldü.',
+      note: 'Stranglethorn Vale',
+    },
+    en: {
+      sub: 'The jungle trolls’ empire',
+      text: 'The empire of the jungle trolls of Stranglethorn, with its capital at Zul’Gurub. A dark bond with Hakkar, and the uprising that followed, split it into tribes.',
+      note: 'Stranglethorn Vale',
+    },
+  },
+  {
+    id: 'zulgurub',
+    name: 'Zul’Gurub',
+    icon: 'spell_shadow_darkritual',
+    aliases: ['Zul’Gurub'],
+    tr: {
+      sub: 'Gurubashi’nin başkenti',
+      text: 'Stranglethorn’un kuzeydoğusundaki göl çevresinde yükselen eski Gurubashi başkenti. Classic’te rahipleri burada Hakkar’ı yeniden çağırdı.',
+      note: 'Stranglethorn Vale',
+    },
+    en: {
+      sub: 'Capital of the Gurubashi',
+      text: 'The old Gurubashi capital by the lake in north-eastern Stranglethorn. In Classic its priests have summoned Hakkar again here.',
+      note: 'Stranglethorn Vale',
+    },
+  },
+  {
+    id: 'hakkar',
+    name: 'Hakkar the Soulflayer',
+    icon: 'ability_racial_bloodrage',
+    aliases: ['Hakkar the Soulflayer', 'Hakkar'],
+    tr: {
+      sub: 'Kan tanrısı loa',
+      text: 'Atal’ai rahiplerinin çağırdığı, her gün kan kurbanı isteyen kan tanrısı. Gurubashi’nin ayaklanması bedenini yok etti; Classic’te rahipleri onu Zul’Gurub’da yeniden çağırdı.',
+      note: 'Zul’Gurub',
+    },
+    en: {
+      sub: 'The blood-god loa',
+      text: 'The blood god the Atal’ai priests summoned, who demanded a blood sacrifice every day. The Gurubashi’s uprising destroyed his body; in Classic his priests have summoned him again in Zul’Gurub.',
+      note: 'Zul’Gurub',
+    },
+  },
+  {
+    id: 'atalai',
+    name: 'Atal’ai',
+    icon: 'spell_shadow_curseoftounges',
+    aliases: ['Atal’ai'],
+    tr: {
+      sub: 'Hakkar’ın rahipleri',
+      text: 'Hakkar’a tapan troll rahipler. Gurubashi’den sürülünce Swamp of Sorrows’ta tapınaklarını kurdular; tapınak batınca Sunken Temple’ın içinde kaldılar.',
+      note: 'Swamp of Sorrows',
+    },
+    en: {
+      sub: 'The priests of Hakkar',
+      text: 'The troll priests who worship Hakkar. Driven out of the Gurubashi, they built their temple in the Swamp of Sorrows; when it sank they were left inside the Sunken Temple.',
+      note: 'Swamp of Sorrows',
+    },
+  },
+  {
+    id: 'sunkentemple',
+    name: 'Sunken Temple',
+    icon: 'spell_shadow_lifedrain02',
+    aliases: ['Atal’Hakkar', 'Sunken Temple'],
+    tr: {
+      sub: 'Batık tapınak · Swamp of Sorrows',
+      text: 'Atal’ai’nin Hakkar için kurduğu Atal’Hakkar tapınağı. Rahipler onu yeniden çağırmaya kalkışınca Ysera’nın yeşil ejderhaları tapınağı bataklığın altına gömdü.',
+      note: 'Swamp of Sorrows',
+    },
+    en: {
+      sub: 'Sunken temple · Swamp of Sorrows',
+      text: 'The temple of Atal’Hakkar the Atal’ai built for Hakkar. When the priests tried to summon him again, Ysera’s green dragons sank it beneath the swamp.',
+      note: 'Swamp of Sorrows',
+    },
+  },
+  {
+    id: 'ysera',
+    name: 'Ysera',
+    icon: 'inv_misc_head_dragon_01',
+    aliases: ['Ysera'],
+    tr: {
+      sub: 'Yeşil ejderhaların lideri',
+      text: 'Yeşil ejderha sürüsünün lideri ve Emerald Dream’in bekçisi. Ejderhaları Atal’Hakkar tapınağını bataklığa gömdü.',
+    },
+    en: {
+      sub: 'Leader of the green dragonflight',
+      text: 'Leader of the green dragonflight and warden of the Emerald Dream. Her dragons sank the temple of Atal’Hakkar into the swamp.',
+    },
+  },
+  {
+    id: 'yojamba',
+    name: 'Yojamba Isle',
+    icon: 'trade_fishing',
+    aliases: ['Yojamba Isle'],
+    tr: {
+      sub: 'Ada · Stranglethorn Vale',
+      text: 'Stranglethorn kıyısındaki adada Zandalar Tribe’ın karargâhı; troller Hakkar’a karşı buradan yardım topluyor.',
+      note: 'Stranglethorn Vale',
+    },
+    en: {
+      sub: 'Island · Stranglethorn Vale',
+      text: 'The Zandalar Tribe’s base on an island off Stranglethorn; the trolls gather help against Hakkar from here.',
+      note: 'Stranglethorn Vale',
+    },
+  },
+  {
+    id: 'gurubashiarena',
+    name: 'Gurubashi Arena',
+    icon: 'ability_warrior_challange',
+    aliases: ['Gurubashi Arena'],
+    tr: {
+      sub: 'Dövüş arenası · Stranglethorn Vale',
+      text: 'Stranglethorn’un ortasındaki eski Gurubashi arenası; bugün oyuncuların düello yaptığı bir meydan.',
+      note: 'Stranglethorn Vale',
+    },
+    en: {
+      sub: 'Fighting arena · Stranglethorn Vale',
+      text: 'The old Gurubashi arena in the middle of Stranglethorn, now a place where players duel.',
+      note: 'Stranglethorn Vale',
+    },
+  },
+  {
+    id: 'baliamah',
+    name: 'Balia’mah Ruins',
+    icon: 'spell_nature_stoneskintotem',
+    aliases: ['Balia’mah Ruins'],
+    tr: {
+      sub: 'Troll harabeleri · Stranglethorn Vale',
+      text: 'Stranglethorn’un kuzeybatısında, Bloodscalp trollerinin yaşadığı eski Gurubashi harabeleri.',
+      note: 'Stranglethorn Vale',
+    },
+    en: {
+      sub: 'Troll ruins · Stranglethorn Vale',
+      text: 'Old Gurubashi ruins in north-western Stranglethorn where the Bloodscalp trolls live.',
+      note: 'Stranglethorn Vale',
+    },
+  },
+  {
+    id: 'zulaman',
+    name: 'Zul’Aman',
+    icon: 'inv_spear_05',
+    aliases: ['Zul’Aman'],
+    tr: {
+      sub: 'Amani’nin başkenti',
+      text: 'Eastern Kingdoms’ın kuzey ormanlarındaki Amani başkenti; troller buradan Quel’Thalas’a saldırdı.',
+    },
+    en: {
+      sub: 'Capital of the Amani',
+      text: 'The Amani capital in the northern forests of the Eastern Kingdoms, from which the trolls attacked Quel’Thalas.',
+    },
+  },
+  {
+    id: 'zuljin',
+    name: 'Zul’jin',
+    icon: 'inv_spear_07',
+    aliases: ['Zul’jin'],
+    tr: {
+      sub: 'Amani’nin savaş beyi',
+      text: 'Second War’da Amani’yi Horde’a katan troll savaş beyi. Elf’lerden öç almak istiyordu ve Quel’Thalas’ın ormanlarını yaktı.',
+    },
+    en: {
+      sub: 'Warlord of the Amani',
+      text: 'The troll warlord who brought the Amani into the Horde in the Second War. He wanted revenge on the elves and burned the forests of Quel’Thalas.',
+    },
+  },
+  {
+    id: 'jinthaalor',
+    name: 'Jintha’Alor',
+    icon: 'spell_nature_tremortotem',
+    aliases: ['Jintha’Alor'],
+    tr: {
+      sub: 'Troll kalesi · Hinterlands',
+      text: 'Hinterlands’in güneydoğusunda, Vilebranch trollerinin kalesi.',
+      note: 'The Hinterlands',
+    },
+    en: {
+      sub: 'Troll stronghold · The Hinterlands',
+      text: 'The Vilebranch trolls’ stronghold in the south-east of the Hinterlands.',
+      note: 'The Hinterlands',
+    },
+  },
+  {
+    id: 'vilebranch',
+    name: 'Vilebranch',
+    icon: 'spell_shadow_curse',
+    aliases: ['Vilebranch'],
+    tr: {
+      sub: 'Orman trolleri · Amani soyundan',
+      text: 'Hinterlands’teki Jintha’Alor’un orman trolleri; Amani’nin küçülmüş kalıntılarından biri ve bölgenin en tehlikeli kabilesi.',
+      note: 'The Hinterlands',
+    },
+    en: {
+      sub: 'Forest trolls · of the Amani line',
+      text: 'The forest trolls of Jintha’Alor in the Hinterlands; one of the Amani’s shrunken remnants and the most dangerous tribe in the region.',
+      note: 'The Hinterlands',
+    },
+  },
+  {
+    id: 'witherbark',
+    name: 'Witherbark',
+    icon: 'spell_nature_removecurse',
+    aliases: ['Witherbark'],
+    tr: {
+      sub: 'Orman trolleri · Amani soyundan',
+      text: 'Arathi Highlands’te yaşayan Amani soyundan orman trolleri; Alliance’a düşman.',
+      note: 'Arathi Highlands',
+    },
+    en: {
+      sub: 'Forest trolls · of the Amani line',
+      text: 'Forest trolls of the Amani line who live in the Arathi Highlands; hostile to the Alliance.',
+      note: 'Arathi Highlands',
+    },
+  },
+  {
+    id: 'revantusk',
+    name: 'Revantusk',
+    icon: 'inv_misc_pelt_boar_ruin_02',
+    aliases: ['Revantusk Village', 'Revantusk'],
+    tr: {
+      sub: 'Orman trolleri · Horde’un dostu',
+      text: 'Hinterlands’teki Revantusk Village’ın trolleri. Horde’la ittifak kurmuş bir Amani kabilesi.',
+      note: 'The Hinterlands',
+    },
+    en: {
+      sub: 'Forest trolls · friends of the Horde',
+      text: 'The trolls of Revantusk Village in the Hinterlands, an Amani tribe allied with the Horde.',
+      note: 'The Hinterlands',
+    },
+  },
+  {
+    id: 'zulfarrak',
+    name: 'Zul’Farrak',
+    icon: 'spell_fire_searingtotem',
+    aliases: ['Zul’Farrak'],
+    tr: {
+      sub: 'Troll kalesi · Tanaris',
+      text: 'Tanaris çölündeki Sandfury trollerinin kalesi.',
+      note: 'Tanaris',
+    },
+    en: {
+      sub: 'Troll fortress · Tanaris',
+      text: 'The fortress of the Sandfury trolls in the Tanaris desert.',
+      note: 'Tanaris',
+    },
+  },
+  {
+    id: 'sandfury',
+    name: 'Sandfury',
+    icon: 'spell_nature_cyclone',
+    aliases: ['Sandfury'],
+    tr: {
+      sub: 'Kum trolleri',
+      text: 'Zul’Farrak’ın çevresinde yaşayan çöl trolleri; Tanaris’te yolculara saldırıyorlar.',
+      note: 'Tanaris',
+    },
+    en: {
+      sub: 'Sand trolls',
+      text: 'Desert trolls who live around Zul’Farrak and attack travellers in Tanaris.',
+      note: 'Tanaris',
+    },
+  },
+  {
+    id: 'tanaris',
+    name: 'Tanaris',
+    icon: 'spell_fire_volcano',
+    aliases: ['Tanaris'],
+    tr: {
+      sub: 'Çöl · Kalimdor’un güneydoğusu',
+      text: 'Kalimdor’un güneydoğusundaki sıcak çöl; Zul’Farrak burada.',
+    },
+    en: {
+      sub: 'Desert · south-eastern Kalimdor',
+      text: 'The hot desert in south-eastern Kalimdor, where Zul’Farrak stands.',
+    },
+  },
+  {
+    id: 'frostmane',
+    name: 'Frostmane',
+    icon: 'spell_frostresistancetotem_01',
+    aliases: ['Frostmane'],
+    tr: {
+      sub: 'Buz trolleri',
+      text: 'Dun Morogh’un karlı vadilerinde yaşayan buz trolleri; Ironforge’un komşusu ve dwarf’ların düşmanı.',
+      note: 'Dun Morogh',
+    },
+    en: {
+      sub: 'Ice trolls',
+      text: 'Ice trolls who live in the snowy valleys of Dun Morogh, neighbours of Ironforge and enemies of the dwarves.',
+      note: 'Dun Morogh',
+    },
+  },
+  {
+    id: 'bloodscalp',
+    name: 'Bloodscalp',
+    icon: 'inv_spear_01',
+    aliases: ['Bloodscalp'],
+    tr: {
+      sub: 'Cengel trolleri · Gurubashi soyundan',
+      text: 'Stranglethorn’un kuzeyinde yaşayan cengel trolleri; Gurubashi’nin parçalanmış kabilelerinden biri.',
+      note: 'Stranglethorn Vale',
+    },
+    en: {
+      sub: 'Jungle trolls · of the Gurubashi line',
+      text: 'Jungle trolls who live in northern Stranglethorn; one of the tribes the Gurubashi empire split into.',
+      note: 'Stranglethorn Vale',
+    },
+  },
+  {
+    id: 'skullsplitter',
+    name: 'Skullsplitter',
+    icon: 'ability_warrior_cleave',
+    aliases: ['Skullsplitter'],
+    tr: {
+      sub: 'Cengel trolleri · Gurubashi soyundan',
+      text: 'Stranglethorn’un ortasında yaşayan cengel trolleri; Gurubashi’nin parçalanmış kabilelerinden biri.',
+      note: 'Stranglethorn Vale',
+    },
+    en: {
+      sub: 'Jungle trolls · of the Gurubashi line',
+      text: 'Jungle trolls who live in the middle of Stranglethorn; one of the tribes the Gurubashi empire split into.',
+      note: 'Stranglethorn Vale',
+    },
+  },
+  {
+    id: 'shatterspear',
+    name: 'Shatterspear',
+    icon: 'inv_spear_07',
+    aliases: ['Shatterspear'],
+    tr: {
+      sub: 'Orman trolleri',
+      text: 'Darkshore’daki night elf topraklarında yaşayan orman trolleri; Teldrassil’in komşuları.',
+      note: 'Darkshore',
+    },
+    en: {
+      sub: 'Forest trolls',
+      text: 'Forest trolls who live on the night elf lands of Darkshore, neighbours of Teldrassil.',
+      note: 'Darkshore',
+    },
+  },
+  {
+    id: 'smolderthorn',
+    name: 'Smolderthorn',
+    icon: 'spell_fire_flameshock',
+    aliases: ['Smolderthorn'],
+    tr: {
+      sub: 'Cengel trolleri',
+      text: 'Blackrock Spire’ın alt katlarında yaşayan trol kabilesi; Blackrock orc’larıyla aynı karargâhı paylaşıyor.',
+      note: 'Blackrock Spire',
+    },
+    en: {
+      sub: 'Jungle trolls',
+      text: 'A troll tribe living on the lower levels of Blackrock Spire, sharing the stronghold with the Blackrock orcs.',
+      note: 'Blackrock Spire',
+    },
+  },
+  {
+    id: 'zalazane',
+    name: 'Zalazane',
+    icon: 'warlock_curse_shadow',
+    aliases: ['Zalazane'],
+    tr: {
+      sub: 'Çılgın witch doctor',
+      text: 'Kara büyüye kapılıp Echo Isles’ı ele geçiren Darkspear witch doctor’u. Kabilesinin üyelerini köleleştiriyor.',
+      note: 'Echo Isles',
+    },
+    en: {
+      sub: 'The mad witch doctor',
+      text: 'The Darkspear witch doctor lost to dark magic who took the Echo Isles. He enslaves members of his own tribe.',
+      note: 'Echo Isles',
+    },
+  },
+  {
+    id: 'gadrin',
+    name: 'Master Gadrin',
+    icon: 'spell_nature_manaregentotem',
+    aliases: ['Master Gadrin', 'Gadrin'],
+    tr: {
+      sub: 'Sen’jin Village’ın bilgesi',
+      text: 'Darkspear’ın karadaki köyünün yaşlı bilgesi. Echo Isles’ı Zalazane’den kurtarmak için maceracılardan yardım istiyor.',
+      note: 'Sen’jin Village',
+    },
+    en: {
+      sub: 'Sage of Sen’jin Village',
+      text: 'The old sage of the Darkspear’s village on the shore. He asks adventurers for help in freeing the Echo Isles from Zalazane.',
+      note: 'Sen’jin Village',
     },
   },
 ];

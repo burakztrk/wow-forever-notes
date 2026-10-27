@@ -2711,3 +2711,559 @@ export const ORC_STORY: Record<Lang, OrcStory> = {
     images: 'Maps from WoW Forever. The cover and chain drawings were made for this page. World of Warcraft names belong to Blizzard Entertainment.',
   },
 };
+
+export const TROLL_ART_LABELS: Record<Lang, Record<string, string>> = {
+  tr: {
+    amaniAria: 'Eastern Kingdoms haritası: Zul’Aman, Quel’Thalas, Strom ve Jintha’Alor; Amani’nin iki savaşı',
+    trollWars: 'Troll Wars',
+    gurubashiAria: 'Stranglethorn Vale haritası: Zul’Gurub, Gurubashi Arena, Yojamba Isle ve Balia’mah Ruins; Atal’ai’nin sürgünü ve Darkspear’ın kaçışı',
+    toTemple: 'Sunken Temple’a ↗',
+    toSeas: 'Güney Denizleri’ne ↙',
+    exile: 'Sürgün',
+    vision: 'Sen’jin’in görüsü',
+    zalazane: 'Zalazane',
+    ekAria: 'Darkspear’ın yolu: Stranglethorn, Güney Denizleri, Darkspear adası, Echo Isles ve Sen’jin Village; adım adım',
+    worldAria: 'Troll yurtları: Sen’jin Village, Zul’Farrak, Zul’Gurub, Yojamba Isle, Jintha’Alor ve Frostmane',
+  },
+  en: {
+    amaniAria: 'Map of the Eastern Kingdoms: Zul’Aman, Quel’Thalas, Strom and Jintha’Alor; the Amani’s two wars',
+    trollWars: 'Troll Wars',
+    gurubashiAria: 'Map of Stranglethorn Vale: Zul’Gurub, the Gurubashi Arena, Yojamba Isle and the Balia’mah Ruins; the Atal’ai’s exile and the Darkspear’s flight',
+    toTemple: 'To the Sunken Temple ↗',
+    toSeas: 'To the South Seas ↙',
+    exile: 'Exile',
+    vision: 'Sen’jin’s vision',
+    zalazane: 'Zalazane',
+    ekAria: 'The Darkspear’s road: Stranglethorn, the South Seas, the Darkspear isle, the Echo Isles and Sen’jin Village, step by step',
+    worldAria: 'Troll homelands: Sen’jin Village, Zul’Farrak, Zul’Gurub, Yojamba Isle, Jintha’Alor and Frostmane',
+  },
+};
+
+type Tribe = { name: string; kind: string; place: string; tone: Step['tone'] };
+
+export interface TrollStory {
+  metaDescription: string;
+  overline: string;
+  lead: string;
+  facts: { label: string; value: string; extra?: string }[];
+  chapters: Record<'origin' | 'amani' | 'gurubashi' | 'darkspear' | 'today', string>;
+  origin: { title: string; titleNote: string; paragraphs: string[]; stagesLabel: string; stages: Item[]; before: string; after: string; note: string };
+  amani: {
+    title: string;
+    intro: string;
+    more: string[];
+    figureCaption: string;
+    amaniKey: string;
+    allianceKey: string;
+    hordeKey: string;
+    legend: Item[];
+    cards: Card[];
+    note: string;
+  };
+  gurubashi: {
+    title: string;
+    intro: string;
+    more: string[];
+    figureCaption: string;
+    templeKey: string;
+    exileKey: string;
+    legend: Item[];
+    cards: Card[];
+    note: string;
+  };
+  darkspear: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
+  today: {
+    title: string;
+    intro: string[];
+    leadersLabel: string;
+    leadersText: string;
+    leaders: (Item & { role: string })[];
+    tribesLabel: string;
+    tribesTitle: string;
+    tribesText: string[];
+    tribes: Tribe[];
+    mapLabel: string;
+    mapCaption: string;
+    legend: Item[];
+    note: string;
+  };
+  outro: { title: string; text: string; nextText: string };
+  images: string;
+}
+
+export const TROLL_STORY: Record<Lang, TrollStory> = {
+  tr: {
+    metaDescription:
+      'Troll’lerin hikayesi: Zandalar ve loa’lar, Amani ile Gurubashi imparatorlukları, Hakkar, Troll Wars, Darkspear’ın sürgünü ve Horde’a katılışı, Echo Isles ve Sen’jin Village.',
+    overline: 'Hikaye 06',
+    lead: 'Loa’ların ruhlarına bağlı kadim bir halk. İmparatorlukları yıkıldı, kabileleri dağıldı; Darkspear ise sürgünden Horde’un yanına uzandı.',
+    facts: [
+      { label: 'Yurt', value: 'Sen’jin Village', extra: 'Durotar' },
+      { label: 'Başkent', value: 'Orgrimmar' },
+      { label: 'Lider', value: 'Vol’jin' },
+      { label: 'İnanç', value: 'Loa', extra: 'voodoo' },
+      { label: 'Binek', value: 'Raptor' },
+      { label: 'Kabile', value: 'Darkspear' },
+    ],
+    chapters: { origin: 'Köken', amani: 'Amani', gurubashi: 'Gurubashi', darkspear: 'Darkspear', today: 'Bugün' },
+    origin: {
+      title: 'Loa’ların halkı',
+      titleNote: '(Zandalar)',
+      paragraphs: [
+        'Troll’lerin hikayesi Azeroth’un en eski hikayelerinden biridir. Troller tek bir halk değil, dünyanın dört yanına dağılmış ve çoğu zaman birbirine düşman kabilelerdir. Bu kabilelerin en eski ve en bilgesi Zandalar adasının Zandalari’leri sayılır.',
+        'Trollerin inancı loa’lara dayanır: ruhlara ve tanrı-ruhlara. Troller loa’yı adaklarla ve ritüellerle çağırır, karşılığında güç ister. Her kabilenin kendi loa’sı vardır; kimi loa’lar bilgelik ve koruma verir, kimileri ise kan ister.',
+        'Kalimdor tek kıtayken troller büyük imparatorluklar kurmuştu. Aqir adlı böcek halkına karşı birleştiler ve onları geri püskürttüler; aqir’in torunları sonradan Ahn’Qiraj’ın qiraji’leri olarak karşımıza çıkar.',
+        'Kalimdor’da Well of Eternity’nin kıyısına yerleşen karanlık trol kabilesi ise Well’in gücüyle değişip night elf’lere dönüştü. Great Sundering’den sonra troller Eastern Kingdoms’ta iki büyük imparatorluk kurdu: kuzeyin ormanlarında Amani, güneyin cengellerinde Gurubashi.',
+      ],
+      stagesLabel: 'Troll imparatorluklarının doğuşu',
+      stages: [
+        { name: 'Zandalar', text: 'En eski kabile' },
+        { name: 'Loa', text: 'Tanrı-ruhlar' },
+        { name: 'Aqir', text: 'Ortak düşman' },
+        { name: 'Amani · Gurubashi', text: 'İki imparatorluk' },
+      ],
+      before: 'Zandalar',
+      after: 'İki imparatorluk',
+      note: 'Troller bir halk olmaktan çok bir aile: Horde’a katılan Darkspear bile bu büyük ailenin küçük bir koludur.',
+    },
+    amani: {
+      title: 'Ormanın imparatorluğu',
+      intro:
+        'Amani, Eastern Kingdoms’ın kuzey ormanlarındaki orman trollerinin imparatorluğuydu; başkenti Zul’Aman’dı. Komşuları Quel’Thalas’ın high elf’leriydi ve iki halk birbirini binlerce yıl düşman bildi.',
+      more: [
+        'Dark Portal’dan yaklaşık 2.800 yıl önce Amani, Quel’Thalas’ı kuşattı. Elf’ler yardım istedi; Thoradin’in birleştirdiği Arathor insanları onlara katıldı. İki halk ilk kez omuz omuza savaştı ve elf büyücüler insanlara büyü öğretti.',
+        'Savaşın sonu Alterac Mountains’ın eteklerinde geldi: elf’lerden büyü öğrenen insan büyücüler trolleri ateşle dağıttı. Amani yenildi, imparatorluk parçalandı; kurtulan Quel’Thalas ise Arathor’a bağlılık yemini etti.',
+        'Binlerce yıl sonra, Second War’da Zul’jin’in Amani’si Horde’a katıldı. Elf’lerden öç almak istiyorlardı ve Quel’Thalas’ın ormanlarını yaktılar. Horde yenilince Amani yeniden dağıldı.',
+        'Bugün Amani’nin torunları Hinterlands’in ormanlarında yaşıyor: Vilebranch Jintha’Alor’da, Witherbark ise Arathi Highlands’te Alliance’a düşman. Yalnızca Revantusk Village’ın trolleri Horde’la dost.',
+      ],
+      figureCaption: 'Amani’nin iki savaşı; kaydırdıkça çiziliyor. Konumlar yaklaşıktır.',
+      amaniKey: 'Amani',
+      allianceKey: 'Arathor ve elf’ler',
+      hordeKey: 'Horde',
+      legend: [
+        { name: 'Zul’Aman', text: 'Amani’nin başkenti' },
+        { name: 'Quel’Thalas', text: 'High elf krallığı' },
+        { name: 'Strom', text: 'Arathor’un başkenti' },
+        { name: 'Jintha’Alor', text: 'Vilebranch’ın kalesi' },
+      ],
+      cards: [
+        {
+          name: 'Zul’jin',
+          text: 'Second War’da Amani’yi Horde’a katan savaş beyi. Elf’lerden öç alma hırsıyla Quel’Thalas’ın ormanlarını yaktı.',
+          status: 'Savaş beyi',
+          tone: 'no',
+        },
+        {
+          name: 'Troll Wars',
+          text: 'Amani’nin Quel’Thalas’ı kuşatmasıyla başlayan savaş. İnsanlar ile elf’ler ilk kez birlikte savaştı ve Alterac Mountains’ın eteklerinde trolleri yendi.',
+          status: 'Yenilgi',
+          tone: 'no',
+        },
+        {
+          name: 'Vilebranch',
+          text: 'Hinterlands’teki Jintha’Alor’un orman trolleri; Amani’nin küçülmüş kalıntılarından biri ve bölgenin en tehlikeli kabilesi.',
+          status: 'Düşman',
+          tone: 'no',
+        },
+        {
+          name: 'Revantusk',
+          text: 'Hinterlands’teki Revantusk Village’ın trolleri. Horde’la ittifak kurmuş Amani kabilesi.',
+          status: 'Müttefik',
+          tone: 'ok',
+        },
+      ],
+      note: 'Troll Wars insanlarla elf’lerin ittifakını doğurdu; Amani’nin elf’lere duyduğu kin ise yüzyıllar sonra onu Horde’un kucağına itti.',
+    },
+    gurubashi: {
+      title: 'Kan tanrısı',
+      intro:
+        'Gurubashi, Stranglethorn’un cengellerinde yaşayan cengel trollerinin imparatorluğuydu; başkenti Zul’Gurub’du. Hikayeleri, güçleri azaldığında yaptıkları kötü bir seçimle bilinir.',
+      more: [
+        'Gurubashi zayıflayınca Atal’ai rahipleri kan tanrısı Hakkar the Soulflayer’ı çağırdı. Hakkar her gün kurban istiyordu; kabileler isyan etti, Hakkar’ın bedenini yok etti ve Atal’ai’yi sürgüne gönderdi.',
+        'Sürgündeki Atal’ai, Swamp of Sorrows’ta Atal’Hakkar tapınağını kurdu ve Hakkar’ı yeniden çağırmaya kalkıştı. Ysera’nın yeşil ejderhaları tapınağı bataklığın altına gömdü; bugün Sunken Temple adıyla bilinir.',
+        'Gurubashi imparatorluğu sonunda savaşan kabilelere bölündü; Skullsplitter ve Bloodscalp bunların arasındaydı. Zayıf kalanlar ormandan sürüldü: Darkspear kabilesi Stranglethorn’u terk edip denize açıldı. Stranglethorn’un kuzeybatısındaki Balia’mah Ruins’te, Gurubashi Arena’nın çevresinde bu çöküşün izleri hâlâ duruyor.',
+        'Hakkar bitmedi. Classic’te rahipleri Zul’Gurub’da onu yeniden çağırdı. Zandalar Tribe, Yojamba Isle’a yerleşti ve tehlikeyi durdurmak için maceracılardan yardım istiyor.',
+      ],
+      figureCaption: 'Stranglethorn Vale. Konumlar yaklaşıktır.',
+      templeKey: 'Atal’ai’nin sürgünü',
+      exileKey: 'Darkspear’ın kaçışı',
+      legend: [
+        { name: 'Zul’Gurub', text: 'Hakkar’ın yeniden çağrıldığı şehir' },
+        { name: 'Gurubashi Arena', text: 'Stranglethorn’un dövüş arenası' },
+        { name: 'Yojamba Isle', text: 'Zandalar Tribe’ın karargâhı' },
+        { name: 'Balia’mah Ruins', text: 'Bloodscalp trollerinin harabeleri' },
+      ],
+      cards: [
+        {
+          name: 'Hakkar',
+          text: 'Zul’Gurub’un kan tanrısı loa’sı. Gurubashi’nin ayaklanması bedenini yok etmişti; ruhu ise geri dönmeye çalışıyor.',
+          status: 'Kan tanrısı',
+          tone: 'no',
+        },
+        {
+          name: 'Atal’ai',
+          text: 'Hakkar’a tapan rahipler. Gurubashi’den sürülünce Swamp of Sorrows’ta tapınaklarını kurdular; bugün Sunken Temple’ın içindeler.',
+          status: 'Sürgün rahipler',
+          tone: 'no',
+        },
+        {
+          name: 'Zandalar Tribe',
+          text: 'Zandalari’nin Yojamba Isle’daki karargâhı. Hakkar’ın dönüşünü durdurmak için maceracılardan yardım istiyor.',
+          status: 'Müttefik',
+          tone: 'ok',
+        },
+        {
+          name: 'Darkspear',
+          text: 'Gurubashi’nin çöküşünden sonra Stranglethorn’dan sürülen kabile. Güney Denizleri’nde küçük bir adaya sığındı.',
+          status: 'Sürgün',
+          tone: 'mute',
+        },
+      ],
+      note: 'Loa’larla kurulan bağ iki ucu keskin bir kılıçtı: güç veren tanrı-ruh, kabileyi köleleştirebilirdi.',
+    },
+    darkspear: {
+      title: 'Sürgünden Horde’a',
+      intro:
+        'Troller dünyanın dört yanına dağılmışken Darkspear’ın hikayesi sürgünle başlar. Kaydırdıkça harita, kabilenin ormandan Durotar’a uzanan yolunu adım adım gösteriyor.',
+      mapLabel: 'Darkspear’ın Stranglethorn’dan Durotar’a yolu',
+      steps: [
+        {
+          era: 'Stranglethorn',
+          title: 'Sürgün',
+          text: 'Gurubashi çökünce güçlü kabileler zayıfları ormandan sürer. Darkspear kıyıya itilir ve küçük kayıklarla denize açılır.',
+          status: 'Sürgün',
+          tone: 'no',
+        },
+        {
+          era: 'South Seas',
+          title: 'Adaların kabilesi',
+          text: 'Darkspear, Güney Denizleri’ndeki bir adaya yerleşir ve balıkla, avla yaşar. Bilge şef Sen’jin bir görüde, kıyıya çıkacak yeni bir savaşçı halkın kabilesine yurt bulacağını görür.',
+          status: 'Görü',
+          tone: 'mute',
+        },
+        {
+          era: 'Thrall',
+          title: 'Fırtınadan gelenler',
+          text: 'Thrall’ın filosu fırtınaya yakalanıp adaya savrulur. Murloc’lar Sen’jin’i yakalayıp kurban eder; ölürken görüsünü oğlu Vol’jin’e anlatır. Vol’jin ve Darkspear, Thrall’ın Horde’una katılır.',
+          status: 'Yeni yol',
+          tone: 'ok',
+        },
+        {
+          era: 'Echo Isles',
+          title: 'Yeni yurt',
+          text: 'Third War’dan sonra Darkspear, Thrall’ın Durotar’ı açıklarındaki Echo Isles’a yerleşir. Orc’larla aynı sancak altında savaşan troller artık Horde’un bir parçasıdır.',
+          status: 'Yurt',
+          tone: 'ok',
+        },
+        {
+          era: 'Sen’jin Village',
+          title: 'Zalazane',
+          text: 'Witch doctor Zalazane kara büyüye kapılıp Echo Isles’ı ele geçirir ve Darkspear’ı köleleştirir. Hayatta kalanlar karşı kıyıdaki Sen’jin Village’a çekilir; Vol’jin ise Orgrimmar’da Thrall’ın yanındadır.',
+          status: 'Bölünme',
+          tone: 'no',
+        },
+      ],
+      note: 'Darkspear ile orc’lar arasındaki bağ, iki sürgün halkın birbirini bulmasından doğdu.',
+    },
+    today: {
+      title: 'Dağınık kabileler',
+      intro: [
+        'Bugün Horde’un troll kabilesi Darkspear’dır. Orc’larla birlikte Valley of Trials’ta başlayan troll karakterler, Durotar’ın güneyindeki Sen’jin Village’a gelir; açıktaki Echo Isles ise hâlâ Zalazane’in elindedir.',
+        'Vol’jin kabilesinin başındadır ve Thrall’ın en yakın müttefiklerinden biridir.',
+        'Dünyadaki diğer troll kabileleri ise çoğunlukla düşmandır: kimi Alliance’a, kimi Horde’a, kimi de yoluna çıkan herkese saldırır.',
+      ],
+      leadersLabel: 'Liderler',
+      leadersText: 'Darkspear’ın bugünkü önderleri.',
+      leaders: [
+        {
+          role: 'Darkspear’ın şefi',
+          name: 'Vol’jin',
+          text: 'Sen’jin’in oğlu ve bir shadow hunter. Babasının ölümünden sonra kabileyi Horde’a kattı; Orgrimmar’da Thrall’ın yanında duruyor.',
+        },
+        {
+          role: 'Sen’jin Village’ın bilgesi',
+          name: 'Master Gadrin',
+          text: 'Karadaki köyün yaşlı bilgesi. Echo Isles’ı Zalazane’den kurtarmak için maceracılardan yardım istiyor.',
+        },
+        {
+          role: 'Düşman',
+          name: 'Zalazane',
+          text: 'Echo Isles’ı ele geçiren witch doctor. Kara büyüyle Darkspear’dan köleler topluyor.',
+        },
+      ],
+      tribesLabel: 'Kabileler',
+      tribesTitle: 'Troller ve kabileleri',
+      tribesText: [
+        'Troller tek bir halk değil, çok sayıda kabiledir. Aşağıda Classic’te karşılaşabileceğin başlıca kabileler var; yeşil nokta dost, kırmızı nokta düşman demek.',
+      ],
+      tribes: [
+        { name: 'Darkspear', kind: 'cengel', place: 'Durotar', tone: 'ok' },
+        { name: 'Revantusk', kind: 'orman', place: 'Hinterlands', tone: 'ok' },
+        { name: 'Zandalar Tribe', kind: 'Zandalari', place: 'Yojamba Isle', tone: 'ok' },
+        { name: 'Atal’ai', kind: 'cengel', place: 'Zul’Gurub', tone: 'no' },
+        { name: 'Vilebranch', kind: 'orman', place: 'Jintha’Alor', tone: 'no' },
+        { name: 'Witherbark', kind: 'orman', place: 'Arathi Highlands', tone: 'no' },
+        { name: 'Sandfury', kind: 'kum', place: 'Zul’Farrak · Tanaris', tone: 'no' },
+        { name: 'Frostmane', kind: 'buz', place: 'Dun Morogh', tone: 'no' },
+        { name: 'Bloodscalp', kind: 'cengel', place: 'Stranglethorn Vale', tone: 'no' },
+        { name: 'Skullsplitter', kind: 'cengel', place: 'Stranglethorn Vale', tone: 'no' },
+        { name: 'Shatterspear', kind: 'orman', place: 'Darkshore', tone: 'no' },
+        { name: 'Smolderthorn', kind: 'cengel', place: 'Blackrock Spire', tone: 'no' },
+      ],
+      mapLabel: 'Troll yurtları',
+      mapCaption: 'Troll yurtları. Konumlar yaklaşıktır.',
+      legend: [
+        { name: 'Sen’jin Village', text: 'Darkspear’ın karadaki köyü' },
+        { name: 'Zul’Farrak', text: 'Tanaris’teki Sandfury kalesi' },
+        { name: 'Zul’Gurub', text: 'Hakkar’ın şehri' },
+        { name: 'Yojamba Isle', text: 'Zandalar Tribe’ın karargâhı' },
+        { name: 'Jintha’Alor', text: 'Hinterlands’teki Vilebranch kalesi' },
+        { name: 'Frostmane', text: 'Dun Morogh’un buz trolleri' },
+      ],
+      note: 'İmparatorluklar yıkıldı, ama Darkspear gibi sürgündeki bir kabile Horde’un içinde yeni bir yurt buldu.',
+    },
+    outro: {
+      title: 'Loa’lar izliyor',
+      text: 'Kabileleri dağıldı, imparatorlukları yıkıldı; ama troller hâlâ kendilerini ruhlarına bağlı bir halk olarak görür. Darkspear için bu bağ, Durotar kıyısındaki yeni yurda uzanıyor.',
+      nextText: 'Mulgore’un halkı: Earth Mother, Cairne Bloodhoof ve Horde’un tauren’leri.',
+    },
+    images: 'Haritalar WoW Forever’dan. World of Warcraft adları Blizzard Entertainment’a aittir.',
+  },
+  en: {
+    metaDescription:
+      'The trolls’ story: Zandalar and the loa, the Amani and Gurubashi empires, Hakkar, the Troll Wars, the Darkspear’s exile and how they joined the Horde, the Echo Isles and Sen’jin Village.',
+    overline: 'Story 06',
+    lead: 'An ancient people bound to the spirits of the loa. Their empires fell and their tribes scattered; the Darkspear reached from exile to the Horde.',
+    facts: [
+      { label: 'Homeland', value: 'Sen’jin Village', extra: 'Durotar' },
+      { label: 'Capital', value: 'Orgrimmar' },
+      { label: 'Leader', value: 'Vol’jin' },
+      { label: 'Faith', value: 'The loa', extra: 'voodoo' },
+      { label: 'Mount', value: 'Raptor' },
+      { label: 'Tribe', value: 'Darkspear' },
+    ],
+    chapters: { origin: 'Origin', amani: 'Amani', gurubashi: 'Gurubashi', darkspear: 'Darkspear', today: 'Today' },
+    origin: {
+      title: 'People of the loa',
+      titleNote: '(Zandalar)',
+      paragraphs: [
+        'The trolls’ story is one of Azeroth’s oldest. The trolls are not one people but many tribes, scattered across the world and often at war with each other. The oldest and wisest of these tribes is said to be the Zandalari of the isle of Zandalar.',
+        'The trolls’ faith rests on the loa: spirits and god-spirits. Trolls call a loa with offerings and rituals and ask it for power. Every tribe has its own loa; some give wisdom and protection, and some demand blood.',
+        'When Kalimdor was a single continent the trolls had built great empires. They united against an insect people, the aqir, and drove them back; the aqir’s descendants would return centuries later as the qiraji of Ahn’Qiraj.',
+        'The tribe of dark trolls that settled on the shore of the Well of Eternity was changed by the Well’s power into the night elves. After the Great Sundering the trolls built two great empires in the Eastern Kingdoms: the Amani in the northern forests and the Gurubashi in the southern jungles.',
+      ],
+      stagesLabel: 'The rise of the troll empires',
+      stages: [
+        { name: 'Zandalar', text: 'The oldest tribe' },
+        { name: 'Loa', text: 'God-spirits' },
+        { name: 'Aqir', text: 'A common enemy' },
+        { name: 'Amani · Gurubashi', text: 'Two empires' },
+      ],
+      before: 'Zandalar',
+      after: 'Two empires',
+      note: 'The trolls are less one people than a family: even the Darkspear, who joined the Horde, are a small branch of it.',
+    },
+    amani: {
+      title: 'Empire of the forest',
+      intro:
+        'The Amani were the forest trolls’ empire in the northern woods of the Eastern Kingdoms; their capital was Zul’Aman. Their neighbours were the high elves of Quel’Thalas, and the two peoples were enemies for thousands of years.',
+      more: [
+        'About 2,800 years before the Dark Portal the Amani besieged Quel’Thalas. The elves called for help, and the humans of Arathor, united by Thoradin, joined them. The two peoples fought side by side for the first time, and the elven magi taught the humans magic.',
+        'The war ended in the foothills of the Alterac Mountains, where human magi who had learned magic from the elves scattered the trolls with fire. The Amani were beaten and their empire broke up; Quel’Thalas, saved, swore an oath to Arathor.',
+        'Thousands of years later, in the Second War, Zul’jin’s Amani joined the Horde. They wanted revenge on the elves and burned the forests of Quel’Thalas. When the Horde lost, the Amani scattered again.',
+        'Today the Amani’s descendants live in the woods of the Hinterlands: the Vilebranch at Jintha’Alor and the Witherbark in the Arathi Highlands are enemies of the Alliance. Only the trolls of Revantusk Village are friends of the Horde.',
+      ],
+      figureCaption: 'The Amani’s two wars, drawn as you scroll. Positions are approximate.',
+      amaniKey: 'Amani',
+      allianceKey: 'Arathor and the elves',
+      hordeKey: 'Horde',
+      legend: [
+        { name: 'Zul’Aman', text: 'Capital of the Amani' },
+        { name: 'Quel’Thalas', text: 'Kingdom of the high elves' },
+        { name: 'Strom', text: 'Capital of Arathor' },
+        { name: 'Jintha’Alor', text: 'Fortress of the Vilebranch' },
+      ],
+      cards: [
+        {
+          name: 'Zul’jin',
+          text: 'The warlord who brought the Amani into the Horde in the Second War. Hungry for revenge on the elves, he burned the forests of Quel’Thalas.',
+          status: 'Warlord',
+          tone: 'no',
+        },
+        {
+          name: 'Troll Wars',
+          text: 'The war that began when the Amani besieged Quel’Thalas. Humans and elves fought together for the first time and beat the trolls in the foothills of the Alterac Mountains.',
+          status: 'Defeat',
+          tone: 'no',
+        },
+        {
+          name: 'Vilebranch',
+          text: 'The forest trolls of Jintha’Alor in the Hinterlands; one of the Amani’s shrunken remnants and the most dangerous tribe in the region.',
+          status: 'Hostile',
+          tone: 'no',
+        },
+        {
+          name: 'Revantusk',
+          text: 'The trolls of Revantusk Village in the Hinterlands, an Amani tribe allied with the Horde.',
+          status: 'Ally',
+          tone: 'ok',
+        },
+      ],
+      note: 'The Troll Wars gave birth to the alliance of humans and elves; the Amani’s hatred of the elves, centuries later, pushed them into the Horde’s arms.',
+    },
+    gurubashi: {
+      title: 'The blood god',
+      intro:
+        'The Gurubashi were the jungle trolls’ empire in the jungles of Stranglethorn; their capital was Zul’Gurub. Their story is known for a bad choice made when their power began to fade.',
+      more: [
+        'When the Gurubashi weakened, the Atal’ai priests summoned the blood god Hakkar the Soulflayer. Hakkar demanded sacrifice every day; the tribes rose up, destroyed his body and sent the Atal’ai into exile.',
+        'In exile the Atal’ai built the temple of Atal’Hakkar in the Swamp of Sorrows and tried to summon Hakkar again. Ysera’s green dragons sank the temple beneath the swamp; today it is known as the Sunken Temple.',
+        'The Gurubashi empire finally split into warring tribes, among them the Skullsplitter and the Bloodscalp. The weak were driven out of the jungle: the Darkspear tribe left Stranglethorn and took to the sea. In the north-west of Stranglethorn, at the Balia’mah Ruins and around the Gurubashi Arena, the marks of that fall still stand.',
+        'Hakkar was not finished. In Classic his priests summoned him again in Zul’Gurub. The Zandalar Tribe settled on Yojamba Isle and asks adventurers for help in stopping the danger.',
+      ],
+      figureCaption: 'Stranglethorn Vale. Positions are approximate.',
+      templeKey: 'The Atal’ai’s exile',
+      exileKey: 'The Darkspear’s flight',
+      legend: [
+        { name: 'Zul’Gurub', text: 'The city where Hakkar was summoned again' },
+        { name: 'Gurubashi Arena', text: 'The fighting arena of Stranglethorn' },
+        { name: 'Yojamba Isle', text: 'Base of the Zandalar Tribe' },
+        { name: 'Balia’mah Ruins', text: 'The ruins of the Bloodscalp trolls' },
+      ],
+      cards: [
+        {
+          name: 'Hakkar',
+          text: 'The blood-god loa of Zul’Gurub. The Gurubashi’s uprising destroyed his body; his spirit is trying to return.',
+          status: 'Blood god',
+          tone: 'no',
+        },
+        {
+          name: 'Atal’ai',
+          text: 'The priests who worship Hakkar. Driven out of the Gurubashi, they built their temple in the Swamp of Sorrows; today they are inside the Sunken Temple.',
+          status: 'Exiled priests',
+          tone: 'no',
+        },
+        {
+          name: 'Zandalar Tribe',
+          text: 'The Zandalari’s base on Yojamba Isle. It asks adventurers for help in stopping Hakkar’s return.',
+          status: 'Ally',
+          tone: 'ok',
+        },
+        {
+          name: 'Darkspear',
+          text: 'The tribe driven out of Stranglethorn after the Gurubashi fell. It took refuge on a small island in the South Seas.',
+          status: 'Exile',
+          tone: 'mute',
+        },
+      ],
+      note: 'A bond with the loa was a double-edged sword: the god-spirit that gave power could also enslave the tribe.',
+    },
+    darkspear: {
+      title: 'From exile to the Horde',
+      intro:
+        'While the trolls scattered across the world, the Darkspear’s story begins with exile. As you scroll, the map follows the tribe from the jungle to Durotar, step by step.',
+      mapLabel: 'The Darkspear’s road from Stranglethorn to Durotar',
+      steps: [
+        {
+          era: 'Stranglethorn',
+          title: 'Exile',
+          text: 'When the Gurubashi fall, the strong tribes drive the weak out of the jungle. The Darkspear are pushed to the shore and put out to sea in small boats.',
+          status: 'Exile',
+          tone: 'no',
+        },
+        {
+          era: 'South Seas',
+          title: 'Tribe of the isles',
+          text: 'The Darkspear settle on an island in the South Seas and live on fishing and hunting. Their wise chief Sen’jin sees in a vision that a new warrior people will come ashore and find his tribe a home.',
+          status: 'Vision',
+          tone: 'mute',
+        },
+        {
+          era: 'Thrall',
+          title: 'Out of the storm',
+          text: 'Thrall’s fleet is caught in a storm and thrown onto the island. Murlocs capture Sen’jin and sacrifice him; dying, he tells his vision to his son Vol’jin. Vol’jin and the Darkspear join Thrall’s Horde.',
+          status: 'A new road',
+          tone: 'ok',
+        },
+        {
+          era: 'Echo Isles',
+          title: 'A new home',
+          text: 'After the Third War the Darkspear settle on the Echo Isles off Thrall’s Durotar. Fighting under the same banner as the orcs, the trolls are now part of the Horde.',
+          status: 'Home',
+          tone: 'ok',
+        },
+        {
+          era: 'Sen’jin Village',
+          title: 'Zalazane',
+          text: 'The witch doctor Zalazane, lost to dark magic, takes the Echo Isles and enslaves the Darkspear. The survivors withdraw to Sen’jin Village on the opposite shore, while Vol’jin stands at Thrall’s side in Orgrimmar.',
+          status: 'Divided',
+          tone: 'no',
+        },
+      ],
+      note: 'The bond between the Darkspear and the orcs was born of two exiled peoples finding each other.',
+    },
+    today: {
+      title: 'Scattered tribes',
+      intro: [
+        'Today the Horde’s troll tribe is the Darkspear. Troll characters begin in the Valley of Trials with the orcs and come to Sen’jin Village on Durotar’s south coast; the Echo Isles offshore are still in Zalazane’s hands.',
+        'Vol’jin leads the tribe and is one of Thrall’s closest allies.',
+        'Most other troll tribes in the world are hostile: some to the Alliance, some to the Horde, some to anyone who crosses them.',
+      ],
+      leadersLabel: 'Leaders',
+      leadersText: 'The Darkspear’s leaders today.',
+      leaders: [
+        {
+          role: 'Chief of the Darkspear',
+          name: 'Vol’jin',
+          text: 'Sen’jin’s son and a shadow hunter. After his father’s death he brought the tribe into the Horde; he stands at Thrall’s side in Orgrimmar.',
+        },
+        {
+          role: 'Sage of Sen’jin Village',
+          name: 'Master Gadrin',
+          text: 'The old sage of the village on the shore. He asks adventurers for help in freeing the Echo Isles from Zalazane.',
+        },
+        {
+          role: 'Enemy',
+          name: 'Zalazane',
+          text: 'The witch doctor who took the Echo Isles. With dark magic he gathers slaves from the Darkspear.',
+        },
+      ],
+      tribesLabel: 'Tribes',
+      tribesTitle: 'The trolls and their tribes',
+      tribesText: [
+        'The trolls are not one people but many tribes. Below are the main ones you meet in Classic; a green dot means friend, a red dot means enemy.',
+      ],
+      tribes: [
+        { name: 'Darkspear', kind: 'jungle', place: 'Durotar', tone: 'ok' },
+        { name: 'Revantusk', kind: 'forest', place: 'Hinterlands', tone: 'ok' },
+        { name: 'Zandalar Tribe', kind: 'Zandalari', place: 'Yojamba Isle', tone: 'ok' },
+        { name: 'Atal’ai', kind: 'jungle', place: 'Zul’Gurub', tone: 'no' },
+        { name: 'Vilebranch', kind: 'forest', place: 'Jintha’Alor', tone: 'no' },
+        { name: 'Witherbark', kind: 'forest', place: 'Arathi Highlands', tone: 'no' },
+        { name: 'Sandfury', kind: 'sand', place: 'Zul’Farrak · Tanaris', tone: 'no' },
+        { name: 'Frostmane', kind: 'ice', place: 'Dun Morogh', tone: 'no' },
+        { name: 'Bloodscalp', kind: 'jungle', place: 'Stranglethorn Vale', tone: 'no' },
+        { name: 'Skullsplitter', kind: 'jungle', place: 'Stranglethorn Vale', tone: 'no' },
+        { name: 'Shatterspear', kind: 'forest', place: 'Darkshore', tone: 'no' },
+        { name: 'Smolderthorn', kind: 'jungle', place: 'Blackrock Spire', tone: 'no' },
+      ],
+      mapLabel: 'Troll homelands',
+      mapCaption: 'Troll homelands. Positions are approximate.',
+      legend: [
+        { name: 'Sen’jin Village', text: 'The Darkspear’s village on the shore' },
+        { name: 'Zul’Farrak', text: 'The Sandfury fortress in Tanaris' },
+        { name: 'Zul’Gurub', text: 'The city of Hakkar' },
+        { name: 'Yojamba Isle', text: 'Base of the Zandalar Tribe' },
+        { name: 'Jintha’Alor', text: 'The Vilebranch fortress in the Hinterlands' },
+        { name: 'Frostmane', text: 'The ice trolls of Dun Morogh' },
+      ],
+      note: 'Empires fell, but an exiled tribe like the Darkspear found a new home inside the Horde.',
+    },
+    outro: {
+      title: 'The loa are watching',
+      text: 'Their tribes scattered and their empires fell, but the trolls still see themselves as a people bound to their spirits. For the Darkspear that bond now reaches a new home on Durotar’s shore.',
+      nextText: 'The people of Mulgore: the Earth Mother, Cairne Bloodhoof and the Horde’s tauren.',
+    },
+    images: 'Maps from WoW Forever. World of Warcraft names belong to Blizzard Entertainment.',
+  },
+};

@@ -658,3 +658,17 @@ a.story-card:focus-visible {
 .lore .hero.drawn .flag{transform-box:fill-box;transform-origin:0 50%;animation:flag 3.2s ease-in-out infinite alternate}
 @keyframes flag{to{transform:skewY(-4deg) scaleX(.94)}}
 @media (prefers-reduced-motion:reduce){.lore .hero.drawn .flag{animation:none}}
+/* Troll story: jungle green, a plain hero until the cover arrives, the tribe list */
+.lore.troll{--jungle:#6fcf5a}
+.lore .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(111,207,90,.16),transparent 70%),radial-gradient(ellipse 50% 60% at 80% 10%,rgba(63,138,58,.14),transparent 70%),var(--bg)}
+.lore #amanimap svg{max-height:78vh}
+.lore #stvmap svg{max-height:78vh}
+.lore #world svg{max-height:70vh}
+.lore .tribes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;margin-top:clamp(20px,3vw,28px)}
+@media (max-width:760px){.lore .tribes{grid-template-columns:minmax(0,1fr)}}
+.lore .tribes li{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:var(--bg-elev);border:1px solid var(--border);border-radius:var(--r-lg);min-width:0}
+.lore .tribes .status{padding-top:6px}
+.lore .tribes .tb{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-width:0}
+.lore .tribes b{font-weight:600;color:var(--text)}
+.lore .tribes .kind{font:500 11px/16px var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.lore .tribes .where{flex-basis:100%;font-size:14px;line-height:1.45;color:var(--text-dim)}
