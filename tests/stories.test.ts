@@ -12,6 +12,8 @@ import {
   GNOME_STORY,
   HUMAN_ART_LABELS,
   HUMAN_STORY,
+  NIGHT_ELF_ART_LABELS,
+  NIGHT_ELF_STORY,
   STORY_UI,
 } from '../src/i18n/stories';
 import { fillArt } from '../src/lib/stories/art';
@@ -19,6 +21,7 @@ import { CURSE_ART } from '../src/lib/stories/curse-art';
 import { DWARF_ART } from '../src/lib/stories/dwarf-art';
 import { GNOME_ART } from '../src/lib/stories/gnome-art';
 import { HUMAN_ART } from '../src/lib/stories/human-art';
+import { NIGHT_ELF_ART } from '../src/lib/stories/night-elf-art';
 import { STORY_RACES, storySlug } from '../src/lib/stories/races';
 
 const art = [
@@ -30,6 +33,11 @@ const art = [
     drawings: [HUMAN_ART.kingdoms, HUMAN_ART.ek, HUMAN_ART.plague, HUMAN_ART.westfall, HUMAN_ART.world],
   },
   { name: 'curse', labels: CURSE_ART_LABELS, drawings: [CURSE_ART.emblem, CURSE_ART.world] },
+  {
+    name: 'night elf',
+    labels: NIGHT_ELF_ART_LABELS,
+    drawings: [NIGHT_ELF_ART.hero, NIGHT_ELF_ART.sundering, NIGHT_ELF_ART.ek, NIGHT_ELF_ART.teldrassil, NIGHT_ELF_ART.world],
+  },
 ];
 
 const keys = (o: object) => Object.keys(o).sort();
@@ -56,6 +64,7 @@ describe('story art', () => {
       expect(cams(GNOME_ART.ek)).toHaveLength(GNOME_STORY[lang].wars.steps.length);
       expect(cams(DWARF_ART.ek)).toHaveLength(DWARF_STORY[lang].hammers.steps.length);
       expect(cams(HUMAN_ART.ek)).toHaveLength(HUMAN_STORY[lang].wars.steps.length);
+      expect(cams(NIGHT_ELF_ART.ek)).toHaveLength(NIGHT_ELF_STORY[lang].hyjal.steps.length);
     }
   });
 });
@@ -110,6 +119,26 @@ describe('story copy', () => {
     expect(pins(HUMAN_ART.plague)).toBe(tr.fall.legend.length);
     expect(pins(HUMAN_ART.westfall)).toBe(tr.today.westfallLegend.length);
     expect(pins(HUMAN_ART.world)).toBe(tr.today.legend.length);
+  });
+
+  it('keeps TR and EN night elf stories in step', () => {
+    const [tr, en] = [NIGHT_ELF_STORY.tr, NIGHT_ELF_STORY.en];
+    expect(en.facts.length).toBe(tr.facts.length);
+    expect(en.origin.stages.map((s) => s.name)).toEqual(tr.origin.stages.map((s) => s.name));
+    expect(en.sundering.cards.map((c) => c.tone)).toEqual(tr.sundering.cards.map((c) => c.tone));
+    expect(en.vigil.places.map((p) => p.name)).toEqual(tr.vigil.places.map((p) => p.name));
+    expect(en.hyjal.steps.map((s) => [s.era, s.tone])).toEqual(tr.hyjal.steps.map((s) => [s.era, s.tone]));
+    expect(en.today.leaders.map((l) => l.name)).toEqual(tr.today.leaders.map((l) => l.name));
+    expect(en.today.treeLegend.map((l) => l.name)).toEqual(tr.today.treeLegend.map((l) => l.name));
+    expect(en.today.legend.map((l) => l.name)).toEqual(tr.today.legend.map((l) => l.name));
+    // the page pairs these lists with fixed icon sets and numbered map pins
+    expect(tr.origin.stages).toHaveLength(4);
+    expect(tr.sundering.cards).toHaveLength(4);
+    expect(tr.vigil.places).toHaveLength(3);
+    expect(tr.today.leaders).toHaveLength(3);
+    const pins = (svg: string) => (svg.match(/class="pnum"/g) ?? []).length;
+    expect(pins(NIGHT_ELF_ART.teldrassil)).toBe(tr.today.treeLegend.length);
+    expect(pins(NIGHT_ELF_ART.world)).toBe(tr.today.legend.length);
   });
 
   it('keeps TR and EN Curse of Flesh pages in step', () => {

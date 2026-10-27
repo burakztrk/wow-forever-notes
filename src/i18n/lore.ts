@@ -2119,4 +2119,808 @@ export const LORE: LoreEntry[] = [
       text: 'The frost-hardened dwarves of Northrend’s Storm Peaks.',
     },
   },
+
+  // ---------------------------------------------------------------- Night Elf story
+  {
+    id: 'teldrassil',
+    name: 'Teldrassil',
+    icon: 'spell_arcane_teleportdarnassus',
+    aliases: ['Teldrassil'],
+    tr: {
+      sub: 'Yeni World Tree',
+      text: 'Archdruid Fandral Staghelm’in Third War’dan sonra Darkshore açıklarına diktiği dev ağaç; amacı night elf’lerin kaybettiği ölümsüzlüğü geri kazanmaktı. Ejderha Aspect’leri ağacı kutsamadı ve dallarının arasında yozlaşma izleri görülüyor. Tepesinde Darnassus var.',
+      note: 'Teldrassil',
+    },
+    en: {
+      sub: 'The new World Tree',
+      text: 'The giant tree Archdruid Fandral Staghelm planted off Darkshore after the Third War, hoping to win back the immortality the night elves had lost. The Dragon Aspects did not bless it, and signs of corruption show among its branches. Darnassus stands on its crown.',
+      note: 'Teldrassil',
+    },
+  },
+  {
+    id: 'darnassus',
+    name: 'Darnassus',
+    icon: 'spell_arcane_portaldarnassus',
+    aliases: ['Darnassus'],
+    tr: {
+      sub: 'Night elf başkenti',
+      text: 'Teldrassil’in tepesine kurulu night elf başkenti. Tyrande’nin Temple of the Moon’u ve druid’lerin Cenarion Enclave’i burada.',
+      note: 'Teldrassil',
+    },
+    en: {
+      sub: 'Capital of the night elves',
+      text: 'The night elf capital on the crown of Teldrassil, home of Tyrande’s Temple of the Moon and the druids’ Cenarion Enclave.',
+      note: 'Teldrassil',
+    },
+  },
+  {
+    id: 'tyrande',
+    name: 'Tyrande Whisperwind',
+    icon: 'spell_holy_elunesgrace',
+    aliases: ['Tyrande Whisperwind', 'Tyrande'],
+    tr: {
+      sub: 'Elune’ün Yüce Rahibesi · Sentinel’lerin lideri',
+      text: 'War of the Ancients’ta Elune’ün genç bir rahibesiydi ve Malfurion’la birlikte direnişe önderlik etti. On bin yıl boyunca Sentinel’leri yönetip halkını korudu; bugün night elf’leri Darnassus’tan yönetiyor.',
+      note: 'Temple of the Moon, Darnassus',
+    },
+    en: {
+      sub: 'High Priestess of Elune · leader of the Sentinels',
+      text: 'A young priestess of Elune in the War of the Ancients who led the resistance with Malfurion. For ten thousand years she led the Sentinels and guarded her people; today she rules the night elves from Darnassus.',
+      note: 'Temple of the Moon, Darnassus',
+    },
+  },
+  {
+    id: 'fandral',
+    name: 'Fandral Staghelm',
+    icon: 'ability_druid_travelform',
+    aliases: ['Fandral Staghelm', 'Fandral'],
+    tr: {
+      sub: 'Archdruid',
+      text: 'Malfurion’un yokluğunda druid’lerin lideri. Oğlu Valstann’ı War of the Shifting Sands’te kaybetti. Ölümsüzlüğü geri getirmek için Teldrassil’i dikti; Aspect’lerin onayı olmadan dikilen ağaç bugün tartışmalı.',
+      note: 'Cenarion Enclave, Darnassus',
+    },
+    en: {
+      sub: 'Archdruid',
+      text: 'Leader of the druids while Malfurion is gone. He lost his son Valstann in the War of the Shifting Sands. He planted Teldrassil to bring back immortality; a tree planted without the Aspects’ blessing is a matter of dispute today.',
+      note: 'Cenarion Enclave, Darnassus',
+    },
+  },
+  {
+    id: 'elune',
+    name: 'Elune',
+    icon: 'spell_nature_moonglow',
+    aliases: ['Elune'],
+    tr: {
+      sub: 'Ay tanrıçası',
+      text: 'Night elf’lerin taptığı Ay tanrıçası. Rahibeleri Sisters of Elune’dur ve Tyrande onların yüce rahibesidir.',
+    },
+    en: {
+      sub: 'Goddess of the moon',
+      text: 'The moon goddess the night elves worship. Her priestesses are the Sisters of Elune, and Tyrande is their high priestess.',
+    },
+  },
+  {
+    id: 'nightsaber',
+    name: 'Nightsaber',
+    icon: 'ability_druid_catform',
+    aliases: ['Nightsaber'],
+    tr: {
+      sub: 'Night elf bineği',
+      text: 'Night elf’lerin bindiği, gece renkli postlu iri kedi; Sentinel’ler savaşa onlarla girer.',
+    },
+    en: {
+      sub: 'Night elf mount',
+      text: 'The great night-furred cat the night elves ride; the Sentinels go to war on them.',
+    },
+  },
+  {
+    id: 'kaldorei',
+    name: 'Kaldorei',
+    icon: 'race_nightelf_male',
+    aliases: ['Kaldorei', 'kaldorei'],
+    tr: {
+      sub: 'Night elf’lerin kendi adı',
+      text: 'Night elf dilinde “yıldızların çocukları”. Well of Eternity’nin kıyısındaki karanlık trollerden doğan halkın kadim adı.',
+    },
+    en: {
+      sub: 'The night elves’ own name',
+      text: '“Children of the stars” in their own tongue; the ancient name of the people born of the dark trolls on the shores of the Well of Eternity.',
+    },
+  },
+  {
+    id: 'darktroll',
+    name: 'Dark troll',
+    icon: 'race_troll_male',
+    aliases: ['karanlık trol', 'dark trolls'],
+    tr: {
+      sub: 'Kalimdor trolleri',
+      text: 'Kalimdor’da yaşayan bir troll kabilesi. Well of Eternity’nin kıyısına yerleşenler, Well’in gücüyle değişerek ilk night elf’ler oldu.',
+    },
+    en: {
+      sub: 'Trolls of Kalimdor',
+      text: 'A troll tribe of Kalimdor. Those who settled on the shores of the Well of Eternity were changed by its power into the first night elves.',
+    },
+  },
+  {
+    id: 'well',
+    name: 'Well of Eternity',
+    icon: 'spell_arcane_arcane03',
+    aliases: ['Well of Eternity'],
+    tr: {
+      sub: 'Büyünün kaynağı',
+      text: 'Kadim Kalimdor’un ortasındaki, büyü dolu sularıyla parlayan göl. Highborne’ların onu kötüye kullanması Burning Legion’ı Azeroth’a çekti; War of the Ancients’ın sonunda çöktü ve Great Sundering’e yol açtı.',
+    },
+    en: {
+      sub: 'The source of magic',
+      text: 'The lake at the heart of ancient Kalimdor, shining with waters full of magic. The Highborne’s abuse of it drew the Burning Legion to Azeroth; it collapsed at the end of the War of the Ancients and caused the Great Sundering.',
+    },
+  },
+  {
+    id: 'zinazshari',
+    name: 'Zin-Azshari',
+    icon: 'inv_misc_gem_sapphire_01',
+    aliases: ['Zin-Azshari'],
+    tr: {
+      sub: 'Kadim başkent',
+      text: 'Kraliçe Azshara’nın Well of Eternity kıyısındaki görkemli başkenti. Great Sundering’de dalgaların altında kaldı.',
+    },
+    en: {
+      sub: 'The ancient capital',
+      text: 'Queen Azshara’s splendid capital on the shore of the Well of Eternity. It sank beneath the waves in the Great Sundering.',
+    },
+  },
+  {
+    id: 'azshara',
+    name: 'Azshara',
+    icon: 'inv_misc_gem_pearl_04',
+    aliases: ['Azshara'],
+    tr: {
+      sub: 'Kadim night elf kraliçesi',
+      text: 'Güzelliğine tapılan kraliçe. Sargeras’ın vaatlerine kanıp Burning Legion’a kapıyı açtı. Well çökerken sarayıyla birlikte dalgaların altında kayboldu.',
+    },
+    en: {
+      sub: 'Queen of the ancient night elves',
+      text: 'The queen worshipped for her beauty. Swayed by Sargeras’s promises, she opened the door to the Burning Legion, and when the Well collapsed she vanished beneath the waves with her palace.',
+    },
+  },
+  {
+    id: 'highborne',
+    name: 'Highborne',
+    icon: 'spell_arcane_starfire',
+    aliases: ['Highborne'],
+    tr: {
+      sub: 'Night elf soyluları',
+      text: 'Azshara’nın sarayındaki büyücü soylular. Well of Eternity’nin gücünü kötüye kullanıp Legion’ı çağırdılar. Kırılmadan sonra büyüden vazgeçmeyenler sürgüne gönderildi ve Quel’Thalas’ta high elf’lere dönüştü.',
+    },
+    en: {
+      sub: 'Night elf nobles',
+      text: 'The sorcerer nobles of Azshara’s court. They abused the power of the Well of Eternity and summoned the Legion. After the Sundering, those who would not give up magic were exiled and became the high elves of Quel’Thalas.',
+    },
+  },
+  {
+    id: 'ancients',
+    name: 'War of the Ancients',
+    icon: 'spell_shadow_summoninfernal',
+    aliases: ['War of the Ancients'],
+    tr: {
+      sub: 'Savaş · Dark Portal’dan ~10.000 yıl önce',
+      text: 'Burning Legion’ın Well of Eternity’den Azeroth’a geçtiği ilk istila. Malfurion, Tyrande, Illidan ve Cenarius’un önderliğindeki direniş Well’in çöküşüyle sona erdi.',
+    },
+    en: {
+      sub: 'War · ~10,000 years before the Dark Portal',
+      text: 'The Burning Legion’s first invasion of Azeroth, through the Well of Eternity. The resistance led by Malfurion, Tyrande, Illidan and Cenarius ended with the Well’s collapse.',
+    },
+  },
+  {
+    id: 'malfurion',
+    name: 'Malfurion Stormrage',
+    icon: 'ability_druid_flourish',
+    aliases: ['Malfurion Stormrage', 'Malfurion'],
+    tr: {
+      sub: 'İlk druid · kayıp',
+      text: 'Cenarius’un öğrencisi ve ilk night elf druid’i; Illidan’ın ikiz kardeşi, Tyrande’nin sevdiği adam. War of the Ancients’ta Well’in yok edilmesini sağladı, sonra Nordrassil’i dikti. Third War’dan sonra Emerald Dream’e daldı ve uyanmadı.',
+    },
+    en: {
+      sub: 'The first druid · lost',
+      text: 'Cenarius’s student and the first night elf druid; Illidan’s twin and the man Tyrande loves. He brought about the Well’s destruction in the War of the Ancients and then planted Nordrassil. After the Third War he entered the Emerald Dream and did not wake.',
+    },
+  },
+  {
+    id: 'illidan',
+    name: 'Illidan',
+    icon: 'spell_shadow_soulleech_2',
+    aliases: ['Illidan Stormrage', 'Illidan'],
+    tr: {
+      sub: 'Malfurion’un ikizi · sürgün',
+      text: 'Well’in yok edilmesine razı olmayıp Mount Hyjal’da yeni bir Well yaratan büyücü. On bin yıl zindanda kaldı; Third War’da serbest bırakılınca Skull of Gul’dan’ın gücünü emdi ve sürgüne gönderildi.',
+    },
+    en: {
+      sub: 'Malfurion’s twin · exile',
+      text: 'The sorcerer who would not let the Well be lost and made a new one on Mount Hyjal. He spent ten thousand years in prison; freed in the Third War, he drained the power of the Skull of Gul’dan and was banished.',
+    },
+  },
+  {
+    id: 'cenarius',
+    name: 'Cenarius',
+    icon: 'spell_nature_forceofnature',
+    aliases: ['Cenarius'],
+    tr: {
+      sub: 'Ormanın yarı-tanrısı',
+      text: 'Doğanın koruyucusu yarı-tanrı; Malfurion’a druid’liği öğretti. Third War’da Ashenvale’de Grom Hellscream tarafından öldürüldü.',
+    },
+    en: {
+      sub: 'Demigod of the forest',
+      text: 'The demigod who guards nature and taught Malfurion the ways of the druid. He was killed by Grom Hellscream in Ashenvale during the Third War.',
+    },
+  },
+  {
+    id: 'sundering',
+    name: 'Great Sundering',
+    icon: 'spell_nature_earthshock',
+    aliases: ['Great Sundering', 'Sundering'],
+    tr: {
+      sub: 'Dünyanın bölünüşü',
+      text: 'Well of Eternity’nin çöküşüyle kadim Kalimdor’un paramparça olması. Bugünkü kıtalar ve ortalarında dönen Maelstrom bu felaketten kaldı.',
+    },
+    en: {
+      sub: 'The breaking of the world',
+      text: 'The shattering of ancient Kalimdor when the Well of Eternity collapsed. Today’s continents, and the Maelstrom churning between them, are what it left.',
+    },
+  },
+  {
+    id: 'maelstrom',
+    name: 'Maelstrom',
+    icon: 'spell_nature_cyclone',
+    aliases: ['Maelstrom'],
+    tr: {
+      sub: 'Dünyanın ortasındaki girdap',
+      text: 'Well of Eternity’nin çöktüğü yerde dönen dev girdap; Great Sundering’in hâlâ kapanmayan yarası.',
+    },
+    en: {
+      sub: 'The whirlpool at the world’s heart',
+      text: 'The vast whirlpool turning where the Well of Eternity collapsed; the wound of the Great Sundering that never closed.',
+    },
+  },
+  {
+    id: 'nordrassil',
+    name: 'Nordrassil',
+    icon: 'spell_nature_regeneration',
+    aliases: ['Nordrassil'],
+    tr: {
+      sub: 'World Tree · Mount Hyjal',
+      text: 'Malfurion ve druid’lerin Illidan’ın yarattığı ikinci Well’in üzerine diktiği World Tree. Ejderha Aspect’lerinin kutsamasıyla night elf’lere ölümsüzlük verdi. Third War’da Archimonde’u yok etmek için gücü feda edildi.',
+    },
+    en: {
+      sub: 'World Tree · Mount Hyjal',
+      text: 'The World Tree Malfurion and the druids planted over the second Well that Illidan made. Blessed by the Dragon Aspects, it gave the night elves immortality. In the Third War its power was spent to destroy Archimonde.',
+    },
+  },
+  {
+    id: 'aspects',
+    name: 'Dragon Aspects',
+    icon: 'inv_misc_head_dragon_01',
+    aliases: ['Dragon Aspects', 'Aspect'],
+    tr: {
+      sub: 'Beş büyük ejderha',
+      text: 'Titan’ların dünyayı korumak için güçlendirdiği beş ejderha ailesinin liderleri. Nordrassil’i kutsayıp night elf’lere ölümsüzlük verdiler; Teldrassil’i ise kutsamadılar.',
+    },
+    en: {
+      sub: 'The five great dragons',
+      text: 'The leaders of the five dragonflights, empowered by the Titans to guard the world. They blessed Nordrassil and gave the night elves immortality; they did not bless Teldrassil.',
+    },
+  },
+  {
+    id: 'maiev',
+    name: 'Maiev Shadowsong',
+    icon: 'ability_ambush',
+    aliases: ['Maiev Shadowsong', 'Maiev'],
+    tr: {
+      sub: 'Watchers’ın lideri',
+      text: 'On bin yıl boyunca Illidan’ın zindanını bekleyen Watchers’ın başı. Third War’da Illidan serbest kalınca onun peşine düştü.',
+    },
+    en: {
+      sub: 'Leader of the Watchers',
+      text: 'Head of the Watchers who guarded Illidan’s prison for ten thousand years. When he was freed in the Third War she set out after him.',
+    },
+  },
+  {
+    id: 'watchers',
+    name: 'Watchers',
+    icon: 'spell_holy_mindvision',
+    aliases: ['Watchers'],
+    tr: {
+      sub: 'Gardiyanlar',
+      text: 'Illidan’ı ve night elf’lerin diğer tehlikeli tutsaklarını bekleyen gardiyan tarikatı.',
+    },
+    en: {
+      sub: 'Wardens',
+      text: 'The order of wardens that guards Illidan and the night elves’ other dangerous prisoners.',
+    },
+  },
+  {
+    id: 'barrowden',
+    name: 'Barrow Den',
+    icon: 'spell_nature_sleep',
+    aliases: ['Barrow Dens', 'Barrow Den'],
+    tr: {
+      sub: 'Druid’lerin uyku yeri',
+      text: 'Druid’lerin Emerald Dream’de dolaşmak için uyudukları yeraltı odaları.',
+    },
+    en: {
+      sub: 'Where the druids sleep',
+      text: 'The underground chambers where druids sleep while they walk the Emerald Dream.',
+    },
+  },
+  {
+    id: 'emeralddream',
+    name: 'Emerald Dream',
+    icon: 'spell_nature_naturetouchgrow',
+    aliases: ['Emerald Dream'],
+    tr: {
+      sub: 'Doğanın düş âlemi',
+      text: 'Azeroth’un el değmemiş hâlini yansıtan ruhani âlem; yeşil ejderha Ysera tarafından korunur. Druid’ler bu âlemde dolaşır, Malfurion orada kayboldu.',
+    },
+    en: {
+      sub: 'The dream of nature',
+      text: 'The spirit realm that mirrors Azeroth as it was before anyone touched it, watched over by the green dragon Ysera. Druids walk it, and Malfurion was lost there.',
+    },
+  },
+  {
+    id: 'sentinels',
+    name: 'Sentinels',
+    icon: 'spell_nature_sentinal',
+    aliases: ['Sentinels', 'Sentinel'],
+    tr: {
+      sub: 'Night elf muhafızları',
+      text: 'Tyrande’nin komutasındaki kadın savaşçılar. Druid’ler uyurken on bin yıl boyunca night elf topraklarını korudular; bugün Ashenvale’de Horde’la savaşıyorlar.',
+    },
+    en: {
+      sub: 'Night elf guardians',
+      text: 'The women warriors under Tyrande’s command. They guarded night elf lands for ten thousand years while the druids slept, and today they fight the Horde in Ashenvale.',
+    },
+  },
+  {
+    id: 'ahnqiraj',
+    name: 'Ahn’Qiraj',
+    icon: 'spell_nature_insectswarm',
+    aliases: ['Ahn’Qiraj'],
+    tr: {
+      sub: 'Qiraji kalesi · Silithus',
+      text: 'Silithus’taki qiraji kalesi; altında Old God C’Thun yatıyor. War of the Shifting Sands’ten beri Scarab Wall’un ardında mühürlü.',
+      note: 'Silithus',
+    },
+    en: {
+      sub: 'Qiraji fortress · Silithus',
+      text: 'The qiraji fortress in Silithus, with the Old God C’Thun beneath it. It has been sealed behind the Scarab Wall since the War of the Shifting Sands.',
+      note: 'Silithus',
+    },
+  },
+  {
+    id: 'qiraji',
+    name: 'Qiraji',
+    icon: 'spell_nature_insectswarm',
+    aliases: ['qiraji'],
+    tr: {
+      sub: 'Böcek halkı',
+      text: 'Ahn’Qiraj’da yaşayan ve Old God C’Thun’a hizmet eden böcek halkı.',
+    },
+    en: {
+      sub: 'The insect people',
+      text: 'The insect people of Ahn’Qiraj who serve the Old God C’Thun.',
+    },
+  },
+  {
+    id: 'shiftingsands',
+    name: 'War of the Shifting Sands',
+    icon: 'spell_nature_earthbind',
+    aliases: ['War of the Shifting Sands'],
+    tr: {
+      sub: 'Savaş · yaklaşık bin yıl önce',
+      text: 'Qiraji’lerin Ahn’Qiraj’dan taşıp Kalimdor’u tehdit ettiği savaş. Night elf’ler bronz ejderhaların yardımıyla onları Scarab Wall’un ardına kapattı.',
+    },
+    en: {
+      sub: 'War · about a thousand years ago',
+      text: 'The war in which the qiraji poured out of Ahn’Qiraj and threatened Kalimdor. The night elves, helped by the bronze dragons, sealed them behind the Scarab Wall.',
+    },
+  },
+  {
+    id: 'scarabwall',
+    name: 'Scarab Wall',
+    icon: 'spell_nature_stoneclawtotem',
+    aliases: ['Scarab Wall'],
+    tr: {
+      sub: 'Ahn’Qiraj’ı mühürleyen sur',
+      text: 'War of the Shifting Sands’in sonunda bronz ejderhaların gücüyle örülen dev büyülü duvar; qiraji’leri Ahn’Qiraj’ın içinde tutuyor.',
+      note: 'Silithus',
+    },
+    en: {
+      sub: 'The wall that seals Ahn’Qiraj',
+      text: 'The great enchanted wall raised with the bronze dragons’ power at the end of the War of the Shifting Sands; it keeps the qiraji inside Ahn’Qiraj.',
+      note: 'Silithus',
+    },
+  },
+  {
+    id: 'valstann',
+    name: 'Valstann Staghelm',
+    icon: 'ability_hunter_snipershot',
+    aliases: ['Valstann'],
+    tr: {
+      sub: 'Fandral’ın oğlu',
+      text: 'War of the Shifting Sands’te qiraji’lere karşı savaşırken öldürülen genç night elf; ölümü babası Fandral’ı derinden değiştirdi.',
+    },
+    en: {
+      sub: 'Fandral’s son',
+      text: 'The young night elf killed fighting the qiraji in the War of the Shifting Sands; his death changed his father Fandral deeply.',
+    },
+  },
+  {
+    id: 'silithus',
+    name: 'Silithus',
+    icon: 'spell_nature_insectswarm',
+    aliases: ['Silithus'],
+    tr: {
+      sub: 'Bölge · Kalimdor’un güneyi',
+      text: 'Kalimdor’un güneyindeki çöl; Ahn’Qiraj ve Scarab Wall burada.',
+      note: 'Silithus',
+    },
+    en: {
+      sub: 'Region · southern Kalimdor',
+      text: 'The desert in the south of Kalimdor, home of Ahn’Qiraj and the Scarab Wall.',
+      note: 'Silithus',
+    },
+  },
+  {
+    id: 'cthun',
+    name: 'C’Thun',
+    icon: 'inv_misc_eye_01',
+    aliases: ['C’Thun'],
+    tr: {
+      sub: 'Old God',
+      text: 'Ahn’Qiraj’ın altında hapsedilmiş Old God; qiraji’ler ona hizmet eder.',
+    },
+    en: {
+      sub: 'Old God',
+      text: 'The Old God imprisoned beneath Ahn’Qiraj, served by the qiraji.',
+    },
+  },
+  {
+    id: 'moonglade',
+    name: 'Moonglade',
+    icon: 'spell_arcane_teleportmoonglade',
+    aliases: ['Moonglade'],
+    tr: {
+      sub: 'Druid’lerin vadisi',
+      text: 'Kalimdor’un kuzeyinde, druid’lerin kutsal saydığı huzurlu vadi; Cenarion Circle’ın merkezi Nighthaven burada.',
+      note: 'Moonglade',
+    },
+    en: {
+      sub: 'Vale of the druids',
+      text: 'The peaceful vale in northern Kalimdor that the druids hold sacred; Nighthaven, heart of the Cenarion Circle, lies here.',
+      note: 'Moonglade',
+    },
+  },
+  {
+    id: 'cenarioncircle',
+    name: 'Cenarion Circle',
+    icon: 'spell_nature_healingtouch',
+    aliases: ['Cenarion Circle'],
+    tr: {
+      sub: 'Druid’ler birliği',
+      text: 'Night elf ve tauren druid’lerinin birlikte oluşturduğu örgüt; doğayı korumak için Kalimdor’un dört bir yanında çalışıyor.',
+      note: 'Nighthaven, Moonglade',
+    },
+    en: {
+      sub: 'Order of druids',
+      text: 'The order night elf and tauren druids share, working across Kalimdor to protect nature.',
+      note: 'Nighthaven, Moonglade',
+    },
+  },
+  {
+    id: 'nighthaven',
+    name: 'Nighthaven',
+    icon: 'spell_nature_moonglow',
+    aliases: ['Nighthaven'],
+    tr: {
+      sub: 'Moonglade köyü',
+      text: 'Moonglade’deki druid köyü; Cenarion Circle burada toplanır.',
+      note: 'Moonglade',
+    },
+    en: {
+      sub: 'Village in Moonglade',
+      text: 'The druid village in Moonglade where the Cenarion Circle gathers.',
+      note: 'Moonglade',
+    },
+  },
+  {
+    id: 'thrall',
+    name: 'Thrall',
+    icon: 'spell_nature_bloodlust',
+    aliases: ['Thrall'],
+    tr: {
+      sub: 'Horde’un warchief’i',
+      text: 'Toplama kamplarında büyüyen orc. Horde’u yeniden kurdu ve Third War’da halkını Kalimdor’a götürdü; orada Durotar’ı ve başkenti Orgrimmar’ı kurdu.',
+      note: 'Orgrimmar',
+    },
+    en: {
+      sub: 'Warchief of the Horde',
+      text: 'The orc who grew up in the internment camps. He rebuilt the Horde, led his people to Kalimdor in the Third War and founded Durotar and its capital, Orgrimmar.',
+      note: 'Orgrimmar',
+    },
+  },
+  {
+    id: 'grom',
+    name: 'Grom Hellscream',
+    icon: 'ability_warrior_warcry',
+    aliases: ['Grom Hellscream', 'Grom'],
+    tr: {
+      sub: 'Warsong klanının şefi',
+      text: 'Third War’da Ashenvale’in ormanlarını kestiren Warsong orc’larının lideri. Demon kanı içerek güçlendi ve Cenarius’u öldürdü; sonra lanetten kurtuldu ve Mannoroth’u öldürürken kendisi de öldü.',
+    },
+    en: {
+      sub: 'Chieftain of the Warsong clan',
+      text: 'Leader of the Warsong orcs who cut down Ashenvale’s forests in the Third War. He drank demon blood, gained its strength and killed Cenarius; later he broke free of the curse and died killing Mannoroth.',
+    },
+  },
+  {
+    id: 'warsong',
+    name: 'Warsong',
+    icon: 'inv_axe_09',
+    aliases: ['Warsong'],
+    tr: {
+      sub: 'Orc klanı',
+      text: 'Grom Hellscream’in klanı. Ashenvale’de night elf ormanlarını kesip kereste toplayan orc’lar; Sentinel’lerle savaşları bugün de sürüyor.',
+      note: 'Ashenvale',
+    },
+    en: {
+      sub: 'Orc clan',
+      text: 'Grom Hellscream’s clan, the orcs who log the night elves’ forests in Ashenvale; their war with the Sentinels goes on today.',
+      note: 'Ashenvale',
+    },
+  },
+  {
+    id: 'ashenvale',
+    name: 'Ashenvale',
+    icon: 'spell_nature_protectionformnature',
+    aliases: ['Ashenvale'],
+    tr: {
+      sub: 'Bölge · Kalimdor',
+      text: 'Night elf’lerin kadim ormanı; Cenarius burada öldü. Bugün Sentinel’ler ile Horde arasında bitmeyen bir savaş alanı.',
+      note: 'Ashenvale',
+    },
+    en: {
+      sub: 'Region · Kalimdor',
+      text: 'The ancient forest of the night elves, where Cenarius died. Today it is an endless battleground between the Sentinels and the Horde.',
+      note: 'Ashenvale',
+    },
+  },
+  {
+    id: 'skull',
+    name: 'Skull of Gul’dan',
+    icon: 'inv_misc_bone_10',
+    aliases: ['Skull of Gul’dan'],
+    tr: {
+      sub: 'Lanetli kafatası',
+      text: 'Ölen orc büyücüsü Gul’dan’ın demon gücüyle dolu kafatası. Third War’da Illidan onun gücünü emdi; kafatasının zehri Felwood’u yozlaştırdı.',
+    },
+    en: {
+      sub: 'The cursed skull',
+      text: 'The skull of the dead orc warlock Gul’dan, full of demonic power. In the Third War Illidan drained its power, and its poison corrupted Felwood.',
+    },
+  },
+  {
+    id: 'tichondrius',
+    name: 'Tichondrius',
+    icon: 'spell_shadow_haunting',
+    aliases: ['Tichondrius'],
+    tr: {
+      sub: 'Dreadlord',
+      text: 'Burning Legion’ın dreadlord komutanlarından; Third War’da Legion’ın planlarını yönetenlerden biri. Illidan, Skull of Gul’dan’ın gücüyle onu öldürdü.',
+    },
+    en: {
+      sub: 'Dreadlord',
+      text: 'One of the Burning Legion’s dreadlord commanders and among those who ran the Legion’s plans in the Third War. Illidan killed him with the power of the Skull of Gul’dan.',
+    },
+  },
+  {
+    id: 'felwood',
+    name: 'Felwood',
+    icon: 'spell_shadow_soulgem',
+    aliases: ['Felwood'],
+    tr: {
+      sub: 'Bölge · yozlaşmış orman',
+      text: 'Bir zamanlar Ashenvale’in parçası olan orman; Legion’ın ve Skull of Gul’dan’ın etkisiyle zehirlendi. Bugün Cenarion Circle onu iyileştirmeye çalışıyor.',
+      note: 'Felwood',
+    },
+    en: {
+      sub: 'Region · the corrupted forest',
+      text: 'A forest that was once part of Ashenvale, poisoned by the Legion and the Skull of Gul’dan. The Cenarion Circle is trying to heal it.',
+      note: 'Felwood',
+    },
+  },
+  {
+    id: 'horn',
+    name: 'Horn of Cenarius',
+    icon: 'inv_misc_horn_03',
+    aliases: ['Horn of Cenarius'],
+    tr: {
+      sub: 'Kadim boru',
+      text: 'Malfurion’un Mount Hyjal’da çaldığı kutsal boru; çağrısıyla gelen wisp’ler Archimonde’u yok etti.',
+    },
+    en: {
+      sub: 'The ancient horn',
+      text: 'The sacred horn Malfurion sounded on Mount Hyjal; the wisps it called destroyed Archimonde.',
+    },
+  },
+  {
+    id: 'wisp',
+    name: 'Wisp',
+    icon: 'spell_nature_wispsplode',
+    aliases: ['wisps', 'wisp'],
+    tr: {
+      sub: 'Night elf ruhları',
+      text: 'Night elf’lerin ölümden sonra dönüştüğü ışık ruhları. Mount Hyjal’da binlerce wisp Archimonde’u sardı ve Nordrassil’in gücüyle onu yok etti.',
+    },
+    en: {
+      sub: 'Night elf spirits',
+      text: 'Spirits of light the night elves become after death. On Mount Hyjal thousands of wisps swarmed Archimonde and destroyed him with Nordrassil’s power.',
+    },
+  },
+  {
+    id: 'darkshore',
+    name: 'Darkshore',
+    icon: 'spell_nature_starfall',
+    aliases: ['Darkshore'],
+    tr: {
+      sub: 'Bölge · Kalimdor’un kuzeybatısı',
+      text: 'Teldrassil’in karşısındaki kıyı bölgesi; Auberdine burada.',
+      note: 'Darkshore',
+    },
+    en: {
+      sub: 'Region · north-western Kalimdor',
+      text: 'The coast across from Teldrassil, home of Auberdine.',
+      note: 'Darkshore',
+    },
+  },
+  {
+    id: 'temple',
+    name: 'Temple of the Moon',
+    icon: 'spell_holy_elunesgrace',
+    aliases: ['Temple of the Moon'],
+    tr: {
+      sub: 'Elune’ün tapınağı',
+      text: 'Darnassus’taki Elune tapınağı; Tyrande Whisperwind burada bulunur.',
+      note: 'Darnassus',
+    },
+    en: {
+      sub: 'Temple of Elune',
+      text: 'The temple of Elune in Darnassus, where Tyrande Whisperwind is found.',
+      note: 'Darnassus',
+    },
+  },
+  {
+    id: 'shadowglen',
+    name: 'Shadowglen',
+    icon: 'spell_nature_rejuvenation',
+    aliases: ['Shadowglen'],
+    tr: {
+      sub: 'Başlangıç vadisi',
+      text: 'Teldrassil’deki vadi; night elf karakterler oyuna burada başlar.',
+      note: 'Teldrassil',
+    },
+    en: {
+      sub: 'Starting vale',
+      text: 'The vale on Teldrassil where night elf characters begin the game.',
+      note: 'Teldrassil',
+    },
+  },
+  {
+    id: 'dolanaar',
+    name: 'Dolanaar',
+    icon: 'spell_nature_regenerate',
+    aliases: ['Dolanaar'],
+    tr: {
+      sub: 'Teldrassil köyü',
+      text: 'Teldrassil’in ortasındaki night elf köyü.',
+      note: 'Teldrassil',
+    },
+    en: {
+      sub: 'Village on Teldrassil',
+      text: 'The night elf village in the middle of Teldrassil.',
+      note: 'Teldrassil',
+    },
+  },
+  {
+    id: 'ruttheran',
+    name: 'Rut’theran Village',
+    icon: 'trade_fishing',
+    aliases: ['Rut’theran Village'],
+    tr: {
+      sub: 'Teldrassil limanı',
+      text: 'Teldrassil’in kökündeki köy; Auberdine’e giden gemi buradan kalkar.',
+      note: 'Teldrassil',
+    },
+    en: {
+      sub: 'Teldrassil’s harbour',
+      text: 'The village at the foot of Teldrassil, where the boat to Auberdine leaves.',
+      note: 'Teldrassil',
+    },
+  },
+  {
+    id: 'auberdine',
+    name: 'Auberdine',
+    icon: 'trade_fishing',
+    aliases: ['Auberdine'],
+    tr: {
+      sub: 'Darkshore limanı',
+      text: 'Darkshore kıyısındaki night elf kasabası; gemiler buradan Teldrassil’e ve Menethil Harbor’a gider.',
+      note: 'Darkshore',
+    },
+    en: {
+      sub: 'Harbour of Darkshore',
+      text: 'The night elf town on the Darkshore coast, with boats to Teldrassil and Menethil Harbor.',
+      note: 'Darkshore',
+    },
+  },
+  {
+    id: 'astranaar',
+    name: 'Astranaar',
+    icon: 'spell_nature_sentinal',
+    aliases: ['Astranaar'],
+    tr: {
+      sub: 'Ashenvale karakolu',
+      text: 'Ashenvale’in ortasında, bir göl adasına kurulu night elf kasabası.',
+      note: 'Ashenvale',
+    },
+    en: {
+      sub: 'Outpost in Ashenvale',
+      text: 'The night elf town on an island in a lake in the middle of Ashenvale.',
+      note: 'Ashenvale',
+    },
+  },
+  {
+    id: 'feathermoon',
+    name: 'Feathermoon Stronghold',
+    icon: 'spell_nature_starfall',
+    aliases: ['Feathermoon Stronghold'],
+    tr: {
+      sub: 'Feralas kalesi',
+      text: 'Feralas açıklarındaki adada kurulu Sentinel kalesi.',
+      note: 'Feralas',
+    },
+    en: {
+      sub: 'Fortress in Feralas',
+      text: 'The Sentinel fortress on an island off the coast of Feralas.',
+      note: 'Feralas',
+    },
+  },
+  {
+    id: 'feralas',
+    name: 'Feralas',
+    icon: 'spell_nature_thorns',
+    aliases: ['Feralas'],
+    tr: {
+      sub: 'Bölge · Kalimdor’un batısı',
+      text: 'Kalimdor’un batı kıyısındaki yağmur ormanları; açıklarında Feathermoon Stronghold var.',
+    },
+    en: {
+      sub: 'Region · western Kalimdor',
+      text: 'The rainforests on Kalimdor’s west coast, with Feathermoon Stronghold offshore.',
+    },
+  },
+  {
+    id: 'menethil',
+    name: 'Menethil Harbor',
+    icon: 'trade_fishing',
+    aliases: ['Menethil Harbor'],
+    tr: {
+      sub: 'Wetlands limanı',
+      text: 'Wetlands’in batı kıyısındaki liman; Auberdine’den ve Theramore’dan gelen gemiler burada yanaşır.',
+      note: 'Wetlands',
+    },
+    en: {
+      sub: 'Harbour of the Wetlands',
+      text: 'The harbour on the west coast of the Wetlands, where the boats from Auberdine and Theramore come in.',
+      note: 'Wetlands',
+    },
+  },
 ];

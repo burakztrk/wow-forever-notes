@@ -6,7 +6,8 @@
 //   "camera" (viewBox); labels keep their screen size through --k. Its routes wait
 //   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
-//   and calm; "embers" are forge sparks drifting up; "void" are the same motes in violet.
+//   and calm; "embers" are forge sparks drifting up; "void" and "wisps" are the same motes in
+//   violet and in pale green.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -227,7 +228,7 @@ function init(root: HTMLElement) {
           const t0 = performance.now();
           const tick = (t: number) => {
             const k = clamp((t - t0) / 1400);
-            el.textContent = String(Math.round(to * (1 - Math.pow(1 - k, 3))));
+            el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString(document.documentElement.lang || undefined);
             if (k < 1) requestAnimationFrame(tick);
           };
           requestAnimationFrame(tick);
@@ -242,6 +243,7 @@ function init(root: HTMLElement) {
   if (!reduce && fx) {
     if (fx.dataset.fx === 'embers') embers(fx);
     else if (fx.dataset.fx === 'void') embers(fx, ['#d2b8ff', '#9b6fe0']);
+    else if (fx.dataset.fx === 'wisps') embers(fx, ['#effff8', '#8fe3c8']);
     else blizzard(fx);
   }
 }

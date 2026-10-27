@@ -1690,3 +1690,487 @@ export const CURSE_STORY: Record<Lang, CurseStory> = {
     images: 'The drawings on this page were made for it. World of Warcraft names belong to Blizzard Entertainment.',
   },
 };
+
+// ---------------------------------------------------------------- Night Elf
+
+export const NIGHT_ELF_ART_LABELS: Record<Lang, Record<string, string>> = {
+  tr: {
+    heroAria: 'Gece göğünde hilal ve denizden yükselen dev ağaç Teldrassil',
+    sunderingAria: 'Kaydırdıkça Kalimdor’un tek kıtası parçalanıyor ve ortadaki Well of Eternity Maelstrom’a dönüşüyor',
+    oneLand: 'Tek kıta',
+    ekAria: 'Third War’da Kalimdor’un kuzeyi: Ashenvale, Felwood ve Mount Hyjal; adım adım',
+    strangers: 'Yabancılar',
+    legion: 'Burning Legion',
+    threeArmies: 'Üç ordu',
+    teldrassilAria: 'Teldrassil haritası: Darnassus, Shadowglen, Dolanaar ve Rut’theran Village; Auberdine’e giden gemi yolu',
+    toAuberdine: 'Auberdine’e',
+    worldAria: 'Kalimdor’da night elf yerleşimleri ve gemi yolları: Darnassus, Auberdine, Astranaar, Nighthaven, Feathermoon Stronghold, Menethil Harbor',
+  },
+  en: {
+    heroAria: 'A crescent moon in the night sky and Teldrassil, the giant tree rising from the sea',
+    sunderingAria: 'As you scroll, the single continent of Kalimdor breaks apart and the Well of Eternity at its centre becomes the Maelstrom',
+    oneLand: 'One continent',
+    ekAria: 'Northern Kalimdor in the Third War: Ashenvale, Felwood and Mount Hyjal, step by step',
+    strangers: 'Strangers',
+    legion: 'Burning Legion',
+    threeArmies: 'Three armies',
+    teldrassilAria: 'Map of Teldrassil: Darnassus, Shadowglen, Dolanaar and Rut’theran Village; the boat to Auberdine',
+    toAuberdine: 'To Auberdine',
+    worldAria: 'Night elf settlements and sea routes in Kalimdor: Darnassus, Auberdine, Astranaar, Nighthaven, Feathermoon Stronghold, Menethil Harbor',
+  },
+};
+
+type Place = { tag: string; name: string; text: string };
+
+export interface NightElfStory {
+  metaDescription: string;
+  overline: string;
+  lead: string;
+  facts: { label: string; value: string; extra?: string }[];
+  chapters: Record<'origin' | 'sundering' | 'vigil' | 'hyjal' | 'today', string>;
+  origin: { title: string; titleNote: string; paragraphs: string[]; stagesLabel: string; stages: Item[]; before: string; after: string; note: string };
+  sundering: {
+    title: string;
+    intro: string;
+    more: string[];
+    figureCaption: string;
+    statLabel: string;
+    statAria: string;
+    statUnit: string;
+    statText: string; // may hold <strong>
+    statDetail: string;
+    cards: Card[];
+    note: string;
+  };
+  vigil: { title: string; intro: string; more: string[]; places: Place[]; note: string };
+  hyjal: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
+  today: {
+    title: string;
+    intro: string[];
+    leadersLabel: string;
+    leadersText: string;
+    leaders: (Item & { role: string })[];
+    treeLabel: string;
+    treeTitle: string;
+    treeText: string[];
+    treeCaption: string;
+    boatKey: string;
+    treeLegend: Item[];
+    beyondLabel: string;
+    beyondTitle: string;
+    beyondText: string[];
+    mapCaption: string;
+    routesKey: string;
+    legend: Item[];
+    note: string;
+  };
+  outro: { title: string; text: string; nextText: string };
+  images: string;
+}
+
+export const NIGHT_ELF_STORY: Record<Lang, NightElfStory> = {
+  tr: {
+    metaDescription:
+      'Night Elf’lerin hikayesi: Well of Eternity, Azshara ve War of the Ancients, Great Sundering, on bin yıllık nöbet, Mount Hyjal’daki fedakârlık ve Teldrassil.',
+    overline: 'Hikaye 04',
+    lead: 'Ay’ın ışığında uyanan kadim halk. Büyüleriyle dünyayı bir kez yaktılar, sonra on bin yıl onu korudular; ölümsüzlüklerini Azeroth uğruna verdiler.',
+    facts: [
+      { label: 'Yurt', value: 'Teldrassil', extra: 'Kalimdor' },
+      { label: 'Başkent', value: 'Darnassus' },
+      { label: 'Liderler', value: 'Tyrande Whisperwind', extra: 'Fandral Staghelm' },
+      { label: 'Tanrıça', value: 'Elune' },
+      { label: 'Binek', value: 'Nightsaber' },
+      { label: 'Kadim adı', value: 'Kaldorei' },
+    ],
+    chapters: { origin: 'Köken', sundering: 'Kırılma', vigil: 'Nöbet', hyjal: 'Hyjal', today: 'Bugün' },
+    origin: {
+      title: 'Yıldızların Çocukları',
+      titleNote: '(Kaldorei)',
+      paragraphs: [
+        'Night elf’lerin hikayesi bir gölün kıyısında başlar. On binlerce yıl önce, tek parça hâlindeki Kalimdor’un ortasında büyü dolu sularıyla Well of Eternity parlıyordu.',
+        'Kıyısına yerleşen bir grup karanlık trol, nesiller boyunca Well’in gücüyle değişti: boyları uzadı, ömürleri uzadı, gözleri gecede parlamaya başladı. Kendilerine kaldorei, yani “yıldızların çocukları” dediler.',
+        'Kaldorei, Ay tanrıçası Elune’e taptı ve Well’in kıyısında büyük bir uygarlık kurdu. Başkentleri Zin-Azshari, kraliçeleri Azshara’ydı; en ayrıcalıklı soyluları, büyüye en yakın olan Highborne’lardı.',
+      ],
+      stagesLabel: 'Night Elf’in doğuş aşamaları',
+      stages: [
+        { name: 'Dark troll', text: 'Well’in kıyısındaki troller' },
+        { name: 'Well of Eternity', text: 'Büyünün kaynağı' },
+        { name: 'Elune', text: 'Ay tanrıçası' },
+        { name: 'Kaldorei', text: 'Yıldızların çocukları' },
+      ],
+      before: 'Troll',
+      after: 'Kaldorei',
+      note: 'Night elf’lerin büyüyle ilişkisi baştan iki yüzlüydü: onları yaratan güç, neredeyse sonlarını da getirecekti.',
+    },
+    sundering: {
+      title: 'Dünyayı bölen savaş',
+      intro:
+        'Kraliçe Azshara ve Highborne’lar Well of Eternity’nin büyüsüne giderek daha çok daldı. Bu güç, dünyaların arasındaki boşlukta Burning Legion’ın efendisi Sargeras’ın dikkatini çekti.',
+      more: [
+        'Sargeras Azshara’ya güç ve ölümsüzlük vaat etti; Azshara ve Highborne’lar Legion’ı Azeroth’a getirmek için Well’in içinde bir geçit açtı. Demonlar Kalimdor’a dökülünce War of the Ancients başladı.',
+        'Direnişe genç druid Malfurion Stormrage, Elune rahibesi Tyrande Whisperwind ve Malfurion’un ikiz kardeşi Illidan önderlik etti. Yarı-tanrı Cenarius, ejderhalar ve ormanın kadim ruhları onlara katıldı.',
+        'Malfurion, Legion’ın geçidini kapatmanın tek yolunun Well of Eternity’yi yok etmek olduğunu anladı. Geçit kapanırken Well kendi içine çöktü; Azshara ve sarayı dalgaların altında kayboldu. Buna Great Sundering denir: tek kıta paramparça oldu, ortasında bugün Maelstrom dönüyor.',
+      ],
+      figureCaption: 'Kaydırdıkça tek kıta parçalanıyor, Well of Eternity Maelstrom’a dönüşüyor.',
+      statLabel: 'Kırılmanın tarihi',
+      statAria: '10.000 yıl',
+      statUnit: 'yıl',
+      statText: '<strong>Dark Portal’dan yaklaşık 10.000 yıl önce</strong> Well of Eternity çöktü ve dünya bölündü.',
+      statDetail:
+        'Night elf’ler sonradan ölümsüzlük kazandığı için War of the Ancients’ı bizzat yaşamış olanlar bugün hâlâ hayatta: Tyrande ve Malfurion bunların başında geliyor.',
+      cards: [
+        {
+          name: 'Kraliçe Azshara',
+          text: 'Güzelliği ve gücüyle tapınılan kraliçe, Sargeras’a kapıyı açtı. Well çökerken sarayıyla birlikte dalgaların altında kayboldu.',
+          status: 'İhanet',
+          tone: 'no',
+        },
+        {
+          name: 'Burning Legion',
+          text: 'Sargeras’ın demon ordusu Well’den geçerek Kalimdor’u yaktı. Legion’ın komutanları arasında Archimonde da vardı.',
+          status: 'İstila',
+          tone: 'no',
+        },
+        {
+          name: 'Malfurion ve Cenarius',
+          text: 'Cenarius’un öğrencisi Malfurion ilk druid oldu ve ormanın kadim güçlerini direnişin yanına çekti.',
+          status: 'Direniş',
+          tone: 'al',
+        },
+        {
+          name: 'Illidan’ın şişeleri',
+          text: 'Illidan büyünün kaynağının yok olmasına razı olmadı: Well’in suyundan birkaç şişe alıp Mount Hyjal’daki bir göle döktü ve yeni bir Well doğdu.',
+          status: 'Gizli kuyu',
+          tone: 'mute',
+        },
+      ],
+      note: 'Night elf’ler büyünün dünyayı yakabileceğini kendi gözleriyle gördü. Sonraki on bin yıl boyunca arcane büyüyü yasakladılar.',
+    },
+    vigil: {
+      title: 'On bin yıllık nöbet',
+      intro:
+        'Kırılmadan sağ kurtulan night elf’ler Mount Hyjal’ın eteklerinde yeniden toplandı. Illidan’ın yarattığı yeni Well, tepede bir tehlike olarak duruyordu.',
+      more: [
+        'Malfurion ve druid’ler Well’in üzerine dev bir ağaç diktiler: World Tree Nordrassil. Ejderha Aspect’leri ağacı kutsadı; Nordrassil Well’i mühürledi ve night elf’lere ölümsüzlük verdi.',
+        'Malfurion arcane büyüyü yasakladı ve Illidan’ı Hyjal’ın altındaki bir zindana kapattı; gardiyanı Maiev Shadowsong ve Watchers oldu. Druid’ler Barrow Den’lerde Emerald Dream’e dalıp yüzyıllar süren uykulara girdi; Tyrande ve Sentinel’ler ise uyanık kalıp halkı korudu.',
+        'Büyüden vazgeçmeyen Highborne’lar sürgüne gönderildi. Denizi aşıp Eastern Kingdoms’a vardılar ve Quel’Thalas’ı kurdular: high elf’ler onların torunlarıdır.',
+        'Yaklaşık bin yıl önce Silithus’taki Ahn’Qiraj’dan qiraji orduları taştı. War of the Shifting Sands’te night elf’ler bronz ejderhaların yardımıyla onları Scarab Wall’un ardına kapattı; Fandral Staghelm’in oğlu Valstann bu savaşta öldü.',
+      ],
+      places: [
+        { tag: 'Kutsal ağaç', name: 'Nordrassil', text: 'Mount Hyjal’ın tepesindeki World Tree. İkinci Well’i mühürledi ve night elf’lere ölümsüzlük verdi.' },
+        { tag: 'Druid’lerin yurdu', name: 'Moonglade', text: 'Druid’lerin kutsal vadisi. Bugün Cenarion Circle’ın merkezi Nighthaven burada.' },
+        { tag: 'Mühürlü kapı', name: 'Ahn’Qiraj', text: 'Silithus’ta, qiraji’lerin ve Old God C’Thun’un kalesi; Scarab Wall’un ardında mühürlü duruyor.' },
+      ],
+      note: 'Ölümsüzlük bir armağandı ama bedeli vardı: night elf’ler on bin yıl boyunca dünyanın geri kalanından uzak ve neredeyse hiç değişmeden yaşadı.',
+    },
+    hyjal: {
+      title: 'Ağacın feda edildiği gece',
+      intro: 'On bin yıl sonra Burning Legion geri döndü. Kaydırdıkça harita, Third War’un Kalimdor’daki son perdesini adım adım gösteriyor.',
+      mapLabel: 'Third War’da Kalimdor’un kuzeyi',
+      steps: [
+        {
+          era: 'Third War',
+          title: 'Yabancılar gelir',
+          text: 'Orc’lar ve insanlar denizi aşıp Kalimdor’a ayak basar. Thrall’ın Horde’u ve Jaina’nın insanları, hiç tanımadıkları night elf topraklarına girer; Sentinel’ler onları düşman sayar.',
+          status: 'Sınır',
+          tone: 'mute',
+        },
+        {
+          era: 'Ashenvale',
+          title: 'Cenarius düşer',
+          text: 'Grom Hellscream’in Warsong orc’ları Ashenvale’in kutsal ağaçlarını keser. Cenarius ormanı korumaya gelir, ama demon kanı içerek güç kazanan Grom onu öldürür.',
+          status: 'Kayıp',
+          tone: 'no',
+        },
+        {
+          era: 'Felwood',
+          title: 'Illidan serbest',
+          text: 'Tyrande, Legion’a karşı güç bulmak için Illidan’ı zindanından çıkarır. Illidan Skull of Gul’dan’ın gücünü emip Legion’ın komutanlarından Tichondrius’u öldürür; ama bu güç onu da değiştirir ve Malfurion onu sürgüne gönderir. Kafatasının zehirlediği orman Felwood’a dönüşür.',
+          status: 'Yozlaşma',
+          tone: 'no',
+        },
+        {
+          era: 'Mount Hyjal',
+          title: 'Üç halk, tek cephe',
+          text: 'Peygamber Medivh’in çağrısıyla Malfurion, Thrall ve Jaina Mount Hyjal’da birleşir. İnsanlar, orc’lar ve night elf’ler Archimonde’un Nordrassil’e yürüyüşünü adım adım yavaşlatır.',
+          status: 'İttifak',
+          tone: 'al',
+        },
+        {
+          era: 'Nordrassil',
+          title: 'Ağacın fedakârlığı',
+          text: 'Archimonde ağaca ulaştığında Malfurion Horn of Cenarius’u çalar. Binlerce wisp Archimonde’u sarar ve ağacın gücüyle onu yok eder. Nordrassil yarı yanmış kalır, night elf’ler ölümsüzlüklerini kaybeder.',
+          status: 'Zafer',
+          tone: 'ok',
+        },
+      ],
+      note: 'Ölümsüzlüğü kaybetmek night elf’leri dünyaya geri getirdi. Artık onlar da yaşlanıyor ve yalnız kalamayacaklarını biliyorlar.',
+    },
+    today: {
+      title: 'Teldrassil’in gölgesinde',
+      intro: [
+        'Ölümsüzlüğü geri kazanmak isteyen Archdruid Fandral Staghelm, Darkshore kıyısında yeni bir World Tree dikti: Teldrassil. Ejderha Aspect’leri bu ağacı kutsamadı ve dallarının arasında şimdiden yozlaşma izleri görülüyor.',
+        'Ağacın tepesinde night elf’lerin yeni başkenti Darnassus yükseldi. Tyrande Whisperwind halkını yönetiyor; Malfurion ise Emerald Dream’in derinliklerinde kayboldu ve dönmedi.',
+        'Third War’dan sonra night elf’ler binlerce yıllık yalnızlıklarını bırakıp Alliance’a katıldı. Bugün Ashenvale’in ormanlarında Horde’la, Felwood’da Legion’ın kalıntılarıyla savaşıyorlar.',
+      ],
+      leadersLabel: 'Liderler',
+      leadersText: 'Darnassus’un bugünkü yönetimi.',
+      leaders: [
+        {
+          role: 'Elune’ün Yüce Rahibesi',
+          name: 'Tyrande Whisperwind',
+          text: 'War of the Ancients’tan beri halkının lideri ve Sentinel’lerin komutanı. Darnassus’taki Temple of the Moon’dan yönetiyor.',
+        },
+        {
+          role: 'Archdruid',
+          name: 'Fandral Staghelm',
+          text: 'Malfurion’un yokluğunda druid’lerin başı. Teldrassil’i o dikti; oğlu Valstann’ı War of the Shifting Sands’te kaybetti.',
+        },
+        {
+          role: 'Kayıp',
+          name: 'Malfurion Stormrage',
+          text: 'İlk druid ve Tyrande’nin sevdiği adam. Third War’dan sonra Emerald Dream’e daldı ve bir daha uyanmadı.',
+        },
+      ],
+      treeLabel: 'Teldrassil',
+      treeTitle: 'Ağacın üstünde bir dünya',
+      treeText: [
+        'Teldrassil o kadar büyük ki dalları bir bölge kadar geniş. Night elf karakterler oyuna Shadowglen’de başlar; Dolanaar köyünden Darnassus’a uzanan yollar ağacın tepesinde.',
+        'Ağacın kökündeki Rut’theran Village’dan kalkan gemi Darkshore kıyısındaki Auberdine’e gider; night elf’lerin kıtayla bağı bu limandır.',
+      ],
+      treeCaption: 'Teldrassil.',
+      boatKey: 'Gemi yolu',
+      treeLegend: [
+        { name: 'Darnassus', text: 'Night elf başkenti; Temple of the Moon burada' },
+        { name: 'Shadowglen', text: 'Night elf karakterlerin başladığı vadi' },
+        { name: 'Dolanaar', text: 'Ağacın ortasındaki köy' },
+        { name: 'Rut’theran Village', text: 'Ağacın kökündeki liman; Auberdine’e gemi kalkar' },
+      ],
+      beyondLabel: 'Teldrassil’in ötesinde',
+      beyondTitle: 'Kalimdor’daki nöbet yerleri',
+      beyondText: [
+        'Night elf’ler Kalimdor’un ormanlarına dağılmış karakollarla topraklarını koruyor: Darkshore’da Auberdine, Ashenvale’de Astranaar, Feralas açıklarında Feathermoon Stronghold. Moonglade’deki Nighthaven ise druid’lerin buluşma yeri.',
+        'Auberdine’den kalkan gemi Wetlands’teki Menethil Harbor’a gider; night elf’leri Alliance’ın geri kalanına bağlayan yol budur.',
+      ],
+      mapCaption: 'Kalimdor’da night elf yerleşimleri. Konumlar yaklaşıktır.',
+      routesKey: 'Gemi yolları',
+      legend: [
+        { name: 'Darnassus', text: 'Teldrassil’in tepesindeki başkent' },
+        { name: 'Auberdine', text: 'Darkshore kıyısındaki liman kasabası' },
+        { name: 'Astranaar', text: 'Ashenvale’in kalbindeki karakol' },
+        { name: 'Nighthaven', text: 'Moonglade’de druid’lerin köyü' },
+        { name: 'Feathermoon Stronghold', text: 'Feralas açıklarındaki ada kalesi' },
+        { name: 'Menethil Harbor', text: 'Eastern Kingdoms’a açılan liman' },
+      ],
+      note: 'On bin yıl dünyadan uzak yaşayan halk, şimdi Alliance’ın en eski ve en tecrübeli üyesi.',
+    },
+    outro: {
+      title: 'Ay ışığında nöbet',
+      text: 'Bir kez dünyayı yaktılar, sonra on bin yıl onu korudular. Elune’ün ışığı hâlâ Teldrassil’in dallarında.',
+      nextText: 'Draenor’dan gelen halk: Horde’un kuruluşu ve Thrall’ın Kalimdor’u.',
+    },
+    images: 'Haritalar WoW Forever’dan. Kapak çizimi bu sayfa için hazırlandı. World of Warcraft adları Blizzard Entertainment’a aittir.',
+  },
+  en: {
+    metaDescription:
+      'The night elves’ story: the Well of Eternity, Azshara and the War of the Ancients, the Great Sundering, a ten-thousand-year vigil, the sacrifice at Mount Hyjal and Teldrassil.',
+    overline: 'Story 04',
+    lead: 'An ancient people who woke in the light of the moon. Their magic set the world on fire once; then they guarded it for ten thousand years and gave up their immortality for Azeroth.',
+    facts: [
+      { label: 'Homeland', value: 'Teldrassil', extra: 'Kalimdor' },
+      { label: 'Capital', value: 'Darnassus' },
+      { label: 'Leaders', value: 'Tyrande Whisperwind', extra: 'Fandral Staghelm' },
+      { label: 'Goddess', value: 'Elune' },
+      { label: 'Mount', value: 'Nightsaber' },
+      { label: 'Ancient name', value: 'Kaldorei' },
+    ],
+    chapters: { origin: 'Origin', sundering: 'Sundering', vigil: 'Vigil', hyjal: 'Hyjal', today: 'Today' },
+    origin: {
+      title: 'Children of the Stars',
+      titleNote: '(Kaldorei)',
+      paragraphs: [
+        'The night elves’ story begins on the shore of a lake. Tens of thousands of years ago, in the middle of Kalimdor, then a single continent, the Well of Eternity shone with waters full of magic.',
+        'A group of dark trolls settled on its shores and, over generations, changed under the Well’s power: they grew taller, their lives grew longer and their eyes began to shine in the night. They called themselves the kaldorei, the “children of the stars”.',
+        'The kaldorei worshipped Elune, goddess of the moon, and built a great civilisation on the Well’s shores. Their capital was Zin-Azshari, their queen Azshara; their most privileged nobles, and the closest to magic, were the Highborne.',
+      ],
+      stagesLabel: 'Stages of the night elves’ beginning',
+      stages: [
+        { name: 'Dark troll', text: 'Trolls on the shores of the Well' },
+        { name: 'Well of Eternity', text: 'The source of magic' },
+        { name: 'Elune', text: 'Goddess of the moon' },
+        { name: 'Kaldorei', text: 'Children of the stars' },
+      ],
+      before: 'Troll',
+      after: 'Kaldorei',
+      note: 'The night elves’ bond with magic was two-edged from the start: the power that made them would nearly be their end.',
+    },
+    sundering: {
+      title: 'The war that broke the world',
+      intro:
+        'Queen Azshara and the Highborne sank deeper and deeper into the magic of the Well of Eternity. In the void between worlds, that power caught the eye of Sargeras, master of the Burning Legion.',
+      more: [
+        'Sargeras promised Azshara power and immortality, and she and the Highborne opened a gate inside the Well to bring the Legion to Azeroth. When the demons poured into Kalimdor, the War of the Ancients began.',
+        'The resistance was led by the young druid Malfurion Stormrage, the priestess of Elune Tyrande Whisperwind and Malfurion’s twin brother Illidan. The demigod Cenarius, the dragons and the ancient spirits of the forest joined them.',
+        'Malfurion saw that the only way to close the Legion’s gate was to destroy the Well of Eternity. As the gate closed, the Well collapsed in on itself, and Azshara and her palace vanished beneath the waves. This is the Great Sundering: the single continent broke apart, and the Maelstrom now churns at its centre.',
+      ],
+      figureCaption: 'As you scroll, the single continent breaks apart and the Well of Eternity becomes the Maelstrom.',
+      statLabel: 'When the world broke',
+      statAria: '10,000 years',
+      statUnit: 'years',
+      statText: 'The Well of Eternity collapsed and the world broke apart <strong>about 10,000 years before the Dark Portal</strong>.',
+      statDetail:
+        'Because the night elves later became immortal, some who fought in the War of the Ancients are still alive today; Tyrande and Malfurion first among them.',
+      cards: [
+        {
+          name: 'Queen Azshara',
+          text: 'The queen worshipped for her beauty and power opened the door to Sargeras. As the Well collapsed, she vanished beneath the waves with her palace.',
+          status: 'Betrayal',
+          tone: 'no',
+        },
+        {
+          name: 'Burning Legion',
+          text: 'Sargeras’s demon army came through the Well and set Kalimdor on fire. Archimonde was among the Legion’s commanders.',
+          status: 'Invasion',
+          tone: 'no',
+        },
+        {
+          name: 'Malfurion and Cenarius',
+          text: 'Cenarius’s student Malfurion became the first druid and brought the ancient powers of the forest to the resistance.',
+          status: 'Resistance',
+          tone: 'al',
+        },
+        {
+          name: 'Illidan’s vials',
+          text: 'Illidan would not let the source of magic be lost: he filled a few vials from the Well and poured them into a lake on Mount Hyjal, and a new Well was born.',
+          status: 'A hidden well',
+          tone: 'mute',
+        },
+      ],
+      note: 'The night elves saw with their own eyes that magic could burn the world. For the next ten thousand years they banned arcane magic.',
+    },
+    vigil: {
+      title: 'A ten-thousand-year vigil',
+      intro:
+        'The night elves who survived the Sundering gathered again at the foot of Mount Hyjal. The new Well Illidan had made stood above them like a threat.',
+      more: [
+        'Malfurion and the druids planted a giant tree over the Well: the World Tree Nordrassil. The Dragon Aspects blessed it; Nordrassil sealed the Well and gave the night elves immortality.',
+        'Malfurion banned arcane magic and imprisoned Illidan in a dungeon beneath Hyjal, with Maiev Shadowsong and the Watchers as his jailers. The druids entered the Emerald Dream in the Barrow Dens and slept for centuries, while Tyrande and the Sentinels stayed awake to guard their people.',
+        'The Highborne who would not give up magic were sent into exile. They crossed the sea to the Eastern Kingdoms and founded Quel’Thalas: the high elves are their descendants.',
+        'About a thousand years ago, qiraji armies poured out of Ahn’Qiraj in Silithus. In the War of the Shifting Sands the night elves, helped by the bronze dragons, sealed them behind the Scarab Wall; Fandral Staghelm’s son Valstann died in that war.',
+      ],
+      places: [
+        { tag: 'Sacred tree', name: 'Nordrassil', text: 'The World Tree on the summit of Mount Hyjal. It sealed the second Well and gave the night elves immortality.' },
+        { tag: 'Home of the druids', name: 'Moonglade', text: 'The druids’ sacred vale. Nighthaven, the heart of the Cenarion Circle, stands here today.' },
+        { tag: 'A sealed gate', name: 'Ahn’Qiraj', text: 'The fortress of the qiraji and the Old God C’Thun in Silithus, sealed behind the Scarab Wall.' },
+      ],
+      note: 'Immortality was a gift with a price: for ten thousand years the night elves lived apart from the rest of the world and barely changed.',
+    },
+    hyjal: {
+      title: 'The night the tree was sacrificed',
+      intro: 'Ten thousand years later the Burning Legion returned. As you scroll, the map shows the last act of the Third War in Kalimdor step by step.',
+      mapLabel: 'Northern Kalimdor in the Third War',
+      steps: [
+        {
+          era: 'Third War',
+          title: 'Strangers arrive',
+          text: 'Orcs and humans cross the sea and set foot in Kalimdor. Thrall’s Horde and Jaina’s humans enter night elf lands they know nothing about, and the Sentinels treat them as enemies.',
+          status: 'Border',
+          tone: 'mute',
+        },
+        {
+          era: 'Ashenvale',
+          title: 'Cenarius falls',
+          text: 'Grom Hellscream’s Warsong orcs cut down the sacred trees of Ashenvale. Cenarius comes to defend the forest, but Grom, strengthened by drinking demon blood, kills him.',
+          status: 'Loss',
+          tone: 'no',
+        },
+        {
+          era: 'Felwood',
+          title: 'Illidan set free',
+          text: 'To find power against the Legion, Tyrande frees Illidan from his prison. Illidan drains the power of the Skull of Gul’dan and kills Tichondrius, one of the Legion’s commanders; but the power changes him too, and Malfurion banishes him. The forest the skull poisoned becomes Felwood.',
+          status: 'Corruption',
+          tone: 'no',
+        },
+        {
+          era: 'Mount Hyjal',
+          title: 'Three peoples, one front',
+          text: 'At the call of the prophet Medivh, Malfurion, Thrall and Jaina join forces on Mount Hyjal. Humans, orcs and night elves slow Archimonde’s march on Nordrassil step by step.',
+          status: 'Alliance',
+          tone: 'al',
+        },
+        {
+          era: 'Nordrassil',
+          title: 'The tree’s sacrifice',
+          text: 'When Archimonde reaches the tree, Malfurion sounds the Horn of Cenarius. Thousands of wisps swarm Archimonde and destroy him with the tree’s power. Nordrassil is left half burned, and the night elves lose their immortality.',
+          status: 'Victory',
+          tone: 'ok',
+        },
+      ],
+      note: 'Losing their immortality brought the night elves back into the world. Now they age too, and they know they cannot stand alone.',
+    },
+    today: {
+      title: 'In the shadow of Teldrassil',
+      intro: [
+        'Wanting to win back immortality, Archdruid Fandral Staghelm planted a new World Tree off the coast of Darkshore: Teldrassil. The Dragon Aspects did not bless it, and signs of corruption already show among its branches.',
+        'The night elves’ new capital, Darnassus, rose on its crown. Tyrande Whisperwind leads her people, while Malfurion was lost deep in the Emerald Dream and has not returned.',
+        'After the Third War the night elves gave up thousands of years of solitude and joined the Alliance. Today they fight the Horde in the forests of Ashenvale and the remnants of the Legion in Felwood.',
+      ],
+      leadersLabel: 'Leaders',
+      leadersText: 'Who leads Darnassus today.',
+      leaders: [
+        {
+          role: 'High Priestess of Elune',
+          name: 'Tyrande Whisperwind',
+          text: 'Leader of her people since the War of the Ancients and commander of the Sentinels. She rules from the Temple of the Moon in Darnassus.',
+        },
+        {
+          role: 'Archdruid',
+          name: 'Fandral Staghelm',
+          text: 'Head of the druids while Malfurion is gone. He planted Teldrassil, and he lost his son Valstann in the War of the Shifting Sands.',
+        },
+        {
+          role: 'Lost',
+          name: 'Malfurion Stormrage',
+          text: 'The first druid and the man Tyrande loves. After the Third War he entered the Emerald Dream and never woke.',
+        },
+      ],
+      treeLabel: 'Teldrassil',
+      treeTitle: 'A world on top of a tree',
+      treeText: [
+        'Teldrassil is so vast that its boughs are as wide as a whole region. Night elf characters begin the game in Shadowglen; the roads from the village of Dolanaar to Darnassus run along the top of the tree.',
+        'The boat from Rut’theran Village at the foot of the tree sails to Auberdine on the coast of Darkshore; that harbour is the night elves’ link to the mainland.',
+      ],
+      treeCaption: 'Teldrassil.',
+      boatKey: 'Boat',
+      treeLegend: [
+        { name: 'Darnassus', text: 'The night elf capital, home of the Temple of the Moon' },
+        { name: 'Shadowglen', text: 'The vale where night elf characters begin' },
+        { name: 'Dolanaar', text: 'The village in the middle of the tree' },
+        { name: 'Rut’theran Village', text: 'The harbour at the foot of the tree; the boat to Auberdine leaves here' },
+      ],
+      beyondLabel: 'Beyond Teldrassil',
+      beyondTitle: 'Watch posts across Kalimdor',
+      beyondText: [
+        'The night elves guard their lands with outposts scattered through the forests of Kalimdor: Auberdine in Darkshore, Astranaar in Ashenvale, Feathermoon Stronghold off the coast of Feralas. Nighthaven in Moonglade is where the druids gather.',
+        'The boat from Auberdine sails to Menethil Harbor in the Wetlands; it is the road that ties the night elves to the rest of the Alliance.',
+      ],
+      mapCaption: 'Night elf settlements in Kalimdor. Positions are approximate.',
+      routesKey: 'Sea routes',
+      legend: [
+        { name: 'Darnassus', text: 'The capital on the crown of Teldrassil' },
+        { name: 'Auberdine', text: 'The harbour town on the coast of Darkshore' },
+        { name: 'Astranaar', text: 'The outpost at the heart of Ashenvale' },
+        { name: 'Nighthaven', text: 'The druids’ village in Moonglade' },
+        { name: 'Feathermoon Stronghold', text: 'The island fortress off Feralas' },
+        { name: 'Menethil Harbor', text: 'The harbour that leads to the Eastern Kingdoms' },
+      ],
+      note: 'A people who lived apart from the world for ten thousand years are now the oldest and most seasoned members of the Alliance.',
+    },
+    outro: {
+      title: 'A vigil by moonlight',
+      text: 'Once they set the world on fire; then they guarded it for ten thousand years. Elune’s light still lies on the branches of Teldrassil.',
+      nextText: 'The people who came from Draenor: the founding of the Horde and Thrall’s Kalimdor.',
+    },
+    images: 'Maps from WoW Forever. The cover drawing was made for this page. World of Warcraft names belong to Blizzard Entertainment.',
+  },
+};
