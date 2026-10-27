@@ -616,3 +616,6 @@ a.story-card:focus-visible {
 /* the stepped map draws nothing until it is in view (story.ts removes .idle) */
 .lore .story.idle .map .ly .draw{stroke-dashoffset:1}
 .lore .story.idle .map .ly .head{opacity:0}
+/* Lore tooltips on proper names (src/lib/stories/lore.ts; the card is the site's shared #wf-tooltip) */
+.lore .wf-tip--lore{color:inherit;font-weight:inherit;white-space:normal;text-decoration:none;border-bottom:1px dotted rgba(200,166,86,.55);transition:color .15s,border-color .15s}
+.lore .wf-tip--lore:hover,.lore .wf-tip--lore:focus-visible,.lore .wf-tip--lore[aria-describedby]{color:var(--gold);border-bottom-color:var(--gold);text-decoration:none}

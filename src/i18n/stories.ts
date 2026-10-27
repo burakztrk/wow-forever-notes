@@ -1000,14 +1000,14 @@ export const HUMAN_STORY: Record<Lang, HumanStory> = {
     facts: [
       { label: 'Yurt', value: 'Elwynn Forest', extra: 'Eastern Kingdoms' },
       { label: 'Başkent', value: 'Stormwind City' },
-      { label: 'Hükümdar', value: 'Anduin Wrynn', extra: 'naip Bolvar Fordragon' },
+      { label: 'Hükümdar', value: 'Anduin Wrynn', extra: 'kral vekili Bolvar Fordragon' },
       { label: 'Kökler', value: 'Arathor', extra: 'Strom' },
       { label: 'Binek', value: 'At' },
       { label: 'En yakın müttefik', value: 'Ironforge Dwarf’ları' },
     ],
     chapters: { origin: 'Köken', arathor: 'Arathor', wars: 'Savaşlar', fall: 'Düşüş', today: 'Bugün' },
     origin: {
-      title: 'Devlerin Çocukları',
+      title: 'Titan’ların Çocukları',
       titleNote: '(Curse of Flesh)',
       paragraphs: [
         'İnsanların hikayesi Northrend’in buzlu dağlarında, devlerle başlar. Titan’lar dünyayı korumaları için vrykul adında dev savaşçılar yarattı.',
@@ -1191,7 +1191,7 @@ export const HUMAN_STORY: Record<Lang, HumanStory> = {
           text: 'First War’da babasını kaybeden prens, yeniden kurulan Stormwind’in kralı oldu. Theramore yolunda kayboldu; nerede olduğunu kimse bilmiyor.',
         },
         { role: 'Çocuk kral', name: 'Anduin Wrynn', text: 'Varian’ın oğlu. Babası kaybolduğunda henüz çocuktu; taç onun adına korunuyor.' },
-        { role: 'Naip', name: 'Bolvar Fordragon', text: 'Stormwind’in paladin komutanı. Anduin büyüyene kadar krallığı naip olarak yönetiyor.' },
+        { role: 'Kral vekili', name: 'Bolvar Fordragon', text: 'Stormwind’in paladin komutanı. Anduin büyüyene kadar krallığı onun adına yönetiyor.' },
       ],
       defiasLabel: 'Defias Brotherhood',
       defiasTitle: 'Ücreti ödenmeyen ustalar',
@@ -1247,7 +1247,7 @@ export const HUMAN_STORY: Record<Lang, HumanStory> = {
     ],
     chapters: { origin: 'Origin', arathor: 'Arathor', wars: 'Wars', fall: 'The fall', today: 'Today' },
     origin: {
-      title: 'Children of Giants',
+      title: 'Children of the Titans',
       titleNote: '(Curse of Flesh)',
       paragraphs: [
         'The human story begins with giants, in the frozen mountains of Northrend. The Titans created giant warriors called vrykul to guard the world.',

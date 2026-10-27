@@ -214,12 +214,18 @@
   font-size: 0.78rem;
 }
 
-/* Card tooltips: items (quality colours), camp objects, Legacy perks */
+/* Card tooltips: items (quality colours), camp objects, Legacy perks, story lore names */
 .wft-name--camp {
   color: var(--gold);
 }
 .wft-name--perk {
   color: #c2a265;
+}
+.wft-name--lore {
+  color: var(--gold);
+}
+.wft-name--lore + .wft-sub {
+  font-style: italic;
 }
 .wft-q0 {
   color: #9d9d9d;
