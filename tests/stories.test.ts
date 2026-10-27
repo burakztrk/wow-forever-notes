@@ -16,6 +16,8 @@ import {
   NIGHT_ELF_STORY,
   ORC_ART_LABELS,
   ORC_STORY,
+  SKYBORNE_ART_LABELS,
+  SKYBORNE_STORY,
   STORY_UI,
   TROLL_ART_LABELS,
   TROLL_STORY,
@@ -27,6 +29,7 @@ import { GNOME_ART } from '../src/lib/stories/gnome-art';
 import { HUMAN_ART } from '../src/lib/stories/human-art';
 import { NIGHT_ELF_ART } from '../src/lib/stories/night-elf-art';
 import { ORC_ART } from '../src/lib/stories/orc-art';
+import { SKYBORNE_ART } from '../src/lib/stories/skyborne-art';
 import { TROLL_ART } from '../src/lib/stories/troll-art';
 import { STORY_RACES, storySlug } from '../src/lib/stories/races';
 
@@ -50,6 +53,11 @@ const art = [
     drawings: [ORC_ART.portal, ORC_ART.ek, ORC_ART.durotar, ORC_ART.world],
   },
   { name: 'troll', labels: TROLL_ART_LABELS, drawings: [TROLL_ART.amani, TROLL_ART.gurubashi, TROLL_ART.ek, TROLL_ART.world] },
+  {
+    name: 'skyborne',
+    labels: SKYBORNE_ART_LABELS,
+    drawings: [SKYBORNE_ART.feralas, SKYBORNE_ART.rise, SKYBORNE_ART.ek, SKYBORNE_ART.zephras, SKYBORNE_ART.world],
+  },
 ];
 
 const keys = (o: object) => Object.keys(o).sort();
@@ -79,6 +87,7 @@ describe('story art', () => {
       expect(cams(NIGHT_ELF_ART.ek)).toHaveLength(NIGHT_ELF_STORY[lang].hyjal.steps.length);
       expect(cams(ORC_ART.ek)).toHaveLength(ORC_STORY[lang].exodus.steps.length);
       expect(cams(TROLL_ART.ek)).toHaveLength(TROLL_STORY[lang].darkspear.steps.length);
+      expect(cams(SKYBORNE_ART.ek)).toHaveLength(SKYBORNE_STORY[lang].crisis.steps.length);
     }
   });
 });
@@ -199,6 +208,31 @@ describe('story copy', () => {
     expect(pins(TROLL_ART.world)).toBe(tr.today.legend.length);
   });
 
+  it('keeps TR and EN skyborne stories in step', () => {
+    const [tr, en] = [SKYBORNE_STORY.tr, SKYBORNE_STORY.en];
+    expect(en.facts.length).toBe(tr.facts.length);
+    expect(en.origin.paragraphs).toHaveLength(tr.origin.paragraphs.length);
+    expect(en.origin.stages.map((s) => s.name)).toEqual(tr.origin.stages.map((s) => s.name));
+    expect(en.origin.legend.map((l) => l.name)).toEqual(tr.origin.legend.map((l) => l.name));
+    expect(en.skywall.more).toHaveLength(tr.skywall.more.length);
+    expect(en.skywall.cards.map((c) => c.tone)).toEqual(tr.skywall.cards.map((c) => c.tone));
+    expect(en.paths.sides.map((s) => [s.name, s.facts.map((f) => f.value)])).toEqual(tr.paths.sides.map((s) => [s.name, s.facts.map((f) => f.value)]));
+    expect(en.crisis.steps.map((s) => [s.era, s.tone])).toEqual(tr.crisis.steps.map((s) => [s.era, s.tone]));
+    expect(en.descent.legend.map((l) => l.name)).toEqual(tr.descent.legend.map((l) => l.name));
+    expect(en.descent.worldLegend.map((l) => l.name)).toEqual(tr.descent.worldLegend.map((l) => l.name));
+    expect(en.descent.bosses.map((c) => [c.name, c.tone])).toEqual(tr.descent.bosses.map((c) => [c.name, c.tone]));
+    // the page pairs these lists with fixed icon sets, the two Skyborne races and numbered map pins
+    expect(tr.origin.stages).toHaveLength(4);
+    expect(tr.skywall.cards).toHaveLength(4);
+    expect(tr.paths.sides).toHaveLength(2);
+    expect(tr.crisis.steps).toHaveLength(5);
+    expect(tr.descent.bosses).toHaveLength(2);
+    const pins = (svg: string) => (svg.match(/class="pnum"/g) ?? []).length;
+    expect(pins(SKYBORNE_ART.feralas)).toBe(tr.origin.legend.length);
+    expect(pins(SKYBORNE_ART.zephras)).toBe(tr.descent.legend.length);
+    expect(pins(SKYBORNE_ART.world)).toBe(tr.descent.worldLegend.length);
+  });
+
   it('keeps TR and EN Curse of Flesh pages in step', () => {
     const [tr, en] = [CURSE_STORY.tr, CURSE_STORY.en];
     expect(en.facts.length).toBe(tr.facts.length);
@@ -233,6 +267,18 @@ describe('story races', () => {
     expect(storySlug('alliance-human')).toBe('human');
     expect(storySlug('horde-orc')).toBe('orc');
     expect(storySlug('horde-troll')).toBe('troll');
+  });
+
+  it('covers both Skyborne races with one story', () => {
+    const skyborne = STORY_RACES.find((r) => r.slug === 'skyborne')!;
+    expect(skyborne.faction).toBe('ah');
+    expect(skyborne.ids).toEqual(['alliance-skyborne-high-order', 'horde-skyborne-windshaper']);
+    for (const id of skyborne.ids!) {
+      expect(ids.has(id), id).toBe(true);
+      expect(storySlug(id)).toBe('skyborne');
+    }
+    // the strip ends with it, and only races with a story own a slug
+    expect(STORY_RACES.at(-1)).toBe(skyborne);
   });
 
   it('reaches the Curse of Flesh page only from the stories that mention the curse', () => {

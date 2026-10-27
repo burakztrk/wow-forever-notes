@@ -676,3 +676,46 @@ a.story-card:focus-visible {
 .lore .sil-guldan{z-index:0;top:clamp(700px,52vw,760px);bottom:auto;right:auto;left:max(16px,calc(50% - 570px));width:clamp(200px,22vw,300px);aspect-ratio:478/641;opacity:.55;transform:none;-webkit-mask-image:radial-gradient(closest-side at 50% 46%,#000 58%,rgba(0,0,0,.45) 80%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 46%,#000 58%,rgba(0,0,0,.45) 80%,transparent 100%)}
 @media (max-width:760px){.lore .sil-guldan{display:none}}
 .story-feature-hero.soft{-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);opacity:.5}
+/* Skyborne story: sky and wind, one people with two sides, the rising island */
+.lore.skyborne{--sky:#8fd0f0;--gale:#e6f6ff}
+.lore .chip.ah i{background:linear-gradient(90deg,var(--alliance) 50%,var(--horde) 50%)}
+.lore .hero.sky-cover .hero-bg{inset:0;transform:none;background:radial-gradient(ellipse at 22% 26%,rgba(143,208,240,.3) 0%,transparent 55%),radial-gradient(ellipse at 84% 72%,rgba(155,127,208,.2) 0%,transparent 60%),linear-gradient(180deg,#17294a 0%,#10203a 55%,var(--bg) 100%)}
+.lore .hero.sky-cover .h1{color:var(--gale);font-size:clamp(44px,11vw,100px)}
+.lore #feralasmap svg{max-height:64vh}
+.lore #rise svg{max-height:64vh}
+.lore #zephras svg{max-height:78vh}
+.lore .map.rise .before{opacity:calc(1 - var(--p,1) * 1.8)}
+.lore .map.rise .after{opacity:calc(var(--p,1) * 1.6 - .5)}
+.lore .map .sea{fill:#122430;fill-opacity:.92}
+.lore .map .wave{fill:none;stroke:#3d97a3;stroke-width:calc(1.4px * var(--k,1));opacity:.7;stroke-linecap:round}
+.lore .map .windl{fill:none;stroke:var(--sky);stroke-width:calc(1.8px * var(--k,1));stroke-linecap:round;opacity:.6}
+.lore .map .pyl{fill:var(--sky);fill-opacity:.75;stroke:#e6f6ff;stroke-width:calc(.8px * var(--k,1))}
+.lore .map .spirit circle{fill:var(--gale);fill-opacity:.8}
+.lore .map .spirit .sring{fill:none;stroke:var(--sky);stroke-opacity:.5;stroke-width:calc(1px * var(--k,1))}
+.lore .map .skyring{fill:var(--sky);fill-opacity:.2;stroke:var(--sky);stroke-width:calc(1.6px * var(--k,1));stroke-dasharray:calc(4px * var(--k,1)) calc(3px * var(--k,1))}
+.lore .sides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:clamp(28px,4vw,40px)}
+@media (max-width:860px){.lore .sides{grid-template-columns:minmax(0,1fr)}}
+.lore .card.side{border-top:3px solid var(--side,var(--gold-dim));gap:12px}
+.lore .card.side>.ov:first-child{color:var(--side,var(--gold))}
+.lore .card.side .side-h{margin-top:6px}
+.lore .side-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px;margin:0}
+.lore .side-facts div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.lore .side-facts dt{font:500 11px/16px var(--f-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--text-mute)}
+.lore .side-facts dd{margin:0;font:500 15px/1.4 var(--f-sans);color:var(--text)}
+.lore .classes{display:flex;flex-wrap:wrap;gap:6px}
+.lore .classes li{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 4px;border:1px solid var(--border);border-radius:999px;background:var(--bg-elev-2);font:500 12px/16px var(--f-sans);color:var(--text-dim)}
+.lore .classes img{width:22px;height:22px;border-radius:50%;border:1px solid #000}
+.lore .card .g-desc,.lore .codex-list .g-desc{white-space:normal}
+.lore .codex-list{display:flex;flex-direction:column;gap:2px;margin:0}
+.lore .codex-list.shared{max-width:760px}
+.lore .codex-list .g-tip{border:1px solid var(--border);background:var(--bg-elev);border-radius:var(--r-lg);padding:8px 12px}
+.lore .card .codex-list .g-tip{background:var(--bg-elev-2)}
+.lore .codex-list .g-tip:hover,.lore .codex-list .g-tip:focus-visible{border-color:var(--gold-dim)}
+.lore .map.zmap .ruin,.lore .map.zmap .scourge{stroke-width:calc(2.6px * var(--k,1));fill-opacity:.32;filter:drop-shadow(0 0 2px rgba(0,0,0,.65))}
+.lore .map .ghost{fill:rgba(143,208,240,.3);stroke:#d8f0ff;stroke-width:calc(2.4px * var(--k,1));stroke-dasharray:calc(4px * var(--k,1)) calc(3px * var(--k,1));filter:drop-shadow(0 0 2px rgba(0,0,0,.7))}
+.lore .map.rise .land{fill:#2b3a56;stroke:var(--sky)}
+.lore .map.rise .halo{stroke:var(--sky);opacity:.22}
+.lore .map.rise .mt{stroke:#9fb4d6;opacity:.9}
+.lore .map.rise .sea{fill:#183142}
+.lore .legend.plain{border-top:0;padding:clamp(20px,3vw,28px) 0 0}
+.lore .split .col{display:flex;flex-direction:column;min-width:0}

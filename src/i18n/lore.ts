@@ -4061,4 +4061,403 @@ export const LORE: LoreEntry[] = [
       note: 'Sen’jin Village',
     },
   },
+  // ---------------------------------------------------------------- Skyborne story
+  {
+    id: 'shendorei',
+    name: 'shen’dorei',
+    icon: 'race_skyborne',
+    aliases: ['shen’dorei', 'Shen’dorei'],
+    tr: {
+      sub: 'Skyborne’ın kendi adı · “gizli halk”',
+      text: 'Skyborne’ın kendilerine verdiği ad: “gizli halk”. Eldre’Thalas’tan kaçan isyancıların torunlarıdır; Blizzard onlara “shen’dorei high elf” der.',
+    },
+    en: {
+      sub: 'The Skyborne’s own name · “the hidden people”',
+      text: 'The name the Skyborne give themselves: “the hidden people”. They descend from the rebels who fled Eldre’Thalas; Blizzard calls them “shen’dorei high elves”.',
+    },
+  },
+  {
+    id: 'eldrethalas',
+    name: 'Eldre’Thalas',
+    icon: 'inv_misc_book_08',
+    aliases: ['Eldre’Thalas'],
+    tr: {
+      sub: 'Shen’dralar Highborne’larının şehri',
+      text: 'Well of Eternity’nin kaybından sonra Prince Tortheldrin’in yönettiği Highborne şehri. Bugün Feralas’ta Dire Maul olarak ayaktadır; Skyborne buradan kaçan isyancıların torunlarıdır.',
+      note: 'Feralas · Dire Maul',
+    },
+    en: {
+      sub: 'City of the Shen’dralar Highborne',
+      text: 'The Highborne city ruled by Prince Tortheldrin after the loss of the Well of Eternity. It stands today as Dire Maul in Feralas; the Skyborne descend from the rebels who fled it.',
+      note: 'Feralas · Dire Maul',
+    },
+  },
+  {
+    id: 'diremaul',
+    name: 'Dire Maul',
+    icon: 'inv_misc_rune_06',
+    aliases: ['Dire Maul'],
+    tr: {
+      sub: 'Eldre’Thalas’ın bugünkü hâli · Feralas zindanı',
+      text: 'Feralas’taki eski Highborne şehri Eldre’Thalas’ın yıkıntısı. Classic’te Shen’dralar’ın ve Prince Tortheldrin’in bulunduğu bir zindandır.',
+      note: 'Feralas',
+    },
+    en: {
+      sub: 'Today’s Eldre’Thalas · dungeon in Feralas',
+      text: 'The ruins of the old Highborne city of Eldre’Thalas in Feralas. In Classic it is a dungeon where the Shen’dralar and Prince Tortheldrin are found.',
+      note: 'Feralas',
+    },
+  },
+  {
+    id: 'shendralar',
+    name: 'Shen’dralar',
+    icon: 'inv_scroll_05',
+    aliases: ['Shen’dralar'],
+    tr: {
+      sub: 'Eldre’Thalas’ın Highborne halkı',
+      text: 'Eldre’Thalas’ta yaşayan Highborne halkı ve bilginleri. Prince Tortheldrin’in yönetiminde kaldılar; bir kısmı ona karşı isyan edip kaçtı ve Skyborne’ın atası oldu.',
+    },
+    en: {
+      sub: 'The Highborne people of Eldre’Thalas',
+      text: 'The Highborne people and scholars who lived in Eldre’Thalas. They stayed under Prince Tortheldrin’s rule; some rebelled against him, fled, and became the ancestors of the Skyborne.',
+    },
+  },
+  {
+    id: 'tortheldrin',
+    name: 'Prince Tortheldrin',
+    icon: 'spell_shadow_sealofkings',
+    aliases: ['Prince Tortheldrin', 'Tortheldrin'],
+    tr: {
+      sub: 'Eldre’Thalas’ın prensi',
+      text: 'Well of Eternity’nin kaybından sonra Eldre’Thalas’ı yöneten prens. Şehri ayakta tutmak için Immol’thar’ın gücünü emmek istedi; buna karşı çıkanlar isyan etti. Classic’te Dire Maul’un içinde bir boss olarak bulunur.',
+      note: 'Dire Maul',
+    },
+    en: {
+      sub: 'Prince of Eldre’Thalas',
+      text: 'The prince who ruled Eldre’Thalas after the Well of Eternity was lost. He meant to drain Immol’thar’s power to keep the city alive, and those who opposed him rebelled. In Classic he is a boss inside Dire Maul.',
+      note: 'Dire Maul',
+    },
+  },
+  {
+    id: 'immolthar',
+    name: 'Immol’thar',
+    icon: 'spell_shadow_summoninfernal',
+    aliases: ['Immol’thar'],
+    tr: {
+      sub: 'Eldre’Thalas’ın altında bağlanan iblis',
+      text: 'Tortheldrin’in Shen’dralar’a gücünü emdirmek istediği iblis. Bu plan Highborne’lar arasında isyana yol açtı. Classic’te Dire Maul’da bir boss olarak bulunur.',
+      note: 'Dire Maul',
+    },
+    en: {
+      sub: 'Demon bound beneath Eldre’Thalas',
+      text: 'The demon whose power Tortheldrin wanted the Shen’dralar to drain. The plan set off a rebellion among the Highborne. In Classic it is a boss in Dire Maul.',
+      note: 'Dire Maul',
+    },
+  },
+  {
+    id: 'shalnan',
+    name: 'Shal’nan',
+    icon: 'inv_helmet_23',
+    aliases: ['Shal’nan'],
+    tr: {
+      sub: '“Veiled One” · isyanın maskeli lideri',
+      text: 'Warcraft Wiki’ye göre Eldre’Thalas isyanının adı bilinmeyen, maskeli lideri. Son çatışmadan tek sağ çıkan oldu; halkını batıya götürdü, Zephras’ta liderliği konseye devredip sonra kayboldu. Tek kaynak: wiki.',
+    },
+    en: {
+      sub: '“The Veiled One” · masked leader of the rebellion',
+      text: 'According to the Warcraft Wiki, the unnamed, masked leader of the Eldre’Thalas rebellion. He was the only survivor of the final confrontation, led his people west, handed leadership to a council on Zephras and later vanished. Single source: the wiki.',
+    },
+  },
+  {
+    id: 'skywall',
+    name: 'Skywall',
+    icon: 'inv_elemental_primal_air',
+    aliases: ['Skywall'],
+    tr: {
+      sub: 'Elemental Plane of Air’de ilkel ruhların âlemi',
+      text: 'Elemental Plane of Air’deki, ilkel elemental ruhların hüküm sürdüğü âlem. Skyborne’ın isyancı atalarına sığınak olan Zephras Isle burada demirlenmiştir.',
+    },
+    en: {
+      sub: 'Realm of primordial spirits in the Elemental Plane of Air',
+      text: 'The realm in the Elemental Plane of Air ruled by primordial elemental spirits. Zephras Isle, the refuge of the Skyborne’s rebel ancestors, is anchored here.',
+    },
+  },
+  {
+    id: 'alakir',
+    name: 'Al’Akir',
+    icon: 'spell_nature_cyclone',
+    aliases: ['Al’Akir'],
+    tr: {
+      sub: 'Rüzgârın efendisi · Windlord',
+      text: 'Elemental Plane of Air’in efendisi Windlord. Warcraft Wiki’ye göre rüzgâr ruhları ondan söz etmekten kaçınır. Al’Aketh kültü ona tapar.',
+    },
+    en: {
+      sub: 'Master of the wind · the Windlord',
+      text: 'The Windlord, master of the Elemental Plane of Air. According to the Warcraft Wiki the wind spirits avoid speaking of him. The Al’Aketh cult worships him.',
+    },
+  },
+  {
+    id: 'zephras',
+    name: 'Zephras Isle',
+    icon: 'inv_misc_volatileair',
+    aliases: ['Zephras Isle', 'Zephras'],
+    tr: {
+      sub: 'Skyborne’ın göğe kaldırılan adası',
+      text: 'Rüzgâr ruhlarının Skywall’a kaldırdığı ada ve Skyborne’ın başlangıç bölgesi (1–12). Ruhlar kaybolunca adayı tutan pylon’lar çözülmeye başladı.',
+      note: 'Skyborne başlangıç bölgesi',
+    },
+    en: {
+      sub: 'The Skyborne’s island lifted into the sky',
+      text: 'The island the wind spirits lifted into Skywall and the Skyborne starting zone (1–12). When the spirits vanished, the pylons holding it began to unravel.',
+      note: 'Skyborne starting zone',
+    },
+  },
+  {
+    id: 'valanaar',
+    name: 'Valanaar',
+    icon: 'inv_banner_03',
+    aliases: ['Valanaar'],
+    tr: {
+      sub: 'Zephras Isle’ın ana şehri',
+      text: 'Zephras Isle’ın ana şehri: banka, açık artırma, eğitmenler ve Azeroth’a giden skyship’lerin iskelesi burada.',
+      note: 'Zephras Isle',
+    },
+    en: {
+      sub: 'Main city of Zephras Isle',
+      text: 'The main city of Zephras Isle: the bank, the auction house, trainers and the dock for the skyships to Azeroth are here.',
+      note: 'Zephras Isle',
+    },
+  },
+  {
+    id: 'highorder',
+    name: 'High Order',
+    icon: 'classicon_mage',
+    aliases: ['High Order'],
+    tr: {
+      sub: 'Skyborne’ın Alliance kolu',
+      text: 'Eldre’Thalas’ın Highborne bilginlerinin torunları. Kayıp arcane bilgiyi geri kazanıp shen’dorei’yi ruh hamilerinden bağımsız yaşatmak ister. Mage olabilen tek Skyborne kolu.',
+    },
+    en: {
+      sub: 'The Skyborne’s Alliance branch',
+      text: 'Descendants of the Highborne scholars of Eldre’Thalas. They want to recover lost arcane knowledge so the shen’dorei can live without spirit patrons. The only Skyborne branch that can be mages.',
+    },
+  },
+  {
+    id: 'windshapers',
+    name: 'Windshapers',
+    icon: 'classicon_shaman',
+    aliases: ['Windshapers', 'Windshaper'],
+    tr: {
+      sub: 'Skyborne’ın Horde kolu',
+      text: 'Skysight armağanını ilk alan shen’dorei’nin torunları. Elemental geleneği korur ve kaybolan ruhların izini sürer. Shaman olabilen tek Skyborne kolu.',
+    },
+    en: {
+      sub: 'The Skyborne’s Horde branch',
+      text: 'Descendants of the first shen’dorei to receive the gift of skysight. They keep the elemental tradition and follow the trail of the vanished spirits. The only Skyborne branch that can be shamans.',
+    },
+  },
+  {
+    id: 'alaketh',
+    name: 'Al’Aketh',
+    icon: 'spell_shadow_darksummoning',
+    aliases: ['Al’Aketh'],
+    tr: {
+      sub: 'Al’Akir’e tapan kült',
+      text: 'Zephras Isle’ı yıkmak isteyen, Al’Akir’e tapan kült. Lideri High Priestess Lorthuna. Ruhlar kaybolduktan sonra ortaya çıktı; Falaath Village’da tutundu.',
+    },
+    en: {
+      sub: 'Cult that worships Al’Akir',
+      text: 'A cult that worships Al’Akir and wants to destroy Zephras Isle. Its leader is High Priestess Lorthuna. It rose after the spirits vanished and dug in at Falaath Village.',
+    },
+  },
+  {
+    id: 'lorthuna',
+    name: 'High Priestess Lorthuna',
+    icon: 'classicon_priest',
+    aliases: ['High Priestess Lorthuna', 'Lorthuna'],
+    tr: {
+      sub: 'Al’Aketh’in lideri',
+      text: 'Al’Aketh kültünün başrahibesi. Shrine of Akir’de Rohash’ı çağırdı. Akıbeti kaynaklarda tutmaz: wiki göğe savrulduğunu, bir rehber portaldan kaçtığını yazar.',
+      note: 'Shrine of Akir',
+    },
+    en: {
+      sub: 'Leader of the Al’Aketh',
+      text: 'High priestess of the Al’Aketh cult. She called Rohash at the Shrine of Akir. Her fate differs by source: the wiki says she was thrown into the sky, one guide says she fled through a portal.',
+      note: 'Shrine of Akir',
+    },
+  },
+  {
+    id: 'shrineofakir',
+    name: 'Shrine of Akir',
+    icon: 'spell_nature_eyeofthestorm',
+    aliases: ['Shrine of Akir'],
+    tr: {
+      sub: 'Zephras Isle’ın son çatışma yeri',
+      text: 'Zephras Isle’da High Order, Windshapers ve Peacekeepers’ın Al’Aketh’le karşılaştığı tapınak. Rohash burada göründü.',
+      note: 'Zephras Isle',
+    },
+    en: {
+      sub: 'Site of Zephras Isle’s final clash',
+      text: 'The shrine on Zephras Isle where the High Order, the Windshapers and the Peacekeepers faced the Al’Aketh. Rohash appeared here.',
+      note: 'Zephras Isle',
+    },
+  },
+  {
+    id: 'rohash',
+    name: 'Rohash',
+    icon: 'ability_thunderbolt',
+    aliases: ['Rohash'],
+    tr: {
+      sub: 'Conclave of Wind · “Lord of the East Wind”',
+      text: 'Al’Akir’in Conclave of Wind’inden bir rüzgâr lordu. Shrine of Akir’de göründü ve Al’Akir’in gazabıyla tehdit etti. Zephras Isle’ın son boss’udur.',
+      note: 'Shrine of Akir',
+    },
+    en: {
+      sub: 'Conclave of Wind · “Lord of the East Wind”',
+      text: 'A wind lord of Al’Akir’s Conclave of Wind. He appeared at the Shrine of Akir and threatened the Skyborne with Al’Akir’s wrath. He is the final boss of Zephras Isle.',
+      note: 'Shrine of Akir',
+    },
+  },
+  {
+    id: 'peacekeepers',
+    name: 'Peacekeepers',
+    icon: 'ability_warrior_defensivestance',
+    aliases: ['Peacekeepers'],
+    tr: {
+      sub: 'Zephras Isle’ın milis gücü',
+      text: 'Zephras Isle’ın milis gücü. Captain Valennia Stormfist’in komutasında High Order ile Windshapers arasındaki barışı korumaya çalışır.',
+    },
+    en: {
+      sub: 'Zephras Isle’s militia',
+      text: 'The militia of Zephras Isle. Under Captain Valennia Stormfist they try to keep the peace between the High Order and the Windshapers.',
+    },
+  },
+  {
+    id: 'elaadrin',
+    name: 'Elaadrin Evengale',
+    icon: 'ability_mage_incantersabsorbtion',
+    aliases: ['Supreme Magister Elaadrin Evengale', 'Elaadrin Evengale'],
+    tr: {
+      sub: 'High Order’ın lideri · Supreme Magister',
+      text: 'High Order’ın lideri. Alliance Skyborne’ın görev zincirinde Supreme Magister unvanıyla geçer.',
+    },
+    en: {
+      sub: 'Leader of the High Order · Supreme Magister',
+      text: 'Leader of the High Order. He appears as Supreme Magister in the Alliance Skyborne quest chain.',
+    },
+  },
+  {
+    id: 'ayessa',
+    name: 'Ayessa Dawnsinger',
+    icon: 'spell_nature_stormreach',
+    aliases: ['Grand Skyseer Ayessa Dawnsinger', 'Ayessa Dawnsinger'],
+    tr: {
+      sub: 'Windshapers’ın lideri · Grand Skyseer',
+      text: 'Windshapers’ın lideri. Grand Skyseer unvanı yalnızca Warcraft Wiki’de geçer.',
+    },
+    en: {
+      sub: 'Leader of the Windshapers · Grand Skyseer',
+      text: 'Leader of the Windshapers. The Grand Skyseer title appears only on the Warcraft Wiki.',
+    },
+  },
+  {
+    id: 'earthenring',
+    name: 'Earthen Ring',
+    icon: 'spell_nature_earthbindtotem',
+    aliases: ['Earthen Ring'],
+    tr: {
+      sub: 'Elementlerle uğraşan shaman topluluğu',
+      text: 'Elementlerin dengesi için çalışan shaman topluluğu. Windshapers ona uzandı; Muln Earthfury Shrine of Akir’de Skyborne’a yardım etti.',
+    },
+    en: {
+      sub: 'Shaman circle devoted to the elements',
+      text: 'The circle of shamans who work for the balance of the elements. The Windshapers reached out to it; Muln Earthfury helped the Skyborne at the Shrine of Akir.',
+    },
+  },
+  {
+    id: 'ansirem',
+    name: 'Ansirem Runeweaver',
+    icon: 'spell_arcane_blast',
+    aliases: ['Ansirem Runeweaver'],
+    tr: {
+      sub: 'Kirin Tor’un arşmagı',
+      text: 'Kirin Tor’dan Archmage. Shrine of Akir’de Skyborne’ın yardımına gelen Kirin Tor birliğine önderlik etti.',
+    },
+    en: {
+      sub: 'Archmage of the Kirin Tor',
+      text: 'An Archmage of the Kirin Tor. He led the Kirin Tor force that came to the Skyborne’s aid at the Shrine of Akir.',
+    },
+  },
+  {
+    id: 'muln',
+    name: 'Muln Earthfury',
+    icon: 'spell_nature_earthquake',
+    aliases: ['Muln Earthfury'],
+    tr: {
+      sub: 'Earthen Ring’in shaman’ı',
+      text: 'Earthen Ring’den shaman. Shrine of Akir’de Rohash’ı geri çekilmeye ikna etti.',
+    },
+    en: {
+      sub: 'Shaman of the Earthen Ring',
+      text: 'A shaman of the Earthen Ring. At the Shrine of Akir he persuaded Rohash to withdraw.',
+    },
+  },
+  {
+    id: 'rathiril',
+    name: 'Rathiril Sunlance',
+    icon: 'inv_staff_goldfeathered_01',
+    aliases: ['Rathiril Sunlance'],
+    tr: {
+      sub: 'High Order’ın Elder’ı',
+      text: 'Warcraft Tavern’ın Zephras Isle rehberine göre High Order’ın Elder’ı. Başka bir kaynak onu doğrulamaz.',
+    },
+    en: {
+      sub: 'Elder of the High Order',
+      text: 'The High Order’s Elder, according to Warcraft Tavern’s Zephras Isle guide. No other source confirms him.',
+    },
+  },
+  {
+    id: 'talaanis',
+    name: 'Talaanis Shadowsong',
+    icon: 'inv_feather_01',
+    aliases: ['High Elder Talaanis Shadowsong', 'Talaanis Shadowsong'],
+    tr: {
+      sub: 'Zephras Isle konseyinin başı',
+      text: 'Warcraft Wiki’ye göre Zephras Isle konseyinin başı, durumu “kayıp”. Warcraft Tavern adı farklı yazar ve onu Valanaar’da gösterir.',
+    },
+    en: {
+      sub: 'Head of the Zephras Isle council',
+      text: 'According to the Warcraft Wiki the head of the Zephras Isle council, status “missing”. Warcraft Tavern spells the name differently and places the elder in Valanaar.',
+    },
+  },
+  {
+    id: 'skywatcher',
+    name: 'Skywatcher Plateau',
+    icon: 'spell_arcane_teleportthunderbluff',
+    aliases: ['Skywatcher Plateau'],
+    tr: {
+      sub: 'Mulgore’da Horde Skyborne’ın indiği yer',
+      text: 'Horde Skyborne’ın skyship’inin indiği yer; wiki ve Method onu Mulgore’da gösterir. Warcraft Tavern ile MMOexp Thunder Bluff der.',
+      note: 'Mulgore',
+    },
+    en: {
+      sub: 'Where Horde Skyborne land in Mulgore',
+      text: 'Where the Horde Skyborne skyship lands; the wiki and Method put it in Mulgore. Warcraft Tavern and MMOexp say Thunder Bluff.',
+      note: 'Mulgore',
+    },
+  },
+  {
+    id: 'anvilas',
+    name: 'Anvilas · Siroccas',
+    icon: 'inv_misc_gem_sapphire_01',
+    aliases: ['Anvilas', 'Siroccas'],
+    tr: {
+      sub: 'Skywall’daki diğer iki ada',
+      text: 'Warcraft Wiki’ye göre Skywall’daki diğer iki ada. Zephras ile bağları koptu; çöken adaların mültecileri Zephras’a sığındı.',
+    },
+    en: {
+      sub: 'Two other islands in Skywall',
+      text: 'According to the Warcraft Wiki, two other islands in Skywall. Contact with Zephras was lost, and refugees from collapsing islands took shelter on Zephras.',
+    },
+  },
 ];

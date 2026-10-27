@@ -7,7 +7,8 @@
 //   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
 //   and calm; "embers" are forge sparks drifting up; "void", "wisps" and "voodoo" are the same
-//   motes in violet, pale green and jungle green; "cinders" are tiny red flames that fall, turn grey ash and shrink.
+//   motes in violet, pale green and jungle green; "cinders" are tiny red flames that fall, turn grey ash and shrink;
+//   "gale" is pale blue wind lines streaming across the sky.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -24,6 +25,13 @@ function init(root: HTMLElement) {
 
   // labels in the drawings keep the same on-screen size at any width (also when a
   // max-height letterboxes the drawing, so it is scaled by its height)
+  // the race strip scrolls sideways: show the chip of this story
+  const strip = $('.races');
+  const sel = strip && $('.chip.sel', strip);
+  if (strip && sel) {
+    strip.scrollLeft += sel.getBoundingClientRect().left - strip.getBoundingClientRect().left - (strip.clientWidth - sel.offsetWidth) / 2;
+  }
+
   const scaled = $$<SVGSVGElement>('svg.map').filter((s) => s.id !== 'ek');
   const sizeK = (svg: SVGSVGElement) => {
     const r = svg.getBoundingClientRect();
@@ -246,6 +254,7 @@ function init(root: HTMLElement) {
     else if (fx.dataset.fx === 'wisps') embers(fx, ['#effff8', '#8fe3c8']);
     else if (fx.dataset.fx === 'cinders') cinders(fx);
     else if (fx.dataset.fx === 'voodoo') embers(fx, ['#e6ffd0', '#6fcf5a']);
+    else if (fx.dataset.fx === 'gale') gale(fx);
     else blizzard(fx);
   }
 }
@@ -454,6 +463,79 @@ function cinders(cv: HTMLCanvasElement) {
         ctx.arc(p.x, p.y, r * 0.6, 0, 6.283);
       }
       ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(tick);
+  };
+  new IntersectionObserver(([e]) => {
+    const was = run;
+    run = e.isIntersecting;
+    if (run && !was) requestAnimationFrame(tick);
+  }).observe(cv);
+  addEventListener('resize', size);
+}
+
+// Gale: pale blue wind lines that stream across the sky, swaying and fading in and out along their length.
+function gale(cv: HTMLCanvasElement) {
+  const ctx = cv.getContext('2d');
+  if (!ctx) return;
+  type Gust = { x: number; y: number; len: number; v: number; s: number; w: number; a: number; hue: number };
+  let w = 0;
+  let h = 0;
+  let gusts: Gust[] = [];
+  let run = false;
+  const spawn = (anywhere: boolean): Gust => {
+    const len = 90 + Math.random() * 190;
+    return {
+      x: anywhere ? Math.random() * (w + len) - len : -len - Math.random() * 120,
+      y: Math.random() * h,
+      len,
+      v: 1.2 + Math.random() * 2.4,
+      s: Math.random() * 6.28,
+      w: 0.7 + Math.random() * 1.2,
+      a: 0.22 + Math.random() * 0.4,
+      hue: Math.random() < 0.65 ? 0 : 1,
+    };
+  };
+  const size = () => {
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    w = cv.clientWidth;
+    h = cv.clientHeight;
+    cv.width = w * dpr;
+    cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    gusts = Array.from({ length: Math.round(Math.max(26, Math.min(80, w / 16))) }, () => spawn(true));
+  };
+  size();
+  const SEG = 14;
+  const tick = (t: number) => {
+    if (!run) return;
+    ctx.clearRect(0, 0, w, h);
+    ctx.lineCap = 'round';
+    for (let i = 0; i < gusts.length; i++) {
+      const g = gusts[i];
+      g.x += g.v;
+      g.s += 0.012;
+      if (g.x > w + 10) {
+        gusts[i] = spawn(false);
+        continue;
+      }
+      ctx.strokeStyle = g.hue ? '#8fd0f0' : '#e6f6ff';
+      ctx.lineWidth = g.w;
+      let px = g.x;
+      let py = g.y + Math.sin(g.s + t / 1300) * 5;
+      for (let k = 1; k <= SEG; k++) {
+        const f = k / SEG;
+        const x = g.x + g.len * f;
+        const y = g.y + Math.sin(g.s + t / 1300 + f * 3.2) * 5 * (0.4 + f);
+        ctx.globalAlpha = g.a * Math.sin(Math.PI * (f - 0.5 / SEG));
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        px = x;
+        py = y;
+      }
     }
     ctx.globalAlpha = 1;
     requestAnimationFrame(tick);

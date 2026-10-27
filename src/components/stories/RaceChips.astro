@@ -18,22 +18,23 @@ const u = STORY_UI[lang];
   {
     STORY_RACES.map((race) => {
       const h = race.faction === 'h';
+      const both = race.faction === 'ah';
       if (race.slug === current)
         return (
-          <span class:list={['chip', 'sel', { h }]} role="listitem" aria-current="page">
+          <span class:list={['chip', 'sel', { h, ah: both }]} role="listitem" aria-current="page">
             <i />
             {race.name}
           </span>
         );
       if (race.slug)
         return (
-          <a class:list={['chip', { h }]} role="listitem" href={withBase(`/${lang}/stories/${race.slug}/`)}>
+          <a class:list={['chip', { h, ah: both }]} role="listitem" href={withBase(`/${lang}/stories/${race.slug}/`)}>
             <i />
             {race.name}
           </a>
         );
       return (
-        <span class:list={['chip', 'off', { h }]} role="listitem" title={u.soon}>
+        <span class:list={['chip', 'off', { h, ah: both }]} role="listitem" title={u.soon}>
           <i />
           {race.name}
         </span>

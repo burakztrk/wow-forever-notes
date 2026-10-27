@@ -2,7 +2,7 @@
 // drawn by the site's shared tooltip (src/scripts/tooltip.ts, CardTip with kind "lore").
 import type { Lang } from '../../config';
 import { LORE, LORE_UI, type LoreEntry } from '../../i18n/lore';
-import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY, ORC_STORY, TROLL_STORY } from '../../i18n/stories';
+import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY, ORC_STORY, SKYBORNE_STORY, TROLL_STORY } from '../../i18n/stories';
 import { withBase } from '../../utils/url';
 import { STORY_RACES } from './races';
 import type { CardTip, TipPayload } from '../tooltip-render';
@@ -63,14 +63,15 @@ function loreCard(e: LoreEntry, lang: Lang): CardTip {
   };
 }
 
-/** Tooltip island (#wf-glossary) for a story page: one card per lore entry it names. */
-export function loreTips(lang: Lang, ids: string[]): TipPayload {
+/** Tooltip island (#wf-glossary) for a story page: one card per lore entry it names, plus the glossary entries
+ *  (racials, spells) the page lists as rows. */
+export function loreTips(lang: Lang, ids: string[], glossaryIds: string[] = []): TipPayload {
   const cards: Record<string, CardTip> = {};
   for (const id of ids) {
     const e = LORE.find((x) => x.id === id);
     if (e) cards[loreTipId(id)] = loreCard(e, lang);
   }
-  return { ...tooltipPayload([], lang), cards };
+  return { ...tooltipPayload(glossaryIds, lang), cards };
 }
 
 /** The stories whose text gets lore cards, by page slug (src/pages/[lang]/stories/<slug>.astro). */
@@ -81,6 +82,7 @@ export const LORE_STORIES: Record<string, Record<Lang, unknown>> = {
   'night-elf': NIGHT_ELF_STORY,
   orc: ORC_STORY,
   troll: TROLL_STORY,
+  skyborne: SKYBORNE_STORY,
 };
 
 export interface LoreSearchEntry {

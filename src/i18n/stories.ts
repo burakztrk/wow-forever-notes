@@ -3257,3 +3257,540 @@ export const TROLL_STORY: Record<Lang, TrollStory> = {
     images: 'The Durotar, Zul’Aman, Sen’jin Village and Vol’jin images belong to Blizzard Entertainment. Maps from WoW Forever.',
   },
 };
+
+export const SKYBORNE_ART_LABELS: Record<Lang, Record<string, string>> = {
+  tr: {
+    feralasAria: 'Feralas haritası: Dire Maul (Eldre’Thalas) ve isyancıların batıya, denize doğru kaçışı',
+    toWest: 'Batıya, bilinmeyene',
+    riseAria: 'Zephras Isle denizden Skywall’a yükselir; kaydırdıkça rüzgâr çizgileri belirir',
+    seaLbl: 'Azeroth’ın denizi',
+    planeLbl: 'Elemental Plane of Air',
+    spirits: 'Kaybolan rüzgâr ruhları',
+    pylons: 'Pylon’lar (şematik)',
+    truce: 'ateşkes',
+    ekAria: 'Zephras Isle haritası: ruhların kaybolması, pylon’lar, Al’Aketh, Shrine of Akir ve Valanaar skyship iskelesi; adım adım',
+    zephrasAria: 'Zephras Isle haritası: Thendal Village, Shen’dar Village, Valanaar, Falaath Village, Ruins of Ban’aethal ve Shrine of Akir',
+    worldAria: 'Azeroth haritası: Zephras Isle’dan Dalaran’a ve Mulgore’daki Skywatcher Plateau’ya skyship rotaları; Feralas’ta Dire Maul',
+  },
+  en: {
+    feralasAria: 'Map of Feralas: Dire Maul (Eldre’Thalas) and the rebels’ flight west, out to sea',
+    toWest: 'West, into the unknown',
+    riseAria: 'Zephras Isle rises from the sea into Skywall; wind lines appear as you scroll',
+    seaLbl: 'The sea of Azeroth',
+    planeLbl: 'Elemental Plane of Air',
+    spirits: 'The vanished wind spirits',
+    pylons: 'Pylons (schematic)',
+    truce: 'truce',
+    ekAria: 'Map of Zephras Isle: the spirits vanish, the pylons, the Al’Aketh, the Shrine of Akir and the Valanaar skydock, step by step',
+    zephrasAria: 'Map of Zephras Isle: Thendal Village, Shen’dar Village, Valanaar, Falaath Village, Ruins of Ban’aethal and the Shrine of Akir',
+    worldAria: 'Map of Azeroth: skyship routes from Zephras Isle to Dalaran and to Skywatcher Plateau in Mulgore; Dire Maul in Feralas',
+  },
+};
+
+type SkySide = { faction: string; name: string; text: string; facts: { label: string; value: string }[] };
+
+export interface SkyborneStory {
+  metaDescription: string;
+  overline: string;
+  lead: string;
+  facts: { label: string; value: string; extra?: string }[];
+  chapters: Record<'origin' | 'skywall' | 'paths' | 'crisis' | 'descent', string>;
+  origin: {
+    title: string;
+    titleNote: string;
+    paragraphs: string[];
+    figureCaption: string;
+    escapeKey: string;
+    legend: Item[];
+    stagesLabel: string;
+    stages: Item[];
+    before: string;
+    after: string;
+    note: string;
+  };
+  skywall: { title: string; intro: string; more: string[]; figureCaption: string; cards: Card[]; note: string };
+  paths: {
+    title: string;
+    intro: string[];
+    sides: SkySide[];
+    racialLabel: string;
+    classesLabel: string;
+    sharedLabel: string;
+    sharedTitle: string;
+    sharedText: string;
+    rivalryLabel: string;
+    rivalryTitle: string;
+    rivalryText: string[];
+    note: string;
+  };
+  crisis: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
+  descent: {
+    title: string;
+    intro: string[];
+    mapCaption: string;
+    legend: Item[];
+    shipLabel: string;
+    shipTitle: string;
+    shipText: string[];
+    worldCaption: string;
+    allianceKey: string;
+    hordeKey: string;
+    worldLegend: Item[];
+    direLabel: string;
+    direTitle: string;
+    direText: string;
+    bosses: Card[];
+    note: string;
+  };
+  outro: { title: string; text: string; nextText: string };
+  images: string;
+}
+
+export const SKYBORNE_STORY: Record<Lang, SkyborneStory> = {
+  tr: {
+    metaDescription:
+      'Skyborne’ın hikayesi: Eldre’Thalas’tan kaçan isyancılar, Skywall’daki rüzgâr ruhlarıyla pakt, Zephras Isle’ın göğe yükselişi, High Order ile Windshapers, Al’Aketh krizi ve Azeroth’a iniş.',
+    overline: 'Hikaye 07',
+    lead: 'Eldre’Thalas’tan kaçan isyancıların torunları. Rüzgâr ruhlarıyla yaptıkları pakt bir adayı göğe kaldırdı; ruhlar kaybolunca ada çözülmeye başladı ve Skyborne Azeroth’a indi.',
+    facts: [
+      { label: 'Yurt', value: 'Zephras Isle', extra: 'Skywall' },
+      { label: 'Ana şehir', value: 'Valanaar' },
+      { label: 'İki kol', value: 'High Order', extra: 'Windshapers' },
+      { label: 'Dil', value: 'Darnassian', extra: 'Common · Orcish' },
+      { label: 'Binek', value: 'Galestrider' },
+      { label: 'Kendi adları', value: 'shen’dorei', extra: 'gizli halk' },
+    ],
+    chapters: { origin: 'Köken', skywall: 'Skywall', paths: 'İki yol', crisis: 'Kriz', descent: 'İniş' },
+    origin: {
+      title: 'Gizli halk',
+      titleNote: '(shen’dorei)',
+      paragraphs: [
+        'Skyborne kendilerine shen’dorei, yani “gizli halk” der. Blizzard’a göre atalarını, War of the Ancients’tan sonra Eldre’Thalas’tan kaçan isyancılar oluşturur. Eldre’Thalas, Shen’dralar Highborne’larının şehriydi ve bugün Feralas’taki Dire Maul olarak ayaktadır.',
+        'Well of Eternity’nin kaybından sonra Prince Tortheldrin, şehri ayakta tutmak için Immol’thar adlı iblisin gücünü emmek istedi. Highborne büyücüler ve şehrin diğer kaldorei sakinleri buna karşı çıktı; Burning Legion’a kapı açılmasından korkuyorlardı.',
+        'Warcraft Wiki’ye göre isyanın başında maskeli, adı bilinmeyen bir lider vardı: Shal’nan, yani “Veiled One”. İsyancılar Tortheldrin’in kristal pylon’larının inşasını sabote etti. Ritüel baskın sırasında bozulunca şehre arcane yaratıklar yağdı ve Shal’nan son çatışmadan tek sağ çıkan oldu. İsyan, birçok kaynağın ortak sözüyle, yenilgiyle bitti.',
+        'Aynı wiki, kaçışı şöyle anlatır: Shal’nan halkını Feralas’ın batı kıyısındaki Eldre’narr limanına götürdü. Magister’ler isyancıları öldürmekle görevliydi ama karışmadılar; isyancılar gemilere el koyup batıya, bilinmeyene yelken açtı. Diğer kaynaklar yalnızca “denizin ötesine kaçtılar” der; liman ve ayrıntılar tek anlatıma dayanır.',
+      ],
+      figureCaption: 'Eldre’Thalas’tan kaçış; kaydırdıkça çiziliyor. Konumlar ve liman yaklaşıktır.',
+      escapeKey: 'İsyancıların kaçışı',
+      legend: [
+        { name: 'Dire Maul', text: 'Eldre’Thalas’ın bugünkü adı; Shen’dralar Highborne’larının eski şehri' },
+        { name: 'Eldre’narr', text: 'Wiki’ye göre Feralas’ın batı kıyısındaki liman (tek kaynak)' },
+      ],
+      stagesLabel: 'Skyborne’ın doğuşu',
+      stages: [
+        { name: 'Highborne', text: 'Eldre’Thalas’ın büyücüleri' },
+        { name: 'Shen’dralar', text: 'Şehrin Highborne halkı' },
+        { name: 'Rebellion', text: 'Shal’nan’ın öncülüğünde' },
+        { name: 'Shen’dorei', text: 'Gizli halk' },
+      ],
+      before: 'Eldre’Thalas',
+      after: 'Skywall',
+      note: 'Blizzard onlara “shen’dorei high elf” der; Icy Veins ise Skyborne’ın Quel’Thalas’ın high elf’lerinden ayrı bir halk olduğunu vurgular. İkisinin de kökü Highborne’dır; yolları ayrılmıştır.',
+    },
+    skywall: {
+      title: 'Rüzgârlarla pakt',
+      intro:
+        'Kaçanlar sonunda ilkel elemental ruhların hüküm sürdüğü bilinmeyen bir toprağa vardı. Blizzard’a göre burada rüzgâr ruhlarıyla anlaştılar; ruhlar adalarını Skywall’da, Elemental Plane of Air’de demirledi.',
+      more: [
+        'Warcraft Wiki pakti şöyle anlatır: Tortheldrin’in filosu peşlerindeyken rüzgâr ruhları bir kara parçasını gökyüzüne kaldırdı ve isyancıları hem takipçilerinden hem Azeroth’tan sakladı. O kara parçası Zephras Isle oldu. Icy Veins ve MMOexp de adanın göğe kaldırıldığını yazar.',
+        'Ne kadar zaman geçtiği kaynaklarda tutmaz. Blizzard yalnızca “binlerce yıl” der. Icy Veins pakti yaklaşık 7.300 yıl öncesine (BDP) yerleştirir; wiki’deki High Order girişi “10.000 yıl”dan söz eder; ruhların kaybolması için ise “birkaç yüzyıl önce” yazılır. Bu sayfa hiçbirini kesin saymıyor.',
+        'Skyborne ruhların armağanlarıyla küçük ama canlı bir uygarlık kurdu. Wiki’ye göre Shal’nan, Shrine of the Four Winds’in temel atma töreninde liderliği bırakıp eyalet liderlerinden oluşan, demokratik biçimde seçilen bir konseye devretti; yüzyıllar içinde halk karaya göre daha hafif ve ince oldu. Sky-Touched denen mavi ten ise yaklaşık beş kuşak önce ortaya çıkmış.',
+        'Hikâyenin gölgesinde rüzgârın efendisi Al’Akir the Windlord var. Wiki’ye göre ruhlar ondan söz etmekten kaçınır ve bazı Skyborne onun var olduğundan bile şüphe eder.',
+      ],
+      figureCaption: 'Ada denizden Skywall’a yükselir; kaydırdıkça. Şematik çizimdir.',
+      cards: [
+        {
+          name: 'Rüzgâr ruhları',
+          text: 'Skywall’ın ilkel elemental ruhları. İsyancılarla anlaşıp adayı göğe kaldırdılar ve Zephras’ın havada kalmasını sağladılar.',
+          status: 'Kayboldular',
+          tone: 'no',
+        },
+        {
+          name: 'Skywall',
+          text: 'Elemental Plane of Air’de, ilkel ruhların âlemi. Zephras Isle burada demirlenmiştir.',
+          status: 'Yeni yurt',
+          tone: 'home',
+        },
+        {
+          name: 'Al’Akir',
+          text: 'Rüzgârın efendisi, Windlord. Ruhlar ondan söz etmekten kaçınır; Al’Aketh kültü ona tapar.',
+          status: 'Tek kaynak',
+          tone: 'mute',
+        },
+        {
+          name: 'Zephras Isle',
+          text: 'Göğe kaldırılan ada: 1–12. seviye başlangıç bölgesi, ana şehri Valanaar. Ruhlar gidince adayı tutan büyü sönüyor.',
+          status: 'Çözülüyor',
+          tone: 'no',
+        },
+      ],
+      note: 'Skyborne’ın hikayesi bir kaçışla başlar ve bir bağımlılıkla sürer: ada, onu kaldıran ruhlara dayanıyordu. Ruhlar gidince ada tutunacak yer arıyor.',
+    },
+    paths: {
+      title: 'İki yol',
+      intro: [
+        'Skyborne tek halk, iki taraf: Alliance’ta High Order, Horde’da Windshapers. Blizzard bu bölünmeyi ruhlar kaybolduktan sonra halkın nereye yöneleceğine dair anlaşmazlığa bağlar.',
+        'Windshapers, ruhların “skysight” armağanını ilk alan shen’dorei’nin torunlarıdır ve kayıp elemental öğretmenlerinin izini sürer. Bir anlatıma göre kökleri şehrin sıradan kaldorei halkına uzanır; bu yalnızca tek anlatımda geçer. High Order ise Eldre’Thalas’ın Highborne bilginlerinden gelir ve kayıp arcane bilgiyi geri kazanmak ister, çünkü shen’dorei’nin ruh hamilerine muhtaç kalmadan ayakta durabilmesini hedefler.',
+      ],
+      sides: [
+        {
+          faction: 'Alliance',
+          name: 'High Order',
+          text: 'Highborne bilginlerinin torunları. Ruhların neden gittiğini sorgular ve arcane geleneği geri kazanmaya çalışır. Mage olabilen taraf budur.',
+          facts: [
+            { label: 'Lider', value: 'Supreme Magister Elaadrin Evengale' },
+            { label: 'Dil', value: 'Common · Darnassian' },
+            { label: 'Skyship', value: 'Dalaran' },
+            { label: 'Dışarıdan yardım', value: 'Kirin Tor' },
+          ],
+        },
+        {
+          faction: 'Horde',
+          name: 'Windshapers',
+          text: 'Skysight armağanını ilk alan shen’dorei’nin torunları. Elemental geleneği korur ve kayıp ruhların peşine düşer. Shaman olabilen taraf budur.',
+          facts: [
+            { label: 'Lider', value: 'Grand Skyseer Ayessa Dawnsinger' },
+            { label: 'Dil', value: 'Orcish · Darnassian' },
+            { label: 'Skyship', value: 'Skywatcher Plateau' },
+            { label: 'Dışarıdan yardım', value: 'Earthen Ring' },
+          ],
+        },
+      ],
+      racialLabel: 'Tarafa özgü yetenek',
+      classesLabel: 'Class’lar',
+      sharedLabel: 'Ortak',
+      sharedTitle: 'İki tarafın ortak yetenekleri',
+      sharedText:
+        'Walk on Air, Wind Blessed ve Elemental Insight iki tarafta da aynıdır. Ortak class’lar Warrior, Hunter, Rogue ve Druid; Skyborne’ın kendine özgü druid formları da var.',
+      rivalryLabel: 'Rekabet',
+      rivalryTitle: 'Aynı adada iki yol',
+      rivalryText: [
+        'Ruhlar gittikten sonra iki grup rakip oldu. Wiki’ye göre High Order ruh hamilerinin niyetinden şüphe etti, Windshapers sorgulamayı hakaret saydı; High Order Kirin Tor’a, Windshapers Earthen Ring’e uzandı ve gerilim şiddete döndü. Adanın milis gücü Peacekeepers, Captain Valennia Stormfist’in komutasında barışı korumaya çalışır.',
+        'Adanın konseyinin başı konusunda kaynaklar ayrışır: wiki High Elder Talaanis Shadowsong’u kayıp gösterir, Warcraft Tavern Valanaar’da anar ve adını farklı yazar. Tavern ayrıca High Order’ın Elder’ı olarak Rathiril Sunlance’ı sayar; başka bir kaynak bunu doğrulamaz.',
+      ],
+      note: 'Tek halk, iki taraf: ikisi de aynı ruhların çocukları. Ayrılan şey, ruhlar gidince neye güvenecekleri.',
+    },
+    crisis: {
+      title: 'Susan rüzgâr',
+      intro: 'Zephras Isle’ı binlerce yıl havada tutan şey ruhlardı. Onlar kaybolunca ada çözülmeye başladı. Her adım, Zephras Isle haritasında krizin bir anını gösterir.',
+      mapLabel: 'Zephras Isle haritası, adım adım',
+      steps: [
+        {
+          era: 'Spirits',
+          title: 'Ruhlar kayboldu',
+          text: 'Adayı koruyan rüzgâr ruhları çekildi. Blizzard zaman vermez, yalnızca ruhların kaybolduğunu söyler; wiki “birkaç yüzyıl önce” yazar ve Shal’nan’ın da aynı sıralarda ortadan kaybolduğunu ekler.',
+          status: 'Tartışmalı',
+          tone: 'mute',
+        },
+        {
+          era: 'Pylons',
+          title: 'Pylon’lar çöküyor',
+          text: 'Zephras’ı Skywall’a bağlayan pylon’lar bozuldu. Adanın parçaları harabeye ve karanlığa gömüldü; Anvilas ve Siroccas adalarıyla bağ koptu, çöken adaların mültecileri Zephras’a sığındı. Haritadaki halkalar şematiktir.',
+          status: 'Çöküyor',
+          tone: 'no',
+        },
+        {
+          era: 'Al’Aketh',
+          title: 'Rüzgâr efendisinin kültü',
+          text: 'Al’Akir’e tapan Al’Aketh kültü pylon’ları yıkmak istiyor; lideri High Priestess Lorthuna. Wiki’ye göre pylon’ların büyüleri Skyborne’ı Al’Akir’in dikkatinden de saklıyordu. Kült Falaath Village’da tutunmuştu.',
+          status: 'Düşman',
+          tone: 'no',
+        },
+        {
+          era: 'Shrine of Akir',
+          title: 'Shrine of Akir’de ateşkes',
+          text: 'High Order, Windshapers ve Peacekeepers kültü durdurmak için Shrine of Akir’de bir araya geldi. Lorthuna’nın çağrısıyla Conclave of Wind’den Rohash göründü ve Al’Akir’in gazabıyla tehdit etti. Wiki, Lorthuna’nın göğe savrulduğunu yazar; bir rehber portaldan kaçtığını söyler.',
+          status: 'Ateşkes',
+          tone: 'ok',
+        },
+        {
+          era: 'Valanaar',
+          title: 'Azeroth’a iniş kararı',
+          text: 'Kirin Tor’dan Ansirem Runeweaver ile Earthen Ring’den Muln Earthfury yardıma geldi. Wiki’ye göre Rohash çekilirken Al’Akir’e Skyborne’ı anlatacağını söyledi. Bunun üzerine iki kol, Alliance ve Horde’dan yardım istemek için Skywall’dan ayrılmaya karar verdi.',
+          status: 'Karar',
+          tone: 'home',
+        },
+      ],
+      note: 'Krizi bir düşman başlatmadı; ruhların bıraktığı boşluk başlattı. Düşman, o boşluğu dolduran oldu.',
+    },
+    descent: {
+      title: 'Azeroth’a iniş',
+      intro: [
+        'Zephras Isle’dan Azeroth’a skyship’ler (Skycutter) gider; iskele Valanaar’dadır. Blizzard, yeni bir Windshaper neslinin Skywall’dan Azeroth’a çağrıldığını, High Order’ın da geri çağrıldığını yazar.',
+        'Alliance rotası Kirin Tor’un Dalaran’ında biter. Horde rotasının varış noktası kaynaklarda tutarlı değil: wiki ve Method “Skywatcher Plateau, Mulgore” yazar; Warcraft Tavern ile MMOexp Thunder Bluff der. Haritada Skywatcher Plateau gösteriliyor.',
+      ],
+      mapCaption: 'Zephras Isle: altı yer. Konumlar yaklaşıktır.',
+      legend: [
+        { name: 'Thendal Village', text: 'İki tarafın başlangıç köyü: aynı yer, ayrı fazlar' },
+        { name: 'Shen’dar Village', text: 'Shen’dar Highlands’in köyü' },
+        { name: 'Valanaar', text: 'Ana şehir: banka, açık artırma ve skyship iskelesi' },
+        { name: 'Falaath Village', text: 'Al’Aketh’in tutunduğu köy' },
+        { name: 'Ruins of Ban’aethal', text: 'Adanın kuzeyindeki harabe' },
+        { name: 'Shrine of Akir', text: 'Son çatışmanın yapıldığı tapınak' },
+      ],
+      shipLabel: 'Skyship',
+      shipTitle: 'Valanaar’dan Azeroth’a',
+      shipText: [
+        'Method’a göre Dalaran’dan Skyborne’a özel bir portal Stormwind’e açılır. Horde tarafında portal yoktur: Orgrimmar’a ya da Valley of Trials’a hızlı bir yol bulunmaz.',
+        'Zephras’ın Azeroth haritasındaki yeri simgeseldir: ada başka bir âlemde, Skywall’da.',
+      ],
+      worldCaption: 'Skyship rotaları ve Dire Maul. Zephras Isle’ın konumu simgeseldir.',
+      allianceKey: 'Alliance rotası',
+      hordeKey: 'Horde rotası',
+      worldLegend: [
+        { name: 'Zephras Isle', text: 'Skywall’da yüzen ada' },
+        { name: 'Dalaran', text: 'Alliance skyship’inin indiği yer' },
+        { name: 'Skywatcher Plateau', text: 'Horde skyship’inin indiği yer, Mulgore' },
+        { name: 'Dire Maul', text: 'Eldre’Thalas’ın bugünkü hâli' },
+      ],
+      direLabel: 'Bugünkü Dire Maul',
+      direTitle: 'Geride kalan şehir',
+      direText: 'Eldre’Thalas, Skyborne’ın kaçtığı şehir, bugün Feralas’ta Dire Maul adıyla bir zindandır. Hikâyeyi başlatan iki isim hâlâ orada.',
+      bosses: [
+        {
+          name: 'Prince Tortheldrin',
+          text: 'Eldre’Thalas’ın prensi. Şehri ayakta tutmak için Immol’thar’a uzandı; Classic’te Dire Maul’un içinde bir boss olarak bulunur.',
+          status: 'Boss',
+          tone: 'no',
+        },
+        {
+          name: 'Immol’thar',
+          text: 'Şehrin altında bağlanan iblis. Tortheldrin gücünü Shen’dralar’a emdirmek istedi; Classic’te Dire Maul’da bir boss olarak bulunur.',
+          status: 'Boss',
+          tone: 'no',
+        },
+      ],
+      note: 'Skyborne Azeroth’a döner ama kaçtıkları şehre değil. Hikâye sürüyor; ruhlar ve Al’Akir’in cevabı henüz yok.',
+    },
+    outro: {
+      title: 'Havadaki ada',
+      text: 'Skyborne bir kaçışın ve bir paktın çocukları. Ruhlar sustuğunda göğe dayanan bu halk, Azeroth’ta yeni bir yurt arıyor.',
+      nextText: 'Mulgore’un halkı: Earth Mother, Cairne Bloodhoof ve Horde’un tauren’leri.',
+    },
+    images:
+      'Zephras Isle, Feralas ve Azeroth haritaları WoW Forever’dan. Bu sayfada çizilmiş kapak ya da portre yoktur. Bilgi Blizzard News, Warcraft Wiki, Icy Veins, Warcraft Tavern ve Method’dan derlendi; kaynaklar tutmadığı yerde “tartışmalı” ya da “tek kaynak” diye işaretlendi.',
+  },
+  en: {
+    metaDescription:
+      'The story of the Skyborne: the rebels who fled Eldre’Thalas, the pact with the wind spirits of Skywall, the rise of Zephras Isle, the High Order and the Windshapers, the Al’Aketh crisis and the descent to Azeroth.',
+    overline: 'Story 07',
+    lead: 'Descendants of the rebels who fled Eldre’Thalas. A pact with the wind spirits lifted an island into the sky; when the spirits vanished the island began to fall apart, and the Skyborne came down to Azeroth.',
+    facts: [
+      { label: 'Homeland', value: 'Zephras Isle', extra: 'Skywall' },
+      { label: 'Main city', value: 'Valanaar' },
+      { label: 'Two branches', value: 'High Order', extra: 'Windshapers' },
+      { label: 'Language', value: 'Darnassian', extra: 'Common · Orcish' },
+      { label: 'Mount', value: 'Galestrider' },
+      { label: 'Own name', value: 'shen’dorei', extra: 'the hidden people' },
+    ],
+    chapters: { origin: 'Origin', skywall: 'Skywall', paths: 'Two paths', crisis: 'Crisis', descent: 'Descent' },
+    origin: {
+      title: 'The hidden people',
+      titleNote: '(shen’dorei)',
+      paragraphs: [
+        'The Skyborne call themselves shen’dorei, “the hidden people”. According to Blizzard their ancestors were rebels who fled Eldre’Thalas after the War of the Ancients. Eldre’Thalas was the city of the Shen’dralar Highborne, and it stands today as Dire Maul in Feralas.',
+        'After the Well of Eternity was lost, Prince Tortheldrin meant to drain the power of the demon Immol’thar to keep the city alive. Highborne magi and the city’s other kaldorei citizens opposed it, fearing it would open a door for the Burning Legion.',
+        'According to the Warcraft Wiki the rebellion was led by a masked leader whose name was never known: the Shal’nan, “the Veiled One”. The rebels sabotaged the building of Tortheldrin’s crystal pylons. When the ritual went wrong during a raid, arcane creatures poured into the city, and the Shal’nan was the only survivor of the final confrontation. The rebellion, by the word of several sources, ended in defeat.',
+        'The same wiki tells the flight like this: the Shal’nan led his people to the port of Eldre’narr on Feralas’s western coast. The magisters had orders to kill the rebels but did not interfere, and the rebels took ships and sailed west into the unknown. Other sources only say they “fled across the sea”; the port and the details rest on one account.',
+      ],
+      figureCaption: 'The flight from Eldre’Thalas, drawn as you scroll. Places and the port are approximate.',
+      escapeKey: 'The rebels’ flight',
+      legend: [
+        { name: 'Dire Maul', text: 'Today’s name for Eldre’Thalas, the old city of the Shen’dralar Highborne' },
+        { name: 'Eldre’narr', text: 'The port on Feralas’s western coast, according to the wiki (single source)' },
+      ],
+      stagesLabel: 'How the Skyborne came to be',
+      stages: [
+        { name: 'Highborne', text: 'The magi of Eldre’Thalas' },
+        { name: 'Shen’dralar', text: 'The city’s Highborne people' },
+        { name: 'Rebellion', text: 'Led by the Shal’nan' },
+        { name: 'Shen’dorei', text: 'The hidden people' },
+      ],
+      before: 'Eldre’Thalas',
+      after: 'Skywall',
+      note: 'Blizzard calls them “shen’dorei high elves”, while Icy Veins stresses that the Skyborne are a people apart from the high elves of Quel’Thalas. Both descend from the Highborne; their roads parted.',
+    },
+    skywall: {
+      title: 'A pact with the winds',
+      intro:
+        'The fugitives at last reached an unknown land ruled by primordial elemental spirits. According to Blizzard they struck a bargain with the wind spirits, who anchored their island home in Skywall, in the Elemental Plane of Air.',
+      more: [
+        'The Warcraft Wiki tells the pact like this: with Tortheldrin’s fleet on their heels, the wind spirits lifted a piece of land into the sky and hid the rebels from their pursuers and from Azeroth. That land became Zephras Isle. Icy Veins and MMOexp also write that the island was lifted into the sky.',
+        'How long ago this was, the sources do not agree. Blizzard says only “thousands of years”. Icy Veins places the pact about 7,300 years ago (BDP); the wiki’s High Order entry speaks of “10,000 years”; and the spirits’ vanishing is put “a few centuries ago”. This page treats none of them as certain.',
+        'With the spirits’ gifts the Skyborne built a small but lively civilisation. According to the wiki the Shal’nan stepped down at the groundbreaking of the Shrine of the Four Winds and handed leadership to a council of democratically chosen provincial leaders; over the centuries the people grew lighter and slighter than their kin on the ground. The blue skin called Sky-Touched is said to have appeared about five generations ago.',
+        'In the shadow of the story stands the Windlord, Al’Akir. According to the wiki the spirits avoid speaking of him, and some Skyborne doubt he exists at all.',
+      ],
+      figureCaption: 'The island rises from the sea into Skywall, as you scroll. A schematic drawing.',
+      cards: [
+        {
+          name: 'The wind spirits',
+          text: 'The primordial elemental spirits of Skywall. They struck a bargain with the rebels, lifted the island into the sky and kept Zephras aloft.',
+          status: 'Vanished',
+          tone: 'no',
+        },
+        {
+          name: 'Skywall',
+          text: 'The realm of the primordial spirits in the Elemental Plane of Air. Zephras Isle is anchored here.',
+          status: 'New home',
+          tone: 'home',
+        },
+        {
+          name: 'Al’Akir',
+          text: 'The master of the wind, the Windlord. The spirits avoid speaking of him; the Al’Aketh cult worships him.',
+          status: 'Single source',
+          tone: 'mute',
+        },
+        {
+          name: 'Zephras Isle',
+          text: 'The island lifted into the sky: a level 1–12 starting zone with Valanaar as its main city. With the spirits gone, the magic holding it is fading.',
+          status: 'Unravelling',
+          tone: 'no',
+        },
+      ],
+      note: 'The Skyborne story begins with an escape and goes on with a dependence: the island rested on the spirits that lifted it. With the spirits gone, the island looks for something to hold on to.',
+    },
+    paths: {
+      title: 'Two paths',
+      intro: [
+        'The Skyborne are one people with two sides: the High Order in the Alliance, the Windshapers in the Horde. Blizzard ties the split to a disagreement over where the people should turn after the spirits vanished.',
+        'The Windshapers descend from the first shen’dorei to receive the spirits’ gift of “skysight”, and they follow the trail of their lost elemental mentors. By one account their roots reach back to the city’s ordinary kaldorei citizens; that appears in a single account only. The High Order descends from the Highborne scholars of Eldre’Thalas and wants to recover lost arcane knowledge, so that the shen’dorei can survive without depending on spirit patrons.',
+      ],
+      sides: [
+        {
+          faction: 'Alliance',
+          name: 'High Order',
+          text: 'Descendants of Highborne scholars. They question why the spirits left and work to win back the arcane tradition. This is the side that can be mages.',
+          facts: [
+            { label: 'Leader', value: 'Supreme Magister Elaadrin Evengale' },
+            { label: 'Language', value: 'Common · Darnassian' },
+            { label: 'Skyship', value: 'Dalaran' },
+            { label: 'Outside help', value: 'Kirin Tor' },
+          ],
+        },
+        {
+          faction: 'Horde',
+          name: 'Windshapers',
+          text: 'Descendants of the first shen’dorei to receive the gift of skysight. They keep the elemental tradition and follow the lost spirits. This is the side that can be shamans.',
+          facts: [
+            { label: 'Leader', value: 'Grand Skyseer Ayessa Dawnsinger' },
+            { label: 'Language', value: 'Orcish · Darnassian' },
+            { label: 'Skyship', value: 'Skywatcher Plateau' },
+            { label: 'Outside help', value: 'Earthen Ring' },
+          ],
+        },
+      ],
+      racialLabel: 'Side racial',
+      classesLabel: 'Classes',
+      sharedLabel: 'Shared',
+      sharedTitle: 'Racials both sides share',
+      sharedText:
+        'Walk on Air, Wind Blessed and Elemental Insight are the same on both sides. The shared classes are Warrior, Hunter, Rogue and Druid; the Skyborne also have druid forms of their own.',
+      rivalryLabel: 'Rivalry',
+      rivalryTitle: 'Two paths on one island',
+      rivalryText: [
+        'After the spirits left, the two groups became rivals. According to the wiki the High Order grew wary of the spirits’ motives while the Windshapers took questions as an insult; the High Order reached out to the Kirin Tor, the Windshapers to the Earthen Ring, and the tension turned violent. The island’s militia, the Peacekeepers, try to keep the peace under Captain Valennia Stormfist.',
+        'On who heads the island’s council the sources differ: the wiki lists High Elder Talaanis Shadowsong as missing, while Warcraft Tavern places an elder in Valanaar and spells the name differently. Tavern also names Rathiril Sunlance as the High Order’s Elder; no other source confirms it.',
+      ],
+      note: 'One people, two sides: both are children of the same spirits. What parted them is what to trust once the spirits were gone.',
+    },
+    crisis: {
+      title: 'The silenced wind',
+      intro: 'It was the spirits that kept Zephras Isle aloft for thousands of years. When they vanished the island began to unravel. Each step shows one moment of the crisis on the Zephras Isle map.',
+      mapLabel: 'Map of Zephras Isle, step by step',
+      steps: [
+        {
+          era: 'Spirits',
+          title: 'The spirits vanished',
+          text: 'The wind spirits that protected the island withdrew. Blizzard gives no time and only says the spirits vanished; the wiki writes “a few centuries ago” and adds that the Shal’nan disappeared around the same time.',
+          status: 'Disputed',
+          tone: 'mute',
+        },
+        {
+          era: 'Pylons',
+          title: 'The pylons are failing',
+          text: 'The pylons that tie Zephras to Skywall began to break down. Parts of the island fell into ruin and darkness; contact with the islands of Anvilas and Siroccas was lost, and refugees from collapsing islands took shelter on Zephras. The rings on the map are schematic.',
+          status: 'Failing',
+          tone: 'no',
+        },
+        {
+          era: 'Al’Aketh',
+          title: 'The cult of the wind lord',
+          text: 'The Al’Aketh, a cult that worships Al’Akir, want to destroy the pylons; their leader is High Priestess Lorthuna. According to the wiki the pylons’ wards also kept the Skyborne from Al’Akir’s notice. The cult had dug in at Falaath Village.',
+          status: 'Hostile',
+          tone: 'no',
+        },
+        {
+          era: 'Shrine of Akir',
+          title: 'A truce at the Shrine of Akir',
+          text: 'The High Order, the Windshapers and the Peacekeepers met at the Shrine of Akir to stop the cult. At Lorthuna’s call Rohash of the Conclave of Wind appeared and threatened them with Al’Akir’s wrath. The wiki writes that Lorthuna was thrown into the sky; one guide says she fled through a portal.',
+          status: 'Truce',
+          tone: 'ok',
+        },
+        {
+          era: 'Valanaar',
+          title: 'The decision to descend',
+          text: 'Ansirem Runeweaver of the Kirin Tor and Muln Earthfury of the Earthen Ring came to help. According to the wiki, as Rohash withdrew he said he would tell Al’Akir about the Skyborne. So the two branches decided to leave Skywall and ask the Alliance and the Horde for help.',
+          status: 'Decision',
+          tone: 'home',
+        },
+      ],
+      note: 'No enemy started the crisis; the gap the spirits left did. The enemy was whoever filled it.',
+    },
+    descent: {
+      title: 'The descent to Azeroth',
+      intro: [
+        'Skyships (Skycutters) sail from Zephras Isle to Azeroth; the dock is in Valanaar. Blizzard writes that a new generation of Windshapers is called to Azeroth from Skywall, and that the High Order is called back too.',
+        'The Alliance route ends at the Kirin Tor’s Dalaran. Where the Horde route lands is not consistent in the sources: the wiki and Method write “Skywatcher Plateau, Mulgore”, while Warcraft Tavern and MMOexp say Thunder Bluff. The map shows Skywatcher Plateau.',
+      ],
+      mapCaption: 'Zephras Isle: six places. Positions are approximate.',
+      legend: [
+        { name: 'Thendal Village', text: 'The starting village of both sides: same place, separate phases' },
+        { name: 'Shen’dar Village', text: 'The village of the Shen’dar Highlands' },
+        { name: 'Valanaar', text: 'The main city: bank, auction house and the skyship dock' },
+        { name: 'Falaath Village', text: 'The village where the Al’Aketh dug in' },
+        { name: 'Ruins of Ban’aethal', text: 'The ruin in the north of the island' },
+        { name: 'Shrine of Akir', text: 'The shrine of the final clash' },
+      ],
+      shipLabel: 'Skyship',
+      shipTitle: 'From Valanaar to Azeroth',
+      shipText: [
+        'According to Method, a Skyborne-only portal in Dalaran opens to Stormwind. The Horde side has no portal: there is no quick way to Orgrimmar or the Valley of Trials.',
+        'Zephras’s place on the Azeroth map is symbolic: the island lies in another realm, in Skywall.',
+      ],
+      worldCaption: 'Skyship routes and Dire Maul. The position of Zephras Isle is symbolic.',
+      allianceKey: 'Alliance route',
+      hordeKey: 'Horde route',
+      worldLegend: [
+        { name: 'Zephras Isle', text: 'The island floating in Skywall' },
+        { name: 'Dalaran', text: 'Where the Alliance skyship lands' },
+        { name: 'Skywatcher Plateau', text: 'Where the Horde skyship lands, in Mulgore' },
+        { name: 'Dire Maul', text: 'What Eldre’Thalas is today' },
+      ],
+      direLabel: 'Dire Maul today',
+      direTitle: 'The city left behind',
+      direText: 'Eldre’Thalas, the city the Skyborne fled, is today a dungeon in Feralas called Dire Maul. The two names that started the story are still there.',
+      bosses: [
+        {
+          name: 'Prince Tortheldrin',
+          text: 'The prince of Eldre’Thalas. He reached for Immol’thar to keep the city alive; in Classic he is a boss inside Dire Maul.',
+          status: 'Boss',
+          tone: 'no',
+        },
+        {
+          name: 'Immol’thar',
+          text: 'The demon bound beneath the city. Tortheldrin meant to have the Shen’dralar drain its power; in Classic it is a boss in Dire Maul.',
+          status: 'Boss',
+          tone: 'no',
+        },
+      ],
+      note: 'The Skyborne return to Azeroth, but not to the city they fled. The story goes on; the spirits and Al’Akir’s answer are still missing.',
+    },
+    outro: {
+      title: 'The island in the air',
+      text: 'The Skyborne are children of an escape and a pact. When the spirits fell silent, a people who leaned on the sky began looking for a new home on Azeroth.',
+      nextText: 'The people of Mulgore: the Earth Mother, Cairne Bloodhoof and the Horde’s tauren.',
+    },
+    images:
+      'The maps of Zephras Isle, Feralas and Azeroth are from WoW Forever. This page has no drawn cover or portrait. The facts are gathered from Blizzard News, the Warcraft Wiki, Icy Veins, Warcraft Tavern and Method; where the sources disagree they are marked “disputed” or “single source”.',
+  },
+};

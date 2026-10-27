@@ -1,10 +1,13 @@
 // Races shown in the story pages' race strip, in order. `slug` marks a written
 // story (src/pages/[lang]/stories/<slug>.astro); `id` matches src/data/races.json.
+// A people on both sides (the Skyborne) is one entry: `faction` 'ah', `id` the first race and
+// `ids` every race id the story covers.
 export interface StoryRace {
   id: string;
   name: string;
-  faction: 'a' | 'h';
+  faction: 'a' | 'h' | 'ah';
   slug?: string;
+  ids?: string[];
 }
 
 export const STORY_RACES: StoryRace[] = [
@@ -16,7 +19,14 @@ export const STORY_RACES: StoryRace[] = [
   { id: 'horde-troll', name: 'Troll', faction: 'h', slug: 'troll' },
   { id: 'horde-tauren', name: 'Tauren', faction: 'h' },
   { id: 'horde-undead', name: 'Undead', faction: 'h' },
+  {
+    id: 'alliance-skyborne-high-order',
+    ids: ['alliance-skyborne-high-order', 'horde-skyborne-windshaper'],
+    name: 'Skyborne',
+    faction: 'ah',
+    slug: 'skyborne',
+  },
 ];
 
 /** Story slug for a race id, if its story is written. */
-export const storySlug = (raceId: string) => STORY_RACES.find((r) => r.id === raceId)?.slug;
+export const storySlug = (raceId: string) => STORY_RACES.find((r) => r.id === raceId || r.ids?.includes(raceId))?.slug;
