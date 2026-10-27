@@ -27,7 +27,7 @@ body:has(.lore){overflow-x:clip}
 .lore figure{margin:0}
 .lore ul,.lore ol{margin:0;padding:0;list-style:none}
 .lore p{margin:0}
-.lore h1,.lore h2,.lore h3{margin:0;text-wrap:balance;font-weight:600}
+.lore h1,.lore h2,.lore h3{margin:0;padding:0;border:0;text-wrap:balance;font-weight:600}
 .lore .wrap{max-width:1180px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gut)}
 .lore .ov{font:500 11px/16px var(--f-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .lore .h1{font-family:var(--f-display);font-weight:700;font-size:clamp(76px,15vw,184px);line-height:.88;letter-spacing:.05em;color:var(--gold);text-transform:uppercase}
@@ -302,7 +302,7 @@ body:has(.lore){overflow-x:clip}
 @keyframes ring{from{transform:scale(.6);opacity:.9}to{transform:scale(1.8);opacity:0}}
 .lore .map .tox-ring,.lore .map .toxzone{animation:tox 2.6s ease-in-out infinite alternate}
 @keyframes tox{from{transform:scale(.92)}to{transform:scale(1.08)}}
-.lore .scene .gas-wave{animation:drift 7s linear infinite}
+.lore .scene .flood-wave{animation:drift 7s linear infinite}
 @keyframes drift{to{transform:translateX(-160px)}}
 .lore .cue b{animation:bob 1.8s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(4px)}}}
@@ -459,3 +459,67 @@ a.story-card:focus-visible {
 .story-card.soon .story-card-state {
   color: var(--text-dim);
 }
+.lore svg.lava .win{fill:#3b2b27;opacity:.7}
+.lore svg.lava .win.off{fill:#ff8a3a;opacity:.95}
+.lore [data-move]{transform-box:fill-box;transform-origin:center}
+.lore .stat-u{font-size:.42em;letter-spacing:0;margin-left:.12em}
+/* Dwarf story: clan colours and fire */
+.lore{--wild:#4fb3a9;--dark-iron:#e0614f}
+.lore .map .rt.wild{stroke:var(--wild)}.lore .map .head.wild{fill:var(--wild)}
+.lore .map .rt.dark{stroke:var(--horde)}.lore .map .head.dark{fill:var(--horde)}
+.lore .map .ft.wildt{fill:var(--wild);font-weight:600}
+.lore .map .ft.darkt{fill:var(--dark-iron);font-weight:600}
+.lore .map .clan-dot{stroke:var(--bg-elev);stroke-width:calc(1.5px * var(--k,1))}
+.lore .map .bridge{fill:none;stroke:var(--gold);stroke-width:calc(2.4px * var(--k,1));stroke-linecap:round}
+.lore .map .firezone{transform-box:fill-box;transform-origin:center}
+.lore .gtxt.wild{fill:var(--wild)}.lore .gtxt.bronze{fill:var(--gold)}.lore .gtxt.dark{fill:var(--dark-iron)}
+.lore .hammers-fig svg{display:block;width:100%;max-width:440px;height:auto;margin-inline:auto}
+.lore .clans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:clamp(28px,4vw,40px)}
+@media (max-width:760px){.lore .clans{grid-template-columns:minmax(0,1fr)}}
+.lore .card.clan{border-top:3px solid var(--clan,var(--gold-dim))}
+.lore .card.clan .ic{color:var(--clan,var(--gold))}
+.lore .card .who{font-size:13px;color:var(--text-mute);font-style:italic}
+.lore .war-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:clamp(24px,4vw,36px)}
+@media (max-width:760px){.lore .war-cards{grid-template-columns:minmax(0,1fr)}}
+.lore .war-cards .card{flex-direction:row;gap:16px;align-items:flex-start}
+.lore .war-cards .card .ic{margin:0;flex:none}
+.lore .war-cards .card .t{display:flex;flex-direction:column;gap:6px;min-width:0}
+.lore .hero.forge .hero-bg img{filter:brightness(.78) saturate(1) contrast(1.05);object-position:50% 50%}
+@media (prefers-reduced-motion:no-preference){
+  .lore .map .firezone{animation:tox 2.2s ease-in-out infinite alternate}
+}
+.lore a.chip{text-decoration:none}
+.lore a.chip:hover{border-color:var(--gold-dim);color:var(--text)}
+.lore a.next{text-decoration:none;color:inherit;border-style:solid;border-color:var(--gold-dim);transition:border-color .2s,transform .2s}
+.lore a.next:hover{border-color:var(--gold);transform:translateY(-2px)}
+.lore a.next .nm{color:var(--gold)}
+.lore a.next .go{font:600 13px/16px var(--f-sans);letter-spacing:.04em;color:var(--gold)}
+.lore .stat.plain{padding-top:0}
+.lore .key.horde i{border-top-color:var(--horde)}
+.lore .key.wild i{border-top-color:var(--wild)}
+.lore .hammers-fig figcaption{margin-top:8px;text-align:center;font-size:13px;color:var(--text-mute)}
+.lore .council-text{color:var(--text-dim);max-width:62ch;line-height:1.6}
+.lore .sub + .clans{margin-top:0}
+.story-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 12px;
+  margin: 24px 0 8px;
+}
+.story-features .story-feature {
+  margin: 0;
+}
+.story-features .story-feature::before {
+  background: linear-gradient(180deg, rgba(14, 16, 21, 0.1) 0%, rgba(14, 16, 21, 0.86) 58%, rgba(14, 16, 21, 0.94) 100%);
+}
+.story-features .story-feature-text {
+  max-width: none;
+  padding-top: 140px;
+}
+.story-features .story-feature-hero {
+  top: 0;
+  bottom: auto;
+  width: 190px;
+}
+.lore .stat.fire .stat-n{color:#ff8a3a;text-shadow:0 0 28px rgba(255,110,40,.35)}
+.lore .stat.fire .stat-ov{color:#ff8a3a}

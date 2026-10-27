@@ -1,0 +1,65 @@
+---
+// Closing section of a story page (epilogue + next story) and the notes footer.
+import type { Lang } from '../../config';
+import { STORY_UI } from '../../i18n/stories';
+import { STORY_RACES } from '../../lib/stories/races';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  text: string;
+  /** Race name of the next story (as in STORY_RACES). */
+  next: string;
+  nextText: string;
+  images: string;
+}
+const { lang, title, text, next, nextText, images } = Astro.props;
+const u = STORY_UI[lang];
+const slug = STORY_RACES.find((r) => r.name === next)?.slug;
+---
+
+<section class="outro" aria-labelledby="h-outro">
+  <div class="wrap inner">
+    <div class="rv outro-copy">
+      <p class="ov">{u.outroLabel}</p>
+      <h2 class="h2" id="h-outro">{title}</h2>
+      <p class="lead">{text}</p>
+    </div>
+    {
+      slug ? (
+        <a class="next live rv" style="--d:.1s" href={withBase(`/${lang}/stories/${slug}/`)}>
+          <p class="ov next-ov">{u.nextLabel}</p>
+          <p class="nm">{next}</p>
+          <p>{nextText}</p>
+          <span class="go">
+            {u.read} <b aria-hidden="true">→</b>
+          </span>
+        </a>
+      ) : (
+        <aside class="next rv" style="--d:.1s" aria-label={u.nextLabel}>
+          <p class="ov next-ov">{u.nextLabel}</p>
+          <p class="nm">{next}</p>
+          <p>{nextText}</p>
+          <span class="soon">
+            <i />
+            {u.soon}
+          </span>
+        </aside>
+      )
+    }
+  </div>
+</section>
+
+<section class="lore-foot" aria-label={u.notesTitle}>
+  <div class="wrap cols">
+    <div>
+      <h2>{u.notesTitle}</h2>
+      <p>{u.notesText}</p>
+    </div>
+    <div>
+      <h2>{u.imagesTitle}</h2>
+      <p>{images}</p>
+    </div>
+  </div>
+</section>
