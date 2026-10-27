@@ -3,8 +3,19 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { LANGS } from '../src/config';
-import { DWARF_ART_LABELS, DWARF_STORY, GNOME_ART_LABELS, GNOME_STORY, HUMAN_ART_LABELS, HUMAN_STORY, STORY_UI } from '../src/i18n/stories';
+import {
+  CURSE_ART_LABELS,
+  CURSE_STORY,
+  DWARF_ART_LABELS,
+  DWARF_STORY,
+  GNOME_ART_LABELS,
+  GNOME_STORY,
+  HUMAN_ART_LABELS,
+  HUMAN_STORY,
+  STORY_UI,
+} from '../src/i18n/stories';
 import { fillArt } from '../src/lib/stories/art';
+import { CURSE_ART } from '../src/lib/stories/curse-art';
 import { DWARF_ART } from '../src/lib/stories/dwarf-art';
 import { GNOME_ART } from '../src/lib/stories/gnome-art';
 import { HUMAN_ART } from '../src/lib/stories/human-art';
@@ -18,6 +29,7 @@ const art = [
     labels: HUMAN_ART_LABELS,
     drawings: [HUMAN_ART.kingdoms, HUMAN_ART.ek, HUMAN_ART.plague, HUMAN_ART.westfall, HUMAN_ART.world],
   },
+  { name: 'curse', labels: CURSE_ART_LABELS, drawings: [CURSE_ART.emblem, CURSE_ART.world] },
 ];
 
 const keys = (o: object) => Object.keys(o).sort();
@@ -100,6 +112,21 @@ describe('story copy', () => {
     expect(pins(HUMAN_ART.world)).toBe(tr.today.legend.length);
   });
 
+  it('keeps TR and EN Curse of Flesh pages in step', () => {
+    const [tr, en] = [CURSE_STORY.tr, CURSE_STORY.en];
+    expect(en.facts.length).toBe(tr.facts.length);
+    expect(en.curse.stages).toHaveLength(tr.curse.stages.length);
+    expect(en.peoples.changes.map((c) => [c.from, c.to, c.slug])).toEqual(tr.peoples.changes.map((c) => [c.from, c.to, c.slug]));
+    expect(en.peoples.legend.map((l) => l.name)).toEqual(tr.peoples.legend.map((l) => l.name));
+    expect((CURSE_ART.world.match(/class="pnum"/g) ?? []).length).toBe(tr.peoples.legend.length);
+    // every before/after name has an icon, every story link points at a written story
+    for (const c of tr.peoples.changes) {
+      expect(CURSE_ART.icons, c.from).toHaveProperty(c.from.toLowerCase());
+      expect(CURSE_ART.icons, c.to).toHaveProperty(c.to.toLowerCase());
+      if (c.slug) expect(STORY_RACES.some((r) => r.slug === c.slug), c.slug).toBe(true);
+    }
+  });
+
   it('has the shared strings in every language', () => {
     expect(keys(STORY_UI.en)).toEqual(keys(STORY_UI.tr));
   });
@@ -117,6 +144,17 @@ describe('story races', () => {
     }
     expect(storySlug('alliance-dwarf')).toBe('dwarf');
     expect(storySlug('alliance-human')).toBe('human');
+  });
+
+  it('reaches the Curse of Flesh page only from the stories that mention the curse', () => {
+    const pages = join(root, 'src/pages/[lang]/stories');
+    expect(existsSync(join(pages, 'curse-of-flesh.astro'))).toBe(true);
+    // not a race story, so not on the index, the race strip or the next-story links
+    expect(STORY_RACES.some((r) => r.slug === 'curse-of-flesh')).toBe(false);
+    expect(readFileSync(join(pages, 'index.astro'), 'utf8')).not.toMatch(/curse/i);
+    for (const slug of ['gnome', 'dwarf', 'human']) {
+      expect(readFileSync(join(pages, `${slug}.astro`), 'utf8'), slug).toMatch(/<CurseLink /);
+    }
     expect(storySlug('horde-orc')).toBeUndefined();
   });
 });

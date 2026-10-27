@@ -3,6 +3,7 @@
 // src/lib/stories/gnome-art.ts (generated), scroll effects in src/scripts/story.ts,
 // styles in src/styles/stories.css (all scoped under .lore).
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CurseLink from '../../../components/stories/CurseLink.astro';
 import RaceChips from '../../../components/stories/RaceChips.astro';
 import StoryEnd from '../../../components/stories/StoryEnd.astro';
 import StoryHeader from '../../../components/stories/StoryHeader.astro';
@@ -11,7 +12,7 @@ import { ui } from '../../../i18n';
 import { GNOME_ART_LABELS, GNOME_STORY, STORY_UI } from '../../../i18n/stories';
 import { fillArt } from '../../../lib/stories/art';
 import { GNOME_ART } from '../../../lib/stories/gnome-art';
-import { withBase } from '../../../utils/url';
+import { curseUrl, withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
   return LANGS.map((lang) => ({ params: { lang } }));
@@ -102,7 +103,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           <div class="ch-num" aria-hidden="true">I</div>
           <div>
             <p class="ov">{u.chapter} I · {s.chapters.origin}</p>
-            <h2 class="h2" id="h-origin">{s.origin.title} <span lang="en" class="title-note">{s.origin.titleNote}</span></h2>
+            <h2 class="h2" id="h-origin">{s.origin.title} <a lang="en" class="title-note" href={curseUrl(lang)}>{s.origin.titleNote}</a></h2>
           </div>
         </header>
         <div class="prose rv">{s.origin.paragraphs.map((p) => <p>{p}</p>)}</div>
@@ -125,6 +126,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           </ol>
           <div class="mf" aria-hidden="true"><span>{s.origin.metal}</span><div class="mf-bar"><b></b></div><span>{s.origin.flesh}</span></div>
         </div>
+        <CurseLink lang={lang} />
         <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.origin.note}</p></aside>
       </div>
     </section>

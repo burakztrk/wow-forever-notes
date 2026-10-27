@@ -5,7 +5,7 @@
 // - Chapter III's map follows the step nearest the reading line and moves its
 //   "camera" (viewBox); labels keep their screen size through --k.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
-//   and calm; "embers" are forge sparks drifting up.
+//   and calm; "embers" are forge sparks drifting up; "void" are the same motes in violet.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -231,7 +231,11 @@ function init(root: HTMLElement) {
   }
 
   const fx = $<HTMLCanvasElement>('#snow');
-  if (!reduce && fx) (fx.dataset.fx === 'embers' ? embers : blizzard)(fx);
+  if (!reduce && fx) {
+    if (fx.dataset.fx === 'embers') embers(fx);
+    else if (fx.dataset.fx === 'void') embers(fx, ['#d2b8ff', '#9b6fe0']);
+    else blizzard(fx);
+  }
 }
 
 // Hero snow: a blizzard whose wind swings right, left or dies down every few seconds.
@@ -313,8 +317,8 @@ function blizzard(cv: HTMLCanvasElement | null) {
   addEventListener('resize', size);
 }
 
-// Forge sparks: small hot embers that rise, sway and flicker out.
-function embers(cv: HTMLCanvasElement) {
+// Forge sparks: small hot embers that rise, sway and flicker out (colours: large, small).
+function embers(cv: HTMLCanvasElement, [hot, warm] = ['#ffb36b', '#ff8a3a']) {
   const ctx = cv.getContext('2d');
   if (!ctx) return;
   type Spark = { x: number; y: number; r: number; v: number; s: number; life: number; age: number };
@@ -358,7 +362,7 @@ function embers(cv: HTMLCanvasElement) {
       }
       const flicker = 0.75 + Math.sin(t / 70 + p.s * 7) * 0.25;
       ctx.globalAlpha = Math.sin(Math.PI * k) * flicker * 0.9;
-      ctx.fillStyle = p.r > 1.4 ? '#ffb36b' : '#ff8a3a';
+      ctx.fillStyle = p.r > 1.4 ? hot : warm;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, 6.283);
       ctx.fill();
