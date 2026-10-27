@@ -1,0 +1,35 @@
+---
+// Sticky sub-header of a story page: back to the index + chapter links.
+import type { Lang } from '../../config';
+import { ui } from '../../i18n';
+import { STORY_UI } from '../../i18n/stories';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+  chapters: { id: string; num: string; name: string }[];
+  /** Path data of the brand icon (24×24). */
+  icon: string;
+}
+const { lang, chapters, icon } = Astro.props;
+const u = STORY_UI[lang];
+---
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href={withBase(`/${lang}/stories/`)}
+      ><svg viewBox="0 0 24 24" aria-hidden="true"><path d={icon} /></svg><span>{ui(lang).storiesTitle}</span></a
+    >
+    <nav class="chapnav" aria-label={u.chapter}>
+      {
+        chapters.map((c) => (
+          <a href={`#${c.id}`} data-ch={c.id} aria-label={`${u.chapter} ${c.num}: ${c.name}`}>
+            {c.num}
+            <span class="nm">{c.name}</span>
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+  <div class="prog" aria-hidden="true"></div>
+</header>

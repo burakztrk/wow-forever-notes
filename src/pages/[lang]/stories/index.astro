@@ -2,8 +2,9 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import { GNOME_STORY } from '../../../i18n/stories';
+import { DWARF_STORY, GNOME_STORY } from '../../../i18n/stories';
 import { racesByFaction } from '../../../lib/codex';
+import { storySlug } from '../../../lib/stories/races';
 import { withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -14,9 +15,17 @@ const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/`)])) as Record<Lang, string>;
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
-// Race ids with a written story; every other race shows as "coming soon".
-const STORIES: Record<string, string> = { 'alliance-gnome': 'gnome' };
-const gnome = GNOME_STORY[lang];
+// Written stories, newest first; every other race shows as "coming soon" (src/lib/stories/races.ts).
+const features = [
+  { slug: 'dwarf', name: 'Dwarf', story: DWARF_STORY[lang], bg: { src: '/stories/dwarf/ironforge-forge.webp', w: 1920, h: 864 } },
+  {
+    slug: 'gnome',
+    name: 'Gnome',
+    story: GNOME_STORY[lang],
+    bg: { src: '/stories/gnome/ironforge.webp', w: 1767, h: 863 },
+    hero: '/stories/gnome/mekkatorque.webp',
+  },
+];
 ---
 
 <BaseLayout title={t.storiesTitle} description={t.storiesIntro} lang={lang} alternates={alternates} wide>
@@ -24,16 +33,24 @@ const gnome = GNOME_STORY[lang];
     <h1>{t.storiesTitle}</h1>
     <p class="muted">{t.storiesIntro}</p>
 
-    <a class="story-feature" href={withBase(`/${lang}/stories/gnome/`)}>
-      <img class="story-feature-bg" src={withBase('/stories/gnome/ironforge.webp')} alt="" width="1767" height="863" loading="lazy" />
-      <img class="story-feature-hero" src={withBase('/stories/gnome/mekkatorque.webp')} alt="" width="300" height="300" loading="lazy" />
-      <span class="story-feature-text">
-        <span class="story-feature-over">{gnome.overline} · Alliance</span>
-        <span class="story-feature-name">Gnome</span>
-        <span class="story-feature-lead">{gnome.lead}</span>
-        <span class="story-feature-cta">{t.storiesRead}</span>
-      </span>
-    </a>
+    <div class="story-features">
+      {
+        features.map((f) => (
+          <a class="story-feature" href={withBase(`/${lang}/stories/${f.slug}/`)}>
+            <img class="story-feature-bg" src={withBase(f.bg.src)} alt="" width={f.bg.w} height={f.bg.h} loading="lazy" />
+            {f.hero && <img class="story-feature-hero" src={withBase(f.hero)} alt="" width="300" height="300" loading="lazy" />}
+            <span class="story-feature-text">
+              <span class="story-feature-over">
+                {f.story.overline} · <span lang="en">Alliance</span>
+              </span>
+              <span class="story-feature-name">{f.name}</span>
+              <span class="story-feature-lead">{f.story.lead}</span>
+              <span class="story-feature-cta">{t.storiesRead}</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
 
     {
       racesByFaction().map(([faction, list]) => (
@@ -41,7 +58,7 @@ const gnome = GNOME_STORY[lang];
           <h2 class:list={['codex-section', `faction-title--${faction.toLowerCase()}`]}>{faction}</h2>
           <ul class="story-grid">
             {list.map((race) => {
-              const slug = STORIES[race.id];
+              const slug = storySlug(race.id);
               const head = (
                 <>
                   {race.icon ? <img src={icon(race.icon)} alt="" width="40" height="40" loading="lazy" /> : <span class="blank" />}

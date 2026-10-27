@@ -3,9 +3,12 @@
 // src/lib/stories/gnome-art.ts (generated), scroll effects in src/scripts/story.ts,
 // styles in src/styles/stories.css (all scoped under .lore).
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RaceChips from '../../../components/stories/RaceChips.astro';
+import StoryEnd from '../../../components/stories/StoryEnd.astro';
+import StoryHeader from '../../../components/stories/StoryHeader.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import { GNOME_ART_LABELS, GNOME_STORY } from '../../../i18n/stories';
+import { GNOME_ART_LABELS, GNOME_STORY, STORY_UI } from '../../../i18n/stories';
 import { fillArt } from '../../../lib/stories/art';
 import { GNOME_ART } from '../../../lib/stories/gnome-art';
 import { withBase } from '../../../utils/url';
@@ -17,6 +20,7 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const s = GNOME_STORY[lang];
+const u = STORY_UI[lang];
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/gnome/`)])) as Record<Lang, string>;
 const base = withBase('/');
 const art = (svg: string) => fillArt(svg, GNOME_ART_LABELS[lang], base);
@@ -28,15 +32,6 @@ const chapters = [
   { id: 'wars', num: 'III', name: s.chapters.wars },
   { id: 'fall', num: 'IV', name: s.chapters.fall },
   { id: 'today', num: 'V', name: s.chapters.today },
-];
-const otherRaces: [string, 'a' | 'h'][] = [
-  ['Dwarf', 'a'],
-  ['Human', 'a'],
-  ['Night Elf', 'a'],
-  ['Orc', 'h'],
-  ['Troll', 'h'],
-  ['Tauren', 'h'],
-  ['Undead', 'h'],
 ];
 const stageIcons = [
   '<circle cx="32" cy="32" r="22"/><path d="M32 14 47.6 41H16.4Z"/><circle cx="32" cy="32" r="3.5" fill="currentColor" stroke="none"/><path d="M32 4v6M32 54v6M4 32h6M54 32h6"/>',
@@ -63,24 +58,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 
 <BaseLayout title={`Gnome · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
   <div class="lore" id="lore">
-    <header class="hdr">
-      <div class="wrap hdr-in">
-        <a class="brand" href={withBase(`/${lang}/stories/`)}
-          ><svg viewBox="0 0 24 24" aria-hidden="true"><path d={GNOME_ART.icons.brandCog} /></svg><span>{t.storiesTitle}</span></a
-        >
-        <nav class="chapnav" aria-label={s.chapter}>
-          {
-            chapters.map((c) => (
-              <a href={`#${c.id}`} data-ch={c.id} aria-label={`${s.chapter} ${c.num}: ${c.name}`}>
-                {c.num}
-                <span class="nm">{c.name}</span>
-              </a>
-            ))
-          }
-        </nav>
-      </div>
-      <div class="prog" aria-hidden="true"></div>
-    </header>
+    <StoryHeader lang={lang} chapters={chapters} icon={GNOME_ART.icons.brandCog} />
 
     <section class="hero" aria-labelledby="h-gnome">
       <div class="hero-bg" aria-hidden="true"><img src={img('ironforge.webp')} alt="" width="1767" height="863" /></div>
@@ -89,23 +67,12 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <canvas id="snow" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
-          <div class="races" role="list" aria-label={s.races}>
-            <span class="ov">{s.races}</span>
-            <span class="chip sel" role="listitem" aria-current="page"><i></i>Gnome</span>
-            {
-              otherRaces.map(([name, faction]) => (
-                <span class:list={['chip', 'off', { h: faction === 'h' }]} role="listitem" title={s.outro.soon}>
-                  <i />
-                  {name}
-                </span>
-              ))
-            }
-          </div>
+          <RaceChips lang={lang} current="gnome" />
           <div class="hero-copy">
             <p class="ov">{s.overline} · <span lang="en">Alliance</span></p>
             <h1 class="h1" id="h-gnome">Gnome</h1>
             <p class="lead">{s.lead}</p>
-            <a class="cue" href="#origin">{s.cue} <b aria-hidden="true">↓</b></a>
+            <a class="cue" href="#origin">{u.cue} <b aria-hidden="true">↓</b></a>
           </div>
         </div>
       </div>
@@ -133,7 +100,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">I</div>
           <div>
-            <p class="ov">{s.chapter} I · {s.chapters.origin}</p>
+            <p class="ov">{u.chapter} I · {s.chapters.origin}</p>
             <h2 class="h2" id="h-origin">{s.origin.title} <span lang="en" class="title-note">{s.origin.titleNote}</span></h2>
           </div>
         </header>
@@ -157,7 +124,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           </ol>
           <div class="mf" aria-hidden="true"><span>{s.origin.metal}</span><div class="mf-bar"><b></b></div><span>{s.origin.flesh}</span></div>
         </div>
-        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.origin.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.origin.note}</p></aside>
       </div>
     </section>
 
@@ -168,7 +135,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">II</div>
-          <div><p class="ov">{s.chapter} II · {s.chapters.kinship}</p><h2 class="h2" id="h-kinship">{s.kinship.title}</h2></div>
+          <div><p class="ov">{u.chapter} II · {s.chapters.kinship}</p><h2 class="h2" id="h-kinship">{s.kinship.title}</h2></div>
         </header>
         <div class="split">
           <div class="prose rv">{s.kinship.paragraphs.map((p) => <p>{p}</p>)}</div>
@@ -193,7 +160,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             <div class="tags">{s.kinship.results.map((r) => <span class="tag">{r}</span>)}</div>
           </div>
         </div>
-        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.kinship.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.kinship.note}</p></aside>
       </div>
     </section>
 
@@ -204,7 +171,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">III</div>
-          <div><p class="ov">{s.chapter} III · {s.chapters.wars}</p><h2 class="h2" id="h-wars">{s.wars.title}</h2></div>
+          <div><p class="ov">{u.chapter} III · {s.chapters.wars}</p><h2 class="h2" id="h-wars">{s.wars.title}</h2></div>
         </header>
         <div class="prose rv"><p>{s.wars.intro}</p></div>
         <div class="story" id="story" data-step="1">
@@ -233,7 +200,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             <Fragment set:html={art(GNOME_ART.ek)} />
           </figure>
         </div>
-        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.wars.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.wars.note}</p></aside>
       </div>
     </section>
 
@@ -244,7 +211,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">IV</div>
-          <div><p class="ov">{s.chapter} IV · {s.chapters.fall}</p><h2 class="h2" id="h-fall">{s.fall.title}</h2></div>
+          <div><p class="ov">{u.chapter} IV · {s.chapters.fall}</p><h2 class="h2" id="h-fall">{s.fall.title}</h2></div>
         </header>
         <div class="prose rv"><p>{s.fall.intro}</p></div>
         <div class="scene">
@@ -262,7 +229,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
         </div>
 
         <div class="sub rv"><p class="ov">{s.fall.exileLabel}</p><h3 class="h3">{s.fall.exileTitle}</h3></div>
-        <figure class="map-fig rv" id="dm" data-p=".9,.22">
+        <figure class="map-fig rv" id="dm" data-p=".9,.22" data-routes>
           <Fragment set:html={art(GNOME_ART.dm)} />
           <figcaption>
             <span>{s.fall.mapCaption}</span>
@@ -299,7 +266,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             ))
           }
         </div>
-        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.fall.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.fall.note}</p></aside>
       </div>
     </section>
 
@@ -310,7 +277,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">V</div>
-          <div><p class="ov">{s.chapter} V · {s.chapters.today}</p><h2 class="h2" id="h-today">{s.today.title}</h2></div>
+          <div><p class="ov">{u.chapter} V · {s.chapters.today}</p><h2 class="h2" id="h-today">{s.today.title}</h2></div>
         </header>
         <article class="leader rv">
           <div class="portrait"><img src={img('mekkatorque.webp')} alt="High Tinker Gelbin Mekkatorque" width="300" height="300" loading="lazy" /></div>
@@ -338,7 +305,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
         </div>
 
         <div class="sub rv"><p class="ov">{s.today.beyondLabel}</p><h3 class="h3">{s.today.beyondTitle}</h3></div>
-        <figure class="map-fig rv" id="world" data-p=".9,.22">
+        <figure class="map-fig rv" id="world" data-p=".9,.22" data-routes>
           <Fragment set:html={art(GNOME_ART.world)} />
           <figcaption>
             <span>{s.today.mapCaption}</span>
@@ -358,38 +325,11 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             }
           </ol>
         </figure>
-        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.today.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.today.note}</p></aside>
       </div>
     </section>
 
-    <section class="outro" aria-labelledby="h-outro">
-      <div class="wrap inner">
-        <div class="rv outro-copy">
-          <p class="ov">{s.outro.label}</p>
-          <h2 class="h2" id="h-outro">{s.outro.title}</h2>
-          <p class="lead">{s.outro.text}</p>
-        </div>
-        <aside class="next rv" style="--d:.1s" aria-label={s.outro.nextLabel}>
-          <p class="ov next-ov">{s.outro.nextLabel}</p>
-          <p class="nm">Dwarf</p>
-          <p>{s.outro.nextText}</p>
-          <span class="soon"><i></i>{s.outro.soon}</span>
-        </aside>
-      </div>
-    </section>
-
-    <section class="lore-foot" aria-label={s.notes.title}>
-      <div class="wrap cols">
-        <div>
-          <h2>{s.notes.title}</h2>
-          <p>{s.notes.text}</p>
-        </div>
-        <div>
-          <h2>{s.notes.imagesTitle}</h2>
-          <p>{s.notes.images}</p>
-        </div>
-      </div>
-    </section>
+    <StoryEnd lang={lang} title={s.outro.title} text={s.outro.text} next="Dwarf" nextText={s.outro.nextText} images={s.images} />
   </div>
 </BaseLayout>
 

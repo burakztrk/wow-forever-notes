@@ -4,7 +4,8 @@
 //   start → end (fractions of the viewport height) and run their handler.
 // - Chapter III's map follows the step nearest the reading line and moves its
 //   "camera" (viewBox); labels keep their screen size through --k.
-// - Hero snow is a blizzard whose wind turns left, right and calm.
+// - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
+//   and calm; "embers" are forge sparks drifting up.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -33,19 +34,14 @@ function init(root: HTMLElement) {
   const steps = story ? $$('.step', story) : [];
   const layers = ek ? $$<SVGGElement>('.ly', ek) : [];
   const dots = story ? $$('.dots i', story) : [];
-  const cams: Record<number, number[]> = {
-    1: [196, 380, 300, 220],
-    2: [200, 520, 290, 200],
-    3: [110, 30, 330, 600],
-    4: [120, 110, 360, 620],
-    5: [0, 0, 500, 760],
-  };
+  // one camera (viewBox) per step, written into the map by the art generator
+  const cams: Record<number, number[]> = JSON.parse(ek?.dataset.cams ?? '{}');
   const pad = (vb: number[]) => {
     const px = vb[2] * (narrow.matches ? 0.1 : 0.05);
     const py = vb[3] * 0.05;
     return [vb[0] - px, vb[1] - py, vb[2] + 2 * px, vb[3] + 2 * py];
   };
-  let cam = pad(cams[1]);
+  let cam = cams[1] ? pad(cams[1]) : [0, 0, 500, 760];
   let camAnim = 0;
   let step = 0;
   const applyCam = (vb: number[]) => {
@@ -83,7 +79,7 @@ function init(root: HTMLElement) {
     dots.forEach((d, i) => d.classList.toggle('on', i < n));
     if (capEra) capEra.textContent = steps[n - 1]?.dataset.era ?? '';
     if (capTitle) capTitle.textContent = steps[n - 1]?.dataset.title ?? '';
-    camTo(pad(cams[n]), instant);
+    if (cams[n]) camTo(pad(cams[n]), instant);
   };
   setStep(1, true);
 
@@ -97,27 +93,34 @@ function init(root: HTMLElement) {
     });
     $$<SVGElement>('[data-show]', el).forEach((n) => n.classList.toggle('pending', p < Number(n.dataset.show)));
   };
-  handlers.dm = routeUpdate;
-  handlers.world = routeUpdate;
   const stages = $$('#evo .stage');
   handlers.evo = (p) => stages.forEach((s, i) => s.classList.toggle('lit', p >= i / 3 - 0.02));
   const scene = $('#scene');
   if (scene) {
-    const gas = $<SVGGElement>('.gas', scene);
-    const troggs = $<SVGGElement>('.troggs', scene);
+    const flood = $<SVGGElement>('.flood', scene);
+    const risers = $<SVGGElement>('.risers', scene);
     const valve = $<SVGGElement>('.valve', scene);
     const wins = $$<SVGRectElement>('.win', scene);
     handlers.scene = (p) => {
       const gy = 432 - 318 * clamp((p - 0.12) / 0.66);
-      gas?.setAttribute('transform', `translate(0,${gy.toFixed(1)})`);
-      troggs?.setAttribute('transform', `translate(0,${(70 * (1 - ease(clamp(p / 0.3)))).toFixed(1)})`);
+      flood?.setAttribute('transform', `translate(0,${gy.toFixed(1)})`);
+      risers?.setAttribute('transform', `translate(0,${(70 * (1 - ease(clamp(p / 0.3)))).toFixed(1)})`);
       if (valve) valve.style.transform = `rotate(${(p * 540).toFixed(1)}deg)`;
       wins.forEach((w) => w.classList.toggle('off', Number(w.dataset.y) + 6 > gy));
     };
   }
+  // [data-moves]: parts drift apart as p grows (data-move="dx,dy,deg" on each part)
+  const moveUpdate: Handler = (p, el) => {
+    const q = ease(clamp(p / 0.7));
+    $$<SVGGElement>('[data-move]', el).forEach((g) => {
+      const [dx, dy, deg] = (g.dataset.move ?? '0,0,0').split(',').map(Number);
+      g.style.transform = `translate(${(dx * q).toFixed(1)}px,${(dy * q).toFixed(1)}px) rotate(${(deg * q).toFixed(1)}deg)`;
+    });
+  };
   const tracks = $$('[data-p]').map((el) => {
     const [s, e] = (el.dataset.p ?? '0.9,0.2').split(',').map(Number);
-    return { el, s, e, fn: handlers[el.id], last: -1 };
+    const fn = handlers[el.id] ?? ('routes' in el.dataset ? routeUpdate : 'moves' in el.dataset ? moveUpdate : undefined);
+    return { el, s, e, fn, last: -1 };
   });
 
   // the gear pair turns with the page; its lighting stays top-left
@@ -220,7 +223,8 @@ function init(root: HTMLElement) {
     });
   }
 
-  if (!reduce) blizzard($<HTMLCanvasElement>('#snow'));
+  const fx = $<HTMLCanvasElement>('#snow');
+  if (!reduce && fx) (fx.dataset.fx === 'embers' ? embers : blizzard)(fx);
 }
 
 // Hero snow: a blizzard whose wind swings right, left or dies down every few seconds.
@@ -292,6 +296,67 @@ function blizzard(cv: HTMLCanvasElement | null) {
         ctx.fill();
       }
     }
+    requestAnimationFrame(tick);
+  };
+  new IntersectionObserver(([e]) => {
+    const was = run;
+    run = e.isIntersecting;
+    if (run && !was) requestAnimationFrame(tick);
+  }).observe(cv);
+  addEventListener('resize', size);
+}
+
+// Forge sparks: small hot embers that rise, sway and flicker out.
+function embers(cv: HTMLCanvasElement) {
+  const ctx = cv.getContext('2d');
+  if (!ctx) return;
+  type Spark = { x: number; y: number; r: number; v: number; s: number; life: number; age: number };
+  let w = 0;
+  let h = 0;
+  let sparks: Spark[] = [];
+  let run = false;
+  const spawn = (anywhere: boolean): Spark => ({
+    x: Math.random() * w,
+    y: anywhere ? Math.random() * h : h + 6,
+    r: Math.random() * 1.6 + 0.5,
+    v: 0.35 + Math.random() * 0.9,
+    s: Math.random() * 6.28,
+    life: 260 + Math.random() * 420,
+    age: anywhere ? Math.random() * 300 : 0,
+  });
+  const size = () => {
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    w = cv.clientWidth;
+    h = cv.clientHeight;
+    cv.width = w * dpr;
+    cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    sparks = Array.from({ length: Math.round(Math.max(40, Math.min(150, w / 10))) }, () => spawn(true));
+  };
+  size();
+  const tick = (t: number) => {
+    if (!run) return;
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < sparks.length; i++) {
+      const p = sparks[i];
+      p.age += 1;
+      p.s += 0.03;
+      p.y -= p.v;
+      p.x += Math.sin(p.s + t / 900) * 0.45 + 0.12;
+      const k = p.age / p.life;
+      if (k >= 1 || p.y < -8) {
+        sparks[i] = spawn(false);
+        continue;
+      }
+      const flicker = 0.75 + Math.sin(t / 70 + p.s * 7) * 0.25;
+      ctx.globalAlpha = Math.sin(Math.PI * k) * flicker * 0.9;
+      ctx.fillStyle = p.r > 1.4 ? '#ffb36b' : '#ff8a3a';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, 6.283);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
     requestAnimationFrame(tick);
   };
   new IntersectionObserver(([e]) => {
