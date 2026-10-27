@@ -2172,3 +2172,542 @@ export const NIGHT_ELF_STORY: Record<Lang, NightElfStory> = {
     images: 'The Well of Eternity illustration and the Azshara, Moonglade and Mount Hyjal images belong to Blizzard Entertainment. Maps from WoW Forever.',
   },
 };
+
+export const ORC_ART_LABELS: Record<Lang, Record<string, string>> = {
+  tr: {
+    heroAria: 'Durotar’ın kızıl kayalıkları üzerinde batan güneş, Orgrimmar’ın sivri surları ve Horde sancakları',
+    portalAria: 'Eastern Kingdoms haritasında Horde’un iki savaştaki yolu: Dark Portal, Stormwind, Blackrock Spire, Grim Batol ve Lordaeron',
+    toTomb: 'Tomb of Sargeras’a',
+    chainsAria: 'Kaydırdıkça kopan zincir: iki kelepçe ve aradaki halkalar',
+    chained: 'Esaret',
+    free: 'Özgürlük',
+    ekAria: 'Horde’un Lordaeron’dan Kalimdor’a göçü: deniz yolu, Darkspear adası, The Barrens ve Ashenvale; adım adım',
+    stormIsle: 'Fırtına adası',
+    centaurs: 'Centaur’lar',
+    durotarAria: 'Durotar haritası: Orgrimmar, Valley of Trials, Razor Hill, Sen’jin Village, Echo Isles ve Tiragarde Keep; Valley of Trials’tan Orgrimmar’a giden yol',
+    worldAria: 'Horde karakolları ve zeppelin yolları: Orgrimmar, Crossroads, Splintertree Post, Grom’gol Base Camp, Stonard ve Hammerfall',
+  },
+  en: {
+    heroAria: 'The sun setting over the red crags of Durotar, the spiked walls of Orgrimmar and Horde banners',
+    portalAria: 'The Horde’s road through both wars on the map of the Eastern Kingdoms: the Dark Portal, Stormwind, Blackrock Spire, Grim Batol and Lordaeron',
+    toTomb: 'To the Tomb of Sargeras',
+    chainsAria: 'A chain that breaks as you scroll: two shackles and the links between them',
+    chained: 'Captivity',
+    free: 'Freedom',
+    ekAria: 'The Horde’s exodus from Lordaeron to Kalimdor: the sea road, the Darkspear isle, the Barrens and Ashenvale, step by step',
+    stormIsle: 'Storm-wrecked isle',
+    centaurs: 'Centaurs',
+    durotarAria: 'Map of Durotar: Orgrimmar, the Valley of Trials, Razor Hill, Sen’jin Village, the Echo Isles and Tiragarde Keep; the road from the Valley of Trials to Orgrimmar',
+    worldAria: 'Horde outposts and zeppelin routes: Orgrimmar, the Crossroads, Splintertree Post, Grom’gol Base Camp, Stonard and Hammerfall',
+  },
+};
+
+export interface OrcStory {
+  metaDescription: string;
+  overline: string;
+  lead: string;
+  facts: { label: string; value: string; extra?: string }[];
+  chapters: Record<'origin' | 'portal' | 'camps' | 'exodus' | 'today', string>;
+  origin: { title: string; titleNote: string; paragraphs: string[]; stagesLabel: string; stages: Item[]; before: string; after: string; note: string };
+  portal: {
+    title: string;
+    intro: string;
+    more: string[];
+    figureCaption: string;
+    hordeKey: string;
+    allianceKey: string;
+    guldanKey: string;
+    legend: Item[];
+    cards: Card[];
+    note: string;
+  };
+  camps: { title: string; intro: string; more: string[]; figureCaption: string; cards: Card[]; note: string };
+  exodus: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
+  today: {
+    title: string;
+    intro: string[];
+    leadersLabel: string;
+    leadersText: string;
+    leaders: (Item & { role: string })[];
+    landLabel: string;
+    landTitle: string;
+    landText: string[];
+    landCaption: string;
+    pathKey: string;
+    landLegend: Item[];
+    beyondLabel: string;
+    beyondTitle: string;
+    beyondText: string[];
+    mapCaption: string;
+    routesKey: string;
+    legend: Item[];
+    note: string;
+  };
+  outro: { title: string; text: string; nextText: string };
+  images: string;
+}
+
+export const ORC_STORY: Record<Lang, OrcStory> = {
+  tr: {
+    metaDescription:
+      'Orc’ların hikayesi: Draenor’un shaman klanları, Kil’jaeden’in aldatmacası ve kan laneti, Dark Portal ve iki savaş, toplama kampları, Thrall’ın yeni Horde’u ve Durotar.',
+    overline: 'Hikaye 05',
+    lead: 'Başka bir dünyadan gelen savaşçı halk. Bir demonun kanıyla Azeroth’u yaktılar, kamplarda unutuldular; sonra bir kölenin önderliğinde zincirlerini kırdılar.',
+    facts: [
+      { label: 'Yurt', value: 'Durotar', extra: 'Kalimdor' },
+      { label: 'Başkent', value: 'Orgrimmar' },
+      { label: 'Lider', value: 'Thrall' },
+      { label: 'İnanç', value: 'Şamanizm', extra: 'elementler ve atalar' },
+      { label: 'Binek', value: 'Kurt' },
+      { label: 'Anavatan', value: 'Draenor' },
+    ],
+    chapters: { origin: 'Köken', portal: 'Kapı', camps: 'Kamplar', exodus: 'Göç', today: 'Bugün' },
+    origin: {
+      title: 'Elementlerin halkı',
+      titleNote: '(Draenor)',
+      paragraphs: [
+        'Orc’ların hikayesi Azeroth’ta değil, başka bir dünyada başlar: Draenor. Orc’lar orada klanlar hâlinde yaşayan avcı ve savaşçı bir halktı; tenleri kahverengiydi ve Draenor’un bozkırlarına, ormanlarına, karlı dağlarına dağılmışlardı.',
+        'Klanlara yol gösterenler shaman’lardı: toprak, ateş, su ve hava ruhlarıyla, yani elementlerle ve ataların ruhlarıyla konuşan bilgeler. En saygı göreni yaşlı shaman Ner’zhul’du. Orc’lar Draenor’u, başka bir dünyadan kaçıp oraya sığınmış draenei’lerle paylaşıyordu.',
+        'Draenei’lerin peşinde Burning Legion’ın lordlarından Kil’jaeden vardı ve orc’ları bu av için bir silaha çevirmeye karar verdi. Ner’zhul’a ataların sesiyle göründü ve draenei’lerin orc’lara saldırmaya hazırlandığını fısıldadı. Ner’zhul sonunda aldatıldığını anladı, ama Kil’jaeden bu kez onun çırağı Gul’dan’ı buldu.',
+        'Gul’dan, Shadow Council adlı gizli bir grup kurdu ve orc’lara demon büyüsünü, fel’i öğretti. Elementler bu büyüye dönen shaman’lara sırt çevirdi; fel Draenor’u kuruttu ve orc’ların tenini yeşile boyadı. Son adım bir törende atıldı: klan şefleri pit lord Mannoroth’un kanını içti. İlk içen Grom Hellscream’di; reddedenlerden biri Frostwolf klanının şefi Durotan oldu. Kan, birleşen klanlara, yani Horde’a dinmeyen bir öfke verdi ve draenei’lerin şehirleri birer birer düştü.',
+      ],
+      stagesLabel: 'Horde’un doğuş aşamaları',
+      stages: [
+        { name: 'Shaman', text: 'Elementlerle konuşan bilgeler' },
+        { name: 'Kil’jaeden', text: 'Ner’zhul’u aldatan demon' },
+        { name: 'Gul’dan', text: 'Fel büyüsünün ustası' },
+        { name: 'Horde', text: 'Kanla birleşen klanlar' },
+      ],
+      before: 'Shaman',
+      after: 'Horde',
+      note: 'Orc’ların yeşil teni bu yozlaşmanın izidir. Kanın öfkesi Horde’u yıllarca yönetecek; orc’lar bu lanetten ancak çok sonra, Kalimdor’da kurtulacaktı.',
+    },
+    portal: {
+      title: 'Kapıdan geçen ordu',
+      intro:
+        'Draenei’lerin çoğu yok edildi ama Horde’un öfkesi dinmedi; Draenor ise ölmek üzereydi. Gul’dan’ın warlock’ları, Azeroth’taki büyücü Medivh’le birlikte iki dünya arasında bir geçit açtı: Dark Portal.',
+      more: [
+        'Horde, Black Morass bataklığından Azeroth’a çıktı ve Stormwind krallığına saldırdı. First War’da Orgrim Doomhammer, Gul’dan’ın kuklası olan warchief Blackhand’i öldürüp Horde’un başına geçti. Yarı-orc Garona King Llane’i öldürdü ve Stormwind yerle bir oldu.',
+        'Second War’da Doomhammer Horde’u kuzeye yürüttü. Amani trolleri, ogre’lar ve goblin’ler ona katıldı; Dragonmaw klanı ejderha kraliçesi Alexstrasza’yı Grim Batol’da tutsak edip kırmızı ejderhaları savaşa sürdü. Horde Khaz Modan’ı geçti ve Lordaeron’un başkentini kuşattı.',
+        'Zafer çok yakındı. Ama tam o sırada Gul’dan, Tomb of Sargeras’ta saklı gücü ele geçirmek için kendisine bağlı klanlarla Horde’u terk etti. Bölünen Horde geri çekildi ve Alliance onu Blackrock Spire’a kadar kovaladı. Doomhammer orada Anduin Lothar’ı öldürdü ama savaşı kaybetti; Dark Portal yıkıldı.',
+      ],
+      figureCaption: 'Horde’un iki savaştaki yolu; kaydırdıkça çiziliyor. Konumlar yaklaşıktır.',
+      hordeKey: 'Horde',
+      allianceKey: 'Alliance’ın karşı saldırısı',
+      guldanKey: 'Gul’dan’ın ihaneti',
+      legend: [
+        { name: 'Dark Portal', text: 'Horde’un Azeroth’a çıktığı kapı' },
+        { name: 'Stormwind', text: 'First War’da yerle bir edilen şehir' },
+        { name: 'Blackrock Spire', text: 'Horde’un Second War’daki kalesi' },
+        { name: 'Grim Batol', text: 'Dragonmaw’ın Alexstrasza’yı tuttuğu kale' },
+        { name: 'Lordaeron', text: 'Horde’un kuşattığı başkent' },
+      ],
+      cards: [
+        {
+          name: 'Blackhand',
+          text: 'Blackrock klanının şefi ve Horde’un ilk warchief’i. Gerçek güç Gul’dan’daydı; Blackhand onun kuklasıydı. Doomhammer onu bir düelloda öldürdü.',
+          status: 'İlk warchief',
+          tone: 'mute',
+        },
+        {
+          name: 'Orgrim Doomhammer',
+          text: 'Durotan’ın yakın dostu ve Horde’un ikinci warchief’i. Shadow Council’i dağıttı ve Horde’u Second War’da Lordaeron’un kapılarına kadar götürdü.',
+          status: 'Warchief',
+          tone: 'home',
+        },
+        {
+          name: 'Gul’dan',
+          text: 'Öldürülen warlock’ların ruhlarını Stormwind şövalyelerinin bedenlerine bağlayıp ilk death knight’ları yarattı. Savaşın en kritik anında Horde’u terk etti ve Tomb of Sargeras’ta öldü.',
+          status: 'İhanet',
+          tone: 'no',
+        },
+        {
+          name: 'Dragonmaw',
+          text: 'Alexstrasza’yı Grim Batol’da tutsak eden klan. Onun yavrularını Horde’un savaş ejderhaları yaptılar; Dragonmaw orc’ları bugün de Wetlands’te.',
+          status: 'Esir ejderhalar',
+          tone: 'no',
+        },
+      ],
+      note: 'Horde’u yenen yalnızca Alliance değildi. Gul’dan’ın ihaneti, demon gücüne yaslanan bir ordunun içeriden nasıl çürüdüğünü gösterdi.',
+    },
+    camps: {
+      title: 'Köle denen çocuk',
+      intro:
+        'Second War’dan sonra hayatta kalan orc’lar Lordaeron’da kurulan toplama kamplarına kapatıldı. Demon kanının etkisi geçince Horde’un öfkesi yerini derin bir uyuşukluğa bıraktı; bir zamanlar dünyaları yakan savaşçılar parmaklıkların ardında günlerini boş geçirdi.',
+      more: [
+        'Kampların merkezi Durnholde Keep’ti; kalenin komutanı Aedelas Blackmoore’du. Blackmoore, ormanda öldürülmüş bir orc çiftinin yanında bulduğu bebeği yanına aldı ve onu gladyatör olarak yetiştirdi. Ona “köle” anlamına gelen bir ad verdi: Thrall. Bebeğin Durotan’ın oğlu olduğunu bilmiyordu.',
+        'Thrall’a insanların dilini, savaş taktiklerini, okuma yazmayı öğrettiler; ama o hep bir köleydi. Kalede ona dostça davranan tek kişi genç Taretha Foxton’du. Thrall onun yardımıyla Durnholde’dan kaçtı.',
+        'Özgür kalan Thrall halkını aradı. Hâlâ insanlarla savaşan Grom Hellscream’i buldu, sonra Alterac Mountains’ta saklanan Frostwolf klanına ulaştı. Frostwolf’ların yaşlı shaman’ı Drek’Thar ona elementlerle konuşmayı öğretti; Thrall halkının unuttuğu yolu, şamanizmi öğrendi.',
+        'Saklandığı yerden çıkan Orgrim Doomhammer de ona katıldı. Birlikte kampları birer birer açtılar. Bir baskında ölümcül şekilde yaralanan Doomhammer, ölmeden önce zırhını, çekicini ve Horde’u Thrall’a bıraktı. Yeni warchief Durnholde’a geri döndü ve Blackmoore’u yendi.',
+      ],
+      figureCaption: 'Kaydırdıkça zincir kopuyor.',
+      cards: [
+        {
+          name: 'Aedelas Blackmoore',
+          text: 'Durnholde Keep’in komutanı. Thrall’ı bir silah gibi yetiştirdi ve onun önderliğinde bir orc ordusuyla kendi gücünü kurmayı hayal etti. Thrall’ın Durnholde’a saldırısında öldü.',
+          status: 'Gardiyan',
+          tone: 'no',
+        },
+        {
+          name: 'Taretha Foxton',
+          text: 'Durnholde’da Thrall’la gizlice mektuplaşan genç kadın. Kaçmasına yardım etti; Blackmoore bunu öğrenince onu öldürttü.',
+          status: 'Dost',
+          tone: 'al',
+        },
+        {
+          name: 'Grom Hellscream',
+          text: 'Warsong klanının şefi ve kanı ilk içen orc. Thrall’ın kaçtıktan sonra bulduğu ilk büyük şefti; onun ilk müttefiki ve en yakın dostu oldu.',
+          status: 'Warsong',
+          tone: 'home',
+        },
+        {
+          name: 'Orgrim Doomhammer',
+          text: 'Second War’dan sonra esir düşen, sonra kaçıp saklanan eski warchief. Son savaşında Horde’u Thrall’a emanet etti; Orgrimmar onun adını taşır.',
+          status: 'Miras',
+          tone: 'mute',
+        },
+      ],
+      note: 'Thrall’ın Horde’u demon kanıyla değil, şamanizm ve onurla bir arada duruyordu. Eski Horde’la yeni Horde arasındaki fark buydu.',
+    },
+    exodus: {
+      title: 'Batıya, Kalimdor’a',
+      intro: 'Kamplar boşaldı ama Lordaeron’da orc’lara yer yoktu. Kaydırdıkça harita, Horde’un okyanusu aşıp yeni bir yurt bulmasını adım adım gösteriyor.',
+      mapLabel: 'Horde’un Kalimdor’a göçü',
+      steps: [
+        {
+          era: 'Lordaeron',
+          title: 'Peygamberin çağrısı',
+          text: 'Thrall’ın karşısına kuzgun kılığında gizemli bir peygamber çıkar: Medivh. Lordaeron’u bir felaketin beklediğini söyler ve Horde’u batıya, Kalimdor’a gönderir. Thrall insanların gemilerini ele geçirip denize açılır.',
+          status: 'Yola çıkış',
+          tone: 'home',
+        },
+        {
+          era: 'Darkspear',
+          title: 'Fırtınanın adası',
+          text: 'Bir fırtına filoyu bir adaya savurur. Horde orada Darkspear trollerine yardım eder; şefleri Sen’jin hayatını kaybeder, oğlu Vol’jin ve halkı Horde’a katılır.',
+          status: 'Yeni müttefik',
+          tone: 'ok',
+        },
+        {
+          era: 'The Barrens',
+          title: 'Tauren’ler',
+          text: 'Kalimdor’a çıkan Horde, The Barrens’ın bozkırlarında centaur’larla savaşan tauren’lere rastlar. Thrall, Cairne Bloodhoof’un halkının Mulgore’a ulaşmasına yardım eder; iki halk arasında kalıcı bir dostluk doğar.',
+          status: 'Dostluk',
+          tone: 'ok',
+        },
+        {
+          era: 'Ashenvale',
+          title: 'Kan yeniden',
+          text: 'Grom Hellscream’in Warsong’ları Ashenvale’de ağaç keserken night elf’lerle ve yarı-tanrı Cenarius’la çatışır. Zafer için Grom, Mannoroth’un kanıyla zehirlenmiş bir pınardan içer; Cenarius’u öldürür ama yeniden Legion’ın kölesi olur.',
+          status: 'Yozlaşma',
+          tone: 'no',
+        },
+        {
+          era: 'Demon Fall Canyon',
+          title: 'Lanetin sonu',
+          text: 'Thrall, Jaina Proudmoore’un yardımıyla Grom’u yakalar ve onu lanetten arındırır. İkisi birlikte Mannoroth’un karşısına çıkar; Grom baltasını demona saplayıp onu öldürür, ama kendisi de ölür. Orc’ları bağlayan kan laneti onunla birlikte sona erer.',
+          status: 'Kurtuluş',
+          tone: 'ok',
+        },
+      ],
+      note: 'Grom’un fedakârlığıyla orc’lar özgürleşti. Kısa süre sonra Thrall, Jaina ve Malfurion Mount Hyjal’da Burning Legion’a karşı birlikte savaştı ve Archimonde yenildi.',
+    },
+    today: {
+      title: 'Durotar’ın kızıl toprakları',
+      intro: [
+        'Third War’dan sonra Thrall halkını Kalimdor’un doğu kıyısındaki kurak, kızıl bir toprağa yerleştirdi ve oraya babasının adını verdi: Durotar. Başkent Orgrimmar ise adını Orgrim Doomhammer’dan aldı.',
+        'Barış uzun sürmedi. Jaina’nın babası Daelin Proudmoore bir donanmayla Durotar’a saldırdı; Thrall ve müttefikleri onu yendi, Proudmoore bu savaşta öldü. Kıyıdaki Tiragarde Keep’te Kul Tiras askerleri hâlâ bekliyor.',
+        'Bugün Horde yalnızca orc’lardan oluşmuyor: Darkspear trolleri, tauren’ler ve Forsaken’lar da Thrall’ın sancağı altında. Orc’lar ise Ashenvale’de night elf’lerle, kendi topraklarında da Burning Blade kültüyle savaşıyor.',
+      ],
+      leadersLabel: 'Liderler',
+      leadersText: 'Orc’ların bugünkü önderleri.',
+      leaders: [
+        {
+          role: 'Horde’un warchief’i',
+          name: 'Thrall',
+          text: 'Durotan’ın oğlu, Frostwolf klanının şefi ve bir shaman. Horde’u Orgrimmar’daki Grommash Hold’dan yönetiyor.',
+        },
+        {
+          role: 'Danışman',
+          name: 'Eitrigg',
+          text: 'Second War’ın yaşlı gazisi. Paladin Tirion Fordring bir zamanlar onun hayatını bağışlamış, bu yüzden şövalyeliğini kaybetmişti. Bugün Grommash Hold’da Thrall’ın yanında.',
+        },
+        {
+          role: 'Frostwolf’ların shaman’ı',
+          name: 'Drek’Thar',
+          text: 'Thrall’a şamanizmi öğreten yaşlı, kör shaman. Bugün Alterac Valley’de Frostwolf klanını Stormpike dwarf’larına karşı yönetiyor.',
+        },
+      ],
+      landLabel: 'Durotar',
+      landTitle: 'Kızıl kanyonların ülkesi',
+      landText: [
+        'Orc ve troll karakterler oyuna Durotar’ın güneyindeki Valley of Trials’ta başlar. Yol Razor Hill’den geçip kuzeyde Orgrimmar’ın kapılarına uzanır.',
+        'Güney kıyısındaki Sen’jin Village ve açıklardaki Echo Isles, Darkspear trollerinin yurdu. Doğu kıyısındaki Tiragarde Keep ise Proudmoore’un askerlerinden kalan kale.',
+      ],
+      landCaption: 'Durotar.',
+      pathKey: 'Başlangıç yolu',
+      landLegend: [
+        { name: 'Orgrimmar', text: 'Horde’un başkenti; Grommash Hold burada' },
+        { name: 'Valley of Trials', text: 'Orc ve troll karakterlerin başladığı vadi' },
+        { name: 'Razor Hill', text: 'Durotar’ın ortasındaki orc kasabası' },
+        { name: 'Sen’jin Village', text: 'Darkspear trollerinin köyü' },
+        { name: 'Echo Isles', text: 'Darkspear trollerinin açıktaki adaları' },
+        { name: 'Tiragarde Keep', text: 'Kul Tiras askerlerinin kıyıdaki kalesi' },
+      ],
+      beyondLabel: 'Durotar’ın ötesinde',
+      beyondTitle: 'Horde’un karakolları',
+      beyondText: [
+        'Orc’lar iki kıtaya dağılmış karakollarla Horde’un sınırlarını tutuyor: The Barrens’ta Crossroads, Ashenvale’de Splintertree Post, Stranglethorn Vale’de Grom’gol Base Camp, Swamp of Sorrows’ta Stonard ve Arathi Highlands’te Hammerfall. Orgrimmar’ın dışındaki kulelerden kalkan zeppelin’ler Grom’gol’a ve Undercity’ye gider.',
+        'Her orc Thrall’ın yolunu seçmedi. Blackhand’in oğlu Rend Blackhand, Blackrock Spire’da kendini warchief ilan edip Dark Horde’u kurdu; Dragonmaw’lar hâlâ Wetlands’te, Burning Blade kültü ise Durotar’ın mağaralarında ve Desolace’te demon büyüsünü sürdürüyor.',
+      ],
+      mapCaption: 'Horde karakolları ve zeppelin yolları. Konumlar yaklaşıktır.',
+      routesKey: 'Zeppelin yolları',
+      legend: [
+        { name: 'Orgrimmar', text: 'Zeppelin kulelerinin olduğu başkent' },
+        { name: 'Crossroads', text: 'The Barrens’ın ortasındaki karakol' },
+        { name: 'Splintertree Post', text: 'Ashenvale’deki Horde karakolu' },
+        { name: 'Grom’gol Base Camp', text: 'Stranglethorn Vale’deki Horde kampı' },
+        { name: 'Stonard', text: 'Swamp of Sorrows’taki orc kasabası' },
+        { name: 'Hammerfall', text: 'Arathi Highlands’teki orc karakolu' },
+      ],
+      note: 'Kanla kurulan eski Horde bir dünyayı yaktı. Onurla kurulan yeni Horde ise Azeroth’ta yeri olmayan halklara bir yurt oldu.',
+    },
+    outro: {
+      title: 'Lok’tar ogar',
+      text: 'Zafer ya da ölüm, der orc’lar. Bir kez kanla bağlandılar, sonra zincirlerini kırdılar; şimdi Durotar’ın kızıl toprağında kendi kaderlerini yazıyorlar.',
+      nextText: 'Echo Isles’ın halkı: voodoo, loa’lar ve Darkspear trollerinin Horde’a katılışı.',
+    },
+    images: 'Haritalar WoW Forever’dan. Kapak ve zincir çizimleri bu sayfa için hazırlandı. World of Warcraft adları Blizzard Entertainment’a aittir.',
+  },
+  en: {
+    metaDescription:
+      'The orcs’ story: the shaman clans of Draenor, Kil’jaeden’s deceit and the blood curse, the Dark Portal and two wars, the internment camps, Thrall’s new Horde and Durotar.',
+    overline: 'Story 05',
+    lead: 'A warrior people from another world. Bound by a demon’s blood they set Azeroth on fire, were forgotten in the camps, then broke their chains under a slave’s lead.',
+    facts: [
+      { label: 'Homeland', value: 'Durotar', extra: 'Kalimdor' },
+      { label: 'Capital', value: 'Orgrimmar' },
+      { label: 'Leader', value: 'Thrall' },
+      { label: 'Faith', value: 'Shamanism', extra: 'the elements and the ancestors' },
+      { label: 'Mount', value: 'Wolf' },
+      { label: 'Homeworld', value: 'Draenor' },
+    ],
+    chapters: { origin: 'Origin', portal: 'Portal', camps: 'Camps', exodus: 'Exodus', today: 'Today' },
+    origin: {
+      title: 'People of the elements',
+      titleNote: '(Draenor)',
+      paragraphs: [
+        'The orcs’ story does not begin on Azeroth but on another world: Draenor. There the orcs were a people of hunters and warriors living in clans; their skin was brown, and they were scattered across Draenor’s steppes, forests and snowy mountains.',
+        'The clans were guided by shamans: sages who spoke with the spirits of earth, fire, water and air, the elements, and with the spirits of the ancestors. The most revered was the old shaman Ner’zhul. The orcs shared Draenor with the draenei, a people who had fled another world and found refuge there.',
+        'Kil’jaeden, one of the lords of the Burning Legion, was hunting the draenei, and he decided to turn the orcs into a weapon for the hunt. He came to Ner’zhul in the voice of the ancestors and whispered that the draenei were preparing to attack the orcs. Ner’zhul saw through the lie in the end, but Kil’jaeden found his apprentice, Gul’dan.',
+        'Gul’dan founded a secret circle called the Shadow Council and taught the orcs demonic magic: fel. The elements turned away from the shamans who took it up; fel withered Draenor and turned the orcs’ skin green. The last step was a ceremony: the clan chieftains drank the blood of the pit lord Mannoroth. Grom Hellscream drank first; among those who refused was Durotan, chieftain of the Frostwolf clan. The blood gave the united clans, the Horde, a rage that would not cool, and the draenei cities fell one by one.',
+      ],
+      stagesLabel: 'Stages of the Horde’s birth',
+      stages: [
+        { name: 'Shaman', text: 'Sages who speak with the elements' },
+        { name: 'Kil’jaeden', text: 'The demon who deceived Ner’zhul' },
+        { name: 'Gul’dan', text: 'Master of fel magic' },
+        { name: 'Horde', text: 'Clans bound by blood' },
+      ],
+      before: 'Shaman',
+      after: 'Horde',
+      note: 'The orcs’ green skin is the mark of that corruption. The blood’s rage would rule the Horde for years; the orcs would only break free of the curse much later, in Kalimdor.',
+    },
+    portal: {
+      title: 'The army through the gate',
+      intro:
+        'Most of the draenei were wiped out, but the Horde’s rage did not cool, and Draenor itself was dying. Gul’dan’s warlocks, together with Medivh, a sorcerer on Azeroth, opened a gateway between the two worlds: the Dark Portal.',
+      more: [
+        'The Horde came out into Azeroth in the swamp of the Black Morass and attacked the kingdom of Stormwind. In the First War Orgrim Doomhammer killed the warchief Blackhand, Gul’dan’s puppet, and took the Horde for himself. The half-orc Garona killed King Llane, and Stormwind was razed.',
+        'In the Second War Doomhammer marched the Horde north. Amani trolls, ogres and goblins joined him; the Dragonmaw clan took the Dragonqueen Alexstrasza captive at Grim Batol and drove the red dragons to war. The Horde crossed Khaz Modan and laid siege to the capital of Lordaeron.',
+        'Victory was close. But at that very moment Gul’dan abandoned the Horde with the clans loyal to him, to seize the power hidden in the Tomb of Sargeras. The divided Horde fell back, and the Alliance chased it all the way to Blackrock Spire. There Doomhammer killed Anduin Lothar, but he lost the war, and the Dark Portal was destroyed.',
+      ],
+      figureCaption: 'The Horde’s road through both wars, drawn as you scroll. Positions are approximate.',
+      hordeKey: 'Horde',
+      allianceKey: 'Alliance counter-attack',
+      guldanKey: 'Gul’dan’s betrayal',
+      legend: [
+        { name: 'Dark Portal', text: 'The gate the Horde came through' },
+        { name: 'Stormwind', text: 'The city razed in the First War' },
+        { name: 'Blackrock Spire', text: 'The Horde’s fortress in the Second War' },
+        { name: 'Grim Batol', text: 'Where the Dragonmaw held Alexstrasza' },
+        { name: 'Lordaeron', text: 'The capital the Horde besieged' },
+      ],
+      cards: [
+        {
+          name: 'Blackhand',
+          text: 'Chieftain of the Blackrock clan and the Horde’s first warchief. The real power was Gul’dan’s; Blackhand was his puppet. Doomhammer killed him in a duel.',
+          status: 'First warchief',
+          tone: 'mute',
+        },
+        {
+          name: 'Orgrim Doomhammer',
+          text: 'Durotan’s close friend and the Horde’s second warchief. He broke up the Shadow Council and led the Horde to the gates of Lordaeron in the Second War.',
+          status: 'Warchief',
+          tone: 'home',
+        },
+        {
+          name: 'Gul’dan',
+          text: 'He bound the spirits of slain warlocks to the bodies of Stormwind’s knights and made the first death knights. At the war’s most critical moment he abandoned the Horde, and he died in the Tomb of Sargeras.',
+          status: 'Betrayal',
+          tone: 'no',
+        },
+        {
+          name: 'Dragonmaw',
+          text: 'The clan that held Alexstrasza captive at Grim Batol. They made her young the Horde’s war dragons; Dragonmaw orcs are still in the Wetlands today.',
+          status: 'Captive dragons',
+          tone: 'no',
+        },
+      ],
+      note: 'The Alliance was not all that beat the Horde. Gul’dan’s betrayal showed how an army leaning on demonic power rots from within.',
+    },
+    camps: {
+      title: 'A boy named Slave',
+      intro:
+        'After the Second War the surviving orcs were locked in internment camps built across Lordaeron. Once the demon blood wore off, the Horde’s rage gave way to a deep lethargy; warriors who had once burned worlds sat out their days behind the bars.',
+      more: [
+        'The camps were run from Durnholde Keep, and the keep’s commander was Aedelas Blackmoore. Blackmoore took in a baby he had found beside an orc couple slain in the forest and raised him as a gladiator. He gave him a name that means “slave”: Thrall. He did not know the baby was Durotan’s son.',
+        'Thrall was taught the humans’ tongue, their tactics, reading and writing, but he was always a slave. The only one in the keep who treated him kindly was young Taretha Foxton. With her help Thrall escaped from Durnholde.',
+        'Free at last, Thrall went looking for his people. He found Grom Hellscream, still fighting the humans, then reached the Frostwolf clan hiding in the Alterac Mountains. The Frostwolves’ old shaman, Drek’Thar, taught him to speak with the elements; Thrall learned the way his people had forgotten, shamanism.',
+        'Orgrim Doomhammer came out of hiding to join him. Together they broke open the camps one by one. Mortally wounded in a raid, Doomhammer left his armour, his hammer and the Horde to Thrall before he died. The new warchief went back to Durnholde and defeated Blackmoore.',
+      ],
+      figureCaption: 'The chain breaks as you scroll.',
+      cards: [
+        {
+          name: 'Aedelas Blackmoore',
+          text: 'Commander of Durnholde Keep. He raised Thrall like a weapon and dreamt of building his own power with an orc army led by him. He died in Thrall’s attack on Durnholde.',
+          status: 'Jailer',
+          tone: 'no',
+        },
+        {
+          name: 'Taretha Foxton',
+          text: 'The young woman at Durnholde who secretly exchanged letters with Thrall. She helped him escape; when Blackmoore found out, he had her killed.',
+          status: 'Friend',
+          tone: 'al',
+        },
+        {
+          name: 'Grom Hellscream',
+          text: 'Chieftain of the Warsong clan and the first orc to drink the blood. He was the first great chieftain Thrall found after his escape, and became his first ally and closest friend.',
+          status: 'Warsong',
+          tone: 'home',
+        },
+        {
+          name: 'Orgrim Doomhammer',
+          text: 'The old warchief, captured after the Second War, who escaped and went into hiding. In his last battle he entrusted the Horde to Thrall; Orgrimmar bears his name.',
+          status: 'Legacy',
+          tone: 'mute',
+        },
+      ],
+      note: 'Thrall’s Horde was held together by shamanism and honour, not by demon blood. That was the difference between the old Horde and the new.',
+    },
+    exodus: {
+      title: 'West, to Kalimdor',
+      intro: 'The camps were empty, but there was no place for the orcs in Lordaeron. As you scroll, the map follows the Horde across the ocean to a new home, step by step.',
+      mapLabel: 'The Horde’s exodus to Kalimdor',
+      steps: [
+        {
+          era: 'Lordaeron',
+          title: 'The prophet’s call',
+          text: 'A mysterious prophet in the guise of a raven comes to Thrall: Medivh. He says a catastrophe awaits Lordaeron and sends the Horde west, to Kalimdor. Thrall seizes the humans’ ships and puts out to sea.',
+          status: 'Setting out',
+          tone: 'home',
+        },
+        {
+          era: 'Darkspear',
+          title: 'The isle of the storm',
+          text: 'A storm throws the fleet onto an island. There the Horde helps the Darkspear trolls; their chief Sen’jin loses his life, and his son Vol’jin and his people join the Horde.',
+          status: 'New allies',
+          tone: 'ok',
+        },
+        {
+          era: 'The Barrens',
+          title: 'The tauren',
+          text: 'Ashore in Kalimdor, the Horde comes upon tauren fighting centaurs on the plains of the Barrens. Thrall helps Cairne Bloodhoof’s people reach Mulgore, and a lasting friendship is born between the two peoples.',
+          status: 'Friendship',
+          tone: 'ok',
+        },
+        {
+          era: 'Ashenvale',
+          title: 'Blood again',
+          text: 'Grom Hellscream’s Warsong clash with the night elves and the demigod Cenarius while logging Ashenvale. To win, Grom drinks from a spring poisoned with Mannoroth’s blood; he kills Cenarius but becomes the Legion’s slave once more.',
+          status: 'Corruption',
+          tone: 'no',
+        },
+        {
+          era: 'Demon Fall Canyon',
+          title: 'The end of the curse',
+          text: 'With Jaina Proudmoore’s help Thrall captures Grom and cleanses him of the curse. Together they face Mannoroth; Grom buries his axe in the demon and kills him, but dies himself. The blood curse that bound the orcs ends with him.',
+          status: 'Deliverance',
+          tone: 'ok',
+        },
+      ],
+      note: 'Grom’s sacrifice set the orcs free. Soon after, Thrall, Jaina and Malfurion fought the Burning Legion together at Mount Hyjal, and Archimonde was defeated.',
+    },
+    today: {
+      title: 'The red earth of Durotar',
+      intro: [
+        'After the Third War Thrall settled his people in a dry, red land on Kalimdor’s east coast and named it after his father: Durotar. The capital, Orgrimmar, takes its name from Orgrim Doomhammer.',
+        'The peace did not last. Jaina’s father, Daelin Proudmoore, attacked Durotar with a fleet; Thrall and his allies defeated him, and Proudmoore died in the fighting. Soldiers of Kul Tiras still wait in Tiragarde Keep on the coast.',
+        'Today the Horde is not only orcs: the Darkspear trolls, the tauren and the Forsaken also stand under Thrall’s banner. The orcs fight the night elves in Ashenvale and, on their own land, the Burning Blade cult.',
+      ],
+      leadersLabel: 'Leaders',
+      leadersText: 'The orcs’ leaders today.',
+      leaders: [
+        {
+          role: 'Warchief of the Horde',
+          name: 'Thrall',
+          text: 'Durotan’s son, chieftain of the Frostwolf clan and a shaman. He leads the Horde from Grommash Hold in Orgrimmar.',
+        },
+        {
+          role: 'Advisor',
+          name: 'Eitrigg',
+          text: 'An old veteran of the Second War. The paladin Tirion Fordring once spared his life and lost his knighthood for it. Today he stands at Thrall’s side in Grommash Hold.',
+        },
+        {
+          role: 'Shaman of the Frostwolves',
+          name: 'Drek’Thar',
+          text: 'The old, blind shaman who taught Thrall shamanism. Today he leads the Frostwolf clan against the Stormpike dwarves in Alterac Valley.',
+        },
+      ],
+      landLabel: 'Durotar',
+      landTitle: 'A land of red canyons',
+      landText: [
+        'Orc and troll characters begin in the Valley of Trials in southern Durotar. The road runs through Razor Hill to the gates of Orgrimmar in the north.',
+        'Sen’jin Village on the south coast and the Echo Isles offshore are the home of the Darkspear trolls. Tiragarde Keep on the east coast is the fortress left by Proudmoore’s soldiers.',
+      ],
+      landCaption: 'Durotar.',
+      pathKey: 'Starting road',
+      landLegend: [
+        { name: 'Orgrimmar', text: 'Capital of the Horde, home of Grommash Hold' },
+        { name: 'Valley of Trials', text: 'The valley where orc and troll characters begin' },
+        { name: 'Razor Hill', text: 'The orc town in the middle of Durotar' },
+        { name: 'Sen’jin Village', text: 'Village of the Darkspear trolls' },
+        { name: 'Echo Isles', text: 'The Darkspears’ islands offshore' },
+        { name: 'Tiragarde Keep', text: 'The coastal fortress of the Kul Tiras soldiers' },
+      ],
+      beyondLabel: 'Beyond Durotar',
+      beyondTitle: 'The Horde’s outposts',
+      beyondText: [
+        'The orcs hold the Horde’s borders with outposts on two continents: the Crossroads in the Barrens, Splintertree Post in Ashenvale, Grom’gol Base Camp in Stranglethorn Vale, Stonard in the Swamp of Sorrows and Hammerfall in the Arathi Highlands. Zeppelins from the towers outside Orgrimmar fly to Grom’gol and to Undercity.',
+        'Not every orc chose Thrall’s road. Blackhand’s son, Rend Blackhand, proclaimed himself warchief in Blackrock Spire and founded the Dark Horde; the Dragonmaw are still in the Wetlands, and the Burning Blade cult keeps up its demon magic in the caves of Durotar and in Desolace.',
+      ],
+      mapCaption: 'Horde outposts and zeppelin routes. Positions are approximate.',
+      routesKey: 'Zeppelin routes',
+      legend: [
+        { name: 'Orgrimmar', text: 'The capital, with the zeppelin towers' },
+        { name: 'Crossroads', text: 'The outpost in the middle of the Barrens' },
+        { name: 'Splintertree Post', text: 'The Horde outpost in Ashenvale' },
+        { name: 'Grom’gol Base Camp', text: 'The Horde camp in Stranglethorn Vale' },
+        { name: 'Stonard', text: 'The orc town in the Swamp of Sorrows' },
+        { name: 'Hammerfall', text: 'The orc outpost in the Arathi Highlands' },
+      ],
+      note: 'The old Horde, founded in blood, burned a world. The new Horde, founded on honour, became a home for peoples with no place on Azeroth.',
+    },
+    outro: {
+      title: 'Lok’tar ogar',
+      text: 'Victory or death, say the orcs. Once they were bound by blood; then they broke their chains, and now they write their own fate on the red earth of Durotar.',
+      nextText: 'The people of the Echo Isles: voodoo, the loa and how the Darkspear joined the Horde.',
+    },
+    images: 'Maps from WoW Forever. The cover and chain drawings were made for this page. World of Warcraft names belong to Blizzard Entertainment.',
+  },
+};

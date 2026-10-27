@@ -2923,4 +2923,704 @@ export const LORE: LoreEntry[] = [
       note: 'Wetlands',
     },
   },
+
+  // ---------------------------------------------------------------- Orc story
+  {
+    id: 'nerzhul',
+    name: 'Ner’zhul',
+    icon: 'spell_nature_ancestralguardian',
+    aliases: ['Ner’zhul'],
+    tr: {
+      sub: 'Shadowmoon klanının yaşlı shaman’ı',
+      text: 'Draenor’daki orc’ların en saygı gören shaman’ı. Kil’jaeden onu ataların sesiyle aldattı; Ner’zhul gerçeği görünce çırağı Gul’dan onun yerini aldı. Second War’dan sonra Draenor’da kalan Horde’un başına geçti; açtığı yeni geçitler Draenor’u parçaladı ve Kil’jaeden onun ruhundan Lich King’i yarattı.',
+    },
+    en: {
+      sub: 'Elder shaman of the Shadowmoon clan',
+      text: 'The most revered shaman of the orcs of Draenor. Kil’jaeden deceived him in the voice of the ancestors; when Ner’zhul saw the truth, his apprentice Gul’dan took his place. After the Second War he led the Horde left on Draenor; the new gateways he opened tore Draenor apart, and Kil’jaeden made the Lich King out of his spirit.',
+    },
+  },
+  {
+    id: 'kiljaeden',
+    name: 'Kil’jaeden',
+    icon: 'spell_shadow_metamorphosis',
+    aliases: ['Kil’jaeden'],
+    tr: {
+      sub: 'Burning Legion’ın lordu',
+      text: 'Sargeras’ın Burning Legion’daki komutanlarından. Kaçan draenei’lerin peşinde Draenor’a geldi; orc’ları önce Ner’zhul, sonra Gul’dan aracılığıyla yozlaştırıp Legion’ın ordusu yaptı.',
+    },
+    en: {
+      sub: 'Lord of the Burning Legion',
+      text: 'One of Sargeras’s commanders in the Burning Legion. Hunting the fleeing draenei, he came to Draenor and corrupted the orcs, first through Ner’zhul and then through Gul’dan, into an army for the Legion.',
+    },
+  },
+  {
+    id: 'draenei',
+    name: 'Draenei',
+    icon: 'spell_holy_holybolt',
+    aliases: ['draenei', 'Draenei'],
+    tr: {
+      sub: 'Draenor’a sığınan halk',
+      text: 'Burning Legion’a katılmayı reddedip kendi dünyalarından kaçan halk; peygamberleri Velen’in önderliğinde Draenor’a sığındılar. Kil’jaeden’in kışkırttığı Horde onların çoğunu öldürdü.',
+    },
+    en: {
+      sub: 'The people who found refuge on Draenor',
+      text: 'A people who refused to join the Burning Legion and fled their own world; led by their prophet Velen, they found refuge on Draenor. The Horde, stirred up by Kil’jaeden, killed most of them.',
+    },
+  },
+  {
+    id: 'shadowcouncil',
+    name: 'Shadow Council',
+    icon: 'spell_shadow_ritualofsacrifice',
+    aliases: ['Shadow Council'],
+    tr: {
+      sub: 'Gul’dan’ın gizli warlock’ları',
+      text: 'Gul’dan’ın Horde’u perde arkasından yönettiği warlock topluluğu. Orc’lara demon büyüsünü yaydılar ve Blackhand’i kukla warchief yaptılar. Orgrim Doomhammer warchief olunca konseyi dağıttı.',
+    },
+    en: {
+      sub: 'Gul’dan’s secret warlocks',
+      text: 'The circle of warlocks through which Gul’dan ruled the Horde from behind the scenes. They spread demonic magic among the orcs and made Blackhand a puppet warchief. Orgrim Doomhammer broke up the council when he became warchief.',
+    },
+  },
+  {
+    id: 'mannoroth',
+    name: 'Mannoroth',
+    icon: 'spell_shadow_curseofmannoroth',
+    aliases: ['Mannoroth'],
+    tr: {
+      sub: 'Pit lord · Burning Legion',
+      text: 'Burning Legion’ın pit lord’u. Draenor’da klan şefleri onun kanını içti ve Horde Legion’a bağlandı. Third War’da Grom Hellscream’i Ashenvale’de yeniden yozlaştırdı; Demon Fall Canyon’da Grom’un baltasıyla öldü ve orc’ları bağlayan lanet sona erdi.',
+    },
+    en: {
+      sub: 'Pit lord · the Burning Legion',
+      text: 'A pit lord of the Burning Legion. On Draenor the clan chieftains drank his blood, binding the Horde to the Legion. In the Third War he corrupted Grom Hellscream again in Ashenvale; he died by Grom’s axe in Demon Fall Canyon, and the curse that bound the orcs ended.',
+    },
+  },
+  {
+    id: 'durotan',
+    name: 'Durotan',
+    icon: 'ability_mount_whitedirewolf',
+    aliases: ['Durotan'],
+    tr: {
+      sub: 'Frostwolf klanının şefi · Thrall’ın babası',
+      text: 'Mannoroth’un kanını içmeyi reddeden şef. Gul’dan’a karşı çıktığı için klanıyla birlikte Alterac Mountains’a sürüldü; o ve eşi Draka suikastçılar tarafından öldürüldü. Bebek oğulları Thrall’ı Aedelas Blackmoore buldu. Durotar onun adını taşır.',
+    },
+    en: {
+      sub: 'Chieftain of the Frostwolf clan · Thrall’s father',
+      text: 'The chieftain who refused to drink Mannoroth’s blood. For standing against Gul’dan he was exiled with his clan to the Alterac Mountains, where he and his mate Draka were murdered by assassins. Aedelas Blackmoore found their baby son, Thrall. Durotar bears his name.',
+    },
+  },
+  {
+    id: 'frostwolf',
+    name: 'Frostwolf',
+    icon: 'spell_nature_spiritwolf',
+    aliases: ['Frostwolf'],
+    tr: {
+      sub: 'Orc klanı',
+      text: 'Durotan’ın klanı. Gul’dan’a karşı çıktıkları için Alterac Mountains’a sürüldüler ve kamplardan uzak kaldılar; Thrall şamanizmi onların yanında öğrendi. Bugün Alterac Valley’de Stormpike dwarf’larıyla savaşıyorlar.',
+      note: 'Alterac Valley',
+    },
+    en: {
+      sub: 'Orc clan',
+      text: 'Durotan’s clan. Exiled to the Alterac Mountains for standing against Gul’dan, they stayed out of the camps; Thrall learned shamanism among them. Today they fight the Stormpike dwarves in Alterac Valley.',
+      note: 'Alterac Valley',
+    },
+  },
+  {
+    id: 'blackhand',
+    name: 'Blackhand',
+    icon: 'ability_warrior_punishingblow',
+    aliases: ['Blackhand'],
+    tr: {
+      sub: 'Blackrock klanının şefi · ilk warchief',
+      text: 'Gul’dan’ın Horde’un başına getirdiği şef. First War’da Horde’u yönetti; Orgrim Doomhammer onu bir düelloda öldürdü. Oğulları Rend ve Maim bugün Blackrock Spire’da Dark Horde’un başında.',
+    },
+    en: {
+      sub: 'Chieftain of the Blackrock clan · the first warchief',
+      text: 'The chieftain Gul’dan put at the head of the Horde. He led it in the First War, and Orgrim Doomhammer killed him in a duel. His sons Rend and Maim lead the Dark Horde in Blackrock Spire today.',
+    },
+  },
+  {
+    id: 'blackrock',
+    name: 'Blackrock',
+    icon: 'spell_fire_fire',
+    aliases: ['Blackrock klanının', 'Blackrock clan'],
+    tr: {
+      sub: 'Orc klanı',
+      text: 'Blackhand’in klanı; Second War’da Horde’un en güçlü kollarından biri. Bugün Blackrock orc’ları Rend Blackhand’in Dark Horde’unda, Blackrock Mountain’da ve Burning Steppes’te savaşıyor.',
+      note: 'Blackrock Mountain',
+    },
+    en: {
+      sub: 'Orc clan',
+      text: 'Blackhand’s clan, one of the Horde’s strongest in the Second War. Today Blackrock orcs fight in Rend Blackhand’s Dark Horde, in Blackrock Mountain and the Burning Steppes.',
+      note: 'Blackrock Mountain',
+    },
+  },
+  {
+    id: 'tomb',
+    name: 'Tomb of Sargeras',
+    icon: 'spell_shadow_curseofsargeras',
+    aliases: ['Tomb of Sargeras'],
+    tr: {
+      sub: 'Denizin dibindeki tapınak',
+      text: 'Guardian Aegwynn’in Sargeras’ın bedenini mühürleyip denize gömdüğü tapınak. Gul’dan buradaki gücü ele geçirmek için Second War’ın ortasında Horde’u terk etti; adayı denizden yükseltti, ama içerideki demonlar onu parçaladı.',
+    },
+    en: {
+      sub: 'The temple beneath the sea',
+      text: 'The temple where the Guardian Aegwynn sealed Sargeras’s body and sank it into the sea. Gul’dan abandoned the Horde in the middle of the Second War to seize the power there; he raised the isle from the sea, but the demons inside tore him apart.',
+    },
+  },
+  {
+    id: 'durnholde',
+    name: 'Durnholde Keep',
+    icon: 'spell_frost_chainsofice',
+    aliases: ['Durnholde Keep', 'Durnholde'],
+    tr: {
+      sub: 'Kale · toplama kamplarının merkezi',
+      text: 'Second War’dan sonra orc toplama kamplarını yöneten kale; komutanı Aedelas Blackmoore’du. Thrall burada köle olarak büyüdü. Bugün yıkık kalede Syndicate haydutları var.',
+      note: 'Hillsbrad Foothills',
+    },
+    en: {
+      sub: 'Fortress · seat of the internment camps',
+      text: 'The fortress that ran the orc internment camps after the Second War, under Aedelas Blackmoore. Thrall grew up there as a slave. Today Syndicate bandits hold the ruined keep.',
+      note: 'Hillsbrad Foothills',
+    },
+  },
+  {
+    id: 'blackmoore',
+    name: 'Aedelas Blackmoore',
+    icon: 'inv_sword_27',
+    aliases: ['Aedelas Blackmoore', 'Blackmoore'],
+    tr: {
+      sub: 'Durnholde Keep’in komutanı',
+      text: 'Toplama kamplarından sorumlu Lordaeron soylusu. Bebek Thrall’ı alıp gladyatör olarak yetiştirdi ve onu kendi amaçları için kullanmayı planladı. Thrall’ın Durnholde’a saldırısında öldü.',
+    },
+    en: {
+      sub: 'Commander of Durnholde Keep',
+      text: 'The Lordaeron nobleman in charge of the internment camps. He took the infant Thrall, raised him as a gladiator and planned to use him for his own ends. He died in Thrall’s attack on Durnholde.',
+    },
+  },
+  {
+    id: 'taretha',
+    name: 'Taretha Foxton',
+    icon: 'inv_misc_note_02',
+    aliases: ['Taretha Foxton', 'Taretha'],
+    tr: {
+      sub: 'Thrall’ın Durnholde’daki dostu',
+      text: 'Durnholde’da hizmetçi olarak çalışan genç kadın. Thrall’la yıllarca gizlice mektuplaştı ve kaçmasına yardım etti; Blackmoore bunu öğrenince onu öldürttü.',
+    },
+    en: {
+      sub: 'Thrall’s friend at Durnholde',
+      text: 'A young woman who served at Durnholde. For years she exchanged letters with Thrall in secret and helped him escape; when Blackmoore found out, he had her killed.',
+    },
+  },
+  {
+    id: 'drekthar',
+    name: 'Drek’Thar',
+    icon: 'spell_nature_earthbindtotem',
+    aliases: ['Drek’Thar'],
+    tr: {
+      sub: 'Frostwolf klanının yaşlı shaman’ı',
+      text: 'Kör bir shaman ve Frostwolf’ların bilgesi. Thrall’a elementlerle konuşmayı öğretti. Bugün Alterac Valley’de Frostwolf Keep’ten klanını Stormpike dwarf’larına karşı yönetiyor.',
+      note: 'Alterac Valley',
+    },
+    en: {
+      sub: 'Elder shaman of the Frostwolf clan',
+      text: 'A blind shaman and the wise man of the Frostwolves. He taught Thrall to speak with the elements. Today he leads his clan against the Stormpike dwarves from Frostwolf Keep in Alterac Valley.',
+      note: 'Alterac Valley',
+    },
+  },
+  {
+    id: 'alteracvalley',
+    name: 'Alterac Valley',
+    icon: 'inv_misc_pelt_wolf_01',
+    aliases: ['Alterac Valley'],
+    tr: {
+      sub: 'Vadi · Alterac Mountains',
+      text: 'Alterac Mountains’ın güneyindeki karlı vadi. Frostwolf orc’ları ile Stormpike dwarf’ları vadinin hâkimiyeti için savaşıyor.',
+      note: 'Alterac Mountains',
+    },
+    en: {
+      sub: 'Valley · the Alterac Mountains',
+      text: 'The snowy valley in the south of the Alterac Mountains, where the Frostwolf orcs and the Stormpike dwarves fight for control.',
+      note: 'Alterac Mountains',
+    },
+  },
+  {
+    id: 'stormpike',
+    name: 'Stormpike',
+    icon: 'inv_hammer_20',
+    aliases: ['Stormpike'],
+    tr: {
+      sub: 'Dwarf seferi',
+      text: 'Ironforge’dan gelen Stormpike Guard: Alterac Valley’de kazı yapıp Frostwolf orc’larıyla savaşan dwarf seferi. Komutanları Vanndar Stormpike.',
+      note: 'Alterac Valley',
+    },
+    en: {
+      sub: 'Dwarf expedition',
+      text: 'The Stormpike Guard from Ironforge: a dwarf expedition digging in Alterac Valley and fighting the Frostwolf orcs. Their commander is Vanndar Stormpike.',
+      note: 'Alterac Valley',
+    },
+  },
+  {
+    id: 'darkspear',
+    name: 'Darkspear',
+    icon: 'race_troll_male',
+    aliases: ['Darkspear'],
+    tr: {
+      sub: 'Troll kabilesi',
+      text: 'Thrall’ın Kalimdor yolunda, fırtınanın attığı adada tanıştığı troll kabilesi. Şefleri Sen’jin öldükten sonra oğlu Vol’jin’in önderliğinde Horde’a katıldılar; bugün Durotar’da Sen’jin Village ve Echo Isles’ta yaşıyorlar.',
+      note: 'Durotar',
+    },
+    en: {
+      sub: 'Troll tribe',
+      text: 'The troll tribe Thrall met on his way to Kalimdor, on the island where the storm threw his fleet. After their chief Sen’jin died they joined the Horde under his son Vol’jin; today they live in Sen’jin Village and on the Echo Isles in Durotar.',
+      note: 'Durotar',
+    },
+  },
+  {
+    id: 'senjin',
+    name: 'Sen’jin',
+    icon: 'spell_nature_mentalquickness',
+    aliases: ['Sen’jin'],
+    tr: {
+      sub: 'Darkspear’ların eski şefi',
+      text: 'Darkspear trollerinin bilge şefi. Horde’un geleceğini bir görüde gördü; adada murloc’lara esir düşüp kurban edildi. Durotar’daki Sen’jin Village onun adını taşır.',
+    },
+    en: {
+      sub: 'Former chief of the Darkspear',
+      text: 'The wise chief of the Darkspear trolls. He saw the Horde’s coming in a vision; on the island he was captured by murlocs and sacrificed. Sen’jin Village in Durotar bears his name.',
+    },
+  },
+  {
+    id: 'voljin',
+    name: 'Vol’jin',
+    icon: 'racial_troll_berserk',
+    aliases: ['Vol’jin'],
+    tr: {
+      sub: 'Darkspear’ların şefi',
+      text: 'Sen’jin’in oğlu. Babasının ölümünden sonra Darkspear trollerini Horde’a kattı; bugün Thrall’ın en yakın müttefiklerinden.',
+      note: 'Orgrimmar',
+    },
+    en: {
+      sub: 'Chief of the Darkspear',
+      text: 'Sen’jin’s son. After his father’s death he brought the Darkspear trolls into the Horde; today he is one of Thrall’s closest allies.',
+      note: 'Orgrimmar',
+    },
+  },
+  {
+    id: 'cairne',
+    name: 'Cairne Bloodhoof',
+    icon: 'race_tauren_male',
+    aliases: ['Cairne Bloodhoof', 'Cairne'],
+    tr: {
+      sub: 'Tauren’lerin yüce şefi',
+      text: 'Tauren kabilelerini birleştiren yaşlı şef. Thrall halkının centaur’lardan kurtulup Mulgore’a yerleşmesine yardım etti; o günden beri Horde’un en sadık dostu. Thunder Bluff’tan yönetiyor.',
+      note: 'Thunder Bluff',
+    },
+    en: {
+      sub: 'High chieftain of the tauren',
+      text: 'The old chieftain who united the tauren tribes. Thrall helped his people escape the centaurs and settle in Mulgore, and he has been the Horde’s most loyal friend ever since. He rules from Thunder Bluff.',
+      note: 'Thunder Bluff',
+    },
+  },
+  {
+    id: 'mulgore',
+    name: 'Mulgore',
+    icon: 'spell_arcane_teleportthunderbluff',
+    aliases: ['Mulgore'],
+    tr: {
+      sub: 'Bölge · tauren’lerin yurdu',
+      text: 'The Barrens’ın batısındaki yeşil ovalar. Tauren’ler Third War’dan sonra buraya yerleşti; başkentleri Thunder Bluff burada.',
+    },
+    en: {
+      sub: 'Region · home of the tauren',
+      text: 'The green plains west of the Barrens. The tauren settled here after the Third War; their capital, Thunder Bluff, stands here.',
+    },
+  },
+  {
+    id: 'barrens',
+    name: 'The Barrens',
+    icon: 'achievement_zone_barrens_01',
+    aliases: ['The Barrens', 'Barrens'],
+    tr: {
+      sub: 'Bölge · Kalimdor’un ortası',
+      text: 'Durotar’ın batısında uzanan sıcak bozkır. Ortasındaki Crossroads, Horde’un Kalimdor’daki yollarının kesiştiği karakol.',
+    },
+    en: {
+      sub: 'Region · the heart of Kalimdor',
+      text: 'The hot savannah west of Durotar. The Crossroads in its middle is the outpost where the Horde’s roads in Kalimdor meet.',
+    },
+  },
+  {
+    id: 'demonfall',
+    name: 'Demon Fall Canyon',
+    icon: 'spell_shadow_summoninfernal',
+    aliases: ['Demon Fall Canyon'],
+    tr: {
+      sub: 'Kanyon · Ashenvale',
+      text: 'Ashenvale’in doğusundaki kanyon. Grom Hellscream Mannoroth’u burada öldürdü; yakınındaki Grom’s Monument onun anısını taşıyor.',
+      note: 'Ashenvale',
+    },
+    en: {
+      sub: 'Canyon · Ashenvale',
+      text: 'The canyon in eastern Ashenvale where Grom Hellscream killed Mannoroth; Grom’s Monument nearby keeps his memory.',
+      note: 'Ashenvale',
+    },
+  },
+  {
+    id: 'durotar',
+    name: 'Durotar',
+    icon: 'inv_axe_02',
+    aliases: ['Durotar'],
+    tr: {
+      sub: 'Bölge · orc’ların yurdu',
+      text: 'Kalimdor’un doğu kıyısındaki kurak, kızıl topraklar. Thrall buraya babası Durotan’ın adını verdi. Orc ve troll karakterler oyuna burada başlar; başkent Orgrimmar bölgenin kuzeyinde.',
+    },
+    en: {
+      sub: 'Region · home of the orcs',
+      text: 'The dry red land on Kalimdor’s east coast. Thrall named it after his father, Durotan. Orc and troll characters begin here; the capital, Orgrimmar, lies in the north.',
+    },
+  },
+  {
+    id: 'orgrimmar',
+    name: 'Orgrimmar',
+    icon: 'spell_arcane_teleportorgrimmar',
+    aliases: ['Orgrimmar'],
+    tr: {
+      sub: 'Horde’un başkenti',
+      text: 'Durotar’ın kuzeyinde, kayalık bir kanyona kurulu orc başkenti; adını Orgrim Doomhammer’dan alır. Thrall Grommash Hold’dan yönetir; şehrin dışındaki kulelerden zeppelin’ler kalkar.',
+      note: 'Durotar',
+    },
+    en: {
+      sub: 'Capital of the Horde',
+      text: 'The orc capital built in a rocky canyon in northern Durotar, named after Orgrim Doomhammer. Thrall rules from Grommash Hold; zeppelins leave from the towers outside the city.',
+      note: 'Durotar',
+    },
+  },
+  {
+    id: 'grommash',
+    name: 'Grommash Hold',
+    icon: 'ability_warrior_challange',
+    aliases: ['Grommash Hold'],
+    tr: {
+      sub: 'Thrall’ın salonu · Orgrimmar',
+      text: 'Orgrimmar’daki büyük salon; adını Grom Hellscream’den (Grommash) alır. Warchief Thrall ve danışmanları burada.',
+      note: 'Orgrimmar',
+    },
+    en: {
+      sub: 'Thrall’s hall · Orgrimmar',
+      text: 'The great hall of Orgrimmar, named after Grom Hellscream (Grommash). Warchief Thrall and his advisors are here.',
+      note: 'Orgrimmar',
+    },
+  },
+  {
+    id: 'valleyoftrials',
+    name: 'Valley of Trials',
+    icon: 'spell_nature_strengthofearthtotem02',
+    aliases: ['Valley of Trials'],
+    tr: {
+      sub: 'Başlangıç vadisi · Durotar',
+      text: 'Durotar’ın güneyindeki vadi; orc ve troll karakterler oyuna burada başlar.',
+      note: 'Durotar',
+    },
+    en: {
+      sub: 'Starting valley · Durotar',
+      text: 'The valley in southern Durotar where orc and troll characters begin.',
+      note: 'Durotar',
+    },
+  },
+  {
+    id: 'razorhill',
+    name: 'Razor Hill',
+    icon: 'inv_axe_12',
+    aliases: ['Razor Hill'],
+    tr: {
+      sub: 'Kasaba · Durotar',
+      text: 'Durotar’ın ortasındaki orc kasabası; Valley of Trials’tan çıkan maceracıların Orgrimmar yolundaki ilk durağı.',
+      note: 'Durotar',
+    },
+    en: {
+      sub: 'Town · Durotar',
+      text: 'The orc town in the middle of Durotar; the first stop on the road to Orgrimmar for adventurers leaving the Valley of Trials.',
+      note: 'Durotar',
+    },
+  },
+  {
+    id: 'senjinvillage',
+    name: 'Sen’jin Village',
+    icon: 'trade_fishing',
+    aliases: ['Sen’jin Village'],
+    tr: {
+      sub: 'Köy · Durotar',
+      text: 'Durotar’ın güney kıyısındaki Darkspear köyü; adını şef Sen’jin’den alır.',
+      note: 'Durotar',
+    },
+    en: {
+      sub: 'Village · Durotar',
+      text: 'The Darkspear village on Durotar’s south coast, named after the chief Sen’jin.',
+      note: 'Durotar',
+    },
+  },
+  {
+    id: 'echoisles',
+    name: 'Echo Isles',
+    icon: 'spell_nature_cyclone',
+    aliases: ['Echo Isles'],
+    tr: {
+      sub: 'Adalar · Durotar',
+      text: 'Durotar’ın güney kıyısı açıklarındaki adalar; Darkspear trollerinin yurdu. Kendini kara büyüye kaptıran witch doctor Zalazane adaları ele geçirdi ve Darkspear’lar karşı kıyıya, Sen’jin Village’a çekildi.',
+      note: 'Durotar',
+    },
+    en: {
+      sub: 'Islands · Durotar',
+      text: 'The islands off Durotar’s south coast, home of the Darkspear trolls. The witch doctor Zalazane, lost to dark magic, has taken them, and the Darkspear have withdrawn to Sen’jin Village on the shore.',
+      note: 'Durotar',
+    },
+  },
+  {
+    id: 'tiragarde',
+    name: 'Tiragarde Keep',
+    icon: 'inv_shield_05',
+    aliases: ['Tiragarde Keep'],
+    tr: {
+      sub: 'Kale · Durotar',
+      text: 'Durotar’ın doğu kıyısında, Daelin Proudmoore’un saldırısından kalan Kul Tiras kalesi; askerleri hâlâ burada.',
+      note: 'Durotar',
+    },
+    en: {
+      sub: 'Fortress · Durotar',
+      text: 'The Kul Tiras fortress on Durotar’s east coast, left over from Daelin Proudmoore’s attack; its soldiers are still there.',
+      note: 'Durotar',
+    },
+  },
+  {
+    id: 'eitrigg',
+    name: 'Eitrigg',
+    icon: 'inv_shield_06',
+    aliases: ['Eitrigg'],
+    tr: {
+      sub: 'Thrall’ın danışmanı',
+      text: 'Second War’ın gazisi; savaştan sonra Horde’dan ayrıldı. Lordaeron’da paladin Tirion Fordring onun hayatını bağışladı ve onu savunduğu için şövalyeliğini kaybetti. Eitrigg sonra Thrall’ın Horde’una katıldı.',
+      note: 'Orgrimmar',
+    },
+    en: {
+      sub: 'Thrall’s advisor',
+      text: 'A veteran of the Second War who left the Horde after the war. In Lordaeron the paladin Tirion Fordring spared his life and lost his knighthood for defending him. Eitrigg later joined Thrall’s Horde.',
+      note: 'Orgrimmar',
+    },
+  },
+  {
+    id: 'tirion',
+    name: 'Tirion Fordring',
+    icon: 'spell_holy_sealofwrath',
+    aliases: ['Tirion Fordring'],
+    tr: {
+      sub: 'Sürgündeki paladin',
+      text: 'Lordaeron’un saygın paladin’i. Orc gazi Eitrigg’in hayatını bağışlayıp onu savunduğu için unvanını kaybetti ve sürgüne gönderildi; bugün Plaguelands’de münzevi bir hayat sürüyor.',
+    },
+    en: {
+      sub: 'The exiled paladin',
+      text: 'A respected paladin of Lordaeron. For sparing the orc veteran Eitrigg and defending him, he was stripped of his title and exiled; today he lives as a hermit in the Plaguelands.',
+    },
+  },
+  {
+    id: 'rend',
+    name: 'Rend Blackhand',
+    icon: 'inv_misc_head_dragon_black',
+    aliases: ['Rend Blackhand'],
+    tr: {
+      sub: 'Dark Horde’un warchief’i',
+      text: 'Blackhand’in oğlu. Thrall’ı tanımayıp Blackrock Spire’da kendini warchief ilan etti ve Dark Horde’u kurdu; Blackrock orc’larını kara ejderha Nefarian’ın hizmetine soktu.',
+      note: 'Blackrock Spire',
+    },
+    en: {
+      sub: 'Warchief of the Dark Horde',
+      text: 'Blackhand’s son. Refusing to follow Thrall, he proclaimed himself warchief in Blackrock Spire and founded the Dark Horde, putting the Blackrock orcs in the service of the black dragon Nefarian.',
+      note: 'Blackrock Spire',
+    },
+  },
+  {
+    id: 'darkhorde',
+    name: 'Dark Horde',
+    icon: 'spell_shadow_ragingscream',
+    aliases: ['Dark Horde'],
+    tr: {
+      sub: 'Orc ordusu · Blackrock Spire',
+      text: 'Rend Blackhand’in Thrall’a karşı Blackrock Spire’da kurduğu orc ordusu; kara ejderha Nefarian’ın hizmetinde.',
+      note: 'Blackrock Spire',
+    },
+    en: {
+      sub: 'Orc army · Blackrock Spire',
+      text: 'The orc army Rend Blackhand raised against Thrall in Blackrock Spire, in the service of the black dragon Nefarian.',
+      note: 'Blackrock Spire',
+    },
+  },
+  {
+    id: 'burningblade',
+    name: 'Burning Blade',
+    icon: 'spell_fire_flametounge',
+    aliases: ['Burning Blade'],
+    tr: {
+      sub: 'Kült',
+      text: 'Demon büyüsünden vazgeçmeyen orc’ların kültü. Durotar’ın mağaralarında ve Desolace’taki Thunder Axe Fortress’ta saklanıp Burning Legion’a hizmet ediyorlar.',
+      note: 'Durotar · Desolace',
+    },
+    en: {
+      sub: 'Cult',
+      text: 'The cult of orcs who would not give up demonic magic. They hide in the caves of Durotar and in Thunder Axe Fortress in Desolace, serving the Burning Legion.',
+      note: 'Durotar · Desolace',
+    },
+  },
+  {
+    id: 'desolace',
+    name: 'Desolace',
+    icon: 'spell_shadow_deathscream',
+    aliases: ['Desolace'],
+    tr: {
+      sub: 'Bölge · Kalimdor’un batısı',
+      text: 'Stonetalon Mountains’ın güneyindeki ölü, gri topraklar; centaur kabileleri ve Burning Blade kültistleri burada.',
+    },
+    en: {
+      sub: 'Region · western Kalimdor',
+      text: 'The dead grey land south of the Stonetalon Mountains, home to centaur tribes and Burning Blade cultists.',
+    },
+  },
+  {
+    id: 'crossroads',
+    name: 'The Crossroads',
+    icon: 'inv_misc_map02',
+    aliases: ['Crossroads'],
+    tr: {
+      sub: 'Karakol · The Barrens',
+      text: 'The Barrens’ın ortasında, yolların kesiştiği Horde karakolu.',
+      note: 'The Barrens',
+    },
+    en: {
+      sub: 'Outpost · the Barrens',
+      text: 'The Horde outpost in the middle of the Barrens, where the roads meet.',
+      note: 'The Barrens',
+    },
+  },
+  {
+    id: 'splintertree',
+    name: 'Splintertree Post',
+    icon: 'inv_tradeskillitem_01',
+    aliases: ['Splintertree Post'],
+    tr: {
+      sub: 'Karakol · Ashenvale',
+      text: 'Ashenvale’in doğusundaki Horde karakolu; Warsong’larla Sentinel’ler arasındaki savaşın ön cephesi.',
+      note: 'Ashenvale',
+    },
+    en: {
+      sub: 'Outpost · Ashenvale',
+      text: 'The Horde outpost in eastern Ashenvale, on the front line of the war between the Warsong and the Sentinels.',
+      note: 'Ashenvale',
+    },
+  },
+  {
+    id: 'gromgol',
+    name: 'Grom’gol Base Camp',
+    icon: 'spell_nature_stormreach',
+    aliases: ['Grom’gol Base Camp', 'Grom’gol'],
+    tr: {
+      sub: 'Kamp · Stranglethorn Vale',
+      text: 'Stranglethorn Vale’in kuzeybatı kıyısındaki Horde kampı. Orgrimmar’dan ve Undercity’den kalkan zeppelin’ler buraya iner.',
+      note: 'Stranglethorn Vale',
+    },
+    en: {
+      sub: 'Camp · Stranglethorn Vale',
+      text: 'The Horde camp on the north-west coast of Stranglethorn Vale, where the zeppelins from Orgrimmar and Undercity land.',
+      note: 'Stranglethorn Vale',
+    },
+  },
+  {
+    id: 'stranglethorn',
+    name: 'Stranglethorn Vale',
+    icon: 'ability_mount_jungletiger',
+    aliases: ['Stranglethorn Vale'],
+    tr: {
+      sub: 'Bölge · Eastern Kingdoms’un güneyi',
+      text: 'Eastern Kingdoms’un güneyindeki sık orman; troll kabileleri, korsanlar ve avcılar burada.',
+    },
+    en: {
+      sub: 'Region · the south of the Eastern Kingdoms',
+      text: 'The dense jungle in the south of the Eastern Kingdoms, home to troll tribes, pirates and hunters.',
+    },
+  },
+  {
+    id: 'stonard',
+    name: 'Stonard',
+    icon: 'spell_nature_stoneclawtotem',
+    aliases: ['Stonard'],
+    tr: {
+      sub: 'Kasaba · Swamp of Sorrows',
+      text: 'Swamp of Sorrows’taki orc kasabası; Horde’un Eastern Kingdoms’taki en büyük üslerinden biri.',
+      note: 'Swamp of Sorrows',
+    },
+    en: {
+      sub: 'Town · Swamp of Sorrows',
+      text: 'The orc town in the Swamp of Sorrows, one of the Horde’s largest bases in the Eastern Kingdoms.',
+      note: 'Swamp of Sorrows',
+    },
+  },
+  {
+    id: 'swampofsorrows',
+    name: 'Swamp of Sorrows',
+    icon: 'spell_shadow_lifedrain',
+    aliases: ['Swamp of Sorrows'],
+    tr: {
+      sub: 'Bölge · Eastern Kingdoms',
+      text: 'Duskwood’un doğusundaki bataklık; güneyinde Blasted Lands ve Dark Portal var.',
+    },
+    en: {
+      sub: 'Region · the Eastern Kingdoms',
+      text: 'The swamp east of Duskwood, with the Blasted Lands and the Dark Portal to the south.',
+    },
+  },
+  {
+    id: 'hammerfall',
+    name: 'Hammerfall',
+    icon: 'ability_warrior_sunder',
+    aliases: ['Hammerfall'],
+    tr: {
+      sub: 'Karakol · Arathi Highlands',
+      text: 'Arathi Highlands’in kuzeydoğusundaki orc karakolu; Horde’un Lordaeron’un güneyindeki dayanağı.',
+      note: 'Arathi Highlands',
+    },
+    en: {
+      sub: 'Outpost · the Arathi Highlands',
+      text: 'The orc outpost in the north-east of the Arathi Highlands, the Horde’s foothold south of Lordaeron.',
+      note: 'Arathi Highlands',
+    },
+  },
+  {
+    id: 'undercity',
+    name: 'Undercity',
+    icon: 'spell_arcane_teleportundercity',
+    aliases: ['Undercity'],
+    tr: {
+      sub: 'Forsaken’ların başkenti',
+      text: 'Lordaeron başkentinin yıkıntıları altındaki şehir; Sylvanas Windrunner’ın Forsaken’larının yurdu. Orgrimmar’dan kalkan zeppelin buraya iner.',
+      note: 'Tirisfal Glades',
+    },
+    en: {
+      sub: 'Capital of the Forsaken',
+      text: 'The city beneath the ruins of Lordaeron’s capital, home of Sylvanas Windrunner’s Forsaken. The zeppelin from Orgrimmar lands here.',
+      note: 'Tirisfal Glades',
+    },
+  },
+  {
+    id: 'forsaken',
+    name: 'Forsaken',
+    icon: 'spell_shadow_raisedead',
+    aliases: ['Forsaken'],
+    tr: {
+      sub: 'Horde’un undead halkı',
+      text: 'Lich King’in denetiminden kurtulan undead’ler. Sylvanas Windrunner’ın önderliğinde Undercity’de yaşıyorlar ve Horde’la ittifak kurdular.',
+    },
+    en: {
+      sub: 'The undead of the Horde',
+      text: 'Undead who broke free of the Lich King’s control. Led by Sylvanas Windrunner, they live in Undercity and have allied with the Horde.',
+    },
+  },
 ];

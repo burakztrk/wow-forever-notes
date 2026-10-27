@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY } from '../../../i18n/stories';
+import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY, ORC_STORY } from '../../../i18n/stories';
 import { racesByFaction } from '../../../lib/codex';
 import { storySlug } from '../../../lib/stories/races';
 import { withBase } from '../../../utils/url';
@@ -18,8 +18,17 @@ const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefin
 // Written stories, newest first; every other race shows as "coming soon" (src/lib/stories/races.ts).
 const features = [
   {
+    slug: 'orc',
+    name: 'Orc',
+    faction: 'Horde',
+    story: ORC_STORY[lang],
+    bg: { src: '/stories/orc/cover.webp', w: 1600, h: 470 },
+    hero: undefined,
+  },
+  {
     slug: 'night-elf',
     name: 'Night Elf',
+    faction: 'Alliance',
     story: NIGHT_ELF_STORY[lang],
     bg: { src: '/stories/night-elf/well-of-eternity.webp', w: 1600, h: 1068 },
     hero: '/stories/night-elf/azshara.webp',
@@ -27,6 +36,7 @@ const features = [
   {
     slug: 'human',
     name: 'Human',
+    faction: 'Alliance',
     story: HUMAN_STORY[lang],
     bg: { src: '/stories/human/stormwind-gate.webp', w: 1920, h: 810 },
     hero: undefined,
@@ -34,6 +44,7 @@ const features = [
   {
     slug: 'dwarf',
     name: 'Dwarf',
+    faction: 'Alliance',
     story: DWARF_STORY[lang],
     bg: { src: '/stories/dwarf/ironforge-forge.webp', w: 1920, h: 864 },
     hero: '/stories/dwarf/magni.webp',
@@ -41,6 +52,7 @@ const features = [
   {
     slug: 'gnome',
     name: 'Gnome',
+    faction: 'Alliance',
     story: GNOME_STORY[lang],
     bg: { src: '/stories/gnome/ironforge.webp', w: 1767, h: 863 },
     hero: '/stories/gnome/mekkatorque.webp',
@@ -61,7 +73,7 @@ const features = [
             {f.hero && <img class="story-feature-hero" src={withBase(f.hero)} alt="" width="300" height="300" loading="lazy" />}
             <span class="story-feature-text">
               <span class="story-feature-over">
-                {f.story.overline} · <span lang="en">Alliance</span>
+                {f.story.overline} · <span lang="en">{f.faction}</span>
               </span>
               <span class="story-feature-name">{f.name}</span>
               <span class="story-feature-lead">{f.story.lead}</span>

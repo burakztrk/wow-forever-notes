@@ -6,8 +6,8 @@
 //   "camera" (viewBox); labels keep their screen size through --k. Its routes wait
 //   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
-//   and calm; "embers" are forge sparks drifting up; "void" and "wisps" are the same motes in
-//   violet and in pale green.
+//   and calm, and "dust" the same wind carrying red sand; "embers" are forge sparks drifting up;
+//   "void" and "wisps" are the same motes in violet and in pale green.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -244,12 +244,13 @@ function init(root: HTMLElement) {
     if (fx.dataset.fx === 'embers') embers(fx);
     else if (fx.dataset.fx === 'void') embers(fx, ['#d2b8ff', '#9b6fe0']);
     else if (fx.dataset.fx === 'wisps') embers(fx, ['#effff8', '#8fe3c8']);
+    else if (fx.dataset.fx === 'dust') blizzard(fx, '#e2a06a');
     else blizzard(fx);
   }
 }
 
-// Hero snow: a blizzard whose wind swings right, left or dies down every few seconds.
-function blizzard(cv: HTMLCanvasElement | null) {
+// Hero snow (or dust, in another colour): a blizzard whose wind swings right, left or dies down every few seconds.
+function blizzard(cv: HTMLCanvasElement | null, color = '#eef1f8') {
   const ctx = cv?.getContext('2d');
   if (!cv || !ctx) return;
   type Flake = { x: number; y: number; z: number; r: number; v: number; s: number };
@@ -287,8 +288,8 @@ function blizzard(cv: HTMLCanvasElement | null) {
     wind += (target - wind) * 0.012;
     const gust = Math.sin(t / 620) * 0.35 * Math.min(1, Math.abs(wind) / 2);
     ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#eef1f8';
-    ctx.strokeStyle = '#eef1f8';
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
     ctx.lineCap = 'round';
     for (const f of flakes) {
       f.s += 0.015;
