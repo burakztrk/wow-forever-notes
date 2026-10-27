@@ -620,8 +620,7 @@ a.story-card:focus-visible {
 /* Lore tooltips on proper names (src/lib/stories/lore.ts; the card is the site's shared #wf-tooltip) */
 .lore .wf-tip--lore{color:inherit;font-weight:inherit;white-space:normal;text-decoration:none;border-bottom:1px dotted rgba(200,166,86,.55);transition:color .15s,border-color .15s}
 .lore .wf-tip--lore:hover,.lore .wf-tip--lore:focus-visible,.lore .wf-tip--lore[aria-describedby]{color:var(--gold);border-bottom-color:var(--gold);text-decoration:none}
-/* Night Elf story: moonlight, the Well of Eternity cover with Azshara, the Sundering figure;
-   .hero.drawn is a cover drawn as an SVG (the Orc story) */
+/* Night Elf story: moonlight, the Well of Eternity cover with Azshara, the Sundering figure */
 .lore.night{--elune:#b9c8ff;--leaf:#7fd6b5}
 .lore .hero.well .hero-bg img{object-position:40% 50%;filter:brightness(.72) saturate(.95) contrast(1.05)}
 @media (max-width:760px){.lore .hero.well .hero-bg img{object-position:36% 50%}}
@@ -632,9 +631,6 @@ a.story-card:focus-visible {
 .lore .chap-art.top.pano{width:min(72%,920px);height:clamp(260px,32vw,440px)}
 .lore .chap-art.top.pano img{object-position:50% 50%}
 .lore .hero-bg > svg{display:block;width:100%;height:100%}
-.lore .hero.drawn .hero-bg{inset:-4% 0 0 0}
-.lore .hero.drawn .hero-shade{background:linear-gradient(90deg,rgba(14,16,21,0) 0%,rgba(14,16,21,0) 40%,rgba(14,16,21,.62) 62%,rgba(14,16,21,.8) 100%),linear-gradient(180deg,rgba(14,16,21,.4) 0%,rgba(14,16,21,0) 20%,rgba(14,16,21,0) 76%,var(--bg) 100%)}
-@media (max-width:760px){.lore .hero.drawn .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.7) 0%,rgba(14,16,21,.45) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
 .lore .stat.moonstat .stat-n{color:var(--elune);text-shadow:0 0 28px rgba(185,200,255,.3)}
 .lore .stat.moonstat .stat-ov{color:var(--elune)}
 .lore #sunder svg{max-height:64vh}
@@ -655,9 +651,6 @@ a.story-card:focus-visible {
 .lore .map.chains .after{opacity:calc(var(--p,1) * 2.2 - 1.1)}
 .lore .map.chains .sparks{opacity:clamp(0,min((var(--p,1) - .12) * 6,(1 - var(--p,1)) * 2.2),1)}
 .lore .map.chains .break-glow{opacity:calc(var(--p,1) * .45)}
-.lore .hero.drawn .flag{transform-box:fill-box;transform-origin:0 50%;animation:flag 3.2s ease-in-out infinite alternate}
-@keyframes flag{to{transform:skewY(-4deg) scaleX(.94)}}
-@media (prefers-reduced-motion:reduce){.lore .hero.drawn .flag{animation:none}}
 /* Troll story: jungle green, a plain hero until the cover arrives, the tribe list */
 .lore.troll{--jungle:#6fcf5a}
 .lore .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(111,207,90,.16),transparent 70%),radial-gradient(ellipse 50% 60% at 80% 10%,rgba(63,138,58,.14),transparent 70%),var(--bg)}
@@ -672,3 +665,16 @@ a.story-card:focus-visible {
 .lore .tribes b{font-weight:600;color:var(--text)}
 .lore .tribes .kind{font:500 11px/16px var(--f-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
 .lore .tribes .where{flex-basis:100%;font-size:14px;line-height:1.45;color:var(--text-dim)}
+/* Orc story: Orgrimmar cover, Thrall, the chapter art */
+.lore .hero.orc-gate .hero-bg img{object-position:50% 45%;filter:brightness(.7) saturate(.95) contrast(1.05)}
+@media (max-width:760px){.lore .hero.orc-gate .hero-bg img{object-position:40% 45%}}
+.lore .sil-thrall{width:clamp(240px,30vw,430px);opacity:.6;right:max(-20px,calc(50% - 720px));-webkit-mask-image:radial-gradient(closest-side at 50% 48%,#000 56%,rgba(0,0,0,.5) 78%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 48%,#000 56%,rgba(0,0,0,.5) 78%,transparent 100%)}
+@media (max-width:760px){.lore .sil-thrall{width:220px;opacity:.35}}
+.lore .hero.orc-gate .hero-shade{background:linear-gradient(90deg,rgba(14,16,21,.15) 0%,rgba(14,16,21,.1) 36%,rgba(14,16,21,.7) 58%,rgba(14,16,21,.86) 100%),linear-gradient(180deg,rgba(14,16,21,.5) 0%,rgba(14,16,21,0) 20%,rgba(14,16,21,0) 74%,var(--bg) 100%)}
+.lore .chap-art.tall{inset:auto 0 0 auto;width:min(30%,340px);height:min(620px,60%)}
+.lore .chap-art.tall img{object-position:50% 14%;opacity:.3}
+@media (max-width:760px){.lore .chap-art.tall{display:none}}
+.lore .chap-art.dim img{opacity:.2}
+.lore .sil-guldan{z-index:0;top:clamp(700px,52vw,760px);bottom:auto;right:auto;left:max(16px,calc(50% - 570px));width:clamp(200px,22vw,300px);aspect-ratio:478/641;opacity:.55;transform:none;-webkit-mask-image:radial-gradient(closest-side at 50% 46%,#000 58%,rgba(0,0,0,.45) 80%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 46%,#000 58%,rgba(0,0,0,.45) 80%,transparent 100%)}
+@media (max-width:760px){.lore .sil-guldan{display:none}}
+.story-feature-hero.soft{-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);opacity:.5}

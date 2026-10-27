@@ -47,7 +47,7 @@ const art = [
   {
     name: 'orc',
     labels: ORC_ART_LABELS,
-    drawings: [ORC_ART.hero, ORC_ART.portal, ORC_ART.chains, ORC_ART.ek, ORC_ART.durotar, ORC_ART.world],
+    drawings: [ORC_ART.portal, ORC_ART.chains, ORC_ART.ek, ORC_ART.durotar, ORC_ART.world],
   },
   { name: 'troll', labels: TROLL_ART_LABELS, drawings: [TROLL_ART.amani, TROLL_ART.gurubashi, TROLL_ART.ek, TROLL_ART.world] },
 ];

@@ -2175,7 +2175,6 @@ export const NIGHT_ELF_STORY: Record<Lang, NightElfStory> = {
 
 export const ORC_ART_LABELS: Record<Lang, Record<string, string>> = {
   tr: {
-    heroAria: 'Durotar’ın kızıl kayalıkları üzerinde batan güneş, Orgrimmar’ın sivri surları ve Horde sancakları',
     portalAria: 'Eastern Kingdoms haritasında Horde’un iki savaştaki yolu: Dark Portal, Stormwind, Blackrock Spire, Grim Batol ve Lordaeron',
     toTomb: 'Tomb of Sargeras’a',
     chainsAria: 'Kaydırdıkça kopan zincir: iki kelepçe ve aradaki halkalar',
@@ -2188,7 +2187,6 @@ export const ORC_ART_LABELS: Record<Lang, Record<string, string>> = {
     worldAria: 'Horde karakolları ve zeppelin yolları: Orgrimmar, Crossroads, Splintertree Post, Grom’gol Base Camp, Stonard ve Hammerfall',
   },
   en: {
-    heroAria: 'The sun setting over the red crags of Durotar, the spiked walls of Orgrimmar and Horde banners',
     portalAria: 'The Horde’s road through both wars on the map of the Eastern Kingdoms: the Dark Portal, Stormwind, Blackrock Spire, Grim Batol and Lordaeron',
     toTomb: 'To the Tomb of Sargeras',
     chainsAria: 'A chain that breaks as you scroll: two shackles and the links between them',
@@ -2477,7 +2475,7 @@ export const ORC_STORY: Record<Lang, OrcStory> = {
       text: 'Zafer ya da ölüm, der orc’lar. Bir kez kanla bağlandılar, sonra zincirlerini kırdılar; şimdi Durotar’ın kızıl toprağında kendi kaderlerini yazıyorlar.',
       nextText: 'Echo Isles’ın halkı: voodoo, loa’lar ve Darkspear trollerinin Horde’a katılışı.',
     },
-    images: 'Haritalar WoW Forever’dan. Kapak ve zincir çizimleri bu sayfa için hazırlandı. World of Warcraft adları Blizzard Entertainment’a aittir.',
+    images: 'Orgrimmar, Thrall, Dark Portal, Ner’zhul ve Gul’dan görselleri Blizzard Entertainment’a aittir. Zincir çizimi bu sayfa için hazırlandı. Haritalar WoW Forever’dan.',
   },
   en: {
     metaDescription:
@@ -2708,7 +2706,7 @@ export const ORC_STORY: Record<Lang, OrcStory> = {
       text: 'Victory or death, say the orcs. Once they were bound by blood; then they broke their chains, and now they write their own fate on the red earth of Durotar.',
       nextText: 'The people of the Echo Isles: voodoo, the loa and how the Darkspear joined the Horde.',
     },
-    images: 'Maps from WoW Forever. The cover and chain drawings were made for this page. World of Warcraft names belong to Blizzard Entertainment.',
+    images: 'The Orgrimmar, Thrall, Dark Portal, Ner’zhul and Gul’dan images belong to Blizzard Entertainment. The chain drawing was made for this page. Maps from WoW Forever.',
   },
 };
 

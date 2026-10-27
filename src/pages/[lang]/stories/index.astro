@@ -30,8 +30,9 @@ const features = [
     name: 'Orc',
     faction: 'Horde',
     story: ORC_STORY[lang],
-    bg: { src: '/stories/orc/cover.webp', w: 1600, h: 470 },
-    hero: undefined,
+    bg: { src: '/stories/orc/orgrimmar.webp', w: 739, h: 415 },
+    hero: '/stories/orc/thrall.webp',
+    soft: true, // a painting with its own sky: fade its edges
   },
   {
     slug: 'night-elf',
@@ -78,7 +79,7 @@ const features = [
         features.map((f) => (
           <a class="story-feature" href={withBase(`/${lang}/stories/${f.slug}/`)}>
             {f.bg && <img class="story-feature-bg" src={withBase(f.bg.src)} alt="" width={f.bg.w} height={f.bg.h} loading="lazy" />}
-            {f.hero && <img class="story-feature-hero" src={withBase(f.hero)} alt="" width="300" height="300" loading="lazy" />}
+            {f.hero && <img class:list={['story-feature-hero', { soft: f.soft }]} src={withBase(f.hero)} alt="" width="300" height="300" loading="lazy" />}
             <span class="story-feature-text">
               <span class="story-feature-over">
                 {f.story.overline} · <span lang="en">{f.faction}</span>

@@ -8,7 +8,6 @@ from art_lib import *  # noqa: F401,F403
 EK_IMG = '<image class="map-img" href="%%base%%maps/eastern-kingdoms.webp" width="1002" height="668"/>'
 WORLD_IMG = '<image class="map-img" href="%%base%%maps/azeroth.webp" width="1002" height="668"/>'
 DUROTAR_IMG = '<image class="map-img" href="%%base%%maps/durotar.webp" width="1002" height="668"/>'
-SUN, EMBER, DUSK = "#ffc27a", "#e0602a", "#5a1d12"
 
 # places on the Eastern Kingdoms map (the same reading as the Human story's)
 SW, LD, DP, BR, GB = (437, 455), (468, 155), (543, 556), (505, 438), (572, 322)
@@ -37,82 +36,6 @@ def revealed(prefix, paths, w=1002, h=668):
 def az(x, y):
     """Eastern Kingdoms map coordinates -> the Azeroth map (as in the Human story)."""
     return (round(374 + x * .78, 1), round(69 + y * .744, 1))
-
-
-# ---------- Hero: sunset over Durotar's red crags and the spiked walls of Orgrimmar ----------
-def ridge(r, x0, x1, base, lo, hi, step=(40, 90), spire=.25):
-    """A skyline of flat-topped mesas and thin rock spires between x0 and x1, closed at `base`."""
-    pts = [(x0, base)]
-    x = x0
-    while x < x1:
-        w = r.uniform(*step)
-        top = r.uniform(lo, hi)
-        if r.random() < spire:
-            pts += [(x, base - (base - top) * .35), (x + w * .42, top - r.uniform(30, 90)), (x + w * .58, top - r.uniform(20, 70)),
-                    (x + w, base - (base - top) * .3)]
-        else:
-            pts += [(x + w * .12, top + r.uniform(0, 8)), (x + w * .88, top + r.uniform(0, 8)), (x + w, base - (base - top) * r.uniform(.2, .6))]
-        x += w
-    pts.append((x1, base))
-    return "M" + "L".join(P(*p) for p in pts) + "Z"
-
-
-def hero_svg():
-    r = random.Random(5)
-    W, H = 1600, 760
-    sx, sy, sr = 330, 468, 108  # the sun, low over the far ridge
-    gx, base = 470, 640  # Orgrimmar's gate (left of the hero copy) and the foot of its wall
-    sky = ('<linearGradient id="oSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#140a0b"/>'
-           f'<stop offset=".42" stop-color="{DUSK}"/><stop offset=".72" stop-color="#b8461d"/><stop offset=".86" stop-color="#ef8a3a"/>'
-           '<stop offset="1" stop-color="#f6a85a"/></linearGradient>'
-           f'<radialGradient id="oSun"><stop offset="0" stop-color="{SUN}" stop-opacity=".55"/>'
-           f'<stop offset=".35" stop-color="{EMBER}" stop-opacity=".2"/><stop offset="1" stop-color="{EMBER}" stop-opacity="0"/></radialGradient>'
-           '<linearGradient id="oHaze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f08a3c" stop-opacity="0"/>'
-           '<stop offset=".6" stop-color="#e06a2c" stop-opacity=".28"/><stop offset="1" stop-color="#e06a2c" stop-opacity="0"/></linearGradient>'
-           '<linearGradient id="oGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a0f09"/><stop offset="1" stop-color="#0e0605"/></linearGradient>')
-    stars = "".join(
-        f'<circle cx="{f(x)}" cy="{f(y)}" r="{f(r.uniform(.5, 1.4))}"{" class=\"tw\"" if r.random() < .4 else ""} '
-        f'style="animation-delay:{f(r.uniform(0, 3.6))}s"/>'
-        for x, y in ((r.uniform(0, W), r.uniform(0, 170)) for _ in range(60)))
-    sun = (f'<circle cx="{sx}" cy="{sy}" r="{sr * 4}" fill="url(#oSun)"/>'
-           f'<circle cx="{sx}" cy="{sy}" r="{sr}" fill="{SUN}"/><circle cx="{sx}" cy="{sy}" r="{sr * .82}" fill="#ffd9a0" opacity=".55"/>')
-    far = f'<path d="{ridge(r, -20, W + 20, 600, 470, 540, (50, 110), .18)}" fill="#8a3418" opacity=".62"/>'
-    mid = f'<path d="{ridge(r, -20, W + 20, 640, 520, 585, (40, 90), .35)}" fill="#5c1f10"/>'
-    haze = f'<rect y="470" width="{W}" height="200" fill="url(#oHaze)"/>'
-    # the wall: a palisade of spikes, two gate towers with curved tusks and banners
-    wl, wr, wt = 90, 1050, 572
-    spikes = "".join(f'L{f(x)} {f(wt - r.uniform(16, 30))}L{f(x + 9)} {wt}' for x in range(wl, wr, 18))
-    wall = f'<path d="M{wl} {base}L{wl} {wt}{spikes}L{wr} {wt}L{wr} {base}Z" fill="#2a0f09"/>'
-    towers, tusks, banners = "", "", ""
-    for tx, side in ((gx - 88, -1), (gx + 88, 1)):
-        tw, tt = 34, 452
-        towers += (f'<path d="M{tx - tw} {base}L{tx - tw + 6} {tt}L{tx - tw - 10} {tt}L{tx} {tt - 64}L{tx + tw + 10} {tt}'
-                   f'L{tx + tw - 6} {tt}L{tx + tw} {base}Z" fill="#200b07"/>')
-        # two curved tusks on the outer side of each gate tower
-        for dy, k in ((22, 1), (88, .72)):
-            x0, y0 = tx + side * (tw - 6), tt + dy
-            tusks += (f'<path d="M{x0} {y0}C{f(x0 + side * 44 * k)} {y0 - 4} {f(x0 + side * 74 * k)} {f(y0 - 30 * k)} {f(x0 + side * 80 * k)} {f(y0 - 76 * k)}'
-                      f'C{f(x0 + side * 58 * k)} {f(y0 - 36 * k)} {f(x0 + side * 34 * k)} {f(y0 - 4 + 26 * k)} {x0} {f(y0 + 30 * k)}Z" '
-                      f'fill="#e8d6b4" opacity=".86"/>')
-        pole = tx + 2
-        banners += (f'<path d="M{pole} {tt - 60}V{tt - 160}" stroke="#1a0906" stroke-width="5"/>'
-                    f'<path class="flag" d="M{pole + 2} {tt - 156}h62l-14 20 14 20h-62Z" fill="#a3241a"/>'
-                    f'<path d="M{pole + 18} {tt - 146}l8 10-8 10M{pole + 34} {tt - 146}l-8 10 8 10" stroke="#1a0906" stroke-width="3" fill="none"/>')
-    gate = (f'<path d="M{gx - 54} {base}V{base - 70}Q{gx} {base - 132} {gx + 54} {base - 70}V{base}Z" fill="#100504"/>'
-            f'<path d="M{gx - 54} {base - 70}Q{gx} {base - 132} {gx + 54} {base - 70}" stroke="#4a1a0e" stroke-width="7" fill="none"/>'
-            f'<path d="M{gx - 30} {base}V{base - 84}M{gx} {base}V{base - 98}M{gx + 30} {base}V{base - 84}" stroke="#2a0f09" stroke-width="5"/>')
-    fires = "".join(f'<circle cx="{x}" cy="{base - 6}" r="{rr}" fill="{EMBER}" opacity=".85" class="tw" style="animation-delay:{d}s"/>'
-                    f'<circle cx="{x}" cy="{base - 6}" r="{rr * 4}" fill="url(#oSun)"/>'
-                    for x, rr, d in [(gx - 132, 4, 0), (gx + 132, 4, 1.2), (gx - 330, 3, .6), (gx + 400, 3, 2.1)])
-    ground = f'<rect y="{base - 2}" width="{W}" height="{H - base + 2}" fill="url(#oGround)"/>'
-    rocks = "".join(
-        f'<path d="M{f(x)} {base + 4}L{f(x + w * .3)} {f(base - h)}L{f(x + w * .55)} {f(base - h * .7)}L{f(x + w)} {base + 4}Z" fill="#160806"/>'
-        for x, w, h in ((r.uniform(0, W), r.uniform(30, 90), r.uniform(10, 40)) for _ in range(18)))
-    near = (f'<path d="M-20 {H}L-20 600C60 560 120 520 150 470C170 520 200 560 240 {base + 20}L300 {H}Z" fill="#120605"/>'
-            f'<path d="M{W + 20} {H}L{W + 20} 590C{W - 70} 560 {W - 130} 540 {W - 170} 500C{W - 190} 560 {W - 230} 610 {W - 300} {H}Z" fill="#120605"/>')
-    return (f'<svg viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="%%heroAria%%"><defs>{sky}</defs>'
-            f'<rect width="{W}" height="{H}" fill="url(#oSky)"/><g fill="#ffe3c0" opacity=".6">{stars}</g>{sun}{far}{haze}{mid}'
-            f'{ground}{rocks}{banners}{wall}{towers}{tusks}{gate}{fires}{near}</svg>')
 
 
 # ---------- Chapter II: the Horde's road through the First and Second Wars ----------
@@ -281,7 +204,6 @@ def icons():
 
 def main():
     write_ts(LIB / "orc-art.ts", "ORC_ART", {
-        "hero": hero_svg(),
         "portal": portal_svg(),
         "chains": chains_svg(),
         "ek": ek_svg(),

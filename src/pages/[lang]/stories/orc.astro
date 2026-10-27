@@ -26,6 +26,7 @@ const u = STORY_UI[lang];
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/orc/`)])) as Record<Lang, string>;
 const art = (svg: string) => fillArt(svg, ORC_ART_LABELS[lang], withBase('/'));
 const ic = ORC_ART.icons;
+const img = (name: string) => withBase(`/stories/orc/${name}`);
 // proper names in the text get lore tooltips (src/i18n/lore.ts); the cards ride in the #wf-glossary island
 const lx = (text: string) => loreHtml(text);
 const tips = loreTips(lang, loreIds(s));
@@ -49,9 +50,10 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
   <div class="lore orc" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
-    <section class="hero drawn" aria-labelledby="h-orc">
-      <div class="hero-bg" set:html={art(ORC_ART.hero)} />
+    <section class="hero orc-gate" aria-labelledby="h-orc">
+      <div class="hero-bg" aria-hidden="true"><img src={img('orgrimmar.webp')} alt="" width="739" height="415" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
+      <div class="sil sil-thrall" aria-hidden="true"><img src={img('thrall.webp')} alt="" width="448" height="446" /></div>
       <canvas id="snow" data-fx="dust" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
@@ -88,7 +90,9 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     </section>
 
     <!-- I · origin -->
-    <section class="chap" id="origin" aria-labelledby="h-origin">
+    <section class="chap chap-bg" id="origin" aria-labelledby="h-origin">
+      <div class="chap-art top" aria-hidden="true"><img src={img('nerzhul.webp')} alt="" width="1000" height="500" loading="lazy" /></div>
+      <div class="chap-art tall" aria-hidden="true"><img src={img('guldan.webp')} alt="" width="760" height="1040" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">I</div>
@@ -124,7 +128,9 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- II · the Dark Portal and the two wars -->
-    <section class="chap" id="portal" aria-labelledby="h-portal">
+    <section class="chap chap-bg" id="portal" aria-labelledby="h-portal">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('dark-portal.webp')} alt="" width="379" height="180" loading="lazy" /></div>
+      <div class="sil sil-guldan" aria-hidden="true"><img src={img('guldan-model.webp')} alt="" width="478" height="641" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">II</div>
@@ -183,7 +189,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- III · the internment camps -->
-    <section class="chap" id="camps" aria-labelledby="h-camps">
+    <section class="chap chap-bg" id="camps" aria-labelledby="h-camps">
+      <div class="chap-art top pano dim" aria-hidden="true"><img src={img('dark-portal.webp')} alt="" width="379" height="180" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">III</div>
