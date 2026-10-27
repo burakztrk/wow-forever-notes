@@ -6,8 +6,8 @@
 //   "camera" (viewBox); labels keep their screen size through --k. Its routes wait
 //   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
-//   and calm, and "dust" the same wind carrying red sand; "embers" are forge sparks drifting up;
-//   "void", "wisps" and "voodoo" are the same motes in violet, pale green and jungle green.
+//   and calm; "embers" are forge sparks drifting up; "void", "wisps" and "voodoo" are the same
+//   motes in violet, pale green and jungle green; "cinders" are tiny red flames that turn grey ash and shrink.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -244,14 +244,14 @@ function init(root: HTMLElement) {
     if (fx.dataset.fx === 'embers') embers(fx);
     else if (fx.dataset.fx === 'void') embers(fx, ['#d2b8ff', '#9b6fe0']);
     else if (fx.dataset.fx === 'wisps') embers(fx, ['#effff8', '#8fe3c8']);
-    else if (fx.dataset.fx === 'dust') blizzard(fx, '#e2a06a');
+    else if (fx.dataset.fx === 'cinders') cinders(fx);
     else if (fx.dataset.fx === 'voodoo') embers(fx, ['#e6ffd0', '#6fcf5a']);
     else blizzard(fx);
   }
 }
 
-// Hero snow (or dust, in another colour): a blizzard whose wind swings right, left or dies down every few seconds.
-function blizzard(cv: HTMLCanvasElement | null, color = '#eef1f8') {
+// Hero snow: a blizzard whose wind swings right, left or dies down every few seconds.
+function blizzard(cv: HTMLCanvasElement | null) {
   const ctx = cv?.getContext('2d');
   if (!cv || !ctx) return;
   type Flake = { x: number; y: number; z: number; r: number; v: number; s: number };
@@ -289,8 +289,8 @@ function blizzard(cv: HTMLCanvasElement | null, color = '#eef1f8') {
     wind += (target - wind) * 0.012;
     const gust = Math.sin(t / 620) * 0.35 * Math.min(1, Math.abs(wind) / 2);
     ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = color;
-    ctx.strokeStyle = color;
+    ctx.fillStyle = '#eef1f8';
+    ctx.strokeStyle = '#eef1f8';
     ctx.lineCap = 'round';
     for (const f of flakes) {
       f.s += 0.015;
@@ -380,6 +380,82 @@ function embers(cv: HTMLCanvasElement, [hot, warm] = ['#ffb36b', '#ff8a3a']) {
       ctx.fill();
     }
     ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(tick);
+  };
+  new IntersectionObserver(([e]) => {
+    const was = run;
+    run = e.isIntersecting;
+    if (run && !was) requestAnimationFrame(tick);
+  }).observe(cv);
+  addEventListener('resize', size);
+}
+
+// Cinders: tiny flame-shaped sparks that start red, cool to grey ash as they drift up and shrink away.
+function cinders(cv: HTMLCanvasElement) {
+  const ctx = cv.getContext('2d');
+  if (!ctx) return;
+  type Cinder = { x: number; y: number; r: number; v: number; s: number; life: number; age: number };
+  let w = 0;
+  let h = 0;
+  let list: Cinder[] = [];
+  let run = false;
+  const spawn = (anywhere: boolean): Cinder => ({
+    x: Math.random() * w,
+    y: anywhere ? Math.random() * h : h + 8,
+    r: Math.random() * 2.2 + 2.2,
+    v: 0.4 + Math.random() * 0.8,
+    s: Math.random() * 6.28,
+    life: 300 + Math.random() * 380,
+    age: anywhere ? Math.random() * 300 : 0,
+  });
+  const size = () => {
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    w = cv.clientWidth;
+    h = cv.clientHeight;
+    cv.width = w * dpr;
+    cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    list = Array.from({ length: Math.round(Math.max(36, Math.min(110, w / 12))) }, () => spawn(true));
+  };
+  size();
+  const mix = (a: number[], b: number[], k: number) => a.map((v, i) => Math.round(v + (b[i] - v) * k));
+  const RED = [255, 70, 40];
+  const EMBER = [255, 120, 50];
+  const ASH = [170, 170, 178];
+  const tick = (t: number) => {
+    if (!run) return;
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < list.length; i++) {
+      const p = list[i];
+      p.age += 1;
+      p.s += 0.03;
+      p.y -= p.v;
+      p.x += Math.sin(p.s + t / 1100) * 0.4 + 0.25;
+      const k = p.age / p.life;
+      if (k >= 1 || p.y < -10) {
+        list[i] = spawn(false);
+        continue;
+      }
+      // red flame first, then cooling to grey; the size grows a little, then shrinks
+      const heat = Math.max(0, 1 - k / 0.4);
+      const c = k < 0.4 ? mix(EMBER, RED, heat) : mix(RED, ASH, Math.min(1, (k - 0.4) / 0.2));
+      const r = p.r * (k < 0.15 ? 0.7 + k * 2 : 1 - ((k - 0.15) / 0.85) * 0.85);
+      const flicker = 0.8 + Math.sin(t / 80 + p.s * 7) * 0.2;
+      ctx.globalAlpha = Math.min(1, k * 8) * (1 - Math.max(0, k - 0.7) / 0.3) * (heat > 0 ? flicker : 0.9);
+      ctx.fillStyle = `rgb(${c[0]},${c[1]},${c[2]})`;
+      const lean = Math.sin(p.s + t / 1100) * 0.4;
+      ctx.beginPath();
+      if (heat > 0) {
+        // a small flame: round belly, pointed tip leaning with the draught
+        ctx.moveTo(p.x + lean * r * 2, p.y - r * 2.6);
+        ctx.quadraticCurveTo(p.x + r * 1.5, p.y - r * 0.4, p.x, p.y + r);
+        ctx.quadraticCurveTo(p.x - r * 1.5, p.y - r * 0.4, p.x + lean * r * 2, p.y - r * 2.6);
+      } else {
+        ctx.arc(p.x, p.y, r * 0.6, 0, 6.283);
+      }
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
     requestAnimationFrame(tick);
   };
   new IntersectionObserver(([e]) => {

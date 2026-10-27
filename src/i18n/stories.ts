@@ -2177,9 +2177,6 @@ export const ORC_ART_LABELS: Record<Lang, Record<string, string>> = {
   tr: {
     portalAria: 'Eastern Kingdoms haritasında Horde’un iki savaştaki yolu: Dark Portal, Stormwind, Blackrock Spire, Grim Batol ve Lordaeron',
     toTomb: 'Tomb of Sargeras’a',
-    chainsAria: 'Kaydırdıkça kopan zincir: iki kelepçe ve aradaki halkalar',
-    chained: 'Esaret',
-    free: 'Özgürlük',
     ekAria: 'Horde’un Lordaeron’dan Kalimdor’a göçü: deniz yolu, Darkspear adası, The Barrens ve Ashenvale; adım adım',
     stormIsle: 'Fırtına adası',
     centaurs: 'Centaur’lar',
@@ -2189,9 +2186,6 @@ export const ORC_ART_LABELS: Record<Lang, Record<string, string>> = {
   en: {
     portalAria: 'The Horde’s road through both wars on the map of the Eastern Kingdoms: the Dark Portal, Stormwind, Blackrock Spire, Grim Batol and Lordaeron',
     toTomb: 'To the Tomb of Sargeras',
-    chainsAria: 'A chain that breaks as you scroll: two shackles and the links between them',
-    chained: 'Captivity',
-    free: 'Freedom',
     ekAria: 'The Horde’s exodus from Lordaeron to Kalimdor: the sea road, the Darkspear isle, the Barrens and Ashenvale, step by step',
     stormIsle: 'Storm-wrecked isle',
     centaurs: 'Centaurs',
@@ -2219,7 +2213,7 @@ export interface OrcStory {
     cards: Card[];
     note: string;
   };
-  camps: { title: string; intro: string; more: string[]; figureCaption: string; cards: Card[]; note: string };
+  camps: { title: string; intro: string; more: string[]; cards: Card[]; note: string };
   exodus: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
   today: {
     title: string;
@@ -2338,7 +2332,6 @@ export const ORC_STORY: Record<Lang, OrcStory> = {
         'Özgür kalan Thrall halkını aradı. Hâlâ insanlarla savaşan Grom Hellscream’i buldu, sonra Alterac Mountains’ta saklanan Frostwolf klanına ulaştı. Frostwolf’ların yaşlı shaman’ı Drek’Thar ona elementlerle konuşmayı öğretti; Thrall halkının unuttuğu yolu, şamanizmi öğrendi.',
         'Saklandığı yerden çıkan Orgrim Doomhammer de ona katıldı. Birlikte kampları birer birer açtılar. Bir baskında ölümcül şekilde yaralanan Doomhammer, ölmeden önce zırhını, çekicini ve Horde’u Thrall’a bıraktı. Yeni warchief Durnholde’a geri döndü ve Blackmoore’u yendi.',
       ],
-      figureCaption: 'Kaydırdıkça zincir kopuyor.',
       cards: [
         {
           name: 'Aedelas Blackmoore',
@@ -2475,7 +2468,7 @@ export const ORC_STORY: Record<Lang, OrcStory> = {
       text: 'Zafer ya da ölüm, der orc’lar. Bir kez kanla bağlandılar, sonra zincirlerini kırdılar; şimdi Durotar’ın kızıl toprağında kendi kaderlerini yazıyorlar.',
       nextText: 'Echo Isles’ın halkı: voodoo, loa’lar ve Darkspear trollerinin Horde’a katılışı.',
     },
-    images: 'Orgrimmar, Thrall, Dark Portal, Ner’zhul ve Gul’dan görselleri Blizzard Entertainment’a aittir. Zincir çizimi bu sayfa için hazırlandı. Haritalar WoW Forever’dan.',
+    images: 'Orgrimmar, Thrall, Dark Portal, Ner’zhul ve Gul’dan görselleri Blizzard Entertainment’a aittir. Haritalar WoW Forever’dan.',
   },
   en: {
     metaDescription:
@@ -2569,7 +2562,6 @@ export const ORC_STORY: Record<Lang, OrcStory> = {
         'Free at last, Thrall went looking for his people. He found Grom Hellscream, still fighting the humans, then reached the Frostwolf clan hiding in the Alterac Mountains. The Frostwolves’ old shaman, Drek’Thar, taught him to speak with the elements; Thrall learned the way his people had forgotten, shamanism.',
         'Orgrim Doomhammer came out of hiding to join him. Together they broke open the camps one by one. Mortally wounded in a raid, Doomhammer left his armour, his hammer and the Horde to Thrall before he died. The new warchief went back to Durnholde and defeated Blackmoore.',
       ],
-      figureCaption: 'The chain breaks as you scroll.',
       cards: [
         {
           name: 'Aedelas Blackmoore',
@@ -2706,7 +2698,7 @@ export const ORC_STORY: Record<Lang, OrcStory> = {
       text: 'Victory or death, say the orcs. Once they were bound by blood; then they broke their chains, and now they write their own fate on the red earth of Durotar.',
       nextText: 'The people of the Echo Isles: voodoo, the loa and how the Darkspear joined the Horde.',
     },
-    images: 'The Orgrimmar, Thrall, Dark Portal, Ner’zhul and Gul’dan images belong to Blizzard Entertainment. The chain drawing was made for this page. Maps from WoW Forever.',
+    images: 'The Orgrimmar, Thrall, Dark Portal, Ner’zhul and Gul’dan images belong to Blizzard Entertainment. Maps from WoW Forever.',
   },
 };
 

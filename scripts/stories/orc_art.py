@@ -63,49 +63,6 @@ def portal_svg():
             f'<defs>{masks}</defs>{EK_IMG}{marks}{lines}{labels}{heads}{pins}</svg>')
 
 
-# ---------- Chapter III: a chain that breaks as the page scrolls (data-moves) ----------
-def chains_svg():
-    W, H, cy = 1000, 340, 170
-    iron = ('<linearGradient id="oIron" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b7bcc4"/>'
-            '<stop offset=".45" stop-color="#6f757f"/><stop offset="1" stop-color="#2c3038"/></linearGradient>'
-            '<radialGradient id="oSpark"><stop offset="0" stop-color="#fff2c8"/><stop offset=".4" stop-color="#ffb36b" stop-opacity=".8"/>'
-            '<stop offset="1" stop-color="#e0602a" stop-opacity="0"/></radialGradient>')
-
-    def cuff(cx):
-        return (f'<circle cx="{cx}" cy="{cy}" r="74" fill="none" stroke="#14161b" stroke-width="34"/>'
-                f'<circle cx="{cx}" cy="{cy}" r="74" fill="none" stroke="url(#oIron)" stroke-width="26"/>'
-                f'<circle cx="{cx}" cy="{cy}" r="88" fill="none" stroke="#d6dae0" stroke-opacity=".18" stroke-width="2"/>'
-                + "".join(f'<circle cx="{f(cx + math.cos(a) * 74)}" cy="{f(cy + math.sin(a) * 74)}" r="4.5" fill="#d6dae0" opacity=".7"/>'
-                          for a in [i * math.pi / 4 + math.pi / 8 for i in range(8)]))
-
-    def link(x, flat):
-        if flat:
-            return (f'<ellipse cx="{x}" cy="{cy}" rx="40" ry="22" fill="none" stroke="#14161b" stroke-width="16"/>'
-                    f'<ellipse cx="{x}" cy="{cy}" rx="40" ry="22" fill="none" stroke="url(#oIron)" stroke-width="11"/>')
-        return (f'<rect x="{x - 9}" y="{cy - 30}" width="18" height="60" rx="9" fill="none" stroke="#14161b" stroke-width="13"/>'
-                f'<rect x="{x - 9}" y="{cy - 30}" width="18" height="60" rx="9" fill="#2c3038" stroke="url(#oIron)" stroke-width="8"/>')
-
-    def half(x, side):
-        # the broken middle link: a C open towards the break
-        d = (f"M{x + side * 4} {cy - 22}C{x - side * 30} {cy - 24} {x - side * 46} {cy - 12} {x - side * 46} {cy}"
-             f"C{x - side * 46} {cy + 12} {x - side * 30} {cy + 24} {x + side * 4} {cy + 22}")
-        return (f'<path d="{d}" fill="none" stroke="#14161b" stroke-width="16" stroke-linecap="round"/>'
-                f'<path d="{d}" fill="none" stroke="url(#oIron)" stroke-width="11" stroke-linecap="round"/>')
-
-    left = cuff(150) + link(262, False) + link(330, True) + link(398, False) + half(470, -1)
-    right = half(530, 1) + link(602, False) + link(670, True) + link(738, False) + cuff(850)
-    r = random.Random(9)
-    sparks = "".join(f'<circle cx="{f(500 + r.uniform(-70, 70))}" cy="{f(cy + r.uniform(-60, 60))}" r="{f(r.uniform(2, 6))}" fill="url(#oSpark)"/>'
-                     for _ in range(22))
-    glow = f'<circle class="break-glow" cx="500" cy="{cy}" r="150" fill="url(#oSpark)"/>'
-    labels = (f'<g class="before">{ftext(500, H - 26, "%%chained%%", "ft goldt")}</g>'
-              f'<g class="after">{ftext(500, H - 26, "%%free%%", "ft goldt")}</g>')
-    # the viewBox leaves room for the halves to drift apart (data-move)
-    return (f'<svg class="map chains" viewBox="-110 0 {W + 220} {H}" role="img" aria-label="%%chainsAria%%"><defs>{iron}</defs>'
-            f'{glow}<g data-move="-100,8,-9">{left}</g><g data-move="100,-8,9">{right}</g>'
-            f'<g class="sparks">{sparks}</g>{labels}</svg>')
-
-
 # ---------- Chapter IV: the exodus to Kalimdor, one layer and one camera per step ----------
 LDW = az(*LD)
 ISLE, BAR, MUL, ASH, DFC = (384, 440), (262, 330), (215, 350), (226, 262), (262, 248)
@@ -205,7 +162,6 @@ def icons():
 def main():
     write_ts(LIB / "orc-art.ts", "ORC_ART", {
         "portal": portal_svg(),
-        "chains": chains_svg(),
         "ek": ek_svg(),
         "durotar": durotar_svg(),
         "world": world_svg(),

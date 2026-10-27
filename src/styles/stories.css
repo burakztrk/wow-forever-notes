@@ -640,17 +640,11 @@ a.story-card:focus-visible {
 .lore .map.sundering .well,.lore .map.sundering .well-glow{opacity:calc(1 - var(--p,1) * 1.4)}
 .lore #teldrassil svg{max-height:64vh}
 .lore.night .map .rt.void{stroke:#9b7fd0}
-/* Orc story: the Durotar dusk cover, the war map, the breaking chain */
+/* Orc story: the war map and Durotar */
 .lore.orc{--frost:#8fb8e0}
 .lore .split.top{align-items:start}
 .lore #warpath svg{max-height:82vh}
 .lore #durotar svg{max-height:76vh}
-.lore #chains svg{max-height:46vh}
-.lore .map.chains [data-move]{transform-box:fill-box;transform-origin:center}
-.lore .map.chains .before{opacity:calc(1 - var(--p,1) * 2.4)}
-.lore .map.chains .after{opacity:calc(var(--p,1) * 2.2 - 1.1)}
-.lore .map.chains .sparks{opacity:clamp(0,min((var(--p,1) - .12) * 6,(1 - var(--p,1)) * 2.2),1)}
-.lore .map.chains .break-glow{opacity:calc(var(--p,1) * .45)}
 /* Troll story: jungle green, a plain hero until the cover arrives, the tribe list */
 .lore.troll{--jungle:#6fcf5a}
 .lore .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(111,207,90,.16),transparent 70%),radial-gradient(ellipse 50% 60% at 80% 10%,rgba(63,138,58,.14),transparent 70%),var(--bg)}

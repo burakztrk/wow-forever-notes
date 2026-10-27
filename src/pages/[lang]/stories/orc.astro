@@ -54,7 +54,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="hero-bg" aria-hidden="true"><img src={img('orgrimmar.webp')} alt="" width="739" height="415" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="sil sil-thrall" aria-hidden="true"><img src={img('thrall.webp')} alt="" width="448" height="446" /></div>
-      <canvas id="snow" data-fx="dust" aria-hidden="true"></canvas>
+      <canvas id="snow" data-fx="cinders" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
           <RaceChips lang={lang} current="orc" />
@@ -197,10 +197,6 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           <div><p class="ov">{u.chapter} III · {s.chapters.camps}</p><h2 class="h2" id="h-camps">{s.camps.title}</h2></div>
         </header>
         <div class="prose rv">{[s.camps.intro, ...s.camps.more].map((p) => <p set:html={lx(p)} />)}</div>
-        <figure class="map-fig rv" id="chains" data-p=".8,.3" data-moves>
-          <Fragment set:html={art(ORC_ART.chains)} />
-          <figcaption>{s.camps.figureCaption}</figcaption>
-        </figure>
         <div class="war-cards">
           {
             s.camps.cards.map((card, i) => (

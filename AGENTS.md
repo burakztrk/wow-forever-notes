@@ -71,7 +71,7 @@ Node 22.12+.
   filled per language by `src/lib/stories/art.ts`). Scroll effects in `src/scripts/story.ts`, driven by markup:
   `data-p="start,end"` sets `--p`; `data-routes` draws route masks (`data-r`, `data-show`); `data-moves` drifts parts
   with `data-move="dx,dy,deg"`; the `#ek` map's `data-cams` holds one camera per step; `canvas#snow[data-fx]` is
-  `snow` (blizzard), `dust` (the same wind with red sand), `embers` (forge sparks), `void` (violet motes), `wisps` (moonlit wisps) or `voodoo` (jungle-green motes). Styles in `src/styles/stories.css`, all scoped under `.lore`; images
+  `snow` (blizzard), `cinders` (small red flames that cool to grey ash), `embers` (forge sparks), `void` (violet motes), `wisps` (moonlit wisps) or `voodoo` (jungle-green motes). Styles in `src/styles/stories.css`, all scoped under `.lore`; images
   in `public/stories/<race>/`; cover art (hero background, index card) comes from the site owner, so a new story gets no drawn
   cover: leave it plain until the image arrives. Proper names in the Gnome, Dwarf, Human, Night Elf, Orc and Troll stories get lore cards: `src/i18n/lore.ts` (TR + EN, `aliases` are
   the exact spellings in the copy, `icon` from `public/icons`) and `src/lib/stories/lore.ts` (`loreHtml()` wraps the first
