@@ -320,6 +320,9 @@
   border-radius: 8px;
   border-color: var(--faction-color);
 }
+.race-card.has-cover .mini-icons {
+  margin-top: 16px;
+}
 .race-card.has-cover .mini-icons img {
   width: 24px;
   height: 24px;
