@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-23T19:37:57.622Z",
-  "build": "1.60.1.70532",
+  "generatedAt": "2026-10-27T23:43:08.076Z",
+  "build": "1.60.1.70634",
   "source": "https://wowforever.wclbox.com/en (新手盒子·魔兽世界无限数据库); descriptions: https://wowforevertools.com",
   "entries": [
     {
@@ -103,10 +103,10 @@
       "passive": false,
       "cast": "Instant",
       "cooldown": "2 min",
-      "desc": "Your aperiodic damage skills consume 10% less energy and deal 10% more damage.",
+      "desc": "Your aperiodic damage skills cost 10% less energy and deal 10% more damage for 8 seconds.",
       "status": "new",
       "sourceUrl": "https://wowforever.wclbox.com/en/zhongzu#race=alliance-gnome",
-      "descTr": "Periyodik olmayan hasar yeteneklerin %10 daha az enerji harcar ve %10 daha fazla hasar verir."
+      "descTr": "Periyodik olmayan hasar yeteneklerin 8 saniye boyunca %10 daha az Enerji harcar ve %10 daha fazla hasar verir."
     },
     {
       "id": "racial/racial-gnome-expansive-mind",
@@ -125,7 +125,7 @@
     {
       "id": "racial/racial-high-order-skyborne-read-leyline",
       "kind": "racial",
-      "name": "Read Leyline",
+      "name": "Read Ley Line",
       "icon": "ability_mage_incantersabsorbtion",
       "races": [
         "alliance-skyborne-high-order"
@@ -133,9 +133,10 @@
       "passive": false,
       "cast": "Cast time 2 seconds",
       "cooldown": "2 min",
-      "desc": "",
+      "desc": "Attempt to activate the power of a nearby magic web, increasing HP and mana regeneration by 100%. Lasts for 30 seconds if there is no magic web nearby; lasts for 15 minutes if there is.",
       "status": "new",
-      "sourceUrl": "https://wowforever.wclbox.com/en/zhongzu#race=alliance-skyborne-high-order"
+      "sourceUrl": "https://wowforever.wclbox.com/en/zhongzu#race=alliance-skyborne-high-order",
+      "descTr": "Yakındaki bir Ley Line'ın gücünü etkinleştirmeye çalışır; can ve Mana yenilenmesini %100 artırır. Yakınlarda Ley Line yoksa 30 saniye, varsa 15 dakika sürer."
     },
     {
       "id": "racial/racial-human-perception",
@@ -575,8 +576,8 @@
       "status": "changed",
       "change": "[Talent Skill: Points talent and gains it. Trainers don't teach it.]",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/druid/calc-druid-balance-moonkin-form",
-      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]",
-      "descTr": "Moonkin Form'a dönüşür; Omen of Clarity'nin tetiklenme şansını %100, eşyalardan gelen Zırh katkısını %360 artırır ve 45 yard içindeki tüm parti veya raid üyelerinin büyü kritik vuruş şansını %3 artırır. Ayrıca büyücüyü Polymorph etkilerinden korur ve iyileştirme büyülerinin kullanımını engeller. Şekil değiştirme eylemi büyücüyü Polymorph ve Hareketi Engelleyen etkilerden kurtarır."
+      "descTr": "Moonkin Form'a dönüşür; Omen of Clarity'nin tetiklenme şansını %100, eşyalardan gelen Zırh katkısını %360 artırır ve 45 yard içindeki tüm parti veya raid üyelerinin büyü kritik vuruş şansını %3 artırır. Ayrıca büyücüyü Polymorph etkilerinden korur ve iyileştirme büyülerinin kullanımını engeller. Şekil değiştirme eylemi büyücüyü Polymorph ve Hareketi Engelleyen etkilerden kurtarır.",
+      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]"
     },
     {
       "id": "spell/calc-druid-restoration-nature-s-swiftness",
@@ -921,8 +922,8 @@
       "status": "changed",
       "change": "[Talent Skill: Points talent and gains it. Trainers don't teach it.]",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/priest/calc-priest-discipline-inner-focus",
-      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]",
-      "descTr": "Etkinleştirildiğinde bir sonraki büyün %100 daha az mana harcar ve kritik vuruş ya da kritik iyileştirme şansı %25 artar (periyodik olmayan ve bunu yapabilecek bir büyüyse)."
+      "descTr": "Etkinleştirildiğinde bir sonraki büyün %100 daha az mana harcar ve kritik vuruş ya da kritik iyileştirme şansı %25 artar (periyodik olmayan ve bunu yapabilecek bir büyüyse).",
+      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]"
     },
     {
       "id": "spell/calc-priest-discipline-power-infusion",
@@ -1190,8 +1191,8 @@
       "status": "changed",
       "change": "[Talent Skill: Points talent and gains it. Trainers don't teach it.]",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/calc-shaman-elemental-elemental-mastery",
-      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]",
-      "descTr": "Fire ve Lightning üzerinde ustalık kazanırsın; Lightning Bolt ve Lava Burst'ün cast süresini 0,5 saniye azaltır ve Chain Lightning'in bekleme süresini kaldırır. 15 saniye sürer."
+      "descTr": "Fire ve Lightning üzerinde ustalık kazanırsın; Lightning Bolt ve Lava Burst'ün cast süresini 0,5 saniye azaltır ve Chain Lightning'in bekleme süresini kaldırır. 15 saniye sürer.",
+      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]"
     },
     {
       "id": "spell/calc-shaman-enhancement-stormstrike",
@@ -1246,8 +1247,8 @@
       "status": "changed",
       "change": "[Talent Skill: Points talent and gains it. Trainers don't teach it.]",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/calc-shaman-restoration-water-shield",
-      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]",
-      "descTr": "Büyücünün etrafını 3 su küresi sarar. Büyücüye bir büyü, yakın dövüş ya da menzilli saldırı isabet ettiğinde veya büyücünün bir büyüsü kritik sonuç verdiğinde büyücüye maksimum manasının %2'si geri verilir ve bir su küresi harcanır. Birkaç saniyede yalnızca bir küre etkinleşir. 10 dakika sürer. Şamanda aynı anda yalnızca bir Elemental Shield etkin olabilir."
+      "descTr": "Büyücünün etrafını 3 su küresi sarar. Büyücüye bir büyü, yakın dövüş ya da menzilli saldırı isabet ettiğinde veya büyücünün bir büyüsü kritik sonuç verdiğinde büyücüye maksimum manasının %2'si geri verilir ve bir su küresi harcanır. Birkaç saniyede yalnızca bir küre etkinleşir. 10 dakika sürer. Şamanda aynı anda yalnızca bir Elemental Shield etkin olabilir.",
+      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]"
     },
     {
       "id": "spell/calc-warlock-affliction-amplify-curse",
@@ -1263,8 +1264,8 @@
       "status": "changed",
       "change": "[Talent Skill: Points talent and gains it. Trainers don't teach it.]",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/warlock/calc-warlock-affliction-amplify-curse",
-      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]",
-      "descTr": "Bir sonraki Curse of Weakness veya Bane of Agony etkisini %50, bir sonraki Curse of Exhaustion etkisini ise %0 artırır. 30 saniye sürer."
+      "descTr": "Bir sonraki Curse of Weakness veya Bane of Agony etkisini %50, bir sonraki Curse of Exhaustion etkisini ise %0 artırır. 30 saniye sürer.",
+      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]"
     },
     {
       "id": "spell/calc-warlock-demonology-demonic-sacrifice",
@@ -1546,8 +1547,8 @@
       "status": "changed",
       "change": "Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/druid/druid-cat-form",
-      "changeTr": "Efekt açıklaması güncellendi",
-      "descTr": "Cat Form'a dönüşür; Saldırı Gücünü 120 artırır ve Agility ekler. Ayrıca büyücüyü Polymorph etkilerinden korur ve çeşitli kedi yeteneklerinin kullanımına izin verir. Şekil değiştirme eylemi büyücüyü Polymorph ve Hareketi Engelleyen etkilerden kurtarır."
+      "descTr": "Cat Form'a dönüşür; Saldırı Gücünü 120 artırır ve Agility ekler. Ayrıca büyücüyü Polymorph etkilerinden korur ve çeşitli kedi yeteneklerinin kullanımına izin verir. Şekil değiştirme eylemi büyücüyü Polymorph ve Hareketi Engelleyen etkilerden kurtarır.",
+      "changeTr": "Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/druid-challenging-roar",
@@ -2284,8 +2285,8 @@
       "status": "changed",
       "change": "[Talent Skill: Points talent and gains it. Trainers don't teach it.]",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/druid/druid-shifting-power",
-      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]",
-      "descTr": "Anında $c mana puanını 40 enerji puanına dönüştürür. Dönüşüm büyülerinin maliyetini azaltan etki, dönüşüm gücünün maliyetini de azaltır."
+      "descTr": "Anında $c mana puanını 40 enerji puanına dönüştürür. Dönüşüm büyülerinin maliyetini azaltan etki, dönüşüm gücünün maliyetini de azaltır.",
+      "changeTr": "[Talent yeteneği: Talent puanı verilerek kazanılır. Eğitmenler öğretmez.]"
     },
     {
       "id": "spell/druid-shred",
@@ -2304,8 +2305,8 @@
       "status": "changed",
       "change": "Level 1 is learned earlier than Classic Era",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/druid/druid-shred",
-      "changeTr": "Seviye 1 Classic Era'dan daha erken öğreniliyor",
-      "descTr": "Hedefi parçalar; hedefe %155 hasar artı 80 hasar verir. Hedefin arkasında olmak gerekir. 1 combo point kazandırır."
+      "descTr": "Hedefi parçalar; hedefe %155 hasar artı 80 hasar verir. Hedefin arkasında olmak gerekir. 1 combo point kazandırır.",
+      "changeTr": "Seviye 1 Classic Era'dan daha erken öğreniliyor"
     },
     {
       "id": "spell/druid-soothe-animal",
@@ -2395,10 +2396,10 @@
       "range": "30 yd",
       "desc": "Thorns sprout from the friendly target causing 18 Nature damage to attackers when hit. Lasts 10 min.",
       "status": "changed",
-      "change": "Rank 6:Effect Description Override",
+      "change": "Rank 6:No change in values, no change in description wording",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/druid/druid-thorns",
       "descTr": "Dost hedefin üzerinde dikenler çıkar; ona vuran saldırganlar 18 Nature hasarı alır. 10 dakika sürer.",
-      "changeTr": "Rank 6: Efekt açıklaması güncellendi"
+      "changeTr": "Rank 6: Değerlerde ve açıklama metninde değişiklik yok"
     },
     {
       "id": "spell/druid-track-humanoids",
@@ -2551,8 +2552,8 @@
       "status": "changed",
       "change": "Levels 2 to 4 are new (Classic Era has only one level)",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/hunter/hunter-aspect-of-the-beast",
-      "changeTr": "Seviye 2-4 yeni (Classic Era'da tek seviye var)",
-      "descTr": "Bir canavarın özelliklerini kuşanırsın; izlenemez olursun ve yakın dövüş Saldırı Gücünü 110 artırırsın. Aynı anda yalnızca bir Aspect etkin olabilir."
+      "descTr": "Bir canavarın özelliklerini kuşanırsın; izlenemez olursun ve yakın dövüş Saldırı Gücünü 110 artırırsın. Aynı anda yalnızca bir Aspect etkin olabilir.",
+      "changeTr": "Seviye 2-4 yeni (Classic Era'da tek seviye var)"
     },
     {
       "id": "spell/hunter-aspect-of-the-cheetah",
@@ -2992,10 +2993,10 @@
       "range": "100 yd",
       "desc": "Places the Hunter's Mark on the target, increasing the Ranged Attack Power of all attackers against that target by 71. In addition, the target of this ability can always be seen by the hunter whether it stealths or turns invisible. The target also appears on the mini-map. Lasts for 2 min.",
       "status": "changed",
-      "change": "Rank 4:Value: 71 (Classic Era: 110)",
+      "change": "Rank 4:Value: 143 (Classic Era: 110)",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/hunter/hunter-hunter-s-mark",
       "descTr": "Hedefe Hunter's Mark koyar; o hedefe saldıran herkesin menzilli Attack Power'ı 71 artar. Ayrıca hedef stealth'e girse veya görünmez olsa da hunter onu her zaman görür. Hedef minimap'te de görünür. 2 dakika sürer.",
-      "changeTr": "Rank 4: Değer 71 (Classic Era: 110)"
+      "changeTr": "Rank 4: Değer 143 (Classic Era: 110)"
     },
     {
       "id": "spell/hunter-immolation-trap",
@@ -3419,8 +3420,8 @@
       "status": "changed",
       "change": "Classic Era and Forever are both talents.",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/hunter/hunter-trueshot-aura",
-      "changeTr": "Classic Era'da da Forever'da da talent.",
-      "descTr": "45 yard içindeki parti veya raid üyelerinin Menzilli Saldırı Gücünü 50 artırır. 30 dakika sürer."
+      "descTr": "45 yard içindeki parti veya raid üyelerinin Menzilli Saldırı Gücünü 50 artırır. 30 dakika sürer.",
+      "changeTr": "Classic Era'da da Forever'da da talent."
     },
     {
       "id": "spell/hunter-viper-sting",
@@ -3710,8 +3711,8 @@
       "status": "changed",
       "change": "Rank 5:Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/mage/mage-cone-of-cold",
-      "changeTr": "Rank 5: Efekt açıklaması güncellendi",
-      "descTr": "Büyücünün önündeki koni içindeki hedefler 328 ile 358 arasında (+büyü gücünün %12,9'u) Frost hasarı alır ve 6 saniye boyunca %40 yavaşlar. Bu koninin vurduğu ilk 4 hedef ek 3 saniye boyunca %10 daha fazla yavaşlar."
+      "descTr": "Büyücünün önündeki koni içindeki hedefler 328 ile 358 arasında (+büyü gücünün %12,9'u) Frost hasarı alır ve 6 saniye boyunca %40 yavaşlar. Bu koninin vurduğu ilk 4 hedef ek 3 saniye boyunca %10 daha fazla yavaşlar.",
+      "changeTr": "Rank 5: Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/mage-conjure-food",
@@ -3990,7 +3991,7 @@
       "id": "spell/mage-frost-blast",
       "kind": "spell",
       "name": "Frost Blast",
-      "icon": "spell_frost_frostbolt",
+      "icon": "spell_ice_magicdamage",
       "class": "mage",
       "school": "Frost",
       "maxRank": 3,
@@ -5267,16 +5268,16 @@
       "class": "paladin",
       "school": "Protection",
       "maxRank": 1,
-      "learnedAt": 16,
+      "learnedAt": 10,
       "cost": "30% Mana (base)",
       "costType": "mana",
       "cast": "Instant",
       "desc": "Increases the threat generated by your Holy attacks by 90%. Lasts 30 min.",
       "status": "changed",
-      "change": "Value: 90%(Classic Era: 60%)",
+      "change": "Level 1 is learned earlier than Classic Era",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/paladin/paladin-righteous-fury",
-      "changeTr": "Değer: %90 (Classic Era: %60)",
-      "descTr": "Holy saldırılarının oluşturduğu tehdidi %90 artırır. 30 dakika sürer."
+      "descTr": "Holy saldırılarının oluşturduğu tehdidi %90 artırır. 30 dakika sürer.",
+      "changeTr": "Seviye 1 Classic Era'dan daha erken öğreniliyor"
     },
     {
       "id": "spell/paladin-salvation",
@@ -5386,8 +5387,8 @@
       "status": "changed",
       "change": "Rank 8:Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/paladin/paladin-seal-of-righteousness",
-      "changeTr": "Rank 8: Efekt açıklaması güncellendi",
-      "descTr": "Paladini 30 saniye boyunca kutsal ruhla doldurur; her yakın dövüş saldırısına ek 22 ile 75 arasında Holy hasarı kazandırır. Yavaş silahlar vuruş başına daha fazla Holy hasarı verir. Paladinde aynı anda yalnızca bir Seal etkin olabilir. Bu Seal'in enerjisini serbest bırakmak düşmana 170 ile 187 arasında (+büyü gücünün %42,9'u) Holy hasarı verir."
+      "descTr": "Paladini 30 saniye boyunca kutsal ruhla doldurur; her yakın dövüş saldırısına ek 22 ile 75 arasında Holy hasarı kazandırır. Yavaş silahlar vuruş başına daha fazla Holy hasarı verir. Paladinde aynı anda yalnızca bir Seal etkin olabilir. Bu Seal'in enerjisini serbest bırakmak düşmana 170 ile 187 arasında (+büyü gücünün %42,9'u) Holy hasarı verir.",
+      "changeTr": "Rank 8: Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/paladin-seal-of-the-crusader",
@@ -7580,8 +7581,8 @@
       "status": "changed",
       "change": "Classic Era is called Flame Nova Totem.",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/shaman-fire-nova",
-      "changeTr": "Classic Era'daki adı Fire Nova Totem.",
-      "descTr": "Etkin Fire totemine 10 yard içindeki düşmanlara anında 232 ile 259 arasında (+büyü gücünün %14,3'ü) Fire hasarı verir."
+      "descTr": "Etkin Fire totemine 10 yard içindeki düşmanlara anında 232 ile 259 arasında (+büyü gücünün %14,3'ü) Fire hasarı verir.",
+      "changeTr": "Classic Era'daki adı Fire Nova Totem."
     },
     {
       "id": "spell/shaman-fire-resistance-totem",
@@ -7599,8 +7600,8 @@
       "status": "changed",
       "change": "Rank 3:Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/shaman-fire-resistance-totem",
-      "changeTr": "Rank 3: Efekt açıklaması güncellendi",
-      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Fire Resistance Totem çağırır; 5 dakika boyunca 30 yard içindeki parti veya raid üyelerinin fire direncini 60 artırır."
+      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Fire Resistance Totem çağırır; 5 dakika boyunca 30 yard içindeki parti veya raid üyelerinin fire direncini 60 artırır.",
+      "changeTr": "Rank 3: Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/shaman-flame-shock",
@@ -7639,8 +7640,8 @@
       "status": "changed",
       "change": "Rank 4:Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/shaman-flametongue-totem",
-      "changeTr": "Rank 4: Efekt açıklaması güncellendi",
-      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Flametongue Totem çağırır. Totem, 30 yard içindeki tüm parti veya raid üyelerinin yakın dövüş saldırılarını güçlendirir. Her ana el vuruşu silahın hızına göre 17 ile 55 arasında ek Fire hasarı verir. Yavaş silahlar vuruş başına daha fazla Fire hasarı verir. 5 dakika sürer."
+      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Flametongue Totem çağırır. Totem, 30 yard içindeki tüm parti veya raid üyelerinin yakın dövüş saldırılarını güçlendirir. Her ana el vuruşu silahın hızına göre 17 ile 55 arasında ek Fire hasarı verir. Yavaş silahlar vuruş başına daha fazla Fire hasarı verir. 5 dakika sürer.",
+      "changeTr": "Rank 4: Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/shaman-flametongue-weapon",
@@ -7753,8 +7754,8 @@
       "status": "changed",
       "change": "Rank 3:Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/shaman-grace-of-air-totem",
-      "changeTr": "Rank 3: Efekt açıklaması güncellendi",
-      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Grace of Air Totem çağırır. Totem, 30 yard içindeki parti veya raid üyelerinin agility değerini 89 artırır. 5 dakika sürer."
+      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Grace of Air Totem çağırır. Totem, 30 yard içindeki parti veya raid üyelerinin agility değerini 89 artırır. 5 dakika sürer.",
+      "changeTr": "Rank 3: Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/shaman-grounding-totem",
@@ -8107,10 +8108,10 @@
       "cast": "Instant",
       "desc": "Summons an immobile Sentry Totem with 100 health at your feet for 5 min that allows vision of nearby area and warns of enemies that attack it. Right-Click on buff to switch back and forth between totem sight and Shaman sight.",
       "status": "changed",
-      "change": "Effect Description Override",
+      "change": "No change in values, no change in description wording",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/shaman-sentry-totem",
-      "changeTr": "Efekt açıklaması güncellendi",
-      "descTr": "Ayaklarının dibinde 100 canlı, hareketsiz bir Sentry Totem çağırır; 5 dakika boyunca yakın çevreyi görmeni sağlar ve ona saldıran düşmanları haber verir. Totem görüşü ile Shaman görüşü arasında geçiş yapmak için buff'a sağ tıkla."
+      "descTr": "Ayaklarının dibinde 100 canlı, hareketsiz bir Sentry Totem çağırır; 5 dakika boyunca yakın çevreyi görmeni sağlar ve ona saldıran düşmanları haber verir. Totem görüşü ile Shaman görüşü arasında geçiş yapmak için buff'a sağ tıkla.",
+      "changeTr": "Değerlerde ve açıklama metninde değişiklik yok"
     },
     {
       "id": "spell/shaman-stoneclaw-totem",
@@ -8165,8 +8166,8 @@
       "status": "changed",
       "change": "Rank 5:Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/shaman-strength-of-earth-totem",
-      "changeTr": "Rank 5: Efekt açıklaması güncellendi",
-      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Strength of Earth Totem çağırır. Totem, 30 yard içindeki parti veya raid üyelerinin strength değerini 53 artırır. 5 dakika sürer."
+      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Strength of Earth Totem çağırır. Totem, 30 yard içindeki parti veya raid üyelerinin strength değerini 53 artırır. 5 dakika sürer.",
+      "changeTr": "Rank 5: Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/shaman-totemic-projection",
@@ -8275,8 +8276,8 @@
       "status": "changed",
       "change": "Rank 3:Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/shaman/shaman-windfury-totem",
-      "changeTr": "Rank 3: Efekt açıklaması güncellendi",
-      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Windfury Totem çağırır. Totem, 30 yard içindeki tüm parti veya raid üyelerinin yakın dövüş saldırılarını güçlendirir. Her ana el vuruşunun %20 şansla saldırana 246 ek yakın dövüş saldırı gücüyle 1 ekstra saldırı kazandırır. 5 dakika sürer."
+      "descTr": "Büyücünün ayaklarının dibinde 5 canlı bir Windfury Totem çağırır. Totem, 30 yard içindeki tüm parti veya raid üyelerinin yakın dövüş saldırılarını güçlendirir. Her ana el vuruşunun %20 şansla saldırana 246 ek yakın dövüş saldırı gücüyle 1 ekstra saldırı kazandırır. 5 dakika sürer.",
+      "changeTr": "Rank 3: Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/shaman-windfury-weapon",
@@ -9340,8 +9341,8 @@
       "status": "changed",
       "change": "Rank 7:Effect Description Override",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/warrior/warrior-battle-shout",
-      "changeTr": "Rank 7: Efekt açıklaması güncellendi",
-      "descTr": "Savaşçı bağırır ve 20 yard içindeki tüm parti veya raid üyelerinin yakın dövüş saldırı gücünü 139 artırır. 3 dakika sürer."
+      "descTr": "Savaşçı bağırır ve 20 yard içindeki tüm parti veya raid üyelerinin yakın dövüş saldırı gücünü 139 artırır. 3 dakika sürer.",
+      "changeTr": "Rank 7: Efekt açıklaması güncellendi"
     },
     {
       "id": "spell/warrior-battle-stance",
@@ -9412,8 +9413,8 @@
       "status": "changed",
       "change": "No change in values, no change in description wording",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/warrior/warrior-bloodrage",
-      "changeTr": "Değerlerde ve açıklama metninde değişiklik yok",
-      "descTr": "Can harcayarak 10 öfke ve 10 saniye boyunca ek 10 öfke üretir."
+      "descTr": "Can harcayarak 10 öfke ve 10 saniye boyunca ek 10 öfke üretir.",
+      "changeTr": "Değerlerde ve açıklama metninde değişiklik yok"
     },
     {
       "id": "spell/warrior-bloodthirst",
@@ -9983,10 +9984,10 @@
       "cast": "Instant",
       "range": "melee range",
       "cooldown": "30 sec",
-      "desc": "Instantly attacks a target, dealing 1 damage and restoring 10% of your maximum health. Can only be used within 20 seconds of killing an enemy that provides you experience or honor.",
+      "desc": "Instantly attacks the target, dealing ${1+$apm*15/100} damage and regaining 10% of your maximum health. Can only be used within 20 seconds of killing an enemy that gives you EXP or Honor.",
       "status": "new",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/warrior/warrior-victory-rush",
-      "descTr": "Bir hedefe anında saldırır; 1 hasar verir ve maksimum canının %10'unu yeniler. Yalnızca deneyim veya honor veren bir düşmanı öldürdükten sonraki 20 saniye içinde kullanılabilir."
+      "descTr": "Hedefe anında saldırır, ${1+$apm*15/100} hasar verir ve azami canının %10'unu geri kazandırır. Yalnızca EXP veya Honor veren bir düşmanı öldürdükten sonraki 20 saniye içinde kullanılabilir."
     },
     {
       "id": "spell/warrior-whirlwind",
@@ -10211,8 +10212,8 @@
       ],
       "tierPoints": 30,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=calc-druid-balance-moonkin-form",
-      "changeTr": "Efekt değiştirildi.",
       "descTr": "Moonkin Form'a dönüşür; Omen of Clarity'nin tetiklenme şansını %100, eşyalardan gelen Zırh katkısını %360 artırır ve 45 yard içindeki tüm parti veya raid üyelerinin büyü kritik vuruş şansını %3 artırır. Ayrıca büyücüyü Polymorph etkilerinden korur ve iyileştirme büyülerinin kullanımını engeller. Şekil değiştirme eylemi büyücüyü Polymorph ve Hareketi Engelleyen etkilerden kurtarır.",
+      "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
         "Moonkin Form'a dönüşür; Omen of Clarity'nin tetiklenme şansını %100, eşyalardan gelen Zırh katkısını %360 artırır ve 45 yard içindeki tüm parti veya raid üyelerinin büyü kritik vuruş şansını %3 artırır. Ayrıca büyücüyü Polymorph etkilerinden korur ve iyileştirme büyülerinin kullanımını engeller. Şekil değiştirme eylemi büyücüyü Polymorph ve Hareketi Engelleyen etkilerden kurtarır."
       ]
@@ -10384,8 +10385,8 @@
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=calc-druid-feral-combat-leader-of-the-pack",
-      "changeTr": "Tier 7'den tier 5'e taşındı. Değerler aynı, metin düzenlendi.",
       "descTr": "Cat Form, Bear Form veya Dire Bear Form'dayken Leader of the Pack, 45 yard içindeki tüm parti veya raid üyelerinin yakın dövüş ve menzilli kritik vuruş şansını %3 artırır.",
+      "changeTr": "Tier 7'den tier 5'e taşındı. Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Cat Form, Bear Form veya Dire Bear Form'dayken Leader of the Pack, 45 yard içindeki tüm parti veya raid üyelerinin yakın dövüş ve menzilli kritik vuruş şansını %3 artırır."
       ]
@@ -11662,8 +11663,8 @@
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/hunter#t=calc-hunter-marksmanship-rapid-recuperation",
       "requires": "talent/calc-hunter-marksmanship-rapid-killing",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Hedefe Serpent Sting uygulamak, Mana Yenilenmenin %50'sinin 15 saniye boyunca cast ederken devam etmesini sağlar; Rapid Killing tüketildiğinde bu oran %100'e çıkar.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Hedefe Serpent Sting uygulamak, Mana Yenilenmenin %25'sinin 15 saniye boyunca cast ederken devam etmesini sağlar; Rapid Killing tüketildiğinde bu oran %50'e çıkar.",
         "Hedefe Serpent Sting uygulamak, Mana Yenilenmenin %50'sinin 15 saniye boyunca cast ederken devam etmesini sağlar; Rapid Killing tüketildiğinde bu oran %100'e çıkar."
@@ -11739,8 +11740,8 @@
       ],
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/hunter#t=calc-hunter-marksmanship-trueshot-aura",
-      "changeTr": "Tier 7'den tier 4'e taşındı. Efekt değiştirildi.",
       "descTr": "45 yard içindeki parti veya raid üyelerinin Menzilli Saldırı Gücünü 30 artırır.",
+      "changeTr": "Tier 7'den tier 4'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
         "45 yard içindeki parti veya raid üyelerinin Menzilli Saldırı Gücünü 30 artırır."
       ]
@@ -11903,8 +11904,8 @@
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/hunter#t=calc-hunter-survival-expose-prey",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Hunter's Mark uygulanmış düşmanlara karşı yakın dövüş ve menzilli saldırıların %10 şansla bir Mongoose Bite etkinleştirmesini sağlar. 10 saniye sürer.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Hunter's Mark'ın etkisindeki düşmanlara yaptığın yakın dövüş ve menzilli saldırılara %5 ihtimalle Mongoose Bite kullanma hakkı verir. 10 saniye sürer.",
         "Hunter's Mark uygulanmış düşmanlara karşı yakın dövüş ve menzilli saldırıların %10 şansla bir Mongoose Bite etkinleştirmesini sağlar. 10 saniye sürer."
@@ -12054,8 +12055,8 @@
       ],
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/hunter#t=calc-hunter-survival-predator-s-edge",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Yakın dövüş yeteneklerinin kritik vuruş hasarını %30 ve Off Hand silah hasarını %50 artırır.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Yakın dövüş yeteneklerinin kritik vuruş hasarını %6 ve Off Hand silah hasarını %10 artırır.",
         "Yakın dövüş yeteneklerinin kritik vuruş hasarını %12 ve Off Hand silah hasarını %20 artırır.",
@@ -12084,8 +12085,8 @@
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/hunter#t=calc-hunter-survival-resourcefulness",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Trap ve yakın dövüş yeteneklerinin Mana maliyetini %60 azaltır ve yakın dövüş ile menzilli yetenek kritik vuruşlarının %100 şansla Mana Yenilenmenin %50'sinin 30 saniye boyunca cast ederken devam etmesini sağlar.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Trap ve yakın dövüş yeteneklerinin Mana maliyetini %30 azaltır ve yakın dövüş ile menzilli yetenek kritik vuruşlarının %50 şansla Mana Yenilenmenin %50'sinin 30 saniye boyunca cast ederken devam etmesini sağlar.",
         "Trap ve yakın dövüş yeteneklerinin Mana maliyetini %60 azaltır ve yakın dövüş ile menzilli yetenek kritik vuruşlarının %100 şansla Mana Yenilenmenin %50'sinin 30 saniye boyunca cast ederken devam etmesini sağlar."
@@ -12278,8 +12279,8 @@
       ],
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-arcane-arcane-blast",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Hedefe enerji patlaması gönderir; 33 ile 39 arasında (+büyü gücünün %42,9'u) Arcane hasarı verir. Arcane Blast her cast edildiğinde Intellect değerinin %15'ini Büyü Hasarı olarak kazanırsın ve Arcane Blast'in mana maliyeti %175 artar. Etki en fazla 4 kez birikir ve ilk uygulanmasından itibaren 15 saniye sürer.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Hedefe enerji patlaması gönderir; 33 ile 39 arasında (+büyü gücünün %42,9'u) Arcane hasarı verir. Arcane Blast her cast edildiğinde Intellect değerinin %15'ini Büyü Hasarı olarak kazanırsın ve Arcane Blast'in mana maliyeti %175 artar. Etki en fazla 4 kez birikir ve ilk uygulanmasından itibaren 15 saniye sürer."
       ]
@@ -12625,8 +12626,8 @@
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-arcane-arcane-wrath",
       "requires": "talent/calc-mage-arcane-arcane-blast",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Düşman hedefe saf Arcane enerjisinden bir mermi fırlatır; 121 ile 147 arasında (+büyü gücünün %100'ü) Arcane hasarı verir. Bu büyü, maksimum Mana değerinin %5'i kadar ek Büyü Hasarı kazanır.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Düşman hedefe saf Arcane enerjisinden bir mermi fırlatır; 121 ile 147 arasında (+büyü gücünün %100'ü) Arcane hasarı verir. Bu büyü, maksimum Mana değerinin %5'i kadar ek Büyü Hasarı kazanır."
       ]
@@ -12654,8 +12655,8 @@
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-arcane-improved-channeling",
-      "changeTr": "Classic Era'daki adı Improved Arcane Missiles. Efekt yeniden yazıldı.",
       "descTr": "Arcane Missiles büyüne %100, Arcane Blast ve Arcane Wrath büyülerine %70 şansla hasar aldığında cast süresini kaybetmeme özelliği verir.",
+      "changeTr": "Classic Era'daki adı Improved Arcane Missiles. Efekt yeniden yazıldı.",
       "ranksTr": [
         "Arcane Missiles büyüne %20, Arcane Blast ve Arcane Wrath büyülerine %14 şansla hasar aldığında cast süresini kaybetmeme özelliği verir.",
         "Arcane Missiles büyüne %40, Arcane Blast ve Arcane Wrath büyülerine %28 şansla hasar aldığında cast süresini kaybetmeme özelliği verir.",
@@ -12738,8 +12739,8 @@
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-arcane-missile-barrage",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Arcane Blast büyüne %40, Arcane Wrath, Fireball, Frostbolt ve Frostfire Bolt büyülerine %20 şansla bir sonraki Arcane Missiles büyünün kanal süresini %50 azaltma, Mana maliyetini %100 azaltma ve füzelerin her 0,5 saniyede bir ateşlenmesi özelliği verir.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Arcane Blast büyüne %20, Arcane Wrath, Fireball, Frostbolt ve Frostfire Bolt büyülerine %10 şansla bir sonraki Arcane Missiles büyünün kanal süresini %50 azaltma, Mana maliyetini %100 azaltma ve füzelerin her 0,5 saniyede bir ateşlenmesi özelliği verir.",
         "Arcane Blast büyüne %40, Arcane Wrath, Fireball, Frostbolt ve Frostfire Bolt büyülerine %20 şansla bir sonraki Arcane Missiles büyünün kanal süresini %50 azaltma, Mana maliyetini %100 azaltma ve füzelerin her 0,5 saniyede bir ateşlenmesi özelliği verir."
@@ -12898,8 +12899,8 @@
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-fire-critical-mass",
-      "changeTr": "Maksimum rank 3'ten 5'e değişti.",
       "descTr": "Fire büyülerinin kritik vuruş şansını %10 artırır.",
+      "changeTr": "Maksimum rank 3'ten 5'e değişti.",
       "ranksTr": [
         "Fire büyülerinin kritik vuruş şansını %2 artırır.",
         "Fire büyülerinin kritik vuruş şansını %4 artırır.",
@@ -12929,8 +12930,8 @@
       ],
       "tierPoints": 25,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-fire-fire-power",
-      "changeTr": "Maksimum rank 5'ten 3'e değişti. Efekt değiştirildi.",
       "descTr": "Hedefteki her Fire etkin için Fire büyülerinin hasarını %3 artırır, en fazla %12. Birden fazla büyü okulunu karıştıran etkiler sayılmaz.",
+      "changeTr": "Maksimum rank 5'ten 3'e değişti. Efekt değiştirildi.",
       "ranksTr": [
         "Hedefteki her Fire etkin için Fire büyülerinin hasarını %1 artırır, en fazla %4. Birden fazla büyü okulunu karıştıran etkiler sayılmaz.",
         "Hedefteki her Fire etkin için Fire büyülerinin hasarını %2 artırır, en fazla %8. Birden fazla büyü okulunu karıştıran etkiler sayılmaz.",
@@ -13044,8 +13045,8 @@
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-fire-improved-fire-blast",
-      "changeTr": "Maksimum rank 3'ten 2'ye değişti. Tier 2'den tier 1'e taşındı. Efekt değiştirildi.",
       "descTr": "Fire Blast büyünün bekleme süresini 2 saniye azaltır ve menzilini 15 yard artırır.",
+      "changeTr": "Maksimum rank 3'ten 2'ye değişti. Tier 2'den tier 1'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
         "Fire Blast büyünün bekleme süresini 1 saniye azaltır ve menzilini 8 yard artırır.",
         "Fire Blast büyünün bekleme süresini 2 saniye azaltır ve menzilini 15 yard artırır."
@@ -13140,7 +13141,7 @@
       "id": "talent/calc-mage-fire-improved-scorch",
       "kind": "talent",
       "name": "Improved Scorch",
-      "icon": "spell_fire_windsofwoe",
+      "icon": "spell_fire_soulburn",
       "class": "mage",
       "tree": "Fire",
       "tier": 4,
@@ -13268,8 +13269,8 @@
       ],
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-arctic-reach",
-      "changeTr": "Değerler aynı, metin düzenlendi.",
       "descTr": "Frostbolt, Frost Blast ve Blizzard büyülerinin menzilini, Frost Nova ve Cone of Cold büyülerinin yarıçapını %20 artırır.",
+      "changeTr": "Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Frostbolt, Frost Blast ve Blizzard büyülerinin menzilini, Frost Nova ve Cone of Cold büyülerinin yarıçapını %10 artırır.",
         "Frostbolt, Frost Blast ve Blizzard büyülerinin menzilini, Frost Nova ve Cone of Cold büyülerinin yarıçapını %20 artırır."
@@ -13310,27 +13311,23 @@
       "tier": 1,
       "row": 1,
       "col": 3,
-      "maxRank": 5,
+      "maxRank": 3,
       "desc": "Improves your chance to hit with Frost and Fire spells by 5%.",
       "status": "changed",
-      "change": "Max rank changed from 3 to 5. Effect override.",
+      "change": "The values remain unchanged, the wording is adjusted.",
       "ranks": [
-        "Improves your chance to hit with Frost and Fire spells by 1%.",
-        "Improves your chance to hit with Frost and Fire spells by 2%.",
-        "Improves your chance to hit with Frost and Fire spells by 3%.",
-        "Improves your chance to hit with Frost and Fire spells by 4%.",
-        "Improves your chance to hit with Frost and Fire spells by 5%."
+        "Increases the hit chance of your Frost and Fire spells by 2%.",
+        "Increases the chance of your Frost and Fire spells to hit by 4%.",
+        "Increases the hit rate of your Frost and Fire spells by 6%."
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-elemental-precision",
       "descTr": "Frost ve Fire büyülerinin isabet şansını %5 artırır.",
-      "changeTr": "Maksimum rank 3'ten 5'e değişti. Efekt değiştirildi.",
+      "changeTr": "Değerler aynı, metin düzenlendi.",
       "ranksTr": [
-        "Frost ve Fire büyülerinin isabet şansını %1 artırır.",
         "Frost ve Fire büyülerinin isabet şansını %2 artırır.",
-        "Frost ve Fire büyülerinin isabet şansını %3 artırır.",
         "Frost ve Fire büyülerinin isabet şansını %4 artırır.",
-        "Frost ve Fire büyülerinin isabet şansını %5 artırır."
+        "Frost ve Fire büyülerinin isabet şansını %6 artırır."
       ]
     },
     {
@@ -13370,7 +13367,7 @@
       "tree": "Frost",
       "tier": 3,
       "row": 3,
-      "col": 2,
+      "col": 1,
       "maxRank": 3,
       "desc": "Reduces the mana cost of your Frost spells by 15% and reduces the threat caused by your Frost spells by 30%.",
       "status": "changed",
@@ -13403,7 +13400,7 @@
       "maxRank": 2,
       "desc": "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 30%. In addition, gives your Frost Ward a 20% chance to reflect Frost spells and effects while active.",
       "status": "changed",
-      "change": "The values remain unchanged, the wording is adjusted.",
+      "change": "Effect Overrides.",
       "ranks": [
         "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 15%. In addition, gives your Frost Ward a 10% chance to reflect Frost spells and effects while active.",
         "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 30%. In addition, gives your Frost Ward a 20% chance to reflect Frost spells and effects while active."
@@ -13411,7 +13408,7 @@
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-frost-warding",
       "descTr": "Frost Armor ve Ice Armor büyülerinin verdiği Armor ve direnci %30 artırır. Ayrıca Frost Ward aktifken Frost büyülerini ve etkilerini %20 şansla geri yansıtır.",
-      "changeTr": "Değerler aynı, metin düzenlendi.",
+      "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
         "Frost Armor ve Ice Armor büyülerinin verdiği Armor ve direnci %15 artırır. Ayrıca Frost Ward aktifken Frost büyülerini ve etkilerini %10 şansla geri yansıtır.",
         "Frost Armor ve Ice Armor büyülerinin verdiği Armor ve direnci %30 artırır. Ayrıca Frost Ward aktifken Frost büyülerini ve etkilerini %20 şansla geri yansıtır."
@@ -13426,11 +13423,11 @@
       "tree": "Frost",
       "tier": 2,
       "row": 2,
-      "col": 4,
+      "col": 2,
       "maxRank": 3,
       "desc": "Gives your Chill effects a 15% chance to Freeze the target for 5 sec.",
       "status": "changed",
-      "change": "Moved from column 2 to column 4. Values unchanged, wording adjusted.",
+      "change": "The values remain unchanged, the wording is adjusted.",
       "ranks": [
         "Gives your Chill effects a 5% chance to Freeze the target for 5 sec.",
         "Gives your Chill effects a 10% chance to Freeze the target for 5 sec.",
@@ -13439,7 +13436,7 @@
       "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-frostbite",
       "descTr": "Chill etkilerine hedefi 5 saniye dondurma şansı %15 verir.",
-      "changeTr": "Sütun 2'den sütun 4'e taşındı. Değerler aynı, metin düzenlendi.",
+      "changeTr": "Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Chill etkilerine hedefi 5 saniye dondurma şansı %5 verir.",
         "Chill etkilerine hedefi 5 saniye dondurma şansı %10 verir.",
@@ -13516,8 +13513,8 @@
       ],
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-ice-lance",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Düşman hedefe 28 ile 33 arasında Frost hasarı verir. Frozen hedeflere %200 fazla hasar verir.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Düşman hedefe 28 ile 33 arasında Frost hasarı verir. Frozen hedeflere %200 fazla hasar verir."
       ]
@@ -13562,11 +13559,11 @@
       "tree": "Frost",
       "tier": 3,
       "row": 3,
-      "col": 4,
+      "col": 2,
       "maxRank": 3,
       "desc": "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 40% for 1.5 sec.",
       "status": "changed",
-      "change": "Effect Overrides.",
+      "change": "Move from column 4 to column 2. Effect override.",
       "ranks": [
         "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 15% for 1.5 sec.",
         "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 25% for 1.5 sec.",
@@ -13575,7 +13572,7 @@
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-improved-blizzard",
       "descTr": "Blizzard büyüne bir Chill etkisi ekler. Bu etki hedefin hareket hızını 1.5 saniye boyunca %40 azaltır.",
-      "changeTr": "Efekt değiştirildi.",
+      "changeTr": "Sütun 4'ten sütun 2'ye taşındı. Efekt değiştirildi.",
       "ranksTr": [
         "Blizzard büyüne bir Chill etkisi ekler. Bu etki hedefin hareket hızını 1.5 saniye boyunca %15 azaltır.",
         "Blizzard büyüne bir Chill etkisi ekler. Bu etki hedefin hareket hızını 1.5 saniye boyunca %25 azaltır.",
@@ -13659,8 +13656,8 @@
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-improved-frostbolt",
-      "changeTr": "Değerler aynı, metin düzenlendi.",
       "descTr": "Frostbolt ve Frost Blast büyülerinin cast süresini 0,5 saniye azaltır.",
+      "changeTr": "Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Frostbolt ve Frost Blast büyülerinin cast süresini 0,1 saniye azaltır.",
         "Frostbolt ve Frost Blast büyülerinin cast süresini 0,2 saniye azaltır.",
@@ -13678,11 +13675,11 @@
       "tree": "Frost",
       "tier": 2,
       "row": 2,
-      "col": 2,
+      "col": 4,
       "maxRank": 3,
       "desc": "Increases the duration of your Chill effects by 33% and reduces the target's speed by an additional 10%.",
       "status": "changed",
-      "change": "Move from column 4 to column 2. Effect override.",
+      "change": "Effect Overrides.",
       "ranks": [
         "Increases the duration of your Chill effects by 11% and reduces the target's speed by an additional 3%.",
         "Increases the duration of your Chill effects by 22% and reduces the target's speed by an additional 7%.",
@@ -13691,38 +13688,11 @@
       "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-permafrost",
       "descTr": "Chill etkilerinin süresini %33 uzatır ve hedefin hızını ek %10 azaltır.",
-      "changeTr": "Sütun 4'ten sütun 2'ye taşındı. Efekt değiştirildi.",
+      "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
         "Chill etkilerinin süresini %11 uzatır ve hedefin hızını ek %3 azaltır.",
         "Chill etkilerinin süresini %22 uzatır ve hedefin hızını ek %7 azaltır.",
         "Chill etkilerinin süresini %33 uzatır ve hedefin hızını ek %10 azaltır."
-      ]
-    },
-    {
-      "id": "talent/calc-mage-frost-piercing-ice",
-      "kind": "talent",
-      "name": "Piercing Ice",
-      "icon": "spell_frost_frostbolt",
-      "class": "mage",
-      "tree": "Frost",
-      "tier": 3,
-      "row": 3,
-      "col": 1,
-      "maxRank": 3,
-      "desc": "Increases the damage done by your Frost spells by 6%.",
-      "status": "unchanged",
-      "ranks": [
-        "Increases the damage done by your Frost spells by 2%.",
-        "Increases the damage done by your Frost spells by 4%.",
-        "Increases the damage done by your Frost spells by 6%."
-      ],
-      "tierPoints": 10,
-      "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-piercing-ice",
-      "descTr": "Frost büyülerinin verdiği hasarı %6 artırır.",
-      "ranksTr": [
-        "Frost büyülerinin verdiği hasarı %2 artırır.",
-        "Frost büyülerinin verdiği hasarı %4 artırır.",
-        "Frost büyülerinin verdiği hasarı %6 artırır."
       ]
     },
     {
@@ -13777,8 +13747,8 @@
       ],
       "tierPoints": 25,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-winter-s-chill",
-      "changeTr": "Efekt değiştirildi.",
       "descTr": "Frostbolt, Frost Blast ve Fingers of Frost ile güçlenmiş Ice Lance büyülerine %100 şansla Winter's Chill uygulatır; hedefin bir sonraki Cone of Cold'dan aldığı hasarı %5 artırır ve ek olarak büyü hasarının %7'sini kazanır, en fazla 5 kez birikir.",
+      "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
         "Frostbolt, Frost Blast ve Fingers of Frost ile güçlenmiş Ice Lance büyülerine %20 şansla Winter's Chill uygulatır; hedefin bir sonraki Cone of Cold'dan aldığı hasarı %5 artırır ve ek olarak büyü hasarının %7'sini kazanır, en fazla 5 kez birikir.",
         "Frostbolt, Frost Blast ve Fingers of Frost ile güçlenmiş Ice Lance büyülerine %40 şansla Winter's Chill uygulatır; hedefin bir sonraki Cone of Cold'dan aldığı hasarı %5 artırır ve ek olarak büyü hasarının %7'sini kazanır, en fazla 5 kez birikir.",
@@ -14552,8 +14522,8 @@
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/paladin#t=calc-paladin-protection-reckoning",
-      "changeTr": "Efekt değiştirildi.",
       "descTr": "Blok yaptıktan sonra %40, periyodik olmayan bir kritik vuruş aldıktan sonra %100 şansla fazladan bir saldırı kazanırsın. En fazla 4 ekstra saldırı depolar. Bloklardan 1,5 saniyede en fazla bir kez tetiklenir.",
+      "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
         "Blok yaptıktan sonra %8, periyodik olmayan bir kritik vuruş aldıktan sonra %20 şansla fazladan bir saldırı kazanırsın. En fazla 4 ekstra saldırı depolar. Bloklardan 1,5 saniyede en fazla bir kez tetiklenir.",
         "Blok yaptıktan sonra %16, periyodik olmayan bir kritik vuruş aldıktan sonra %40 şansla fazladan bir saldırı kazanırsın. En fazla 4 ekstra saldırı depolar. Bloklardan 1,5 saniyede en fazla bir kez tetiklenir.",
@@ -14611,8 +14581,8 @@
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/paladin#t=calc-paladin-protection-shield-specialization",
       "requires": "talent/paladin-redoubt",
-      "changeTr": "Efekt değiştirildi.",
       "descTr": "Kalkanının emdiği hasar miktarını %30 artırır ve bloklarına %100 şansla maksimum Mana değerinin %4'ünü geri verir. 3 saniyede en fazla bir kez tetiklenir.",
+      "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
         "Kalkanının emdiği hasar miktarını %10 artırır ve bloklarına %33 şansla maksimum Mana değerinin %4'ünü geri verir. 3 saniyede en fazla bir kez tetiklenir.",
         "Kalkanının emdiği hasar miktarını %20 artırır ve bloklarına %66 şansla maksimum Mana değerinin %4'ünü geri verir. 3 saniyede en fazla bir kez tetiklenir.",
@@ -14757,8 +14727,8 @@
       ],
       "tierPoints": 25,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/paladin#t=calc-paladin-retribution-champion-of-the-light",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Büyü hasarını Intellect değerinin %30'una kadar artırır.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Büyü hasarını Intellect değerinin %10'una kadar artırır.",
         "Büyü hasarını Intellect değerinin %20'una kadar artırır.",
@@ -15200,8 +15170,8 @@
       ],
       "tierPoints": 25,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/priest#t=calc-priest-discipline-divine-aegis",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Periyodik olmayan kritik iyileştirmelerin hedefte, iyileştirilen miktarın %15'ini emen koruyucu bir kalkan oluşturur. En fazla 1200 hasar emer ve 12 saniye sürer.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Periyodik olmayan kritik iyileştirmelerin hedefte, iyileştirilen miktarın %5'ini emen koruyucu bir kalkan oluşturur. En fazla 1200 hasar emer ve 12 saniye sürer.",
         "Periyodik olmayan kritik iyileştirmelerin hedefte, iyileştirilen miktarın %10'ini emen koruyucu bir kalkan oluşturur. En fazla 1200 hasar emer ve 12 saniye sürer.",
@@ -15341,8 +15311,8 @@
       ],
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/priest#t=calc-priest-discipline-inner-focus",
-      "changeTr": "Değerler aynı, metin düzenlendi.",
       "descTr": "Etkinleştirildiğinde bir sonraki büyün %100 daha az mana harcar ve kritik vuruş ya da kritik iyileştirme şansı %25 artar (periyodik olmayan ve bunu yapabilecek bir büyüyse).",
+      "changeTr": "Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Etkinleştirildiğinde bir sonraki büyün %100 daha az mana harcar ve kritik vuruş ya da kritik iyileştirme şansı %25 artar (periyodik olmayan ve bunu yapabilecek bir büyüyse)."
       ]
@@ -15604,8 +15574,8 @@
       ],
       "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/priest#t=calc-priest-discipline-silent-resolve",
-      "changeTr": "Maksimum rank 5'ten 3'e değişti. Efekt değiştirildi.",
       "descTr": "Büyülerinin oluşturduğu tehdidi %30 azaltır ve üzerine uygulanan Stun, Fear ve Silence etkilerinin süresini %15 kısaltır.",
+      "changeTr": "Maksimum rank 5'ten 3'e değişti. Efekt değiştirildi.",
       "ranksTr": [
         "Büyülerinin oluşturduğu tehdidi %10 azaltır ve üzerine uygulanan Stun, Fear ve Silence etkilerinin süresini %5 kısaltır.",
         "Büyülerinin oluşturduğu tehdidi %20 azaltır ve üzerine uygulanan Stun, Fear ve Silence etkilerinin süresini %10 kısaltır.",
@@ -16171,8 +16141,8 @@
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/priest#t=calc-priest-holy-twilight-focus",
-      "changeTr": "Classic Era'daki adı Healing Focus. Maksimum rank 2'den 3'e değişti. Efekt yeniden yazıldı.",
       "descTr": "Büyülerine hasar aldığında %70 şansla cast süresini kaybetmeme özelliği verir.",
+      "changeTr": "Classic Era'daki adı Healing Focus. Maksimum rank 2'den 3'e değişti. Efekt yeniden yazıldı.",
       "ranksTr": [
         "Büyülerine hasar aldığında %23 şansla cast süresini kaybetmeme özelliği verir.",
         "Büyülerine hasar aldığında %47 şansla cast süresini kaybetmeme özelliği verir.",
@@ -16298,8 +16268,8 @@
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/priest#t=calc-priest-shadow-magic-devouring-contagion",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Devouring Plague büyünün mana maliyetini %50 azaltır. Devouring Plague etkinken ölen hedefler onu yayar; kalan süre boyunca 10 yard içindeki 2 yakın düşmana sıçrar.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Devouring Plague büyünün mana maliyetini %25 azaltır. Devouring Plague etkinken ölen hedefler onu yayar; kalan süre boyunca 5 yard içindeki 2 yakın düşmana sıçrar.",
         "Devouring Plague büyünün mana maliyetini %50 azaltır. Devouring Plague etkinken ölen hedefler onu yayar; kalan süre boyunca 10 yard içindeki 2 yakın düşmana sıçrar."
@@ -16386,8 +16356,8 @@
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/priest#t=calc-priest-shadow-magic-improved-mind-flay",
       "requires": "talent/calc-priest-shadow-magic-mind-flay",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Mind Flay'in her hasar anı bir önceki hasar anından %20 daha fazla hasar verir.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Mind Flay'in her hasar anı bir önceki hasar anından %10 daha fazla hasar verir.",
         "Mind Flay'in her hasar anı bir önceki hasar anından %20 daha fazla hasar verir."
@@ -16554,8 +16524,8 @@
       ],
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/priest#t=calc-priest-shadow-magic-shadow-weaving",
-      "changeTr": "Maksimum rank 5'ten 3'e değişti. Sütun 4'ten sütun 3'e taşındı. Efekt değiştirildi.",
       "descTr": "Shadow hasarı veren büyülerin %100 şansla hedefin senden aldığı Shadow hasarını 15 saniye boyunca %2 artırır, en fazla 5 kez birikir.",
+      "changeTr": "Maksimum rank 5'ten 3'e değişti. Sütun 4'ten sütun 3'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
         "Shadow hasarı veren büyülerin %33 şansla hedefin senden aldığı Shadow hasarını 15 saniye boyunca %2 artırır, en fazla 5 kez birikir.",
         "Shadow hasarı veren büyülerin %67 şansla hedefin senden aldığı Shadow hasarını 15 saniye boyunca %2 artırır, en fazla 5 kez birikir.",
@@ -18064,8 +18034,8 @@
       ],
       "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/rogue#t=calc-rogue-subtlety-setup",
-      "changeTr": "Tier 4'ten tier 2'ye taşındı. Efekt değiştirildi.",
       "descTr": "Saldırılardan kaçındıktan veya büyülere tamamen direndikten sonra hedefe %100 şansla bir combo point ekler.",
+      "changeTr": "Tier 4'ten tier 2'ye taşındı. Efekt değiştirildi.",
       "ranksTr": [
         "Saldırılardan kaçındıktan veya büyülere tamamen direndikten sonra hedefe %33 şansla bir combo point ekler.",
         "Saldırılardan kaçındıktan veya büyülere tamamen direndikten sonra hedefe %67 şansla bir combo point ekler.",
@@ -18119,8 +18089,8 @@
       ],
       "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/shaman#t=calc-shaman-elemental-combat-call-of-flame",
-      "changeTr": "Sütun 3'ten sütun 4'e taşındı. Efekt değiştirildi.",
       "descTr": "Fire Totem'lerinin ve Flame Shock, Fire Nova ve Lava Burst büyülerinin hasarını %15 artırır, ayrıca Flame Shock büyünün süresini 9 saniye uzatır.",
+      "changeTr": "Sütun 3'ten sütun 4'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
         "Fire Totem'lerinin ve Flame Shock, Fire Nova ve Lava Burst büyülerinin hasarını %5 artırır, ayrıca Flame Shock büyünün süresini 3 saniye uzatır.",
         "Fire Totem'lerinin ve Flame Shock, Fire Nova ve Lava Burst büyülerinin hasarını %10 artırır, ayrıca Flame Shock büyünün süresini 6 saniye uzatır.",
@@ -18268,8 +18238,8 @@
       ],
       "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/shaman#t=calc-shaman-elemental-combat-elemental-devastation",
-      "changeTr": "Tier 4'ten tier 2'ye taşındı. Değerler aynı, metin düzenlendi.",
       "descTr": "Doğrudan hasar veren büyülerle yaptığın kritik vuruşlar, yakın dövüş saldırılarıyla kritik vuruş yapma şansını 10 saniye boyunca %9 artırır.",
+      "changeTr": "Tier 4'ten tier 2'ye taşındı. Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Doğrudan hasar veren büyülerle yaptığın kritik vuruşlar, yakın dövüş saldırılarıyla kritik vuruş yapma şansını 10 saniye boyunca %3 artırır.",
         "Doğrudan hasar veren büyülerle yaptığın kritik vuruşlar, yakın dövüş saldırılarıyla kritik vuruş yapma şansını 10 saniye boyunca %6 artırır.",
@@ -18353,8 +18323,8 @@
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/shaman#t=calc-shaman-elemental-combat-elemental-reach",
-      "changeTr": "Classic Era'daki adı Storm Coming. Efekt yeniden yazıldı.",
       "descTr": "Lightning Bolt, Chain Lightning, Fire Nova ve Lava Burst büyülerinin menzilini 6 yard artırır ve Totemic Projection'ın bekleme süresini 20 saniye azaltır.",
+      "changeTr": "Classic Era'daki adı Storm Coming. Efekt yeniden yazıldı.",
       "ranksTr": [
         "Lightning Bolt, Chain Lightning, Fire Nova ve Lava Burst büyülerinin menzilini 3 yard artırır ve Totemic Projection'ın bekleme süresini 10 saniye azaltır.",
         "Lightning Bolt, Chain Lightning, Fire Nova ve Lava Burst büyülerinin menzilini 6 yard artırır ve Totemic Projection'ın bekleme süresini 20 saniye azaltır."
@@ -18410,8 +18380,8 @@
       ],
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/shaman#t=calc-shaman-elemental-combat-eye-of-the-storm",
-      "changeTr": "Efekt değiştirildi.",
       "descTr": "Lightning Bolt, Chain Lightning ve Lava Burst büyülerine hasar aldığında %70 şansla cast süresini kaybetmeme özelliği verir.",
+      "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
         "Lightning Bolt, Chain Lightning ve Lava Burst büyülerine hasar aldığında %23 şansla cast süresini kaybetmeme özelliği verir.",
         "Lightning Bolt, Chain Lightning ve Lava Burst büyülerine hasar aldığında %47 şansla cast süresini kaybetmeme özelliği verir.",
@@ -18437,8 +18407,8 @@
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/shaman#t=calc-shaman-elemental-combat-lava-burst",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Hedefe erimiş lav fırlatırsın; 113 ile 146 arasında (+büyü gücünün %71,4'ü) Fire hasarı verir. Hedefte Flame Shock'ın varsa Lava Burst %20 daha fazla hasar verir.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Hedefe erimiş lav fırlatırsın; 113 ile 146 arasında (+büyü gücünün %71,4'ü) Fire hasarı verir. Hedefte Flame Shock'ın varsa Lava Burst %20 daha fazla hasar verir."
       ]
@@ -18526,8 +18496,8 @@
       "tierPoints": 30,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/shaman#t=calc-shaman-elemental-elemental-mastery",
       "requires": "talent/calc-shaman-elemental-combat-lava-burst",
-      "changeTr": "Efekt değiştirildi.",
       "descTr": "Fire ve Lightning üzerinde ustalık kazanırsın; Lightning Bolt ve Lava Burst'ün cast süresini 0,5 saniye azaltır ve Chain Lightning'in bekleme süresini kaldırır. 15 saniye sürer.",
+      "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
         "Fire ve Lightning üzerinde ustalık kazanırsın; Lightning Bolt ve Lava Burst'ün cast süresini 0,5 saniye azaltır ve Chain Lightning'in bekleme süresini kaldırır. 15 saniye sürer."
       ]
@@ -19063,7 +19033,7 @@
       "maxRank": 3,
       "desc": "Gives your healing spells a 70% chance to not lose casting time when you take damage.",
       "status": "changed",
-      "change": "Maximum rating changed from 5 to 3. Value adjustment: 70%(Classic Era: 42%).",
+      "change": "Max rank changed from 5 to 3. Effect override.",
       "ranks": [
         "Gives your healing spells a 23% chance to not lose casting time when you take damage.",
         "Gives your healing spells a 47% chance to not lose casting time when you take damage.",
@@ -19071,8 +19041,8 @@
       ],
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/shaman#t=calc-shaman-restoration-healing-focus",
-      "changeTr": "Maksimum rank 5'ten 3'e değişti. Değer ayarı: %70 (Classic Era: %42).",
       "descTr": "İyileştirme büyülerine hasar aldığında %70 şansla cast süresini kaybetmeme özelliği verir.",
+      "changeTr": "Maksimum rank 5'ten 3'e değişti. Efekt değiştirildi.",
       "ranksTr": [
         "İyileştirme büyülerine hasar aldığında %23 şansla cast süresini kaybetmeme özelliği verir.",
         "İyileştirme büyülerine hasar aldığında %47 şansla cast süresini kaybetmeme özelliği verir.",
@@ -19480,8 +19450,8 @@
       ],
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/shaman#t=calc-shaman-restoration-water-shield",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Büyücünün etrafını 3 su küresi sarar. Büyücüye bir büyü, yakın dövüş ya da menzilli saldırı isabet ettiğinde veya büyücünün bir büyüsü kritik sonuç verdiğinde büyücüye maksimum manasının %2'si geri verilir ve bir su küresi harcanır. Birkaç saniyede yalnızca bir küre etkinleşir. 10 dakika sürer. Şamanda aynı anda yalnızca bir Elemental Shield etkin olabilir.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Büyücünün etrafını 3 su küresi sarar. Büyücüye bir büyü, yakın dövüş ya da menzilli saldırı isabet ettiğinde veya büyücünün bir büyüsü kritik sonuç verdiğinde büyücüye maksimum manasının %2'si geri verilir ve bir su küresi harcanır. Birkaç saniyede yalnızca bir küre etkinleşir. 10 dakika sürer. Şamanda aynı anda yalnızca bir Elemental Shield etkin olabilir."
       ]
@@ -19499,14 +19469,14 @@
       "maxRank": 1,
       "desc": "Increases the effect of your next Curse of Weakness or Bane of Agony by 50%, or your next Curse of Exhaustion by 0%. Lasts 30 sec.",
       "status": "changed",
-      "change": "Effect Overrides.",
+      "change": "The values remain unchanged, the wording is adjusted.",
       "ranks": [
         "Increases the effect of your next Curse of Weakness or Bane of Agony by 50%, or your next Curse of Exhaustion by 0%. Lasts 30 sec."
       ],
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warlock#t=calc-warlock-affliction-amplify-curse",
-      "changeTr": "Efekt değiştirildi.",
       "descTr": "Bir sonraki Curse of Weakness veya Bane of Agony etkisini %50, bir sonraki Curse of Exhaustion etkisini ise %0 artırır. 30 saniye sürer.",
+      "changeTr": "Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Bir sonraki Curse of Weakness veya Bane of Agony etkisini %50, bir sonraki Curse of Exhaustion etkisini ise %0 artırır. 30 saniye sürer."
       ]
@@ -19532,8 +19502,8 @@
       ],
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warlock#t=calc-warlock-affliction-fel-concentration",
-      "changeTr": "Maksimum rank 5'ten 3'e değişti. Efekt değiştirildi.",
       "descTr": "Drain Life, Drain Mana, Drain Soul ve Wrack büyülerine hasar aldığında %70 şansla cast süresini kaybetmeme özelliği verir.",
+      "changeTr": "Maksimum rank 5'ten 3'e değişti. Efekt değiştirildi.",
       "ranksTr": [
         "Drain Life, Drain Mana, Drain Soul ve Wrack büyülerine hasar aldığında %23 şansla cast süresini kaybetmeme özelliği verir.",
         "Drain Life, Drain Mana, Drain Soul ve Wrack büyülerine hasar aldığında %47 şansla cast süresini kaybetmeme özelliği verir.",
@@ -19560,8 +19530,8 @@
       ],
       "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warlock#t=calc-warlock-affliction-grim-reach",
-      "changeTr": "Seviye 4'ten seviye 2'ye taşındı.",
       "descTr": "Affliction büyülerinin menzilini %20 artırır.",
+      "changeTr": "Seviye 4'ten seviye 2'ye taşındı.",
       "ranksTr": [
         "Affliction büyülerinin menzilini %10 artırır.",
         "Affliction büyülerinin menzilini %20 artırır."
@@ -19704,8 +19674,8 @@
       ],
       "tierPoints": 25,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warlock#t=calc-warlock-affliction-shadow-mastery",
-      "changeTr": "Sütun 2'den sütun 3'e taşındı.",
       "descTr": "Shadow büyülerinin verdiği hasarı veya emdiği canı %10 artırır.",
+      "changeTr": "Sütun 2'den sütun 3'e taşındı.",
       "ranksTr": [
         "Shadow büyülerinin verdiği hasarı veya emdiği canı %2 artırır.",
         "Shadow büyülerinin verdiği hasarı veya emdiği canı %4 artırır.",
@@ -20160,8 +20130,8 @@
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warlock#t=calc-warlock-destruction-destructive-reach",
-      "changeTr": "Tier 4'ten tier 1'e taşındı. Değerler aynı, metin düzenlendi.",
       "descTr": "Destruction büyülerinin menzilini %20 artırır.",
+      "changeTr": "Tier 4'ten tier 1'e taşındı. Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Destruction büyülerinin menzilini %10 artırır.",
         "Destruction büyülerinin menzilini %20 artırır."
@@ -20218,8 +20188,8 @@
       ],
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warlock#t=calc-warlock-destruction-intensity",
-      "changeTr": "Maksimum rank 2'den 3'e değişti. Efekt değiştirildi.",
       "descTr": "Destruction büyülerine hasar aldığında %70 şansla cast süresini kaybetmeme özelliği verir.",
+      "changeTr": "Maksimum rank 2'den 3'e değişti. Efekt değiştirildi.",
       "ranksTr": [
         "Destruction büyülerine hasar aldığında %23 şansla cast süresini kaybetmeme özelliği verir.",
         "Destruction büyülerine hasar aldığında %47 şansla cast süresini kaybetmeme özelliği verir.",
@@ -20796,7 +20766,7 @@
     {
       "id": "talent/calc-warrior-arms-weaponmaster",
       "kind": "talent",
-      "name": "Weaponmaster",
+      "name": "Weapon Master",
       "icon": "garrison_weaponupgrade",
       "class": "warrior",
       "tree": "Arms",
@@ -21067,8 +21037,8 @@
       ],
       "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warrior#t=calc-warrior-fury-furious-precision",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "İkincil saldırılarının isabet oranını %10 artırır.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "İkincil saldırının isabet ihtimalini %4 artırır.",
         "İkincil saldırının isabet ihtimalini %7 artırır.",
@@ -21096,8 +21066,8 @@
       "tierPoints": 25,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warrior#t=calc-warrior-fury-gore-drinker",
       "requires": "talent/calc-warrior-fury-enrage",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Fury, Berserker Rage, Blood Fury, Death Wish ve Bloodlust yeteneklerin bir sonraki 3 yakın dövüş saldırın için maksimum canının %1,0'ını geri verir.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Rage, Berserker Rage, Blood Fury, Death Wish ve Bloodlust yeteneklerin, sonraki 3 yakın dövüş saldırın için azami canının %0.5'ini geri kazandırır.",
         "Fury, Berserker Rage, Blood Fury, Death Wish ve Bloodlust yeteneklerin bir sonraki 3 yakın dövüş saldırın için maksimum canının %1,0'ını geri verir."
@@ -21211,8 +21181,8 @@
       ],
       "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/warrior#t=calc-warrior-fury-lingering-rage",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Savaştan çıktıktan sonra öfkenin azalmaya başlama zamanını 10 saniye geciktirir.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Savaştan çıktıktan sonra öfkenin azalmaya başlama zamanını 2 saniye geciktirir.",
         "Savaştan çıktıktan sonra öfkenin azalmaya başlama zamanını 4 saniye geciktirir.",
@@ -21776,8 +21746,8 @@
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=druid-blood-frenzy",
       "requires": "talent/calc-druid-feral-combat-sharpened-claws",
-      "changeTr": "Sütun 3'ten sütun 4'e taşındı. Efekt değiştirildi.",
       "descTr": "Bear Form veya Dire Bear Form'dayken kritik vuruş yaptığında %100 şansla ek 5 öfke kazanırsın. Ayrıca Cat Form'dayken combo point üreten yeteneklerde periyodik olmayan kritik vuruşlar %100 şansla ek bir combo point kazandırır.",
+      "changeTr": "Sütun 3'ten sütun 4'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
         "Ayı Formu veya Dire Bear Formu'nda kritik vuruş yaptığında %50 ihtimalle 5 ek Öfke kazanırsın. Ayrıca Kedi Formu'nda kombo puanı veren yeteneklerle yaptığın periyodik olmayan kritik vuruşlar %50 ihtimalle 1 ek kombo puanı kazandırır.",
         "Bear Form veya Dire Bear Form'dayken kritik vuruş yaptığında %100 şansla ek 5 öfke kazanırsın. Ayrıca Cat Form'dayken combo point üreten yeteneklerde periyodik olmayan kritik vuruşlar %100 şansla ek bir combo point kazandırır."
@@ -22013,8 +21983,8 @@
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=druid-improved-shifting-power",
       "requires": "talent/druid-shifting-power",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "The Power of Transformation büyünün bekleme süresini 8 saniye azaltır.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "The Power of Transformation büyünün bekleme süresini 4 saniye azaltır.",
         "The Power of Transformation büyünün bekleme süresini 8 saniye azaltır."
@@ -22203,26 +22173,26 @@
       "row": 1,
       "col": 2,
       "maxRank": 5,
-      "desc": "Gives you a 70% chance to cast arcane and nature spells without being interrupted by damage.",
+      "desc": "Gives your arcane and nature spells a 70% chance to not lose cast time when you take damage.",
       "status": "changed",
       "change": "Moved from Tier 2 to Tier 1. Values unchanged, wording adjusted.",
       "ranks": [
-        "Gives you a 14% chance to cast arcane and nature spells without being interrupted by damage.",
-        "Gives you a 28% chance to cast Arcane and Nature spells without being interrupted by damage.",
-        "Gives you a 42% chance to cast arcane and nature spells without being interrupted by damage.",
-        "Gives you a 56% chance to cast arcane and nature spells without being interrupted by damage.",
-        "Gives you a 70% chance to cast arcane and nature spells without being interrupted by damage."
+        "Gives your arcane and nature spells a 14% chance to not lose cast time when you take damage.",
+        "Gives your arcane and nature spells a 28% chance to not lose cast time when you take damage.",
+        "Gives your arcane and nature spells a 42% chance to not lose cast time when you take damage.",
+        "Gives your arcane and nature spells a 56% chance to not lose cast time when you take damage.",
+        "Gives your arcane and nature spells a 70% chance to not lose cast time when you take damage."
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=druid-nature-s-focus",
-      "descTr": "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %70 olur.",
       "changeTr": "Tier 2'den tier 1'e taşındı. Değerler aynı, metin düzenlendi.",
+      "descTr": "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %70 yapar.",
       "ranksTr": [
-        "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %14 olur.",
-        "Arcane ve Nature büyülerini cast ederken %28 ihtimalle hasar yüzünden kesintiye uğramazsın.",
-        "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %42 olur.",
-        "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %56 olur.",
-        "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %70 olur."
+        "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %14 yapar.",
+        "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %28 yapar.",
+        "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %42 yapar.",
+        "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %56 yapar.",
+        "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %70 yapar."
       ]
     },
     {
@@ -22324,8 +22294,8 @@
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=druid-primal-bite",
       "requires": "talent/calc-druid-feral-combat-savage-fury",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Hedefi ısırır; %100 normal hasar artı 26 hasar verir ve büyük miktarda tehdit oluşturur.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Hedefi ısırır; %100 normal hasar artı 26 hasar verir ve büyük miktarda tehdit oluşturur."
       ]
@@ -22350,8 +22320,8 @@
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=druid-shifting-power",
       "requires": "talent/calc-druid-feral-combat-shredding-attacks",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Anında $c mana puanını 40 enerji puanına dönüştürür. Dönüşüm büyülerinin maliyetini azaltan etki, dönüşüm gücünün maliyetini de azaltır.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Anında $c mana puanını 40 enerji puanına dönüştürür. Dönüşüm büyülerinin maliyetini azaltan etki, dönüşüm gücünün maliyetini de azaltır."
       ]
@@ -22434,8 +22404,8 @@
       "tierPoints": 15,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=mage-heating-up",
       "requires": "talent/calc-mage-fire-pyroblast",
-      "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Fireball, Frostfire Bolt, Fire Blast ve Scorch'un periyodik olmayan kritik vuruşları, 20 saniye içindeki bir sonraki Pyroblast cast süresini %25 azaltır, en fazla 3 kez birikir. Fire Blast ayrıca verdiği her hasar için etkiye ek bir katman ekler.",
+      "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
         "Fireball, Frostfire Bolt, Fire Blast ve Scorch'un periyodik olmayan kritik vuruşları, 20 saniye içindeki bir sonraki Pyroblast cast süresini %25 azaltır, en fazla 3 kez birikir. Fire Blast ayrıca verdiği her hasar için etkiye ek bir katman ekler."
       ]

@@ -33,7 +33,7 @@ The class changes below come from the wclbox build comparison (machine-translate
 
 - **Frost:**
   - Frost Warding: Ice Barrier and Frost Barrier now absorb 20% more damage.
-  - Elemental Precision now lists 6% (was 3%).
+  - Elemental Precision now gives up to 6% hit chance with Frost and Fire spells at max rank.
 
 ## Race changes
 
@@ -69,7 +69,7 @@ The class changes below come from the wclbox build comparison (machine-translate
 ::race[Skyborne]
 
 - Wind-Blessed Haste is reduced to 2% (was 3%).
-- :racial[Read Leyline] now increases Mana and Health regeneration by 50% (was 100%) for 15 seconds. It cannot be used while Innervate is active and is replaced by Innervate's stronger effect.
+- :racial[Read Ley Line] now increases Mana and Health regeneration by 50% (was 100%) for 15 seconds. It cannot be used while Innervate is active and is replaced by Innervate's stronger effect.
 - Using Read Leyline at a Ley Line also grants "Attuned" for 1 hour, raising the regeneration bonus to 100%. Attuned persists through death and is removed upon entering a raid.
 - :racial[Skysight] now gives 15% movement speed (was 10%) for 15 seconds.
 - Using Skysight at an elemental convergence also grants "Charged" for 1 hour, raising the bonus to 30%. Charged persists through death and is removed upon entering a raid.

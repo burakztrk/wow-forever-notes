@@ -231,6 +231,10 @@
     "en": "Rank 4:No change in values, no change in description wording",
     "tr": "Rank 4: Değerlerde ve açıklama metninde değişiklik yok"
   },
+  "0e1c923ab672fb9c": {
+    "en": "Gives your arcane and nature spells a 56% chance to not lose cast time when you take damage.",
+    "tr": "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %56 yapar."
+  },
   "0e2344fb0d796407": {
     "en": "Moved from Tier 7 to Tier 5. Values unchanged, wording adjusted.",
     "tr": "Tier 7'den tier 5'e taşındı. Değerler aynı, metin düzenlendi."
@@ -242,6 +246,10 @@
   "0e2d84b81a713e6a": {
     "en": "Reduces the Mana cost of your Lesser Heal, Heal, Greater Heal, Penance, and Prayer of Mending spells by 15%.",
     "tr": "Lesser Heal, Heal, Greater Heal, Penance ve Prayer of Mending büyülerinin mana maliyetini %15 azaltır."
+  },
+  "0ec7fe24dc52796d": {
+    "en": "Rank 4:Value: 143 (Classic Era: 110)",
+    "tr": "Rank 4: Değer 143 (Classic Era: 110)"
   },
   "0ef3fc381a5b02a3": {
     "en": "Move from column 3 to column 4. Effect override.",
@@ -470,10 +478,6 @@
   "1af8e2110384fede": {
     "en": "Increases your Attack Power by 100% of your Intellect.",
     "tr": "Attack Power'ını Intellect'inin %100'ü kadar artırır."
-  },
-  "1b0954eae112fa43": {
-    "en": "Increases the damage done by your Frost spells by 6%.",
-    "tr": "Frost büyülerinin verdiği hasarı %6 artırır."
   },
   "1b5ee499c2b309c9": {
     "en": "Binds when picked up",
@@ -975,10 +979,6 @@
     "en": "Increases the Bleed damage done by your Rend ability by 35%.",
     "tr": "Rend yeteneğinin verdiği kanama hasarını %35 artırır."
   },
-  "36765809f8c97611": {
-    "en": "Max rank changed from 3 to 5. Effect override.",
-    "tr": "Maksimum rank 3'ten 5'e değişti. Efekt değiştirildi."
-  },
   "36aadfb3eb1ec0a9": {
     "en": "Each instance of damage of Mind Flay deals 20% more damage than its previous instance of damage.",
     "tr": "Mind Flay'in her hasar anı bir önceki hasar anından %20 daha fazla hasar verir."
@@ -1182,10 +1182,6 @@
   "41771185d9852dbd": {
     "en": "Drains the soul of the target, causing 420 (+50% of spell power) Shadow damage over 15 sec. Non-trivial targets damaged by Drain Soul have a chance to grant you a Soul Shard. Non-trivial targets killed by Drain Soul will always grant you a Soul shard. Soul Shards are required for other spells.",
     "tr": "Hedefin ruhunu emer; 15 saniye boyunca 420 (+büyü gücünün %50'si) Shadow hasarı verir. Drain Soul ile hasar alan önemsiz olmayan hedeflerin sana Soul Shard verme şansı vardır; Drain Soul ile öldürülen önemsiz olmayan hedefler her zaman Soul Shard verir. Soul Shard'lar başka büyüler için gerekir."
-  },
-  "41a1ae32f03731d1": {
-    "en": "Gives you a 28% chance to cast Arcane and Nature spells without being interrupted by damage.",
-    "tr": "Arcane ve Nature büyülerini cast ederken %28 ihtimalle hasar yüzünden kesintiye uğramazsın."
   },
   "41e59fd511db285f": {
     "en": "Increases your Physical and Holy damage dealt by 1% for 30 sec after landing a non-periodic critical strike. Stacks up to 3 times.",
@@ -1467,10 +1463,6 @@
     "en": "Creates a portal, teleporting group members that use it to Thunder Bluff.",
     "tr": "Kullanan grup üyelerini Thunder Bluff'a ışınlayan bir portal açar."
   },
-  "4fb36ff5e0b7e633": {
-    "en": "Maximum rating changed from 5 to 3. Value adjustment: 70%(Classic Era: 42%).",
-    "tr": "Maksimum rank 5'ten 3'e değişti. Değer ayarı: %70 (Classic Era: %42)."
-  },
   "4fb9934475968215": {
     "en": "Begins a ritual that sacrifices a random participant to summon a doomguard. The doomguard must be immediately subjugated or it will attack the ritual participants. Requires the caster and 4 additional party members to complete the ritual. In order to participate, all players must right-click the portal and not move until the ritual is complete.",
     "tr": "Rastgele bir katılımcıyı feda ederek bir Doomguard çağıran bir ritüel başlatır. Doomguard hemen kontrol altına alınmazsa ritüel katılımcılarına saldırır. Ritüeli tamamlamak için cast eden ve 4 ek grup üyesi gerekir. Katılmak için tüm oyuncular portala sağ tıklamalı ve ritüel bitene kadar hareket etmemelidir."
@@ -1534,6 +1526,10 @@
   "54414728f353615d": {
     "en": "Increases the critical strike chance of your Flamestrike spell by 15%.",
     "tr": "Flamestrike büyünün kritik vuruş şansını %15 artırır."
+  },
+  "54d13bd13427d582": {
+    "en": "Gives your arcane and nature spells a 70% chance to not lose cast time when you take damage.",
+    "tr": "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %70 yapar."
   },
   "552f52285d8ec637": {
     "en": "Summons an Incubus under the command of the Warlock.",
@@ -1779,10 +1775,6 @@
     "en": "Moved from Tier 3 to Tier 5. Values unchanged, wording adjusted.",
     "tr": "Tier 3'ten tier 5'e taşındı. Değerler aynı, metin düzenlendi."
   },
-  "60d19a2d81e1b7c0": {
-    "en": "Rank 4:Value: 71 (Classic Era: 110)",
-    "tr": "Rank 4: Değer 71 (Classic Era: 110)"
-  },
   "6181f9fef1b709fb": {
     "en": "After killing a non-trivial enemy, gives you a 40% increased critical strike chance on your next Sinister Strike, Backstab, Ambush, Mutilate, or Ghostly Strike. Lasts 20 sec.",
     "tr": "Önemsiz olmayan bir düşmanı öldürdükten sonra bir sonraki Sinister Strike, Backstab, Ambush, Mutilate veya Ghostly Strike'ının kritik vuruş şansı %40 artar. 20 saniye sürer."
@@ -2019,10 +2011,6 @@
     "en": "Increases your Stealth detection as if you were 1 level higher and reduces your chance to be hit by spells and ranged attacks by 2%.",
     "tr": "Stealth algılama seviyeni 1 seviye daha yüksekmişsin gibi artırır ve büyüler ile menzilli saldırılar tarafından vurulma ihtimalini %2 azaltır."
   },
-  "6b3e8bb7ded4b677": {
-    "en": "Your aperiodic damage skills consume 10% less energy and deal 10% more damage.",
-    "tr": "Periyodik olmayan hasar yeteneklerin %10 daha az enerji harcar ve %10 daha fazla hasar verir."
-  },
   "6b51332848a57047": {
     "en": "A powerful prayer that heals the target and their party for 631 to 667 (+28.6% of spell power). Party members must be within 40 yards of target.",
     "tr": "Hedefi ve grubunu 631 - 667 (+büyü gücünün %28.6'sı) iyileştiren güçlü bir dua. Grup üyeleri hedefe 40 yard mesafede olmalıdır."
@@ -2147,6 +2135,10 @@
     "en": "Transfers 140 Mana every 1 sec from the target to the caster. Lasts 5 sec.",
     "tr": "Hedeften cast edene her 1 saniyede 140 Mana aktarır. 5 saniye sürer."
   },
+  "716b127a1c48a18c": {
+    "en": "Attempt to activate the power of a nearby magic web, increasing HP and mana regeneration by 100%. Lasts for 30 seconds if there is no magic web nearby; lasts for 15 minutes if there is.",
+    "tr": "Yakındaki bir Ley Line'ın gücünü etkinleştirmeye çalışır; can ve Mana yenilenmesini %100 artırır. Yakınlarda Ley Line yoksa 30 saniye, varsa 15 dakika sürer."
+  },
   "71b49020bfc26b54": {
     "en": "Blasts the target with Holy energy, causing 129 to 139 (+42.9% of spell power) Holy damage to an enemy, or 110 to 118 (+42.9% of spell power) healing to an ally.",
     "tr": "Hedefi Holy enerjiyle vurur; düşmana 129 - 139 (+büyü gücünün %42.9'u) Holy hasar verir ya da müttefiki 110 - 118 (+büyü gücünün %42.9'u) iyileştirir."
@@ -2170,6 +2162,10 @@
   "72351d85553ba6ee": {
     "en": "Increases Armor by 200. If an enemy strikes the caster, they may have their movement slowed by 30% and the time between their attacks increased by 25% for 5 sec. Only one type of Armor spell can be active on the Mage at any time. Lasts 30 min.",
     "tr": "Armor'u 200 artırır. Cast edene vuran düşmanın hareketi 5 saniye boyunca %30 yavaşlayabilir ve saldırıları arasındaki süre %25 uzayabilir. Mage üzerinde aynı anda yalnızca bir Armor büyüsü aktif olabilir. 30 dakika sürer."
+  },
+  "7285ec3741011090": {
+    "en": "Increases the hit chance of your Frost and Fire spells by 2%.",
+    "tr": "Frost ve Fire büyülerinin isabet şansını %2 artırır."
   },
   "730486aab696de8b": {
     "en": "Increases the damage you deal with two-handed melee weapons by 6%.",
@@ -2575,10 +2571,6 @@
     "en": "Allows the target to breathe underwater for 10 min.",
     "tr": "Hedefin 10 dakika boyunca su altında nefes almasını sağlar."
   },
-  "8293bf5db9f1c965": {
-    "en": "Instantly attacks a target, dealing 1 damage and restoring 10% of your maximum health. Can only be used within 20 seconds of killing an enemy that provides you experience or honor.",
-    "tr": "Bir hedefe anında saldırır; 1 hasar verir ve maksimum canının %10'unu yeniler. Yalnızca deneyim veya honor veren bir düşmanı öldürdükten sonraki 20 saniye içinde kullanılabilir."
-  },
   "8302248afbee6bde": {
     "en": "Causes your attacks to ignore the target's armor by 9% and increases the damage dealt by your Split ability by 30%.",
     "tr": "Saldırıların hedefin Armor'unun %9'unu yok sayar ve Split yeteneğinin verdiği hasarı %30 artırır."
@@ -2890,6 +2882,10 @@
   "90d6ed93a556af78": {
     "en": "Cooldown: 30 seconds (Classic Era: 15 seconds)",
     "tr": "Bekleme süresi: 30 saniye (Classic Era: 15 saniye)"
+  },
+  "91537e5948733b85": {
+    "en": "Gives your arcane and nature spells a 42% chance to not lose cast time when you take damage.",
+    "tr": "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %42 yapar."
   },
   "915b08cb0f88a29a": {
     "en": "Move from level 4 to level 3.",
@@ -3327,6 +3323,10 @@
     "en": "Increases your reputation gains by 10%.",
     "tr": "Kazandığın itibar (reputation) %10 artar."
   },
+  "a742c0ebe9ef6563": {
+    "en": "Increases the chance of your Frost and Fire spells to hit by 4%.",
+    "tr": "Frost ve Fire büyülerinin isabet şansını %4 artırır."
+  },
   "a744ca7c72a8defe": {
     "en": "Rake the target for 61 damage and an additional 102 damage over 9 sec. Awards 1 combo point.",
     "tr": "Hedefi tırmalar; 61 hasar ve 9 saniye boyunca ek 102 hasar verir. 1 combo puanı kazandırır."
@@ -3338,10 +3338,6 @@
   "a7aba0b630641549": {
     "en": "Increases the damage done by your Fire spells by 3% per your Fire effects on the target, up to a maximum increase of 12%. Effects which mix multiple schools of magic do not qualify.",
     "tr": "Hedefteki her Fire etkin için Fire büyülerinin hasarını %3 artırır, en fazla %12. Birden fazla büyü okulunu karıştıran etkiler sayılmaz."
-  },
-  "a7b7ad0d3edab169": {
-    "en": "Moved from column 2 to column 4. Values unchanged, wording adjusted.",
-    "tr": "Sütun 2'den sütun 4'e taşındı. Değerler aynı, metin düzenlendi."
   },
   "a7d6064c15a572b2": {
     "en": "Your Charge ability is now usable while in Defensive Stance.",
@@ -3955,6 +3951,14 @@
     "en": "Teleports the caster to Orgrimmar.",
     "tr": "Cast edeni Orgrimmar'a ışınlar."
   },
+  "c8fd1685d151f46c": {
+    "en": "Gives your arcane and nature spells a 28% chance to not lose cast time when you take damage.",
+    "tr": "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %28 yapar."
+  },
+  "c8ffe5d8c2362c3c": {
+    "en": "Instantly attacks the target, dealing ${1+$apm*15/100} damage and regaining 10% of your maximum health. Can only be used within 20 seconds of killing an enemy that gives you EXP or Honor.",
+    "tr": "Hedefe anında saldırır, ${1+$apm*15/100} hasar verir ve azami canının %10'unu geri kazandırır. Yalnızca EXP veya Honor veren bir düşmanı öldürdükten sonraki 20 saniye içinde kullanılabilir."
+  },
   "c95245bf268d3237": {
     "en": "Causes an explosion of holy light around the caster, causing 26 to 30 (+10.7% of spell power) Holy damage to all enemy targets within 10 yards and healing all party members within 10 yards for 50 to 57 (+10.7% of spell power). These effects cause no threat.",
     "tr": "Cast edenin çevresinde kutsal ışık patlaması yaratır; 10 yard içindeki tüm düşmanlara 26 - 30 (+büyü gücünün %10.7'si) Holy hasar verir ve 10 yard içindeki tüm grup üyelerini 50 - 57 (+büyü gücünün %10.7'si) iyileştirir. Bu etkiler tehdit üretmez."
@@ -4423,6 +4427,10 @@
     "en": "Applies Light's Vigil to the target for 30 sec. Your next Holy Shock cast on them triggers no cooldown and causes enemy targets to suffer 175 to 189 (+42.9% of spell power) Holy damage and refund 75% of Light's Vigil's Mana cost, or allied targets to heal their party for 325 to 344 (+14.3% of spell power). You may only have one Light's Vigil active per party.",
     "tr": "Hedefe 30 saniye boyunca Light's Vigil uygular. Ona cast edeceğin bir sonraki Holy Shock bekleme süresi tetiklemez; düşman hedefse 175 - 189 (+büyü gücünün %42.9'u) Holy hasar verir ve Light's Vigil'in mana maliyetinin %75'ini iade eder, müttefik hedefse grubunu 325 - 344 (+büyü gücünün %14.3'ü) iyileştirir. Grup başına yalnızca bir Light's Vigil aktif olabilir."
   },
+  "de6b1cec12fc4213": {
+    "en": "Your aperiodic damage skills cost 10% less energy and deal 10% more damage for 8 seconds.",
+    "tr": "Periyodik olmayan hasar yeteneklerin 8 saniye boyunca %10 daha az Enerji harcar ve %10 daha fazla hasar verir."
+  },
   "de8937dbd03ba19d": {
     "en": "Decreases the cooldown of your Judgement ability by 2 sec.",
     "tr": "Judgement yeteneğinin bekleme süresini 2 saniye azaltır."
@@ -4671,6 +4679,10 @@
     "en": "Shows the location of all nearby humanoids on the minimap. Only one form of tracking can be active at a time.",
     "tr": "Yakındaki tüm humanoid'lerin yerini minimap'te gösterir. Aynı anda yalnızca bir izleme türü aktif olabilir."
   },
+  "e6f4af18ab417cd0": {
+    "en": "Increases the hit rate of your Frost and Fire spells by 6%.",
+    "tr": "Frost ve Fire büyülerinin isabet şansını %6 artırır."
+  },
   "e740c9c61975f91e": {
     "en": "When Seal of Fury's shield is fully absorbed, restore 60 Mana, increased by 15% per level the attacker is above you, up to 45%.",
     "tr": "Seal of Fury'nin kalkanı tamamen tükendiğinde 60 Mana yeniler; saldırgan senden yüksek seviyedeyse her seviye için %15 artar, en fazla %45."
@@ -4866,6 +4878,10 @@
   "eeb8a0119edb6121": {
     "en": "Your Mind Blast and Fully Guided Mind Flay trigger Dark Enlightenment, increasing your and party members 'spirits by 12% for 10 seconds.",
     "tr": "Mind Blast ve Fully Guided Mind Flay, Dark Enlightenment'ı tetikler; senin ve grup üyelerinin Spirit'ini 10 saniye boyunca %12 artırır."
+  },
+  "eecee30560a2ca94": {
+    "en": "Gives your arcane and nature spells a 14% chance to not lose cast time when you take damage.",
+    "tr": "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %14 yapar."
   },
   "eecfa05b4a2a78c1": {
     "en": "Reduces the Energy cost of your Expose Armor ability by 10, and refunds 2 Combo Points when cast with 5 Combo Points.",
@@ -5111,10 +5127,6 @@
     "en": "Increases your chance to Block attacks with your shield by 2% and grants you a 40% chance to generate 5 Rage when you Block.",
     "tr": "Kalkanınla saldırıları Block etme ihtimalini %2 artırır ve Block yaptığında %40 ihtimalle 5 Öfke kazandırır."
   },
-  "fbe062e8211b0e0b": {
-    "en": "Value: 90%(Classic Era: 60%)",
-    "tr": "Değer: %90 (Classic Era: %60)"
-  },
   "fbff62e7d15cc932": {
     "en": "Reduces the global cooldown and cast time of your Slam ability by 0.50 sec. In addition, Slam no longer interrupts or delays your melee swing and Slam's cooldown is reduced by 3.0 sec.",
     "tr": "Slam yeteneğinin global bekleme süresini ve cast süresini 0.50 saniye kısaltır. Ayrıca Slam artık yakın dövüş vuruşunu kesmez veya geciktirmez ve bekleme süresi 3.0 saniye azalır."
@@ -5174,10 +5186,6 @@
   "fe0a8b67fae2144c": {
     "en": "Increases the critical strike damage bonus of your Arcane and Nature spells by 100%.",
     "tr": "Arcane ve Nature büyülerinin kritik vuruş hasar bonusunu %100 artırır."
-  },
-  "fe1fc0f3675b8ee6": {
-    "en": "Gives you a 70% chance to cast arcane and nature spells without being interrupted by damage.",
-    "tr": "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %70 olur."
   },
   "fe65542d042a4a70": {
     "en": "When in Bear Form, Cat Form, Dire Bear Form, or Moonkin Form, you gain 1 additional base armor point per level; each defense point that exceeds your level five times also provides 0.67 base armor points. This number is further multiplied by these forms.",
