@@ -676,3 +676,15 @@ a.story-card:focus-visible {
 .lore .sil-guldan{z-index:0;top:clamp(700px,52vw,760px);bottom:auto;right:auto;left:max(16px,calc(50% - 570px));width:clamp(200px,22vw,300px);aspect-ratio:478/641;opacity:.55;transform:none;-webkit-mask-image:radial-gradient(closest-side at 50% 46%,#000 58%,rgba(0,0,0,.45) 80%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 46%,#000 58%,rgba(0,0,0,.45) 80%,transparent 100%)}
 @media (max-width:760px){.lore .sil-guldan{display:none}}
 .story-feature-hero.soft{-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);opacity:.5}
+/* Undead story: Forsaken violet and blight green, plain hero until the cover arrives, the Frozen Throne figure */
+.lore.undead{--forsaken:#b28cff;--plague:#8bd46a}
+.lore.undead .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(139,212,106,.15),transparent 70%),radial-gradient(ellipse 55% 65% at 80% 12%,rgba(107,63,160,.2),transparent 70%),var(--bg)}
+.lore #scourgemap svg{max-height:78vh}
+.lore #tirisfal svg{max-height:76vh}
+.lore #throne svg{max-height:46vh}
+/* Tauren story: Mulgore prairie green and An'she sun gold, plain hero until the cover arrives, the Thunder Bluff totem figure */
+.lore.tauren{--earth:#7ec876;--sun:#e8a848}
+.lore.tauren .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(126,200,118,.15),transparent 70%),radial-gradient(ellipse 55% 65% at 80% 12%,rgba(232,168,72,.18),transparent 70%),var(--bg)}
+.lore #desolacemap svg{max-height:78vh}
+.lore #mulgore svg{max-height:76vh}
+.lore #totem svg{max-height:46vh}

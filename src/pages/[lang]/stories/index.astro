@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY, ORC_STORY, TROLL_STORY } from '../../../i18n/stories';
+import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY, ORC_STORY, TAUREN_STORY, TROLL_STORY, UNDEAD_STORY } from '../../../i18n/stories';
 import { racesByFaction } from '../../../lib/codex';
 import { storySlug } from '../../../lib/stories/races';
 import { withBase } from '../../../utils/url';
@@ -17,6 +17,22 @@ const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stori
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 // Written stories, newest first; every other race shows as "coming soon" (src/lib/stories/races.ts).
 const features = [
+  {
+    slug: 'tauren',
+    name: 'Tauren',
+    faction: 'Horde',
+    story: TAUREN_STORY[lang],
+    bg: undefined, // no cover yet
+    hero: undefined,
+  },
+  {
+    slug: 'undead',
+    name: 'Undead',
+    faction: 'Horde',
+    story: UNDEAD_STORY[lang],
+    bg: undefined, // no cover yet
+    hero: undefined,
+  },
   {
     slug: 'troll',
     name: 'Troll',

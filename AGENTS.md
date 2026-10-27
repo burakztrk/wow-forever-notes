@@ -62,7 +62,7 @@ Node 22.12+.
   `/data/v1/legacy.json`.
 - `src/pages/[lang]/stories/` — race stories ("Hikaye"/"Stories" in the nav, before the search icon): the index lists
   every race (written ones link, the rest say "coming soon"); each written race is one scroll-told page (`gnome.astro`,
-  `dwarf.astro`, `human.astro`, `night-elf.astro`, `orc.astro`, `troll.astro`). `curse-of-flesh.astro` is a shorter lore page that is listed nowhere (index, race strip,
+  `dwarf.astro`, `human.astro`, `night-elf.astro`, `orc.astro`, `troll.astro`, `tauren.astro`, `undead.astro`). `curse-of-flesh.astro` is a shorter lore page that is listed nowhere (index, race strip,
   nav, search): only the origin chapters that mention the curse link to it (`CurseLink.astro`, `curseUrl()`).
   The race strip, written-story slugs and next-story links come from `src/lib/stories/races.ts`;
   header, race strip and closing/notes are `src/components/stories/*.astro`. Copy, TR + EN, in `src/i18n/stories.ts`
@@ -71,9 +71,9 @@ Node 22.12+.
   filled per language by `src/lib/stories/art.ts`). Scroll effects in `src/scripts/story.ts`, driven by markup:
   `data-p="start,end"` sets `--p`; `data-routes` draws route masks (`data-r`, `data-show`); `data-moves` drifts parts
   with `data-move="dx,dy,deg"`; the `#ek` map's `data-cams` holds one camera per step; `canvas#snow[data-fx]` is
-  `snow` (blizzard), `cinders` (small red flames that fall and cool to grey ash), `embers` (forge sparks), `void` (violet motes), `wisps` (moonlit wisps) or `voodoo` (jungle-green motes). Styles in `src/styles/stories.css`, all scoped under `.lore`; images
+  `snow` (blizzard), `cinders` (small red flames that fall and cool to grey ash), `embers` (forge sparks), `void` (violet motes), `wisps` (moonlit wisps), `voodoo` (jungle-green motes), `plague` (blight-green motes) or `sun` (prairie-gold motes). Styles in `src/styles/stories.css`, all scoped under `.lore`; images
   in `public/stories/<race>/`; cover art (hero background, index card) comes from the site owner, so a new story gets no drawn
-  cover: leave it plain until the image arrives. Proper names in the Gnome, Dwarf, Human, Night Elf, Orc and Troll stories get lore cards: `src/i18n/lore.ts` (TR + EN, `aliases` are
+  cover: leave it plain until the image arrives. Proper names in the Gnome, Dwarf, Human, Night Elf, Orc, Troll, Tauren and Undead stories get lore cards: `src/i18n/lore.ts` (TR + EN, `aliases` are
   the exact spellings in the copy, `icon` from `public/icons`) and `src/lib/stories/lore.ts` (`loreHtml()` wraps the first
   mention of each name per text block, `loreTips()` builds the `#wf-glossary` island; `CardTip` kind `lore`). Lore cards
   are searchable too: `loreSearch()` adds them, with their aliases and story links, to `/<lang>/search.json`;

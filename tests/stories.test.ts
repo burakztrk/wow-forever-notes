@@ -17,8 +17,12 @@ import {
   ORC_ART_LABELS,
   ORC_STORY,
   STORY_UI,
+  TAUREN_ART_LABELS,
+  TAUREN_STORY,
   TROLL_ART_LABELS,
   TROLL_STORY,
+  UNDEAD_ART_LABELS,
+  UNDEAD_STORY,
 } from '../src/i18n/stories';
 import { fillArt } from '../src/lib/stories/art';
 import { CURSE_ART } from '../src/lib/stories/curse-art';
@@ -27,7 +31,9 @@ import { GNOME_ART } from '../src/lib/stories/gnome-art';
 import { HUMAN_ART } from '../src/lib/stories/human-art';
 import { NIGHT_ELF_ART } from '../src/lib/stories/night-elf-art';
 import { ORC_ART } from '../src/lib/stories/orc-art';
+import { TAUREN_ART } from '../src/lib/stories/tauren-art';
 import { TROLL_ART } from '../src/lib/stories/troll-art';
+import { UNDEAD_ART } from '../src/lib/stories/undead-art';
 import { STORY_RACES, storySlug } from '../src/lib/stories/races';
 
 const art = [
@@ -50,6 +56,16 @@ const art = [
     drawings: [ORC_ART.portal, ORC_ART.ek, ORC_ART.durotar, ORC_ART.world],
   },
   { name: 'troll', labels: TROLL_ART_LABELS, drawings: [TROLL_ART.amani, TROLL_ART.gurubashi, TROLL_ART.ek, TROLL_ART.world] },
+  {
+    name: 'undead',
+    labels: UNDEAD_ART_LABELS,
+    drawings: [UNDEAD_ART.scourge, UNDEAD_ART.throne, UNDEAD_ART.ek, UNDEAD_ART.tirisfal, UNDEAD_ART.world],
+  },
+  {
+    name: 'tauren',
+    labels: TAUREN_ART_LABELS,
+    drawings: [TAUREN_ART.desolace, TAUREN_ART.totem, TAUREN_ART.ek, TAUREN_ART.mulgore, TAUREN_ART.world],
+  },
 ];
 
 const keys = (o: object) => Object.keys(o).sort();
@@ -79,6 +95,8 @@ describe('story art', () => {
       expect(cams(NIGHT_ELF_ART.ek)).toHaveLength(NIGHT_ELF_STORY[lang].hyjal.steps.length);
       expect(cams(ORC_ART.ek)).toHaveLength(ORC_STORY[lang].exodus.steps.length);
       expect(cams(TROLL_ART.ek)).toHaveLength(TROLL_STORY[lang].darkspear.steps.length);
+      expect(cams(UNDEAD_ART.ek)).toHaveLength(UNDEAD_STORY[lang].rebellion.steps.length);
+      expect(cams(TAUREN_ART.ek)).toHaveLength(TAUREN_STORY[lang].march.steps.length);
     }
   });
 });
@@ -199,6 +217,48 @@ describe('story copy', () => {
     expect(pins(TROLL_ART.world)).toBe(tr.today.legend.length);
   });
 
+  it('keeps TR and EN undead stories in step', () => {
+    const [tr, en] = [UNDEAD_STORY.tr, UNDEAD_STORY.en];
+    expect(en.facts.length).toBe(tr.facts.length);
+    expect(en.origin.stages.map((s) => s.name)).toEqual(tr.origin.stages.map((s) => s.name));
+    expect(en.scourge.cards.map((c) => [c.name, c.tone])).toEqual(tr.scourge.cards.map((c) => [c.name, c.tone]));
+    expect(en.breaking.cards.map((c) => [c.name, c.tone])).toEqual(tr.breaking.cards.map((c) => [c.name, c.tone]));
+    expect(en.rebellion.steps.map((s) => [s.era, s.tone])).toEqual(tr.rebellion.steps.map((s) => [s.era, s.tone]));
+    expect(en.today.leaders.map((l) => l.name)).toEqual(tr.today.leaders.map((l) => l.name));
+    for (const key of ['legend', 'landLegend'] as const) expect(en.today[key].map((l) => l.name)).toEqual(tr.today[key].map((l) => l.name));
+    expect(en.scourge.legend.map((l) => l.name)).toEqual(tr.scourge.legend.map((l) => l.name));
+    // the page pairs these lists with fixed icon sets and numbered map pins
+    expect(tr.origin.stages).toHaveLength(4);
+    expect(tr.scourge.cards).toHaveLength(4);
+    expect(tr.breaking.cards).toHaveLength(4);
+    expect(tr.today.leaders).toHaveLength(3);
+    const pins = (svg: string) => (svg.match(/class="pnum"/g) ?? []).length;
+    expect(pins(UNDEAD_ART.scourge)).toBe(tr.scourge.legend.length);
+    expect(pins(UNDEAD_ART.tirisfal)).toBe(tr.today.landLegend.length);
+    expect(pins(UNDEAD_ART.world)).toBe(tr.today.legend.length);
+  });
+
+  it('keeps TR and EN tauren stories in step', () => {
+    const [tr, en] = [TAUREN_STORY.tr, TAUREN_STORY.en];
+    expect(en.facts.length).toBe(tr.facts.length);
+    expect(en.origin.stages.map((s) => s.name)).toEqual(tr.origin.stages.map((s) => s.name));
+    expect(en.centaurs.cards.map((c) => [c.name, c.tone])).toEqual(tr.centaurs.cards.map((c) => [c.name, c.tone]));
+    expect(en.caravan.cards.map((c) => [c.name, c.tone])).toEqual(tr.caravan.cards.map((c) => [c.name, c.tone]));
+    expect(en.march.steps.map((s) => [s.era, s.tone])).toEqual(tr.march.steps.map((s) => [s.era, s.tone]));
+    expect(en.today.leaders.map((l) => l.name)).toEqual(tr.today.leaders.map((l) => l.name));
+    for (const key of ['legend', 'landLegend'] as const) expect(en.today[key].map((l) => l.name)).toEqual(tr.today[key].map((l) => l.name));
+    expect(en.centaurs.legend.map((l) => l.name)).toEqual(tr.centaurs.legend.map((l) => l.name));
+    // the page pairs these lists with fixed icon sets and numbered map pins
+    expect(tr.origin.stages).toHaveLength(4);
+    expect(tr.centaurs.cards).toHaveLength(4);
+    expect(tr.caravan.cards).toHaveLength(4);
+    expect(tr.today.leaders).toHaveLength(3);
+    const pins = (svg: string) => (svg.match(/class="pnum"/g) ?? []).length;
+    expect(pins(TAUREN_ART.desolace)).toBe(tr.centaurs.legend.length);
+    expect(pins(TAUREN_ART.mulgore)).toBe(tr.today.landLegend.length);
+    expect(pins(TAUREN_ART.world)).toBe(tr.today.legend.length);
+  });
+
   it('keeps TR and EN Curse of Flesh pages in step', () => {
     const [tr, en] = [CURSE_STORY.tr, CURSE_STORY.en];
     expect(en.facts.length).toBe(tr.facts.length);
@@ -233,6 +293,8 @@ describe('story races', () => {
     expect(storySlug('alliance-human')).toBe('human');
     expect(storySlug('horde-orc')).toBe('orc');
     expect(storySlug('horde-troll')).toBe('troll');
+    expect(storySlug('horde-tauren')).toBe('tauren');
+    expect(storySlug('horde-undead')).toBe('undead');
   });
 
   it('reaches the Curse of Flesh page only from the stories that mention the curse', () => {
@@ -244,6 +306,6 @@ describe('story races', () => {
     for (const slug of ['gnome', 'dwarf', 'human']) {
       expect(readFileSync(join(pages, `${slug}.astro`), 'utf8'), slug).toMatch(/<CurseLink /);
     }
-    expect(storySlug('horde-tauren')).toBeUndefined();
+    expect(storySlug('alliance-skyborne-high-order')).toBeUndefined();
   });
 });
