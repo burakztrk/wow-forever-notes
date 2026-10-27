@@ -20,11 +20,15 @@ function init(root: HTMLElement) {
   const clamp = (v: number, a = 0, b = 1) => Math.max(a, Math.min(b, v));
   const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
-  // labels in the drawings keep the same on-screen size at any width
+  // labels in the drawings keep the same on-screen size at any width (also when a
+  // max-height letterboxes the drawing, so it is scaled by its height)
   const scaled = $$<SVGSVGElement>('svg.map').filter((s) => s.id !== 'ek');
   const sizeK = (svg: SVGSVGElement) => {
-    const w = svg.getBoundingClientRect().width;
-    if (w) svg.style.setProperty('--k', clamp(svg.viewBox.baseVal.width / w, 0.1, 2.2).toFixed(3));
+    const r = svg.getBoundingClientRect();
+    const vb = svg.viewBox.baseVal;
+    if (!r.width || !r.height) return;
+    const k = 1 / Math.min(r.width / vb.width, r.height / vb.height);
+    svg.style.setProperty('--k', clamp(k, 0.1, 2.2).toFixed(3));
   };
   scaled.forEach(sizeK);
 

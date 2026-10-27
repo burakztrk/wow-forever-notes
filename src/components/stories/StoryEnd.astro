@@ -30,7 +30,7 @@ const slug = STORY_RACES.find((r) => r.name === next)?.slug;
       slug ? (
         <a class="next live rv" style="--d:.1s" href={withBase(`/${lang}/stories/${slug}/`)}>
           <p class="ov next-ov">{u.nextLabel}</p>
-          <p class="nm">{next}</p>
+          <p class="nm" lang="en">{next}</p>
           <p>{nextText}</p>
           <span class="go">
             {u.read} <b aria-hidden="true">→</b>
@@ -39,7 +39,7 @@ const slug = STORY_RACES.find((r) => r.name === next)?.slug;
       ) : (
         <aside class="next rv" style="--d:.1s" aria-label={u.nextLabel}>
           <p class="ov next-ov">{u.nextLabel}</p>
-          <p class="nm">{next}</p>
+          <p class="nm" lang="en">{next}</p>
           <p>{nextText}</p>
           <span class="soon">
             <i />

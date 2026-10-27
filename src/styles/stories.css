@@ -562,3 +562,15 @@ a.story-card:focus-visible {
 @media (max-width:760px){.lore .sil-council{width:200px;opacity:.4}}
 .lore .chap.tight{padding-top:0}
 .lore #today.chap-bg{padding-bottom:clamp(40px,6vw,64px)}
+/* Human story: Stormwind gate hero, the Lothar statue behind chapter I, plague and Light colours */
+.lore .hero.gate .hero-bg img{object-position:40% 40%;filter:brightness(.7) saturate(.85) contrast(1.05)}
+@media (max-width:760px){.lore .hero.gate .hero-bg img{object-position:30% 40%}}
+.lore .chap-art.statue{width:min(46%,520px)}
+.lore .chap-art.statue img{object-position:50% 12%;opacity:.3;filter:saturate(.55) brightness(.85)}
+.lore .map .rt.void{stroke:#9b7fd0}
+.lore .map .head.void{fill:#9b7fd0}
+.lore .key.void i{border-top-color:#9b7fd0}
+.lore .key.al i{border-top-color:var(--alliance)}
+.lore .stat.light .stat-n{color:var(--gold);text-shadow:0 0 28px rgba(200,166,86,.3)}
+.lore .stat.light .stat-ov{color:var(--gold)}
+.lore #kingdoms svg,.lore #plague svg,.lore #westfall svg{max-height:64vh}

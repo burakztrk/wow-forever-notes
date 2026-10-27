@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import { DWARF_STORY, GNOME_STORY } from '../../../i18n/stories';
+import { DWARF_STORY, GNOME_STORY, HUMAN_STORY } from '../../../i18n/stories';
 import { racesByFaction } from '../../../lib/codex';
 import { storySlug } from '../../../lib/stories/races';
 import { withBase } from '../../../utils/url';
@@ -17,6 +17,13 @@ const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stori
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 // Written stories, newest first; every other race shows as "coming soon" (src/lib/stories/races.ts).
 const features = [
+  {
+    slug: 'human',
+    name: 'Human',
+    story: HUMAN_STORY[lang],
+    bg: { src: '/stories/human/stormwind-gate.webp', w: 1920, h: 810 },
+    hero: undefined,
+  },
   {
     slug: 'dwarf',
     name: 'Dwarf',
