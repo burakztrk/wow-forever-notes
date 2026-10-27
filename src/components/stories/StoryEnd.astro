@@ -1,5 +1,5 @@
 ---
-// Closing section of a story page (epilogue + next story) and the notes footer.
+// Closing section of a story page (epilogue + next story, or the slot's content instead) and the notes footer.
 import type { Lang } from '../../config';
 import { STORY_UI } from '../../i18n/stories';
 import { STORY_RACES } from '../../lib/stories/races';
@@ -10,8 +10,8 @@ interface Props {
   title: string;
   text: string;
   /** Race name of the next story (as in STORY_RACES). */
-  next: string;
-  nextText: string;
+  next?: string;
+  nextText?: string;
   images: string;
 }
 const { lang, title, text, next, nextText, images } = Astro.props;
@@ -27,7 +27,9 @@ const slug = STORY_RACES.find((r) => r.name === next)?.slug;
       <p class="lead">{text}</p>
     </div>
     {
-      slug ? (
+      Astro.slots.has('default') ? (
+        <slot />
+      ) : slug ? (
         <a class="next live rv" style="--d:.1s" href={withBase(`/${lang}/stories/${slug}/`)}>
           <p class="ov next-ov">{u.nextLabel}</p>
           <p class="nm" lang="en">{next}</p>

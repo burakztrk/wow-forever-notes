@@ -1,0 +1,18 @@
+---
+// Link from a story's origin chapter to the Curse of Flesh page; these links are the only way in.
+import type { Lang } from '../../config';
+import { STORY_UI } from '../../i18n/stories';
+import { CURSE_ART } from '../../lib/stories/curse-art';
+import { curseUrl } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<a class="curse-link rv" href={curseUrl(lang)}>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d={CURSE_ART.icons.brand} /></svg>
+  <span class="t"><span class="ov" lang="en">Curse of Flesh</span><span>{STORY_UI[lang].curseLink}</span></span>
+  <b aria-hidden="true">→</b>
+</a>

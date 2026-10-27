@@ -53,7 +53,21 @@ export const GNOME_ART_LABELS: Record<Lang, Record<string, string>> = {
 /** Strings shared by every story page. */
 export const STORY_UI: Record<
   Lang,
-  { races: string; cue: string; chapter: string; whyItMatters: string; outroLabel: string; nextLabel: string; read: string; soon: string; notesTitle: string; notesText: string; imagesTitle: string }
+  {
+    races: string;
+    cue: string;
+    chapter: string;
+    whyItMatters: string;
+    outroLabel: string;
+    nextLabel: string;
+    read: string;
+    soon: string;
+    notesTitle: string;
+    notesText: string;
+    imagesTitle: string;
+    /** The link from a story's origin chapter to the Curse of Flesh page. */
+    curseLink: string;
+  }
 > = {
   tr: {
     races: 'Irklar',
@@ -67,6 +81,7 @@ export const STORY_UI: Record<
     notesTitle: 'Not',
     notesText: 'Çizimler bu sayfa için hazırlanmış şematik illüstrasyonlardır; oyun haritalarındaki işaretlerin konumu yaklaşıktır.',
     imagesTitle: 'Görseller',
+    curseLink: 'Lanet nedir, hangi halkları değiştirdi?',
   },
   en: {
     races: 'Races',
@@ -80,6 +95,7 @@ export const STORY_UI: Record<
     notesTitle: 'Note',
     notesText: 'The drawings are schematic illustrations made for this page; the markers on the game maps are placed approximately.',
     imagesTitle: 'Images',
+    curseLink: 'What was the curse, and which peoples did it change?',
   },
 };
 
@@ -1455,5 +1471,222 @@ export const HUMAN_STORY: Record<Lang, HumanStory> = {
     },
     images:
       'Maps from WoW Forever. The World of Warcraft characters and places in the Stormwind gate image belong to Blizzard Entertainment.',
+  },
+};
+
+// ---------------------------------------------------------------- Curse of Flesh
+// A short lore page (src/pages/[lang]/stories/curse-of-flesh.astro), reached only from the
+// origin chapters of the stories that mention the curse; it is not listed anywhere else.
+
+export const CURSE_ART_LABELS: Record<Lang, Record<string, string>> = {
+  tr: {
+    worldAria: 'Azeroth ve Northrend şematik haritası: Ulduar, Utgarde ve Uldaman’dan Khaz Modan ile Lordaeron’a giden yollar; Old God hapishaneleri Ulduar ve Ahn’Qiraj',
+  },
+  en: {
+    worldAria: 'Schematic map of Azeroth and Northrend: routes from Ulduar, Utgarde and Uldaman to Khaz Modan and Lordaeron; the Old God prisons of Ulduar and Ahn’Qiraj',
+  },
+};
+
+export interface CurseStory {
+  metaDescription: string;
+  overline: string;
+  lead: string;
+  facts: { label: string; value: string; extra?: string }[];
+  chapters: Record<'curse' | 'peoples' | 'meaning', string>;
+  curse: { title: string; paragraphs: string[]; stagesLabel: string; stages: Item[]; before: string; after: string; note: string };
+  peoples: {
+    title: string;
+    intro: string;
+    /** `slug` links the card to a written story (src/lib/stories/races.ts). */
+    changes: { from: string; to: string; text: string; slug?: string }[];
+    mapCaption: string;
+    routesKey: string;
+    prisonKey: string;
+    legend: Item[];
+    note: string;
+  };
+  meaning: { title: string; paragraphs: string[]; note: string };
+  outro: { title: string; text: string; storiesLabel: string };
+  images: string;
+}
+
+export const CURSE_STORY: Record<Lang, CurseStory> = {
+  tr: {
+    metaDescription:
+      'Curse of Flesh: Old Gods’un Titan yapılarına bulaştırdığı lanet. Earthen’ları Dwarf’a, Mechagnome’ları Gnome’a, vrykul çocuklarını insana çeviren dönüşüm.',
+    overline: 'Lore · Ara bölüm',
+    lead: 'Titan’ların taştan ve metalden yaptığı işçiler, etten bedenlere hapsoldu. Old Gods’un bu laneti Azeroth’un en tanıdık halklarını doğurdu.',
+    facts: [
+      { label: 'Kaynağı', value: 'Old Gods' },
+      { label: 'Hedefi', value: 'Titan yapıları', extra: 'titan-forged' },
+      { label: 'Dönüşüm', value: 'Taş ve metal → et ve kemik' },
+      { label: 'Doğan halklar', value: 'Dwarf · Gnome · Human' },
+      { label: 'Yan etkisi', value: 'Trogg’lar' },
+      { label: 'İzleri', value: 'Uldaman · Ulduar' },
+    ],
+    chapters: { curse: 'Lanet', peoples: 'Halklar', meaning: 'Anlam' },
+    curse: {
+      title: 'Kusursuz yapıdaki çatlak',
+      paragraphs: [
+        'Titan’lar Azeroth’u düzenlerken işin ağır yükünü kendi yarattıkları yapılara bıraktı: taştan earthen’lar dağların derinliklerini işledi, metal Mechagnome’lar Titan makinelerini çalıştırdı, dev vrykul’lar dünyayı korudu. Bunlara titan-forged, yani Titan yapısı denir. Yaşlanmaz, hastalanmaz, yorulmazlardı.',
+        'Titan’ların yerin altına hapsettiği Old Gods ise boş durmadı. Zincirlerinin ardından yaydıkları yozlaşma Titan yapılarına sinsi bir hastalık gibi bulaştı: Curse of Flesh.',
+        'Lanet bir anda vurmadı. Taş ve metal gövdeler nesiller içinde yumuşadı; bazıları Titan kasalarında uyurken değişti, bazılarının çocukları etten doğdu. Ölümsüz işçilerin yerini kırılgan, ölümlü ama kendi kararını veren canlılar aldı.',
+      ],
+      stagesLabel: 'Lanetin aşamaları',
+      stages: [
+        { name: 'Titan', text: 'Dünyanın mimarları' },
+        { name: 'Titan-forged', text: 'Taş, metal ve dev işçiler' },
+        { name: 'Curse of Flesh', text: 'Old Gods’un yozlaşması' },
+        { name: 'Ölümlü halklar', text: 'Et, kemik ve özgür irade' },
+      ],
+      before: 'Taş · metal',
+      after: 'Et',
+      note: 'Titan’ların gözünde bu bir bozulmaydı. Ama Dwarf, Gnome ve Human tarihinin tamamı bu bozulmanın üzerine kurulu.',
+    },
+    peoples: {
+      title: 'Lanetin dokunduğu halklar',
+      intro: 'Aynı lanet farklı yapılarda farklı sonuçlar verdi. Kaydırdıkça harita, her halkın kökeninden bugünkü yurduna giden yolu gösteriyor.',
+      changes: [
+        {
+          from: 'Earthen',
+          to: 'Dwarf',
+          text: 'Uldaman gibi Titan kasalarında uyuyan taş işçiler etten bedenlerle uyandı ve Khaz Modan’da Ironforge’u kurdu.',
+          slug: 'dwarf',
+        },
+        {
+          from: 'Mechagnome',
+          to: 'Gnome',
+          text: 'Mimiron’un tasarladığı metal işçiler kırılgan ama meraklı bir halka dönüştü ve Gnomeregan’ı kurdu.',
+          slug: 'gnome',
+        },
+        {
+          from: 'Vrykul',
+          to: 'Human',
+          text: 'Northrend’in dev savaşçılarının küçük doğan çocukları Kral Ymiron’dan saklandı; torunları güneye yayıldı.',
+          slug: 'human',
+        },
+        {
+          from: 'Earthen',
+          to: 'Trogg',
+          text: 'Lanetin en ağır vurduğu earthen’lar aklını yitirip yerin altında yaşayan ilkel trogg’lara dönüştü. Gnomeregan’ı basan da onlardı.',
+        },
+      ],
+      mapCaption: 'Azeroth ve Northrend, şematik harita. Konumlar yaklaşıktır.',
+      routesKey: 'Kökenden yurda',
+      prisonKey: 'Old God hapishanesi',
+      legend: [
+        { name: 'Ulduar', text: 'Northrend, Storm Peaks. Mimiron’un Mechagnome’larının yurdu; altında Old God Yogg-Saron yatıyor' },
+        { name: 'Utgarde', text: 'Northrend, Howling Fjord. Kral Ymiron’un vrykul’ları' },
+        { name: 'Uldaman', text: 'Badlands’teki Titan kasası; earthen’lar burada uyudu' },
+        { name: 'Khaz Modan', text: 'Dwarf’ların ve Gnome’ların yurdu: Ironforge ve Gnomeregan' },
+        { name: 'Lordaeron', text: 'İlk insan kabilelerinin yayıldığı topraklar' },
+        { name: 'Ahn’Qiraj', text: 'Kalimdor, Silithus. Old God C’Thun’un hapishanesi' },
+      ],
+      note: 'Taş, metal ya da dev kanı; sonuç hep aynıydı. Titan’ların kusursuz işçileri, kusurlu ama özgür halklara dönüştü.',
+    },
+    meaning: {
+      title: 'Lanet mi, armağan mı?',
+      paragraphs: [
+        'Titan yapıları için Curse of Flesh bir kayıptı: ölümsüzlüklerini, güçlerini ve Titan’ların verdiği görevin netliğini yitirdiler.',
+        'Ama lanet onlara Titan’ların hiç vermediği bir şey de verdi: kendi yolunu seçme özgürlüğü. Krallık kuran, savaşan, icat eden ve kendi tarihini yazan halklar bu kırılgan bedenlerden doğdu.',
+        'Lanetin izleri hâlâ yerin altında duruyor. Explorers’ League Uldaman’ın kasalarını kazıyor; WoW Forever’da Uldaman zindanına inenler, dwarf’ların taştan atalarının uyuduğu salonlarda dolaşıyor.',
+      ],
+      note: 'Dwarf’ların geçmişi kazma tutkusu, Gnome’ların makinelere yakınlığı, insanların hızla çoğalıp yayılması: üçü de aynı lanetin farklı yüzleri.',
+    },
+    outro: {
+      title: 'Aynı kökten üç halk',
+      text: 'Taş, metal ve dev kanı. Lanetin dokunduğu halkların hikayelerini okumaya devam et.',
+      storiesLabel: 'Hikayeler',
+    },
+    images: 'Bu sayfadaki çizimler bu sayfa için hazırlandı. World of Warcraft adları Blizzard Entertainment’a aittir.',
+  },
+  en: {
+    metaDescription:
+      'The Curse of Flesh: the Old Gods’ curse on the titan-forged. The change that turned the earthen into dwarves, the mechagnomes into gnomes and the children of the vrykul into humans.',
+    overline: 'Lore · Interlude',
+    lead: 'The Titans’ workers of stone and metal were trapped in bodies of flesh. This curse of the Old Gods gave birth to Azeroth’s most familiar peoples.',
+    facts: [
+      { label: 'Source', value: 'The Old Gods' },
+      { label: 'Target', value: 'The titan-forged' },
+      { label: 'Change', value: 'Stone and metal → flesh and bone' },
+      { label: 'Peoples born', value: 'Dwarf · Gnome · Human' },
+      { label: 'Side effect', value: 'The troggs' },
+      { label: 'Traces', value: 'Uldaman · Ulduar' },
+    ],
+    chapters: { curse: 'The curse', peoples: 'Peoples', meaning: 'Meaning' },
+    curse: {
+      title: 'A crack in the perfect design',
+      paragraphs: [
+        'While the Titans ordered Azeroth, they left the heavy work to beings they made themselves: the stone earthen worked the depths of the mountains, the metal mechagnomes ran the Titan machines, the giant vrykul guarded the world. They are called the titan-forged. They did not age, sicken or tire.',
+        'But the Old Gods, whom the Titans had imprisoned beneath the earth, were not idle. The corruption they spread from behind their chains crept into the titan-forged like a slow sickness: the Curse of Flesh.',
+        'The curse did not strike all at once. Over generations the bodies of stone and metal softened; some changed while they slept in Titan vaults, others had children born of flesh. Fragile, mortal beings who made their own choices took the place of the deathless workers.',
+      ],
+      stagesLabel: 'Stages of the curse',
+      stages: [
+        { name: 'Titan', text: 'Architects of the world' },
+        { name: 'Titan-forged', text: 'Workers of stone, metal and giant size' },
+        { name: 'Curse of Flesh', text: 'The Old Gods’ corruption' },
+        { name: 'Mortal peoples', text: 'Flesh, bone and free will' },
+      ],
+      before: 'Stone · metal',
+      after: 'Flesh',
+      note: 'To the Titans this was a flaw. Yet the whole history of dwarves, gnomes and humans is built on that flaw.',
+    },
+    peoples: {
+      title: 'The peoples it touched',
+      intro: 'The same curse had different results in different beings. As you scroll, the map shows each people’s road from its origin to the homeland it has today.',
+      changes: [
+        {
+          from: 'Earthen',
+          to: 'Dwarf',
+          text: 'Stone workers who slept in Titan vaults such as Uldaman woke in bodies of flesh and founded Ironforge in Khaz Modan.',
+          slug: 'dwarf',
+        },
+        {
+          from: 'Mechagnome',
+          to: 'Gnome',
+          text: 'The metal workers designed by Mimiron became a fragile but curious people and founded Gnomeregan.',
+          slug: 'gnome',
+        },
+        {
+          from: 'Vrykul',
+          to: 'Human',
+          text: 'The small children of Northrend’s giant warriors were hidden from King Ymiron; their descendants spread south.',
+          slug: 'human',
+        },
+        {
+          from: 'Earthen',
+          to: 'Trogg',
+          text: 'The earthen the curse struck hardest lost their minds and became the primitive troggs that live underground. They were the ones who overran Gnomeregan.',
+        },
+      ],
+      mapCaption: 'Azeroth and Northrend, schematic map. Positions are approximate.',
+      routesKey: 'From origin to homeland',
+      prisonKey: 'Old God prison',
+      legend: [
+        { name: 'Ulduar', text: 'Northrend, Storm Peaks. Home of Mimiron’s mechagnomes; the Old God Yogg-Saron lies beneath it' },
+        { name: 'Utgarde', text: 'Northrend, Howling Fjord. King Ymiron’s vrykul' },
+        { name: 'Uldaman', text: 'The Titan vault in the Badlands where the earthen slept' },
+        { name: 'Khaz Modan', text: 'Home of the dwarves and gnomes: Ironforge and Gnomeregan' },
+        { name: 'Lordaeron', text: 'The lands the first human tribes spread across' },
+        { name: 'Ahn’Qiraj', text: 'Kalimdor, Silithus. The prison of the Old God C’Thun' },
+      ],
+      note: 'Stone, metal or giant blood, the result was the same. The Titans’ flawless workers became flawed but free peoples.',
+    },
+    meaning: {
+      title: 'Curse or gift?',
+      paragraphs: [
+        'For the titan-forged the Curse of Flesh was a loss: they lost their immortality, their strength and the clear purpose the Titans had given them.',
+        'But the curse also gave them something the Titans never had: the freedom to choose their own way. Peoples who founded kingdoms, fought, invented and wrote their own history were born from those fragile bodies.',
+        'The traces of the curse still lie underground. The Explorers’ League digs the vaults of Uldaman, and in WoW Forever those who enter the Uldaman dungeon walk the halls where the dwarves’ stone ancestors slept.',
+      ],
+      note: 'The dwarves’ passion for digging up the past, the gnomes’ way with machines, the humans’ knack for multiplying and spreading: all three are faces of the same curse.',
+    },
+    outro: {
+      title: 'Three peoples, one root',
+      text: 'Stone, metal and giant blood. Keep reading the stories of the peoples the curse touched.',
+      storiesLabel: 'Stories',
+    },
+    images: 'The drawings on this page were made for it. World of Warcraft names belong to Blizzard Entertainment.',
   },
 };

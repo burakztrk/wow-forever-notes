@@ -3,9 +3,10 @@
 // - [data-p="start,end"] elements get --p (0..1) as their anchor (a point partway down
 //   the element) crosses start → end (fractions of the viewport height) and run their handler.
 // - Chapter III's map follows the step nearest the reading line and moves its
-//   "camera" (viewBox); labels keep their screen size through --k.
+//   "camera" (viewBox); labels keep their screen size through --k. Its routes wait
+//   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
-//   and calm; "embers" are forge sparks drifting up.
+//   and calm; "embers" are forge sparks drifting up; "void" are the same motes in violet.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -38,6 +39,9 @@ function init(root: HTMLElement) {
   const steps = story ? $$('.step', story) : [];
   const layers = ek ? $$<SVGGElement>('.ly', ek) : [];
   const dots = story ? $$('.dots i', story) : [];
+  const stageMap = story ? $('.stage-map', story) : null;
+  let idle = !reduce && !!stageMap;
+  if (idle) story?.classList.add('idle');
   // one camera (viewBox) per step, written into the map by the art generator
   const cams: Record<number, number[]> = JSON.parse(ek?.dataset.cams ?? '{}');
   const pad = (vb: number[]) => {
@@ -167,6 +171,10 @@ function init(root: HTMLElement) {
     if (story) {
       const sr = story.getBoundingClientRect();
       if (sr.bottom > 0 && sr.top < vh) {
+        if (idle && stageMap && stageMap.getBoundingClientRect().top < vh * 0.3) {
+          idle = false;
+          story.classList.remove('idle');
+        }
         const line = vh * (narrow.matches ? 0.84 : 0.58);
         let n = 1;
         steps.forEach((s, i) => {
@@ -231,7 +239,11 @@ function init(root: HTMLElement) {
   }
 
   const fx = $<HTMLCanvasElement>('#snow');
-  if (!reduce && fx) (fx.dataset.fx === 'embers' ? embers : blizzard)(fx);
+  if (!reduce && fx) {
+    if (fx.dataset.fx === 'embers') embers(fx);
+    else if (fx.dataset.fx === 'void') embers(fx, ['#d2b8ff', '#9b6fe0']);
+    else blizzard(fx);
+  }
 }
 
 // Hero snow: a blizzard whose wind swings right, left or dies down every few seconds.
@@ -313,8 +325,8 @@ function blizzard(cv: HTMLCanvasElement | null) {
   addEventListener('resize', size);
 }
 
-// Forge sparks: small hot embers that rise, sway and flicker out.
-function embers(cv: HTMLCanvasElement) {
+// Forge sparks: small hot embers that rise, sway and flicker out (colours: large, small).
+function embers(cv: HTMLCanvasElement, [hot, warm] = ['#ffb36b', '#ff8a3a']) {
   const ctx = cv.getContext('2d');
   if (!ctx) return;
   type Spark = { x: number; y: number; r: number; v: number; s: number; life: number; age: number };
@@ -358,7 +370,7 @@ function embers(cv: HTMLCanvasElement) {
       }
       const flicker = 0.75 + Math.sin(t / 70 + p.s * 7) * 0.25;
       ctx.globalAlpha = Math.sin(Math.PI * k) * flicker * 0.9;
-      ctx.fillStyle = p.r > 1.4 ? '#ffb36b' : '#ff8a3a';
+      ctx.fillStyle = p.r > 1.4 ? hot : warm;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, 6.283);
       ctx.fill();

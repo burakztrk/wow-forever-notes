@@ -574,3 +574,45 @@ a.story-card:focus-visible {
 .lore .stat.light .stat-n{color:var(--gold);text-shadow:0 0 28px rgba(200,166,86,.3)}
 .lore .stat.light .stat-ov{color:var(--gold)}
 .lore #kingdoms svg,.lore #plague svg,.lore #westfall svg{max-height:64vh}
+/* Curse of Flesh: the link from the stories' origin chapters, and the lore page itself */
+.lore a.title-note{color:var(--text-dim);text-decoration-style:dotted;text-decoration-thickness:2px;text-underline-offset:6px}
+.lore a.title-note:hover{color:#c7b0f0}
+.lore .curse-link{display:flex;align-items:center;gap:14px;max-width:760px;margin-top:clamp(28px,4vw,40px);padding:14px 20px;border:1px solid rgba(155,127,208,.45);border-radius:var(--r-xl);background:linear-gradient(90deg,rgba(107,63,160,.22),var(--bg-elev) 70%);color:var(--text);text-decoration:none;transition:border-color .2s,transform .2s}
+.lore .curse-link:hover{border-color:#9b7fd0;transform:translateY(-2px)}
+.lore .curse-link svg{width:28px;height:28px;flex:none}
+.lore .curse-link path{fill:#b28cff;fill-rule:evenodd}
+.lore .curse-link .t{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.lore .curse-link .ov{color:#b28cff}
+.lore .curse-link b{flex:none;font-weight:500;color:#b28cff}
+.lore .curse-link + .note{margin-top:16px}
+.lore .hero.curse .hero-bg{inset:0;transform:none;background:radial-gradient(ellipse at 28% 52%,rgba(107,63,160,.42) 0%,rgba(25,20,40,.85) 45%,var(--bg) 80%),var(--void-bg)}
+.lore .hero.curse .hero-col{justify-content:center}
+.lore .emblem-wrap{position:absolute;z-index:1;top:50%;left:max(-80px,calc(50% - 720px));width:clamp(320px,46vw,660px);aspect-ratio:1;transform:translateY(calc(-50% + var(--s,0) * .08px));pointer-events:none;opacity:.9;-webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent 100%);mask-image:radial-gradient(closest-side,#000 70%,transparent 100%)}
+.lore .emblem-wrap svg{display:block;width:100%;height:100%}
+.lore .hero.curse .h1{font-size:clamp(56px,8vw,112px);line-height:.92}
+@media (max-width:760px){
+  .lore .emblem-wrap{left:50%;top:auto;bottom:-40px;width:340px;transform:translateX(-50%);opacity:.5}
+  .lore .hero.curse .hero-in{padding-bottom:260px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .lore .emblem-wrap .arms{animation:writhe 7s ease-in-out infinite alternate;transform-origin:300px 300px}
+  @keyframes writhe{from{transform:rotate(-1.6deg) scale(1)}to{transform:rotate(1.6deg) scale(1.02)}}
+}
+.lore .morphs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-block:clamp(28px,4vw,40px)}
+@media (max-width:1000px){.lore .morphs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:540px){.lore .morphs{grid-template-columns:minmax(0,1fr)}}
+.lore .morph-ic{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.lore .morph-ic .ic{width:56px;height:56px;margin:0;border-radius:50%;border:1px solid var(--border);color:var(--text-mute)}
+.lore .morph-ic .ic svg{width:36px;height:36px}
+.lore .morph-ic .ic.to{color:var(--gold);border-color:var(--gold-dim)}
+.lore .morph-ic b{font-weight:500;color:#9b7fd0}
+.lore .morph .ov{color:#b28cff}
+.lore .morph .go{margin-top:auto;padding-top:6px;font:600 13px/16px var(--f-sans);letter-spacing:.04em;color:var(--gold);text-decoration:none}
+.lore .key.dot i{width:12px;height:12px;border:1.5px solid #9b7fd0;border-radius:50%;background:rgba(107,63,160,.3)}
+.lore .next-list{display:flex;flex-direction:column;gap:10px}
+.lore .next.mini{flex-direction:row;align-items:center;flex-wrap:wrap;column-gap:14px;padding:14px 20px}
+.lore .next.mini .nm{font-size:26px}
+.lore .next.mini .go{margin-left:auto}
+/* the stepped map draws nothing until it is in view (story.ts removes .idle) */
+.lore .story.idle .map .ly .draw{stroke-dashoffset:1}
+.lore .story.idle .map .ly .head{opacity:0}

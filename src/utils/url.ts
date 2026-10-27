@@ -23,3 +23,8 @@ export function creatorUrl(lang: string): string {
 export function postUrl(lang: string, slug: string): string {
   return withBase(`/${lang}/blog/${slug}/`);
 }
+
+// The Curse of Flesh lore page. Only the origin chapters of the race stories link to it.
+export function curseUrl(lang: string): string {
+  return withBase(`/${lang}/stories/curse-of-flesh/`);
+}
