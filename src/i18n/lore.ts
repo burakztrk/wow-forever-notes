@@ -941,7 +941,7 @@ export const LORE: LoreEntry[] = [
     id: 'highelves',
     name: 'High elf',
     icon: 'inv_misc_head_elf_02',
-    aliases: ['high elves', 'high elf'],
+    aliases: ['high elves', 'high elf', 'High Elf'],
     tr: {
       sub: 'Quel’Thalas halkı',
       text: 'Quel’Thalas’ta yaşayan elf halkı; kökleri Kalimdor’dan sürülen eski night elf’lere dayanır. Troll Wars’da insanlara büyü öğrettiler ve Arathi soyuna yardım edeceklerine yemin ettiler.',
@@ -1299,6 +1299,824 @@ export const LORE: LoreEntry[] = [
     en: {
       sub: 'War · the Scourge and the Burning Legion',
       text: 'The war that began with the plague and grew with the coming of the Burning Legion. Lordaeron, Quel’Thalas and Dalaran fell. It ended in Kalimdor, at Mount Hyjal, where humans, orcs and night elves stopped Archimonde together.',
+    },
+  },
+
+  // ---------------------------------------------------------------- Gnome and Dwarf stories
+  {
+    id: 'gnomeregan',
+    name: 'Gnomeregan',
+    icon: 'trade_engineering',
+    aliases: ['Gnomeregan'],
+    tr: {
+      sub: 'Gnome başkenti · kayıp',
+      text: 'Dun Morogh’un batısındaki gnome başkenti; teknolojinin merkezi. Third War’dan hemen önce trogg istilası ve şehri radyasyonla doldurma kararıyla kaybedildi. Bugün içinde radyasyonla aklını yitirmiş gnome’lar ve Thermaplugg var.',
+      note: 'Dun Morogh',
+    },
+    en: {
+      sub: 'Capital of the gnomes · lost',
+      text: 'The gnome capital in western Dun Morogh and the heart of their technology. Just before the Third War it was lost to the trogg invasion and the decision to flood it with radiation. Irradiated gnomes and Thermaplugg live in it today.',
+      note: 'Dun Morogh',
+    },
+  },
+  {
+    id: 'dunmorogh',
+    name: 'Dun Morogh',
+    icon: 'spell_frost_frostarmor',
+    aliases: ['Dun Morogh'],
+    tr: {
+      sub: 'Bölge · Khaz Modan',
+      text: 'Khaz Modan’ın karlı batı bölgesi; Ironforge ve Gnomeregan burada. Dwarf ve gnome karakterler oyuna bu topraklarda başlar.',
+    },
+    en: {
+      sub: 'Region · Khaz Modan',
+      text: 'The snowy western part of Khaz Modan, home of Ironforge and Gnomeregan. Dwarf and gnome characters start the game here.',
+    },
+  },
+  {
+    id: 'newtinkertown',
+    name: 'New Tinkertown',
+    icon: 'trade_engineering',
+    aliases: ['New Tinkertown'],
+    tr: {
+      sub: 'Gnome üssü',
+      text: 'Operation Gnomeregan sırasında Gnomeregan’ın kapısında kurulan gnome üssü; şehri geri alma çabasının karargâhı.',
+    },
+    en: {
+      sub: 'Gnome base',
+      text: 'The gnome base built at the gate of Gnomeregan during Operation Gnomeregan, headquarters of the effort to take the city back.',
+    },
+  },
+  {
+    id: 'mekkatorque',
+    name: 'Gelbin Mekkatorque',
+    icon: 'classicon_mage',
+    aliases: ['High Tinker Gelbin Mekkatorque', 'Gelbin Mekkatorque', 'Mekkatorque'],
+    tr: {
+      sub: 'High Tinker · gnome’ların lideri',
+      text: 'Gnome’ların seçilmiş lideri ve dâhi bir mühendis. Trogg istilasında danışmanı Sicco Thermaplugg’un önerisiyle Gnomeregan’ı radyasyonla doldurma kararı verdi; sonra hayatta kalan halkını Ironforge’a götürüp yeniden ayağa kaldırdı.',
+      note: 'Tinker Town, Ironforge',
+    },
+    en: {
+      sub: 'High Tinker · leader of the gnomes',
+      text: 'The gnomes’ elected leader and an engineering genius. During the trogg invasion, on the advice of Sicco Thermaplugg, he decided to flood Gnomeregan with radiation; he then led his surviving people to Ironforge and got them back on their feet.',
+      note: 'Tinker Town, Ironforge',
+    },
+  },
+  {
+    id: 'thermaplugg',
+    name: 'Sicco Thermaplugg',
+    icon: 'spell_shadow_unholyfrenzy',
+    aliases: ['Sicco Thermaplugg', 'Thermaplugg'],
+    tr: {
+      sub: 'Mekkatorque’un hain danışmanı',
+      text: 'Mekkatorque’a Gnomeregan’ı radyasyonla doldurmayı öneren danışman. Şehir kaybedilince içeride kaldı, radyasyonlu gnome’ların başına geçti ve kendine Mekgineer unvanını aldı.',
+      note: 'Gnomeregan',
+    },
+    en: {
+      sub: 'Mekkatorque’s treacherous adviser',
+      text: 'The adviser who urged Mekkatorque to flood Gnomeregan with radiation. When the city was lost he stayed inside, took command of the irradiated gnomes and named himself Mekgineer.',
+      note: 'Gnomeregan',
+    },
+  },
+  {
+    id: 'tinkertown',
+    name: 'Tinker Town',
+    icon: 'trade_engineering',
+    aliases: ['Tinker Town'],
+    tr: {
+      sub: 'Ironforge’daki gnome mahallesi',
+      text: 'Dwarf’ların Gnomeregan’dan kaçan gnome’lara Ironforge içinde açtığı mahalle; gnome’ların hem yuvası hem atölyesi.',
+      note: 'Ironforge',
+    },
+    en: {
+      sub: 'The gnome quarter of Ironforge',
+      text: 'The quarter the dwarves opened inside Ironforge to the gnomes who fled Gnomeregan; both their home and their workshop.',
+      note: 'Ironforge',
+    },
+  },
+  {
+    id: 'mechanostrider',
+    name: 'Mechanostrider',
+    icon: 'ability_mount_charger',
+    aliases: ['Mechanostrider'],
+    tr: {
+      sub: 'Gnome bineği',
+      text: 'Gnome mühendislerinin yaptığı, iki ayaklı mekanik binek.',
+    },
+    en: {
+      sub: 'Gnome mount',
+      text: 'The two-legged mechanical mount built by gnome engineers.',
+    },
+  },
+  {
+    id: 'mimiron',
+    name: 'Mimiron',
+    icon: 'spell_holy_divinespirit',
+    aliases: ['Mimiron'],
+    tr: {
+      sub: 'Titan Watcher',
+      text: 'Titan’ların Ulduar’da görevlendirdiği Watcher’lardan biri. Mekanik dehasıyla Mechagnome’ları o tasarladı.',
+    },
+    en: {
+      sub: 'Titan Watcher',
+      text: 'One of the Watchers the Titans set over Ulduar. His mechanical genius designed the mechagnomes.',
+    },
+  },
+  {
+    id: 'mechagnome',
+    name: 'Mechagnome',
+    icon: 'trade_engineering',
+    aliases: ['Mechagnome', 'mechagnomes', 'mechagnome'],
+    tr: {
+      sub: 'Titan yapısı',
+      text: 'Mimiron’un tasarladığı metal işçiler. Curse of Flesh onları etten gnome’lara çevirdi.',
+    },
+    en: {
+      sub: 'Titan-forged',
+      text: 'The metal workers designed by Mimiron. The Curse of Flesh turned them into gnomes of flesh.',
+    },
+  },
+  {
+    id: 'trogg',
+    name: 'Trogg',
+    icon: 'race_scourge_male',
+    aliases: ['Trogg', 'troggs', 'trogg'],
+    tr: {
+      sub: 'Lanetli earthen',
+      text: 'Curse of Flesh’in en ağır vurduğu earthen’lardan doğan ilkel, saldırgan yeraltı canlıları. Gnomeregan’ı istila eden ve Uldaman’ın derinliklerinde yaşayanlar onlar.',
+    },
+    en: {
+      sub: 'Cursed earthen',
+      text: 'Primitive, savage underground creatures descended from the earthen the Curse of Flesh struck hardest. They overran Gnomeregan and live deep in Uldaman.',
+    },
+  },
+  {
+    id: 'ulduar',
+    name: 'Ulduar',
+    icon: 'spell_holy_divineillumination',
+    aliases: ['Ulduar'],
+    tr: {
+      sub: 'Titan şehri · Northrend',
+      text: 'Northrend’in Storm Peaks bölgesindeki dev Titan şehri; Mimiron’un ve Mechagnome’ların yurdu. Altında Old God Yogg-Saron hapsedilmiş.',
+    },
+    en: {
+      sub: 'Titan city · Northrend',
+      text: 'The vast Titan city in Northrend’s Storm Peaks, home of Mimiron and the mechagnomes. The Old God Yogg-Saron is imprisoned beneath it.',
+    },
+  },
+  {
+    id: 'outland',
+    name: 'Outland',
+    icon: 'spell_shadow_summonvoidwalker',
+    aliases: ['Outland'],
+    tr: {
+      sub: 'Draenor’un kalıntısı',
+      text: 'Orc’ların dünyası Draenor’un parçalanmasından geriye kalan topraklar; Dark Portal’ın öte yanı.',
+    },
+    en: {
+      sub: 'What is left of Draenor',
+      text: 'The lands left over when Draenor, the orcs’ world, was torn apart; the far side of the Dark Portal.',
+    },
+  },
+  {
+    id: 'kharanos',
+    name: 'Kharanos',
+    icon: 'trade_alchemy',
+    aliases: ['Kharanos'],
+    tr: {
+      sub: 'Dun Morogh köyü',
+      text: 'Dun Morogh’un ortasındaki dwarf köyü; Thunderbrew bira imalathanesiyle bilinir.',
+      note: 'Dun Morogh',
+    },
+    en: {
+      sub: 'Village in Dun Morogh',
+      text: 'The dwarven village in the middle of Dun Morogh, known for the Thunderbrew distillery.',
+      note: 'Dun Morogh',
+    },
+  },
+  {
+    id: 'coldridge',
+    name: 'Coldridge Valley',
+    icon: 'spell_frost_frostward',
+    aliases: ['Coldridge Valley'],
+    tr: {
+      sub: 'Dun Morogh vadisi',
+      text: 'Dwarf ve gnome karakterlerin oyuna başladığı karlı vadi.',
+      note: 'Dun Morogh',
+    },
+    en: {
+      sub: 'Valley in Dun Morogh',
+      text: 'The snowy valley where dwarf and gnome characters begin the game.',
+      note: 'Dun Morogh',
+    },
+  },
+  {
+    id: 'opgnomeregan',
+    name: 'Operation Gnomeregan',
+    icon: 'trade_engineering',
+    aliases: ['Operation Gnomeregan'],
+    tr: {
+      sub: 'Gnome harekâtı',
+      text: 'Gnome’ların Mekkatorque önderliğinde Gnomeregan’ı geri almak için başlattığı harekât.',
+    },
+    en: {
+      sub: 'Gnome campaign',
+      text: 'The campaign the gnomes launched under Mekkatorque to take Gnomeregan back.',
+    },
+  },
+  {
+    id: 'fizzcrank',
+    name: 'Fizzcrank Airstrip',
+    icon: 'trade_engineering',
+    aliases: ['Fizzcrank Airstrip'],
+    tr: {
+      sub: 'Gnome karakolu · Northrend',
+      text: 'Northrend’in Borean Tundra bölgesindeki gnome hava üssü.',
+    },
+    en: {
+      sub: 'Gnome outpost · Northrend',
+      text: 'The gnome airbase in Northrend’s Borean Tundra.',
+    },
+  },
+  {
+    id: 'toshley',
+    name: 'Toshley’s Station',
+    icon: 'trade_engineering',
+    aliases: ['Toshley’s Station'],
+    tr: {
+      sub: 'Gnome üssü · Outland',
+      text: 'Outland’in Blade’s Edge Mountains bölgesindeki gnome araştırma istasyonu.',
+    },
+    en: {
+      sub: 'Gnome base · Outland',
+      text: 'The gnome research station in Outland’s Blade’s Edge Mountains.',
+    },
+  },
+  {
+    id: 'ragnaros',
+    name: 'Ragnaros',
+    icon: 'spell_fire_fire',
+    aliases: ['Firelord Ragnaros', 'Ragnaros'],
+    tr: {
+      sub: 'Firelord · ateşin Elemental Lord’u',
+      text: 'Elemental Plane’in ateş katı Firelands’in efendisi. Thaurissan’ın ritüeliyle Azeroth’a çağrıldı; ortaya çıkışı dağları parçalayıp Blackrock Mountain’ı yarattı. Dark Iron’ları köleleştirdi ve dağın en derinindeki Molten Core’da hüküm sürüyor.',
+      note: 'Blackrock Mountain',
+    },
+    en: {
+      sub: 'The Firelord · Elemental Lord of fire',
+      text: 'Lord of the Firelands, the fire side of the Elemental Plane. Thaurissan’s ritual summoned him to Azeroth; his arrival shattered the mountains and raised Blackrock Mountain. He enslaved the Dark Irons and rules from the Molten Core deep inside the mountain.',
+      note: 'Blackrock Mountain',
+    },
+  },
+  {
+    id: 'bronzebeard',
+    name: 'Bronzebeard',
+    icon: 'race_dwarf_male',
+    aliases: ['Bronzebeards', 'Bronzebeard'],
+    tr: {
+      sub: 'Dwarf klanı',
+      text: 'Ironforge’un en kalabalık klanı; ordunun ve tüccarların çoğu onlardan. Üç Çekiç Savaşı’nı kazanıp Ironforge’u ellerinde tuttular; King Magni ve Muradin bu klandan.',
+    },
+    en: {
+      sub: 'Dwarf clan',
+      text: 'Ironforge’s largest clan, source of most of its army and merchants. They won the War of the Three Hammers and kept Ironforge; King Magni and Muradin are Bronzebeards.',
+    },
+  },
+  {
+    id: 'wildhammer',
+    name: 'Wildhammer',
+    icon: 'inv_hammer_04',
+    aliases: ['Wildhammers', 'Wildhammer'],
+    tr: {
+      sub: 'Dwarf klanı',
+      text: 'Dağlarda ve gökyüzünde yaşayan özgür ruhlu klan; grifonlara binen savaşçılarıyla ünlü. Üç Çekiç Savaşı’ndan sonra Grim Batol’a, oradan Hinterlands’teki Aerie Peak’e yerleştiler.',
+      note: 'Aerie Peak, The Hinterlands',
+    },
+    en: {
+      sub: 'Dwarf clan',
+      text: 'A free-spirited clan of the mountains and the open sky, famous for its gryphon riders. After the War of the Three Hammers they settled Grim Batol, and later Aerie Peak in the Hinterlands.',
+      note: 'Aerie Peak, The Hinterlands',
+    },
+  },
+  {
+    id: 'darkiron',
+    name: 'Dark Iron',
+    icon: 'spell_fire_soulburn',
+    aliases: ['Dark Irons', 'Dark Iron'],
+    tr: {
+      sub: 'Dwarf klanı',
+      text: 'Büyüyle uğraşan ve en zengin maden damarlarını elinde tutan klan. Üç Çekiç Savaşı’nda yenildiler; Ragnaros’un gelişinden sonra onun kölesi olup Blackrock Mountain’ın altında Shadowforge City’yi kurdular.',
+      note: 'Blackrock Mountain',
+    },
+    en: {
+      sub: 'Dwarf clan',
+      text: 'The clan of sorcery that held the richest veins of ore. They lost the War of the Three Hammers; after Ragnaros came they became his slaves and built Shadowforge City beneath Blackrock Mountain.',
+      note: 'Blackrock Mountain',
+    },
+  },
+  {
+    id: 'thaurissan',
+    name: 'Thaurissan',
+    icon: 'spell_shadow_soulgem',
+    aliases: ['Sorcerer-Thane Thaurissan', 'Thaurissan'],
+    tr: {
+      sub: 'Sorcerer-Thane · Dark Iron lideri',
+      text: 'Dark Iron klanının büyücü lideri. Üç Çekiç Savaşı’nda Ironforge’un tahtı için savaştı; yenilginin eşiğinde Ragnaros’u çağırdı ve bu çağrının ilk kurbanı kendisi oldu.',
+    },
+    en: {
+      sub: 'Sorcerer-Thane · leader of the Dark Irons',
+      text: 'The sorcerer who led the Dark Iron clan. He fought for the throne of Ironforge in the War of the Three Hammers and, facing defeat, summoned Ragnaros; he was the summoning’s first victim.',
+    },
+  },
+  {
+    id: 'modgud',
+    name: 'Modgud',
+    icon: 'spell_shadow_lifedrain',
+    aliases: ['Modgud'],
+    tr: {
+      sub: 'Thaurissan’ın eşi',
+      text: 'Dark Iron büyücüsü. Üç Çekiç Savaşı’nda Grim Batol’a saldıran orduyu yönetti ve Khardros Wildhammer tarafından öldürüldü; ölümü Grim Batol’u lanetledi.',
+    },
+    en: {
+      sub: 'Thaurissan’s wife',
+      text: 'A Dark Iron sorceress. She led the army that struck Grim Batol in the War of the Three Hammers and was killed by Khardros Wildhammer; her death left Grim Batol cursed.',
+    },
+  },
+  {
+    id: 'anvilmar',
+    name: 'Modimus Anvilmar',
+    icon: 'race_dwarf_male',
+    aliases: ['High King Modimus Anvilmar', 'Anvilmar'],
+    tr: {
+      sub: 'Ironforge’un High King’i',
+      text: 'Üç klanı tek tahtta bir arada tutan son kral. Yaşlılıktan ölünce taht boş kaldı ve Üç Çekiç Savaşı başladı.',
+    },
+    en: {
+      sub: 'High King of Ironforge',
+      text: 'The last king to hold the three clans under one throne. When he died of old age the throne stood empty and the War of the Three Hammers began.',
+    },
+  },
+  {
+    id: 'madoran',
+    name: 'Madoran Bronzebeard',
+    icon: 'race_dwarf_male',
+    aliases: ['Thane Madoran Bronzebeard', 'Madoran'],
+    tr: {
+      sub: 'Bronzebeard thane’i',
+      text: 'Üç Çekiç Savaşı’nda Bronzebeard’ları yöneten ve Ironforge’u elinde tutan lider.',
+    },
+    en: {
+      sub: 'Thane of the Bronzebeards',
+      text: 'The leader who led the Bronzebeards in the War of the Three Hammers and held Ironforge.',
+    },
+  },
+  {
+    id: 'khardros',
+    name: 'Khardros Wildhammer',
+    icon: 'inv_hammer_04',
+    aliases: ['Thane Khardros Wildhammer', 'Khardros'],
+    tr: {
+      sub: 'Wildhammer thane’i',
+      text: 'Üç Çekiç Savaşı’nda Wildhammer’ları yönetti. Grim Batol’da Modgud’u öldürdü ve sonra klanını Aerie Peak’e taşıdı.',
+    },
+    en: {
+      sub: 'Thane of the Wildhammers',
+      text: 'He led the Wildhammers in the War of the Three Hammers, killed Modgud at Grim Batol and later moved his clan to Aerie Peak.',
+    },
+  },
+  {
+    id: 'magni',
+    name: 'Magni Bronzebeard',
+    icon: 'race_dwarf_male',
+    aliases: ['King Magni Bronzebeard', 'Magni Bronzebeard', 'Magni'],
+    tr: {
+      sub: 'Ironforge kralı',
+      text: 'Bronzebeard klanından Ironforge kralı; Muradin’in ağabeyi. Second War’da Ironforge’u Horde’un kuşatmasına karşı savundu ve krallığını Alliance’a bağladı.',
+      note: 'High Seat, Ironforge',
+    },
+    en: {
+      sub: 'King of Ironforge',
+      text: 'The Bronzebeard king of Ironforge and Muradin’s elder brother. In the Second War he held Ironforge against the Horde’s siege and pledged his kingdom to the Alliance.',
+      note: 'High Seat, Ironforge',
+    },
+  },
+  {
+    id: 'moira',
+    name: 'Moira Thaurissan',
+    icon: 'spell_holy_divinepurpose',
+    aliases: ['Moira Thaurissan', 'Moira'],
+    tr: {
+      sub: 'Magni’nin kızı',
+      text: 'Magni Bronzebeard’ın kızı. Dark Iron imparatoru Dagran Thaurissan’la evlenip Blackrock Mountain’a gitti; Ironforge’da kaçırıldığına inanılır. Sonraki yıllarda Ironforge’da Dark Iron’ları temsil edecekti.',
+      note: 'Blackrock Mountain',
+    },
+    en: {
+      sub: 'Magni’s daughter',
+      text: 'Magni Bronzebeard’s daughter. She married the Dark Iron emperor Dagran Thaurissan and went to Blackrock Mountain; Ironforge believes she was kidnapped. In later years she would speak for the Dark Irons in Ironforge.',
+      note: 'Blackrock Mountain',
+    },
+  },
+  {
+    id: 'dagran',
+    name: 'Dagran Thaurissan II',
+    icon: 'race_dwarf_male',
+    aliases: ['Dagran Thaurissan II'],
+    tr: {
+      sub: 'İki tahtın varisi',
+      text: 'Moira ile Dark Iron imparatoru Dagran Thaurissan’ın oğlu; hem Ironforge’un hem Dark Iron tahtının varisi.',
+    },
+    en: {
+      sub: 'Heir to two thrones',
+      text: 'Son of Moira and the Dark Iron emperor Dagran Thaurissan; heir to both Ironforge and the Dark Iron throne.',
+    },
+  },
+  {
+    id: 'falstad',
+    name: 'Falstad Wildhammer',
+    icon: 'inv_hammer_04',
+    aliases: ['Falstad Wildhammer', 'Falstad'],
+    tr: {
+      sub: 'Aerie Peak’in lideri',
+      text: 'Hinterlands’teki Aerie Peak’te Wildhammer’ları yöneten grifon binicisi.',
+      note: 'Aerie Peak, The Hinterlands',
+    },
+    en: {
+      sub: 'Leader of Aerie Peak',
+      text: 'The gryphon rider who leads the Wildhammers of Aerie Peak in the Hinterlands.',
+      note: 'Aerie Peak, The Hinterlands',
+    },
+  },
+  {
+    id: 'kurdran',
+    name: 'Kurdran Wildhammer',
+    icon: 'inv_hammer_04',
+    aliases: ['Kurdran Wildhammer', 'Kurdran'],
+    tr: {
+      sub: 'Grifon binicilerinin komutanı',
+      text: 'Second War’da Wildhammer grifon binicilerini yönetti; savaştan sonra Dark Portal’ın öte yanına giden sefere katıldı.',
+    },
+    en: {
+      sub: 'Commander of the gryphon riders',
+      text: 'He led the Wildhammer gryphon riders in the Second War and afterwards joined the expedition through the Dark Portal.',
+    },
+  },
+  {
+    id: 'alexstrasza',
+    name: 'Alexstrasza',
+    icon: 'inv_misc_head_dragon_01',
+    aliases: ['Dragonqueen Alexstrasza', 'Alexstrasza'],
+    tr: {
+      sub: 'Dragonqueen · kırmızı ejderhaların kraliçesi',
+      text: 'Hayatın koruyucusu olan kırmızı ejderha kraliçesi. Second War’da Dragonmaw orc’ları onu Grim Batol’da tutsak edip yavrularını savaş için kullandı; savaştan sonra kurtarıldı.',
+    },
+    en: {
+      sub: 'Dragonqueen · queen of the red dragons',
+      text: 'Queen of the red dragons and guardian of life. In the Second War the Dragonmaw orcs held her captive at Grim Batol and used her young for war; she was freed after the war.',
+    },
+  },
+  {
+    id: 'dragonmaw',
+    name: 'Dragonmaw',
+    icon: 'race_orc_male',
+    aliases: ['Dragonmaw'],
+    tr: {
+      sub: 'Orc klanı',
+      text: 'Ejderhaları köleleştiren orc klanı; Grim Batol’da Alexstrasza’yı tutsak etti.',
+      note: 'Wetlands',
+    },
+    en: {
+      sub: 'Orc clan',
+      text: 'The orc clan that enslaved dragons and held Alexstrasza captive at Grim Batol.',
+      note: 'Wetlands',
+    },
+  },
+  {
+    id: 'grimbatol',
+    name: 'Grim Batol',
+    icon: 'spell_shadow_curse',
+    aliases: ['Grim Batol'],
+    tr: {
+      sub: 'Dağ kalesi · Wetlands',
+      text: 'Wildhammer’ların Üç Çekiç Savaşı’ndan sonra yerleştiği kale. Modgud’un ölümüyle lanetlendi ve terk edildi; Second War’da Dragonmaw klanı Alexstrasza’yı burada tutsak etti.',
+      note: 'Wetlands',
+    },
+    en: {
+      sub: 'Mountain fortress · Wetlands',
+      text: 'The fortress the Wildhammers settled after the War of the Three Hammers. Cursed by Modgud’s death, it was abandoned; in the Second War the Dragonmaw clan held Alexstrasza captive there.',
+      note: 'Wetlands',
+    },
+  },
+  {
+    id: 'aeriepeak',
+    name: 'Aerie Peak',
+    icon: 'ability_mount_whitetiger',
+    aliases: ['Aerie Peak'],
+    tr: {
+      sub: 'Wildhammer yuvası',
+      text: 'Hinterlands’teki Wildhammer dwarf’larının dağ yuvası; grifon binicilerinin evi.',
+      note: 'The Hinterlands',
+    },
+    en: {
+      sub: 'Home of the Wildhammers',
+      text: 'The mountain home of the Wildhammer dwarves in the Hinterlands, where the gryphon riders live.',
+      note: 'The Hinterlands',
+    },
+  },
+  {
+    id: 'hinterlands',
+    name: 'The Hinterlands',
+    icon: 'achievement_zone_barrens_01',
+    aliases: ['Hinterlands'],
+    tr: {
+      sub: 'Bölge · Lordaeron’un doğusu',
+      text: 'Lordaeron’un doğusundaki ormanlık tepeler; Aerie Peak’teki Wildhammer’lara ve troll kabilelerine ev sahipliği yapar.',
+    },
+    en: {
+      sub: 'Region · east of Lordaeron',
+      text: 'Wooded hills east of Lordaeron, home to the Wildhammers of Aerie Peak and to troll tribes.',
+    },
+  },
+  {
+    id: 'thandol',
+    name: 'Thandol Span',
+    icon: 'ability_townwatch',
+    aliases: ['Thandol Span'],
+    tr: {
+      sub: 'Dwarf köprüsü',
+      text: 'Arathi Highlands ile Wetlands’i bağlayan dev dwarf köprüsü; Bronzebeard ve Wildhammer dostluğunun simgesi.',
+      note: 'Wetlands · Arathi Highlands',
+    },
+    en: {
+      sub: 'Dwarven bridge',
+      text: 'The great dwarven bridge between the Arathi Highlands and the Wetlands, a sign of Bronzebeard and Wildhammer friendship.',
+      note: 'Wetlands · Arathi Highlands',
+    },
+  },
+  {
+    id: 'blackrockmountain',
+    name: 'Blackrock Mountain',
+    icon: 'spell_fire_selfdestruct',
+    aliases: ['Blackrock Mountain'],
+    tr: {
+      sub: 'Ragnaros’un volkanı',
+      text: 'Ragnaros’un gelişiyle yükselen volkan. İçinde Dark Iron’ların Shadowforge City’si, derinliklerinde Molten Core, tepesinde Blackrock Spire var.',
+      note: 'Searing Gorge · Burning Steppes',
+    },
+    en: {
+      sub: 'Ragnaros’s volcano',
+      text: 'The volcano raised by Ragnaros’s arrival. The Dark Irons’ Shadowforge City lies inside it, the Molten Core deep below and Blackrock Spire on top.',
+      note: 'Searing Gorge · Burning Steppes',
+    },
+  },
+  {
+    id: 'searinggorge',
+    name: 'Searing Gorge',
+    icon: 'spell_fire_incinerate',
+    aliases: ['Searing Gorge'],
+    tr: {
+      sub: 'Bölge · Blackrock’ın kuzeyi',
+      text: 'Blackrock Mountain’ın kuzeyindeki kavrulmuş kanyon; Dark Iron’lar burada maden işletiyor.',
+    },
+    en: {
+      sub: 'Region · north of Blackrock',
+      text: 'The scorched canyon north of Blackrock Mountain, where the Dark Irons work their mines.',
+    },
+  },
+  {
+    id: 'burningsteppes',
+    name: 'Burning Steppes',
+    icon: 'spell_fire_flameshock',
+    aliases: ['Burning Steppes'],
+    tr: {
+      sub: 'Bölge · Blackrock’ın güneyi',
+      text: 'Blackrock Mountain’ın güneyindeki küllü bozkır; bugün Blackrock orc’larının elinde.',
+    },
+    en: {
+      sub: 'Region · south of Blackrock',
+      text: 'The ash-covered steppe south of Blackrock Mountain, held today by the Blackrock orcs.',
+    },
+  },
+  {
+    id: 'shadowforge',
+    name: 'Shadowforge City',
+    icon: 'spell_fire_soulburn',
+    aliases: ['Shadowforge City'],
+    tr: {
+      sub: 'Dark Iron şehri',
+      text: 'Dark Iron’ların Blackrock Mountain’ın altında kurduğu şehir; imparatorları Dagran Thaurissan’ın sarayı burada.',
+      note: 'Blackrock Depths',
+    },
+    en: {
+      sub: 'City of the Dark Irons',
+      text: 'The city the Dark Irons built beneath Blackrock Mountain, seat of their emperor Dagran Thaurissan.',
+      note: 'Blackrock Depths',
+    },
+  },
+  {
+    id: 'moltencore',
+    name: 'Molten Core',
+    icon: 'spell_fire_fireball02',
+    aliases: ['Molten Core'],
+    tr: {
+      sub: 'Ragnaros’un yuvası',
+      text: 'Blackrock Mountain’ın en derinindeki lav mağaraları; Ragnaros’un Azeroth’taki yuvası.',
+      note: 'Blackrock Mountain',
+    },
+    en: {
+      sub: 'Ragnaros’s lair',
+      text: 'The lava caverns at the bottom of Blackrock Mountain, Ragnaros’s seat on Azeroth.',
+      note: 'Blackrock Mountain',
+    },
+  },
+  {
+    id: 'elementalplane',
+    name: 'Elemental Plane',
+    icon: 'spell_nature_earthquake',
+    aliases: ['Elemental Plane'],
+    tr: {
+      sub: 'Elementlerin âlemi',
+      text: 'Ateş, su, toprak ve havanın Elemental Lord’larının hapsedildiği âlem. Ragnaros’un krallığı Firelands bu âlemin ateş katıdır.',
+    },
+    en: {
+      sub: 'Realm of the elements',
+      text: 'The realm where the Elemental Lords of fire, water, earth and air are bound. Ragnaros’s kingdom, the Firelands, is its fire side.',
+    },
+  },
+  {
+    id: 'firelands',
+    name: 'Firelands',
+    icon: 'spell_fire_firebolt02',
+    aliases: ['Firelands'],
+    tr: {
+      sub: 'Ragnaros’un krallığı',
+      text: 'Elemental Plane’in ateş katı; Ragnaros’un asıl yurdu.',
+    },
+    en: {
+      sub: 'Ragnaros’s kingdom',
+      text: 'The fire side of the Elemental Plane and Ragnaros’s true home.',
+    },
+  },
+  {
+    id: 'uldaman',
+    name: 'Uldaman',
+    icon: 'spell_holy_divinespirit',
+    aliases: ['Uldaman'],
+    tr: {
+      sub: 'Titan kasası · Badlands',
+      text: 'Badlands’in altındaki Titan kasası; earthen’lar burada uyudu. Explorers’ League burayı kazıyor, derinliklerinde trogg’lar ve Titan muhafızları dolaşıyor.',
+      note: 'Badlands',
+    },
+    en: {
+      sub: 'Titan vault · Badlands',
+      text: 'The Titan vault beneath the Badlands where the earthen slept. The Explorers’ League digs here, and troggs and Titan guardians roam its depths.',
+      note: 'Badlands',
+    },
+  },
+  {
+    id: 'explorers',
+    name: 'Explorers’ League',
+    icon: 'inv_misc_map02',
+    aliases: ['Explorers’ League'],
+    tr: {
+      sub: 'Dwarf kâşifler örgütü',
+      text: 'Ironforge’un Hall of Explorers’ında toplanan kâşifler; dwarf’ların Titan kökenlerinin izini sürüyorlar.',
+      note: 'Hall of Explorers, Ironforge',
+    },
+    en: {
+      sub: 'Dwarven explorers',
+      text: 'The explorers who gather in Ironforge’s Hall of Explorers and trace the dwarves’ Titan origins.',
+      note: 'Hall of Explorers, Ironforge',
+    },
+  },
+  {
+    id: 'greatforge',
+    name: 'Great Forge',
+    icon: 'trade_blacksmithing',
+    aliases: ['Great Forge'],
+    tr: {
+      sub: 'Ironforge’un demirhanesi',
+      text: 'Ironforge’un kalbindeki dev demirhane; şehir onun çevresine kuruldu.',
+      note: 'Ironforge',
+    },
+    en: {
+      sub: 'The forge of Ironforge',
+      text: 'The huge forge at the heart of Ironforge, around which the city was built.',
+      note: 'Ironforge',
+    },
+  },
+  {
+    id: 'earthen',
+    name: 'Earthen',
+    icon: 'spell_nature_stoneskintotem',
+    aliases: ['earthen', 'Earthen'],
+    tr: {
+      sub: 'Titan yapısı',
+      text: 'Titan’ların dünyanın derinliklerini işlesin diye taştan yarattığı işçiler. Curse of Flesh onları dwarf’lara ve trogg’lara çevirdi.',
+    },
+    en: {
+      sub: 'Titan-forged',
+      text: 'Workers of stone the Titans made to shape the depths of the world. The Curse of Flesh turned them into dwarves and troggs.',
+    },
+  },
+  {
+    id: 'threehammers',
+    name: 'War of the Three Hammers',
+    icon: 'inv_hammer_20',
+    aliases: ['War of the Three Hammers', 'Üç Çekiç Savaşı'],
+    tr: {
+      sub: 'Dwarf iç savaşı · Dark Portal’dan ~230 yıl önce',
+      text: 'Anvilmar’ın ölümünden sonra Bronzebeard, Wildhammer ve Dark Iron klanları arasında Ironforge tahtı için çıkan iç savaş. Bronzebeard’lar kazandı; Dark Iron’ların çağırdığı Ragnaros Blackrock Mountain’ı yarattı.',
+    },
+    en: {
+      sub: 'Dwarven civil war · ~230 years before the Dark Portal',
+      text: 'The civil war for the throne of Ironforge between the Bronzebeard, Wildhammer and Dark Iron clans after Anvilmar died. The Bronzebeards won; Ragnaros, summoned by the Dark Irons, raised Blackrock Mountain.',
+    },
+  },
+  {
+    id: 'council3',
+    name: 'Council of Three Hammers',
+    icon: 'inv_banner_03',
+    aliases: ['Council of Three Hammers', 'Üç Çekiç Konseyi'],
+    tr: {
+      sub: 'Ironforge’un konseyi',
+      text: 'Sonraki yıllarda, Magni’nin yokluğunda Ironforge’u yönetecek konsey: Bronzebeard, Wildhammer ve Dark Iron klanları birer temsilciyle oturur.',
+    },
+    en: {
+      sub: 'Council of Ironforge',
+      text: 'The council that would rule Ironforge in later years, while Magni was gone: the Bronzebeard, Wildhammer and Dark Iron clans each send one member.',
+    },
+  },
+  {
+    id: 'redridge',
+    name: 'Redridge Mountains',
+    icon: 'spell_nature_earthquake',
+    aliases: ['Redridge Mountains', 'Redridge'],
+    tr: {
+      sub: 'Dağlar · Elwynn’in doğusu',
+      text: 'Elwynn Forest’ın doğusundaki dağlar. Üç Çekiç Savaşı’ndan sonra Thaurissan karargâhını bu sıradağlarda kurdu; Ragnaros’un gelişiyle dağların bir kısmı Blackrock Mountain’a dönüştü.',
+      note: 'Redridge Mountains',
+    },
+    en: {
+      sub: 'Mountains · east of Elwynn',
+      text: 'The mountains east of Elwynn Forest. After the War of the Three Hammers Thaurissan made his stronghold in this range; when Ragnaros came, part of it became Blackrock Mountain.',
+      note: 'Redridge Mountains',
+    },
+  },
+  {
+    id: 'dunalgaz',
+    name: 'Dun Algaz',
+    icon: 'ability_townwatch',
+    aliases: ['Dun Algaz'],
+    tr: {
+      sub: 'Dağ geçidi',
+      text: 'Dun Morogh ve Loch Modan’ı Wetlands’e bağlayan dağ geçidi.',
+    },
+    en: {
+      sub: 'Mountain pass',
+      text: 'The mountain pass that joins Dun Morogh and Loch Modan to the Wetlands.',
+    },
+  },
+  {
+    id: 'wetlands',
+    name: 'Wetlands',
+    icon: 'trade_fishing',
+    aliases: ['Wetlands'],
+    tr: {
+      sub: 'Bölge · Khaz Modan’ın kuzeyi',
+      text: 'Khaz Modan’ın kuzeyindeki bataklık bölge; Grim Batol, Dun Algaz ve Menethil Harbor burada.',
+    },
+    en: {
+      sub: 'Region · north of Khaz Modan',
+      text: 'The marshy region north of Khaz Modan, home of Grim Batol, Dun Algaz and Menethil Harbor.',
+    },
+  },
+  {
+    id: 'ashbringer',
+    name: 'Ashbringer',
+    icon: 'spell_holy_sealofwrath',
+    aliases: ['Ashbringer'],
+    tr: {
+      sub: 'Kutsal kılıç',
+      text: 'Magni’nin dövdüğü kutsal kılıç; ölümsüzlere karşı Light’ın en güçlü silahlarından biri.',
+    },
+    en: {
+      sub: 'Holy blade',
+      text: 'The holy sword forged by Magni, one of the Light’s mightiest weapons against the undead.',
+    },
+  },
+  {
+    id: 'frostborn',
+    name: 'Frostborn',
+    icon: 'spell_frost_frost',
+    aliases: ['Frostborn'],
+    tr: {
+      sub: 'Northrend dwarf’ları',
+      text: 'Northrend’in Storm Peaks bölgesinde yaşayan, buzla yoğrulmuş dwarf’lar.',
+    },
+    en: {
+      sub: 'Dwarves of Northrend',
+      text: 'The frost-hardened dwarves of Northrend’s Storm Peaks.',
     },
   },
 ];

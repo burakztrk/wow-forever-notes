@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { LORE } from '../src/i18n/lore';
-import { HUMAN_STORY } from '../src/i18n/stories';
+import { DWARF_STORY, GNOME_STORY, HUMAN_STORY } from '../src/i18n/stories';
 import { loreHtml, loreIds, loreTips } from '../src/lib/stories/lore';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -32,10 +32,14 @@ describe('lore entries', () => {
     }
   });
 
-  it('are all named in the Human story, in both languages', () => {
-    const all = LORE.map((e) => e.id).sort();
-    expect(loreIds(HUMAN_STORY.tr).sort()).toEqual(all);
-    expect(loreIds(HUMAN_STORY.en).sort()).toEqual(all);
+  it('are each named in a story, and every story names the same ones in both languages', () => {
+    const named = new Set<string>();
+    for (const story of [GNOME_STORY, DWARF_STORY, HUMAN_STORY]) {
+      const tr = loreIds(story.tr).sort();
+      expect(loreIds(story.en).sort()).toEqual(tr);
+      tr.forEach((id) => named.add(id));
+    }
+    expect([...named].sort()).toEqual(LORE.map((e) => e.id).sort());
   });
 });
 

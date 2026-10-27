@@ -12,6 +12,8 @@ import { ui } from '../../../i18n';
 import { DWARF_ART_LABELS, DWARF_STORY, STORY_UI } from '../../../i18n/stories';
 import { fillArt } from '../../../lib/stories/art';
 import { DWARF_ART } from '../../../lib/stories/dwarf-art';
+import { loreHtml, loreIds, loreTips } from '../../../lib/stories/lore';
+import { islandJson } from '../../../lib/tooltip-payload';
 import { curseUrl, withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -26,6 +28,9 @@ const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stori
 const base = withBase('/');
 const art = (svg: string) => fillArt(svg, DWARF_ART_LABELS[lang], base);
 const img = (name: string) => withBase(`/stories/dwarf/${name}`);
+// proper names in the text get lore tooltips (src/i18n/lore.ts); the cards ride in the #wf-glossary island
+const lx = (text: string) => loreHtml(text);
+const tips = loreTips(lang, loreIds(s));
 const ic = DWARF_ART.icons;
 
 const chapters = [
@@ -82,8 +87,13 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             <div>
               <dt>{fact.label}</dt>
               <dd>
-                {fact.value}
-                {fact.extra && <span> · {fact.extra}</span>}
+                <Fragment set:html={lx(fact.value)} />
+                {fact.extra && (
+                  <span>
+                    {' · '}
+                    <Fragment set:html={lx(fact.extra)} />
+                  </span>
+                )}
               </dd>
             </div>
           ))
@@ -102,7 +112,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             <h2 class="h2" id="h-origin">{s.origin.title} <a lang="en" class="title-note" href={curseUrl(lang)}>{s.origin.titleNote}</a></h2>
           </div>
         </header>
-        <div class="prose rv">{s.origin.paragraphs.map((p) => <p>{p}</p>)}</div>
+        <div class="prose rv">{s.origin.paragraphs.map((p) => <p set:html={lx(p)} />)}</div>
         <div class="evo-wrap" id="evo" data-p=".95,.35">
           <ol class="evo" aria-label={s.origin.stagesLabel}>
             <li class="evo-line" aria-hidden="true"><i></i></li>
@@ -114,7 +124,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                   </div>
                   <div class="t">
                     <h3>{stage.name}</h3>
-                    <p>{stage.text}</p>
+                    <p set:html={lx(stage.text)} />
                   </div>
                 </li>
               ))
@@ -123,7 +133,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           <div class="mf" aria-hidden="true"><span>{s.origin.stone}</span><div class="mf-bar"><b></b></div><span>{s.origin.flesh}</span></div>
         </div>
         <CurseLink lang={lang} />
-        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.origin.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.origin.note)} /></aside>
       </div>
     </section>
 
@@ -137,7 +147,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           <div><p class="ov">{u.chapter} II · {s.chapters.hammers}</p><h2 class="h2" id="h-hammers">{s.hammers.title}</h2></div>
         </header>
         <div class="split">
-          <div class="prose rv">{[s.hammers.intro, ...s.hammers.more].map((p) => <p>{p}</p>)}</div>
+          <div class="prose rv">{[s.hammers.intro, ...s.hammers.more].map((p) => <p set:html={lx(p)} />)}</div>
           <figure class="hammers-fig" id="crest" data-p=".95,.35" data-moves>
             <Fragment set:html={art(DWARF_ART.crest)} />
             <figcaption>{s.hammers.crestCaption}</figcaption>
@@ -151,8 +161,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                   <svg viewBox="0 0 48 48" aria-hidden="true" set:html={clanIcons[i]} />
                 </div>
                 <h3 class="h3">{clan.name}</h3>
-                <p class="who" lang="en">{clan.leader}</p>
-                <p>{clan.text}</p>
+                <p class="who" lang="en" set:html={lx(clan.leader)} />
+                <p set:html={lx(clan.text)} />
               </article>
             ))
           }
@@ -164,7 +174,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                 <li class:list={['step', { active: i === 0 }]} data-era={step.era} data-title={step.title}>
                   <p class="ov" lang="en">{step.era}</p>
                   <h3 class="h3">{step.title}</h3>
-                  <p>{step.text}</p>
+                  <p set:html={lx(step.text)} />
                   <span class:list={['status', step.tone]}>
                     <i />
                     {step.status}
@@ -183,7 +193,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             <Fragment set:html={art(DWARF_ART.ek)} />
           </figure>
         </div>
-        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.hammers.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.hammers.note)} /></aside>
       </div>
     </section>
 
@@ -196,19 +206,19 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           <div class="ch-num" aria-hidden="true">III</div>
           <div><p class="ov">{u.chapter} III · {s.chapters.fire}</p><h2 class="h2" id="h-fire">{s.fire.title}</h2></div>
         </header>
-        <div class="prose rv">{[s.fire.intro, ...s.fire.more].map((p) => <p>{p}</p>)}</div>
+        <div class="prose rv">{[s.fire.intro, ...s.fire.more].map((p) => <p set:html={lx(p)} />)}</div>
         <div class="scene solo">
           <div class="stat plain fire rv" style="--d:.1s">
             <p class="ov stat-ov">{s.fire.statLabel}</p>
             <p class="stat-n" aria-label={s.fire.statAria}><span class="count" data-to="230">230</span><span class="stat-u">{s.fire.statUnit}</span></p>
             <p set:html={s.fire.statText} />
-            <p class="small">{s.fire.statDetail}</p>
+            <p class="small" set:html={lx(s.fire.statDetail)} />
           </div>
         </div>
         <div class="rag-bg">
           <div class="rag-art" aria-hidden="true"><img src={img('ragnaros.webp')} alt="" width="712" height="658" loading="lazy" /></div>
           <div class="sub sub-h rv"><p class="ov">{s.fire.ragnaros.label}</p><h3 class="h3">{s.fire.ragnaros.title}</h3></div>
-          <div class="prose rv">{s.fire.ragnaros.paragraphs.map((p) => <p>{p}</p>)}</div>
+          <div class="prose rv">{s.fire.ragnaros.paragraphs.map((p) => <p set:html={lx(p)} />)}</div>
         </div>
         <div class="trio">
           {
@@ -220,12 +230,12 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                 </div>
                 <p class="ov">{place.tag}</p>
                 <h3 class="h3">{place.name}</h3>
-                <p>{place.text}</p>
+                <p set:html={lx(place.text)} />
               </article>
             ))
           }
         </div>
-        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.fire.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.fire.note)} /></aside>
       </div>
     </section>
 
@@ -238,7 +248,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           <div class="ch-num" aria-hidden="true">IV</div>
           <div><p class="ov">{u.chapter} IV · {s.chapters.wars}</p><h2 class="h2" id="h-wars">{s.wars.title}</h2></div>
         </header>
-        <div class="prose rv">{[s.wars.intro, ...s.wars.more].map((p) => <p>{p}</p>)}</div>
+        <div class="prose rv">{[s.wars.intro, ...s.wars.more].map((p) => <p set:html={lx(p)} />)}</div>
         <figure class="map-fig rv" id="kz" data-p=".72,.22" data-routes>
           <Fragment set:html={art(DWARF_ART.kz)} />
           <figcaption>
@@ -254,7 +264,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                   <span class="lk">{i + 1}</span>
                   <span>
                     <b>{item.name}</b>
-                    {item.text}
+                    <Fragment set:html={lx(item.text)} />
                   </span>
                 </li>
               ))
@@ -270,7 +280,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                 </div>
                 <div class="t">
                   <h3 class="h3">{card.name}</h3>
-                  <p>{card.text}</p>
+                  <p set:html={lx(card.text)} />
                   <span class:list={['status', card.tone]}>
                     <i />
                     {card.status}
@@ -280,7 +290,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             ))
           }
         </div>
-        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.wars.note}</p></aside>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.wars.note)} /></aside>
       </div>
     </section>
 
@@ -295,8 +305,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           <div class="ch-num" aria-hidden="true">V</div>
           <div><p class="ov">{u.chapter} V · {s.chapters.today}</p><h2 class="h2" id="h-today">{s.today.title}</h2></div>
         </header>
-        <div class="prose rv">{s.today.intro.map((p) => <p>{p}</p>)}</div>
-        <div class="sub rv"><p class="ov">{s.today.councilLabel}</p><p class="council-text">{s.today.councilText}</p></div>
+        <div class="prose rv">{s.today.intro.map((p) => <p set:html={lx(p)} />)}</div>
+        <div class="sub rv"><p class="ov">{s.today.councilLabel}</p><p class="council-text" set:html={lx(s.today.councilText)} /></div>
         <div class="clans">
           {
             s.today.council.map((member, i) => (
@@ -310,7 +320,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                 )}
                 <p class="ov" lang="en">{member.leader}</p>
                 <h3 class="h3">{member.name}</h3>
-                <p>{member.text}</p>
+                <p set:html={lx(member.text)} />
               </article>
             ))
           }
@@ -335,20 +345,21 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                   <span class="lk">{i + 1}</span>
                   <span>
                     <b>{item.name}</b>
-                    {item.text}
+                    <Fragment set:html={lx(item.text)} />
                   </span>
                 </li>
               ))
             }
           </ol>
         </figure>
-        <div class="prose rv">{s.today.beyondText.map((p) => <p>{p}</p>)}</div>
-        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p>{s.today.note}</p></aside>
+        <div class="prose rv">{s.today.beyondText.map((p) => <p set:html={lx(p)} />)}</div>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.today.note)} /></aside>
       </div>
     </section>
 
     <StoryEnd lang={lang} title={s.outro.title} text={s.outro.text} next="Human" nextText={s.outro.nextText} images={s.images} />
   </div>
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
 </BaseLayout>
 
 <script>

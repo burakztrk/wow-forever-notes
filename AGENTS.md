@@ -72,7 +72,7 @@ Node 22.12+.
   `data-p="start,end"` sets `--p`; `data-routes` draws route masks (`data-r`, `data-show`); `data-moves` drifts parts
   with `data-move="dx,dy,deg"`; the `#ek` map's `data-cams` holds one camera per step; `canvas#snow[data-fx]` is
   `snow` (blizzard), `embers` (forge sparks) or `void` (violet motes). Styles in `src/styles/stories.css`, all scoped under `.lore`; images
-  in `public/stories/<race>/`. Proper names in the Human story get lore cards: `src/i18n/lore.ts` (TR + EN, `aliases` are
+  in `public/stories/<race>/`. Proper names in the Gnome, Dwarf and Human stories get lore cards: `src/i18n/lore.ts` (TR + EN, `aliases` are
   the exact spellings in the copy, `icon` from `public/icons`) and `src/lib/stories/lore.ts` (`loreHtml()` wraps the first
   mention of each name per text block, `loreTips()` builds the `#wf-glossary` island; `CardTip` kind `lore`).
 - SEO + analytics: `src/layouts/BaseLayout.astro` writes canonical, hreflang (+ x-default), Open Graph/Twitter
