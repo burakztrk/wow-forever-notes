@@ -53,7 +53,7 @@ if (applyIdx > 0) {
   const pending = await readJson<{ key: string; en: string }[]>(PENDING, []);
   const enByKey = new Map(pending.map((p) => [p.key, p.en]));
   // English text can also come from the glossary itself
-  for (const e of texts) for (const t of [e.desc, e.change]) if (t?.trim()) enByKey.set(textKey(t), t);
+  for (const e of texts) for (const t of [e.desc, e.change, ...(e.ranks ?? [])]) if (t?.trim()) enByKey.set(textKey(t), t);
 
   let added = 0;
   const rejected: string[] = [];
@@ -76,7 +76,7 @@ if (applyIdx > 0) {
 }
 
 const missing = applyTranslations(texts, cache);
-applyRankTranslations(texts);
+for (const p of applyRankTranslations(texts, cache)) if (!missing.some((m) => m.key === p.key)) missing.push(p);
 if (legacy) applyRewardTranslations(legacy.rewards, items, cache);
 cache = Object.fromEntries(Object.entries(pruneCache(texts, cache)).sort(([a], [b]) => a.localeCompare(b)));
 

@@ -85,18 +85,28 @@ export function deriveRankTr(topEn: string, topTr: string, rankEn: string): stri
   });
 }
 
-export function applyRankTranslations(entries: Translatable[]): void {
+export function applyRankTranslations(entries: Translatable[], cache: TranslationCache = {}): PendingText[] {
+  const pending = new Map<string, PendingText>();
   for (const e of entries) {
     delete e.ranksTr;
-    if (!e.ranks?.length || !e.descTr) continue;
+    if (!e.ranks?.length) continue;
     const top = e.ranks.at(-1)!;
     // descTr translates `desc`; it only maps onto ranks written the same way
-    if (top.replace(NUM, '#') !== e.desc.replace(NUM, '#')) continue;
-    const topTr = deriveRankTr(e.desc, e.descTr, top);
-    if (!topTr) continue;
-    const out = e.ranks.map((r) => deriveRankTr(top, topTr, r) ?? '');
+    const topTr =
+      e.descTr && top.replace(NUM, '#') === e.desc.replace(NUM, '#') ? deriveRankTr(e.desc, e.descTr, top) : undefined;
+    const out = e.ranks.map((r) => {
+      const derived = topTr ? deriveRankTr(top, topTr, r) : undefined;
+      if (derived) return derived;
+      // wording differs from the top rank: translate the rank text itself
+      const key = textKey(r);
+      const hit = cache[key]?.tr;
+      if (hit) return hit;
+      if (!pending.has(key)) pending.set(key, { key, en: r, name: e.name, kind: e.kind ?? 'legacy', class: e.class });
+      return '';
+    });
     if (out.some(Boolean)) e.ranksTr = out;
   }
+  return [...pending.values()];
 }
 
 // Numbers carry the meaning of a tooltip; a translation must keep every one.
@@ -147,6 +157,9 @@ export function applyRewardTranslations(rewards: RewardLike[], items: ItemLines,
 
 export function pruneCache(entries: Translatable[], cache: TranslationCache): TranslationCache {
   const used = new Set<string>();
-  for (const e of entries) for (const [src] of FIELDS) if (e[src]?.trim()) used.add(textKey(e[src]!));
+  for (const e of entries) {
+    for (const [src] of FIELDS) if (e[src]?.trim()) used.add(textKey(e[src]!));
+    for (const r of e.ranks ?? []) if (r.trim()) used.add(textKey(r));
+  }
   return Object.fromEntries(Object.entries(cache).filter(([k]) => used.has(k)));
 }
