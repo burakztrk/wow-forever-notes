@@ -6,8 +6,8 @@
 //   "camera" (viewBox); labels keep their screen size through --k. Its routes wait
 //   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
-//   and calm; "embers" are forge sparks drifting up; "void", "wisps" and "voodoo" are the same
-//   motes in violet, pale green and jungle green; "cinders" are tiny red flames that fall, turn grey ash and shrink;
+//   and calm; "embers" are forge sparks drifting up; "void", "wisps", "voodoo", "plague" and "sun" are the same
+//   motes in violet, pale green, jungle green, blight green and prairie gold; "cinders" are tiny red flames that fall, turn grey ash and shrink;
 //   "gale" is pale blue wind lines streaming across the sky.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
@@ -254,6 +254,8 @@ function init(root: HTMLElement) {
     else if (fx.dataset.fx === 'wisps') embers(fx, ['#effff8', '#8fe3c8']);
     else if (fx.dataset.fx === 'cinders') cinders(fx);
     else if (fx.dataset.fx === 'voodoo') embers(fx, ['#e6ffd0', '#6fcf5a']);
+    else if (fx.dataset.fx === 'plague') embers(fx, ['#d8ffbe', '#8bd46a']);
+    else if (fx.dataset.fx === 'sun') embers(fx, ['#fff3c4', '#e8a848']);
     else if (fx.dataset.fx === 'gale') gale(fx);
     else blizzard(fx);
   }

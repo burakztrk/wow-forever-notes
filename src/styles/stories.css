@@ -719,3 +719,15 @@ a.story-card:focus-visible {
 .lore .map.rise .sea{fill:#183142}
 .lore .legend.plain{border-top:0;padding:clamp(20px,3vw,28px) 0 0}
 .lore .split .col{display:flex;flex-direction:column;min-width:0}
+/* Undead story: Forsaken violet and blight green, plain hero until the cover arrives, the Frozen Throne figure */
+.lore.undead{--forsaken:#b28cff;--plague:#8bd46a}
+.lore.undead .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(139,212,106,.15),transparent 70%),radial-gradient(ellipse 55% 65% at 80% 12%,rgba(107,63,160,.2),transparent 70%),var(--bg)}
+.lore #scourgemap svg{max-height:78vh}
+.lore #tirisfal svg{max-height:76vh}
+.lore #throne svg{max-height:46vh}
+/* Tauren story: Mulgore prairie green and An'she sun gold, plain hero until the cover arrives, the Thunder Bluff totem figure */
+.lore.tauren{--earth:#7ec876;--sun:#e8a848}
+.lore.tauren .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(126,200,118,.15),transparent 70%),radial-gradient(ellipse 55% 65% at 80% 12%,rgba(232,168,72,.18),transparent 70%),var(--bg)}
+.lore #desolacemap svg{max-height:78vh}
+.lore #mulgore svg{max-height:76vh}
+.lore #totem svg{max-height:46vh}

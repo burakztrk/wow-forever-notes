@@ -3258,6 +3258,1073 @@ export const TROLL_STORY: Record<Lang, TrollStory> = {
   },
 };
 
+export const UNDEAD_ART_LABELS: Record<Lang, Record<string, string>> = {
+  tr: {
+    scourgeAria: 'Eastern Kingdoms kuzey haritası: Andorhal, Stratholme, Lordaeron, Quel’Thalas ve Dalaran; Scourge’un yıkım yolu',
+    toNorthrend: 'Northrend’e ↗',
+    throneAria: 'Frozen Throne çizimi: kaydırdıkça buzdan taht çatlar ve ruh zincirleri kopar',
+    bound: 'Lich King’in iradesi',
+    unbound: 'Özgür irade · Forsaken',
+    arthasLeaves: 'Arthas Northrend’e ↗',
+    ekAria: 'Forsaken isyanı: Tirisfal Glades, Silverpine, Hillsbrad, Lordaeron başkenti ve Undercity; adım adım',
+    tirisfalAria: 'Tirisfal Glades haritası: Undercity, Deathknell, Brill, Agamand Mills ve Scarlet Monastery',
+    worldAria: 'Forsaken cepheleri ve zeppelin yolları: Undercity, The Sepulcher, Tarren Mill, The Bulwark, Orgrimmar ve Grom’gol',
+  },
+  en: {
+    scourgeAria: 'Map of the northern Eastern Kingdoms: Andorhal, Stratholme, Lordaeron, Quel’Thalas and Dalaran; the path of the Scourge',
+    toNorthrend: 'To Northrend ↗',
+    throneAria: 'Drawing of the Frozen Throne: as you scroll, the icy throne cracks and the soul-chains break',
+    bound: 'The Lich King’s will',
+    unbound: 'Free will · the Forsaken',
+    arthasLeaves: 'Arthas to Northrend ↗',
+    ekAria: 'The Forsaken rebellion: Tirisfal Glades, Silverpine, Hillsbrad, the capital of Lordaeron and Undercity, step by step',
+    tirisfalAria: 'Map of Tirisfal Glades: Undercity, Deathknell, Brill, Agamand Mills and the Scarlet Monastery',
+    worldAria: 'Forsaken fronts and zeppelin routes: Undercity, The Sepulcher, Tarren Mill, The Bulwark, Orgrimmar and Grom’gol',
+  },
+};
+
+export interface UndeadStory {
+  metaDescription: string;
+  overline: string;
+  lead: string;
+  facts: { label: string; value: string; extra?: string }[];
+  chapters: Record<'origin' | 'scourge' | 'breaking' | 'rebellion' | 'today', string>;
+  origin: { title: string; titleNote: string; paragraphs: string[]; stagesLabel: string; stages: Item[]; before: string; after: string; note: string };
+  scourge: {
+    title: string;
+    intro: string;
+    more: string[];
+    figureCaption: string;
+    plagueKey: string;
+    arthasKey: string;
+    legend: Item[];
+    cards: Card[];
+    note: string;
+  };
+  breaking: { title: string; intro: string; more: string[]; figureCaption: string; cards: Card[]; note: string };
+  rebellion: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
+  today: {
+    title: string;
+    intro: string[];
+    leadersLabel: string;
+    leadersText: string;
+    leaders: (Item & { role: string })[];
+    landLabel: string;
+    landTitle: string;
+    landText: string[];
+    landCaption: string;
+    pathKey: string;
+    scarletKey: string;
+    landLegend: Item[];
+    beyondLabel: string;
+    beyondTitle: string;
+    beyondText: string[];
+    mapCaption: string;
+    routesKey: string;
+    legend: Item[];
+    note: string;
+  };
+  outro: { title: string; text: string; nextText: string };
+  images: string;
+}
+
+export const UNDEAD_STORY: Record<Lang, UndeadStory> = {
+  tr: {
+    metaDescription:
+      'Undead (Forsaken) hikayesi: Lich King ve Plague of Undeath, Lordaeron ile Quel’Thalas’ın düşüşü, Frozen Throne’daki çatlak, Sylvanas Windrunner’ın isyanı ve Undercity.',
+    overline: 'Hikaye 07',
+    lead: 'Bir zamanlar Lordaeron’un yurttaşlarıydılar. Vebayla öldüler, kendi krallıklarını yıkan ordunun neferleri olarak uyandılar; sonra zincirleri çatladı ve yıkıntıların altında kendi krallıklarını kurdular.',
+    facts: [
+      { label: 'Yurt', value: 'Tirisfal Glades', extra: 'Lordaeron' },
+      { label: 'Başkent', value: 'Undercity' },
+      { label: 'Lider', value: 'Sylvanas Windrunner' },
+      { label: 'Adları', value: 'Forsaken', extra: 'terk edilmişler' },
+      { label: 'Binek', value: 'Skeletal Horse' },
+      { label: 'Başlangıç yeri', value: 'Deathknell' },
+    ],
+    chapters: { origin: 'Köken', scourge: 'Yıkım', breaking: 'Kopuş', rebellion: 'İsyan', today: 'Bugün' },
+    origin: {
+      title: 'Buzdan Tahttaki Ruh',
+      titleNote: '(The Lich King)',
+      paragraphs: [
+        'Horde’un undead halkı olan Forsaken’ların hikayesi bir mezarlıkta değil, parçalanan Draenor’un ötesinde başlar. Yaşlı orc shaman’ı Ner’zhul, ölmekte olan dünyasından açtığı geçitlerle kaçmaya çalışırken Burning Legion’ın efendilerinden Kil’jaeden’in eline düştü.',
+        'Kil’jaeden, Ner’zhul’un bedenini parçaladı ama ruhunu ölmesine izin vermeden bir zırha ve runik kılıç Frostmourne’a bağladı. Onu elmas sertliğinde bir buz kütlesinin, Frozen Throne’un içine hapsetti ve Azeroth’un kuzeyindeki Northrend kıtasına, Icecrown buzullarına fırlattı. Artık adı Lich King’di; görevi Legion’ın gelişi için dünyayı içeriden çürütecek bir ölümsüzler ordusu kurmaktı.',
+        'Lich King buzdan hapishanesinden zihnini uzattı ve Dalaran’ın hırslı büyücülerinden Kel’Thuzad’ı kendine çekti. Kel’Thuzad, Lordaeron’un yoksul ve yorgun insanlarına ölümsüzlük vaat eden gizli bir tarikat kurdu: Cult of the Damned.',
+        'Tarikatın asıl silahı kılıç değil, Plague of Undeath adındaki büyüsel vebaydı. Andorhal’daki tahıl ambarlarından köylere dağılan vebalı un, yaşayanları birkaç gün içinde öldürüyor; ölenler ise kendi iradeleri silinmiş, yalnızca Lich King’in sesini duyan Scourge askerleri olarak ayağa kalkıyordu.',
+      ],
+      stagesLabel: 'Scourge’un doğuş aşamaları',
+      stages: [
+        { name: 'Ner’zhul', text: 'Ruhu tutsak edilen yaşlı shaman' },
+        { name: 'Lich King', text: 'Frozen Throne’daki buzdan zihin' },
+        { name: 'Plague of Undeath', text: 'Andorhal’dan yayılan vebalı tahıl' },
+        { name: 'Scourge', text: 'Tek iradeye bağlı ölümsüz ordu' },
+      ],
+      before: 'Yaşayanlar',
+      after: 'Scourge',
+      note: 'Scourge’un gücü acımasız bir denkleme dayanıyordu: savaşta düşen her Lordaeron askeri, bir dakika sonra kendi yurduna kılıç çeken yeni bir Scourge neferi oluyordu.',
+    },
+    scourge: {
+      title: 'İki krallığın külleri',
+      intro:
+        'Vebanın izini süren Lordaeron veliahtı Arthas Menethil, Andorhal’da Kel’Thuzad’ı öldürdü; ama Stratholme halkının vebalı tahılı yediğini görünce şehri kendi elleriyle arındırmaya kalkıştı.',
+      more: [
+        'İntikam hırsıyla Northrend’e yelken açan Arthas, orada lanetli kılıç Frostmourne’u aldı ve ruhunu Lich King’e kaptırdı. Lordaeron’a bir kurtarıcı olarak değil, Scourge’un ilk ve en kudretli death knight’ı olarak döndü; taht odasında babası King Terenas Menethil II’yi öldürdü ve krallığı ölümsüz ordusuna teslim etti.',
+        'Arthas ardından Kel’Thuzad’ın kalıntılarını diriltmek için kuzeye, high elf krallığı Quel’Thalas’a yürüdü. Başkent Silvermoon’un koruyucusu, Ranger-General Sylvanas Windrunner her geçitte ve her nehirde Scourge’un karşısına dikildi; ama ölülerin sayısı tükenmiyordu.',
+        'Sylvanas son savunma hattında düştüğünde Arthas ona temiz bir ölüm bile çok gördü. Ruhunu bedeninden söküp bir banshee’ye çevirdi ve onu kendi iradesine zincirledi. Sunwell’in kutsal suları Kel’Thuzad’ı bir lich olarak diriltmek için kirletildi; ardından Kel’Thuzad Dalaran’da Archimonde’u Azeroth’a çağırdı.',
+      ],
+      figureCaption: 'Scourge’un Lordaeron ve Quel’Thalas’taki yıkım yolu; kaydırdıkça çiziliyor. Konumlar yaklaşıktır.',
+      plagueKey: 'Veba ve büyü',
+      arthasKey: 'Arthas’ın seferi',
+      legend: [
+        { name: 'Andorhal', text: 'Vebalı tahılın dağıtıldığı ambar kenti' },
+        { name: 'Stratholme', text: 'Arthas’ın ateşe verdiği büyük şehir' },
+        { name: 'Lordaeron', text: 'Terenas’ın öldürüldüğü başkent' },
+        { name: 'Quel’Thalas', text: 'Sylvanas’ın savunduğu elf krallığı' },
+        { name: 'Dalaran', text: 'Archimonde’un çağrıldığı büyücüler şehri' },
+      ],
+      cards: [
+        {
+          name: 'Arthas Menethil',
+          text: 'Halkını kurtarmak isterken Frostmourne’un kölesi olan prens. Kendi krallığını yıktı ve bugün Forsaken olan binlerce insanı ölüme sürükledi.',
+          status: 'Death Knight',
+          tone: 'no',
+        },
+        {
+          name: 'Kel’Thuzad',
+          text: 'Cult of the Damned’ın kurucusu. Andorhal’da öldü, Sunwell’in sularında bir lich olarak yeniden doğdu ve Plaguelands’teki Scourge’un başına geçti.',
+          status: 'Lich',
+          tone: 'no',
+        },
+        {
+          name: 'Sylvanas Windrunner',
+          text: 'Silvermoon’un Ranger-General’i. Yurdunu son ana kadar savundu; Arthas onu bir banshee olarak kaldırıp kendi ordusunda yürümeye zorladı.',
+          status: 'Banshee',
+          tone: 'mute',
+        },
+        {
+          name: 'Sunwell',
+          text: 'High elf’lerin kutsal büyü pınarı. Arthas, Kel’Thuzad’ı diriltmek için pınarı kirletti ve Quel’Thalas’ın kalbini kararttı.',
+          status: 'Kirletildi',
+          tone: 'no',
+        },
+      ],
+      note: 'Bugün Undercity koridorlarında yürüyen Forsaken’ların çoğu, o günlerde kendi evlerini ve komşularını yıkmaya zorlanan Lordaeron yurttaşları ve elf korucularıdır.',
+    },
+    breaking: {
+      title: 'Çatlayan taht, dönen irade',
+      intro:
+        'Burning Legion, Mount Hyjal’da yenilince Lich King efendilerine sırt çevirdi. Bunun üzerine Kil’jaeden, Illidan Stormrage’e Lich King’i yok etme görevi verdi.',
+      more: [
+        'Illidan, Dalaran’ın yıkıntıları arasında Eye of Sargeras adlı kadim kalıntıyı kullanarak uzaktaki Icecrown buzullarını parçalayacak bir büyü başlattı. Kardeşi Malfurion büyü tamamlanmadan onu durdurdu; ama sarsıntı Northrend’deki Frozen Throne’da derin bir çatlak açmaya yetti.',
+        'Tahttaki çatlak büyüdükçe Lich King’in gücü sızmaya başladı ve Lordaeron’daki ölümsüzlerin üzerindeki demir pençesi gevşedi. İlk uyananlardan biri Sylvanas Windrunner oldu: iradesini geri kazandı, gizlice kendi bedenini yeniden ele geçirdi ve zihni açılan diğer ölümsüzleri etrafında topladı.',
+        'Uyananları korkunç bir sessizlik bekliyordu. Zihinleri geri gelmişti ama bedenleri çürümüştü; üstelik Scourge’un kuklasıyken sevdiklerine ne yaptıklarını tek tek hatırlıyorlardı.',
+      ],
+      figureCaption: 'Kaydırdıkça Frozen Throne çatlıyor ve ruh zincirleri kopuyor.',
+      cards: [
+        {
+          name: 'Frozen Throne',
+          text: 'Illidan’ın Eye of Sargeras’la yaptığı büyü buzdan tahtı çatlattı. Lich King’in zayıflayan sesi, uzaktaki binlerce ölümsüzün uyanmasını sağladı.',
+          status: 'Çatlak',
+          tone: 'mute',
+        },
+        {
+          name: 'Sylvanas Windrunner',
+          text: 'Lich King’in pençesinden ilk kurtulanlardan biri. Kendi bedenine geri döndü ve özgürleşen ölümsüzlere bir amaç verdi: intikam ve hayatta kalma.',
+          status: 'Dark Lady',
+          tone: 'home',
+        },
+        {
+          name: 'Banshee',
+          text: 'Arthas’ın işkenceyle yarattığı çığlık atan ruhlar. Sylvanas’ın en sadık ajanları oldular; düşman komutanların bedenlerini ele geçirip savaşın seyrini değiştirdiler.',
+          status: 'Özgür ruhlar',
+          tone: 'al',
+        },
+        {
+          name: 'Forsaken',
+          text: 'Ne yaşayanların arasına dönebilen ne de Scourge’a boyun eğen ölümsüzler. Kendilerine “terk edilmişler” anlamına gelen Forsaken adını verdiler.',
+          status: 'Özgür irade',
+          tone: 'ok',
+        },
+      ],
+      note: 'Özgür irade Forsaken’lar için hem kurtuluş hem lanetti: artık kimsenin kölesi değillerdi, ama hafızaları ve vicdanları da geri dönmüştü.',
+    },
+    rebellion: {
+      title: 'Yıkıntıların savaşı',
+      intro:
+        'Özgür kalmak yetmiyordu; Lordaeron hâlâ Scourge’un ve Burning Legion’dan kalan üç dreadlord’un elindeydi. Kaydırdıkça harita, Sylvanas’ın yıkıntıları nasıl adım adım aldığını gösteriyor.',
+      mapLabel: 'Forsaken isyanı haritası',
+      steps: [
+        {
+          era: 'Tirisfal Glades',
+          title: 'Sarayda pusu',
+          text: 'Zayıflayan Lich King, Arthas’ı acilen Northrend’e çağırır; başkentin yönetimini üç dreadlord’a, Varimathras, Detheroc ve Balnazzar’a bırakır. Sylvanas, Arthas’ı Tirisfal ormanlarında pusuya düşürür; Arthas Kel’Thuzad’ın yardımıyla zor kurtulup kuzeye yelken açar.',
+          status: 'Ayaklanma',
+          tone: 'home',
+        },
+        {
+          era: 'Silverpine · Alterac',
+          title: 'İlk dreadlord diz çöker',
+          text: 'Dreadlord’lar Sylvanas’ı kendi saflarına çağırır ama o köleliğe dönmeyi reddeder. Banshee’lerini gönderip çevredeki haydutların, ogre’ların ve orman trollerinin liderlerini ele geçirir; büyüyen ordusuyla Varimathras’ı yener. Varimathras canını kurtarmak için kardeşlerine ihanet edip Sylvanas’a bağlılık yemini eder.',
+          status: 'Boyun eğdi',
+          tone: 'ok',
+        },
+        {
+          era: 'Hillsbrad',
+          title: 'Garithos’la pazarlık',
+          text: 'Varimathras’ın gösterdiği yolla Sylvanas, Detheroc’un karargâhına gece baskını yapar. Detheroc, insan komutan Othmar Garithos’un ve ordusunun zihnini büyüyle esir almıştır. Detheroc ölünce büyü çözülür; Sylvanas, Garithos’la başkenti Balnazzar’dan birlikte almak için geçici bir anlaşma yapar.',
+          status: 'Geçici ittifak',
+          tone: 'al',
+        },
+        {
+          era: 'Lordaeron',
+          title: 'İki cepheli kuşatma',
+          text: 'Sylvanas ve Garithos başkenti iki koldan kuşatır. Balnazzar yenilince Sylvanas, sadakatini kanıtlaması için Varimathras’a öz kardeşini öldürmesini emreder. Ardından şehri kendilerine bırakmasını emreden kibirli Garithos’u da ortadan kaldırır.',
+          status: 'İntikam',
+          tone: 'no',
+        },
+        {
+          era: 'Undercity',
+          title: 'Kraliyet mahzenleri',
+          text: 'Yıkık taht odasının ve kırık çan kulesinin altında, Arthas’ın yarım bıraktığı yeraltı mahzenlerinde Sylvanas yeni başkentini ilan eder: Undercity. Forsaken’lar artık Lordaeron’un yeni sahipleridir.',
+          status: 'Başkent',
+          tone: 'home',
+        },
+      ],
+      note: 'Garithos’un ölümü, Forsaken’larla yaşayan insanların eski krallıkları arasındaki son köprüyü de yıktı. Sylvanas artık kendi halkından başka kimseye güvenmeyecekti.',
+    },
+    today: {
+      title: 'Karanlık Hanım’ın krallığı',
+      intro: [
+        'İç savaşı kazandılar ama çevreleri düşmanla doluydu: doğuda Kel’Thuzad’ın Scourge’u, batıda ve kuzeyde ise özgür bir Forsaken ile akılsız bir zombi arasında hiçbir fark görmeyen fanatik Scarlet Crusade vardı. Stormwind’e gönderilen elçiler kapıdan bile dönemedi.',
+        'Sylvanas bunun üzerine elçilerini okyanusun ötesine gönderdi. Thunder Bluff’ta tauren başdruid’i Hamuul Runetotem ve Cairne Bloodhoof, Forsaken’lara ikinci bir şans verilmesi gerektiğine inandı ve Thrall’ı ikna etti. Horde için Undercity, Eastern Kingdoms’ta paha biçilmez bir kale; Forsaken içinse Horde hayatta kalmanın güvencesi oldu.',
+        'Undercity’nin en derin salonlarında ise Royal Apothecary Society’nin simyacıları gece gündüz kazan kaynatıyor: amaçları hem Scourge’u hem de yollarına çıkan yaşayanları silecek yeni bir veba geliştirmek.',
+      ],
+      leadersLabel: 'Liderler',
+      leadersText: 'Undercity’yi yöneten üç isim.',
+      leaders: [
+        {
+          role: 'Forsaken’ların kraliçesi',
+          name: 'Sylvanas Windrunner',
+          text: 'Eski Silvermoon Ranger-General’i, bugünün Banshee Queen’i. Halkını Undercity’nin Royal Quarter’ından yönetiyor; tek büyük hedefi Arthas’tan öç almak.',
+        },
+        {
+          role: 'Royal Quarter’ın gözcüsü',
+          name: 'Varimathras',
+          text: 'Kardeşlerine ihanet ederek canını kurtaran dreadlord. Sylvanas’ın yanı başında emirlerini uyguluyor, ama kimse bir demona tam olarak güvenmiyor.',
+        },
+        {
+          role: 'Baş simyacı',
+          name: 'Master Apothecary Faranell',
+          text: 'Royal Apothecary Society’nin başı. Apothecarium’da Sylvanas’ın emriyle yeni veba karışımlarını hazırlıyor ve esirler üzerinde deniyor.',
+        },
+      ],
+      landLabel: 'Tirisfal Glades',
+      landTitle: 'Çürüyen ormanlar ve kırık çan kulesi',
+      landText: [
+        'Undead karakterler oyuna Tirisfal Glades’in batısındaki Deathknell mezarlığında, yeni uyanmış olarak başlar. Yol doğuya, Brill kasabasına ve oradan eski Lordaeron sarayının altındaki Undercity’ye uzanır.',
+        'Kuzeydeki Agamand Mills hâlâ Scourge’un elinde; kuzeydoğu tepelerinde yükselen Scarlet Monastery ise fanatik Scarlet Crusade’in en büyük kalesi.',
+      ],
+      landCaption: 'Tirisfal Glades.',
+      pathKey: 'Başlangıç yolu',
+      scarletKey: 'Scarlet Crusade',
+      landLegend: [
+        { name: 'Undercity', text: 'Lordaeron yıkıntılarının altındaki Forsaken başkenti' },
+        { name: 'Deathknell', text: 'Yeni uyanan undead karakterlerin başladığı mezarlık' },
+        { name: 'Brill', text: 'Tirisfal’ın ortasındaki Forsaken kasabası' },
+        { name: 'Agamand Mills', text: 'Scourge’un elindeki eski aile değirmenleri' },
+        { name: 'Scarlet Monastery', text: 'Scarlet Crusade’in Tirisfal’daki manastır kalesi' },
+      ],
+      beyondLabel: 'Tirisfal’ın ötesinde',
+      beyondTitle: 'Kuzeyin savaş cepheleri',
+      beyondText: [
+        'Forsaken’lar sınırlarını üç yönde savunuyor: güneyde Silverpine Forest’taki The Sepulcher’da Archmage Arugal’ın Shadowfang Keep’ten saldığı worgen’lerle ve Ambermill’deki Dalaran büyücüleriyle; Hillsbrad Foothills’teki Tarren Mill’de ise Southshore’un insanlarıyla çatışıyorlar.',
+        'Doğuda The Bulwark, Tirisfal ile Western Plaguelands arasındaki sınırı Scourge’a ve Scarlet Crusade’e karşı tutuyor; Argent Dawn ise Light’s Hope Chapel’dan ölümsüzlerle savaşıyor. Undercity’nin kapısındaki kuleden kalkan zeppelin’ler Orgrimmar’a ve Stranglethorn’daki Grom’gol Base Camp’e uçar.',
+      ],
+      mapCaption: 'Forsaken cepheleri ve zeppelin yolları. Konumlar yaklaşıktır.',
+      routesKey: 'Zeppelin yolları',
+      legend: [
+        { name: 'Undercity', text: 'Zeppelin kulesinin bulunduğu Forsaken başkenti' },
+        { name: 'The Sepulcher', text: 'Silverpine Forest’taki Forsaken karargâhı' },
+        { name: 'Tarren Mill', text: 'Hillsbrad Foothills’teki Forsaken kasabası' },
+        { name: 'The Bulwark', text: 'Plaguelands sınırını tutan savunma hattı' },
+        { name: 'Orgrimmar', text: 'Kalimdor’daki Horde başkenti' },
+        { name: 'Grom’gol Base Camp', text: 'Stranglethorn Vale’deki Horde kampı' },
+      ],
+      note: 'Yaşayan dünya onları bir ucube olarak gördü; Forsaken’lar ise kendi mezarlarından çıkıp eski krallıklarının külleri üzerinde ikinci bir hayat kurdu.',
+    },
+    outro: {
+      title: 'Karanlık Hanım korusun',
+      text: 'Ne yaşayanların dünyasına aitler ne de Lich King’in ordusuna. Lordaeron’un kırık çan kulesinin altında, Forsaken’lar kendi karanlık kaderlerini kendileri yazıyor.',
+      nextText: 'Mulgore’un halkı: Earth Mother, Cairne Bloodhoof ve Horde’un tauren’leri.',
+    },
+    images: 'Haritalar WoW Forever’dan. Frozen Throne çizimi bu sayfa için hazırlandı. World of Warcraft adları Blizzard Entertainment’a aittir.',
+  },
+  en: {
+    metaDescription:
+      'The undead (Forsaken) story: the Lich King and the Plague of Undeath, the fall of Lordaeron and Quel’Thalas, the crack in the Frozen Throne, Sylvanas Windrunner’s rebellion and Undercity.',
+    overline: 'Story 07',
+    lead: 'Once they were citizens of Lordaeron. They died of the plague, woke as soldiers in the army that tore their own kingdom down, then broke free when their chains cracked and built a kingdom of their own beneath the ruins.',
+    facts: [
+      { label: 'Homeland', value: 'Tirisfal Glades', extra: 'Lordaeron' },
+      { label: 'Capital', value: 'Undercity' },
+      { label: 'Leader', value: 'Sylvanas Windrunner' },
+      { label: 'Name', value: 'Forsaken', extra: 'the abandoned' },
+      { label: 'Mount', value: 'Skeletal Horse' },
+      { label: 'Starting place', value: 'Deathknell' },
+    ],
+    chapters: { origin: 'Origin', scourge: 'The Scourge', breaking: 'The Breaking', rebellion: 'Rebellion', today: 'Today' },
+    origin: {
+      title: 'The Spirit in the Ice',
+      titleNote: '(The Lich King)',
+      paragraphs: [
+        'The story of the Forsaken, the undead people of the Horde, does not begin in a graveyard on Azeroth, but beyond a shattering Draenor. When the old orc shaman Ner’zhul tried to flee his dying world through portals, he fell into the hands of Kil’jaeden, one of the lords of the Burning Legion.',
+        'Kil’jaeden tore Ner’zhul’s body apart, yet bound his spirit without letting it die to a suit of armour and the runeblade Frostmourne. He locked him inside a block of diamond-hard ice, the Frozen Throne, and cast it down onto the glaciers of Icecrown in Northrend. He was now the Lich King, tasked with raising an army of the undead to rot the world from within before the Legion’s coming.',
+        'From his prison of ice the Lich King reached out with his mind and drew to himself Kel’Thuzad, an ambitious mage of Dalaran. Kel’Thuzad founded a secret order that promised immortality to the poor and weary people of Lordaeron: the Cult of the Damned.',
+        'The cult’s true weapon was not the sword, but a magical sickness called the Plague of Undeath. Spread to the villages in tainted grain from the granaries of Andorhal, it killed the living within days; those who died rose again with their own will wiped away, soldiers of the Scourge who heard only the Lich King’s voice.',
+      ],
+      stagesLabel: 'Stages of the Scourge’s birth',
+      stages: [
+        { name: 'Ner’zhul', text: 'The old shaman whose spirit was bound' },
+        { name: 'Lich King', text: 'The icy mind inside the Frozen Throne' },
+        { name: 'Plague of Undeath', text: 'Tainted grain spread from Andorhal' },
+        { name: 'Scourge', text: 'An undead host bound to one will' },
+      ],
+      before: 'The living',
+      after: 'Scourge',
+      note: 'The Scourge’s strength rested on a merciless equation: every soldier of Lordaeron who fell in battle rose a moment later as a new soldier of the Scourge, drawing his blade against his own home.',
+    },
+    scourge: {
+      title: 'Ashes of two kingdoms',
+      intro:
+        'Tracking the plague, Crown Prince Arthas Menethil of Lordaeron killed Kel’Thuzad at Andorhal; yet when he saw that the people of Stratholme had eaten the tainted grain, he set out to purge the city with his own hands.',
+      more: [
+        'Driven by vengeance, Arthas sailed to Northrend, took up the cursed blade Frostmourne and lost his soul to the Lich King. He came home to Lordaeron not as a saviour, but as the first and mightiest death knight of the Scourge; he slew his father King Terenas Menethil II in the throne room and handed the kingdom over to the undead host.',
+        'Arthas then marched north into Quel’Thalas, the kingdom of the high elves, to raise Kel’Thuzad’s remains. Ranger-General Sylvanas Windrunner, defender of Silvermoon, stood against the Scourge at every gate and river, but the dead did not run out.',
+        'When Sylvanas fell at the last line of defence, Arthas begrudged her even a clean death. He tore her spirit from her body, turned her into a banshee and chained her to his will. The sacred waters of the Sunwell were defiled to raise Kel’Thuzad as a lich, and at Dalaran Kel’Thuzad summoned Archimonde into Azeroth.',
+      ],
+      figureCaption: 'The Scourge’s path of ruin through Lordaeron and Quel’Thalas, drawn as you scroll. Positions are approximate.',
+      plagueKey: 'Plague and sorcery',
+      arthasKey: 'Arthas’s march',
+      legend: [
+        { name: 'Andorhal', text: 'The granary town from which the tainted grain spread' },
+        { name: 'Stratholme', text: 'The great city Arthas put to the torch' },
+        { name: 'Lordaeron', text: 'The capital where Terenas was slain' },
+        { name: 'Quel’Thalas', text: 'The elf kingdom Sylvanas defended' },
+        { name: 'Dalaran', text: 'The city of magi where Archimonde was summoned' },
+      ],
+      cards: [
+        {
+          name: 'Arthas Menethil',
+          text: 'The prince who became Frostmourne’s slave while trying to save his people. He tore down his own kingdom and drove thousands of today’s Forsaken into death.',
+          status: 'Death Knight',
+          tone: 'no',
+        },
+        {
+          name: 'Kel’Thuzad',
+          text: 'Founder of the Cult of the Damned. He died at Andorhal, rose again as a lich in the waters of the Sunwell and took command of the Scourge in the Plaguelands.',
+          status: 'Lich',
+          tone: 'no',
+        },
+        {
+          name: 'Sylvanas Windrunner',
+          text: 'Ranger-General of Silvermoon. She defended her homeland to the last; Arthas raised her as a banshee and forced her to march in his army.',
+          status: 'Banshee',
+          tone: 'mute',
+        },
+        {
+          name: 'Sunwell',
+          text: 'The sacred fount of magic of the high elves. Arthas defiled its waters to raise Kel’Thuzad and darkened the heart of Quel’Thalas.',
+          status: 'Defiled',
+          tone: 'no',
+        },
+      ],
+      note: 'Most of the Forsaken who walk the halls of Undercity today were once those citizens of Lordaeron and elf rangers, forced in those days to tear down their own homes and neighbours.',
+    },
+    breaking: {
+      title: 'The cracked throne',
+      intro:
+        'Once the Burning Legion was beaten at Mount Hyjal, the Lich King turned his back on his masters. Kil’jaeden then sent Illidan Stormrage to destroy him.',
+      more: [
+        'In the ruins of Dalaran Illidan used an ancient relic, the Eye of Sargeras, to cast a spell that would shatter the glaciers of Icecrown from afar. His brother Malfurion stopped him before the spell was done, yet the tremor was enough to split a deep crack in the Frozen Throne in Northrend.',
+        'As the crack widened, the Lich King’s power bled out, and his iron grip over the undead in Lordaeron slackened. Sylvanas Windrunner was among the first to wake: she won back her will, reclaimed her own body in secret and gathered the other undead whose minds had cleared.',
+        'A dreadful silence met those who woke. Their minds had come back, yet their bodies were rotting, and they remembered one by one what they had done to those they loved while they were puppets of the Scourge.',
+      ],
+      figureCaption: 'As you scroll, the Frozen Throne cracks and the soul-chains break.',
+      cards: [
+        {
+          name: 'Frozen Throne',
+          text: 'Illidan’s spell with the Eye of Sargeras cracked the icy throne. The Lich King’s weakening voice let thousands of undead far away wake from his hold.',
+          status: 'Cracked',
+          tone: 'mute',
+        },
+        {
+          name: 'Sylvanas Windrunner',
+          text: 'Among the first to break free of the Lich King’s grip. She returned to her own body and gave the freed undead a purpose: vengeance and survival.',
+          status: 'Dark Lady',
+          tone: 'home',
+        },
+        {
+          name: 'Banshee',
+          text: 'The wailing spirits Arthas made in torment. They became Sylvanas’s most loyal agents, taking over the bodies of enemy commanders to turn the tide of war.',
+          status: 'Free spirits',
+          tone: 'al',
+        },
+        {
+          name: 'Forsaken',
+          text: 'Undead who could neither go back to the living nor bow to the Scourge. They took the name Forsaken: the abandoned.',
+          status: 'Free will',
+          tone: 'ok',
+        },
+      ],
+      note: 'Free will was both deliverance and curse for the Forsaken: they were no one’s slaves now, but their memories and their conscience had come back too.',
+    },
+    rebellion: {
+      title: 'War for the ruins',
+      intro:
+        'Being free was not enough: Lordaeron was still in the hands of the Scourge and three dreadlords left behind by the Burning Legion. As you scroll, the map follows Sylvanas as she takes the ruins step by step.',
+      mapLabel: 'Map of the Forsaken rebellion',
+      steps: [
+        {
+          era: 'Tirisfal Glades',
+          title: 'Ambush at the palace',
+          text: 'The weakening Lich King summons Arthas urgently to Northrend, leaving the capital to three dreadlords: Varimathras, Detheroc and Balnazzar. Sylvanas ambushes Arthas in the woods of Tirisfal; with Kel’Thuzad’s help he barely escapes and sets sail for the north.',
+          status: 'Uprising',
+          tone: 'home',
+        },
+        {
+          era: 'Silverpine · Alterac',
+          title: 'The first dreadlord kneels',
+          text: 'The dreadlords bid Sylvanas rejoin their ranks, but she refuses to return to slavery. She sends her banshees to possess the leaders of the local bandits, ogres and forest trolls, and with her growing army she defeats Varimathras. To save his life, Varimathras betrays his brothers and swears service to Sylvanas.',
+          status: 'Subdued',
+          tone: 'ok',
+        },
+        {
+          era: 'Hillsbrad',
+          title: 'The bargain with Garithos',
+          text: 'Guided by Varimathras, Sylvanas strikes Detheroc’s stronghold by night. Detheroc has enslaved the mind of the human commander Othmar Garithos and his army with magic. When Detheroc dies the spell breaks, and Sylvanas makes a passing pact with Garithos to take the capital from Balnazzar together.',
+          status: 'Uneasy pact',
+          tone: 'al',
+        },
+        {
+          era: 'Lordaeron',
+          title: 'Siege on two fronts',
+          text: 'Sylvanas and Garithos besiege the capital from two sides. When Balnazzar is beaten, Sylvanas orders Varimathras to kill his own brother to prove his loyalty, then has the arrogant Garithos slain as well when he orders her out of the city.',
+          status: 'Vengeance',
+          tone: 'no',
+        },
+        {
+          era: 'Undercity',
+          title: 'The royal crypts',
+          text: 'Beneath the ruined throne room and the broken bell tower, in the catacombs Arthas had left half-dug, Sylvanas proclaims her new capital: Undercity. The Forsaken are now the new masters of Lordaeron.',
+          status: 'Capital',
+          tone: 'home',
+        },
+      ],
+      note: 'Garithos’s death burned the last bridge between the Forsaken and the old kingdoms of the living. From then on Sylvanas would trust no one beyond her own people.',
+    },
+    today: {
+      title: 'Realm of the Dark Lady',
+      intro: [
+        'They had won the civil war, yet enemies surrounded them: to the east lay Kel’Thuzad’s Scourge, and to the west and north stood the fanatical Scarlet Crusade, which saw no difference between a free Forsaken and a mindless zombie. Envoys sent to Stormwind did not even make it back from the gates.',
+        'Sylvanas then sent her envoys across the ocean. In Thunder Bluff the tauren archdruid Hamuul Runetotem and Cairne Bloodhoof believed the Forsaken deserved a second chance and persuaded Thrall. For the Horde, Undercity became a priceless stronghold in the Eastern Kingdoms; for the Forsaken, the Horde became a guarantee of survival.',
+        'In the deepest halls of Undercity, meanwhile, the alchemists of the Royal Apothecary Society keep their cauldrons boiling day and night, working on a new plague meant to wipe out both the Scourge and the living who stand in their way.',
+      ],
+      leadersLabel: 'Leaders',
+      leadersText: 'The three who rule Undercity.',
+      leaders: [
+        {
+          role: 'Queen of the Forsaken',
+          name: 'Sylvanas Windrunner',
+          text: 'Once Ranger-General of Silvermoon, now the Banshee Queen. She rules her people from the Royal Quarter of Undercity, with one great aim above all: vengeance on Arthas.',
+        },
+        {
+          role: 'Steward of the Royal Quarter',
+          name: 'Varimathras',
+          text: 'The dreadlord who saved his own life by betraying his brothers. He carries out Sylvanas’s orders at her side, though no one wholly trusts a demon.',
+        },
+        {
+          role: 'Chief alchemist',
+          name: 'Master Apothecary Faranell',
+          text: 'Head of the Royal Apothecary Society. In the Apothecarium he brews new plague concoctions at Sylvanas’s command and tests them on captives.',
+        },
+      ],
+      landLabel: 'Tirisfal Glades',
+      landTitle: 'Rotting woods and the broken bell tower',
+      landText: [
+        'Undead characters begin in the graveyard of Deathknell in western Tirisfal Glades, newly woken from the grave. The road runs east to the town of Brill and from there to Undercity beneath the old palace of Lordaeron.',
+        'Agamand Mills in the north is still in the hands of the Scourge, while the Scarlet Monastery high in the north-eastern hills is the greatest fortress of the fanatical Scarlet Crusade.',
+      ],
+      landCaption: 'Tirisfal Glades.',
+      pathKey: 'Starting road',
+      scarletKey: 'Scarlet Crusade',
+      landLegend: [
+        { name: 'Undercity', text: 'The Forsaken capital beneath the ruins of Lordaeron' },
+        { name: 'Deathknell', text: 'The graveyard where newly woken undead characters begin' },
+        { name: 'Brill', text: 'The Forsaken town in the middle of Tirisfal' },
+        { name: 'Agamand Mills', text: 'The old family mills held by the Scourge' },
+        { name: 'Scarlet Monastery', text: 'The Scarlet Crusade’s monastery fortress in Tirisfal' },
+      ],
+      beyondLabel: 'Beyond Tirisfal',
+      beyondTitle: 'Battlefronts of the north',
+      beyondText: [
+        'The Forsaken hold their borders on three fronts: to the south, from The Sepulcher in Silverpine Forest, they fight the worgen loosed from Shadowfang Keep by Archmage Arugal and the Dalaran mages at Ambermill; at Tarren Mill in the Hillsbrad Foothills they clash with the humans of Southshore.',
+        'To the east, The Bulwark holds the border between Tirisfal and the Western Plaguelands against the Scourge and the Scarlet Crusade, while the Argent Dawn fights the undead from Light’s Hope Chapel. Zeppelins from the tower outside Undercity fly to Orgrimmar and to Grom’gol Base Camp in Stranglethorn.',
+      ],
+      mapCaption: 'Forsaken fronts and zeppelin routes. Positions are approximate.',
+      routesKey: 'Zeppelin routes',
+      legend: [
+        { name: 'Undercity', text: 'The Forsaken capital, with its zeppelin tower' },
+        { name: 'The Sepulcher', text: 'The Forsaken stronghold in Silverpine Forest' },
+        { name: 'Tarren Mill', text: 'The Forsaken town in the Hillsbrad Foothills' },
+        { name: 'The Bulwark', text: 'The defensive line holding the edge of the Plaguelands' },
+        { name: 'Orgrimmar', text: 'Capital of the Horde in Kalimdor' },
+        { name: 'Grom’gol Base Camp', text: 'The Horde camp in Stranglethorn Vale' },
+      ],
+      note: 'The living world saw them as monsters; yet the Forsaken climbed out of their own graves and built a second life upon the ashes of their old kingdom.',
+    },
+    outro: {
+      title: 'Dark Lady watch over you',
+      text: 'They belong neither to the world of the living nor to the army of the Lich King. Beneath the broken bell tower of Lordaeron, the Forsaken write their own dark fate.',
+      nextText: 'The people of Mulgore: the Earth Mother, Cairne Bloodhoof and the Horde’s tauren.',
+    },
+    images: 'Maps from WoW Forever. The Frozen Throne drawing was made for this page. World of Warcraft names belong to Blizzard Entertainment.',
+  },
+};
+
+export const TAUREN_ART_LABELS: Record<Lang, Record<string, string>> = {
+  tr: {
+    desolaceAria: 'Desolace haritası: Maraudon, Kodo Graveyard, Shadowprey Village, Thunder Axe Fortress ve Mannoroc Coven; centaur akınları ve tauren göçü',
+    toBarrens: 'The Barrens’a ↗',
+    totemAria: 'Thunder Bluff totemi çizimi: kaydırdıkça kanatlar açılır ve An’she ile Mu’sha yükselir',
+    nomads: 'Göçebe kabileler · Dağınık çadırlar',
+    bluff: 'Birleşen kabileler · Thunder Bluff',
+    centaurs: 'Centaur akınları',
+    ekAria: 'Tauren’lerin yolu: The Barrens, Mulgore, Stonetalon Peak, Mount Hyjal ve Thousand Needles; adım adım',
+    mulgoreAria: 'Mulgore haritası: Thunder Bluff, Camp Narache, Bloodhoof Village, Red Rocks ve Brambleblade Ravine',
+    worldAria: 'Kalimdor’daki tauren kampları ve druid yolları: Thunder Bluff, Camp Taurajo, Sun Rock Retreat, Freewind Post, Camp Mojache ve Nighthaven',
+  },
+  en: {
+    desolaceAria: 'Map of Desolace: Maraudon, the Kodo Graveyard, Shadowprey Village, Thunder Axe Fortress and the Mannoroc Coven; the centaur raids and the tauren migration',
+    toBarrens: 'To the Barrens ↗',
+    totemAria: 'Drawing of the Thunder Bluff totem: as you scroll, the wings spread and An’she and Mu’sha rise',
+    nomads: 'Wandering tribes · Scattered tents',
+    bluff: 'United tribes · Thunder Bluff',
+    centaurs: 'Centaur raids',
+    ekAria: 'The tauren’s road: the Barrens, Mulgore, Stonetalon Peak, Mount Hyjal and Thousand Needles, step by step',
+    mulgoreAria: 'Map of Mulgore: Thunder Bluff, Camp Narache, Bloodhoof Village, Red Rocks and Brambleblade Ravine',
+    worldAria: 'Tauren camps and druid paths across Kalimdor: Thunder Bluff, Camp Taurajo, Sun Rock Retreat, Freewind Post, Camp Mojache and Nighthaven',
+  },
+};
+
+export interface TaurenStory {
+  metaDescription: string;
+  overline: string;
+  lead: string;
+  facts: { label: string; value: string; extra?: string }[];
+  chapters: Record<'origin' | 'centaurs' | 'caravan' | 'march' | 'today', string>;
+  origin: { title: string; titleNote: string; paragraphs: string[]; stagesLabel: string; stages: Item[]; before: string; after: string; note: string };
+  centaurs: {
+    title: string;
+    intro: string;
+    more: string[];
+    figureCaption: string;
+    centaurKey: string;
+    exodusKey: string;
+    legend: Item[];
+    cards: Card[];
+    note: string;
+  };
+  caravan: { title: string; intro: string; more: string[]; figureCaption: string; cards: Card[]; note: string };
+  march: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
+  today: {
+    title: string;
+    intro: string[];
+    leadersLabel: string;
+    leadersText: string;
+    leaders: (Item & { role: string })[];
+    landLabel: string;
+    landTitle: string;
+    landText: string[];
+    landCaption: string;
+    pathKey: string;
+    quilboarKey: string;
+    landLegend: Item[];
+    beyondLabel: string;
+    beyondTitle: string;
+    beyondText: string[];
+    mapCaption: string;
+    routesKey: string;
+    legend: Item[];
+    note: string;
+  };
+  outro: { title: string; text: string; nextText: string };
+  images: string;
+}
+
+export const TAUREN_STORY: Record<Lang, TaurenStory> = {
+  tr: {
+    metaDescription:
+      'Tauren (Shu’halo) hikayesi: Earth Mother, An’she ve Mu’sha, Desolace ve Maraudon’da centaur’ların doğuşu, Cairne Bloodhoof ile Thrall’ın karşılaşması, Mulgore göçü ve Thunder Bluff.',
+    overline: 'Hikaye 08',
+    lead: 'Kalimdor bozkırlarının en eski gezginleri. Binlerce yıl kodo sürülerinin ve rüzgârın izinde yaşadılar; centaur akınları onları yok oluşun eşiğine getirdiğinde fırtınadan gelen yeni bir müttefikle Mulgore’un yüksek kayalıklarında kendi başkentlerini kurdular.',
+    facts: [
+      { label: 'Yurt', value: 'Mulgore', extra: 'Kalimdor' },
+      { label: 'Başkent', value: 'Thunder Bluff' },
+      { label: 'Lider', value: 'Cairne Bloodhoof' },
+      { label: 'İnanç', value: 'Earth Mother', extra: 'An’she ve Mu’sha' },
+      { label: 'Binek', value: 'Kodo' },
+      { label: 'Kendi adları', value: 'Shu’halo' },
+    ],
+    chapters: { origin: 'Köken', centaurs: 'Kâbus', caravan: 'Kervan', march: 'Yolculuk', today: 'Bugün' },
+    origin: {
+      title: 'Toprağın Çocukları',
+      titleNote: '(Shu’halo & The Earth Mother)',
+      paragraphs: [
+        'Kendi dillerinde kendilerine Shu’halo diyen tauren’ler, Kalimdor’un ortasındaki uçsuz bucaksız çayırların en eski sakinlerindendir. Taş kaleler ya da büyü kuleleri dikmek yerine mevsimlerle birlikte çadırlarını taşıdılar; dev kodo sürülerinin izinde rüzgârı, suyu ve ayaklarının altındaki toprağı dinleyerek yaşadılar.',
+        'İnançlarının kalbinde her tepeye ve her ota can veren şefkatli yaratıcı ruh, Earth Mother vardır. Tauren efsanelerine göre Earth Mother dünyayı gökyüzündeki iki gözüyle izler: sağ gözü gündüzleri bozkırı ısıtan güneş, yani An’she; sol gözü ise geceleri avcılara ve düş görenlere yol gösteren solgun ay, yani Mu’sha’dır — night elf’lerin Elune dediği tanrıça.',
+        'En eski anlatılara göre Shu’halo başlangıçta Earth Mother’ın dizinin dibinde kaygısızca yaşardı; ta ki toprağın altındaki karanlık fısıltılar kabilelerin yüreğine kıskançlık ve kan dökme arzusu düşürene kadar. Çocuklarının birbirine düştüğünü görmeye dayanamayan Earth Mother kendi gözlerini söküp An’she ve Mu’sha olarak gökyüzüne savurdu; ama bozkırın rüzgârlarıyla çocuklarına seslenmekten hiç vazgeçmedi.',
+        'Great Sundering’den önceki çağlarda Shu’halo, ormanların yarı-tanrısı Cenarius’la tanıştı. Cenarius bu sakin devlerin doğaya duyduğu saygıyı sevdi ve ilk tauren bilgelerine doğanın ve druid’liğin yolunu öğretti. War of the Ancients patlak verdiğinde tauren savaşçıları Cenarius ve Kaldorei’nin yanında Burning Legion’a karşı dövüştü; dünya parçalandıktan sonra ise yeniden açık bozkırlara çekildiler.',
+      ],
+      stagesLabel: 'Shu’halo’nun kadim yolu',
+      stages: [
+        { name: 'Earth Mother', text: 'An’she ve Mu’sha ile dünyayı izleyen yaratıcı ruh' },
+        { name: 'Shu’halo', text: 'Mevsimlerle göçen kadim bozkır kabileleri' },
+        { name: 'Cenarius', text: 'İlk tauren bilgelerine doğanın yolunu öğreten yarı-tanrı' },
+        { name: 'Tauren', text: 'Kodo sürülerinin izinde yaşayan bozkır halkı' },
+      ],
+      before: 'Göçebe kabileler',
+      after: 'Mulgore’un halkı',
+      note: 'Tauren’ler tarihi fetihlerle değil, mevsimlerin dönüşüyle ve elementlerin dengesiyle ölçtü; bu bağ onları hem doğuştan shaman hem de binlerce yıl sonra yeniden druid yaptı.',
+    },
+    centaurs: {
+      title: 'Çoraklaşan çayırlar ve centaur akınları',
+      intro:
+        'Yüzyıllar boyunca göçebe tauren kabileleri, bugün Desolace olarak bilinen güneybatıdaki yemyeşil çayırlara hac yolculuğu yapar ve Earth Mother’ın oradaki dağların altında uyuduğuna inanırdı.',
+      more: [
+        'Dark Portal’ın açılışından yaklaşık bin yüz yıl önce tauren shaman’ları dağların altındaki sesi uyandırmaya çalıştı; ancak derin mağaralarda kıpırdayan varlık Earth Mother değil, toprak elementallerinin en büyük prensesi Princess Theradras’tı. Toprağın iniltisini duyan Cenarius’un ölümsüz oğlu Zaetar onu yatıştırmak için mağaralara indi, fakat Princess Theradras’ın büyüsüne kapıldı.',
+        'Zaetar ile Princess Theradras’ın yasak birleşmesinden vahşi, dört ayaklı at-insanlar doğdu: centaur’lar. Kendi oğullarının şiddetinden dehşete düşen Zaetar onların elinde can verdi; kederli Princess Theradras ise sevdiğinin ruhunu Maraudon’un kristal mağaralarına hapsetti ve çevredeki çayırların tüm yaşam gücünü emerek yeşil bozkırı gri, ölü Desolace’a çevirdi.',
+        'Kısa sürede çoğalan centaur’lar Kolkar, Gelkis, Magram ve Galak gibi savaşçı boylara bölünüp doğuya, The Barrens ve Thousand Needles ovalarına yayıldı. Kuşaklar boyunca dağınık tauren kabilelerini avladılar, çadırlarını yaktılar ve yaşlı kodo’ların son yolculuğuna çıktığı Kodo Graveyard’ı bile yağmaladılar.',
+      ],
+      figureCaption: 'Desolace’ta Maraudon’dan yayılan centaur akınları ve tauren’lerin doğuya çekilişi; kaydırdıkça çiziliyor.',
+      centaurKey: 'Centaur akınları',
+      exodusKey: 'Tauren göçü',
+      legend: [
+        { name: 'Maraudon', text: 'Princess Theradras’ın Zaetar’ın ruhunu tuttuğu mağara tapınak' },
+        { name: 'Kodo Graveyard', text: 'Ömrünün sonuna gelen kodo’ların yürüdüğü mezarlık' },
+        { name: 'Shadowprey Village', text: 'Batı kıyısındaki troll ve Horde balıkçı köyü' },
+        { name: 'Thunder Axe Fortress', text: 'Burning Blade kültistlerinin elindeki kale' },
+        { name: 'Mannoroc Coven', text: 'Gelkis ve Magram centaur’larının arasındaki iblis vadisi' },
+      ],
+      cards: [
+        {
+          name: 'Princess Theradras',
+          text: 'Toprak elementallerinin prensesi. Uyanışı yeşil çayırların yaşam gücünü emip bölgeyi Desolace’a çevirdi; hâlâ Maraudon’un derinliklerinde Zaetar’ın mezarını bekliyor.',
+          status: 'Maraudon',
+          tone: 'no',
+        },
+        {
+          name: 'Zaetar',
+          text: 'Cenarius’un ölümsüz oğlu. Toprağın yarasını iyileştirmek için mağaralara indi; Princess Theradras’la birleşmesinden doğan centaur’lar tarafından öldürüldü.',
+          status: 'Düştü',
+          tone: 'mute',
+        },
+        {
+          name: 'Centaur',
+          text: 'Kolkar, Galak, Gelkis ve Magram boylarına ayrılan acımasız akıncılar. Yüzyıllar boyunca tauren kabilelerini bozkırda kovalayıp açlığa sürüklediler.',
+          status: 'Akıncılar',
+          tone: 'no',
+        },
+        {
+          name: 'Kodo',
+          text: 'Kalimdor bozkırlarının dev, boynuzlu yük ve savaş hayvanları. Tauren’lerin hem yol arkadaşı hem de savaş davullarını taşıyan bineğidir.',
+          status: 'Yol arkadaşı',
+          tone: 'ok',
+        },
+      ],
+      note: 'Centaur akınları olmasaydı tauren’ler belki de sonsuza dek dağınık göçebe kabileler olarak kalacaktı; yok olma tehlikesi onları tek bir çatı ve tek bir başkent aramaya zorladı.',
+    },
+    caravan: {
+      title: 'Fırtınadan gelen dostlar ve yükselen totem',
+      intro:
+        'Third War Kalimdor’a ulaştığında Bloodhoof kabilesinin yaşlı şefi Cairne Bloodhoof, halkının bir kışı daha çıkaramayacağından korkuyordu. Centaur çemberi daralmış, The Barrens’taki otlaklar kurumuştu.',
+      more: [
+        'Tam o günlerde Darkspear adalarındaki fırtınadan çıkan Thrall ve yeni Horde kıyıya ayak bastı. Cairne’in savaşçılarının bir Kolkar baskınına karşı son güçleriyle direndiğini gören genç orc warchief’i, ordusunu tereddüt etmeden savaşa sürdü ve Bloodhoof köyünü centaur Khan’ının saldırısına karşı omuz omuza savundu.',
+        'Yabancıların cesaretinden ve elementlere duyduğu saygıdan etkilenen Cairne, Thrall’a kuzeydeki Stonetalon Peak’te yaşayan Oracle’dan söz etti. Thrall ise karşılığında kodo kervanını The Barrens’ın tozlu kanyonlarından geçirip dağlarla çevrili yeşil Mulgore yaylasına kadar korumaya ant içti.',
+        'Mulgore’un yüksek kayalıklarında Thunder Bluff yükselirken centaur ve harpy saldırıları durmadı; üstelik Cairne’in oğlu Baine Bloodhoof centaur’lara esir düştü. Thrall’ın gönderdiği yarı-ogre Beastmaster Rexxar ve Darkspear gözcüsü Rokhan, Baine’i kurtarıp Cairne’e geri getirdi; yaşlı şef de yeniden baltasını ve runespear’ını kuşanıp Horde’un yanındaki yerini aldı.',
+      ],
+      figureCaption: 'Kaydırdıkça Thunder Bluff totemi kanatlarını açıyor ve An’she ile Mu’sha yükseliyor.',
+      cards: [
+        {
+          name: 'Cairne Bloodhoof',
+          text: 'Dağınık tauren kabilelerini birleştiren bilge ve kudretli yüce şef. Thrall’la kurduğu kan kardeşliği, yeni Horde’un vicdanı ve en sağlam direği oldu.',
+          status: 'Yüce şef',
+          tone: 'home',
+        },
+        {
+          name: 'Baine Bloodhoof',
+          text: 'Cairne’in genç oğlu. Centaur akıncılarına esir düştüğünde Rexxar ve Rokhan tarafından kurtarıldı; bugün Bloodhoof Village’ı yönetiyor.',
+          status: 'Bloodhoof',
+          tone: 'ok',
+        },
+        {
+          name: 'Rexxar',
+          text: 'Ayısı Misha ile bozkırları arşınlayan yarı-ogre, yarı-orc Beastmaster. Baine’i kurtararak Cairne’in kederini bitirdi ve tauren’leri Daelin Proudmoore’a karşı savaşa çağırdı.',
+          status: 'Champion of the Horde',
+          tone: 'al',
+        },
+        {
+          name: 'Thunder Bluff',
+          text: 'Mulgore’un dört yüksek kayalığı üzerine kurulan tauren başkenti. Göçebe çadırların yerini rüzgâra açık köprüler, asansörler ve dev totemler aldı.',
+          status: 'Başkent',
+          tone: 'home',
+        },
+      ],
+      note: 'Orc’lar ve Darkspear’lar Horde’a kılıç ve büyü gücü getirdi; Cairne ve tauren’ler ise o gücü bir arada tutan onuru ve toprağa bağlılığı verdi.',
+    },
+    march: {
+      title: 'Bozkırdan Dünya Ağacı’na beş adım',
+      intro:
+        'Bir zamanlar centaur’ların önünde çekilen kabileler, birkaç yıl içinde Kalimdor’un kaderini belirleyen savaşların merkezine yürüdü. Kaydırdıkça harita, tauren’lerin The Barrens’tan Mount Hyjal’a ve güney uçurumlarına uzanan yolunu adım adım izliyor.',
+      mapLabel: 'Tauren’lerin Kalimdor yolculuğu haritası',
+      steps: [
+        {
+          era: 'The Barrens',
+          title: 'Bozkırda ilk kan kardeşliği',
+          text: 'Thrall’ın gemileri Kalimdor kıyısına vurduğunda orc’lar, Kolkar centaur’larına karşı dövüşen Cairne Bloodhoof ile karşılaşır. Thrall, Bloodhoof köyünü centaur ordusuna karşı savunur ve iki halk arasında sarsılmaz bir dostluk başlar.',
+          status: 'İttifak',
+          tone: 'ok',
+        },
+        {
+          era: 'Mulgore',
+          title: 'Kodo kervanı ve yeşil yayla',
+          text: 'Cairne’in halkı kuruyan bozkırdan ayrılıp kodo kervanıyla batıya yürür. Thrall’ın Warsong ve Darkspear savaşçıları kanyon boyunca centaur pusularını yarar; kervan dağlarla korunan yeşil Mulgore’a ulaşır ve Thunder Bluff’ın temelleri atılır.',
+          status: 'Yeni yurt',
+          tone: 'home',
+        },
+        {
+          era: 'Stonetalon Peak',
+          title: 'Oracle’ın mağarası',
+          text: 'Cairne’in yol göstermesiyle Thrall, Stonetalon Mountains’ın zirvesindeki Stonetalon Peak’e tırmanır. Tauren’lerin kutsal saydığı mağarada bekleyen Oracle’ın Medivh olduğu ortaya çıkar; orada Thrall ve Jaina Proudmoore’a yaklaşan Burning Legion istilasını bildirir.',
+          status: 'Kehanet',
+          tone: 'al',
+        },
+        {
+          era: 'Mount Hyjal',
+          title: 'Dünya Ağacı’nın önünde',
+          text: 'Binlerce yıl önce War of the Ancients’ta olduğu gibi tauren savaşçıları bir kez daha kuzeye, Mount Hyjal’a yürür. Cairne’in totem taşıyan savaşçıları Horde, Alliance ve Kaldorei ile omuz omuza durup Archimonde ve Nordrassil önündeki geçitleri tutar.',
+          status: 'Zafer',
+          tone: 'ok',
+        },
+        {
+          era: 'Thousand Needles',
+          title: 'Grimtotem gölgesi',
+          text: 'Kabilelerin çoğu Cairne’in sancağı altında birleşirken, Magatha Grimtotem’in Grimtotem kabilesi kendi karanlık yolunu çizer. Thousand Needles ve Stonetalon uçurumlarındaki kamplarından diğer ırklara düşmanca bakarlar.',
+          status: 'Bölünme',
+          tone: 'no',
+        },
+      ],
+      note: 'Tauren’ler Mount Hyjal’da yalnızca Horde’a olan borçlarını ödemedi; kadim dostları Cenarius’un ve Kaldorei’nin yanında durarak binlerce yıllık sözlerini de tuttular.',
+    },
+    today: {
+      title: 'Yüksek kayalıkların ve rüzgârın bekçileri',
+      intro: [
+        'Bugün Thunder Bluff, Mulgore’un zümrüt çayırları üzerinde yükselen dört büyük masa-dağın tepesinde duruyor. Halat köprülerle ve dev ahşap asansörlerle birbirine bağlanan tepelerde warrior’lar, hunter’lar, shaman’lar ve druid’ler açık gökyüzünün altında toplanır.',
+        'Mount Hyjal savaşından sonra Hamuul Runetotem, Malfurion Stormrage’den ders alarak Shu’halo’nun binlerce yıldır unuttuğu druid yolunu yeniden canlandırdı. Bugün tauren ve night elf druid’leri Moonglade’deki Cenarion Circle’ı birlikte paylaşıyor; yine de Elder Rise’daki Pools of Vision başında duran Magatha Grimtotem, yabancı ırklara karşı soğuk kuşkularını gizlemiyor.',
+        'Sylvanas Windrunner’ın elçileri kapı kapı geri çevrildiğinde Forsaken’lara el uzatanlar da Hamuul Runetotem ve Cairne Bloodhoof oldu. Onların merhameti sayesinde Undercity Horde’a katıldı; tauren’ler ise Kalimdor’un dört bir yanında toprağın dengesini korumayı sürdürüyor.',
+      ],
+      leadersLabel: 'Liderler',
+      leadersText: 'Thunder Bluff’a yön veren üç isim.',
+      leaders: [
+        {
+          role: 'Tauren’lerin yüce şefi',
+          name: 'Cairne Bloodhoof',
+          text: 'Kabileleri birleştiren ve Thunder Bluff’ı kuran yaşlı savaşçı. High Rise’dan halkını yönetiyor; bilgeliği ve runespear’ıyla Thrall’ın en yakın dostu.',
+        },
+        {
+          role: 'Başdruid',
+          name: 'Hamuul Runetotem',
+          text: 'Cairne’in çocukluk dostu ve ilk yeni çağ tauren başdruid’i. Elder Rise’da genç druid’leri yetiştiriyor ve Cenarion Circle’da tauren’leri temsil ediyor.',
+        },
+        {
+          role: 'Grimtotem yaşlısı',
+          name: 'Magatha Grimtotem',
+          text: 'Grimtotem kabilesinin güçlü shaman’ı. Görünürde Pools of Vision’da Forsaken’lara ve maceracılara yardım ediyor, ama Cairne’in barışçıl yönetimini zayıf buluyor.',
+        },
+      ],
+      landLabel: 'Mulgore',
+      landTitle: 'Yeşil çayırlar, kızıl kayalar',
+      landText: [
+        'Tauren karakterler oyuna Mulgore’un güneyindeki yüksek Red Cloud Mesa’da, Camp Narache çadırlarının arasında başlar. Genç avcılar rüştünü kanıtladıktan sonra vadiye inip Stonebull Lake kıyısındaki Bloodhoof Village’a ve oradan Thunder Bluff asansörlerine yürür.',
+        'Cennet gibi görünen yayla tehlikeden uzak değildir: güneydoğudaki Brambleblade Ravine ve kuzeydoğudaki kutsal Red Rocks mezarlığı dikenli quilboar sürülerinin istilası altındadır; doğu dağlarında ise Venture Co. madencileri toprağı kazmaktadır.',
+      ],
+      landCaption: 'Mulgore.',
+      pathKey: 'Başlangıç yolu',
+      quilboarKey: 'Quilboar istilası',
+      landLegend: [
+        { name: 'Thunder Bluff', text: 'Yüksek kayalıkların üzerindeki tauren başkenti' },
+        { name: 'Camp Narache', text: 'Red Cloud Mesa’da tauren karakterlerin başladığı kamp' },
+        { name: 'Bloodhoof Village', text: 'Baine Bloodhoof’un yönettiği göl kıyısı köyü' },
+        { name: 'Red Rocks', text: 'Quilboar’ların bastığı kutsal tauren mezarlığı' },
+        { name: 'Brambleblade Ravine', text: 'Dikenli sarmaşıklarla kaplı quilboar vadisi' },
+      ],
+      beyondLabel: 'Mulgore’un ötesinde',
+      beyondTitle: 'Bozkır kampları ve druid patikaları',
+      beyondText: [
+        'Mulgore kapılarının doğusunda, The Barrens’ın güney bozkırında Camp Taurajo hem quilboar’lara hem de güneydeki Bael Modan kazı alanındaki dwarf’lara karşı sınırı tutar. Daha güneyde, Thousand Needles’ın dev taş sütunlarının tepesinde Freewind Post yükselir.',
+        'Kuzeybatıda Stonetalon Mountains’taki Sun Rock Retreat, Venture Co.’nun doğayı talan eden kereste kamplarına karşı durur; batıdaki Feralas ormanlarında Camp Mojache ise Gordunni ogre’larına ve Grimtotem’lere karşı Horde’un kalesidir. Tauren druid’leri ise kuzeydeki Moonglade’de, Nighthaven’da Cenarion Circle kardeşleriyle buluşur.',
+      ],
+      mapCaption: 'Kalimdor’daki tauren kampları ve yolları. Konumlar yaklaşıktır.',
+      routesKey: 'Bozkır ve druid yolları',
+      legend: [
+        { name: 'Thunder Bluff', text: 'Mulgore’un ortasındaki tauren başkenti' },
+        { name: 'Camp Taurajo', text: 'Güney The Barrens’taki avcı ve gözcü kampı' },
+        { name: 'Sun Rock Retreat', text: 'Stonetalon Mountains’taki tauren sığınağı' },
+        { name: 'Freewind Post', text: 'Thousand Needles sütunlarının tepesindeki karakol' },
+        { name: 'Camp Mojache', text: 'Feralas yağmur ormanlarındaki tauren kampı' },
+        { name: 'Nighthaven', text: 'Moonglade’de Cenarion Circle druid’lerinin merkezi' },
+      ],
+      note: 'Tauren’ler nereye giderse gitsin yanlarında savaş makineleri değil, rüzgârda dönen yel değirmenleri ve toprağı kutsayan totemler götürür.',
+    },
+    outro: {
+      title: 'Rüzgâr sırtında olsun',
+      text: 'Güneş An’she batıp ay Mu’sha doğarken Mulgore’un yüksek kayalıklarında ateşler yanar. Shu’halo artık kaçmıyor; Earth Mother’ın çocukları kendi evlerinde nöbette.',
+      nextText: 'Lordaeron’un külleri: Lich King, Sylvanas Windrunner ve Undercity’nin Forsaken’ları.',
+    },
+    images: 'Haritalar WoW Forever’dan. Thunder Bluff totemi çizimi bu sayfa için hazırlandı. World of Warcraft adları Blizzard Entertainment’a aittir.',
+  },
+  en: {
+    metaDescription:
+      'The tauren (Shu’halo) story: the Earth Mother, An’she and Mu’sha, the birth of the centaurs in Desolace and Maraudon, Cairne Bloodhoof’s meeting with Thrall, the march to Mulgore and Thunder Bluff.',
+    overline: 'Story 08',
+    lead: 'The oldest wanderers of the Kalimdor plains. For thousands of years they lived in the steps of the kodo herds and the wind; when centaur raids brought them to the brink of ruin, they stood with a new ally from the storm and raised their capital atop the high mesas of Mulgore.',
+    facts: [
+      { label: 'Homeland', value: 'Mulgore', extra: 'Kalimdor' },
+      { label: 'Capital', value: 'Thunder Bluff' },
+      { label: 'Leader', value: 'Cairne Bloodhoof' },
+      { label: 'Faith', value: 'Earth Mother', extra: 'An’she and Mu’sha' },
+      { label: 'Mount', value: 'Kodo' },
+      { label: 'Own name', value: 'Shu’halo' },
+    ],
+    chapters: { origin: 'Origin', centaurs: 'The Centaurs', caravan: 'The Caravan', march: 'The March', today: 'Today' },
+    origin: {
+      title: 'Children of the Earth',
+      titleNote: '(Shu’halo & The Earth Mother)',
+      paragraphs: [
+        'Calling themselves the Shu’halo in their own tongue, the tauren are among the oldest inhabitants of the wide grasslands at the heart of Kalimdor. Rather than raising stone fortresses or spires of sorcery, they moved their tents with the seasons, following the great kodo herds and listening to the wind, the water and the soil beneath their hooves.',
+        'At the heart of their faith stands the Earth Mother, the gentle creator spirit who gives life to every hill and blade of grass. In tauren myth the Earth Mother watches the world through her two eyes in the sky: her right eye is An’she, the sun that warms the plains by day, and her left eye is Mu’sha — whom the night elves call Elune — the pale moon that guides hunters and dreamers through the night.',
+        'According to the oldest tales, the Shu’halo once lived free of sorrow at the Earth Mother’s knee, until dark whispers from beneath the soil sowed envy and bloodshed in the tribes’ hearts. Unable to bear the sight of her children turning on one another, the Earth Mother tore out her own eyes and set them spinning across the heavens as An’she and Mu’sha, though she never ceased speaking to her children through the winds of the plains.',
+        'In the ages before the Great Sundering the Shu’halo met Cenarius, demigod of the forests. Cenarius grew fond of the quiet giants’ reverence for nature and taught the earliest tauren mystics the ways of nature and druidism. When the War of the Ancients broke out, tauren warriors fought the Burning Legion beside Cenarius and the Kaldorei, then returned to the open plains after the world was torn apart.',
+      ],
+      stagesLabel: 'The ancient road of the Shu’halo',
+      stages: [
+        { name: 'Earth Mother', text: 'The creator spirit who watches the world through An’she and Mu’sha' },
+        { name: 'Shu’halo', text: 'The ancient tribes wandering the plains with the seasons' },
+        { name: 'Cenarius', text: 'The demigod who taught the first tauren mystics the ways of nature' },
+        { name: 'Tauren', text: 'The people of the plains following the kodo herds' },
+      ],
+      before: 'Wandering tribes',
+      after: 'People of Mulgore',
+      note: 'The tauren measured history not by conquests, but by the turning of the seasons and the balance of the elements — a bond that made them natural shamans and, thousands of years later, druids once again.',
+    },
+    centaurs: {
+      title: 'Withered grasslands and the centaur raids',
+      intro:
+        'For centuries the nomadic tauren tribes made pilgrimages to the lush south-western grasslands known today as Desolace, believing the Earth Mother slumbered beneath its mountains.',
+      more: [
+        'Around eleven hundred years before the opening of the Dark Portal, tauren shamans tried to wake the voice beneath the peaks, not knowing that what stirred in the deep caverns was not the Earth Mother, but Princess Theradras, eldest daughter of the elemental lord of earth. Drawn by the groaning of the land, Zaetar, an immortal son of Cenarius, went down into the caverns to calm her and fell under Princess Theradras’s spell.',
+        'From the forbidden union of Zaetar and Princess Theradras sprang a race of savage, four-legged horsemen: the centaurs. Horrified by his own sons’ violence, Zaetar died at their hands; the grieving Princess Theradras locked her beloved’s spirit inside the crystal caverns of Maraudon and drained the life from the surrounding grasslands, turning the green plains into grey, dead Desolace.',
+        'Multiplying quickly, the centaurs split into warring clans — Kolkar, Gelkis, Magram and Galak — and swept east across the plains of the Barrens and Thousand Needles. For generations they hunted the scattered tauren tribes, burned their tents and plundered even the Kodo Graveyard, where aged kodos walked to die.',
+      ],
+      figureCaption: 'The centaur raids spreading out of Maraudon in Desolace and the tauren’s withdrawal east, drawn as you scroll.',
+      centaurKey: 'Centaur raids',
+      exodusKey: 'Tauren migration',
+      legend: [
+        { name: 'Maraudon', text: 'The cavern temple where Princess Theradras keeps Zaetar’s spirit' },
+        { name: 'Kodo Graveyard', text: 'The graveyard where aged kodos walk at the end of their lives' },
+        { name: 'Shadowprey Village', text: 'The troll and Horde fishing village on the western shore' },
+        { name: 'Thunder Axe Fortress', text: 'The fortress held by cultists of the Burning Blade' },
+        { name: 'Mannoroc Coven', text: 'The demon-haunted valley between the Gelkis and Magram centaurs' },
+      ],
+      cards: [
+        {
+          name: 'Princess Theradras',
+          text: 'Princess of the earth elementals. Her waking drained the green grasslands into Desolace, and she still guards Zaetar’s tomb in the depths of Maraudon.',
+          status: 'Maraudon',
+          tone: 'no',
+        },
+        {
+          name: 'Zaetar',
+          text: 'Immortal son of Cenarius. He went down into the caverns to heal the wounded land and was slain by the centaurs born of his union with Princess Theradras.',
+          status: 'Fallen',
+          tone: 'mute',
+        },
+        {
+          name: 'Centaur',
+          text: 'Ruthless raiders divided into the Kolkar, Galak, Gelkis and Magram clans. For centuries they chased the tauren tribes across the plains and drove them toward starvation.',
+          status: 'Raiders',
+          tone: 'no',
+        },
+        {
+          name: 'Kodo',
+          text: 'The great horned beasts of burden and war of the Kalimdor plains, both companions and war-mounts to the tauren.',
+          status: 'Companion',
+          tone: 'ok',
+        },
+      ],
+      note: 'Without the centaur raids the tauren might have remained scattered nomadic tribes forever; the threat of extinction forced them to seek one banner and one permanent home.',
+    },
+    caravan: {
+      title: 'Friends from the storm and the rising totem',
+      intro:
+        'When the Third War reached Kalimdor, Cairne Bloodhoof, the aged chieftain of the Bloodhoof tribe, feared his people would not survive another winter. The centaur ring had tightened and the pastures of the Barrens had dried up.',
+      more: [
+        'In those very days Thrall and the new Horde came ashore after the storm at the Darkspear islands. Seeing Cairne’s warriors making a desperate stand against a Kolkar raid, the young orc warchief led his troops straight into the fight and stood shoulder to shoulder with the tauren to defend Bloodhoof’s village against the centaur Khan.',
+        'Moved by the strangers’ courage and their reverence for the elements, Cairne told Thrall of the Oracle dwelling high on Stonetalon Peak in the north. In return Thrall swore to guard the kodo caravan through the dusty canyons of the Barrens all the way to the mountain-ringed green tablelands of Mulgore.',
+        'Even as Thunder Bluff rose atop the high mesas of Mulgore, centaur and harpy attacks did not cease, and Cairne’s son Baine Bloodhoof was taken captive by the centaurs. Sent by Thrall, the half-ogre Beastmaster Rexxar and the Darkspear scout Rokhan rescued Baine and brought him back to his father; the old chieftain took up his runespear once more and stood at the Horde’s side.',
+      ],
+      figureCaption: 'As you scroll, the Thunder Bluff totem spreads its wings and An’she and Mu’sha rise.',
+      cards: [
+        {
+          name: 'Cairne Bloodhoof',
+          text: 'The wise and mighty high chieftain who united the scattered tauren tribes. His blood-brotherhood with Thrall became the conscience and steadiest pillar of the new Horde.',
+          status: 'High Chieftain',
+          tone: 'home',
+        },
+        {
+          name: 'Baine Bloodhoof',
+          text: 'Cairne’s young son. Rescued from centaur raiders by Rexxar and Rokhan, he now watches over Bloodhoof Village in Mulgore.',
+          status: 'Bloodhoof',
+          tone: 'ok',
+        },
+        {
+          name: 'Rexxar',
+          text: 'The half-ogre, half-orc Beastmaster who roams the wilds with his bear Misha. By rescuing Baine he lifted Cairne’s grief and rallied the tauren against Daelin Proudmoore.',
+          status: 'Champion of the Horde',
+          tone: 'al',
+        },
+        {
+          name: 'Thunder Bluff',
+          text: 'The tauren capital raised atop the four high mesas of Mulgore, where wandering tents gave way to sky-bridges, great lifts and towering totems.',
+          status: 'Capital',
+          tone: 'home',
+        },
+      ],
+      note: 'The orcs and the Darkspear brought blades and sorcery to the Horde; Cairne and the tauren gave it the honour and rootedness that held that strength together.',
+    },
+    march: {
+      title: 'Five steps from the plains to the World Tree',
+      intro:
+        'Within a few short years the tribes that had once retreated before the centaurs marched to the heart of the battles that decided Kalimdor’s fate. As you scroll, the map follows the tauren from the Barrens to Mount Hyjal and the southern cliffs.',
+      mapLabel: 'Map of the tauren’s journey across Kalimdor',
+      steps: [
+        {
+          era: 'The Barrens',
+          title: 'First blood-brotherhood on the plains',
+          text: 'When Thrall’s ships wash ashore on Kalimdor, the orcs come upon Cairne Bloodhoof fighting the Kolkar centaurs. Thrall defends the Bloodhoof village against the centaur host, and an unbreakable friendship begins between the two peoples.',
+          status: 'Alliance',
+          tone: 'ok',
+        },
+        {
+          era: 'Mulgore',
+          title: 'The kodo caravan and the green mesa',
+          text: 'Cairne’s people leave the parched plains and march west with their kodo caravan. Thrall’s Warsong and Darkspear warriors break the centaur ambushes along the canyons; the caravan reaches green, mountain-ringed Mulgore, and the foundations of Thunder Bluff are laid.',
+          status: 'New home',
+          tone: 'home',
+        },
+        {
+          era: 'Stonetalon Peak',
+          title: 'Cave of the Oracle',
+          text: 'Guided by Cairne, Thrall climbs to Stonetalon Peak in the Stonetalon Mountains. Inside the cavern the tauren hold sacred, the Oracle turns out to be Medivh, who warns Thrall and Jaina Proudmoore of the Burning Legion’s invasion.',
+          status: 'Prophecy',
+          tone: 'al',
+        },
+        {
+          era: 'Mount Hyjal',
+          title: 'Before the World Tree',
+          text: 'Just as they had in the War of the Ancients thousands of years before, tauren warriors march north to Mount Hyjal once again. Cairne’s totem-bearers stand shoulder to shoulder with the Horde, the Alliance and the Kaldorei to hold the passes before Archimonde and Nordrassil.',
+          status: 'Victory',
+          tone: 'ok',
+        },
+        {
+          era: 'Thousand Needles',
+          title: 'Shadow of the Grimtotem',
+          text: 'While most tribes unite under Cairne’s banner, Magatha Grimtotem’s Grimtotem clan charts a darker course of its own, looking down with hostility on the other races from its camps on the cliffs of Thousand Needles and Stonetalon.',
+          status: 'Divided',
+          tone: 'no',
+        },
+      ],
+      note: 'At Mount Hyjal the tauren did more than repay their debt to the Horde; standing beside Cenarius’s children, the Kaldorei, they kept a promise thousands of years old.',
+    },
+    today: {
+      title: 'Keepers of the high mesas and the wind',
+      intro: [
+        'Today Thunder Bluff stands atop four great flat-topped mesas rising above the emerald pastures of Mulgore. Linked by rope bridges and huge wooden lifts, its rises gather warriors, hunters, shamans and druids beneath the open sky.',
+        'After the battle of Mount Hyjal, Hamuul Runetotem studied under Malfurion Stormrage and revived the druid path the Shu’halo had forgotten for millennia. Today tauren and night elf druids share the Cenarion Circle in Moonglade together, even as Magatha Grimtotem, watching over the Pools of Vision on the Elder Rise, makes little secret of her cold distrust of outsiders.',
+        'When Sylvanas Windrunner’s envoys were turned away from every gate, it was Hamuul Runetotem and Cairne Bloodhoof who spoke for the Forsaken. Through their compassion Undercity was welcomed into the Horde, while across Kalimdor the tauren go on guarding the balance of the land.',
+      ],
+      leadersLabel: 'Leaders',
+      leadersText: 'The three who guide Thunder Bluff.',
+      leaders: [
+        {
+          role: 'High Chieftain of the tauren',
+          name: 'Cairne Bloodhoof',
+          text: 'The old warrior who united the tribes and founded Thunder Bluff. He leads his people from the High Rise; in his wisdom and with his runespear he is Thrall’s closest friend.',
+        },
+        {
+          role: 'Archdruid',
+          name: 'Hamuul Runetotem',
+          text: 'Cairne’s childhood friend and the first tauren archdruid of the new age. He trains young druids on the Elder Rise and speaks for the tauren in the Cenarion Circle.',
+        },
+        {
+          role: 'Elder crone of the Grimtotem',
+          name: 'Magatha Grimtotem',
+          text: 'The powerful shaman of the Grimtotem tribe. Outwardly she aids the Forsaken and adventurers at the Pools of Vision, yet she sees Cairne’s peaceful rule as weakness.',
+        },
+      ],
+      landLabel: 'Mulgore',
+      landTitle: 'Green pastures and red rocks',
+      landText: [
+        'Tauren characters begin on high Red Cloud Mesa in southern Mulgore, among the tents of Camp Narache. Once young hunters prove themselves, they walk down into the valley to Bloodhoof Village by Stonebull Lake and on to the lifts of Thunder Bluff.',
+        'Even this green tableland is not free of danger: Brambleblade Ravine in the south-east and the sacred burial ground of Red Rocks in the north-east are overrun by thorny quilboar packs, while Venture Co. miners dig into the eastern mountains.',
+      ],
+      landCaption: 'Mulgore.',
+      pathKey: 'Starting road',
+      quilboarKey: 'Quilboar incursion',
+      landLegend: [
+        { name: 'Thunder Bluff', text: 'The tauren capital atop the high mesas' },
+        { name: 'Camp Narache', text: 'The camp on Red Cloud Mesa where tauren characters begin' },
+        { name: 'Bloodhoof Village', text: 'The lakeside village led by Baine Bloodhoof' },
+        { name: 'Red Rocks', text: 'The sacred tauren burial ground overrun by quilboar' },
+        { name: 'Brambleblade Ravine', text: 'The thorn-choked ravine held by the quilboar' },
+      ],
+      beyondLabel: 'Beyond Mulgore',
+      beyondTitle: 'Camps of the plains and druid paths',
+      beyondText: [
+        'East of Mulgore’s gates, in the southern Barrens, Camp Taurajo holds the frontier against both the quilboar and the dwarves digging at Bael Modan to the south. Farther south, atop the giant stone pillars of Thousand Needles, rises Freewind Post.',
+        'To the north-west, Sun Rock Retreat in the Stonetalon Mountains stands against the Venture Co. logging camps stripping the valleys, while in the western rainforests of Feralas, Camp Mojache serves as the Horde’s stronghold against the Gordunni ogres and the Grimtotem. Tauren druids, meanwhile, travel north to Nighthaven in Moonglade to meet their brethren of the Cenarion Circle.',
+      ],
+      mapCaption: 'Tauren camps and roads across Kalimdor. Positions are approximate.',
+      routesKey: 'Plains and druid paths',
+      legend: [
+        { name: 'Thunder Bluff', text: 'The tauren capital in the heart of Mulgore' },
+        { name: 'Camp Taurajo', text: 'The hunters’ and scouts’ camp in the southern Barrens' },
+        { name: 'Sun Rock Retreat', text: 'The tauren refuge in the Stonetalon Mountains' },
+        { name: 'Freewind Post', text: 'The outpost atop the pillars of Thousand Needles' },
+        { name: 'Camp Mojache', text: 'The tauren camp in the rainforests of Feralas' },
+        { name: 'Nighthaven', text: 'Seat of the Cenarion Circle druids in Moonglade' },
+      ],
+      note: 'Wherever the tauren go, they bring not siege engines, but windmills turning in the breeze and totems that bless the earth.',
+    },
+    outro: {
+      title: 'Wind be at your back',
+      text: 'As the sun An’she sets and the moon Mu’sha rises, fires burn atop the high mesas of Mulgore. The Shu’halo are running no longer; the children of the Earth Mother stand watch over their own home.',
+      nextText: 'Ashes of Lordaeron: the Lich King, Sylvanas Windrunner and the Forsaken of Undercity.',
+    },
+    images: 'Maps from WoW Forever. The Thunder Bluff totem drawing was made for this page. World of Warcraft names belong to Blizzard Entertainment.',
+  },
+};
+
+
 export const SKYBORNE_ART_LABELS: Record<Lang, Record<string, string>> = {
   tr: {
     feralasAria: 'Feralas haritası: Dire Maul (Eldre’Thalas) ve isyancıların batıya, denize doğru kaçışı',
@@ -3350,7 +4417,7 @@ export const SKYBORNE_STORY: Record<Lang, SkyborneStory> = {
   tr: {
     metaDescription:
       'Skyborne’ın hikayesi: Eldre’Thalas’tan kaçan isyancılar, Skywall’daki rüzgâr ruhlarıyla pakt, Zephras Isle’ın göğe yükselişi, High Order ile Windshapers, Al’Aketh krizi ve Azeroth’a iniş.',
-    overline: 'Hikaye 07',
+    overline: 'Hikaye 09',
     lead: 'Eldre’Thalas’tan kaçan isyancıların torunları. Rüzgâr ruhlarıyla yaptıkları pakt bir adayı göğe kaldırdı; ruhlar kaybolunca ada çözülmeye başladı ve Skyborne Azeroth’a indi.',
     facts: [
       { label: 'Yurt', value: 'Zephras Isle', extra: 'Skywall' },
@@ -3573,7 +4640,7 @@ export const SKYBORNE_STORY: Record<Lang, SkyborneStory> = {
   en: {
     metaDescription:
       'The story of the Skyborne: the rebels who fled Eldre’Thalas, the pact with the wind spirits of Skywall, the rise of Zephras Isle, the High Order and the Windshapers, the Al’Aketh crisis and the descent to Azeroth.',
-    overline: 'Story 07',
+    overline: 'Story 09',
     lead: 'Descendants of the rebels who fled Eldre’Thalas. A pact with the wind spirits lifted an island into the sky; when the spirits vanished the island began to fall apart, and the Skyborne came down to Azeroth.',
     facts: [
       { label: 'Homeland', value: 'Zephras Isle', extra: 'Skywall' },

@@ -2,7 +2,17 @@
 // drawn by the site's shared tooltip (src/scripts/tooltip.ts, CardTip with kind "lore").
 import type { Lang } from '../../config';
 import { LORE, LORE_UI, type LoreEntry } from '../../i18n/lore';
-import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY, ORC_STORY, SKYBORNE_STORY, TROLL_STORY } from '../../i18n/stories';
+import {
+  DWARF_STORY,
+  GNOME_STORY,
+  HUMAN_STORY,
+  NIGHT_ELF_STORY,
+  ORC_STORY,
+  SKYBORNE_STORY,
+  TAUREN_STORY,
+  TROLL_STORY,
+  UNDEAD_STORY,
+} from '../../i18n/stories';
 import { withBase } from '../../utils/url';
 import { STORY_RACES } from './races';
 import type { CardTip, TipPayload } from '../tooltip-render';
@@ -82,6 +92,8 @@ export const LORE_STORIES: Record<string, Record<Lang, unknown>> = {
   'night-elf': NIGHT_ELF_STORY,
   orc: ORC_STORY,
   troll: TROLL_STORY,
+  tauren: TAUREN_STORY,
+  undead: UNDEAD_STORY,
   skyborne: SKYBORNE_STORY,
 };
 

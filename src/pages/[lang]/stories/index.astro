@@ -2,7 +2,17 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import { DWARF_STORY, GNOME_STORY, HUMAN_STORY, NIGHT_ELF_STORY, ORC_STORY, SKYBORNE_STORY, TROLL_STORY } from '../../../i18n/stories';
+import {
+  DWARF_STORY,
+  GNOME_STORY,
+  HUMAN_STORY,
+  NIGHT_ELF_STORY,
+  ORC_STORY,
+  SKYBORNE_STORY,
+  TAUREN_STORY,
+  TROLL_STORY,
+  UNDEAD_STORY,
+} from '../../../i18n/stories';
 import { racesByFaction } from '../../../lib/codex';
 import { storySlug } from '../../../lib/stories/races';
 import { withBase } from '../../../utils/url';
@@ -23,6 +33,22 @@ const features = [
     faction: 'Alliance · Horde',
     story: SKYBORNE_STORY[lang],
     bg: undefined, // no cover yet: it comes from the site owner
+    hero: undefined,
+  },
+  {
+    slug: 'tauren',
+    name: 'Tauren',
+    faction: 'Horde',
+    story: TAUREN_STORY[lang],
+    bg: undefined, // no cover yet
+    hero: undefined,
+  },
+  {
+    slug: 'undead',
+    name: 'Undead',
+    faction: 'Horde',
+    story: UNDEAD_STORY[lang],
+    bg: undefined, // no cover yet
     hero: undefined,
   },
   {
