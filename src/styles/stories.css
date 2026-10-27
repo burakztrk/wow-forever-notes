@@ -613,3 +613,6 @@ a.story-card:focus-visible {
 .lore .next.mini{flex-direction:row;align-items:center;flex-wrap:wrap;column-gap:14px;padding:14px 20px}
 .lore .next.mini .nm{font-size:26px}
 .lore .next.mini .go{margin-left:auto}
+/* the stepped map draws nothing until it is in view (story.ts removes .idle) */
+.lore .story.idle .map .ly .draw{stroke-dashoffset:1}
+.lore .story.idle .map .ly .head{opacity:0}

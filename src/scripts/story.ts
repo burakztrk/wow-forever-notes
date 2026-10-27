@@ -3,7 +3,8 @@
 // - [data-p="start,end"] elements get --p (0..1) as their anchor (a point partway down
 //   the element) crosses start → end (fractions of the viewport height) and run their handler.
 // - Chapter III's map follows the step nearest the reading line and moves its
-//   "camera" (viewBox); labels keep their screen size through --k.
+//   "camera" (viewBox); labels keep their screen size through --k. Its routes wait
+//   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
 //   and calm; "embers" are forge sparks drifting up; "void" are the same motes in violet.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
@@ -38,6 +39,9 @@ function init(root: HTMLElement) {
   const steps = story ? $$('.step', story) : [];
   const layers = ek ? $$<SVGGElement>('.ly', ek) : [];
   const dots = story ? $$('.dots i', story) : [];
+  const stageMap = story ? $('.stage-map', story) : null;
+  let idle = !reduce && !!stageMap;
+  if (idle) story?.classList.add('idle');
   // one camera (viewBox) per step, written into the map by the art generator
   const cams: Record<number, number[]> = JSON.parse(ek?.dataset.cams ?? '{}');
   const pad = (vb: number[]) => {
@@ -167,6 +171,10 @@ function init(root: HTMLElement) {
     if (story) {
       const sr = story.getBoundingClientRect();
       if (sr.bottom > 0 && sr.top < vh) {
+        if (idle && stageMap && stageMap.getBoundingClientRect().top < vh * 0.3) {
+          idle = false;
+          story.classList.remove('idle');
+        }
         const line = vh * (narrow.matches ? 0.84 : 0.58);
         let n = 1;
         steps.forEach((s, i) => {
