@@ -33,7 +33,7 @@ Aşağıdaki sınıf değişiklikleri resmi bir posttan değil, wclbox'un build 
 
 - **Frost:**
   - Frost Warding: Ice Barrier ve Frost Barrier artık %20 daha fazla hasar emiyor.
-  - Elemental Precision artık %6 gösteriyor (önceden %3).
+  - Elemental Precision artık en yüksek rankta Frost ve Fire büyülerine %6'ya kadar isabet şansı veriyor.
 
 ## Irk değişiklikleri
 
@@ -69,7 +69,7 @@ Aşağıdaki sınıf değişiklikleri resmi bir posttan değil, wclbox'un build 
 ::race[Skyborne]
 
 - Wind-Blessed Haste %2'ye düşürüldü (önceden %3).
-- :racial[Read Leyline] artık Mana ve Health yenilenmesini 15 saniye boyunca %50 artırıyor (önceden %100). Innervate aktifken kullanılamıyor ve daha güçlü olan Innervate etkisiyle değiştiriliyor.
+- :racial[Read Ley Line] artık Mana ve Health yenilenmesini 15 saniye boyunca %50 artırıyor (önceden %100). Innervate aktifken kullanılamıyor ve daha güçlü olan Innervate etkisiyle değiştiriliyor.
 - Read Leyline'ı bir Ley Line'da kullanmak 1 saat süreli "Attuned" da veriyor; yenilenme bonusu %100'e çıkıyor. Attuned ölümden sonra da kalıyor; bir raid'e girince kaldırılıyor.
 - :racial[Skysight] artık 15 saniye boyunca %15 hareket hızı veriyor (önceden %10).
 - Skysight'ı bir elemental convergence noktasında kullanmak 1 saat süreli "Charged" da veriyor; bonus %30'a çıkıyor. Charged ölümden sonra da kalıyor; bir raid'e girince kaldırılıyor.
