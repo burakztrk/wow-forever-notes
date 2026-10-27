@@ -56,6 +56,7 @@ const chapters = [
 const stageIcons = [ic.tower, ic.book, ic.mask, ic.wind];
 const skywallIcons = [ic.spirit, ic.plane, ic.cyclone, ic.isle];
 const bossIcons = [ic.crown, ic.flame];
+const img = (name: string) => withBase(`/stories/skyborne/${name}`);
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
@@ -64,7 +65,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
     <section class="hero sky-cover" aria-labelledby="h-skyborne">
-      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-bg" aria-hidden="true"><img src={img('cover.webp')} alt="" width="1600" height="923" /></div>
+      <div class="hero-shade" aria-hidden="true"></div>
       <canvas id="snow" data-fx="gale" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
@@ -101,7 +103,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     </section>
 
     <!-- I · origin: Eldre'Thalas -->
-    <section class="chap" id="origin" aria-labelledby="h-origin">
+    <section class="chap chap-bg" id="origin" aria-labelledby="h-origin">
+      <div class="sil sil-tortheldrin" aria-hidden="true"><img src={img('tortheldrin.webp')} alt="" width="610" height="585" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">I</div>
@@ -159,7 +162,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- II · Skywall -->
-    <section class="chap" id="skywall" aria-labelledby="h-skywall">
+    <section class="chap chap-bg" id="skywall" aria-labelledby="h-skywall">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('skywall.webp')} alt="" width="1276" height="718" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">II</div>
@@ -196,7 +200,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- III · two paths: the High Order and the Windshapers -->
-    <section class="chap" id="paths" aria-labelledby="h-paths">
+    <section class="chap chap-bg" id="paths" aria-labelledby="h-paths">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('paths.webp')} alt="" width="1200" height="400" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">III</div>
@@ -254,7 +259,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- IV · the crisis on Zephras Isle -->
-    <section class="chap" id="crisis" aria-labelledby="h-crisis">
+    <section class="chap chap-bg" id="crisis" aria-labelledby="h-crisis">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('zephras-isle.webp')} alt="" width="1600" height="900" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">IV</div>

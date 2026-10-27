@@ -32,7 +32,7 @@ const features = [
     name: 'Skyborne',
     faction: 'Alliance · Horde',
     story: SKYBORNE_STORY[lang],
-    bg: undefined, // no cover yet: it comes from the site owner
+    bg: { src: '/stories/skyborne/cover.webp', w: 1600, h: 923 },
     hero: undefined,
   },
   {
@@ -48,8 +48,8 @@ const features = [
     name: 'Undead',
     faction: 'Horde',
     story: UNDEAD_STORY[lang],
-    bg: undefined, // no cover yet
-    hero: undefined,
+    bg: { src: '/stories/undead/tirisfal.webp', w: 1024, h: 431 },
+    hero: '/stories/undead/sylvanas.webp',
   },
   {
     slug: 'troll',
