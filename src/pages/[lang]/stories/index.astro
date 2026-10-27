@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { ui } from '../../../i18n';
+import { GNOME_STORY } from '../../../i18n/stories';
+import { racesByFaction } from '../../../lib/codex';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = ui(lang);
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/`)])) as Record<Lang, string>;
+const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
+// Race ids with a written story; every other race shows as "coming soon".
+const STORIES: Record<string, string> = { 'alliance-gnome': 'gnome' };
+const gnome = GNOME_STORY[lang];
+---
+
+<BaseLayout title={t.storiesTitle} description={t.storiesIntro} lang={lang} alternates={alternates} wide>
+  <div class="story-index">
+    <h1>{t.storiesTitle}</h1>
+    <p class="muted">{t.storiesIntro}</p>
+
+    <a class="story-feature" href={withBase(`/${lang}/stories/gnome/`)}>
+      <img class="story-feature-bg" src={withBase('/stories/gnome/ironforge.webp')} alt="" width="1767" height="863" loading="lazy" />
+      <img class="story-feature-hero" src={withBase('/stories/gnome/mekkatorque.webp')} alt="" width="300" height="300" loading="lazy" />
+      <span class="story-feature-text">
+        <span class="story-feature-over">{gnome.overline} · Alliance</span>
+        <span class="story-feature-name">Gnome</span>
+        <span class="story-feature-lead">{gnome.lead}</span>
+        <span class="story-feature-cta">{t.storiesRead}</span>
+      </span>
+    </a>
+
+    {
+      racesByFaction().map(([faction, list]) => (
+        <section>
+          <h2 class:list={['codex-section', `faction-title--${faction.toLowerCase()}`]}>{faction}</h2>
+          <ul class="story-grid">
+            {list.map((race) => {
+              const slug = STORIES[race.id];
+              const head = (
+                <>
+                  {race.icon ? <img src={icon(race.icon)} alt="" width="40" height="40" loading="lazy" /> : <span class="blank" />}
+                  <span class="story-card-name">{race.name}</span>
+                  <span class="story-card-state">{slug ? t.storiesRead : t.storiesSoon}</span>
+                </>
+              );
+              return (
+                <li>
+                  {slug ? (
+                    <a class="story-card" href={withBase(`/${lang}/stories/${slug}/`)}>
+                      {head}
+                    </a>
+                  ) : (
+                    <span class="story-card soon">{head}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>

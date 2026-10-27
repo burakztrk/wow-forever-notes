@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import CodexIcon from '../components/CodexIcon.astro';
 import LangSwitch from '../components/LangSwitch.astro';
 import { DEFAULT_LANG, LANGS, SITE_TITLE, type Lang } from '../config';
 import { ui } from '../i18n';
@@ -41,6 +42,7 @@ const navItems = [
   { key: 'talents', href: withBase(`/${lang}/talents/`) },
   { key: 'professions', href: withBase(`/${lang}/professions/`) },
   { key: 'legacy', href: withBase(`/${lang}/legacy/`) },
+  { key: 'stories', href: withBase(`/${lang}/stories/`) },
   { key: 'search', href: withBase(`/${lang}/search/`) },
 ];
 // Footer text stays English on every language page.
@@ -55,6 +57,7 @@ const labels: Record<string, string> = {
   talents: t.navTalents,
   professions: t.navProfessions,
   legacy: t.navLegacy,
+  stories: t.navStories,
   search: t.navSearch,
 };
 const isCurrent = (key: string) =>
@@ -130,11 +133,23 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
         <a class="brand" href={langHome(lang)}>Forever Campfire <span>Codex</span></a>
         <nav class="main-nav">
           {
-            navItems.map((item) => (
-              <a href={item.href} aria-current={isCurrent(item.key) ? 'page' : undefined}>
-                {labels[item.key]}
-              </a>
-            ))
+            navItems.map((item) =>
+              item.key === 'search' ? (
+                <a
+                  class="nav-icon"
+                  href={item.href}
+                  aria-current={isCurrent(item.key) ? 'page' : undefined}
+                  aria-label={labels[item.key]}
+                  title={labels[item.key]}
+                >
+                  <CodexIcon name="search" />
+                </a>
+              ) : (
+                <a href={item.href} aria-current={isCurrent(item.key) ? 'page' : undefined}>
+                  {labels[item.key]}
+                </a>
+              ),
+            )
           }
         </nav>
         <LangSwitch lang={lang} alternates={alternates} />
@@ -212,6 +227,7 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
   }
   .main-nav {
     display: flex;
+    align-items: center;
     gap: 18px;
     margin-right: auto;
     margin-left: 12px;
@@ -224,6 +240,15 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
   .main-nav a:hover,
   .main-nav a[aria-current='page'] {
     color: var(--gold);
+  }
+  /* search: the app's scrying-lens icon instead of a word */
+  .main-nav .nav-icon {
+    display: inline-flex;
+    align-items: center;
+  }
+  .main-nav .nav-icon :global(svg) {
+    width: 20px;
+    height: 20px;
   }
   @media (max-width: 520px) {
     .main-nav {
