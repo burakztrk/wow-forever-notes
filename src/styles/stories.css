@@ -484,8 +484,6 @@ a.story-card:focus-visible {
 .lore .war-cards .card{flex-direction:row;gap:16px;align-items:flex-start}
 .lore .war-cards .card .ic{margin:0;flex:none}
 .lore .war-cards .card .t{display:flex;flex-direction:column;gap:6px;min-width:0}
-.lore .leader .emblem{width:clamp(124px,15vw,168px);aspect-ratio:1;display:grid;place-items:center;border-radius:var(--r-xl);border:1px solid #000;background:radial-gradient(circle at 50% 36%,#3a2a1c 0%,var(--bg-elev-2) 62%,#14171f 100%);color:var(--gold)}
-.lore .leader .emblem svg{width:60%;height:60%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .lore .hero.forge .hero-bg img{filter:brightness(.78) saturate(1) contrast(1.05);object-position:50% 50%}
 @media (prefers-reduced-motion:no-preference){
   .lore .map .firezone{animation:tox 2.2s ease-in-out infinite alternate}

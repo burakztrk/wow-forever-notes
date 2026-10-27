@@ -670,7 +670,7 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       text: 'Bölünen, yanan, kuşatılan ama hiç diz çökmeyen bir halk. Great Forge’un ateşi hâlâ yanıyor.',
       nextText: 'Stormwind’den Lordaeron’a: Alliance’ı kuran halkın hikayesi.',
     },
-    images: 'Ironforge ekran görüntüsü WoW Forever’dan.',
+    images: 'Ironforge ekran görüntüsü WoW Forever’dan. Magni Bronzebeard görseli Blizzard Entertainment’a aittir.',
   },
   en: {
     metaDescription: 'The dwarves’ story: earthen origins, the War of the Three Hammers, the coming of Ragnaros, the wars of Khaz Modan and the Council of Three Hammers.',
@@ -823,6 +823,6 @@ export const DWARF_STORY: Record<Lang, DwarfStory> = {
       text: 'A people split, burned and besieged who never bent the knee. The fire of the Great Forge still burns.',
       nextText: 'From Stormwind to Lordaeron: the people who founded the Alliance.',
     },
-    images: 'Ironforge screenshot from WoW Forever.',
+    images: 'Ironforge screenshot from WoW Forever. The Magni Bronzebeard image belongs to Blizzard Entertainment.',
   },
 };

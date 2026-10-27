@@ -58,6 +58,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <section class="hero forge" aria-labelledby="h-dwarf">
       <div class="hero-bg" aria-hidden="true"><img src={img('ironforge-forge.webp')} alt="" width="1920" height="864" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
+      <div class="sil" aria-hidden="true"><img src={img('magni.webp')} alt="" width="447" height="447" /></div>
       <canvas id="snow" data-fx="embers" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
@@ -287,7 +288,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           <div><p class="ov">{u.chapter} V · {s.chapters.today}</p><h2 class="h2" id="h-today">{s.today.title}</h2></div>
         </header>
         <article class="leader rv">
-          <div class="emblem" aria-hidden="true"><svg viewBox="0 0 48 48" set:html={ic.crown} /></div>
+          <div class="portrait"><img src={img('magni-bust.webp')} alt="Magni Bronzebeard" width="300" height="300" loading="lazy" /></div>
           <div class="t">
             <p class="ov">{s.today.leaderLabel}</p>
             <h3 class="h3">Magni Bronzebeard</h3>
