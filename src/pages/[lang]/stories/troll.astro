@@ -26,6 +26,7 @@ const u = STORY_UI[lang];
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/troll/`)])) as Record<Lang, string>;
 const art = (svg: string) => fillArt(svg, TROLL_ART_LABELS[lang], withBase('/'));
 const ic = TROLL_ART.icons;
+const img = (name: string) => withBase(`/stories/troll/${name}`);
 // proper names in the text get lore tooltips (src/i18n/lore.ts); the cards ride in the #wf-glossary island
 const lx = (text: string) => loreHtml(text);
 const tips = loreTips(lang, loreIds(s));
@@ -49,8 +50,10 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
   <div class="lore troll" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
-    <!-- no cover yet: the site owner adds it as <div class="hero-bg"><img …></div> (see dwarf.astro) -->
-    <section class="hero plain" aria-labelledby="h-troll">
+    <section class="hero troll-cover" aria-labelledby="h-troll">
+      <div class="hero-bg" aria-hidden="true"><img src={img('durotar.webp')} alt="" width="1210" height="1619" /></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="sil sil-voljin" aria-hidden="true"><img src={img('voljin.webp')} alt="" width="760" height="1064" /></div>
       <canvas id="snow" data-fx="voodoo" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
@@ -123,7 +126,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- II · the Amani -->
-    <section class="chap" id="amani" aria-labelledby="h-amani">
+    <section class="chap chap-bg" id="amani" aria-labelledby="h-amani">
+      <div class="chap-art top" aria-hidden="true"><img src={img('zulaman.webp')} alt="" width="1200" height="857" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">II</div>
@@ -240,7 +244,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- IV · the Darkspear -->
-    <section class="chap" id="darkspear" aria-labelledby="h-darkspear">
+    <section class="chap chap-bg" id="darkspear" aria-labelledby="h-darkspear">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('senjin-village.webp')} alt="" width="739" height="415" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">IV</div>
@@ -280,7 +285,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- V · today -->
-    <section class="chap" id="today" aria-labelledby="h-today">
+    <section class="chap chap-bg" id="today" aria-labelledby="h-today">
+      <div class="chap-art top dim" aria-hidden="true"><img src={img('durotar.webp')} alt="" width="1210" height="1619" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">V</div>

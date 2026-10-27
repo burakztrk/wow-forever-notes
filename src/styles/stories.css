@@ -645,9 +645,13 @@ a.story-card:focus-visible {
 .lore .split.top{align-items:start}
 .lore #warpath svg{max-height:82vh}
 .lore #durotar svg{max-height:76vh}
-/* Troll story: jungle green, a plain hero until the cover arrives, the tribe list */
+/* Troll story: jungle green, the Durotar cover with Vol'jin, the tribe list */
 .lore.troll{--jungle:#6fcf5a}
-.lore .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(111,207,90,.16),transparent 70%),radial-gradient(ellipse 50% 60% at 80% 10%,rgba(63,138,58,.14),transparent 70%),var(--bg)}
+.lore .hero.troll-cover .hero-bg img{object-position:50% 38%;filter:brightness(.72) saturate(.95) contrast(1.05)}
+@media (max-width:760px){.lore .hero.troll-cover .hero-bg img{object-position:40% 38%}}
+.lore .sil-voljin{aspect-ratio:857/1200;width:clamp(240px,26vw,380px);opacity:.7;right:max(-20px,calc(50% - 720px));-webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 58%,rgba(0,0,0,.5) 80%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 50%,#000 58%,rgba(0,0,0,.5) 80%,transparent 100%)}
+@media (max-width:760px){.lore .sil-voljin{width:200px;opacity:.4}}
+.lore #today .chap-art.top img{object-position:50% 30%}
 .lore #amanimap svg{max-height:78vh}
 .lore #stvmap svg{max-height:78vh}
 .lore #world svg{max-height:70vh}

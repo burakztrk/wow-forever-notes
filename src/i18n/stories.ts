@@ -3017,7 +3017,7 @@ export const TROLL_STORY: Record<Lang, TrollStory> = {
       text: 'Kabileleri dağıldı, imparatorlukları yıkıldı; ama troller hâlâ kendilerini ruhlarına bağlı bir halk olarak görür. Darkspear için bu bağ, Durotar kıyısındaki yeni yurda uzanıyor.',
       nextText: 'Mulgore’un halkı: Earth Mother, Cairne Bloodhoof ve Horde’un tauren’leri.',
     },
-    images: 'Haritalar WoW Forever’dan. World of Warcraft adları Blizzard Entertainment’a aittir.',
+    images: 'Durotar, Zul’Aman, Sen’jin Village ve Vol’jin görselleri Blizzard Entertainment’a aittir. Haritalar WoW Forever’dan.',
   },
   en: {
     metaDescription:
@@ -3254,6 +3254,6 @@ export const TROLL_STORY: Record<Lang, TrollStory> = {
       text: 'Their tribes scattered and their empires fell, but the trolls still see themselves as a people bound to their spirits. For the Darkspear that bond now reaches a new home on Durotar’s shore.',
       nextText: 'The people of Mulgore: the Earth Mother, Cairne Bloodhoof and the Horde’s tauren.',
     },
-    images: 'Maps from WoW Forever. World of Warcraft names belong to Blizzard Entertainment.',
+    images: 'The Durotar, Zul’Aman, Sen’jin Village and Vol’jin images belong to Blizzard Entertainment. Maps from WoW Forever.',
   },
 };
