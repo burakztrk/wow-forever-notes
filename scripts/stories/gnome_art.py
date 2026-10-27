@@ -8,165 +8,88 @@ from art_lib import *  # noqa: F401,F403
 PUBLIC = ROOT / "public" / "stories" / "gnome"
 
 
+EK_IMG = '<image class="map-img" href="%%base%%maps/eastern-kingdoms.webp" width="1002" height="668"/>'
+DM_IMG = '<image class="map-img" href="%%base%%maps/dun-morogh.webp" width="1002" height="668"/>'
+
+
+def route(pts, cls, headcls=None):
+    s = f'<path class="rt {cls} draw" pathLength="1" d="{smooth_open(pts)}"/>'
+    if headcls:
+        s += head(*pts[-1], end_angle(pts), headcls)
+    return s
+
+
 def ek_svg():
-    r = random.Random(5)
-    glyphs = []
-    tries = 0
-    while len(glyphs) < 24 and tries < 4000:
-        tries += 1
-        x, y = r.uniform(235, 465), r.uniform(425, 552)
-        if not in_poly(x, y, KM_PTS):
-            continue
-        if 340 < x < 462 and 512 < y < 538:  # label area
-            continue
-        if math.hypot(x - 322, y - 476) < 22 or math.hypot(x - 264, y - 468) < 22:
-            continue
-        if any(math.hypot(x - gx, y - gy) < 17 for gx, gy in glyphs):
-            continue
-        glyphs.append((x, y))
-    g_mt = "".join(f'<path class="mt" d="{mtn(x, y, r.uniform(.8, 1.2))}"/>' for x, y in glyphs)
-    # a few peaks in Alterac and Lordaeron
-    extra = [(250, 318), (268, 330), (232, 334), (420, 300), (436, 286), (404, 312)]
-    g_mt += "".join(f'<path class="mt" d="{mtn(x, y, .9)}"/>' for x, y in extra)
-
-    QT, LD, IF, GN, SW, DP = (360, 64), (232, 152), (322, 476), (264, 468), (262, 594), (438, 684)
-
-    def route(pts, cls, headcls=None):
-        d = smooth_open(pts)
-        s = f'<path class="rt {cls} draw" pathLength="1" d="{d}"/>'
-        if headcls:
-            s += head(*pts[-1], end_angle(pts), headcls)
-        return s
+    """The Eastern Kingdoms game map; one layer and one camera per step of chapter III."""
+    QT, LD, IF, GN, SW, DP = (615, 70), (468, 155), (455, 372), (420, 368), (440, 500), (538, 545)
 
     l1 = (f'<g class="ly on" data-ly="1">'
-          + route([GN, (292, 462), IF], "gold") +
-          f'<circle class="pulse-ring" cx="{GN[0]}" cy="{GN[1]}" r="14"/>'
-          f'<circle class="pulse-ring d2" cx="{IF[0]}" cy="{IF[1]}" r="14"/>'
-          + ftext(293, 446, "%%neighbours%%") + '</g>')
-    horde = [DP, (400, 664), (350, 640), (298, 616), (270, 600)]
+          + route([GN, (437, 360), IF], "gold") +
+          f'<circle class="pulse-ring" cx="{GN[0]}" cy="{GN[1]}" r="12"/>'
+          f'<circle class="pulse-ring d2" cx="{IF[0]}" cy="{IF[1]}" r="12"/>'
+          + ftext(437, 344, "%%neighbours%%") + '</g>')
+    horde = [DP, (515, 538), (488, 524), (462, 510), SW]
     l2 = ('<g class="ly" data-ly="2">' + route(horde, "horde", "horde") +
-          f'<circle class="ruin" cx="{SW[0]}" cy="{SW[1]}" r="16"/>'
-          + ftext(262, 628, "%%swFalls%%") + ftext(372, 668, "%%hordeInvasion%%", "ft dim") + '</g>')
+          f'<circle class="ruin" cx="{SW[0]}" cy="{SW[1]}" r="14"/>'
+          + ftext(SW[0], SW[1] + 30, "%%swFalls%%") + ftext(520, 575, "%%hordeInvasion%%", "ft dim") + '</g>')
     l3 = ('<g class="ly" data-ly="3">'
-          + route([QT, (300, 96), (244, 142)], "al", "al")
-          + route([IF, (330, 400), (292, 300), (240, 164)], "al", "al")
-          + route([GN, (238, 380), (218, 262), (228, 166)], "al", "al")
-          + route([SW, (190, 566), (148, 430), (128, 300), (170, 200), (222, 158)], "al dash", "al")
-          + f'<circle class="banner" cx="{LD[0]}" cy="{LD[1]}" r="18"/>'
-          + ftext(232, 122, "Alliance of Lordaeron") + ftext(126, 380, "%%swRefugees%%", "ft dim") + '</g>')
-    push = [(236, 176), (250, 300), (300, 400), (350, 500), (392, 572), (426, 664)]
+          + route([QT, (565, 105), (510, 135), (482, 150)], "al", "al")
+          + route([IF, (472, 320), (490, 240), (476, 172)], "al", "al")
+          + route([GN, (412, 318), (424, 236), (458, 172)], "al", "al")
+          + route([SW, (404, 478), (382, 400), (386, 300), (420, 220), (456, 166)], "al dash", "al")
+          + f'<circle class="banner" cx="{LD[0]}" cy="{LD[1]}" r="16"/>'
+          + ftext(LD[0], LD[1] - 26, "Alliance of Lordaeron") + ftext(372, 400, "%%swRefugees%%", "ft dim", "end") + '</g>')
+    push = [(470, 172), (482, 260), (470, 330), (482, 420), (510, 490), (532, 532)]
     l4 = ('<g class="ly" data-ly="4">' + route(push, "al wide", "al")
-          + route([IF, (362, 520), (390, 560)], "al")
-          + f'<circle class="banner gold" cx="{DP[0]}" cy="{DP[1]}" r="18"/>'
-          + ftext(438, 724, "%%toPortal%%") + ftext(196, 300, "%%allianceOffensive%%", "ft dim") + '</g>')
-    west = [(146, 300), (90, 300), (22, 300)]
+          + route([IF, (482, 408), (500, 446)], "al")
+          + f'<circle class="banner gold" cx="{DP[0]}" cy="{DP[1]}" r="16"/>'
+          + ftext(DP[0], DP[1] + 32, "%%toPortal%%") + ftext(498, 262, "%%allianceOffensive%%", "ft dim", "start") + '</g>')
+    west = [(392, 300), (340, 300), (286, 300)]
     l5 = ('<g class="ly" data-ly="5">'
-          f'<circle class="tox-ring" cx="{GN[0]}" cy="{GN[1]}" r="26"/>'
-          + ftext(264, 432, "%%gnCrisis%%")
+          f'<circle class="tox-ring" cx="{GN[0]}" cy="{GN[1]}" r="22"/>'
+          + ftext(GN[0] - 6, GN[1] + 34, "%%gnCrisis%%")
           + route(west, "mute dash", "mute")
-          + ftext(20, 286, "Kalimdor · Mount Hyjal", "ft dim", "start")
-          + f'<circle class="scourge" cx="{LD[0]}" cy="{LD[1]}" r="18"/>'
-          + ftext(232, 188, "Scourge") + '</g>')
+          + ftext(286, 286, "Kalimdor · Mount Hyjal", "ft dim", "start")
+          + f'<circle class="scourge" cx="{LD[0]}" cy="{LD[1]}" r="16"/>'
+          + ftext(LD[0], LD[1] + 32, "Scourge") + '</g>')
 
     pins = (pin(*QT, "Quel'Thalas", "r") + pin(*LD, "Lordaeron", "r") + pin(*IF, "Ironforge", "r", "pin-if") +
             pin(*GN, "Gnomeregan", "l", "pin-gn") + pin(*SW, "Stormwind", "l", "pin-sw") +
             pin(*DP, "Dark Portal", "r", "pin-dp"))
-    rl = (ftext(320, 250, "LORDAERON", "rl") + ftext(400, 526, "KHAZ MODAN", "rl") +
-          ftext(300, 662, "STORMWIND", "rl"))
-    cams = {1: [196, 380, 300, 220], 2: [200, 520, 290, 200], 3: [110, 30, 330, 600], 4: [120, 110, 360, 620], 5: [0, 0, 500, 760]}
-    return (f'<svg id="ek" class="map" viewBox="196 380 300 220" data-cams=\'{json.dumps(cams, separators=(",", ":"))}\' role="img" '
-            f'aria-label="%%ekAria%%">'
-            f'<defs>{grid_def("gEK")}</defs>'
-            f'<rect x="-400" y="-400" width="1400" height="1600" fill="url(#gEK)"/>'
-            f'<path class="halo" d="{EK_D}"/><path class="land" d="{EK_D}"/><path class="km" d="{KM_D}"/>'
-            f'<g>{g_mt}</g>{rl}{l1}{l2}{l3}{l4}{l5}{pins}</svg>')
-
+    cams = {1: [355, 305, 200, 150], 2: [370, 430, 240, 180], 3: [330, 20, 340, 560], 4: [330, 70, 340, 560],
+            5: [250, 30, 440, 620]}
+    c1 = " ".join(str(n) for n in cams[1])
+    return (f'<svg id="ek" class="map" viewBox="{c1}" data-cams=\'{json.dumps(cams, separators=(",", ":"))}\' role="img" '
+            f'aria-label="%%ekAria%%">{EK_IMG}{l1}{l2}{l3}{l4}{l5}{pins}</svg>')
 
 
 # ---------- Dun Morogh ----------
-DM_PTS = [(60, 190), (110, 120), (200, 92), (300, 84), (410, 70), (520, 76), (630, 92), (720, 135),
-          (760, 215), (735, 295), (660, 350), (540, 382), (420, 392), (300, 388), (190, 365), (110, 320),
-          (62, 260)]
-
-
 def dm_svg():
-    r = random.Random(9)
-    poly = jitter_closed(DM_PTS, 9, r)
-    D = smooth_closed(poly)
-    cx = sum(p[0] for p in DM_PTS) / len(DM_PTS)
-    cy = sum(p[1] for p in DM_PTS) / len(DM_PTS)
-    glyphs = []
-    n = len(DM_PTS)
-    for _ in range(140):
-        i = r.randrange(n)
-        a, b = DM_PTS[i], DM_PTS[(i + 1) % n]
-        t = r.random()
-        x, y = a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t
-        vx, vy = x - cx, y - cy
-        L = math.hypot(vx, vy)
-        d = r.uniform(4, 40)
-        x, y = x + vx / L * d, y + vy / L * d
-        if not (8 < x < 792 and 10 < y < 432):
-            continue
-        if any(math.hypot(x - gx, y - gy) < 16 for gx, gy, _s in glyphs):
-            continue
-        glyphs.append((x, y, r.uniform(.9, 1.5)))
-    # the Ironforge mountain
-    for _ in range(40):
-        a = r.uniform(math.pi * 1.05, math.pi * 1.95)
-        rad = r.uniform(26, 62)
-        x, y = 588 + math.cos(a) * rad, 150 + math.sin(a) * rad * .8
-        if any(math.hypot(x - gx, y - gy) < 15 for gx, gy, _s in glyphs):
-            continue
-        glyphs.append((x, y, r.uniform(1.1, 1.6)))
-    g_mt = "".join(f'<path class="mt" d="{mtn(x, y, s)}"/>' for x, y, s in glyphs)
-    snow = []
-    while len(snow) < 70:
-        x, y = r.uniform(70, 750), r.uniform(80, 390)
-        if in_poly(x, y, DM_PTS):
-            snow.append(f'<circle cx="{f(x)}" cy="{f(y)}" r="{r.choice([1, 1.3, 1.7])}"/>')
-
-    GN, NT, KH, IF, CV = (118, 198), (180, 262), (425, 255), (588, 148), (330, 350)
-    exile = [GN, (190, 214), (270, 236), (350, 252), KH, (495, 226), (548, 184), (580, 156)]
-    back = [(584, 160), (566, 220), (500, 292), (400, 312), (290, 296), (196, 268)]
+    """The Dun Morogh game map with the exile and Operation Gnomeregan routes drawn on top."""
+    GN, NT, KH, IF, CV = (225, 240), (250, 302), (448, 345), (445, 215), (282, 470)
+    exile = [GN, (262, 268), (338, 292), (410, 318), KH, (474, 300), (452, 250), (447, 224)]
+    back = [(452, 226), (470, 290), (430, 362), (350, 360), (290, 330), (258, 310)]
     ex_d, bk_d = smooth_open(exile), smooth_open(back)
-    road = smooth_open([(28, 214), GN, (190, 214), (270, 236), (350, 252), KH, (495, 226), (548, 184), IF,
-                        (660, 196), (770, 236)])
-
-    routes = (
-        f'<defs><mask id="mEx" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="440">'
-        f'<path d="{ex_d}" pathLength="1" stroke="#fff" stroke-width="18" fill="none" stroke-dasharray="1 1" stroke-dashoffset="0" data-r="0.05,0.5"/></mask>'
-        f'<mask id="mBk" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="440">'
-        f'<path d="{bk_d}" pathLength="1" stroke="#fff" stroke-width="18" fill="none" stroke-dasharray="1 1" stroke-dashoffset="0" data-r="0.55,0.95"/></mask>'
-        f'<radialGradient id="tox"><stop offset="0" stop-color="#7bdc5c" stop-opacity=".55"/>'
-        f'<stop offset=".6" stop-color="#3f8a3a" stop-opacity=".25"/><stop offset="1" stop-color="#3f8a3a" stop-opacity="0"/></radialGradient>'
-        f'{grid_def("gDM", 40)}</defs>'
-        f'<path class="road" d="{road}"/>'
-        f'<path class="rt rage dashed" d="{ex_d}" mask="url(#mEx)"/>'
-        f'<path class="rt gold dashed" d="{bk_d}" mask="url(#mBk)"/>'
-    )
+    defs = (f'<defs><mask id="mEx" maskUnits="userSpaceOnUse" x="0" y="0" width="1002" height="668">'
+            f'<path d="{ex_d}" pathLength="1" stroke="#fff" stroke-width="18" fill="none" stroke-dasharray="1 1" stroke-dashoffset="0" data-r="0.05,0.5"/></mask>'
+            f'<mask id="mBk" maskUnits="userSpaceOnUse" x="0" y="0" width="1002" height="668">'
+            f'<path d="{bk_d}" pathLength="1" stroke="#fff" stroke-width="18" fill="none" stroke-dasharray="1 1" stroke-dashoffset="0" data-r="0.55,0.95"/></mask>'
+            f'<radialGradient id="tox"><stop offset="0" stop-color="#7bdc5c" stop-opacity=".6"/>'
+            f'<stop offset=".6" stop-color="#3f8a3a" stop-opacity=".28"/><stop offset="1" stop-color="#3f8a3a" stop-opacity="0"/></radialGradient></defs>')
+    routes = (f'<path class="rt rage dashed" d="{ex_d}" mask="url(#mEx)"/>'
+              f'<path class="rt gold dashed" d="{bk_d}" mask="url(#mBk)"/>')
     heads = (f'<g data-show="0.5">{head(*exile[-1], end_angle(exile), "rage")}</g>'
              f'<g data-show="0.95">{head(*back[-1], end_angle(back), "gold")}</g>')
     pins = (pin(*GN, "Gnomeregan", "t", "", 1) +
             f'<g data-show="0.93">{pin(*NT, "New Tinkertown", "b", "", 2)}</g>' +
             pin(*KH, "Kharanos", "b", "", 3) +
-            f'<g data-show="0.48">{pin(*IF, "Ironforge · Tinker Town", "r", "", 4)}</g>' +
+            f'<g data-show="0.48">{pin(*IF, "Ironforge · Tinker Town", "t", "", 4)}</g>' +
             pin(*CV, "Coldridge Valley", "b", "", 5))
-    labels = (ftext(400, 120, "DUN MOROGH", "rl") + ftext(252, 154, "Iceflow Lake", "ft lake") +
-              ftext(792, 214, "Loch Modan →", "ft dim", "end") +
-              ftext(296, 222, "%%exile%%", "ft rage") + ftext(420, 336, "Operation Gnomeregan", "ft goldt"))
-    return (f'<svg class="map numbered" viewBox="0 0 800 440" role="img" '
-            f'aria-label="%%dmAria%%">'
-            f'<rect width="800" height="440" fill="url(#gDM)"/>'
-            f'{routes.split("</defs>")[0]}</defs>'
-            f'<path class="halo" d="{D}"/><path class="land snowy" d="{D}"/>'
-            f'<g class="snowdots">{"".join(snow)}</g>'
-            f'<ellipse class="lakef" cx="252" cy="150" rx="40" ry="19"/>'
-            f'<circle class="toxzone" cx="{GN[0]}" cy="{GN[1]}" r="52" fill="url(#tox)"/>'
-            f'<g>{g_mt}</g>'
-            f'<circle class="ttown" cx="{IF[0]}" cy="{IF[1]}" r="20"/>'
-            f'{routes.split("</defs>")[1]}{labels}{heads}{pins}</svg>')
-
+    labels = (ftext(330, 262, "%%exile%%", "ft rage") + ftext(380, 392, "Operation Gnomeregan", "ft goldt"))
+    return (f'<svg class="map numbered" viewBox="90 120 820 420" role="img" aria-label="%%dmAria%%">{defs}{DM_IMG}'
+            f'<circle class="toxzone" cx="{GN[0]}" cy="{GN[1]}" r="48" fill="url(#tox)"/>'
+            f'<circle class="ttown" cx="{IF[0]}" cy="{IF[1]}" r="18"/>'
+            f'{routes}{labels}{heads}{pins}</svg>')
 
 
 def world_svg():

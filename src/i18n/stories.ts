@@ -21,7 +21,7 @@ export const GNOME_ART_LABELS: Record<Lang, Record<string, string>> = {
     sWorks: 'Atölye',
     sLower: 'Alt kat',
     sTunnels: 'Tüneller',
-    ekAria: 'Eastern Kingdoms şematik haritası: Lordaeron kuzeyde, Khaz Modan ortada, Stormwind ve Dark Portal güneyde',
+    ekAria: 'Eastern Kingdoms haritası: Lordaeron kuzeyde, Khaz Modan ortada, Stormwind ve Dark Portal güneyde',
     dmAria: 'Dun Morogh haritası: Gnomeregan batıda, Ironforge kuzeydoğuda; sürgün ve dönüş yolları',
     worldAria: 'Azeroth ve Outland şematik haritası: Ulduar, Ironforge, Fizzcrank Airstrip, Toshley’s Station',
     gearsAria: 'Birbirine geçen iki dişli: büyük demir Dwarf dişlisi ve küçük bronz Gnome dişlisi',
@@ -42,7 +42,7 @@ export const GNOME_ART_LABELS: Record<Lang, Record<string, string>> = {
     sWorks: 'Works',
     sLower: 'Lower',
     sTunnels: 'Tunnels',
-    ekAria: 'Schematic map of the Eastern Kingdoms: Lordaeron in the north, Khaz Modan in the middle, Stormwind and the Dark Portal in the south',
+    ekAria: 'Map of the Eastern Kingdoms: Lordaeron in the north, Khaz Modan in the middle, Stormwind and the Dark Portal in the south',
     dmAria: 'Map of Dun Morogh: Gnomeregan in the west, Ironforge in the north-east; the routes into exile and back',
     worldAria: 'Schematic map of Azeroth and Outland: Ulduar, Ironforge, Fizzcrank Airstrip, Toshley’s Station',
     gearsAria: 'Two meshing gears: a large iron Dwarf gear and a small bronze Gnome gear',
@@ -65,7 +65,7 @@ export const STORY_UI: Record<
     read: 'Hikayeyi oku',
     soon: 'Yakında',
     notesTitle: 'Not',
-    notesText: 'Haritalar ve çizimler bu sayfa için hazırlanmış şematik illüstrasyonlardır; ölçek ve konumlar temsilidir.',
+    notesText: 'Çizimler bu sayfa için hazırlanmış şematik illüstrasyonlardır; oyun haritalarındaki işaretlerin konumu yaklaşıktır.',
     imagesTitle: 'Görseller',
   },
   en: {
@@ -78,7 +78,7 @@ export const STORY_UI: Record<
     read: 'Read the story',
     soon: 'Coming soon',
     notesTitle: 'Note',
-    notesText: 'The maps and drawings are schematic illustrations made for this page; scale and positions are approximate.',
+    notesText: 'The drawings are schematic illustrations made for this page; the markers on the game maps are placed approximately.',
     imagesTitle: 'Images',
   },
 };
@@ -239,7 +239,7 @@ export const GNOME_STORY: Record<Lang, GnomeStory> = {
         'High Tinker Gelbin Mekkatorque, danışmanı Sicco Thermaplugg’un önerisiyle şehri radyasyonla doldurma kararı verdi. Trogg’lar durmadı; zehir gnome’ları vurdu. Thermaplugg sonradan ihanet etti ve şehirde kalan radyasyonlu gnome’ların başına geçti.',
       exileLabel: 'Sürgün ve dönüş',
       exileTitle: 'Gnomeregan’dan Ironforge’a, sonra yeniden kapıya',
-      mapCaption: 'Dun Morogh, şematik harita.',
+      mapCaption: 'Dun Morogh.',
       exileKey: 'Sürgün yolu',
       legend: [
         { name: 'Gnomeregan', text: 'Eski başkent; radyasyonla kaybedildi' },
@@ -287,7 +287,7 @@ export const GNOME_STORY: Record<Lang, GnomeStory> = {
       text: 'Kayıplarından ders çıkaran, pes etmeyen ve keşfetmeyi bırakmayan bir halk. Gnomeregan’ın kapısında hâlâ ışık yanıyor.',
       nextText: 'Khaz Modan’ın diğer yarısı: Ironforge, Titan mirası ve üç klanın hikayesi.',
     },
-    images: 'Ironforge görüntüsü WoW Forever’dan. Gelbin Mekkatorque, Sicco Thermaplugg ve Troglodyte görselleri Blizzard Entertainment’a aittir (Troglodyte model sayfası: Matthew McKeown).',
+    images: 'Ironforge görüntüsü ve haritalar WoW Forever’dan. Mechagnome, Gelbin Mekkatorque, Sicco Thermaplugg ve Troglodyte görselleri Blizzard Entertainment’a aittir (Troglodyte model sayfası: Matthew McKeown).',
   },
   en: {
     metaDescription: 'The gnomes’ story: Titan origins, kinship with the dwarves, the great wars, the fall of Gnomeregan and today.',
@@ -389,7 +389,7 @@ export const GNOME_STORY: Record<Lang, GnomeStory> = {
         'High Tinker Gelbin Mekkatorque, on the advice of Sicco Thermaplugg, decided to flood the city with radiation. The troggs did not stop; the poison struck the gnomes. Thermaplugg later turned traitor and took command of the irradiated gnomes left in the city.',
       exileLabel: 'Exile and return',
       exileTitle: 'From Gnomeregan to Ironforge, then back to the gate',
-      mapCaption: 'Dun Morogh, schematic map.',
+      mapCaption: 'Dun Morogh.',
       exileKey: 'Route into exile',
       legend: [
         { name: 'Gnomeregan', text: 'Former capital, lost to radiation' },
@@ -437,7 +437,7 @@ export const GNOME_STORY: Record<Lang, GnomeStory> = {
       text: 'A people who learn from their losses, never give up and never stop exploring. A light still burns at the gate of Gnomeregan.',
       nextText: 'The other half of Khaz Modan: Ironforge, the Titan legacy and the story of three clans.',
     },
-    images: 'Ironforge screenshot from WoW Forever. The Mechagnome image, Gelbin Mekkatorque, Sicco Thermaplugg and troglodyte images belong to Blizzard Entertainment (troglodyte model sheet: Matthew McKeown).',
+    images: 'Ironforge screenshot and maps from WoW Forever. The Mechagnome image, Gelbin Mekkatorque, Sicco Thermaplugg and troglodyte images belong to Blizzard Entertainment (troglodyte model sheet: Matthew McKeown).',
   },
 };
 
