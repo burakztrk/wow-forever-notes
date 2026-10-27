@@ -1,6 +1,7 @@
 ---
 import GlossaryRow from '../../../components/GlossaryRow.astro';
 import PatchNotes from '../../../components/PatchNotes.astro';
+import StoryBanner from '../../../components/stories/StoryBanner.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { fill, ui } from '../../../i18n';
@@ -42,6 +43,8 @@ const tips = tooltipPayload([...racials.map((e) => e.id), ...patchNoteGlossaryId
       </div>
     </div>
   </header>
+
+  <StoryBanner lang={lang} raceId={race.id} />
 
   <PatchNotes lang={lang} notes={notes} empty={t.noPatchNotes} />
 

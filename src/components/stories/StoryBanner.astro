@@ -1,0 +1,56 @@
+---
+// Wide banner on a race page that links to the race's story (src/pages/[lang]/stories/).
+import type { Lang } from '../../config';
+import { ui } from '../../i18n';
+import {
+  DWARF_STORY,
+  GNOME_STORY,
+  HUMAN_STORY,
+  NIGHT_ELF_STORY,
+  ORC_STORY,
+  SKYBORNE_STORY,
+  TAUREN_STORY,
+  TROLL_STORY,
+  UNDEAD_STORY,
+} from '../../i18n/stories';
+import { storyRace } from '../../lib/stories/races';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+  raceId: string;
+}
+
+const { lang, raceId } = Astro.props;
+const t = ui(lang);
+const entry = storyRace(raceId);
+const stories = {
+  gnome: GNOME_STORY,
+  dwarf: DWARF_STORY,
+  human: HUMAN_STORY,
+  'night-elf': NIGHT_ELF_STORY,
+  orc: ORC_STORY,
+  troll: TROLL_STORY,
+  tauren: TAUREN_STORY,
+  undead: UNDEAD_STORY,
+  skyborne: SKYBORNE_STORY,
+} as const;
+const story = entry?.slug ? stories[entry.slug as keyof typeof stories]?.[lang] : undefined;
+const faction = { a: 'Alliance', h: 'Horde', ah: 'Alliance · Horde' };
+---
+
+{
+  entry && story && entry.cover && (
+    <a class="story-banner" href={withBase(`/${lang}/stories/${entry.slug}/`)}>
+      <img class="story-banner-bg" src={withBase(entry.cover.src)} alt="" loading="lazy" style={`object-position:${entry.cover.position}`} />
+      <span class="story-banner-text">
+        <span class="story-banner-over">
+          {t.navStories} · <span lang="en">{faction[entry.faction]}</span>
+        </span>
+        <span class="story-banner-name" lang="en">{entry.name}</span>
+        <span class="story-banner-lead">{story.lead}</span>
+        <span class="story-banner-cta">{t.storiesRead}</span>
+      </span>
+    </a>
+  )
+}
