@@ -61,13 +61,13 @@ export interface TreeTip {
   more?: string; // "+9 more"
 }
 
-// A free-form card: items, camp objects and Legacy perks. All text is built at
-// build time in the page language (item lines stay in the client's English,
-// except the Legacy rewards' Turkish lines).
+// A free-form card: items, camp objects, Legacy perks and the race stories' lore
+// names. All text is built at build time in the page language (item lines stay in
+// the client's English, except the Legacy rewards' Turkish lines).
 export interface CardTip {
   name: string;
   icon?: string;
-  kind: 'item' | 'camp' | 'perk';
+  kind: 'item' | 'camp' | 'perk' | 'lore';
   quality?: number; // item name colour, 0 poor … 5 legendary
   sub?: string;
   pill?: string;
