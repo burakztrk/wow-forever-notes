@@ -1,0 +1,398 @@
+---
+// Race story: Gnome. Copy in src/i18n/stories.ts, drawings in
+// src/lib/stories/gnome-art.ts (generated), scroll effects in src/scripts/story.ts,
+// styles in src/styles/stories.css (all scoped under .lore).
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { LANGS, type Lang } from '../../../config';
+import { ui } from '../../../i18n';
+import { GNOME_ART_LABELS, GNOME_STORY } from '../../../i18n/stories';
+import { fillArt } from '../../../lib/stories/art';
+import { GNOME_ART } from '../../../lib/stories/gnome-art';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = ui(lang);
+const s = GNOME_STORY[lang];
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/gnome/`)])) as Record<Lang, string>;
+const base = withBase('/');
+const art = (svg: string) => fillArt(svg, GNOME_ART_LABELS[lang], base);
+const img = (name: string) => withBase(`/stories/gnome/${name}`);
+
+const chapters = [
+  { id: 'origin', num: 'I', name: s.chapters.origin },
+  { id: 'kinship', num: 'II', name: s.chapters.kinship },
+  { id: 'wars', num: 'III', name: s.chapters.wars },
+  { id: 'fall', num: 'IV', name: s.chapters.fall },
+  { id: 'today', num: 'V', name: s.chapters.today },
+];
+const otherRaces: [string, 'a' | 'h'][] = [
+  ['Dwarf', 'a'],
+  ['Human', 'a'],
+  ['Night Elf', 'a'],
+  ['Orc', 'h'],
+  ['Troll', 'h'],
+  ['Tauren', 'h'],
+  ['Undead', 'h'],
+];
+const stageIcons = [
+  '<circle cx="32" cy="32" r="22"/><path d="M32 14 47.6 41H16.4Z"/><circle cx="32" cy="32" r="3.5" fill="currentColor" stroke="none"/><path d="M32 4v6M32 54v6M4 32h6M54 32h6"/>',
+  '<rect x="16" y="20" width="32" height="30" rx="7"/><rect x="21" y="28" width="22" height="7" rx="3.5"/><path d="M32 20v-8"/><circle cx="32" cy="9" r="3"/><path d="M16 32h-5v9h5M48 32h5v9h-5"/><path d="M25 44h14M26 41v3M32 41v3M38 41v3"/>',
+  '<path d="M32 20h-9a7 7 0 0 0-7 7v16a7 7 0 0 0 7 7h9"/><path d="M32 20c9 0 16 5.5 16 15s-7 15-16 15"/><path d="M32 17l-3 7 4 5-4 6 4 6-3 9"/><rect x="19.5" y="28" width="9" height="7" rx="3"/><circle cx="40" cy="31" r="2.2" fill="currentColor" stroke="none"/><path d="M37 42c2.5 2 5 2 7 0"/><circle cx="52" cy="17" r="1.6" fill="currentColor" stroke="none"/><circle cx="57" cy="24" r="1.1" fill="currentColor" stroke="none"/><circle cx="47" cy="11" r="1.1" fill="currentColor" stroke="none"/>',
+  '<circle cx="32" cy="37" r="14"/><path d="M18.6 34 6 26l9.5 14M45.4 34 58 26l-9.5 14"/><circle cx="26" cy="28" r="5"/><circle cx="38" cy="28" r="5"/><path d="M31 28h2"/><path d="M23 23c-2-6 3-10 6.5-8 .5-4 6.5-5 8-1 3.5-2 7.5 1 5 6"/><path d="M30 37.5c1 1.8 3 1.8 4 0"/><path d="M27 44c3 2 7 2 10 0"/>',
+];
+const techIcons = [
+  '<ellipse cx="21" cy="19" rx="10" ry="6.5"/><path d="M29 15L35 8"/><path d="M33 5.5h8l-2.5 3H33Z"/><path d="M11 18 5 15"/><path d="M17 25 13 32l5 9h-5"/><path d="M25 25l4 7-5 9h6"/>',
+  '<path d="M6 9h36"/><path d="M24 9v6"/><rect x="13" y="15" width="20" height="12" rx="6"/><path d="M33 21h7l3-4"/><path d="M17 27v6M29 27v6M12 33h22"/><circle cx="19" cy="21" r="2"/>',
+  '<rect x="5" y="20" width="32" height="14" rx="7"/><path d="M17 20v-6h10v6"/><path d="M22 14V8h5"/><path d="M37 27h4M41 22v10"/><circle cx="13" cy="27" r="2"/><circle cx="21" cy="27" r="2"/><circle cx="29" cy="27" r="2"/>',
+  '<rect x="5" y="27" width="34" height="10" rx="5"/><circle cx="11" cy="32" r="2"/><circle cx="18" cy="32" r="2"/><circle cx="25" cy="32" r="2"/><circle cx="32" cy="32" r="2"/><path d="M10 27v-5h20v5"/><path d="M15 22v-5h10v5"/><path d="M25 19h17"/>',
+  '<path d="M4 30l7-6h21l2 2h10v4H32l-3 6h-7l1-6H11Z"/><path d="M15 19h12M18 19v5M24 19v5"/>',
+  '<circle cx="24" cy="24" r="17" stroke-dasharray="3 4"/><path d="M24 9l3.2 11.8L39 24l-11.8 3.2L24 39l-3.2-11.8L9 24l11.8-3.2Z"/>',
+];
+const placeIcons = [
+  { box: '0 0 40 40', svg: GNOME_ART.icons.gnomeregan },
+  { box: '0 0 40 40', svg: '<path d="M3 36L20 6L37 36Z"/><path d="M15 36v-7a5 5 0 0 1 10 0v7"/><path d="M12 24h3M25 24h3"/>' },
+  { box: '0 0 40 44', svg: GNOME_ART.icons.newTinkertown },
+];
+const anvil = '<path d="M5 14h27l11-3v6c0 3-3 5-7 5h-6c-3 0-5 2-5 5v3h6v5H17v-5h6v-3c0-3-2-5-5-5h-3c-6 0-10-3-10-8Z"/>';
+const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
+---
+
+<BaseLayout title={`Gnome · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
+  <div class="lore" id="lore">
+    <header class="hdr">
+      <div class="wrap hdr-in">
+        <a class="brand" href={withBase(`/${lang}/stories/`)}
+          ><svg viewBox="0 0 24 24" aria-hidden="true"><path d={GNOME_ART.icons.brandCog} /></svg><span>{t.storiesTitle}</span></a
+        >
+        <nav class="chapnav" aria-label={s.chapter}>
+          {
+            chapters.map((c) => (
+              <a href={`#${c.id}`} data-ch={c.id} aria-label={`${s.chapter} ${c.num}: ${c.name}`}>
+                {c.num}
+                <span class="nm">{c.name}</span>
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+      <div class="prog" aria-hidden="true"></div>
+    </header>
+
+    <section class="hero" aria-labelledby="h-gnome">
+      <div class="hero-bg" aria-hidden="true"><img src={img('ironforge.webp')} alt="" width="1767" height="863" /></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="sil" aria-hidden="true"><img src={img('mekkatorque.webp')} alt="" width="300" height="300" /></div>
+      <canvas id="snow" aria-hidden="true"></canvas>
+      <div class="wrap hero-in">
+        <div class="hero-col">
+          <div class="races" role="list" aria-label={s.races}>
+            <span class="ov">{s.races}</span>
+            <span class="chip sel" role="listitem" aria-current="page"><i></i>Gnome</span>
+            {
+              otherRaces.map(([name, faction]) => (
+                <span class:list={['chip', 'off', { h: faction === 'h' }]} role="listitem" title={s.outro.soon}>
+                  <i />
+                  {name}
+                </span>
+              ))
+            }
+          </div>
+          <div class="hero-copy">
+            <p class="ov">{s.overline} · <span lang="en">Alliance</span></p>
+            <h1 class="h1" id="h-gnome">Gnome</h1>
+            <p class="lead">{s.lead}</p>
+            <a class="cue" href="#origin">{s.cue} <b aria-hidden="true">↓</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="Gnome">
+      <dl class="wrap">
+        {
+          s.facts.map((fact) => (
+            <div>
+              <dt>{fact.label}</dt>
+              <dd>
+                {fact.value}
+                {fact.extra && <span> · {fact.extra}</span>}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <!-- I · origin -->
+    <section class="chap" id="origin" aria-labelledby="h-origin">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">I</div>
+          <div>
+            <p class="ov">{s.chapter} I · {s.chapters.origin}</p>
+            <h2 class="h2" id="h-origin">{s.origin.title} <span lang="en" class="title-note">{s.origin.titleNote}</span></h2>
+          </div>
+        </header>
+        <div class="prose rv">{s.origin.paragraphs.map((p) => <p>{p}</p>)}</div>
+        <div class="evo-wrap" id="evo" data-p=".88,.38">
+          <ol class="evo" aria-label={s.origin.stagesLabel}>
+            <li class="evo-line" aria-hidden="true"><i></i></li>
+            {
+              s.origin.stages.map((stage, i) => (
+                <li class="stage rv" style={delay(i)}>
+                  <div class="ico">
+                    <svg viewBox="0 0 64 64" aria-hidden="true" set:html={stageIcons[i]} />
+                  </div>
+                  <div class="t">
+                    <h3>{stage.name}</h3>
+                    <p>{stage.text}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+          <div class="mf" aria-hidden="true"><span>{s.origin.metal}</span><div class="mf-bar"><b></b></div><span>{s.origin.flesh}</span></div>
+        </div>
+        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.origin.note}</p></aside>
+      </div>
+    </section>
+
+    <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={GNOME_ART.icons.sepCog} /></svg></div>
+
+    <!-- II · kinship -->
+    <section class="chap" id="kinship" aria-labelledby="h-kinship">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">II</div>
+          <div><p class="ov">{s.chapter} II · {s.chapters.kinship}</p><h2 class="h2" id="h-kinship">{s.kinship.title}</h2></div>
+        </header>
+        <div class="split">
+          <div class="prose rv">{s.kinship.paragraphs.map((p) => <p>{p}</p>)}</div>
+          <figure class="gears rv" style="--d:.1s" set:html={art(GNOME_ART.gears)} />
+        </div>
+        <div class="recipe">
+          <div class="rc rv">
+            <div class="ic"><svg viewBox="0 0 48 48" aria-hidden="true" set:html={anvil} /></div>
+            <h3 class="h3">Dwarf</h3>
+            <p>{s.kinship.dwarf}</p>
+          </div>
+          <div class="op" aria-hidden="true">+</div>
+          <div class="rc rv" style="--d:.08s">
+            <div class="ic"><svg viewBox="0 0 48 48" aria-hidden="true" set:html={GNOME_ART.icons.cog} /></div>
+            <h3 class="h3">Gnome</h3>
+            <p>{s.kinship.gnome}</p>
+          </div>
+          <div class="op" aria-hidden="true">=</div>
+          <div class="rc res rv" style="--d:.16s">
+            <p class="ov">{s.kinship.resultLabel}</p>
+            <h3 class="h3">{s.kinship.resultTitle}</h3>
+            <div class="tags">{s.kinship.results.map((r) => <span class="tag">{r}</span>)}</div>
+          </div>
+        </div>
+        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.kinship.note}</p></aside>
+      </div>
+    </section>
+
+    <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={GNOME_ART.icons.sepCog} /></svg></div>
+
+    <!-- III · wars -->
+    <section class="chap" id="wars" aria-labelledby="h-wars">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">III</div>
+          <div><p class="ov">{s.chapter} III · {s.chapters.wars}</p><h2 class="h2" id="h-wars">{s.wars.title}</h2></div>
+        </header>
+        <div class="prose rv"><p>{s.wars.intro}</p></div>
+        <div class="story" id="story" data-step="1">
+          <ol class="steps">
+            {
+              s.wars.steps.map((step, i) => (
+                <li class:list={['step', { active: i === 0 }]} data-era={step.era} data-title={step.title}>
+                  <p class="ov" lang="en">{step.era}</p>
+                  <h3 class="h3">{step.title}</h3>
+                  <p>{step.text}</p>
+                  <span class:list={['status', step.tone]}>
+                    <i />
+                    {step.status}
+                  </span>
+                </li>
+              ))
+            }
+          </ol>
+          <figure class="stage-map" aria-label={s.wars.mapLabel}>
+            <figcaption class="map-cap">
+              <span class="t"
+                ><span class="ov" id="capEra" lang="en">{s.wars.steps[0].era}</span><span id="capTitle">{s.wars.steps[0].title}</span></span
+              >
+              <span class="dots" aria-hidden="true">{s.wars.steps.map((_, i) => <i class:list={{ on: i === 0 }} />)}</span>
+            </figcaption>
+            <Fragment set:html={art(GNOME_ART.ek)} />
+          </figure>
+        </div>
+        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.wars.note}</p></aside>
+      </div>
+    </section>
+
+    <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={GNOME_ART.icons.sepCog} /></svg></div>
+
+    <!-- IV · the fall -->
+    <section class="chap" id="fall" aria-labelledby="h-fall">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">IV</div>
+          <div><p class="ov">{s.chapter} IV · {s.chapters.fall}</p><h2 class="h2" id="h-fall">{s.fall.title}</h2></div>
+        </header>
+        <div class="prose rv"><p>{s.fall.intro}</p></div>
+        <div class="scene">
+          <figure class="map-fig rv" id="scene" data-p=".88,.12">
+            <Fragment set:html={art(GNOME_ART.scene)} />
+            <figcaption>{s.fall.sceneCaption}</figcaption>
+          </figure>
+          <div class="stat rv" style="--d:.1s">
+            <div class="stat-bg" aria-hidden="true"><img src={img('thermaplugg.webp')} alt="" width="290" height="322" loading="lazy" /></div>
+            <p class="ov stat-ov">{s.fall.statLabel}</p>
+            <p class="stat-n" aria-label={s.fall.statAria}>{s.fall.statPrefix}<span class="count" data-to="80">80</span>{s.fall.statSuffix}</p>
+            <p set:html={s.fall.statText} />
+            <p class="small">{s.fall.statDetail}</p>
+          </div>
+        </div>
+
+        <div class="sub rv"><p class="ov">{s.fall.exileLabel}</p><h3 class="h3">{s.fall.exileTitle}</h3></div>
+        <figure class="map-fig rv" id="dm" data-p=".9,.22">
+          <Fragment set:html={art(GNOME_ART.dm)} />
+          <figcaption>
+            <span>{s.fall.mapCaption}</span>
+            <span class="keys"
+              ><span class="key rage"><i></i>{s.fall.exileKey}</span><span class="key"><i></i>Operation Gnomeregan</span></span
+            >
+          </figcaption>
+          <ol class="legend" style="--cols:5">
+            {
+              s.fall.legend.map((item, i) => (
+                <li>
+                  <span class="lk">{i + 1}</span>
+                  <span>
+                    <b>{item.name}</b>
+                    {item.text}
+                  </span>
+                </li>
+              ))
+            }
+          </ol>
+        </figure>
+
+        <div class="trio">
+          {
+            s.fall.places.map((place, i) => (
+              <article class="card rv" style={delay(i)}>
+                <div class="ic">
+                  <svg viewBox={placeIcons[i].box} aria-hidden="true" set:html={placeIcons[i].svg} />
+                </div>
+                <p class="ov">{place.tag}</p>
+                <h3 class="h3">{place.name}</h3>
+                <p>{place.text}</p>
+              </article>
+            ))
+          }
+        </div>
+        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.fall.note}</p></aside>
+      </div>
+    </section>
+
+    <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={GNOME_ART.icons.sepCog} /></svg></div>
+
+    <!-- V · today -->
+    <section class="chap" id="today" aria-labelledby="h-today">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">V</div>
+          <div><p class="ov">{s.chapter} V · {s.chapters.today}</p><h2 class="h2" id="h-today">{s.today.title}</h2></div>
+        </header>
+        <article class="leader rv">
+          <div class="portrait"><img src={img('mekkatorque.webp')} alt="High Tinker Gelbin Mekkatorque" width="300" height="300" loading="lazy" /></div>
+          <div class="t">
+            <p class="ov">{s.today.leaderLabel}</p>
+            <h3 class="h3">High Tinker Gelbin Mekkatorque</h3>
+            <p class="role" lang="en">King of Gnomes</p>
+            <p>{s.today.leaderText}</p>
+          </div>
+        </article>
+        <div class="tech">
+          {
+            s.today.tech.map((item, i) => (
+              <article class="card rv" style={delay(i % 3)}>
+                <div class="ic">
+                  <svg viewBox="0 0 48 48" aria-hidden="true" set:html={techIcons[i]} />
+                </div>
+                <div class="t">
+                  <h3>{item.name}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="sub rv"><p class="ov">{s.today.beyondLabel}</p><h3 class="h3">{s.today.beyondTitle}</h3></div>
+        <figure class="map-fig rv" id="world" data-p=".9,.22">
+          <Fragment set:html={art(GNOME_ART.world)} />
+          <figcaption>
+            <span>{s.today.mapCaption}</span>
+            <span class="keys"><span class="key"><i></i>{s.today.expeditionsKey}</span></span>
+          </figcaption>
+          <ol class="legend">
+            {
+              s.today.legend.map((item, i) => (
+                <li>
+                  <span class:list={['lk', { o: i === 0 }]}>{i + 1}</span>
+                  <span>
+                    <b>{item.name}</b>
+                    {item.text}
+                  </span>
+                </li>
+              ))
+            }
+          </ol>
+        </figure>
+        <aside class="note rv"><p class="ov">{s.whyItMatters}</p><p>{s.today.note}</p></aside>
+      </div>
+    </section>
+
+    <section class="outro" aria-labelledby="h-outro">
+      <div class="wrap inner">
+        <div class="rv outro-copy">
+          <p class="ov">{s.outro.label}</p>
+          <h2 class="h2" id="h-outro">{s.outro.title}</h2>
+          <p class="lead">{s.outro.text}</p>
+        </div>
+        <aside class="next rv" style="--d:.1s" aria-label={s.outro.nextLabel}>
+          <p class="ov next-ov">{s.outro.nextLabel}</p>
+          <p class="nm">Dwarf</p>
+          <p>{s.outro.nextText}</p>
+          <span class="soon"><i></i>{s.outro.soon}</span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="lore-foot" aria-label={s.notes.title}>
+      <div class="wrap cols">
+        <div>
+          <h2>{s.notes.title}</h2>
+          <p>{s.notes.text}</p>
+        </div>
+        <div>
+          <h2>{s.notes.imagesTitle}</h2>
+          <p>{s.notes.images}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  import '../../../scripts/story';
+</script>
