@@ -3262,9 +3262,6 @@ export const UNDEAD_ART_LABELS: Record<Lang, Record<string, string>> = {
   tr: {
     scourgeAria: 'Eastern Kingdoms kuzey haritası: Andorhal, Stratholme, Lordaeron, Quel’Thalas ve Dalaran; Scourge’un yıkım yolu',
     toNorthrend: 'Northrend’e ↗',
-    throneAria: 'Frozen Throne çizimi: kaydırdıkça buzdan taht çatlar ve ruh zincirleri kopar',
-    bound: 'Lich King’in iradesi',
-    unbound: 'Özgür irade · Forsaken',
     arthasLeaves: 'Arthas Northrend’e ↗',
     ekAria: 'Forsaken isyanı: Tirisfal Glades, Silverpine, Hillsbrad, Lordaeron başkenti ve Undercity; adım adım',
     tirisfalAria: 'Tirisfal Glades haritası: Undercity, Deathknell, Brill, Agamand Mills ve Scarlet Monastery',
@@ -3273,9 +3270,6 @@ export const UNDEAD_ART_LABELS: Record<Lang, Record<string, string>> = {
   en: {
     scourgeAria: 'Map of the northern Eastern Kingdoms: Andorhal, Stratholme, Lordaeron, Quel’Thalas and Dalaran; the path of the Scourge',
     toNorthrend: 'To Northrend ↗',
-    throneAria: 'Drawing of the Frozen Throne: as you scroll, the icy throne cracks and the soul-chains break',
-    bound: 'The Lich King’s will',
-    unbound: 'Free will · the Forsaken',
     arthasLeaves: 'Arthas to Northrend ↗',
     ekAria: 'The Forsaken rebellion: Tirisfal Glades, Silverpine, Hillsbrad, the capital of Lordaeron and Undercity, step by step',
     tirisfalAria: 'Map of Tirisfal Glades: Undercity, Deathknell, Brill, Agamand Mills and the Scarlet Monastery',
@@ -3301,7 +3295,7 @@ export interface UndeadStory {
     cards: Card[];
     note: string;
   };
-  breaking: { title: string; intro: string; more: string[]; figureCaption: string; cards: Card[]; note: string };
+  breaking: { title: string; intro: string; more: string[]; cards: Card[]; note: string };
   rebellion: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
   today: {
     title: string;
@@ -3419,7 +3413,6 @@ export const UNDEAD_STORY: Record<Lang, UndeadStory> = {
         'Tahttaki çatlak büyüdükçe Lich King’in gücü sızmaya başladı ve Lordaeron’daki ölümsüzlerin üzerindeki demir pençesi gevşedi. İlk uyananlardan biri Sylvanas Windrunner oldu: iradesini geri kazandı, gizlice kendi bedenini yeniden ele geçirdi ve zihni açılan diğer ölümsüzleri etrafında topladı.',
         'Uyananları korkunç bir sessizlik bekliyordu. Zihinleri geri gelmişti ama bedenleri çürümüştü; üstelik Scourge’un kuklasıyken sevdiklerine ne yaptıklarını tek tek hatırlıyorlardı.',
       ],
-      figureCaption: 'Kaydırdıkça Frozen Throne çatlıyor ve ruh zincirleri kopuyor.',
       cards: [
         {
           name: 'Frozen Throne',
@@ -3649,7 +3642,6 @@ export const UNDEAD_STORY: Record<Lang, UndeadStory> = {
         'As the crack widened, the Lich King’s power bled out, and his iron grip over the undead in Lordaeron slackened. Sylvanas Windrunner was among the first to wake: she won back her will, reclaimed her own body in secret and gathered the other undead whose minds had cleared.',
         'A dreadful silence met those who woke. Their minds had come back, yet their bodies were rotting, and they remembered one by one what they had done to those they loved while they were puppets of the Scourge.',
       ],
-      figureCaption: 'As you scroll, the Frozen Throne cracks and the soul-chains break.',
       cards: [
         {
           name: 'Frozen Throne',
@@ -4374,9 +4366,6 @@ export interface SkyborneStory {
     sides: SkySide[];
     racialLabel: string;
     classesLabel: string;
-    sharedLabel: string;
-    sharedTitle: string;
-    sharedText: string;
     rivalryLabel: string;
     rivalryTitle: string;
     rivalryText: string[];
@@ -4517,10 +4506,6 @@ export const SKYBORNE_STORY: Record<Lang, SkyborneStory> = {
       ],
       racialLabel: 'Tarafa özgü yetenek',
       classesLabel: 'Class’lar',
-      sharedLabel: 'Ortak',
-      sharedTitle: 'İki tarafın ortak yetenekleri',
-      sharedText:
-        'Walk on Air, Wind Blessed ve Elemental Insight iki tarafta da aynıdır. Ortak class’lar Warrior, Hunter, Rogue ve Druid; Skyborne’ın kendine özgü druid formları da var.',
       rivalryLabel: 'Rekabet',
       rivalryTitle: 'Aynı adada iki yol',
       rivalryText: [
@@ -4740,10 +4725,6 @@ export const SKYBORNE_STORY: Record<Lang, SkyborneStory> = {
       ],
       racialLabel: 'Side racial',
       classesLabel: 'Classes',
-      sharedLabel: 'Shared',
-      sharedTitle: 'Racials both sides share',
-      sharedText:
-        'Walk on Air, Wind Blessed and Elemental Insight are the same on both sides. The shared classes are Warrior, Hunter, Rogue and Druid; the Skyborne also have druid forms of their own.',
       rivalryLabel: 'Rivalry',
       rivalryTitle: 'Two paths on one island',
       rivalryText: [

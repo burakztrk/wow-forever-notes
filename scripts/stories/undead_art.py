@@ -66,44 +66,6 @@ def scourge_svg():
             f'<defs>{masks}</defs>{EK_IMG}{marks}{lines}{labels}{heads}{pins}</svg>')
 
 
-# ---------- Chapter III: the Frozen Throne cracks and the Lich King's hold breaks (data-moves) ----------
-def throne_svg():
-    W, H, cy = 1000, 340, 170
-    defs = ('<linearGradient id="uIce" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8f3ff"/>'
-            '<stop offset=".45" stop-color="#6fa8c9"/><stop offset="1" stop-color="#1d2d3e"/></linearGradient>'
-            '<linearGradient id="uChain" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9aa8b8"/>'
-            '<stop offset=".5" stop-color="#525d6b"/><stop offset="1" stop-color="#1c222b"/></linearGradient>'
-            '<radialGradient id="uSoul"><stop offset="0" stop-color="#e5ffd2"/><stop offset=".42" stop-color="#8bd46a" stop-opacity=".8"/>'
-            '<stop offset="1" stop-color="#6b3fa0" stop-opacity="0"/></radialGradient>')
-
-    def link(x, flat):
-        if flat:
-            return (f'<ellipse cx="{x}" cy="{cy}" rx="36" ry="18" fill="none" stroke="#11161d" stroke-width="14"/>'
-                    f'<ellipse cx="{x}" cy="{cy}" rx="36" ry="18" fill="none" stroke="url(#uChain)" stroke-width="9"/>')
-        return (f'<rect x="{x - 8}" y="{cy - 26}" width="16" height="52" rx="8" fill="none" stroke="#11161d" stroke-width="12"/>'
-                f'<rect x="{x - 8}" y="{cy - 26}" width="16" height="52" rx="8" fill="#1e2530" stroke="url(#uChain)" stroke-width="7"/>')
-
-    # left half of the icy spire + soul-chains
-    spire_l = ('<path d="M496 34 438 118 412 256 492 282 486 214 498 166 484 112Z" fill="url(#uIce)" stroke="#dff6ff" stroke-width="2" opacity=".9"/>'
-               '<path d="M438 118 468 158 412 256" fill="none" stroke="#dff6ff" stroke-width="1.4" opacity=".55"/>'
-               '<path d="M412 256 362 192 384 274Z" fill="url(#uIce)" stroke="#b8e4ff" stroke-width="1.5" opacity=".75"/>')
-    spire_r = ('<path d="M504 34 564 114 590 256 506 282 514 214 502 166 516 112Z" fill="url(#uIce)" stroke="#dff6ff" stroke-width="2" opacity=".9"/>'
-               '<path d="M564 114 532 158 590 256" fill="none" stroke="#dff6ff" stroke-width="1.4" opacity=".55"/>'
-               '<path d="M590 256 640 192 618 274Z" fill="url(#uIce)" stroke="#b8e4ff" stroke-width="1.5" opacity=".75"/>')
-    left = link(180, True) + link(244, False) + link(308, True) + link(368, False) + spire_l
-    right = spire_r + link(632, False) + link(692, True) + link(756, False) + link(820, True)
-
-    r = random.Random(14)
-    sparks = "".join(f'<circle cx="{f(500 + r.uniform(-76, 76))}" cy="{f(cy + r.uniform(-85, 75))}" r="{f(r.uniform(2.2, 6.5))}" fill="url(#uSoul)"/>'
-                     for _ in range(24))
-    glow = f'<circle class="break-glow" cx="500" cy="{cy}" r="165" fill="url(#uSoul)"/>'
-    labels = (f'<g class="before">{ftext(500, H - 22, "%%bound%%", "ft dim")}</g>'
-              f'<g class="after">{ftext(500, H - 22, "%%unbound%%", "ft goldt")}</g>')
-    return (f'<svg class="map chains" viewBox="-110 0 {W + 220} {H}" role="img" aria-label="%%throneAria%%"><defs>{defs}</defs>'
-            f'{glow}<g data-move="-84,6,-6">{left}</g><g data-move="84,-6,6">{right}</g>'
-            f'<g class="sparks">{sparks}</g>{labels}</svg>')
-
-
 # ---------- Chapter IV: the Forsaken rebellion in Lordaeron, one layer and one camera per step ----------
 def ek_svg():
     l1 = ('<g class="ly on" data-ly="1">'
@@ -215,7 +177,6 @@ def icons():
 def main():
     write_ts(LIB / "undead-art.ts", "UNDEAD_ART", {
         "scourge": scourge_svg(),
-        "throne": throne_svg(),
         "ek": ek_svg(),
         "tirisfal": tirisfal_svg(),
         "world": world_svg(),

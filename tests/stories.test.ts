@@ -62,7 +62,7 @@ const art = [
   {
     name: 'undead',
     labels: UNDEAD_ART_LABELS,
-    drawings: [UNDEAD_ART.scourge, UNDEAD_ART.throne, UNDEAD_ART.ek, UNDEAD_ART.tirisfal, UNDEAD_ART.world],
+    drawings: [UNDEAD_ART.scourge, UNDEAD_ART.ek, UNDEAD_ART.tirisfal, UNDEAD_ART.world],
   },
   {
     name: 'tauren',

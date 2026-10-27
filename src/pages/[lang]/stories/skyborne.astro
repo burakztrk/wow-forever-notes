@@ -43,7 +43,6 @@ const sharedIds = new Set(
     .filter((e) => racialsOf(sideRaces[1].race).some((o) => o.id === e.id))
     .map((e) => e.id),
 );
-const shared = racialsOf(sideRaces[0].race).filter((e) => sharedIds.has(e.id));
 const glossaryIds = [...new Set(sideRaces.flatMap(({ race }) => racialsOf(race).map((e) => e.id)))];
 const tips = loreTips(lang, loreIds(s), glossaryIds);
 
@@ -245,12 +244,6 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             })
           }
         </div>
-
-        <div class="sub rv"><p class="ov">{s.paths.sharedLabel}</p><h3 class="h3">{s.paths.sharedTitle}</h3></div>
-        <div class="prose rv"><p set:html={lx(s.paths.sharedText)} /></div>
-        <ul class="codex-list shared rv">
-          {shared.map((entry) => <GlossaryRow entry={entry} lang={lang} />)}
-        </ul>
 
         <div class="sub rv"><p class="ov">{s.paths.rivalryLabel}</p><h3 class="h3">{s.paths.rivalryTitle}</h3></div>
         <div class="prose rv">{s.paths.rivalryText.map((p) => <p set:html={lx(p)} />)}</div>
