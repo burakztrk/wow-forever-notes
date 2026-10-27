@@ -169,8 +169,13 @@ function init(root: HTMLElement) {
       const r = t.el.getBoundingClientRect();
       if (r.bottom < -vh * 0.3 || r.top > vh * 1.3) continue;
       // anchor: a point a little below the element's top (at most 35% of the viewport),
-      // so a figure finishes animating when it is in front of the reader, not on its way in
-      const anchor = r.top + Math.min(r.height, vh * 0.7) * 0.5;
+      // so a figure finishes animating when it is in front of the reader, not on its way in;
+      // when a figure is sticky in a two-column .split.top, follow the row's top while it stays pinned
+      const top =
+        !narrow.matches && t.el.parentElement?.classList.contains('top')
+          ? t.el.parentElement.getBoundingClientRect().top
+          : r.top;
+      const anchor = top + Math.min(r.height, vh * 0.7) * 0.5;
       const p = reduce ? 1 : clamp((t.s * vh - anchor) / ((t.s - t.e) * vh));
       if (Math.abs(p - t.last) < 0.0005) continue;
       t.last = p;

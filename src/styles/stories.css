@@ -526,7 +526,7 @@ a.story-card:focus-visible {
 .lore .stat.fire .stat-ov{color:#ff8a3a}
 
 /* Chapter I: the stone dwarf stands behind the text, fading into the page */
-.lore .chap-bg{position:relative;overflow:hidden;isolation:isolate}
+.lore .chap-bg{position:relative;overflow:clip;isolation:isolate}
 .lore .chap-bg>.wrap{position:relative;z-index:1}
 .lore .chap-art{position:absolute;z-index:0;inset:0 0 0 auto;width:min(54%,640px);pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 45%),linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 45%),linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);mask-composite:intersect}
 .lore .chap-art img{display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 20%;opacity:.38;filter:saturate(.9)}
@@ -643,6 +643,7 @@ a.story-card:focus-visible {
 /* Orc story: the war map and Durotar */
 .lore.orc{--frost:#8fb8e0}
 .lore .split.top{align-items:start}
+@media (min-width:861px){.lore .split.top>*{position:sticky;top:calc(var(--top) + 20px)}}
 .lore #warpath svg{max-height:82vh}
 .lore #durotar svg{max-height:76vh}
 /* Troll story: jungle green, the Durotar cover with Vol'jin, the tribe list */
@@ -725,9 +726,13 @@ a.story-card:focus-visible {
 .lore #scourgemap svg{max-height:78vh}
 .lore #tirisfal svg{max-height:76vh}
 .lore #throne svg{max-height:46vh}
-/* Tauren story: Mulgore prairie green and An'she sun gold, plain hero until the cover arrives, the Thunder Bluff totem figure */
+/* Tauren story: Mulgore cover, Cairne Bloodhoof, Shu'halo and the chapter art */
 .lore.tauren{--earth:#7ec876;--sun:#e8a848}
-.lore.tauren .hero.plain{background:radial-gradient(ellipse 70% 90% at 22% 80%,rgba(126,200,118,.15),transparent 70%),radial-gradient(ellipse 55% 65% at 80% 12%,rgba(232,168,72,.18),transparent 70%),var(--bg)}
+.lore .hero.tauren-cover .hero-bg img{object-position:45% 42%;filter:brightness(.72) saturate(.95) contrast(1.05)}
+@media (max-width:760px){.lore .hero.tauren-cover .hero-bg img{object-position:38% 42%}}
+.lore .sil-cairne{aspect-ratio:387/516;width:clamp(240px,26vw,380px);opacity:.48}
+@media (max-width:760px){.lore .sil-cairne{width:200px;opacity:.3}}
+.lore .sil-shuhalo{z-index:0;top:clamp(220px,24vw,320px);bottom:auto;right:max(-20px,calc(50% - 680px));width:clamp(220px,24vw,340px);aspect-ratio:387/516;opacity:.42;transform:none}
+@media (max-width:760px){.lore .sil-shuhalo{display:none}}
 .lore #desolacemap svg{max-height:78vh}
 .lore #mulgore svg{max-height:76vh}
-.lore #totem svg{max-height:46vh}

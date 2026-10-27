@@ -67,7 +67,7 @@ const art = [
   {
     name: 'tauren',
     labels: TAUREN_ART_LABELS,
-    drawings: [TAUREN_ART.desolace, TAUREN_ART.totem, TAUREN_ART.ek, TAUREN_ART.mulgore, TAUREN_ART.world],
+    drawings: [TAUREN_ART.desolace, TAUREN_ART.ek, TAUREN_ART.mulgore, TAUREN_ART.world],
   },
   {
     name: 'skyborne',

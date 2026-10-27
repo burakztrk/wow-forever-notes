@@ -55,53 +55,6 @@ def desolace_svg():
             f'<defs>{masks}</defs>{DESOLACE_IMG}{marks}{lines}{labels}{heads}{pins}</svg>')
 
 
-# ---------- Chapter III: the Great Totem of Thunder Bluff rises as you scroll (data-moves) ----------
-def totem_svg():
-    W, H, cx, cy = 1000, 340, 500, 175
-    defs = ('<linearGradient id="tWood" x1="0" y1="0" x2="1" y2="0">'
-            '<stop offset="0" stop-color="#3d2718"/><stop offset=".5" stop-color="#6b4428"/><stop offset="1" stop-color="#2e1d12"/></linearGradient>'
-            '<linearGradient id="tWing" x1="0" y1="0" x2="0" y2="1">'
-            '<stop offset="0" stop-color="#d89b48"/><stop offset=".55" stop-color="#9c5a25"/><stop offset="1" stop-color="#472814"/></linearGradient>'
-            '<radialGradient id="tSun"><stop offset="0" stop-color="#fff4cc"/><stop offset=".4" stop-color="#f0b654" stop-opacity=".85"/>'
-            '<stop offset="1" stop-color="#c86428" stop-opacity="0"/></radialGradient>')
-
-    def wing(side):
-        # carved thunderbird wing + feathered runespear half that unfolds outward as --p grows
-        p = lambda dx, dy: P(cx + side * dx, cy + dy)
-        feathers = "".join(
-            f'<path d="M{p(38, -28 + i * 16)}L{p(188 - i * 18, -56 + i * 22)}L{p(172 - i * 18, -32 + i * 22)}L{p(38, -14 + i * 16)}Z" '
-            f'fill="url(#tWing)" stroke="#1a110b" stroke-width="2.5"/>'
-            for i in range(4)
-        )
-        spear = (f'<path d="M{p(20, 44)}L{p(215, -36)}" stroke="#8a5a32" stroke-width="7" stroke-linecap="round"/>'
-                 f'<path d="M{p(215, -36)}L{p(250, -56)}L{p(232, -28)}L{p(256, -32)}L{p(215, -36)}Z" fill="#d8b46a" stroke="#1a110b" stroke-width="2"/>')
-        return spear + feathers
-
-    # central carved totem trunk
-    trunk = (f'<rect x="{cx - 42}" y="68" width="84" height="214" rx="10" fill="url(#tWood)" stroke="#1a110b" stroke-width="3.5"/>'
-             f'<path d="M{cx - 42} 126C{cx - 92} 118 {cx - 108} 76 {cx - 88} 44C{cx - 74} 74 {cx - 58} 94 {cx - 42} 100Z" fill="#d6ccb8" stroke="#1a110b" stroke-width="3"/>'
-             f'<path d="M{cx + 42} 126C{cx + 92} 118 {cx + 108} 76 {cx + 88} 44C{cx + 74} 74 {cx + 58} 94 {cx + 42} 100Z" fill="#d6ccb8" stroke="#1a110b" stroke-width="3"/>'
-             f'<path d="M{cx - 28} 138L{cx - 10} 146L{cx - 28} 152ZM{cx + 28} 138L{cx + 10} 146L{cx + 28} 152Z" fill="#ffd98a"/>'
-             f'<path d="M{cx - 32} 182L{cx} 204L{cx + 32} 182M{cx - 32} 212L{cx} 234L{cx + 32} 212M{cx - 32} 242L{cx} 264L{cx + 32} 242" '
-             f'fill="none" stroke="#d89b48" stroke-width="4" stroke-linecap="round"/>')
-
-    # sun and crescent crest (An'she & Mu'sha) rising above the horns
-    crest = (f'<circle cx="{cx}" cy="66" r="24" fill="#f0b654" stroke="#1a110b" stroke-width="2.5"/>'
-             f'<path d="M{cx + 6} 48A16 16 0 1 0 {cx + 6} 84A13 13 0 1 1 {cx + 6} 48Z" fill="#dce8ff"/>')
-
-    r = random.Random(31)
-    sparks = "".join(
-        f'<circle cx="{f(cx + r.uniform(-160, 160))}" cy="{f(cy + r.uniform(-95, 75))}" r="{f(r.uniform(2.2, 6.2))}" fill="url(#tSun)"/>'
-        for _ in range(26)
-    )
-    glow = f'<circle class="break-glow" cx="{cx}" cy="{cy - 10}" r="185" fill="url(#tSun)"/>'
-    labels = (f'<g class="before">{ftext(cx, H - 20, "%%nomads%%", "ft goldt")}</g>'
-              f'<g class="after">{ftext(cx, H - 20, "%%bluff%%", "ft goldt")}</g>')
-    return (f'<svg class="map chains" viewBox="-110 0 {W + 220} {H}" role="img" aria-label="%%totemAria%%"><defs>{defs}</defs>'
-            f'{glow}<g data-move="-85,-14,-9">{wing(-1)}</g><g data-move="85,-14,9">{wing(1)}</g>'
-            f'<g data-move="0,-24,0">{crest}</g>{trunk}<g class="sparks">{sparks}</g>{labels}</svg>')
-
-
 # ---------- Chapter IV: from the Barrens to Mount Hyjal, one layer and one camera per step ----------
 BAR, MUL, STM, HYJ, TN = (262, 330), (215, 350), (202, 292), (268, 222), (256, 428)
 
@@ -224,7 +177,6 @@ def icons():
 def main():
     write_ts(LIB / "tauren-art.ts", "TAUREN_ART", {
         "desolace": desolace_svg(),
-        "totem": totem_svg(),
         "ek": ek_svg(),
         "mulgore": mulgore_svg(),
         "world": world_svg(),

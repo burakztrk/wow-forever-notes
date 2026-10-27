@@ -26,6 +26,7 @@ const u = STORY_UI[lang];
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/tauren/`)])) as Record<Lang, string>;
 const art = (svg: string) => fillArt(svg, TAUREN_ART_LABELS[lang], withBase('/'));
 const ic = TAUREN_ART.icons;
+const img = (name: string) => withBase(`/stories/tauren/${name}`);
 // proper names in the text get lore tooltips (src/i18n/lore.ts); the cards ride in the #wf-glossary island
 const lx = (text: string) => loreHtml(text);
 const tips = loreTips(lang, loreIds(s));
@@ -49,8 +50,10 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
   <div class="lore tauren" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
-    <!-- no cover yet: the site owner adds it as <div class="hero-bg"><img …></div> (see orc.astro) -->
-    <section class="hero plain" aria-labelledby="h-tauren">
+    <section class="hero tauren-cover" aria-labelledby="h-tauren">
+      <div class="hero-bg" aria-hidden="true"><img src={img('mulgore.webp')} alt="" width="848" height="664" /></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="sil sil-cairne" aria-hidden="true"><img src={img('cairne.webp')} alt="" width="387" height="516" /></div>
       <canvas id="snow" data-fx="sun" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
@@ -87,7 +90,9 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     </section>
 
     <!-- I · origin -->
-    <section class="chap" id="origin" aria-labelledby="h-origin">
+    <section class="chap chap-bg" id="origin" aria-labelledby="h-origin">
+      <div class="chap-art top" aria-hidden="true"><img src={img('cenarius.webp')} alt="" width="752" height="1024" loading="lazy" /></div>
+      <div class="sil sil-shuhalo" aria-hidden="true"><img src={img('shuhalo.webp')} alt="" width="387" height="516" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">I</div>
@@ -137,7 +142,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
               <span>{s.centaurs.figureCaption}</span>
               <span class="keys">
                 <span class="key rage"><i></i>{s.centaurs.centaurKey}</span>
-                <span class="key"><i></i>{s.centaurs.taurenKey}</span>
+                <span class="key"><i></i>{s.centaurs.exodusKey}</span>
               </span>
             </figcaption>
             <ol class="legend" style="--cols:1">
@@ -181,17 +186,14 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- III · Cairne, Thrall and the totem of Thunder Bluff -->
-    <section class="chap" id="caravan" aria-labelledby="h-caravan">
+    <section class="chap chap-bg" id="caravan" aria-labelledby="h-caravan">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('thunder-bluff-totem.webp')} alt="" width="614" height="325" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">III</div>
           <div><p class="ov">{u.chapter} III · {s.chapters.caravan}</p><h2 class="h2" id="h-caravan">{s.caravan.title}</h2></div>
         </header>
         <div class="prose rv">{[s.caravan.intro, ...s.caravan.more].map((p) => <p set:html={lx(p)} />)}</div>
-        <figure class="map-fig rv" id="totem" data-p=".8,.3" data-moves>
-          <Fragment set:html={art(TAUREN_ART.totem)} />
-          <figcaption>{s.caravan.figureCaption}</figcaption>
-        </figure>
         <div class="war-cards">
           {
             s.caravan.cards.map((card, i) => (
@@ -218,7 +220,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- IV · the march across Kalimdor -->
-    <section class="chap" id="march" aria-labelledby="h-march">
+    <section class="chap chap-bg" id="march" aria-labelledby="h-march">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('thousand-needles.webp')} alt="" width="1024" height="576" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">IV</div>
@@ -258,7 +261,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- V · today -->
-    <section class="chap" id="today" aria-labelledby="h-today">
+    <section class="chap chap-bg" id="today" aria-labelledby="h-today">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('thunder-bluff.webp')} alt="" width="500" height="400" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">V</div>
@@ -290,7 +294,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
               <span>{s.today.landCaption}</span>
               <span class="keys">
                 <span class="key"><i></i>{s.today.pathKey}</span>
-                <span class="key rage"><i></i>{s.today.threatKey}</span>
+                <span class="key rage"><i></i>{s.today.quilboarKey}</span>
               </span>
             </figcaption>
             <ol class="legend" style="--cols:2">

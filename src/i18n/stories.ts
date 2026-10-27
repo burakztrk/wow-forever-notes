@@ -3795,9 +3795,6 @@ export const TAUREN_ART_LABELS: Record<Lang, Record<string, string>> = {
   tr: {
     desolaceAria: 'Desolace haritası: Maraudon, Kodo Graveyard, Shadowprey Village, Thunder Axe Fortress ve Mannoroc Coven; centaur akınları ve tauren göçü',
     toBarrens: 'The Barrens’a ↗',
-    totemAria: 'Thunder Bluff totemi çizimi: kaydırdıkça kanatlar açılır ve An’she ile Mu’sha yükselir',
-    nomads: 'Göçebe kabileler · Dağınık çadırlar',
-    bluff: 'Birleşen kabileler · Thunder Bluff',
     centaurs: 'Centaur akınları',
     ekAria: 'Tauren’lerin yolu: The Barrens, Mulgore, Stonetalon Peak, Mount Hyjal ve Thousand Needles; adım adım',
     mulgoreAria: 'Mulgore haritası: Thunder Bluff, Camp Narache, Bloodhoof Village, Red Rocks ve Brambleblade Ravine',
@@ -3806,9 +3803,6 @@ export const TAUREN_ART_LABELS: Record<Lang, Record<string, string>> = {
   en: {
     desolaceAria: 'Map of Desolace: Maraudon, the Kodo Graveyard, Shadowprey Village, Thunder Axe Fortress and the Mannoroc Coven; the centaur raids and the tauren migration',
     toBarrens: 'To the Barrens ↗',
-    totemAria: 'Drawing of the Thunder Bluff totem: as you scroll, the wings spread and An’she and Mu’sha rise',
-    nomads: 'Wandering tribes · Scattered tents',
-    bluff: 'United tribes · Thunder Bluff',
     centaurs: 'Centaur raids',
     ekAria: 'The tauren’s road: the Barrens, Mulgore, Stonetalon Peak, Mount Hyjal and Thousand Needles, step by step',
     mulgoreAria: 'Map of Mulgore: Thunder Bluff, Camp Narache, Bloodhoof Village, Red Rocks and Brambleblade Ravine',
@@ -3834,7 +3828,7 @@ export interface TaurenStory {
     cards: Card[];
     note: string;
   };
-  caravan: { title: string; intro: string; more: string[]; figureCaption: string; cards: Card[]; note: string };
+  caravan: { title: string; intro: string; more: string[]; cards: Card[]; note: string };
   march: { title: string; intro: string; mapLabel: string; steps: Step[]; note: string };
   today: {
     title: string;
@@ -3952,7 +3946,6 @@ export const TAUREN_STORY: Record<Lang, TaurenStory> = {
         'Yabancıların cesaretinden ve elementlere duyduğu saygıdan etkilenen Cairne, Thrall’a kuzeydeki Stonetalon Peak’te yaşayan Oracle’dan söz etti. Thrall ise karşılığında kodo kervanını The Barrens’ın tozlu kanyonlarından geçirip dağlarla çevrili yeşil Mulgore yaylasına kadar korumaya ant içti.',
         'Mulgore’un yüksek kayalıklarında Thunder Bluff yükselirken centaur ve harpy saldırıları durmadı; üstelik Cairne’in oğlu Baine Bloodhoof centaur’lara esir düştü. Thrall’ın gönderdiği yarı-ogre Beastmaster Rexxar ve Darkspear gözcüsü Rokhan, Baine’i kurtarıp Cairne’e geri getirdi; yaşlı şef de yeniden baltasını ve runespear’ını kuşanıp Horde’un yanındaki yerini aldı.',
       ],
-      figureCaption: 'Kaydırdıkça Thunder Bluff totemi kanatlarını açıyor ve An’she ile Mu’sha yükseliyor.',
       cards: [
         {
           name: 'Cairne Bloodhoof',
@@ -4090,7 +4083,7 @@ export const TAUREN_STORY: Record<Lang, TaurenStory> = {
       text: 'Güneş An’she batıp ay Mu’sha doğarken Mulgore’un yüksek kayalıklarında ateşler yanar. Shu’halo artık kaçmıyor; Earth Mother’ın çocukları kendi evlerinde nöbette.',
       nextText: 'Lordaeron’un külleri: Lich King, Sylvanas Windrunner ve Undercity’nin Forsaken’ları.',
     },
-    images: 'Haritalar WoW Forever’dan. Thunder Bluff totemi çizimi bu sayfa için hazırlandı. World of Warcraft adları Blizzard Entertainment’a aittir.',
+    images: 'Mulgore, Thunder Bluff, Shu’halo, Cenarius, Cairne Bloodhoof ve Thousand Needles görselleri Blizzard Entertainment’a aittir. Haritalar WoW Forever’dan.',
   },
   en: {
     metaDescription:
@@ -4182,7 +4175,6 @@ export const TAUREN_STORY: Record<Lang, TaurenStory> = {
         'Moved by the strangers’ courage and their reverence for the elements, Cairne told Thrall of the Oracle dwelling high on Stonetalon Peak in the north. In return Thrall swore to guard the kodo caravan through the dusty canyons of the Barrens all the way to the mountain-ringed green tablelands of Mulgore.',
         'Even as Thunder Bluff rose atop the high mesas of Mulgore, centaur and harpy attacks did not cease, and Cairne’s son Baine Bloodhoof was taken captive by the centaurs. Sent by Thrall, the half-ogre Beastmaster Rexxar and the Darkspear scout Rokhan rescued Baine and brought him back to his father; the old chieftain took up his runespear once more and stood at the Horde’s side.',
       ],
-      figureCaption: 'As you scroll, the Thunder Bluff totem spreads its wings and An’she and Mu’sha rise.',
       cards: [
         {
           name: 'Cairne Bloodhoof',
@@ -4320,7 +4312,7 @@ export const TAUREN_STORY: Record<Lang, TaurenStory> = {
       text: 'As the sun An’she sets and the moon Mu’sha rises, fires burn atop the high mesas of Mulgore. The Shu’halo are running no longer; the children of the Earth Mother stand watch over their own home.',
       nextText: 'Ashes of Lordaeron: the Lich King, Sylvanas Windrunner and the Forsaken of Undercity.',
     },
-    images: 'Maps from WoW Forever. The Thunder Bluff totem drawing was made for this page. World of Warcraft names belong to Blizzard Entertainment.',
+    images: 'The Mulgore, Thunder Bluff, Shu’halo, Cenarius, Cairne Bloodhoof and Thousand Needles images belong to Blizzard Entertainment. Maps from WoW Forever.',
   },
 };
 
