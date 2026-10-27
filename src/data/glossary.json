@@ -10587,7 +10587,14 @@
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=calc-druid-restoration-furor",
       "descTr": "Anında 10 Öfke ve 10 saniye boyunca 20 Öfke daha üretir, ancak temel Armor'u Bear Form'da %27, Dire Bear Form'da %16 azaltır. Druid süre boyunca savaşta sayılır.",
-      "changeTr": "Efekt değiştirildi."
+      "changeTr": "Efekt değiştirildi.",
+      "ranksTr": [
+        "Ayı Formu veya Dire Bear Formu'na dönüşürken %20 ihtimalle 10 Öfke kazanırsın. Kedi Formu'na dönüşürken en son Kedi Formu'nda sahip olduğun Enerji'nin %20'sini geri kazanırsın; ayrıca Ayı Formu ve Dire Bear Formu'ndan ne kadar uzak kaldığına bağlı olarak saniyede 2 ek Enerji geri kazanırsın (toplamda en fazla 20 Enerji).",
+        "Ayı Formu veya Dire Bear Formu'na dönüşürken %40 ihtimalle 10 Öfke kazanırsın. Kedi Formu'na dönüşürken en son Kedi Formu'nda sahip olduğun Enerji'nin %40'sini geri kazanırsın; ayrıca Ayı Formu ve Dire Bear Formu'ndan ne kadar uzak kaldığına bağlı olarak saniyede 4 ek Enerji geri kazanırsın (toplamda en fazla 40 Enerji).",
+        "Ayı Formu veya Dire Bear Formu'na dönüşürken %60 ihtimalle 10 Öfke kazanırsın. Kedi Formu'na dönüşürken en son Kedi Formu'nda sahip olduğun Enerji'nin %60'sini geri kazanırsın; ayrıca Ayı Formu ve Dire Bear Formu'ndan ne kadar uzak kaldığına bağlı olarak saniyede 6 ek Enerji geri kazanırsın (toplamda en fazla 60 Enerji).",
+        "Ayı Formu veya Dire Bear Formu'na dönüşürken %80 ihtimalle 10 Öfke kazanırsın. Kedi Formu'na dönüşürken en son Kedi Formu'nda sahip olduğun Enerji'nin %80'sini geri kazanırsın; ayrıca Ayı Formu ve Dire Bear Formu'ndan ne kadar uzak kaldığına bağlı olarak saniyede 8 ek Enerji geri kazanırsın (toplamda en fazla 80 Enerji).",
+        "Ayı Formu veya Dire Bear Formu'na dönüşürken %100 ihtimalle 10 Öfke kazanırsın. Kedi Formu'na dönüşürken en son Kedi Formu'nda sahip olduğun Enerji'nin %100'sini geri kazanırsın; ayrıca Ayı Formu ve Dire Bear Formu'ndan ne kadar uzak kaldığına bağlı olarak saniyede 10 ek Enerji geri kazanırsın (toplamda en fazla 100 Enerji)."
+      ]
     },
     {
       "id": "talent/calc-druid-restoration-gift-of-the-earthmother",
@@ -11384,7 +11391,12 @@
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/hunter#t=calc-hunter-marksmanship-hawk-eye",
       "descTr": "Hunter'ın görüşünü yakınlaştırır. Yalnızca açık alanda kullanılabilir. 1 dakika sürer.",
-      "changeTr": "Seviye 3'ten seviye 1'e taşındı."
+      "changeTr": "Seviye 3'ten seviye 1'e taşındı.",
+      "ranksTr": [
+        "Menzilli silahının menzilini 2 yard artırır.",
+        "Menzilli silahının menzilini 4 yard artırır.",
+        "Menzilli silahının menzilini 6 yard artırır."
+      ]
     },
     {
       "id": "talent/calc-hunter-marksmanship-improved-arcane-shot",
@@ -11625,7 +11637,7 @@
       "descTr": "Rapid Fire yeteneğinin bekleme süresini 2 dakika azaltır. Ayrıca önemsiz olmayan bir düşmanı öldürdüğünde ya da Serpent Sting'in etkisindeyken öldüğünde Rapid Killing kazanırsın; 20 saniye içindeki bir sonraki Shot yeteneğinin hasarı %20 artar.",
       "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
-        "",
+        "Rapid Fire yeteneğinin bekleme süresini 1 dakika azaltır. Ayrıca önemsiz olmayan bir düşmanı öldürdüğünde ya da Serpent Sting'in etkisindeyken öldüğünde Rapid Killing kazanırsın; 20 saniye içindeki bir sonraki Shot yeteneğinin hasarı %10 artar.",
         "Rapid Fire yeteneğinin bekleme süresini 2 dakika azaltır. Ayrıca önemsiz olmayan bir düşmanı öldürdüğünde ya da Serpent Sting'in etkisindeyken öldüğünde Rapid Killing kazanırsın; 20 saniye içindeki bir sonraki Shot yeteneğinin hasarı %20 artar."
       ]
     },
@@ -11894,7 +11906,7 @@
       "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Hunter's Mark uygulanmış düşmanlara karşı yakın dövüş ve menzilli saldırıların %10 şansla bir Mongoose Bite etkinleştirmesini sağlar. 10 saniye sürer.",
       "ranksTr": [
-        "",
+        "Hunter's Mark'ın etkisindeki düşmanlara yaptığın yakın dövüş ve menzilli saldırılara %5 ihtimalle Mongoose Bite kullanma hakkı verir. 10 saniye sürer.",
         "Hunter's Mark uygulanmış düşmanlara karşı yakın dövüş ve menzilli saldırıların %10 şansla bir Mongoose Bite etkinleştirmesini sağlar. 10 saniye sürer."
       ]
     },
@@ -13345,7 +13357,7 @@
       "descTr": "Chill etkilerine sana Fingers of Frost etkisi verme şansı %15 verir; bu etki, cast ettiğin sonraki 2 büyüde hedefi donmuş sayar. 15 saniye sürer.",
       "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
-        "",
+        "Chill etkilerine %15 ihtimalle Fingers of Frost etkisi kazandırma şansı verir; bu etki bir sonraki 1 büyünü hedef Frozen durumdaymış gibi sayar. 15 saniye sürer.",
         "Chill etkilerine sana Fingers of Frost etkisi verme şansı %15 verir; bu etki, cast ettiğin sonraki 2 büyüde hedefi donmuş sayar. 15 saniye sürer."
       ]
     },
@@ -13536,7 +13548,7 @@
       "ranksTr": [
         "Frost büyülerinin kritik vuruşlarla verdiği hasarı %20 artırır.",
         "Frost büyülerinin kritik vuruşlarla verdiği hasarı %40 artırır.",
-        "",
+        "Frost büyülerinin kritik vuruş hasarını %60 artırır.",
         "Frost büyülerinin kritik vuruşlarla verdiği hasarı %80 artırır.",
         "Frost büyülerinin kritik vuruşlarla verdiği hasarı %100 artırır."
       ]
@@ -15133,8 +15145,8 @@
       "descTr": "Periyodik olmayan bir kritik vuruştan sonra 30 saniye boyunca verdiğin fiziksel ve Holy hasarı %3 artırır. En fazla 3 kez birikir.",
       "changeTr": "Maksimum rank 5'ten 3'e değişti. Tier 6'dan tier 5'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
-        "",
-        "",
+        "Periyodik olmayan bir kritik vuruş yaptıktan sonra 30 saniye boyunca Physical ve Holy hasarını %1 artırır. En fazla 3 kez birikir.",
+        "Periyodik olmayan bir kritik vuruş yaptıktan sonra 30 saniye boyunca Physical ve Holy hasarını %2 artırır. En fazla 3 kez birikir.",
         "Periyodik olmayan bir kritik vuruştan sonra 30 saniye boyunca verdiğin fiziksel ve Holy hasarı %3 artırır. En fazla 3 kez birikir."
       ]
     },
@@ -15504,10 +15516,10 @@
       "descTr": "Holy Fire veya Shadow Word: Pain etkisindeki hedeflere Punishment ve Penance büyülerinin verdiği hasarı %10 artırır.",
       "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
-        "",
-        "",
-        "",
-        "",
+        "Smite ve Penance büyülerin, Holy Fire veya Shadow Word: Pain'in etkisindeki hedeflere %2 daha fazla hasar verir.",
+        "Smite ve Penance büyülerin, Holy Fire veya Shadow Word: Pain'in etkisindeki hedeflere %4 daha fazla hasar verir.",
+        "Smite ve Penance büyülerin, Holy Fire veya Shadow Word: Pain'in etkisindeki hedeflere %6 daha fazla hasar verir.",
+        "Smite ve Penance büyülerin, Holy Fire veya Shadow Word: Pain'in etkisindeki hedeflere %8 daha fazla hasar verir.",
         "Holy Fire veya Shadow Word: Pain etkisindeki hedeflere Punishment ve Penance büyülerinin verdiği hasarı %10 artırır."
       ]
     },
@@ -16193,10 +16205,10 @@
       "descTr": "Mind Blast ve tamamen kanallanan Mind Flay, Dark Enlightenment'ı tetikler; 10 saniye boyunca senin ve takım arkadaşlarının Spirit'ini %15 artırır.",
       "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
-        "",
-        "",
-        "",
-        "",
+        "Mind Blast ve Fully Guided Mind Flay, Dark Enlightenment'ı tetikler; senin ve grup üyelerinin Spirit'ini 10 saniye boyunca %3 artırır.",
+        "Mind Blast ve Fully Guided Mind Flay, Dark Enlightenment'ı tetikler; senin ve grup üyelerinin Spirit'ini 10 saniye boyunca %6 artırır.",
+        "Mind Blast ve Fully Guided Mind Flay, Dark Enlightenment'ı tetikler; senin ve grup üyelerinin Spirit'ini 10 saniye boyunca %9 artırır.",
+        "Mind Blast ve Fully Guided Mind Flay, Dark Enlightenment'ı tetikler; senin ve grup üyelerinin Spirit'ini 10 saniye boyunca %12 artırır.",
         "Mind Blast ve tamamen kanallanan Mind Flay, Dark Enlightenment'ı tetikler; 10 saniye boyunca senin ve takım arkadaşlarının Spirit'ini %15 artırır."
       ]
     },
@@ -16375,10 +16387,10 @@
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/priest#t=calc-priest-shadow-magic-improved-mind-flay",
       "requires": "talent/calc-priest-shadow-magic-mind-flay",
       "changeTr": "Forever'ın yeni talent'ı.",
-      "descTr": "Mind Flay'in her hasar tikı bir önceki tikten %20 daha fazla hasar verir.",
+      "descTr": "Mind Flay'in her hasar anı bir önceki hasar anından %20 daha fazla hasar verir.",
       "ranksTr": [
-        "Mind Flay'in her hasar tikı bir önceki tikten %10 daha fazla hasar verir.",
-        "Mind Flay'in her hasar tikı bir önceki tikten %20 daha fazla hasar verir."
+        "Mind Flay'in her hasar anı bir önceki hasar anından %10 daha fazla hasar verir.",
+        "Mind Flay'in her hasar anı bir önceki hasar anından %20 daha fazla hasar verir."
       ]
     },
     {
@@ -16627,10 +16639,10 @@
       "descTr": "Önemsiz olmayan bir hedefi öldürdükten sonra ya da Vampiric Embrace etkisindeki bir düşman öldüğünde %100 şansla 15 saniye boyunca Spirit'ini %100 artırır. Bu süre boyunca cast ederken mana yenilenmenin %50'si devam eder.",
       "changeTr": "Sütun 2'den sütun 3'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
-        "",
-        "",
-        "",
-        "",
+        "Önemsiz olmayan bir hedefi öldürdükten sonra ya da Vampiric Embrace'in etkisindeki bir düşman öldüğünde %20 ihtimalle 15 saniye boyunca Spirit'ini %100 artırır. Bu süre boyunca Mana yenilenmenin %50'si cast ederken devam eder.",
+        "Önemsiz olmayan bir hedefi öldürdükten sonra ya da Vampiric Embrace'in etkisindeki bir düşman öldüğünde %40 ihtimalle 15 saniye boyunca Spirit'ini %100 artırır. Bu süre boyunca Mana yenilenmenin %50'si cast ederken devam eder.",
+        "Önemsiz olmayan bir hedefi öldürdükten sonra ya da Vampiric Embrace'in etkisindeki bir düşman öldüğünde %60 ihtimalle 15 saniye boyunca Spirit'ini %100 artırır. Bu süre boyunca Mana yenilenmenin %50'si cast ederken devam eder.",
+        "Önemsiz olmayan bir hedefi öldürdükten sonra ya da Vampiric Embrace'in etkisindeki bir düşman öldüğünde %80 ihtimalle 15 saniye boyunca Spirit'ini %100 artırır. Bu süre boyunca Mana yenilenmenin %50'si cast ederken devam eder.",
         "Önemsiz olmayan bir hedefi öldürdükten sonra ya da Vampiric Embrace etkisindeki bir düşman öldüğünde %100 şansla 15 saniye boyunca Spirit'ini %100 artırır. Bu süre boyunca cast ederken mana yenilenmenin %50'si devam eder."
       ]
     },
@@ -16707,7 +16719,7 @@
       "descTr": "Expose Armor yeteneğinin Enerji maliyetini 10 azaltır ve 5 combo puanıyla kullanıldığında 2 combo puanı iade eder.",
       "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
-        "",
+        "Expose Armor yeteneğinin Enerji bedelini 5 azaltır; 5 Kombo Puanıyla cast edildiğinde 1 Kombo Puanı iade eder.",
         "Expose Armor yeteneğinin Enerji maliyetini 10 azaltır ve 5 combo puanıyla kullanıldığında 2 combo puanı iade eder."
       ]
     },
@@ -17138,7 +17150,7 @@
       "changeTr": "Sütun 2'den sütun 1'e taşındı.",
       "ranksTr": [
         "Zehrinin verdiği hasarı %4 artırır ve zehrinin dağıtma etkilerine direnme şansını %8 artırır.",
-        "",
+        "Zehirlerinin verdiği hasarı %8 artırır ve zehirlerinin dispel etkilerine direnme ihtimalini %16 artırır.",
         "Zehrinin verdiği hasarı %12 artırır ve zehrinin dağıtma etkilerine direnme şansını %24 artırır.",
         "Zehrinin verdiği hasarı %16 artırır ve zehrinin dağıtma etkilerine direnme şansını %32 artırır.",
         "Zehrinin verdiği hasarı %20 artırır ve zehrinin dağıtma etkilerine direnme şansını %40 artırır."
@@ -17783,7 +17795,7 @@
       "descTr": "Stealth algılamanı 3 seviye yüksekmişsin gibi artırır ve büyü ile menzilli saldırıların sana isabet etme şansını %4 azaltır.",
       "changeTr": "Tier 5'ten tier 4'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
-        "",
+        "Stealth algılama seviyeni 1 seviye daha yüksekmişsin gibi artırır ve büyüler ile menzilli saldırılar tarafından vurulma ihtimalini %2 azaltır.",
         "Stealth algılamanı 3 seviye yüksekmişsin gibi artırır ve büyü ile menzilli saldırıların sana isabet etme şansını %4 azaltır."
       ]
     },
@@ -17865,7 +17877,7 @@
       "descTr": "Distract yeteneğinin yarıçapını 5 yard artırır ve dikkati dağılan düşmanların Stealth algılamasını 2 seviye daha düşükmüş gibi azaltır.",
       "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
-        "",
+        "Distract yeteneğinin yarıçapını 3 yard artırır ve dikkati dağılan düşmanların Stealth algılamasını 1 seviye daha düşükmüş gibi ek olarak azaltır.",
         "Distract yeteneğinin yarıçapını 5 yard artırır ve dikkati dağılan düşmanların Stealth algılamasını 2 seviye daha düşükmüş gibi azaltır."
       ]
     },
@@ -17922,7 +17934,7 @@
       "descTr": "Stealth modundayken düşmanların seni fark etme şansını 3 seviye yüksekmişsin gibi azaltır.",
       "changeTr": "Maksimum rank 5'ten 3'e değişti. Efekt değiştirildi.",
       "ranksTr": [
-        "",
+        "Stealth modundayken düşmanların seni algılama ihtimalini, 1 seviye daha yüksekmişsin gibi azaltır.",
         "Stealth modundayken düşmanların seni fark etme şansını 2 seviye yüksekmişsin gibi azaltır.",
         "Stealth modundayken düşmanların seni fark etme şansını 3 seviye yüksekmişsin gibi azaltır."
       ]
@@ -18632,7 +18644,7 @@
       "descTr": "Stoneclaw Totem'in canını %50, Earthbind Totem'in etki alanını %20 artırır.",
       "changeTr": "Elemental ağacından Enhancement ağacına taşındı. Tier 2'den tier 1'e taşındı.",
       "ranksTr": [
-        "",
+        "Stoneclaw Totem'in canını %25, Earthbind Totem'in yarıçapını %10 artırır.",
         "Stoneclaw Totem'in canını %50, Earthbind Totem'in etki alanını %20 artırır."
       ]
     },
@@ -20096,10 +20108,10 @@
       "descTr": "Sacrifice'ın ilk hasarını %50 artırır; Burn %100 şansla hedefi sersemletir ve hareket hızını %50 azaltır. 5 saniye sürer.",
       "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
-        "",
-        "",
-        "",
-        "",
+        "Immolate'in başlangıç hasarını %10 artırır; Burn %20 ihtimalle hedefi sersemletir ve hareket hızını 5 saniye boyunca %50 azaltır.",
+        "Immolate'in başlangıç hasarını %20 artırır; Burn %40 ihtimalle hedefi sersemletir ve hareket hızını 5 saniye boyunca %50 azaltır.",
+        "Immolate'in başlangıç hasarını %30 artırır; Burn %60 ihtimalle hedefi sersemletir ve hareket hızını 5 saniye boyunca %50 azaltır.",
+        "Immolate'in başlangıç hasarını %40 artırır; Burn %80 ihtimalle hedefi sersemletir ve hareket hızını 5 saniye boyunca %50 azaltır.",
         "Sacrifice'ın ilk hasarını %50 artırır; Burn %100 şansla hedefi sersemletir ve hareket hızını %50 azaltır. 5 saniye sürer."
       ]
     },
@@ -20304,7 +20316,7 @@
         "Destruction büyülerinin kritik hasar bonusunu %20 artırır.",
         "Destruction büyülerinin kritik hasar bonusunu %40 artırır.",
         "Destruction büyülerinin kritik hasar bonusunu %60 artırır.",
-        "",
+        "Destruction büyülerinin kritik hasar bonusunu %80 artırır.",
         "Destruction büyülerinin kritik hasar bonusunu %100 artırır."
       ]
     },
@@ -20385,10 +20397,10 @@
       "descTr": "Rend etkisindeki düşmanlara ana el silahınla yakın dövüş saldırısı yaptığında Overpower'ı etkinleştirme şansın %20'dir.",
       "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
-        "",
-        "",
-        "",
-        "",
+        "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %4 ihtimalle Overpower'ı etkinleştirir.",
+        "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %8 ihtimalle Overpower'ı etkinleştirir.",
+        "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %12 ihtimalle Overpower'ı etkinleştirir.",
+        "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %16 ihtimalle Overpower'ı etkinleştirir.",
         "Rend etkisindeki düşmanlara ana el silahınla yakın dövüş saldırısı yaptığında Overpower'ı etkinleştirme şansın %20'dir."
       ]
     },
@@ -21058,8 +21070,8 @@
       "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "İkincil saldırılarının isabet oranını %10 artırır.",
       "ranksTr": [
-        "",
-        "",
+        "İkincil saldırının isabet ihtimalini %4 artırır.",
+        "İkincil saldırının isabet ihtimalini %7 artırır.",
         "İkincil saldırılarının isabet oranını %10 artırır."
       ]
     },
@@ -21087,7 +21099,7 @@
       "changeTr": "Forever'ın yeni talent'ı.",
       "descTr": "Fury, Berserker Rage, Blood Fury, Death Wish ve Bloodlust yeteneklerin bir sonraki 3 yakın dövüş saldırın için maksimum canının %1,0'ını geri verir.",
       "ranksTr": [
-        "",
+        "Rage, Berserker Rage, Blood Fury, Death Wish ve Bloodlust yeteneklerin, sonraki 3 yakın dövüş saldırın için azami canının %0.5'ini geri kazandırır.",
         "Fury, Berserker Rage, Blood Fury, Death Wish ve Bloodlust yeteneklerin bir sonraki 3 yakın dövüş saldırın için maksimum canının %1,0'ını geri verir."
       ]
     },
@@ -21204,8 +21216,8 @@
       "ranksTr": [
         "Savaştan çıktıktan sonra öfkenin azalmaya başlama zamanını 2 saniye geciktirir.",
         "Savaştan çıktıktan sonra öfkenin azalmaya başlama zamanını 4 saniye geciktirir.",
-        "",
-        "",
+        "Savaştan çıktıktan sonra Öfke'nin azalmasını 6 saniye geciktirir.",
+        "Savaştan çıktıktan sonra Öfke'nin azalmasını 8 saniye geciktirir.",
         "Savaştan çıktıktan sonra öfkenin azalmaya başlama zamanını 10 saniye geciktirir."
       ]
     },
@@ -21767,7 +21779,7 @@
       "changeTr": "Sütun 3'ten sütun 4'e taşındı. Efekt değiştirildi.",
       "descTr": "Bear Form veya Dire Bear Form'dayken kritik vuruş yaptığında %100 şansla ek 5 öfke kazanırsın. Ayrıca Cat Form'dayken combo point üreten yeteneklerde periyodik olmayan kritik vuruşlar %100 şansla ek bir combo point kazandırır.",
       "ranksTr": [
-        "",
+        "Ayı Formu veya Dire Bear Formu'nda kritik vuruş yaptığında %50 ihtimalle 5 ek Öfke kazanırsın. Ayrıca Kedi Formu'nda kombo puanı veren yeteneklerle yaptığın periyodik olmayan kritik vuruşlar %50 ihtimalle 1 ek kombo puanı kazandırır.",
         "Bear Form veya Dire Bear Form'dayken kritik vuruş yaptığında %100 şansla ek 5 öfke kazanırsın. Ayrıca Cat Form'dayken combo point üreten yeteneklerde periyodik olmayan kritik vuruşlar %100 şansla ek bir combo point kazandırır."
       ]
     },
@@ -21847,7 +21859,7 @@
       "descTr": "Swipe yeteneğinin verdiği hasarı %30 artırır ve Prowl halindeyken düşmanların seni fark etme şansını 3 seviye yüksekmişsin gibi azaltır.",
       "changeTr": "Maksimum rank 5'ten 3'e değişti. Sütun 1'den sütun 2'ye taşındı. Efekt değiştirildi.",
       "ranksTr": [
-        "",
+        "Swipe yeteneğinin verdiği hasarı %10 artırır ve Prowl modundayken düşmanların seni algılama ihtimalini, 1 seviye daha yüksekmişsin gibi azaltır.",
         "Swipe yeteneğinin verdiği hasarı %20 artırır ve Prowl halindeyken düşmanların seni fark etme şansını 2 seviye yüksekmişsin gibi azaltır.",
         "Swipe yeteneğinin verdiği hasarı %30 artırır ve Prowl halindeyken düşmanların seni fark etme şansını 3 seviye yüksekmişsin gibi azaltır."
       ]
@@ -22144,10 +22156,10 @@
       "descTr": "Kaçınma şansını %5 artırır ve her kaçınmada %100 şansla 5 Öfke kazanırsın.",
       "changeTr": "Forever'ın yeni talent'ı.",
       "ranksTr": [
-        "",
-        "",
-        "",
-        "",
+        "Savuşturma ihtimalini %1 artırır ve her savuşturduğunda %20 ihtimalle 5 Öfke kazandırır.",
+        "Savuşturma ihtimalini %2 artırır ve her savuşturduğunda %40 ihtimalle 5 Öfke kazandırır.",
+        "Savuşturma ihtimalini %3 artırır ve her savuşturduğunda %60 ihtimalle 5 Öfke kazandırır.",
+        "Savuşturma ihtimalini %4 artırır ve her savuşturduğunda %80 ihtimalle 5 Öfke kazandırır.",
         "Kaçınma şansını %5 artırır ve her kaçınmada %100 şansla 5 Öfke kazanırsın."
       ]
     },
@@ -22207,7 +22219,7 @@
       "changeTr": "Tier 2'den tier 1'e taşındı. Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %14 olur.",
-        "",
+        "Arcane ve Nature büyülerini cast ederken %28 ihtimalle hasar yüzünden kesintiye uğramazsın.",
         "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %42 olur.",
         "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %56 olur.",
         "Arcane ve Nature büyülerini hasarla kesintiye uğramadan cast etme şansın %70 olur."
@@ -22397,7 +22409,7 @@
       "descTr": "Bear Form, Cat Form, Dire Bear Form veya Moonkin Form'dayken seviye başına 3 ek temel Armor kazanırsın; seviyenin beş katını aşan her Defense beceri puanı da 2.00 temel Armor sağlar. Bu değer formların çarpanıyla ayrıca artar.",
       "changeTr": "Maksimum rank 5'ten 3'e değişti. Sütun 3'ten sütun 4'e taşındı. Efekt değiştirildi.",
       "ranksTr": [
-        "",
+        "Ayı Formu, Kedi Formu, Dire Bear Formu veya Moonkin Formu'ndayken seviye başına 1 ek temel zırh puanı kazanırsın; seviyeni aşan her savunma puanı ayrıca beş kez 0.67 temel zırh puanı sağlar. Bu değer bu formlar tarafından ayrıca çarpılır.",
         "Bear Form, Cat Form, Dire Bear Form veya Moonkin Form'dayken seviye başına 2 ek temel Armor kazanırsın; seviyenin beş katını aşan her Defense beceri puanı da 1.33 temel Armor sağlar. Bu değer formların çarpanıyla ayrıca artar.",
         "Bear Form, Cat Form, Dire Bear Form veya Moonkin Form'dayken seviye başına 3 ek temel Armor kazanırsın; seviyenin beş katını aşan her Defense beceri puanı da 2.00 temel Armor sağlar. Bu değer formların çarpanıyla ayrıca artar."
       ]
@@ -23311,10 +23323,10 @@
       "descTr": "Kalkanla saldırı bloklama şansını %5 artırır ve blok yaptığında %100 şansla 5 Öfke üretirsin.",
       "changeTr": "Efekt değiştirildi.",
       "ranksTr": [
-        "",
-        "",
-        "",
-        "",
+        "Kalkanınla saldırıları Block etme ihtimalini %1 artırır ve Block yaptığında %20 ihtimalle 5 Öfke kazandırır.",
+        "Kalkanınla saldırıları Block etme ihtimalini %2 artırır ve Block yaptığında %40 ihtimalle 5 Öfke kazandırır.",
+        "Kalkanınla saldırıları Block etme ihtimalini %3 artırır ve Block yaptığında %60 ihtimalle 5 Öfke kazandırır.",
+        "Kalkanınla saldırıları Block etme ihtimalini %4 artırır ve Block yaptığında %80 ihtimalle 5 Öfke kazandırır.",
         "Kalkanla saldırı bloklama şansını %5 artırır ve blok yaptığında %100 şansla 5 Öfke üretirsin."
       ]
     }

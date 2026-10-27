@@ -289,7 +289,7 @@ const trCache = JSON.parse(
   await readFile(path.join(DATA_DIR, 'i18n/tr.json'), 'utf8').catch(() => '{}'),
 ) as TranslationCache;
 const untranslated = applyTranslations(glossary.entries, trCache);
-applyRankTranslations(glossary.entries);
+for (const p of applyRankTranslations(glossary.entries, trCache)) if (!untranslated.some((u) => u.key === p.key)) untranslated.push(p);
 await mkdir(path.join(ROOT, '.cache'), { recursive: true });
 await writeFile(path.join(ROOT, '.cache/translate-pending.json'), JSON.stringify(untranslated, null, 2) + '\n');
 log(

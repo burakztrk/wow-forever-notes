@@ -128,7 +128,7 @@ export async function syncProfessions(o: ProfessionSyncOptions): Promise<Profess
     await readFile(path.join(dataDir, 'i18n/tr.json'), 'utf8').catch(() => '{}'),
   ) as TranslationCache;
   const pending = [...applyTranslations(legacy.perks, trCache), ...applyRewardTranslations(legacy.rewards, items, trCache)];
-  applyRankTranslations(legacy.perks);
+  for (const p of applyRankTranslations(legacy.perks, trCache)) if (!pending.some((u) => u.key === p.key)) pending.push(p);
   o.log(`legacy: ${legacy.trees.length} trees, ${legacy.perks.length} perks, ${legacy.reserved.length} unrevealed`);
 
   await writeFile(path.join(dataDir, 'professions.json'), json(professionsFile));
