@@ -25,6 +25,7 @@ const s = NIGHT_ELF_STORY[lang];
 const u = STORY_UI[lang];
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/night-elf/`)])) as Record<Lang, string>;
 const art = (svg: string) => fillArt(svg, NIGHT_ELF_ART_LABELS[lang], withBase('/'));
+const img = (name: string) => withBase(`/stories/night-elf/${name}`);
 const ic = NIGHT_ELF_ART.icons;
 // proper names in the text get lore tooltips (src/i18n/lore.ts); the cards ride in the #wf-glossary island
 const lx = (text: string) => loreHtml(text);
@@ -49,9 +50,10 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
   <div class="lore night" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
-    <section class="hero moonlit" aria-labelledby="h-night-elf">
-      <div class="hero-bg" set:html={art(NIGHT_ELF_ART.hero)} />
+    <section class="hero well" aria-labelledby="h-night-elf">
+      <div class="hero-bg" aria-hidden="true"><img src={img('well-of-eternity.webp')} alt="" width="1600" height="1068" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
+      <div class="sil sil-queen" aria-hidden="true"><img src={img('azshara.webp')} alt="" width="387" height="516" /></div>
       <canvas id="snow" data-fx="wisps" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
@@ -124,7 +126,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- II · the Sundering -->
-    <section class="chap" id="sundering" aria-labelledby="h-sundering">
+    <section class="chap chap-bg" id="sundering" aria-labelledby="h-sundering">
+      <div class="chap-art top well-art" aria-hidden="true"><img src={img('well-of-eternity.webp')} alt="" width="1600" height="1068" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">II</div>
@@ -169,7 +172,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- III · the vigil -->
-    <section class="chap" id="vigil" aria-labelledby="h-vigil">
+    <section class="chap chap-bg" id="vigil" aria-labelledby="h-vigil">
+      <div class="chap-art top" aria-hidden="true"><img src={img('moonglade.webp')} alt="" width="739" height="415" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">III</div>
@@ -197,7 +201,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- IV · Hyjal -->
-    <section class="chap" id="hyjal" aria-labelledby="h-hyjal">
+    <section class="chap chap-bg" id="hyjal" aria-labelledby="h-hyjal">
+      <div class="chap-art top pano" aria-hidden="true"><img src={img('hyjal.webp')} alt="" width="622" height="240" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">IV</div>

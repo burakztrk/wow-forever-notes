@@ -1695,7 +1695,6 @@ export const CURSE_STORY: Record<Lang, CurseStory> = {
 
 export const NIGHT_ELF_ART_LABELS: Record<Lang, Record<string, string>> = {
   tr: {
-    heroAria: 'Gece göğünde hilal ve denizden yükselen dev ağaç Teldrassil',
     sunderingAria: 'Kaydırdıkça Kalimdor’un tek kıtası parçalanıyor ve ortadaki Well of Eternity Maelstrom’a dönüşüyor',
     oneLand: 'Tek kıta',
     ekAria: 'Third War’da Kalimdor’un kuzeyi: Ashenvale, Felwood ve Mount Hyjal; adım adım',
@@ -1707,7 +1706,6 @@ export const NIGHT_ELF_ART_LABELS: Record<Lang, Record<string, string>> = {
     worldAria: 'Kalimdor’da night elf yerleşimleri ve gemi yolları: Darnassus, Auberdine, Astranaar, Nighthaven, Feathermoon Stronghold, Menethil Harbor',
   },
   en: {
-    heroAria: 'A crescent moon in the night sky and Teldrassil, the giant tree rising from the sea',
     sunderingAria: 'As you scroll, the single continent of Kalimdor breaks apart and the Well of Eternity at its centre becomes the Maelstrom',
     oneLand: 'One continent',
     ekAria: 'Northern Kalimdor in the Third War: Ashenvale, Felwood and Mount Hyjal, step by step',
@@ -1969,7 +1967,7 @@ export const NIGHT_ELF_STORY: Record<Lang, NightElfStory> = {
       text: 'Bir kez dünyayı yaktılar, sonra on bin yıl onu korudular. Elune’ün ışığı hâlâ Teldrassil’in dallarında.',
       nextText: 'Draenor’dan gelen halk: Horde’un kuruluşu ve Thrall’ın Kalimdor’u.',
     },
-    images: 'Haritalar WoW Forever’dan. Kapak çizimi bu sayfa için hazırlandı. World of Warcraft adları Blizzard Entertainment’a aittir.',
+    images: 'Well of Eternity illüstrasyonu, Azshara, Moonglade ve Mount Hyjal görselleri Blizzard Entertainment’a aittir. Haritalar WoW Forever’dan.',
   },
   en: {
     metaDescription:
@@ -2171,6 +2169,6 @@ export const NIGHT_ELF_STORY: Record<Lang, NightElfStory> = {
       text: 'Once they set the world on fire; then they guarded it for ten thousand years. Elune’s light still lies on the branches of Teldrassil.',
       nextText: 'The people who came from Draenor: the founding of the Horde and Thrall’s Kalimdor.',
     },
-    images: 'Maps from WoW Forever. The cover drawing was made for this page. World of Warcraft names belong to Blizzard Entertainment.',
+    images: 'The Well of Eternity illustration and the Azshara, Moonglade and Mount Hyjal images belong to Blizzard Entertainment. Maps from WoW Forever.',
   },
 };

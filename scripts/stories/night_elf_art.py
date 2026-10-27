@@ -7,7 +7,6 @@ from art_lib import *  # noqa: F401,F403
 
 WORLD_IMG = '<image class="map-img" href="%%base%%maps/azeroth.webp" width="1002" height="668"/>'
 TELD_IMG = '<image class="map-img" href="%%base%%maps/teldrassil.webp" width="1002" height="668"/>'
-MOON, MOON_DIM, LEAF = "#dfe9ff", "#8fa3d6", "#7fd6b5"
 
 
 def route(pts, cls, headcls=None):
@@ -28,69 +27,6 @@ def revealed(prefix, paths, w=1002, h=668):
     heads = "".join(f'<g data-show="{rg.split(",")[1]}">{head(*pts[-1], end_angle(pts), c)}</g>'
                     for k, (pts, c, rg) in paths.items())
     return masks, lines, heads
-
-
-# ---------- Hero: a crescent moon over the sea and Teldrassil rising from it ----------
-def hero_svg():
-    r = random.Random(11)
-    W, H = 1600, 760
-    tx, base = 640, 660  # trunk centre and waterline
-    stars = "".join(
-        f'<circle cx="{f(x)}" cy="{f(y)}" r="{f(r.uniform(.5, 1.7))}"'
-        f'{" class=\"tw\"" if r.random() < .35 else ""} style="animation-delay:{f(r.uniform(0, 3.6))}s"/>'
-        for x, y in ((r.uniform(0, W), r.uniform(0, base * .8)) for _ in range(220)))
-    # crescent: a lit disc with an offset dark disc masked out
-    mx, my, mr = 185, 150, 72
-    moon = (f'<circle cx="{mx}" cy="{my}" r="{mr * 3}" fill="url(#nMoonGlow)"/>'
-            f'<mask id="nCres"><circle cx="{mx}" cy="{my}" r="{mr}" fill="#fff"/>'
-            f'<circle cx="{mx + mr * .42}" cy="{my - mr * .22}" r="{mr * .9}" fill="#000"/></mask>'
-            f'<circle cx="{mx}" cy="{my}" r="{mr}" fill="{MOON}" mask="url(#nCres)"/>')
-    # trunk: wide flared roots at the waterline, tapering into the crown; a few boughs fork out at the top
-    top = 300
-    trunk = (f'M{tx - 230} {base}C{tx - 120} {base - 16} {tx - 70} {base - 70} {tx - 58} {base - 170}'
-             f'C{tx - 46} {base - 260} {tx - 44} {top + 60} {tx - 34} {top}'
-             f'L{tx + 34} {top}C{tx + 44} {top + 60} {tx + 46} {base - 260} {tx + 58} {base - 170}'
-             f'C{tx + 70} {base - 70} {tx + 120} {base - 16} {tx + 240} {base}Z')
-    boughs = "".join(
-        f'<path d="M{tx + sx} {top + 30}C{tx + sx * 1.6} {top - 10} {tx + ex * .6} {top - 40} {tx + ex} {top - ey}" '
-        f'stroke="#070b12" stroke-width="{w}" fill="none" stroke-linecap="round"/>'
-        for sx, ex, ey, w in [(-20, -260, 30, 22), (-14, -150, 80, 18), (0, -40, 120, 16), (12, 120, 90, 18), (20, 270, 40, 22)])
-    roots = "".join(
-        f'<path d="M{tx + dx * .25} {base - 26}C{tx + dx * .6} {base - 8} {tx + dx} {base} {tx + dx * 1.2} {base + 16}" '
-        f'stroke="#060a10" stroke-width="{w}" fill="none" stroke-linecap="round"/>'
-        for dx, w in [(-260, 18), (-170, 14), (190, 16), (270, 12), (-330, 9), (340, 9)])
-    # crown: a broad dome of leaf masses, lighter on the moon side
-    crown, rim = "", ""
-    shades = ["#0a141c", "#0c1922", "#0f1f2a", "#112433"]
-    for i in range(120):
-        a = r.uniform(math.pi * 1.03, math.pi * 1.97)
-        k = r.random() ** .6
-        cx = tx + math.cos(a) * 360 * k
-        cy = top - 30 + math.sin(a) * 190 * k + r.uniform(-12, 30)
-        rx, ry = r.uniform(46, 110), r.uniform(22, 46)
-        crown += f'<ellipse cx="{f(cx)}" cy="{f(cy)}" rx="{f(rx)}" ry="{f(ry)}" fill="{r.choice(shades)}"/>'
-        if cx < tx - 40 and cy < top - 60 and r.random() < .45:
-            rim += (f'<ellipse cx="{f(cx - rx * .25)}" cy="{f(cy - ry * .35)}" rx="{f(rx * .7)}" ry="{f(ry * .3)}" '
-                    f'fill="{MOON_DIM}" opacity=".13"/>')
-    lights = "".join(
-        f'<circle cx="{f(tx + r.uniform(-280, 280))}" cy="{f(top - 30 + r.uniform(-120, 30))}" r="{f(r.uniform(1.2, 2.8))}" '
-        f'fill="{LEAF}" class="tw" style="animation-delay:{f(r.uniform(0, 3.6))}s"/>' for _ in range(40))
-    reflection = "".join(
-        f'<path d="M{f(mx - w / 2 + r.uniform(-14, 14))} {f(base + 12 + i * 11)}h{f(w)}" stroke="{MOON}" '
-        f'stroke-opacity="{f(.4 - i * .035)}" stroke-width="1.6" stroke-linecap="round"/>'
-        for i, w in enumerate([150, 120, 170, 90, 130, 70, 100, 50, 80]))
-    sea = f'<rect y="{base - 4}" width="{W}" height="{H - base + 4}" fill="url(#nSea)"/>{reflection}'
-    mist = f'<rect y="{base - 150}" width="{W}" height="190" fill="url(#nMist)"/>'
-    defs = (f'<defs><linearGradient id="nSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#060a16"/>'
-            f'<stop offset=".55" stop-color="#121836"/><stop offset="1" stop-color="#232a52"/></linearGradient>'
-            f'<radialGradient id="nMoonGlow"><stop offset="0" stop-color="{MOON}" stop-opacity=".32"/>'
-            f'<stop offset=".35" stop-color="{MOON_DIM}" stop-opacity=".12"/><stop offset="1" stop-color="{MOON_DIM}" stop-opacity="0"/></radialGradient>'
-            f'<linearGradient id="nSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151d3a"/><stop offset="1" stop-color="#070a14"/></linearGradient>'
-            f'<linearGradient id="nMist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{MOON_DIM}" stop-opacity="0"/>'
-            f'<stop offset=".7" stop-color="{MOON_DIM}" stop-opacity=".18"/><stop offset="1" stop-color="{MOON_DIM}" stop-opacity="0"/></linearGradient></defs>')
-    return (f'<svg viewBox="0 0 {W} {H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="%%heroAria%%">{defs}'
-            f'<rect width="{W}" height="{H}" fill="url(#nSky)"/><g fill="{MOON}">{stars}</g>{moon}'
-            f'{sea}{mist}{roots}<path d="{trunk}" fill="#060a10"/>{boughs}<g>{crown}</g>{rim}{lights}</svg>')
 
 
 # ---------- Chapter II: the single continent breaks apart (data-moves), the Well becomes the Maelstrom ----------
@@ -228,7 +164,6 @@ def icons():
 
 def main():
     write_ts(LIB / "night-elf-art.ts", "NIGHT_ELF_ART", {
-        "hero": hero_svg(),
         "sundering": sundering_svg(),
         "ek": ek_svg(),
         "teldrassil": teldrassil_svg(),

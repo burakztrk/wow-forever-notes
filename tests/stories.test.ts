@@ -36,7 +36,7 @@ const art = [
   {
     name: 'night elf',
     labels: NIGHT_ELF_ART_LABELS,
-    drawings: [NIGHT_ELF_ART.hero, NIGHT_ELF_ART.sundering, NIGHT_ELF_ART.ek, NIGHT_ELF_ART.teldrassil, NIGHT_ELF_ART.world],
+    drawings: [NIGHT_ELF_ART.sundering, NIGHT_ELF_ART.ek, NIGHT_ELF_ART.teldrassil, NIGHT_ELF_ART.world],
   },
 ];
 

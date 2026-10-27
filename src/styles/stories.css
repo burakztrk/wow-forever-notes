@@ -620,12 +620,21 @@ a.story-card:focus-visible {
 /* Lore tooltips on proper names (src/lib/stories/lore.ts; the card is the site's shared #wf-tooltip) */
 .lore .wf-tip--lore{color:inherit;font-weight:inherit;white-space:normal;text-decoration:none;border-bottom:1px dotted rgba(200,166,86,.55);transition:color .15s,border-color .15s}
 .lore .wf-tip--lore:hover,.lore .wf-tip--lore:focus-visible,.lore .wf-tip--lore[aria-describedby]{color:var(--gold);border-bottom-color:var(--gold);text-decoration:none}
-/* Night Elf story: moonlight, the drawn cover and the Sundering figure */
+/* Night Elf story: moonlight, the Well of Eternity cover with Azshara, the Sundering figure;
+   .hero.drawn is a cover drawn as an SVG (the Orc story) */
 .lore.night{--elune:#b9c8ff;--leaf:#7fd6b5}
+.lore .hero.well .hero-bg img{object-position:40% 50%;filter:brightness(.72) saturate(.95) contrast(1.05)}
+@media (max-width:760px){.lore .hero.well .hero-bg img{object-position:36% 50%}}
+.lore .sil-queen{aspect-ratio:387/516;width:clamp(240px,25vw,370px);opacity:.42}
+@media (max-width:760px){.lore .sil-queen{width:200px;opacity:.26}}
+.lore .chap-art.top{bottom:auto;height:clamp(420px,56vw,720px)}
+.lore .chap-art.well-art img{object-position:42% 62%}
+.lore .chap-art.top.pano{width:min(72%,920px);height:clamp(260px,32vw,440px)}
+.lore .chap-art.top.pano img{object-position:50% 50%}
 .lore .hero-bg > svg{display:block;width:100%;height:100%}
-.lore .hero.moonlit .hero-bg{inset:-4% 0 0 0}
-.lore .hero.moonlit .hero-shade{background:linear-gradient(90deg,rgba(14,16,21,0) 0%,rgba(14,16,21,0) 40%,rgba(14,16,21,.62) 62%,rgba(14,16,21,.8) 100%),linear-gradient(180deg,rgba(14,16,21,.4) 0%,rgba(14,16,21,0) 20%,rgba(14,16,21,0) 76%,var(--bg) 100%)}
-@media (max-width:760px){.lore .hero.moonlit .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.7) 0%,rgba(14,16,21,.45) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
+.lore .hero.drawn .hero-bg{inset:-4% 0 0 0}
+.lore .hero.drawn .hero-shade{background:linear-gradient(90deg,rgba(14,16,21,0) 0%,rgba(14,16,21,0) 40%,rgba(14,16,21,.62) 62%,rgba(14,16,21,.8) 100%),linear-gradient(180deg,rgba(14,16,21,.4) 0%,rgba(14,16,21,0) 20%,rgba(14,16,21,0) 76%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.drawn .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.7) 0%,rgba(14,16,21,.45) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
 .lore .stat.moonstat .stat-n{color:var(--elune);text-shadow:0 0 28px rgba(185,200,255,.3)}
 .lore .stat.moonstat .stat-ov{color:var(--elune)}
 .lore #sunder svg{max-height:64vh}
