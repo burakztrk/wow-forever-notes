@@ -7,7 +7,7 @@
 //   (.idle) until the map is in view, so the first step's arrows are not drawn ahead of the reader.
 // - Hero particles (canvas#snow, data-fx): "snow" is a blizzard whose wind turns left, right
 //   and calm; "embers" are forge sparks drifting up; "void", "wisps" and "voodoo" are the same
-//   motes in violet, pale green and jungle green; "cinders" are tiny red flames that turn grey ash and shrink.
+//   motes in violet, pale green and jungle green; "cinders" are tiny red flames that fall, turn grey ash and shrink.
 // prefers-reduced-motion: no camera moves, gears or snow; drawings shown complete.
 
 const lore = document.getElementById('lore');
@@ -390,7 +390,7 @@ function embers(cv: HTMLCanvasElement, [hot, warm] = ['#ffb36b', '#ff8a3a']) {
   addEventListener('resize', size);
 }
 
-// Cinders: tiny flame-shaped sparks that start red, cool to grey ash as they drift up and shrink away.
+// Cinders: tiny flame-shaped sparks that start red, cool to grey ash as they drift down and shrink away.
 function cinders(cv: HTMLCanvasElement) {
   const ctx = cv.getContext('2d');
   if (!ctx) return;
@@ -401,12 +401,12 @@ function cinders(cv: HTMLCanvasElement) {
   let run = false;
   const spawn = (anywhere: boolean): Cinder => ({
     x: Math.random() * w,
-    y: anywhere ? Math.random() * h : h + 8,
+    y: anywhere ? Math.random() * h : -8,
     r: Math.random() * 2.2 + 2.2,
     v: 0.4 + Math.random() * 0.8,
     s: Math.random() * 6.28,
-    life: 300 + Math.random() * 380,
-    age: anywhere ? Math.random() * 300 : 0,
+    life: 520 + Math.random() * 400,
+    age: anywhere ? Math.random() * 500 : 0,
   });
   const size = () => {
     const dpr = Math.min(2, devicePixelRatio || 1);
@@ -429,10 +429,10 @@ function cinders(cv: HTMLCanvasElement) {
       const p = list[i];
       p.age += 1;
       p.s += 0.03;
-      p.y -= p.v;
+      p.y += p.v;
       p.x += Math.sin(p.s + t / 1100) * 0.4 + 0.25;
       const k = p.age / p.life;
-      if (k >= 1 || p.y < -10) {
+      if (k >= 1 || p.y > h + 10) {
         list[i] = spawn(false);
         continue;
       }
