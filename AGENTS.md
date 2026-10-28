@@ -78,6 +78,12 @@ Node 22.12+.
   mention of each name per text block, `loreTips(lang, loreIds, glossaryIds)` builds the `#wf-glossary` island, and the Skyborne page passes the racial ids it lists as `GlossaryRow`s; `CardTip` kind `lore`). Lore cards
   are searchable too: `loreSearch()` adds them, with their aliases and story links, to `/<lang>/search.json`;
   a new written story goes into `LORE_STORIES` (the lore test checks it against `STORY_RACES`).
+- `src/pages/[lang]/stories/timeline.astro` — story timeline: the major events of the race and class stories on one
+  ruler (one band per era, one tick per event), shown on the Azeroth map (same coordinates as the story drawings; places
+  off that map, like Northrend, Draenor and Skywall, are dashed symbolic pins) and filterable by story (`#e=<event>&s=<slug>`).
+  Events, places and story-chapter links in `src/lib/stories/timeline.ts`, copy (TR + EN) in `src/i18n/timeline.ts`,
+  behaviour in `src/scripts/timeline.ts`, styles in `src/styles/timeline.css`. Story pages link to their filtered view
+  (header + closing section). A new written story needs at least one event (`tests/timeline.test.ts` checks it).
 - SEO + analytics: `src/layouts/BaseLayout.astro` writes canonical, hreflang (+ x-default), Open Graph/Twitter
   (`public/og/<lang>.png`) and an optional JSON-LD block (`src/lib/seo.ts`: `WebSite` + SearchAction on the home pages,
   `BlogPosting` on posts). `@astrojs/sitemap` (astro.config, tr/en alternates; root redirect and 404 left out) and

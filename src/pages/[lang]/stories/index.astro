@@ -13,6 +13,7 @@ import {
   TROLL_STORY,
   UNDEAD_STORY,
 } from '../../../i18n/stories';
+import { TIMELINE_UI } from '../../../i18n/timeline';
 import { racesByFaction } from '../../../lib/codex';
 import { STORY_CLASSES } from '../../../lib/stories/classes';
 import { storySlug } from '../../../lib/stories/races';
@@ -25,6 +26,7 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/`)])) as Record<Lang, string>;
+const tl = TIMELINE_UI[lang];
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 // Written stories, newest first; every other race shows as "coming soon" (src/lib/stories/races.ts).
 const features = [
@@ -109,6 +111,16 @@ const features = [
   <div class="story-index">
     <h1>{t.storiesTitle}</h1>
     <p class="muted">{t.storiesIntro}</p>
+
+    <a class="story-feature story-feature--timeline" href={withBase(`/${lang}/stories/timeline/`)}>
+      <img class="story-feature-bg" src={withBase('/maps/azeroth.webp')} alt="" width="1002" height="668" loading="lazy" />
+      <span class="story-feature-text">
+        <span class="story-feature-over">{tl.cardOver}</span>
+        <span class="story-feature-name">{tl.title}</span>
+        <span class="story-feature-lead">{tl.cardLead}</span>
+        <span class="story-feature-cta">{tl.cardCta}</span>
+      </span>
+    </a>
 
     <div class="story-features">
       {
