@@ -2,8 +2,10 @@
 // Closing section of a story page (epilogue + next story, or the slot's content instead) and the notes footer.
 import type { Lang } from '../../config';
 import { STORY_UI } from '../../i18n/stories';
+import { TIMELINE_UI } from '../../i18n/timeline';
 import { STORY_CLASSES } from '../../lib/stories/classes';
 import { STORY_RACES } from '../../lib/stories/races';
+import { timelineUrl } from '../../lib/stories/timeline';
 import { withBase } from '../../utils/url';
 
 interface Props {
@@ -17,6 +19,7 @@ interface Props {
 }
 const { lang, title, text, next, nextText, images } = Astro.props;
 const u = STORY_UI[lang];
+const tl = timelineUrl(lang, Astro.url.pathname);
 const slug = STORY_RACES.find((r) => r.name === next)?.slug ?? STORY_CLASSES.find((c) => c.name === next)?.slug;
 ---
 
@@ -26,6 +29,13 @@ const slug = STORY_RACES.find((r) => r.name === next)?.slug ?? STORY_CLASSES.fin
       <p class="ov">{u.outroLabel}</p>
       <h2 class="h2" id="h-outro">{title}</h2>
       <p class="lead">{text}</p>
+      {
+        tl && (
+          <a class="tl-cta" href={tl}>
+            {TIMELINE_UI[lang].storyCta} <b aria-hidden="true">→</b>
+          </a>
+        )
+      }
     </div>
     {
       Astro.slots.has('default') ? (
