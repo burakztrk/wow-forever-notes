@@ -1,14 +1,15 @@
 // Story timeline page (src/pages/[lang]/stories/timeline.astro). The page starts complete without
-// JavaScript (ruler ticks link to the listed events); this turns it into one event at a time:
-// - a tick on the ruler, a pin on the map, the prev/next buttons or ←/→ on the ruler select an event;
+// JavaScript (timeline cards link to the listed events); this turns it into one event at a time:
+// - a card on the timeline, a pin on the map, the prev/next buttons or ←/→ on the timeline select an event;
 // - the map's camera (viewBox) moves to the event's place and its routes, labels keep their screen size via --k;
-// - the story chips filter the ruler, the pins and prev/next to the events one story tells;
-// - the state lives in the hash: #e=<event>&s=<story slug> (#e-<event>, the no-JS anchor, works too).
-// prefers-reduced-motion: no camera animation.
+// - the key's topics and the story chips filter the timeline, the pins and prev/next (one filter at a time);
+// - the timeline scrolls sideways: buttons at its ends, mouse drag, and the selected card is brought into view;
+// - the state lives in the hash: #e=<event>&s=<story slug> or &c=<topic> (#e-<event>, the no-JS anchor, works too).
+// prefers-reduced-motion: no camera animation or smooth scrolling.
 
 interface Data {
   places: Record<string, [number, number]>;
-  events: { id: string; place: string; from: string[]; to: string[]; s: string[] }[];
+  events: { id: string; place: string; from: string[]; to: string[]; s: string[]; c: string[] }[];
 }
 
 const root = document.getElementById('tl');
@@ -26,20 +27,24 @@ function initTimeline(root: HTMLElement, data: Data) {
   const svg = $<SVGSVGElement>('#tlmap')!;
   const routes = $<SVGGElement>('.tl-routes', svg)!;
   const pins = new Map($$<SVGGElement>('.tp', svg).map((g) => [g.dataset.place!, g]));
-  const ticks = new Map($$<HTMLAnchorElement>('.tick').map((a) => [a.dataset.ev!, a]));
+  const cols = new Map($$('.pz-ev').map((li) => [li.dataset.ev!, li]));
+  const cards = new Map($$<HTMLAnchorElement>('.pz-card').map((a) => [a.dataset.ev!, a]));
   const items = new Map($$('.tl-ev').map((li) => [li.dataset.ev!, li]));
-  const bands = $$('.band');
-  const ruler = $('.ruler')!;
+  const eraCols = $$('.pz-era');
+  const poster = $('.poster')!;
   const chips = $$<HTMLButtonElement>('.tl-filter .chip');
+  const topicBtns = $$<HTMLButtonElement>('.tl-topics .topic');
+  const scrollBtns = $$<HTMLButtonElement>('.pz-scroll');
   const count = $('.tl-count');
   const zoomBtn = $<HTMLButtonElement>('.tl-zoom');
   $('.tl-nav')?.removeAttribute('hidden');
   zoomBtn?.removeAttribute('hidden');
+  scrollBtns.forEach((b) => b.removeAttribute('hidden'));
 
   const W = 1002;
   const H = 668;
   const byId = new Map(data.events.map((e, i) => [e.id, { ...e, i }]));
-  let filter = '';
+  let filter: { kind: 's' | 'c'; id: string } | null = null;
   let shown = data.events;
   let cur = data.events[0].id;
   let zoomed = true;
@@ -92,7 +97,7 @@ function initTimeline(root: HTMLElement, data: Data) {
   const curve = (a: [number, number], b: [number, number]) => {
     const [mx, my] = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
     const [dx, dy] = [b[0] - a[0], b[1] - a[1]];
-    // bend to one side by a fifth of the length; stop short of the pin
+    // bend to one side by a fifth of the length; stop short of the pins
     const [qx, qy] = [mx - dy * 0.2, my + dx * 0.2];
     const len = Math.hypot(b[0] - qx, b[1] - qy) || 1;
     const end = [b[0] - ((b[0] - qx) / len) * 12, b[1] - ((b[1] - qy) / len) * 12];
@@ -116,26 +121,70 @@ function initTimeline(root: HTMLElement, data: Data) {
     });
   };
 
+  // ---------- the timeline's sideways scroll ----------
+  const behavior = (smooth: boolean): ScrollBehavior => (smooth && !reduce ? 'smooth' : 'auto');
+  const bringIntoView = (id: string, smooth: boolean) => {
+    const card = cards.get(id)!;
+    const r = card.getBoundingClientRect();
+    const pr = poster.getBoundingClientRect();
+    if (r.left >= pr.left + 40 && r.right <= pr.right - 40) return;
+    poster.scrollTo({ left: poster.scrollLeft + r.left - pr.left - (pr.width - r.width) / 2, behavior: behavior(smooth) });
+  };
+  const syncScrollBtns = () => {
+    const max = poster.scrollWidth - poster.clientWidth;
+    scrollBtns.forEach((b) => {
+      b.disabled = Number(b.dataset.dir) < 0 ? poster.scrollLeft <= 2 : poster.scrollLeft >= max - 2;
+    });
+  };
+  scrollBtns.forEach((b) =>
+    b.addEventListener('click', () =>
+      poster.scrollBy({ left: Number(b.dataset.dir) * poster.clientWidth * 0.8, behavior: behavior(true) }),
+    ),
+  );
+  poster.addEventListener('scroll', syncScrollBtns, { passive: true });
+  // drag with the mouse; a drag does not count as a click on the card under it
+  let drag: { x: number; left: number; moved: boolean } | null = null;
+  poster.addEventListener('pointerdown', (ev) => {
+    if (ev.pointerType !== 'mouse' || ev.button !== 0) return;
+    drag = { x: ev.clientX, left: poster.scrollLeft, moved: false };
+  });
+  addEventListener('pointermove', (ev) => {
+    if (!drag) return;
+    const dx = ev.clientX - drag.x;
+    if (!drag.moved && Math.abs(dx) > 5) {
+      drag.moved = true;
+      poster.classList.add('dragging');
+    }
+    if (drag.moved) poster.scrollLeft = drag.left - dx;
+  });
+  addEventListener('pointerup', () => {
+    if (drag?.moved) setTimeout(() => poster.classList.remove('dragging'));
+    else poster.classList.remove('dragging');
+    setTimeout(() => (drag = null));
+  });
+  poster.addEventListener(
+    'click',
+    (ev) => {
+      if (drag?.moved) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    },
+    true,
+  );
+
   // ---------- selection ----------
   const writeHash = () => {
-    const h = `#e=${cur}${filter ? `&s=${filter}` : ''}`;
+    const h = `#e=${cur}${filter ? `&${filter.kind}=${filter.id}` : ''}`;
     if (location.hash !== h) history.replaceState(null, '', h);
-  };
-  const centerTick = (a: HTMLElement, smooth: boolean) => {
-    if (ruler.scrollWidth <= ruler.clientWidth) return;
-    const r = a.getBoundingClientRect();
-    const rr = ruler.getBoundingClientRect();
-    const left = ruler.scrollLeft + r.left - rr.left - (rr.width - r.width) / 2;
-    ruler.scrollTo({ left, behavior: smooth && !reduce ? 'smooth' : 'auto' });
   };
   const select = (id: string, opts: { instant?: boolean; focus?: boolean } = {}) => {
     const e = byId.get(id);
     if (!e) return;
     cur = id;
-    ticks.forEach((a, k) => {
-      const on = k === id;
-      a.classList.toggle('cur', on);
-      if (on) a.setAttribute('aria-current', 'step');
+    cols.forEach((li, k) => li.classList.toggle('cur', k === id));
+    cards.forEach((a, k) => {
+      if (k === id) a.setAttribute('aria-current', 'step');
       else a.removeAttribute('aria-current');
     });
     items.forEach((li, k) => li.classList.toggle('cur', k === id));
@@ -147,8 +196,6 @@ function initTimeline(root: HTMLElement, data: Data) {
     // the current pin draws above the rest
     const pin = pins.get(e.place);
     if (pin) pin.parentNode?.append(pin);
-    const tick = ticks.get(id)!;
-    bands.forEach((b) => b.classList.toggle('cur', b === tick.closest('.band')));
     drawRoutes(id);
     camTo(frame(id), opts.instant);
     const n = shown.findIndex((x) => x.id === id);
@@ -157,8 +204,8 @@ function initTimeline(root: HTMLElement, data: Data) {
       const to = n + Number(b.dataset.go);
       b.disabled = to < 0 || to >= shown.length;
     });
-    centerTick(tick, !opts.instant);
-    if (opts.focus) tick.focus({ preventScroll: true });
+    bringIntoView(id, !opts.instant);
+    if (opts.focus) cards.get(id)!.focus({ preventScroll: true });
     writeHash();
   };
   const step = (d: number, focus = false) => {
@@ -167,43 +214,70 @@ function initTimeline(root: HTMLElement, data: Data) {
     if (next && next.id !== cur) select(next.id, { focus });
   };
 
-  // ---------- filter ----------
-  const setFilter = (slug: string) => {
-    filter = data.events.some((e) => e.s.includes(slug)) ? slug : '';
-    shown = filter ? data.events.filter((e) => e.s.includes(filter)) : data.events;
+  // ---------- filter: one story or one topic ----------
+  const setFilter = (f: { kind: 's' | 'c'; id: string } | null) => {
+    const match = (e: Data['events'][number]) => (f ? (f.kind === 's' ? e.s : e.c).includes(f.id) : true);
+    filter = f && data.events.some(match) ? f : null;
+    shown = data.events.filter((e) => (filter ? match(e) : true));
     const ids = new Set(shown.map((e) => e.id));
     chips.forEach((c) => {
-      const on = (c.dataset.s ?? '') === filter;
+      const id = c.dataset.s ?? '';
+      const on = filter ? filter.kind === 's' && filter.id === id : id === '';
       c.classList.toggle('sel', on);
       c.setAttribute('aria-pressed', String(on));
     });
-    ticks.forEach((a, id) => {
-      (a.parentElement as HTMLElement).hidden = !ids.has(id);
+    topicBtns.forEach((b) => {
+      const on = filter?.kind === 'c' && filter.id === b.dataset.c;
+      b.classList.toggle('sel', on);
+      b.setAttribute('aria-pressed', String(on));
     });
-    bands.forEach((b) => {
-      const n = $$('.tick', b).filter((a) => ids.has(a.dataset.ev!)).length;
-      b.hidden = n === 0;
-      b.style.setProperty('--n', String(n));
+    // the visible cards alternate above and below the line again
+    let n = 0;
+    cols.forEach((li, id) => {
+      li.hidden = !ids.has(id);
+      if (li.hidden) return;
+      li.classList.toggle('up', n % 2 === 0);
+      li.classList.toggle('dn', n % 2 === 1);
+      n++;
+    });
+    eraCols.forEach((li) => {
+      li.hidden = !shown.some((e) => eraOf.get(e.id) === li);
     });
     const live = new Set(shown.flatMap((e) => [e.place, ...e.from, ...e.to]));
     pins.forEach((g, k) => g.classList.toggle('mute', !live.has(k)));
     if (!ids.has(cur)) cur = shown[0].id;
+    poster.scrollLeft = 0;
+    syncScrollBtns();
   };
+  // the era marker each event follows
+  const eraOf = new Map<string, HTMLElement>();
+  let lastEra: HTMLElement | undefined;
+  $$('.pz-track > li').forEach((li) => {
+    if (li.classList.contains('pz-era')) lastEra = li;
+    else if (lastEra) eraOf.set(li.dataset.ev!, lastEra);
+  });
 
   // ---------- events ----------
   chips.forEach((c) =>
     c.addEventListener('click', () => {
-      setFilter(c.dataset.s ?? '');
-      select(cur);
+      setFilter(c.dataset.s ? { kind: 's', id: c.dataset.s } : null);
+      select(cur, { instant: true });
     }),
   );
-  ticks.forEach((a, id) =>
+  topicBtns.forEach((b) =>
+    b.addEventListener('click', () => {
+      const id = b.dataset.c!;
+      setFilter(filter?.kind === 'c' && filter.id === id ? null : { kind: 'c', id });
+      select(cur, { instant: true });
+    }),
+  );
+  cards.forEach((a, id) =>
     a.addEventListener('click', (ev) => {
       ev.preventDefault();
       select(id);
     }),
   );
-  ruler.addEventListener('keydown', (ev) => {
+  poster.addEventListener('keydown', (ev) => {
     if (ev.key === 'ArrowRight' || ev.key === 'ArrowLeft') {
       ev.preventDefault();
       step(ev.key === 'ArrowRight' ? 1 : -1, true);
@@ -234,21 +308,32 @@ function initTimeline(root: HTMLElement, data: Data) {
 
   const readHash = () => {
     const h = decodeURIComponent(location.hash.slice(1));
-    if (h.startsWith('e-')) return { e: h.slice(2), s: '' };
+    if (h.startsWith('e-')) return { e: h.slice(2), f: null };
     const q = new URLSearchParams(h);
-    return { e: q.get('e') ?? '', s: q.get('s') ?? '' };
+    const f = q.get('s') ? { kind: 's' as const, id: q.get('s')! } : q.get('c') ? { kind: 'c' as const, id: q.get('c')! } : null;
+    return { e: q.get('e') ?? '', f };
   };
   const fromHash = (instant: boolean) => {
-    const { e, s } = readHash();
-    setFilter(s);
+    const { e, f } = readHash();
+    setFilter(f);
     const ok = byId.has(e) && shown.some((x) => x.id === e);
     select(ok ? e : shown[0].id, { instant });
   };
-  addEventListener('hashchange', () => fromHash(false));
+  // only hashes that name an event (#e=… or #e-…) change the state; the jump to the map does not
+  addEventListener('hashchange', () => {
+    if (/^#e[=-]/.test(location.hash)) fromHash(false);
+  });
+  $<HTMLAnchorElement>('.tl-down')?.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    $('#tl-stage')?.scrollIntoView({ behavior: behavior(true), block: 'start' });
+  });
   let resizeT = 0;
   addEventListener('resize', () => {
     clearTimeout(resizeT);
-    resizeT = window.setTimeout(() => camTo(frame(cur), true), 120);
+    resizeT = window.setTimeout(() => {
+      camTo(frame(cur), true);
+      syncScrollBtns();
+    }, 120);
   });
   fromHash(true);
 }

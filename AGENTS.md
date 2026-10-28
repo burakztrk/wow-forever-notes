@@ -78,9 +78,11 @@ Node 22.12+.
   mention of each name per text block, `loreTips(lang, loreIds, glossaryIds)` builds the `#wf-glossary` island, and the Skyborne page passes the racial ids it lists as `GlossaryRow`s; `CardTip` kind `lore`). Lore cards
   are searchable too: `loreSearch()` adds them, with their aliases and story links, to `/<lang>/search.json`;
   a new written story goes into `LORE_STORIES` (the lore test checks it against `STORY_RACES`).
-- `src/pages/[lang]/stories/timeline.astro` — story timeline: the major events of the race and class stories on one
-  ruler (one band per era, one tick per event), shown on the Azeroth map (same coordinates as the story drawings; places
-  off that map, like Northrend, Draenor and Skywall, are dashed symbolic pins) and filterable by story (`#e=<event>&s=<slug>`).
+- `src/pages/[lang]/stories/timeline.astro` — story timeline: the major events of the race and class stories as a
+  poster-style timeline (a red line with era markers, event cards alternating above and below it, each with its topic
+  icons; the key of topics above it), scrolled sideways (buttons, mouse drag). The selected event is shown on the Azeroth
+  map below (same coordinates as the story drawings; places off that map, like Northrend, Draenor and Skywall, are dashed
+  symbolic pins) with its full text and chapter links. One filter at a time, a story or a topic (`#e=<event>&s=<slug>` / `&c=<topic>`).
   Events, places and story-chapter links in `src/lib/stories/timeline.ts`, copy (TR + EN) in `src/i18n/timeline.ts`,
   behaviour in `src/scripts/timeline.ts`, styles in `src/styles/timeline.css`. Story pages link to their filtered view
   (header + closing section). A new written story needs at least one event (`tests/timeline.test.ts` checks it).

@@ -1,16 +1,18 @@
 ---
-// Story timeline: the major events of the race and class stories on one chronological ruler, each shown on
+// Story timeline: the major events of the race and class stories on one chronological timeline, each shown on
 // the Azeroth map. Events and places in src/lib/stories/timeline.ts, copy in src/i18n/timeline.ts,
 // behaviour in src/scripts/timeline.ts, styles in src/styles/timeline.css (on top of the stories' .lore look).
-// Without JavaScript the ruler links to the events, which are all listed beside the map.
+// The timeline is a poster: a line with era markers, event cards alternating above and below it, each with
+// its topic icons (the key above it filters by topic). Without JavaScript the cards link to the events,
+// which are all listed beside the map.
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import { TIMELINE_ERAS, TIMELINE_EVENTS, TIMELINE_UI } from '../../../i18n/timeline';
+import { TIMELINE_ERAS, TIMELINE_EVENTS, TIMELINE_TOPICS, TIMELINE_UI } from '../../../i18n/timeline';
 import { STORY_CLASSES } from '../../../lib/stories/classes';
 import { loreHtml, loreIds, loreTips } from '../../../lib/stories/lore';
 import { STORY_RACES } from '../../../lib/stories/races';
-import { ERAS, PLACES, TIMELINE, storyRef, timelineSlugs, type PlaceId } from '../../../lib/stories/timeline';
+import { ERAS, PLACES, TIMELINE, TOPICS, TOPIC_ICONS, storyRef, timelineSlugs, type PlaceId } from '../../../lib/stories/timeline';
 import { islandJson } from '../../../lib/tooltip-payload';
 import { withBase } from '../../../utils/url';
 
@@ -23,13 +25,16 @@ const t = ui(lang);
 const u = TIMELINE_UI[lang];
 const eras = TIMELINE_ERAS[lang];
 const copy = TIMELINE_EVENTS[lang];
+const topics = TIMELINE_TOPICS[lang];
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/timeline/`)])) as Record<Lang, string>;
 const tips = loreTips(lang, loreIds(copy));
 
-const events = TIMELINE.map((e) => {
+const events = TIMELINE.map((e, n) => {
   const refs = e.stories.map((r) => storyRef(lang, r)!);
-  return { ...e, copy: copy[e.id], refs, slugs: [...new Set(refs.map((r) => r.slug))] };
+  return { ...e, n, copy: copy[e.id], refs, slugs: [...new Set(refs.map((r) => r.slug))] };
 });
+// the timeline cards show the first sentence; the card below the map has the whole text
+const lede = (text: string) => /^.+?[.!?](?=\s|$)/.exec(text)?.[0] ?? text;
 const bands = ERAS.map((era) => ({ era, ...eras[era], events: events.filter((e) => e.era === era) }));
 // era names that are game names (the same in both languages) get lang="en", so uppercase stays "FIRST", not "FİRST"
 const eraLang = (era: (typeof ERAS)[number]) => (TIMELINE_ERAS.tr[era].name === TIMELINE_ERAS.en[era].name ? 'en' : undefined);
@@ -41,7 +46,7 @@ const classChips = STORY_CLASSES.filter((c) => c.slug && slugs.has(c.slug));
 // what the script needs that the markup does not carry
 const data = {
   places: Object.fromEntries(places.map(([id, p]) => [id, [p.x, p.y]])),
-  events: events.map((e) => ({ id: e.id, place: e.place, from: e.from ?? [], to: e.to ?? [], s: e.slugs })),
+  events: events.map((e) => ({ id: e.id, place: e.place, from: e.from ?? [], to: e.to ?? [], s: e.slugs, c: e.topics })),
 };
 const pinIcon = 'M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z';
 ---
@@ -63,6 +68,24 @@ const pinIcon = 'M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5
     </section>
 
     <div class="wrap tl-body">
+      <section class="tl-key" aria-labelledby="h-key">
+        <h2 class="ov" id="h-key">{u.keyLabel}</h2>
+        <div class="tl-topics" role="group" aria-label={u.keyLabel}>
+          {
+            TOPICS.map((k) => (
+              <button type="button" class="topic" data-c={k} aria-pressed="false">
+                <span class="ti" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d={TOPIC_ICONS[k]} />
+                  </svg>
+                </span>
+                {topics[k]}
+              </button>
+            ))
+          }
+        </div>
+      </section>
+
       <div class="tl-filter" role="group" aria-label={u.filterLabel}>
         <button type="button" class="chip all sel" data-s="" aria-pressed="true">{u.all}</button>
         <span class="ov">{u.races}</span>
@@ -85,34 +108,50 @@ const pinIcon = 'M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5
         }
       </div>
 
-      <nav class="ruler" aria-label={u.rulerLabel}>
-        <ol class="bands">
-          {
-            bands.map((b) => (
-              <li class="band" data-era={b.era} style={`--n:${b.events.length}`}>
-                <p class="band-hd" title={b.name}>
-                  <span class="band-name" lang={eraLang(b.era)}>
-                    {b.name}
-                  </span>
-                  {b.when && <span class="band-when">{b.when}</span>}
-                </p>
-                <ol class="ticks">
+      <div class="poster-wrap">
+        <button type="button" class="pz-scroll back" data-dir="-1" aria-label={u.scrollBack} title={u.scrollBack} hidden>‹</button>
+        <nav class="poster" aria-label={u.rulerLabel}>
+          <ol class="pz-track">
+            {
+              bands.map((b) => (
+                <Fragment>
+                  <li class="pz-era" data-era={b.era}>
+                    <span class="pz-era-lbl">
+                      <b lang={eraLang(b.era)}>{b.name}</b>
+                      {b.when && <span>{b.when}</span>}
+                    </span>
+                  </li>
                   {b.events.map((e) => (
-                    <li>
-                      <a class="tick" href={`#e-${e.id}`} data-ev={e.id} title={e.copy.title}>
-                        <i aria-hidden="true" />
-                        <span class="sr">{e.copy.title}</span>
+                    <li class:list={['pz-ev', e.n % 2 ? 'dn' : 'up']} data-ev={e.id}>
+                      <i class="pz-dot" aria-hidden="true" />
+                      <a class="pz-card" href={`#e-${e.id}`} data-ev={e.id}>
+                        {e.copy.when && <span class="pz-when">{e.copy.when}</span>}
+                        <span class="pz-title">{e.copy.title}</span>
+                        <span class="pz-text">{lede(e.copy.text)}</span>
+                        <span class="pz-sig">
+                          <span class="pz-sig-lbl">{u.topicsLabel}:</span>
+                          {e.topics.map((k) => (
+                            <span class="ti" title={topics[k]}>
+                              <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d={TOPIC_ICONS[k]} />
+                              </svg>
+                              <span class="sr">{topics[k]}</span>
+                            </span>
+                          ))}
+                        </span>
                       </a>
                     </li>
                   ))}
-                </ol>
-              </li>
-            ))
-          }
-        </ol>
-      </nav>
+                </Fragment>
+              ))
+            }
+          </ol>
+        </nav>
+        <button type="button" class="pz-scroll on" data-dir="1" aria-label={u.scrollOn} title={u.scrollOn} hidden>›</button>
+      </div>
+      <a class="tl-down" href="#tl-stage">{u.seeOnMap} <b aria-hidden="true">↓</b></a>
 
-      <div class="tl-stage">
+      <div class="tl-stage" id="tl-stage">
         <figure class="tl-map">
           <svg class="map" id="tlmap" viewBox="0 0 1002 668" role="img" aria-label={u.mapLabel}>
             <defs>
@@ -175,6 +214,18 @@ const pinIcon = 'M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5
                       {'off' in p && p.off && <span class="tl-off">{u.offMap}</span>}
                     </p>
                     <p class="tl-text" set:html={loreHtml(e.copy.text)} />
+                    <p class="tl-sig">
+                      {e.topics.map((k) => (
+                        <span class="ti-row">
+                          <span class="ti" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                              <path d={TOPIC_ICONS[k]} />
+                            </svg>
+                          </span>
+                          {topics[k]}
+                        </span>
+                      ))}
+                    </p>
                     <div class="tl-read">
                       <p class="ov">{u.readIn}</p>
                       <ul>
