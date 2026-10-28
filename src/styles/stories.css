@@ -768,3 +768,31 @@ a.story-card:focus-visible {
 .story-banner-text{width:100%;justify-content:flex-end;padding:16px 18px}
 .story-banner-lead{display:none}}
 
+/* Class stories: strip, specs and figures */
+.story-banner-grad{position:absolute;inset:0;z-index:-2}
+.lore .class-strip .chip{transition:border-color .2s,background .2s}
+.lore .class-strip .chip.sel{border-color:var(--dot-color,var(--gold));color:var(--text);background:var(--bg-elev-2)}
+.lore .class-strip .chip.sel i{box-shadow:0 0 8px var(--dot-color,var(--gold))}
+.lore .spec-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(24px,4vw,36px)}
+@media (max-width:860px){.lore .spec-cards{grid-template-columns:minmax(0,1fr)}}
+.lore .spec-card{display:flex;flex-direction:column;gap:12px;padding:22px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg-elev)}
+.lore .spec-card h3{font-family:var(--f-serif);font-size:20px;color:var(--gold)}
+.lore .spec-card .spec-role{font:500 12px/16px var(--f-sans);color:var(--text-mute);text-transform:uppercase;letter-spacing:.08em}
+.lore .spec-card .spells-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+.lore .spec-card .spell-tag{display:inline-block;font:500 11px/1.2 var(--f-sans);padding:4px 8px;border-radius:4px;background:var(--bg-elev-2);border:1px solid var(--border);color:var(--text-dim)}
+.lore .figures-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(24px,4vw,36px)}
+@media (max-width:860px){.lore .figures-grid{grid-template-columns:minmax(0,1fr)}}
+.lore .figure-card{display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:var(--r-md);border:1px solid var(--border);background:var(--bg-elev)}
+.lore .figure-card .f-name{font-family:var(--f-serif);font-size:19px;font-weight:600;color:var(--text)}
+.lore .figure-card .f-title{font:500 12px/16px var(--f-sans);color:var(--gold);text-transform:uppercase;letter-spacing:.06em}
+.lore.mage{--accent-color:var(--class-mage)}
+.lore.hunter{--accent-color:var(--class-hunter)}
+.lore.paladin{--accent-color:var(--class-paladin)}
+.lore.warrior{--accent-color:var(--class-warrior)}
+.lore.rogue{--accent-color:var(--class-rogue)}
+.lore.priest{--accent-color:var(--class-priest)}
+.lore.shaman{--accent-color:var(--class-shaman)}
+.lore.warlock{--accent-color:var(--class-warlock)}
+.lore.druid{--accent-color:var(--class-druid)}
+.lore .hero-accent-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 80% 20%,color-mix(in srgb,var(--accent-color,var(--gold)) 16%,transparent),transparent 70%),linear-gradient(180deg,#12151c 0%,#0e1015 100%)}
+

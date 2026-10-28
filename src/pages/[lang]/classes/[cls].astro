@@ -1,6 +1,7 @@
 ---
 import GlossaryRow from '../../../components/GlossaryRow.astro';
 import PatchNotes from '../../../components/PatchNotes.astro';
+import ClassStoryBanner from '../../../components/stories/ClassStoryBanner.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { fill, ui } from '../../../i18n';
@@ -44,6 +45,8 @@ const tips = tooltipPayload(
     </div>
   </header>
   <a class="planner-link" href={withBase(`/${lang}/talents/${info.id}/`)}>{t.openPlanner}</a>
+
+  <ClassStoryBanner lang={lang} classId={info.id} />
 
   <PatchNotes lang={lang} notes={notes} name={info.name} empty={t.noPatchNotes} />
 

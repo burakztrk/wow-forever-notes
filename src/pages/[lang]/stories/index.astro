@@ -14,6 +14,7 @@ import {
   UNDEAD_STORY,
 } from '../../../i18n/stories';
 import { racesByFaction } from '../../../lib/codex';
+import { STORY_CLASSES } from '../../../lib/stories/classes';
 import { storySlug } from '../../../lib/stories/races';
 import { withBase } from '../../../utils/url';
 
@@ -158,5 +159,33 @@ const features = [
         </section>
       ))
     }
+
+    <section>
+      <h2 class="codex-section">{lang === 'tr' ? 'Sınıflar' : 'Classes'}</h2>
+      <ul class="story-grid">
+        {
+          STORY_CLASSES.map((c) => {
+            const head = (
+              <>
+                <img src={withBase(`/icons/${c.icon}.jpg`)} alt="" width="40" height="40" loading="lazy" />
+                <span class="story-card-name" style={`color: ${c.color}`}>{c.name}</span>
+                <span class="story-card-state">{c.slug ? t.storiesRead : t.storiesSoon}</span>
+              </>
+            );
+            return (
+              <li>
+                {c.slug ? (
+                  <a class="story-card" href={withBase(`/${lang}/stories/${c.slug}/`)}>
+                    {head}
+                  </a>
+                ) : (
+                  <span class="story-card soon">{head}</span>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
   </div>
 </BaseLayout>

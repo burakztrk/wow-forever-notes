@@ -1,0 +1,44 @@
+---
+// Class strip in a story hero: the current class, links to written stories, the rest "coming soon".
+import type { Lang } from '../../config';
+import { STORY_UI } from '../../i18n/stories';
+import { STORY_CLASSES } from '../../lib/stories/classes';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+  current: string;
+}
+const { lang, current } = Astro.props;
+const u = STORY_UI[lang];
+const label = lang === 'tr' ? 'Sınıflar' : 'Classes';
+---
+
+<div class="races class-strip" role="list" aria-label={label}>
+  <span class="ov">{label}</span>
+  {
+    STORY_CLASSES.map((c) => {
+      const isSel = c.slug === current;
+      if (isSel)
+        return (
+          <span class:list={['chip', 'sel', `class-${c.id}`]} role="listitem" aria-current="page" style={`--dot-color: ${c.color}`}>
+            <i style={`background: ${c.color}`} />
+            {c.name}
+          </span>
+        );
+      if (c.slug)
+        return (
+          <a class:list={['chip', `class-${c.id}`]} role="listitem" href={withBase(`/${lang}/stories/${c.slug}/`)} style={`--dot-color: ${c.color}`}>
+            <i style={`background: ${c.color}`} />
+            {c.name}
+          </a>
+        );
+      return (
+        <span class:list={['chip', 'off', `class-${c.id}`]} role="listitem" title={u.soon} style={`--dot-color: ${c.color}`}>
+          <i style={`background: ${c.color}`} />
+          {c.name}
+        </span>
+      );
+    })
+  }
+</div>

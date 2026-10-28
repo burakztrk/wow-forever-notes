@@ -1,0 +1,257 @@
+---
+// Class story: Hunter. Copy in src/i18n/class-stories.ts, scroll effects in
+// src/scripts/story.ts, styles in src/styles/stories.css (all scoped under .lore).
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ClassChips from '../../../components/stories/ClassChips.astro';
+import StoryEnd from '../../../components/stories/StoryEnd.astro';
+import StoryHeader from '../../../components/stories/StoryHeader.astro';
+import { LANGS, type Lang } from '../../../config';
+import { ui } from '../../../i18n';
+import { HUNTER_STORY } from '../../../i18n/class-stories';
+import { STORY_UI } from '../../../i18n/stories';
+import { CLASS_ART } from '../../../lib/stories/class-art';
+import { loreHtml, loreIds, loreTips } from '../../../lib/stories/lore';
+import { islandJson } from '../../../lib/tooltip-payload';
+import { withBase } from '../../../utils/url';
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = ui(lang);
+const s = HUNTER_STORY[lang];
+const u = STORY_UI[lang];
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/hunter/`)])) as Record<Lang, string>;
+const ic = CLASS_ART.icons;
+const lx = (text: string) => loreHtml(text);
+const tips = loreTips(lang, loreIds(s));
+
+const chapters = [
+  { id: 'origin', num: 'I', name: s.chapters.origin },
+  { id: 'two', num: 'II', name: s.chapters.two },
+  { id: 'three', num: 'III', name: s.chapters.three },
+  { id: 'four', num: 'IV', name: s.chapters.four },
+  { id: 'five', num: 'V', name: s.chapters.five },
+];
+
+const stageIcons = [CLASS_ART.stages.paw, CLASS_ART.stages.bow, CLASS_ART.stages.dagger, CLASS_ART.stages.eye];
+const bondIcons = [CLASS_ART.stages.paw, CLASS_ART.stages.eye, CLASS_ART.stages.bow, CLASS_ART.stages.sun];
+const warIcons = [CLASS_ART.stages.bow, CLASS_ART.stages.dagger, CLASS_ART.stages.shield, CLASS_ART.stages.skull];
+const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
+---
+
+<BaseLayout title={`Hunter · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
+  <div class="lore hunter" id="lore">
+    <StoryHeader lang={lang} chapters={chapters} icon={ic.hunterBrand} />
+
+    <section class="hero hunter-hero" aria-labelledby="h-hunter">
+      <div class="hero-accent-bg" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <canvas id="snow" data-fx="gale" aria-hidden="true"></canvas>
+      <div class="wrap hero-in">
+        <div class="hero-col">
+          <ClassChips lang={lang} current="hunter" />
+          <div class="hero-copy">
+            <p class="ov">{s.overline} · <span lang="en">Class</span></p>
+            <h1 class="h1" id="h-hunter" lang="en" style="color: var(--class-hunter)">Hunter</h1>
+            <p class="lead">{s.lead}</p>
+            <a class="cue" href="#origin">{u.cue} <b aria-hidden="true">↓</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts" aria-label="Hunter">
+      <dl class="wrap">
+        {
+          s.facts.map((fact) => (
+            <div>
+              <dt>{fact.label}</dt>
+              <dd>
+                <Fragment set:html={lx(fact.value)} />
+                {fact.extra && (
+                  <span>
+                    {' · '}
+                    <Fragment set:html={lx(fact.extra)} />
+                  </span>
+                )}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <!-- I · origin -->
+    <section class="chap" id="origin" aria-labelledby="h-origin">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">I</div>
+          <div>
+            <p class="ov">{u.chapter} I · {s.chapters.origin}</p>
+            <h2 class="h2" id="h-origin">{s.origin.title} {s.origin.titleNote && <span lang="en" class="title-note">{s.origin.titleNote}</span>}</h2>
+          </div>
+        </header>
+        <div class="prose rv">{s.origin.paragraphs.map((p) => <p set:html={lx(p)} />)}</div>
+        <div class="evo-wrap" id="evo" data-p=".95,.35">
+          <ol class="evo" aria-label={s.origin.stagesLabel}>
+            <li class="evo-line" aria-hidden="true"><i></i></li>
+            {
+              s.origin.stages.map((stage, i) => (
+                <li class="stage rv" style={delay(i)}>
+                  <div class="ico">
+                    <svg viewBox="0 0 64 64" aria-hidden="true" set:html={stageIcons[i]} />
+                  </div>
+                  <div class="t">
+                    <h3>{stage.name}</h3>
+                    <p>{stage.text}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.origin.note)} /></aside>
+      </div>
+    </section>
+
+    <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
+
+    <!-- II · The Bond -->
+    <section class="chap" id="two" aria-labelledby="h-two">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">II</div>
+          <div>
+            <p class="ov">{u.chapter} II · {s.chapters.two}</p>
+            <h2 class="h2" id="h-two">{s.two.title}</h2>
+          </div>
+        </header>
+        <div class="prose rv">{s.two.paragraphs.map((p) => <p set:html={lx(p)} />)}</div>
+        <div class="war-cards">
+          {
+            s.two.cards.map((card, i) => (
+              <article class="card rv" style={delay(i % 2)}>
+                <div class="ic">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" set:html={bondIcons[i]} />
+                </div>
+                <div class="t">
+                  <h3 class="h3">{card.name}</h3>
+                  <p set:html={lx(card.text)} />
+                  <span class:list={['status', card.tone]}>
+                    <i />
+                    {card.status}
+                  </span>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.two.note)} /></aside>
+      </div>
+    </section>
+
+    <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
+
+    <!-- III · War in Forest -->
+    <section class="chap" id="three" aria-labelledby="h-three">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">III</div>
+          <div>
+            <p class="ov">{u.chapter} III · {s.chapters.three}</p>
+            <h2 class="h2" id="h-three">{s.three.title}</h2>
+          </div>
+        </header>
+        <div class="prose rv">{s.three.paragraphs.map((p) => <p set:html={lx(p)} />)}</div>
+        <div class="war-cards">
+          {
+            s.three.cards.map((card, i) => (
+              <article class="card rv" style={delay(i % 2)}>
+                <div class="ic">
+                  <svg viewBox="0 0 64 64" aria-hidden="true" set:html={warIcons[i]} />
+                </div>
+                <div class="t">
+                  <h3 class="h3">{card.name}</h3>
+                  <p set:html={lx(card.text)} />
+                  <span class:list={['status', card.tone]}>
+                    <i />
+                    {card.status}
+                  </span>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.three.note)} /></aside>
+      </div>
+    </section>
+
+    <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
+
+    <!-- IV · Specializations -->
+    <section class="chap" id="four" aria-labelledby="h-four">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">IV</div>
+          <div>
+            <p class="ov">{u.chapter} IV · {s.chapters.four}</p>
+            <h2 class="h2" id="h-four">{s.four.title}</h2>
+          </div>
+        </header>
+        <div class="prose rv">{s.four.paragraphs.map((p) => <p set:html={lx(p)} />)}</div>
+        <div class="spec-cards">
+          {
+            s.four.specs.map((spec) => (
+              <article class="spec-card rv">
+                <span class="spec-role">{spec.role}</span>
+                <h3 class="h3">{spec.name}</h3>
+                <p set:html={lx(spec.text)} />
+                <div class="spells-list">
+                  {spec.spells.map((sp) => <span class="spell-tag">{sp}</span>)}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.four.note)} /></aside>
+      </div>
+    </section>
+
+    <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
+
+    <!-- V · Modern Hunters -->
+    <section class="chap" id="five" aria-labelledby="h-five">
+      <div class="wrap">
+        <header class="ch-head rv">
+          <div class="ch-num" aria-hidden="true">V</div>
+          <div>
+            <p class="ov">{u.chapter} V · {s.chapters.five}</p>
+            <h2 class="h2" id="h-five">{s.five.title}</h2>
+          </div>
+        </header>
+        <div class="prose rv">{s.five.paragraphs.map((p) => <p set:html={lx(p)} />)}</div>
+        <div class="figures-grid">
+          {
+            s.five.figures.map((fig) => (
+              <article class="figure-card rv">
+                <span class="f-title">{fig.title}</span>
+                <h3 class="f-name">{fig.name}</h3>
+                <p set:html={lx(fig.text)} />
+              </article>
+            ))
+          }
+        </div>
+        <aside class="note rv"><p class="ov">{u.whyItMatters}</p><p set:html={lx(s.five.note)} /></aside>
+      </div>
+    </section>
+
+    <StoryEnd lang={lang} title={s.outro.title} text={s.outro.text} next="Paladin" nextText={s.outro.nextText} images="" />
+  </div>
+  <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+</BaseLayout>
+
+<script>
+  import '../../../scripts/story';
+</script>

@@ -16,5 +16,8 @@ node_modules/
 # logs
 npm-debug.log*
 
+# local agent tooling
+.claude/
+
 # macOS
 .DS_Store

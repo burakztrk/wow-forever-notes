@@ -1,0 +1,38 @@
+---
+// Wide banner on a class page that links to the class's story (src/pages/[lang]/stories/<slug>/).
+import type { Lang } from '../../config';
+import { ui } from '../../i18n';
+import { CLASS_STORIES } from '../../i18n/class-stories';
+import { storyClass } from '../../lib/stories/classes';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+  classId: string;
+}
+
+const { lang, classId } = Astro.props;
+const t = ui(lang);
+const entry = storyClass(classId);
+const story = entry?.slug ? CLASS_STORIES[entry.slug as keyof typeof CLASS_STORIES]?.[lang] : undefined;
+---
+
+{
+  entry && story && (
+    <a class="story-banner class-story-banner" href={withBase(`/${lang}/stories/${entry.slug}/`)} style={`--class-accent: ${entry.color}`}>
+      {entry.cover ? (
+        <img class="story-banner-bg" src={withBase(entry.cover.src)} alt="" loading="lazy" style={`object-position:${entry.cover.position}`} />
+      ) : (
+        <div class="story-banner-grad" style={`background: radial-gradient(circle at 80% 50%, color-mix(in srgb, ${entry.color} 25%, transparent), transparent 70%), linear-gradient(135deg, #161922 0%, #0e1015 100%)`} />
+      )}
+      <span class="story-banner-text">
+        <span class="story-banner-over">
+          {t.navStories} · <span lang="en">{entry.name}</span>
+        </span>
+        <span class="story-banner-name" style={`color: ${entry.color}`}>{entry.name}</span>
+        <span class="story-banner-lead">{story.lead}</span>
+        <span class="story-banner-cta">{t.storiesRead}</span>
+      </span>
+    </a>
+  )
+}
