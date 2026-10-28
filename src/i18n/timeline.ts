@@ -1,5 +1,5 @@
 import type { Lang } from '../config';
-import type { EraId } from '../lib/stories/timeline';
+import type { EraId, TopicId } from '../lib/stories/timeline';
 
 // Story timeline page (src/pages/[lang]/stories/timeline.astro). Events and places in
 // src/lib/stories/timeline.ts. Every event retells, in short, what the linked story chapters say;
@@ -17,6 +17,11 @@ export const TIMELINE_UI: Record<
     races: string;
     classes: string;
     rulerLabel: string;
+    keyLabel: string;
+    topicsLabel: string;
+    seeOnMap: string;
+    scrollBack: string;
+    scrollOn: string;
     prev: string;
     next: string;
     /** "{n} / {total}" */
@@ -41,12 +46,17 @@ export const TIMELINE_UI: Record<
     metaDescription:
       'Irk ve sınıf hikayelerindeki önemli olaylar kronolojik bir cetvelde: Well of Eternity’den Third War’a ve bugüne, her olay Azeroth haritasında gösterilir.',
     overline: 'Irk ve sınıf hikayeleri',
-    lead: 'Hikayelerde anlatılan önemli olaylar, sırasıyla. Cetvelden bir olay seç; harita olayın geçtiği yere gider.',
+    lead: 'Hikayelerde anlatılan önemli olaylar, sırasıyla. Zaman çizgisinden bir olay seç; harita olayın geçtiği yere gider, ayrıntılar altında açılır.',
     filterLabel: 'Hikayeye göre',
     all: 'Hepsi',
     races: 'Irklar',
     classes: 'Sınıflar',
-    rulerLabel: 'Zaman cetveli',
+    rulerLabel: 'Zaman çizgisi',
+    keyLabel: 'Anahtar',
+    topicsLabel: 'Konular',
+    seeOnMap: 'Haritada ve ayrıntılı gör',
+    scrollBack: 'Geriye kaydır',
+    scrollOn: 'İleriye kaydır',
     prev: 'Önceki olay',
     next: 'Sonraki olay',
     count: '{n} / {total}',
@@ -67,12 +77,17 @@ export const TIMELINE_UI: Record<
     metaDescription:
       'The major events of the race and class stories on one chronological ruler: from the Well of Eternity to the Third War and today, each shown on the Azeroth map.',
     overline: 'Race and class stories',
-    lead: 'The major events the stories tell, in order. Pick an event on the ruler and the map moves to where it happened.',
+    lead: 'The major events the stories tell, in order. Pick an event on the timeline; the map moves to where it happened and the details open below.',
     filterLabel: 'By story',
     all: 'All',
     races: 'Races',
     classes: 'Classes',
-    rulerLabel: 'Timeline ruler',
+    rulerLabel: 'Timeline',
+    keyLabel: 'Key',
+    topicsLabel: 'Themes',
+    seeOnMap: 'See it on the map, in full',
+    scrollBack: 'Scroll back',
+    scrollOn: 'Scroll on',
     prev: 'Previous event',
     next: 'Next event',
     count: '{n} / {total}',
@@ -114,6 +129,33 @@ export const TIMELINE_ERAS: Record<Lang, Record<EraId, { name: string; when?: st
     between: { name: 'Between the Wars' },
     third: { name: 'Third War' },
     after: { name: 'After the War', when: 'Today' },
+  },
+};
+
+export const TIMELINE_TOPICS: Record<Lang, Record<TopicId, string>> = {
+  tr: {
+    war: 'Savaş',
+    magic: 'Büyü',
+    faith: 'İnanç',
+    fel: 'Demonlar ve fel',
+    undeath: 'Ölümsüzler',
+    nature: 'Doğa ve druidler',
+    elements: 'Elementler',
+    realm: 'Krallıklar ve şehirler',
+    exodus: 'Göç ve sürgün',
+    betrayal: 'İhanet',
+  },
+  en: {
+    war: 'War',
+    magic: 'Magic',
+    faith: 'Faith',
+    fel: 'Demons and fel',
+    undeath: 'Undeath',
+    nature: 'Nature and druids',
+    elements: 'Elements',
+    realm: 'Realms and cities',
+    exodus: 'Exodus and exile',
+    betrayal: 'Betrayal',
   },
 };
 

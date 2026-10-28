@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { LANGS } from '../src/config';
-import { TIMELINE_ERAS, TIMELINE_EVENTS } from '../src/i18n/timeline';
+import { TIMELINE_ERAS, TIMELINE_EVENTS, TIMELINE_TOPICS } from '../src/i18n/timeline';
 import { STORY_CLASSES } from '../src/lib/stories/classes';
 import { STORY_RACES } from '../src/lib/stories/races';
-import { ERAS, PLACES, TIMELINE, storyRef, timelineSlugs, timelineUrl } from '../src/lib/stories/timeline';
+import { ERAS, PLACES, TIMELINE, TOPICS, TOPIC_ICONS, storyRef, timelineSlugs, timelineUrl } from '../src/lib/stories/timeline';
 
 describe('story timeline', () => {
   it('has unique event ids, in era order', () => {
@@ -12,6 +12,20 @@ describe('story timeline', () => {
     expect(order.every((v) => v >= 0)).toBe(true);
     expect(order).toEqual([...order].sort((a, b) => a - b));
     for (const era of ERAS) expect(TIMELINE.some((e) => e.era === era), era).toBe(true);
+  });
+
+  it('gives every event one to three known topics, each used somewhere and drawn', () => {
+    for (const e of TIMELINE) {
+      expect(e.topics.length, e.id).toBeGreaterThan(0);
+      expect(e.topics.length, e.id).toBeLessThanOrEqual(3);
+      expect(new Set(e.topics).size, e.id).toBe(e.topics.length);
+      for (const k of e.topics) expect(TOPICS, `${e.id}: ${k}`).toContain(k);
+    }
+    for (const k of TOPICS) {
+      expect(TIMELINE.some((e) => e.topics.includes(k)), k).toBe(true);
+      expect(TOPIC_ICONS[k], k).toBeTruthy();
+      for (const lang of LANGS) expect(TIMELINE_TOPICS[lang][k], `${lang} ${k}`).toBeTruthy();
+    }
   });
 
   it('pins every place inside the Azeroth map', () => {
