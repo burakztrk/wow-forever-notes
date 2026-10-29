@@ -1,5 +1,4 @@
 ---
-import GameKey from '../../../components/GameKey.astro';
 import glossaryData from '../../../data/glossary.json';
 import SavedBuilds from '../../../components/SavedBuilds.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
@@ -29,7 +28,7 @@ const cards = classes.map((c) => {
   const own = talents.filter((e) => e.class === c.id);
   return {
     ...c,
-    href: withBase(`/${lang}/talents/${c.id}/`),
+    href: withBase(`/${lang}/classes/${c.id}/`),
     total: own.length,
     fresh: own.filter((e) => e.status === 'new').length,
     trees: c.trees.map((name, i) => ({
@@ -42,10 +41,9 @@ const cards = classes.map((c) => {
 });
 ---
 
-<BaseLayout title={t.talentsTitle} description={t.talentsIntro} lang={lang} alternates={alternates} wide>
-  <h1>{t.talentsTitle}</h1>
-  <GameKey lang={lang} keyName="N" />
-  <p class="muted">{t.talentsIntro}</p>
+<BaseLayout title={t.classesTitle} description={t.classesIntro} lang={lang} alternates={alternates} wide>
+  <h1>{t.classesTitle}</h1>
+  <p class="muted">{t.classesIntro}</p>
   <SavedBuilds lang={lang} />
   <ul class="class-grid">
     {
@@ -70,7 +68,7 @@ const cards = classes.map((c) => {
                 </li>
               ))}
             </ul>
-            <span class="card-cta">{t.startPlanning}</span>
+            <span class="card-cta">{t.openClass}</span>
           </a>
         </li>
       ))

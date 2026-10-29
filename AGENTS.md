@@ -36,7 +36,7 @@ Node 22.12+.
 - `src/lib/remark-glossary.ts` — `:spell[…]`, `:talent[…]`, `:racial[…]`, `:tip[…]` directives → tooltip spans;
   auto-links unambiguous multi-word names; unknown names fail the build.
 - `src/scripts/tooltip.ts` + `src/lib/tooltip-render.ts` — client tooltip (event delegation, floating-ui).
-- `src/pages/[lang]/{races,classes,search}/` — race, class and search pages, same rules as the mobile app (`src/lib/codex.ts`,
+- `src/pages/[lang]/{races,classes,search}/` — race, class and search pages (the classes list is `/<lang>/talents/`, nav label "Class'lar", its cards open `/classes/<id>/`; `/<lang>/classes/` redirects there and the planner is reached from the class page's talent banner), same rules as the mobile app (`src/lib/codex.ts`,
   `src/lib/search.ts`; vectors in `tests/codex.test.ts`, `tests/search.test.ts`). Saved talent builds live in localStorage
   (`src/lib/saved-builds.ts`, same shape as the app's `BuildStore`); characters saved from the creator too
   (`src/lib/saved-characters.ts`, the app's `CharacterStore`; `?character=<id>` makes the planner's Save write into

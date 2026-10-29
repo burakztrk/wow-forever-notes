@@ -55,6 +55,7 @@ const strings = {
     talentCount: '{n} talent',
     newCount: '{n} yeni',
     startPlanning: 'Planlamaya başla →',
+    openClass: 'Class’ı aç →',
     // races, classes, search, saved builds (same wording as the app)
     navRaces: 'Irklar',
     navClasses: 'Class\'lar',
@@ -290,6 +291,7 @@ const strings = {
     talentCount: '{n} talents',
     newCount: '{n} new',
     startPlanning: 'Start planning →',
+    openClass: 'Open class →',
     navRaces: 'Races',
     navClasses: 'Classes',
     navSearch: 'Search',
