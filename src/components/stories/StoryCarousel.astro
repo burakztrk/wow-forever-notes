@@ -1,0 +1,47 @@
+---
+// Auto-advancing carousel of story cards (stories index, home page). Behaviour in src/scripts/story-carousel.ts,
+// styles in src/styles/stories.css.
+import type { Lang } from '../../config';
+import type { StorySlide } from '../../lib/stories/slides';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+  slides: StorySlide[];
+  label: string;
+}
+
+const { lang, slides, label } = Astro.props;
+---
+
+<div class="story-carousel" data-carousel>
+  <ul class="story-track" aria-label={label}>
+    {
+      slides.map((f) => (
+        <li class="story-slide">
+          <a class:list={['story-feature', { 'story-feature--timeline': f.timeline }]} href={f.href}>
+            {f.bg && <img class="story-feature-bg" src={withBase(f.bg.src)} alt="" width={f.bg.w} height={f.bg.h} loading="lazy" style={f.bgPosition ? `object-position:${f.bgPosition}` : undefined} />}
+            {f.hero && <img class:list={['story-feature-hero', { soft: f.soft }]} src={f.hero} alt="" width="300" height="300" loading="lazy" />}
+            <span class="story-feature-text">
+              <span class="story-feature-over">{f.over}</span>
+              <span class="story-feature-name" style={f.color ? `color:${f.color}` : undefined}>{f.name}</span>
+              <span class="story-feature-lead">{f.lead}</span>
+              <span class="story-feature-cta">{f.cta}</span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <button type="button" class="story-arrow story-arrow--prev" data-dir="-1" aria-label={lang === 'tr' ? 'Önceki' : 'Previous'} hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+  </button>
+  <button type="button" class="story-arrow story-arrow--next" data-dir="1" aria-label={lang === 'tr' ? 'Sonraki' : 'Next'} hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+  </button>
+  <div class="story-dots" hidden></div>
+</div>
+
+<script>
+  import '../../scripts/story-carousel';
+</script>

@@ -60,8 +60,9 @@ Node 22.12+.
   card tooltips (`CardTip` in `tooltip-render.ts`, `ItemTip.astro`); spell names in the guide's prose become glossary
   tooltips (`RichText.astro`). The app reads the same data from `/data/v1/professions.json` (with the guide) and
   `/data/v1/legacy.json`.
-- `src/pages/[lang]/stories/` — race stories ("Hikaye"/"Stories" in the nav, before the search icon): the index lists
-  every race (written ones link, the rest say "coming soon"); each written race is one scroll-told page (`gnome.astro`,
+- `src/pages/[lang]/stories/` — race and class stories ("Hikayeler"/"Stories" in the nav, before the search icon): the index shows the
+  Alliance and Horde races as two scroll-snap carousels, one below the other (`components/stories/StoryCarousel.astro`, slides and order in `src/lib/stories/slides.ts`, behaviour in `src/scripts/story-carousel.ts`; the home page opens with `components/stories/StoryMarquee.astro` (CSS only; each icon links to its race or class page, no search bar on the home page any more) and shows the same carousel below it: timeline first, then every race once; three rows of squircle race/class icons gliding in alternating directions, every second row shifted half an icon;
+  the Skyborne come last in both), then the classes; each written race is one scroll-told page (`gnome.astro`,
   `dwarf.astro`, `human.astro`, `night-elf.astro`, `orc.astro`, `troll.astro`, `tauren.astro`, `undead.astro`, `skyborne.astro`). `curse-of-flesh.astro` is a shorter lore page that is listed nowhere (index, race strip,
   nav, search): only the origin chapters that mention the curse link to it (`CurseLink.astro`, `curseUrl()`).
   The race strip, written-story slugs and next-story links come from `src/lib/stories/races.ts` (a people on both sides is one entry: the Skyborne have `faction: 'ah'`, a half blue, half red chip dot, and `ids` for both race ids, so `storySlug()` answers `skyborne` for either);
@@ -78,6 +79,7 @@ Node 22.12+.
   mention of each name per text block, `loreTips(lang, loreIds, glossaryIds)` builds the `#wf-glossary` island, and the Skyborne page passes the racial ids it lists as `GlossaryRow`s; `CardTip` kind `lore`). Lore cards
   are searchable too: `loreSearch()` adds them, with their aliases and story links, to `/<lang>/search.json`;
   a new written story goes into `LORE_STORIES` (the lore test checks it against `STORY_RACES`).
+- Class story covers: `public/stories/class/<class>.webp` (letterbox bars cropped off), registered in `src/lib/stories/classes.ts` (`cover`); each class story's hero background and the banner on its class page (and `story.cover` in `/data/v1/classes.json`) use it.
 - `src/pages/[lang]/stories/timeline.astro` — story timeline: the major events of the race and class stories as a
   poster-style timeline (a red line with era markers, event cards alternating above and below it, each with its topic
   icons; the key of topics above it), scrolled sideways (buttons, mouse drag). The selected event is shown on the Azeroth

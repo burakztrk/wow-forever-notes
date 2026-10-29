@@ -414,57 +414,6 @@ body:has(.lore){overflow-x:clip}
     padding-top: 150px;
   }
 }
-.story-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.story-card {
-  display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  column-gap: 12px;
-  align-items: center;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg-elev);
-  color: var(--text);
-  text-decoration: none;
-}
-.story-card img,
-.story-card .blank {
-  grid-row: span 2;
-  width: 40px;
-  height: 40px;
-  border-radius: 6px;
-  border: 1px solid #000;
-  background: var(--bg-elev-2);
-}
-.story-card-name {
-  font-weight: 500;
-}
-.story-card-state {
-  font-size: 0.78rem;
-  color: var(--link);
-}
-a.story-card {
-  border-color: var(--gold-dim);
-}
-a.story-card:hover,
-a.story-card:focus-visible {
-  border-color: var(--gold);
-}
-.story-card.soon {
-  opacity: 0.55;
-  filter: grayscale(1);
-}
-.story-card.soon .story-card-state {
-  color: var(--text-dim);
-}
 .lore svg.lava .win{fill:#3b2b27;opacity:.7}
 .lore svg.lava .win.off{fill:#ff8a3a;opacity:.95}
 .lore [data-move]{transform-box:fill-box;transform-origin:center}
@@ -506,26 +455,183 @@ a.story-card:focus-visible {
 .lore .hammers-fig figcaption{margin-top:8px;text-align:center;font-size:13px;color:var(--text-mute)}
 .lore .council-text{color:var(--text-dim);max-width:62ch;line-height:1.6}
 .lore .sub + .clans{margin-top:0}
-.story-features {
+/* Story index: the Alliance and Horde carousels, one below the other */
+.story-factions {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-  gap: 12px;
-  margin: 24px 0 8px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+  margin: 28px 0 8px;
 }
-.story-features .story-feature {
+.story-faction .codex-section {
+  margin-top: 0;
+}
+.story-carousel {
+  position: relative;
+}
+.story-track {
+  display: flex;
+  gap: 6px;
   margin: 0;
+  padding: 10px 9% 10px; /* slide = 82% of the strip, so the first and last one are centred too */
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  /* the neighbours peeking in from the sides (the outer 9%) fade out instead of being cut off sharply */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
 }
-.story-features .story-feature::before {
+.story-track::-webkit-scrollbar {
+  display: none;
+}
+.story-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.story-carousel.js-on .story-slide {
+  transform: scale(0.92);
+  opacity: 0.55;
+}
+.story-carousel.js-on .story-slide.is-active {
+  transform: none;
+  opacity: 1;
+}
+.story-slide .story-feature {
+  margin: 0;
+  min-height: 260px;
+  height: 100%;
+}
+.story-slide .story-feature::before {
   background: linear-gradient(180deg, rgba(14, 16, 21, 0.1) 0%, rgba(14, 16, 21, 0.86) 58%, rgba(14, 16, 21, 0.94) 100%);
 }
-.story-features .story-feature-text {
+.story-slide .story-feature-text {
   max-width: none;
-  padding-top: 140px;
+  padding-top: 52px;
+  padding-bottom: 22px;
 }
-.story-features .story-feature-hero {
+.story-slide .story-feature-name {
+  font-size: clamp(2rem, 5.5vw, 2.8rem);
+}
+.story-slide .story-feature-hero {
   top: 0;
   bottom: auto;
   width: 190px;
+}
+.story-arrow {
+  position: absolute;
+  top: calc(50% - 20px);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+  background: rgba(14, 16, 21, 0.78);
+  color: var(--gold);
+  cursor: pointer;
+}
+.story-arrow[hidden] {
+  display: none;
+}
+.story-arrow--prev {
+  left: 4px;
+}
+.story-arrow--next {
+  right: 4px;
+}
+.story-arrow:hover:not(:disabled),
+.story-arrow:focus-visible {
+  border-color: var(--gold);
+}
+.story-arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+.story-arrow svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Instagram-style progress bars on the active card; the active one fills while the carousel auto-advances */
+.story-dots {
+  position: absolute;
+  left: calc(9% + 16px);
+  right: calc(9% + 16px);
+  top: 20px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+.story-dots[hidden] {
+  display: none;
+}
+.story-dots button {
+  position: relative;
+  /* a third of the width a bar would have if the bars filled the card (--n bars, 6px gaps) */
+  flex: 0 0 calc((100% - (var(--n, 5) - 1) * 6px) / var(--n, 5) / 3);
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.story-dots button::before,
+.story-dots button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  height: 4px;
+  border-radius: 2px;
+}
+.story-dots button::before {
+  right: 0;
+  background: rgba(255, 255, 255, 0.28);
+}
+.story-dots button::after {
+  width: 0;
+  background: var(--gold);
+}
+.story-dots button.done::after {
+  width: 100%;
+}
+.story-dots button.on::after {
+  width: 100%;
+  animation: story-fill var(--story-dur, 6s) linear;
+}
+.story-carousel.paused .story-dots button.on::after {
+  animation-play-state: paused;
+}
+.story-carousel.static .story-dots button.on::after {
+  animation: none;
+}
+@keyframes story-fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-slide {
+    transition: none;
+  }
+}
+@media (max-width: 640px) {
+  .story-arrow {
+    display: none;
+  }
 }
 .lore .stat.fire .stat-n{color:#ff8a3a;text-shadow:0 0 28px rgba(255,110,40,.35)}
 .lore .stat.fire .stat-ov{color:#ff8a3a}
@@ -756,6 +862,8 @@ a.story-card:focus-visible {
 .story-banner{position:relative;display:flex;align-items:stretch;justify-content:flex-end;overflow:hidden;isolation:isolate;margin:20px 0 8px;min-height:168px;border:1px solid var(--gold-dim);border-radius:16px;color:var(--text);text-decoration:none;background:var(--bg-elev)}
 .story-banner-bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;max-width:none;object-fit:cover;filter:brightness(.95) saturate(.95);transition:transform .6s ease}
 .story-banner::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,16,21,0) 24%,rgba(14,16,21,.72) 56%,rgba(14,16,21,.9) 100%)}
+.class-story-banner .story-banner-bg{object-position:var(--pos,50% 50%)}
+@media (max-width:640px){.class-story-banner .story-banner-bg{object-position:var(--pos-m,var(--pos,50% 50%))}}
 .story-banner:hover .story-banner-bg,.story-banner:focus-visible .story-banner-bg{transform:scale(1.03)}
 .story-banner:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .story-banner-text{display:flex;flex-direction:column;justify-content:center;gap:5px;width:min(100%,460px);padding:20px 24px;text-shadow:0 1px 6px rgba(0,0,0,.65)}
@@ -796,3 +904,141 @@ a.story-card:focus-visible {
 .lore.druid{--accent-color:var(--class-druid)}
 .lore .hero-accent-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 80% 20%,color-mix(in srgb,var(--accent-color,var(--gold)) 16%,transparent),transparent 70%),linear-gradient(180deg,#12151c 0%,#0e1015 100%)}
 
+
+/* Home: three rows of story icons gliding in alternating directions (StoryMarquee.astro) */
+.story-marquee {
+  --ic: 72px;
+  --gap: 14px;
+  display: grid;
+  gap: var(--gap);
+  overflow: hidden;
+  padding: 10px 0 14px;
+}
+@media (max-width: 640px) {
+  .story-marquee {
+    --ic: 60px;
+    --gap: 12px;
+  }
+}
+.story-marquee-row {
+  overflow: hidden;
+  /* each row fades out at its own width (--fade, set per row): narrow at the top, wide at the bottom */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--fade, 20%), #000 calc(100% - var(--fade, 20%)), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 var(--fade, 20%), #000 calc(100% - var(--fade, 20%)), transparent 100%);
+}
+/* the rows gliding left start at the centre of the first icon above them */
+.story-marquee-row--left .story-marquee-track {
+  margin-left: calc(var(--ic) / 2);
+}
+.story-marquee-track {
+  display: flex;
+  gap: var(--gap);
+  width: max-content;
+  /* one loop = the icons of one half, in px (not a % of the track, so an icon widening on hover cannot shift the row) */
+  --loop: calc(var(--count) * (var(--ic) + var(--gap)));
+  animation: story-glide-left var(--dur, 40s) linear infinite;
+}
+.story-marquee-row--right .story-marquee-track {
+  animation-name: story-glide-right;
+}
+.story-marquee:hover .story-marquee-track,
+.story-marquee:focus-within .story-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes story-glide-left {
+  to {
+    transform: translateX(calc(var(--loop) * -1));
+  }
+}
+@keyframes story-glide-right {
+  from {
+    transform: translateX(calc(var(--loop) * -1));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-marquee-track {
+    animation: none;
+  }
+  .story-marquee-row {
+    overflow-x: auto;
+  }
+}
+.story-icon {
+  position: relative;
+  display: flex;
+  text-decoration: none;
+  flex: none;
+  width: var(--ic);
+  height: var(--ic);
+  box-sizing: border-box;
+  border: 2px solid var(--edge, var(--gold-dim)); /* gold like the home page's cards; the class icons carry their class colour */
+  border-radius: calc(var(--ic) * 0.24);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28) inset, 0 -2px 6px rgba(0, 0, 0, 0.35) inset, 0 8px 18px rgba(0, 0, 0, 0.45), 0 2px 5px rgba(0, 0, 0, 0.4);
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+}
+/* the Skyborne belong to both sides: the edge is half blue, half red (the border shows the gradient behind the image) */
+.story-icon--both {
+  border-color: transparent;
+  background: linear-gradient(135deg, #4a8fe7 50%, #e0503c 50%) border-box;
+}
+.story-icon.story-icon--both:hover,
+.story-icon.story-icon--both:focus-visible {
+  border-color: transparent;
+}
+.story-icon img {
+  display: block;
+  flex: none;
+  width: calc(var(--ic) - 4px); /* the icon's own square: the box minus its 2px border */
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+/* the gloss: a soft light sheen over the upper half */
+.story-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.08) 38%, rgba(255, 255, 255, 0) 55%);
+  pointer-events: none;
+}
+.story-icon:hover,
+.story-icon:focus-visible {
+  width: calc(var(--ic) + var(--label)); /* no lift: the row clips whatever leaves it */
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset, 0 12px 24px rgba(0, 0, 0, 0.55);
+  border-color: var(--edge, var(--gold));
+  outline: none;
+}
+/* the name slides out of the icon on hover and pushes the icons after it aside */
+.story-icon-name {
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: var(--label);
+  padding: 0 14px 0 10px;
+  box-sizing: border-box;
+  background: var(--bg-elev);
+  color: var(--edge, var(--gold));
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.story-icon:hover .story-icon-name,
+.story-icon:focus-visible .story-icon-name {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+.story-icon--both .story-icon-name {
+  color: var(--text);
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-icon {
+    transition: none;
+  }
+}

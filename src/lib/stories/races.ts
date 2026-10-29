@@ -8,19 +8,21 @@ export interface StoryRace {
   faction: 'a' | 'h' | 'ah';
   slug?: string;
   ids?: string[];
+  /** Accent colour of the people (the home page's icon marquee edge); the Skyborne have none: half blue, half red. */
+  color?: string;
   /** Cover art for the story banner on the race pages: `src` under public/, CSS `position` of the crop. */
   cover?: { src: string; position: string };
 }
 
 export const STORY_RACES: StoryRace[] = [
-  { id: 'alliance-gnome', name: 'Gnome', faction: 'a', slug: 'gnome', cover: { src: '/stories/gnome/ironforge.webp', position: '30% 45%' } },
-  { id: 'alliance-dwarf', name: 'Dwarf', faction: 'a', slug: 'dwarf', cover: { src: '/stories/dwarf/ironforge-forge.webp', position: '30% 50%' } },
-  { id: 'alliance-human', name: 'Human', faction: 'a', slug: 'human', cover: { src: '/stories/human/stormwind-gate.webp', position: '30% 45%' } },
-  { id: 'alliance-night-elf', name: 'Night Elf', faction: 'a', slug: 'night-elf', cover: { src: '/stories/night-elf/well-of-eternity.webp', position: '40% 50%' } },
-  { id: 'horde-orc', name: 'Orc', faction: 'h', slug: 'orc', cover: { src: '/stories/orc/orgrimmar.webp', position: '30% 45%' } },
-  { id: 'horde-troll', name: 'Troll', faction: 'h', slug: 'troll', cover: { src: '/stories/troll/durotar.webp', position: '50% 38%' } },
-  { id: 'horde-tauren', name: 'Tauren', faction: 'h', slug: 'tauren', cover: { src: '/stories/tauren/mulgore.webp', position: '40% 45%' } },
-  { id: 'horde-undead', name: 'Undead', faction: 'h', slug: 'undead', cover: { src: '/stories/undead/tirisfal.webp', position: '30% 50%' } },
+  { id: 'alliance-gnome', name: 'Gnome', faction: 'a', slug: 'gnome', color: '#f0b43c', cover: { src: '/stories/gnome/ironforge.webp', position: '30% 45%' } },
+  { id: 'alliance-dwarf', name: 'Dwarf', faction: 'a', slug: 'dwarf', color: '#b8c0cc', cover: { src: '/stories/dwarf/ironforge-forge.webp', position: '30% 50%' } },
+  { id: 'alliance-human', name: 'Human', faction: 'a', slug: 'human', color: '#4a8fe7', cover: { src: '/stories/human/stormwind-gate.webp', position: '30% 45%' } },
+  { id: 'alliance-night-elf', name: 'Night Elf', faction: 'a', slug: 'night-elf', color: '#8a6cf0', cover: { src: '/stories/night-elf/well-of-eternity.webp', position: '40% 50%' } },
+  { id: 'horde-orc', name: 'Orc', faction: 'h', slug: 'orc', color: '#4fae4a', cover: { src: '/stories/orc/orgrimmar.webp', position: '30% 45%' } },
+  { id: 'horde-troll', name: 'Troll', faction: 'h', slug: 'troll', color: '#00b8d9', cover: { src: '/stories/troll/durotar.webp', position: '50% 38%' } },
+  { id: 'horde-tauren', name: 'Tauren', faction: 'h', slug: 'tauren', color: '#e07a4f', cover: { src: '/stories/tauren/mulgore.webp', position: '40% 45%' } },
+  { id: 'horde-undead', name: 'Undead', faction: 'h', slug: 'undead', color: '#8ea36b', cover: { src: '/stories/undead/tirisfal.webp', position: '30% 50%' } },
   {
     id: 'alliance-skyborne-high-order',
     ids: ['alliance-skyborne-high-order', 'horde-skyborne-windshaper'],

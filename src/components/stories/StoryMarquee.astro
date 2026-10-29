@@ -1,0 +1,59 @@
+---
+// Three rows of squircle icons (race stories, then class stories) gliding in alternating directions, endlessly;
+// every second row is shifted half an icon so its icons start at the first icon's centre. Each icon links to its
+// race or class page. Pure CSS (styles in src/styles/stories.css): hover pauses and slides the icon's name out, pushing the icons after it aside; prefers-reduced-motion stops it.
+import type { Lang } from '../../config';
+import { marqueeRows } from '../../lib/stories/slides';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const rows = marqueeRows(lang);
+// Each half of a track repeats its row until it is wider than any screen (about 1600px); the second half copies the first.
+// Rows alternate direction, the even ones are shifted half an icon, and all glide at the same speed.
+const PITCH = 86; // icon + gap, px
+// The edge fade widens row by row (x, 2x, 3x; % of the row), so the visible area narrows towards the bottom like a V.
+const FADE_TOP = 20;
+const FADE_BOTTOM = 60;
+// The name that slides out of an icon on hover needs room: width of the text (estimated per character) plus padding, px.
+const LABEL_CHAR = 9.2;
+const LABEL_PAD = 30;
+const SPEED = 10.56; // px per second, the same for every row
+const lanes = rows.map((row, i) => {
+  const reps = Math.ceil(1600 / (row.length * PITCH));
+  return { half: Array.from({ length: reps }, () => row).flat(), width: reps * row.length * PITCH, i };
+});
+---
+
+<div class="story-marquee" aria-label={lang === 'tr' ? 'Hikayeler' : 'Stories'}>
+  {
+    lanes.map(({ half, width, i }) => (
+      <div class:list={['story-marquee-row', i % 2 === 0 ? 'story-marquee-row--right' : 'story-marquee-row--left']} style={`--fade:${FADE_TOP + ((FADE_BOTTOM - FADE_TOP) * i) / (lanes.length - 1)}%`}>
+        <div class="story-marquee-track" style={`--dur:${Math.round(width / SPEED)}s;--count:${half.length}`}>
+          {[0, 1].map((copy) =>
+            half.map((icon) => (
+              <a
+                href={icon.href}
+                aria-label={icon.name}
+                class:list={['story-icon', { 'story-icon--both': icon.bothFactions }]}
+                style={`--label:${Math.round(icon.name.length * LABEL_CHAR + LABEL_PAD)}px${icon.color ? `;--edge:${icon.color}` : ''}`}
+                aria-hidden={copy === 1 ? 'true' : undefined}
+                tabindex={copy === 1 ? -1 : undefined}
+              >
+                <img src={withBase(`/icons/${icon.icon}.jpg`)} alt="" width="72" height="72" loading="lazy" />
+                <span class="story-icon-name" aria-hidden="true">{icon.name}</span>
+              </a>
+            )),
+          )}
+        </div>
+      </div>
+    ))
+  }
+</div>
+      </div>
+    ))
+  }
+</div>

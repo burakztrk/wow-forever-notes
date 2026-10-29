@@ -1,7 +1,8 @@
 /* Home dashboard (src/pages/[lang]/index.astro), laid out like the app's Home:
-   search, latest note + character creator, then the feature tiles. */
+   story icons and carousel, latest note + character creator, then the feature tiles. */
 .dash {
   display: grid;
+  grid-template-columns: minmax(0, 1fr); /* the stories carousel scrolls inside its column instead of widening it */
   gap: 16px;
   margin-top: 8px;
   /* faction flag shades, the same as the app's AllianceShades / HordeShades */
@@ -14,41 +15,6 @@
 }
 .dash .codex-section {
   margin: 12px 0 0;
-}
-
-/* search: a real form, so Enter goes to /<lang>/search/?q=… */
-.dash-search {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 48px;
-  padding: 0 18px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg-elev);
-}
-.dash-search:focus-within {
-  border-color: var(--gold-dim);
-}
-.dash-search svg {
-  width: 22px;
-  height: 22px;
-  flex: none;
-  color: var(--gold);
-}
-.dash-search input {
-  flex: 1;
-  min-width: 0;
-  height: 100%;
-  border: 0;
-  background: transparent;
-  color: var(--text);
-  font: inherit;
-  font-size: 1rem;
-  outline: none;
-}
-.dash-search input::placeholder {
-  color: var(--text-dim);
 }
 
 .dash-top {
