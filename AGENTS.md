@@ -80,7 +80,7 @@ Node 22.12+.
   are searchable too: `loreSearch()` adds them, with their aliases and story links, to `/<lang>/search.json`;
   a new written story goes into `LORE_STORIES` (the lore test checks it against `STORY_RACES`).
 - Talent planner banner on each class page (`components/stories/TalentBanner.astro`, replaces the plain link): one cover for every class, `public/stories/talent-tree.webp` (optional; without the file it shows a gradient in the class colour; the file is picked up automatically).
-- Story heroes end with two link cards (`components/stories/StoryLinks.astro`, `.hero-links`): class story → `/classes/<class>/` ("Skills, Class Notes & Stats") and the talent planner; race story → `/races/<race>/` ("Racials, Race Notes & Stats") and the classes list. A new written story needs `<StoryLinks … />` before its hero's closing `</section>`.
+- Story heroes end with two link cards (`components/stories/StoryLinks.astro`, `.hero-links`): class story → `/classes/<class>/` ("Skills, Class Notes & Stats") and the talent planner; race story → `/races/<race>/` ("Racials, Race Notes & Stats") and `/creator/#race=<race id>` (the creator with that race selected). A new written story needs `<StoryLinks … />` before its hero's closing `</section>`.
 - Class story covers: `public/stories/class/<class>.webp` (letterbox bars cropped off), registered in `src/lib/stories/classes.ts` (`cover`); each class story's hero background and the banner on its class page (and `story.cover` in `/data/v1/classes.json`) use it.
 - `src/pages/[lang]/stories/timeline.astro` — story timeline: the major events of the race and class stories as a
   poster-style timeline (a red line with era markers, event cards alternating above and below it, each with its topic
