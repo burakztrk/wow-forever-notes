@@ -31,7 +31,7 @@ const ISSUES = 'https://github.com/burakztrk/wow-forever-notes/issues';
 export const privacy: Record<Lang, PrivacyPage> = {
   tr: {
     title: 'Gizlilik politikası',
-    updated: 'Son güncelleme: 23 Ekim 2026',
+    updated: 'Son güncelleme: 29 Ekim 2026',
     intro:
       'Bu politika Forever Campfire: Codex web sitesi ve mobil uygulaması için geçerlidir. İkisi de resmi olmayan, hayranlar tarafından yapılmış ve ücretsiz projelerdir. Hesap, reklam ya da çerez yoktur. Web sitesi kişisel veri içermeyen ziyaret istatistikleri tutar; Android uygulaması anonim kullanım istatistikleri ve çökme raporları gönderir, bunları Ayarlar\'dan kapatabilirsin.',
     sections: [
@@ -46,6 +46,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
         paragraphs: [
           'Web sitesi kaç kişinin ziyaret ettiğini, hangi sayfaların okunduğunu ve ziyaretlerin hangi ülkelerden geldiğini görmek için Cloudflare Web Analytics kullanır. Çerez kullanmaz, tarayıcında bir şey saklamaz, seni tanımlayan bir kimlik oluşturmaz ve siteler arasında izleme yapmaz.',
           'Ölçüm sırasında Cloudflare sayfa adresini, yönlendiren sayfayı, tarayıcı ve cihaz türünü ve sayfa yükleme süresini alır. Ülke bilgisi IP adresinden çıkarılır; IP adresi istatistiklerde saklanmaz. Bize yalnızca toplu sayılar ulaşır.',
+          'Uygulamanın Hikaye ekranları bu sitenin hikaye sayfalarını uygulamanın içinde gösterir; orada bu ölçüm betiği yüklenmez.',
         ],
         links: [
           { label: 'Cloudflare Web Analytics', href: CLOUDFLARE_WEB_ANALYTICS },
@@ -55,7 +56,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
       {
         heading: 'Uygulamanın kullanım istatistikleri ve çökme raporları',
         paragraphs: [
-          'Android uygulaması, hangi özelliklerin kullanıldığını görmek ve hataları düzeltmek için Google Firebase Analytics ve Firebase Crashlytics kullanır. Kaydedilenler: açtığın ekranlar ve gösterdikleri sayfa (ör. hangi class, ırk, meslek ya da yama notu), dokunduğun işlemler (sekme değiştirme, paylaşma, dış bağlantı açma, talent build\'ini kaydetme ya da paylaşma ve dağıttığın puanlar, build ve karakter silme, dil değiştirme, verileri yenileme, büyü/talent açıklaması açma), uygulama içi aramada yazdığın arama terimleri ve uygulamanın dili. Karakter oluşturduğunda ırkı, class\'ı ve karaktere verdiğin ad gönderilir; bu yüzden karakter adına gerçek adını yazma. Build\'lere verdiğin adlar gönderilmez.',
+          'Android uygulaması, hangi özelliklerin kullanıldığını görmek ve hataları düzeltmek için Google Firebase Analytics ve Firebase Crashlytics kullanır. Kaydedilenler: açtığın ekranlar ve gösterdikleri sayfa (ör. hangi class, ırk, meslek, hikaye ya da yama notu), dokunduğun işlemler (sekme değiştirme, paylaşma, dış bağlantı açma, talent build\'ini kaydetme ya da paylaşma ve dağıttığın puanlar, build ve karakter silme, dil değiştirme, verileri yenileme, büyü/talent açıklaması açma), uygulama içi aramada yazdığın arama terimleri ve uygulamanın dili. Karakter oluşturduğunda ırkı, class\'ı ve karaktere verdiğin ad gönderilir; bu yüzden karakter adına gerçek adını yazma. Build\'lere verdiğin adlar gönderilmez.',
           'Bu kayıtları bir arada tutabilmek için uygulama her kurulumu Firebase Authentication\'da anonim bir kullanıcı olarak kaydeder. Bu kullanıcının adı, e-postası ya da şifresi yoktur; yalnızca rastgele bir kullanıcı kimliği vardır ve kullanım istatistikleri ile çökme raporları bu kimlikle eşleşir. Uygulamayı silince yeniden kurulumda yeni bir anonim kullanıcı oluşturulur.',
           'Firebase bunlara ek olarak uygulama sürümünü, cihaz modelini, işletim sistemi sürümünü, cihaz dilini, oturum sayısı ve süresini ve IP adresinden çıkarılan yaklaşık konumu (ülke, şehir) alır. Her kurulum için ayrıca rastgele bir uygulama kimliği oluşturulur ve uygulamayı silince sıfırlanır. Reklam kimliği okunmaz.',
           'Uygulama çökerse Crashlytics hata ayrıntılarını (hangi kodda çöktüğü), cihaz modeli ve sistem sürümünü, boş bellek ve depolamayı ve çökmeden hemen önce açılan ekranlarla işlemleri gönderir.',
@@ -70,14 +71,14 @@ export const privacy: Record<Lang, PrivacyPage> = {
       {
         heading: 'Uygulamanın cihazında sakladıkları',
         paragraphs: [
-          'Uygulama, yama notlarını ve oyun verisini (yetenekler, talent\'lar, ırklar, class\'lar) bu siteden indirir ve çevrimdışı çalışabilmek için cihazında saklar. Dil tercihin, kaydettiğin talent build\'leri ve karakterlerin de yalnızca cihazında tutulur.',
+          'Uygulama, yama notlarını ve oyun verisini (yetenekler, talent\'lar, ırklar, class\'lar) bu siteden indirir ve çevrimdışı çalışabilmek için cihazında saklar. Dil tercihin, kaydettiğin talent build\'leri ve karakterlerin de yalnızca cihazında tutulur. Hikaye ekranlarında açılan sayfaları cihazının web görünümü kendi önbelleğinde tutabilir.',
           'Bu veriler bize ya da başka birine gönderilmez. Uygulamayı silince hepsi silinir.',
         ],
       },
       {
         heading: 'Barındırma ve üçüncü taraflar',
         paragraphs: [
-          'Site ve uygulamanın indirdiği veriler GitHub Pages üzerinde barındırılır. Her web isteğinde olduğu gibi GitHub, IP adresin gibi teknik bilgileri kendi politikasına göre işleyebilir. Web sitesi yazı tiplerini Google Fonts\'tan yükler.',
+          'Site, uygulamanın indirdiği veriler ve uygulamanın Hikaye ekranlarında açılan sayfalar GitHub Pages üzerinde barındırılır. Her web isteğinde olduğu gibi GitHub, IP adresin gibi teknik bilgileri kendi politikasına göre işleyebilir. Web sitesi (uygulamanın Hikaye ekranları dahil) yazı tiplerini Google Fonts\'tan yükler.',
           'Oyun verisi wclbox, WoW Forever Tools ve Blizzard Forums kaynaklarından derlenir. Bu kaynaklara senin cihazından istek gönderilmez.',
         ],
         links: [
@@ -100,7 +101,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
   },
   en: {
     title: 'Privacy policy',
-    updated: 'Last updated: 23 October 2026',
+    updated: 'Last updated: 29 October 2026',
     intro:
       'This policy covers the Forever Campfire: Codex website and mobile app. Both are unofficial, fan-made and free. There are no accounts, ads or cookies. The website keeps visit statistics that contain no personal data; the Android app sends anonymous usage statistics and crash reports, which you can turn off in Settings.',
     sections: [
@@ -115,6 +116,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
         paragraphs: [
           'The website uses Cloudflare Web Analytics to see how many people visit, which pages they read and which countries visits come from. It sets no cookies, stores nothing in your browser, creates no identifier for you and does not track you across sites.',
           'For each page view Cloudflare receives the page address, the referring page, the browser and device type and the page load time. The country is derived from your IP address; the IP address is not stored in the statistics. We only see totals.',
+          'The app\'s Stories screens show this website\'s story pages inside the app; this statistics script is not loaded there.',
         ],
         links: [
           { label: 'Cloudflare Web Analytics', href: CLOUDFLARE_WEB_ANALYTICS },
@@ -124,7 +126,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
       {
         heading: 'App usage statistics and crash reports',
         paragraphs: [
-          'The Android app uses Google Firebase Analytics and Firebase Crashlytics to see which features are used and to fix bugs. It records the screens you open and the page they show (for example which class, race, profession or patch note), the actions you tap (switching tabs, sharing, opening external links, saving or sharing a talent build and the points in it, deleting builds and characters, changing the language, refreshing the data, opening a spell or talent description), the search terms you type in the in-app search, and the app language. When you create a character, its race, class and the name you give it are sent, so do not use your real name as a character name. The names you give builds are not sent.',
+          'The Android app uses Google Firebase Analytics and Firebase Crashlytics to see which features are used and to fix bugs. It records the screens you open and the page they show (for example which class, race, profession, story or patch note), the actions you tap (switching tabs, sharing, opening external links, saving or sharing a talent build and the points in it, deleting builds and characters, changing the language, refreshing the data, opening a spell or talent description), the search terms you type in the in-app search, and the app language. When you create a character, its race, class and the name you give it are sent, so do not use your real name as a character name. The names you give builds are not sent.',
           'To keep these records together, the app registers each installation as an anonymous user in Firebase Authentication. This user has no name, email or password, only a random user ID that the usage statistics and crash reports are linked to. After uninstalling, a reinstall creates a new anonymous user.',
           'Firebase also receives the app version, device model, operating system version, device language, the number and length of sessions, and an approximate location (country, city) derived from your IP address. Each installation also gets a random app identifier that is reset when you uninstall the app. The advertising ID is not read.',
           'If the app crashes, Crashlytics sends the error details (where in the code it crashed), the device model and system version, free memory and storage, and the screens and actions just before the crash.',
@@ -139,14 +141,14 @@ export const privacy: Record<Lang, PrivacyPage> = {
       {
         heading: 'What the app stores on your device',
         paragraphs: [
-          'The app downloads the patch notes and game data (spells, talents, races, classes) from this website and keeps a copy on your device so it works offline. Your language preference, saved talent builds and characters are also stored only on your device.',
+          'The app downloads the patch notes and game data (spells, talents, races, classes) from this website and keeps a copy on your device so it works offline. Your language preference, saved talent builds and characters are also stored only on your device. The pages the Stories screens open may be kept in your device\'s web view cache.',
           'None of this is sent to us or anyone else. Uninstalling the app deletes it.',
         ],
       },
       {
         heading: 'Hosting and third parties',
         paragraphs: [
-          'The website and the data the app downloads are hosted on GitHub Pages. As with any web request, GitHub may process technical information such as your IP address under its own policy. The website loads fonts from Google Fonts.',
+          'The website, the data the app downloads and the pages the app\'s Stories screens open are hosted on GitHub Pages. As with any web request, GitHub may process technical information such as your IP address under its own policy. The website (including the app\'s Stories screens) loads fonts from Google Fonts.',
           'Game data is compiled from wclbox, WoW Forever Tools and the Blizzard Forums. Your device does not send requests to those sources.',
         ],
         links: [

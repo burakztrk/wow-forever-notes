@@ -9,6 +9,7 @@ import { getAllPosts } from './blog';
 import { guideGlossaryTerms } from './professions';
 import { postUrl } from '../utils/url';
 import { parseSections, sectionsAsBlocks } from './post-sections';
+import { classStoryRef, raceStoryRef } from './stories/refs';
 
 // Public read-only data API for the mobile app: /data/v1/*.json, generated at
 // build time and served by GitHub Pages (CORS: *). Bump DATA_SCHEMA when a
@@ -82,8 +83,13 @@ export async function manifestPayload() {
 export const respond = {
   manifest: async () => json(await manifestPayload()),
   glossary: () => json({ schema: DATA_SCHEMA, ...glossary }),
-  classes: () => json({ schema: DATA_SCHEMA, classes: inClassOrder(classesData as ClassInfo[]) }),
-  races: () => json({ schema: DATA_SCHEMA, races: racesData }),
+  // story: the written story's slug, cover (site-relative) and banner text (tr, en), or null
+  classes: () =>
+    json({
+      schema: DATA_SCHEMA,
+      classes: inClassOrder(classesData as ClassInfo[]).map((c) => ({ ...c, story: classStoryRef(c.id) })),
+    }),
+  races: () => json({ schema: DATA_SCHEMA, races: racesData.map((r) => ({ ...r, story: raceStoryRef(r.id) })) }),
   posts: async () => json(await postsPayload()),
   // synced profession data plus the hand-edited guide (TR + EN text) the pages use
   professions: () => json({ schema: DATA_SCHEMA, ...professionsData, guide: guideData, glossaryTerms: guideGlossaryTerms() }),

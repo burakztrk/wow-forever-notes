@@ -35,6 +35,24 @@ body {
     var(--bg);
 }
 
+/* Inside the mobile app (BaseLayout's in-app script): the app draws the bars around the page,
+   so the site's own header and footer go, and taps and long presses act like the app's
+   screens (no tap flash, no text selection or link menu). */
+.in-app .site-header,
+.in-app .site-footer {
+  display: none;
+}
+.in-app body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.in-app :is(input, textarea) {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
 a {
   color: var(--link);
   text-decoration-color: rgba(217, 191, 122, 0.4);
