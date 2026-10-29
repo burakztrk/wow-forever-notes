@@ -83,6 +83,10 @@
     "en": "Maximum rank changed from 5 to 3. Moved from column 4 to column 3. Effect override.",
     "tr": "Maksimum rank 5'ten 3'e değişti. Sütun 4'ten sütun 3'e taşındı. Efekt değiştirildi."
   },
+  "049f61fcf9a81bf2": {
+    "en": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 30%.",
+    "tr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %30 artırır."
+  },
   "04d7b785088ee34c": {
     "en": "Summons a Fire Resistance Totem with 5 health at the feet of the caster for 5 min that increases the fire resistance of party or raid members within 30 yards by 60.",
     "tr": "Büyücünün ayaklarının dibinde 5 canlı bir Fire Resistance Totem çağırır; 5 dakika boyunca 30 yard içindeki parti veya raid üyelerinin fire direncini 60 artırır."
@@ -539,10 +543,6 @@
     "en": "Power infuses all party and raid members, increasing their Stamina by 70 for 1 hour.",
     "tr": "Tüm grup ve raid üyelerine güç aşılar; 1 saat boyunca Stamina'larını 70 artırır."
   },
-  "1e0f3788f833f5ec": {
-    "en": "Quickly launch a weak blast of frost at the enemy, causing 80 to 89 (+27.1% of spell power) Frost damage and slowing movement speed by 40% for 9 sec.",
-    "tr": "Düşman hedefe hızla zayıf bir buz patlaması fırlatır; 80 ile 89 arasında (+büyü gücünün %27,1'i) Frost hasarı verir ve hareket hızını 9 saniye boyunca %40 yavaşlatır."
-  },
   "1e5ea12bce9ef3cf": {
     "en": "Teleports the caster to Ironforge.",
     "tr": "Cast edeni Ironforge'a ışınlar."
@@ -566,6 +566,10 @@
   "1f27b53287e64338": {
     "en": "Increases the critical strike chance of your Arcane spells by 6%.",
     "tr": "Arcane büyülerinin kritik vuruş şansını %6 artırır."
+  },
+  "1f5aa7212eaca92f": {
+    "en": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 2%.",
+    "tr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %2 artırır."
   },
   "1f629faba3254fa7": {
     "en": "Inflict searing pain on the enemy target, causing 107 to 126 (+42.9% of spell power) Fire damage. Causes a high amount of threat.",
@@ -954,10 +958,6 @@
   "359048c13d288fcf": {
     "en": "Rank 7:Value: 757 (Classic Era: 812), 893 points (Classic Era: 958 points)",
     "tr": "Rank 7: Değer 757 (Classic Era: 812), 893 puan (Classic Era: 958 puan)"
-  },
-  "35a49be1ab25be14": {
-    "en": "Max rank changed from 3 to 2. Moved from tier 2 to tier 1. Effect override.",
-    "tr": "Maksimum rank 3'ten 2'ye değişti. Tier 2'den tier 1'e taşındı. Efekt değiştirildi."
   },
   "35b57513d332ec92": {
     "en": "You take 40% less durability loss when you die.",
@@ -1395,6 +1395,10 @@
     "en": "Reduces the Mana cost of your Destruction spells by 10%.",
     "tr": "Destruction büyülerinin mana maliyetini %10 azaltır."
   },
+  "4b32641f3e107140": {
+    "en": "Classic Era is called Improved Fireball. Moved from column 2 to column 3. Value unchanged, wording changed.",
+    "tr": "Classic Era'da adı Improved Fireball. Sütun 2'den sütun 3'e taşındı. Değer aynı, ifade değişti."
+  },
   "4baf6494c1f7a507": {
     "en": "Afflicts the target with impending doom, causing 1742 (+400% of spell power) Shadow damage after 1 min. If the target dies from this damage, there is a chance that a Doomguard will be summoned. Cannot be cast on players. Only one Bane per Warlock can be active on any one target.",
     "tr": "Hedefe yaklaşan bir kıyamet bulaştırır; 1 dakika sonra 1742 (+büyü gücünün %400'ü) Shadow hasarı verir. Hedef bu hasarla ölürse bir Doomguard çağrılma şansı vardır. Oyunculara cast edilemez. Bir hedefte her Warlock'un yalnızca bir Bane'i aktif olabilir."
@@ -1482,10 +1486,6 @@
   "50cfa795dc31dafd": {
     "en": "\"I'll teach you how to summon this kind of friend.\"",
     "tr": "\"Bu türden bir dostu nasıl çağıracağını sana öğreteceğim.\""
-  },
-  "5161fd83d10ef0c1": {
-    "en": "Improves your chance to hit with Arcane spells by 5%.",
-    "tr": "Arcane büyülerinin isabet şansını %5 artırır."
   },
   "5176570882e23dcf": {
     "en": "Calls down a fiery rain to burn enemies in the area of effect for 884 Fire damage over 8 sec.",
@@ -1614,6 +1614,10 @@
   "589dd910ad9bc584": {
     "en": "Reduces the cooldown of your Sprint and Evasion abilities by 60%.",
     "tr": "Sprint ve Evasion yeteneklerinin bekleme süresini %60 azaltır."
+  },
+  "5976d3a0a17e7db5": {
+    "en": "Max rank changed from 3 to 2. Moved from tier 2 to tier 3. Effect override.",
+    "tr": "Maksimum rank 3'ten 2'ye düştü. Tier 2'den Tier 3'e taşındı. Etki değişti."
   },
   "5977cdde52c2bf2a": {
     "en": "Rank 5:Value: 196 (Classic Era: 140), 45 seconds (Classic Era: 30)",
@@ -2027,6 +2031,10 @@
     "en": "Classic Era is a marksmanship talent; can now be learned without talent",
     "tr": "Classic Era'da Marksmanship talent'ıydı; artık talent olmadan öğrenilebilir"
   },
+  "6cf3765eaaa3f4e2": {
+    "en": "Classic Era is called Enhanced Arcane Missiles. Moved from column 3 to column 2. Effect override.",
+    "tr": "Classic Era'da adı Enhanced Arcane Missiles. Sütun 3'ten sütun 2'ye taşındı. Etki değişti."
+  },
   "6d102d6b751b2696": {
     "en": "Hurls an immense fiery boulder that causes 520 to 646 (+100% of spell power) Fire damage and an additional 212 (+60% of spell power) Fire damage over 12 sec.",
     "tr": "Devasa alevli bir kaya fırlatır; 520 - 646 (+büyü gücünün %100'ü) Fire hasarı ve 12 saniye boyunca ek 212 (+büyü gücünün %60'ı) Fire hasarı verir."
@@ -2159,6 +2167,10 @@
     "en": "Rank 10:Value: 1508 (Classic Era: 1620), 1722 points (Classic Era: 1850 points)",
     "tr": "Rank 10: Değer 1508 (Classic Era: 1620), 1722 puan (Classic Era: 1850 puan)"
   },
+  "720ea34cd4ce16d4": {
+    "en": "Classic Era is called Burn Out. Maximum rank changed from 2 to 5. Moved from Tier 3 to Tier 1. Values unchanged, wording changed.",
+    "tr": "Classic Era'da adı Burn Out. Maksimum rank 2'den 5'e çıktı. Tier 3'ten Tier 1'e taşındı. Değerler aynı, ifade değişti."
+  },
   "72351d85553ba6ee": {
     "en": "Increases Armor by 200. If an enemy strikes the caster, they may have their movement slowed by 30% and the time between their attacks increased by 25% for 5 sec. Only one type of Armor spell can be active on the Mage at any time. Lasts 30 min.",
     "tr": "Armor'u 200 artırır. Cast edene vuran düşmanın hareketi 5 saniye boyunca %30 yavaşlayabilir ve saldırıları arasındaki süre %25 uzayabilir. Mage üzerinde aynı anda yalnızca bir Armor büyüsü aktif olabilir. 30 dakika sürer."
@@ -2234,10 +2246,6 @@
   "75fa2cd1cce5fae3": {
     "en": "Moved from Tier 5 to Tier 4. Values unchanged, wording adjusted.",
     "tr": "Tier 5'ten tier 4'e taşındı. Değerler aynı, metin düzenlendi."
-  },
-  "7662d7f4f0f2e55e": {
-    "en": "Classic Era is called Enhanced Arcane Missiles. Effect rewrite.",
-    "tr": "Classic Era'daki adı Improved Arcane Missiles. Efekt yeniden yazıldı."
   },
   "768042829c1500ea": {
     "en": "An instant strike that causes 68 damage in addition to your normal weapon damage. Awards 1 combo point.",
@@ -2698,10 +2706,6 @@
   "88a2c10bfd2cccbf": {
     "en": "Gives your Chill effects a 15% chance to grant you the Fingers of Frost effect, which treats your next 2 spells cast as if the target were Frozen. Lasts 15 sec.",
     "tr": "Chill etkilerine sana Fingers of Frost etkisi verme şansı %15 verir; bu etki, cast ettiğin sonraki 2 büyüde hedefi donmuş sayar. 15 saniye sürer."
-  },
-  "88b3645b731d3926": {
-    "en": "Maximum rating changed from 3 to 5.",
-    "tr": "Maksimum rank 3'ten 5'e değişti."
   },
   "88c81b83054cef6f": {
     "en": "Rank 4:Cost: 315 mana (Classic Era: 605 mana)",
@@ -3211,6 +3215,10 @@
     "en": "Heals a friendly target for 1508 to 1722 (+85.7% of spell power).",
     "tr": "Dost bir hedefi 1508 - 1722 (+büyü gücünün %85.7'si) iyileştirir."
   },
+  "a08ee2b6b4ffcea9": {
+    "en": "Classic Era is named Element Precision. The value remains unchanged, and the wording is adjusted.",
+    "tr": "Classic Era'da adı Element Precision. Değer aynı, ifade değişti."
+  },
   "a0a7afa4ce337c20": {
     "en": "Increases your melee ability critical strike damage by 30% and your Off Hand weapon damage by 50%.",
     "tr": "Yakın dövüş yeteneklerinin kritik vuruş hasarını %30 ve Off Hand silah hasarını %50 artırır."
@@ -3583,6 +3591,10 @@
     "en": "Burn the enemy's soul, causing 389 to 488 (+100% of spell power) Fire damage.",
     "tr": "Düşmanın ruhunu yakar; 389 - 488 (+büyü gücünün %100'ü) Fire hasarı verir."
   },
+  "b49ac366f2d5696b": {
+    "en": "Increases the critical strike chance of your fire spells by 2%.",
+    "tr": "Fire büyülerinin kritik vuruş şansını %2 artırır."
+  },
   "b4c049e55f164342": {
     "en": "An aggressive stance. Critical strike chance increased by 3% and all damage taken is increased by 10%.",
     "tr": "Saldırgan bir duruş. Kritik vuruş şansı %3 artar ve alınan tüm hasar %10 artar."
@@ -3795,6 +3807,10 @@
     "en": "Tabard",
     "tr": "Tabard"
   },
+  "c03ebb010240a784": {
+    "en": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 24%.",
+    "tr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %24 artırır."
+  },
   "c0560ad79d2d9dd6": {
     "en": "Launches a projectile of pure Arcane energy at the enemy target, causing 121 to 147 (+100% of spell power) Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana.",
     "tr": "Düşman hedefe saf Arcane enerjisinden bir mermi fırlatır; 121 ile 147 arasında (+büyü gücünün %100'ü) Arcane hasarı verir. Bu büyü, maksimum Mana değerinin %5'i kadar ek Büyü Hasarı kazanır."
@@ -3927,6 +3943,10 @@
     "en": "Reduces the cast time of your Lightning Bolt, Chain Lightning, and Lava Burst spells by 0.50 sec.",
     "tr": "Lightning Bolt, Chain Lightning ve Lava Burst büyülerinin cast süresini 0.50 saniye kısaltır."
   },
+  "c68fda7b3b423813": {
+    "en": "Increases the critical strike chance of your fire spells by 6%.",
+    "tr": "Fire büyülerinin kritik vuruş şansını %6 artırır."
+  },
   "c6ab8425fd5c19c3": {
     "en": "There is a 12% chance to activate Overpower when you use your main hand weapon to launch melee attacks against enemies affected by your Rip.",
     "tr": "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %12 ihtimalle Overpower'ı etkinleştirir."
@@ -4031,10 +4051,6 @@
     "en": "Move from column 1 to column 2. Effect override.",
     "tr": "Sütun 1'den sütun 2'ye taşındı. Efekt değiştirildi."
   },
-  "cd4e2d12de02bac9": {
-    "en": "Classic Era is called Burn Out. Maximum rank changed from 2 to 3. Moved from Tier 3 to Tier 1. Values unchanged, wording changed.",
-    "tr": "Classic Era'daki adı Burn Out. Maksimum rank 2'den 3'e değişti. Tier 3'ten tier 1'e taşındı. Değerler aynı, metin değişti."
-  },
   "cd6ffdd31d7b94d3": {
     "en": "Throws a distraction, attracting the attention of all nearby enemies and reducing their Stealth detection as if they were 1 level lower for 10 seconds. Does not break stealth.",
     "tr": "Dikkat dağıtıcı bir şey fırlatır; yakındaki tüm düşmanların dikkatini çeker ve 10 saniye boyunca Stealth algılamalarını 1 seviye düşükmüş gibi azaltır. Stealth'i bozmaz."
@@ -4066,6 +4082,10 @@
   "ce283f2713e0312b": {
     "en": "Causes Stealth to enter stealth mode, but reduces movement speed by 30%. The effect lasts until cancelled.",
     "tr": "Stealth moduna girer, ancak hareket hızı %30 azalır. İptal edilene kadar sürer."
+  },
+  "ce597d5ae7bb598a": {
+    "en": "Max rank changed from 1 to 2. Moved from tier 3 to tier 1. Effect override.",
+    "tr": "Maksimum rank 1'den 2'ye çıktı. Tier 3'ten Tier 1'e taşındı. Etki değişti."
   },
   "ce677f320d9b2d7f": {
     "en": "Reduces the cast time of Starfire by 0.5 sec and Starfire has a 15% chance to stun its target for 3 sec.",
@@ -4259,10 +4279,6 @@
     "en": "Gives your Holy spells 10% increased damage against the first 4 enemies that enter your Consecration.",
     "tr": "Consecration'ına giren ilk 4 düşmana karşı Holy büyülerinin hasarı %10 artar."
   },
-  "d64ffabbefc23d0e": {
-    "en": "Max rank changed from 1 to 2. Moved from tier 3 to tier 2. Effect override.",
-    "tr": "Maksimum rank 1'den 2'ye değişti. Tier 3'ten tier 2'ye taşındı. Efekt değiştirildi."
-  },
   "d651065c666d1604": {
     "en": "Move from column 2 to column 3.",
     "tr": "Sütun 2'den sütun 3'e taşındı."
@@ -4298,6 +4314,10 @@
   "d82317f6a0f25779": {
     "en": "Gives your Chill effects a 15% chance to Freeze the target for 5 sec.",
     "tr": "Chill etkilerine hedefi 5 saniye dondurma şansı %15 verir."
+  },
+  "d82b47274917abe5": {
+    "en": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 4%.",
+    "tr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %4 artırır."
   },
   "d898469685c72df6": {
     "en": "Increases your movement speed by 30% and dodge chance by 4% while under Cat Form.",
@@ -4850,6 +4870,10 @@
   "ee4174e97959f3ed": {
     "en": "Soothes the target beast, reducing the range at which it will attack you by 10 yards. Only affects Beast targets level 70 or lower. Lasts 15 sec.",
     "tr": "Hedef beast'i yatıştırır; sana saldıracağı mesafeyi 10 yard azaltır. Yalnızca 70 seviye veya altındaki Beast'leri etkiler. 15 saniye sürer."
+  },
+  "ee4c7083bd6ea0eb": {
+    "en": "Increases the critical strike chance of your fire spells by 4%.",
+    "tr": "Fire büyülerinin kritik vuruş şansını %4 artırır."
   },
   "ee667f7d2182634e": {
     "en": "Gives a 35% chance of ignoring spell interruption when damaged to all party members within 30 yards. Players may only have one Aura on them per Paladin at any one time.",

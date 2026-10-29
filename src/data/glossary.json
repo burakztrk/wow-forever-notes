@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-27T23:43:08.076Z",
-  "build": "1.60.1.70634",
+  "generatedAt": "2026-10-29T22:58:53.206Z",
+  "build": "1.60.1.70685",
   "source": "https://wowforever.wclbox.com/en (新手盒子·魔兽世界无限数据库); descriptions: https://wowforevertools.com",
   "entries": [
     {
@@ -268,7 +268,7 @@
       ],
       "passive": false,
       "cast": "Instant",
-      "cooldown": "3 min",
+      "cooldown": "2 min",
       "desc": "Attack and Spell Strength increased by 10%. Lasts for 15 seconds.",
       "status": "changed",
       "sourceUrl": "https://wowforever.wclbox.com/en/zhongzu#race=horde-orc",
@@ -3986,24 +3986,6 @@
       "status": "unchanged",
       "sourceUrl": "https://wowforever.wclbox.com/en/fashu/mage/mage-frost-armor",
       "descTr": "Armor'u 200 artırır. Cast edene vuran düşmanın hareketi 5 saniye boyunca %30 yavaşlayabilir ve saldırıları arasındaki süre %25 uzayabilir. Mage üzerinde aynı anda yalnızca bir Armor büyüsü aktif olabilir. 30 dakika sürer."
-    },
-    {
-      "id": "spell/mage-frost-blast",
-      "kind": "spell",
-      "name": "Frost Blast",
-      "icon": "spell_ice_magicdamage",
-      "class": "mage",
-      "school": "Frost",
-      "maxRank": 3,
-      "learnedAt": 24,
-      "cost": "90 Mana",
-      "costType": "mana",
-      "cast": "1.5 sec",
-      "range": "30 yd",
-      "desc": "Quickly launch a weak blast of frost at the enemy, causing 80 to 89 (+27.1% of spell power) Frost damage and slowing movement speed by 40% for 9 sec.",
-      "status": "new",
-      "sourceUrl": "https://wowforever.wclbox.com/en/fashu/mage/mage-frost-blast",
-      "descTr": "Düşman hedefe hızla zayıf bir buz patlaması fırlatır; 80 ile 89 arasında (+büyü gücünün %27,1'i) Frost hasarı verir ve hareket hızını 9 saniye boyunca %40 yavaşlatır."
     },
     {
       "id": "spell/mage-frost-nova",
@@ -12319,39 +12301,6 @@
       ]
     },
     {
-      "id": "talent/calc-mage-arcane-arcane-focus",
-      "kind": "talent",
-      "name": "Arcane Focus",
-      "icon": "spell_holy_devotion",
-      "class": "mage",
-      "tree": "Arcane",
-      "tier": 1,
-      "row": 1,
-      "col": 2,
-      "maxRank": 5,
-      "desc": "Improves your chance to hit with Arcane spells by 5%.",
-      "status": "changed",
-      "change": "Effect Overrides.",
-      "ranks": [
-        "Improves your chance to hit with Arcane spells by 1%.",
-        "Improves your chance to hit with Arcane spells by 2%.",
-        "Improves your chance to hit with Arcane spells by 3%.",
-        "Improves your chance to hit with Arcane spells by 4%.",
-        "Improves your chance to hit with Arcane spells by 5%."
-      ],
-      "tierPoints": 0,
-      "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-arcane-arcane-focus",
-      "descTr": "Arcane büyülerinin isabet şansını %5 artırır.",
-      "changeTr": "Efekt değiştirildi.",
-      "ranksTr": [
-        "Arcane büyülerinin isabet şansını %1 artırır.",
-        "Arcane büyülerinin isabet şansını %2 artırır.",
-        "Arcane büyülerinin isabet şansını %3 artırır.",
-        "Arcane büyülerinin isabet şansını %4 artırır.",
-        "Arcane büyülerinin isabet şansını %5 artırır."
-      ]
-    },
-    {
       "id": "talent/calc-mage-arcane-arcane-geometry",
       "kind": "talent",
       "name": "Magic Attunement",
@@ -12532,21 +12481,21 @@
       "icon": "spell_arcane_arcaneresilience",
       "class": "mage",
       "tree": "Arcane",
-      "tier": 2,
-      "row": 2,
-      "col": 4,
+      "tier": 1,
+      "row": 1,
+      "col": 3,
       "maxRank": 2,
       "desc": "Increases your Armor by an amount equal to 50% of your Intellect.",
       "status": "changed",
-      "change": "Max rank changed from 1 to 2. Moved from tier 3 to tier 2. Effect override.",
+      "change": "Max rank changed from 1 to 2. Moved from tier 3 to tier 1. Effect override.",
       "ranks": [
         "Increases your Armor by an amount equal to 25% of your Intellect.",
         "Increases your Armor by an amount equal to 50% of your Intellect."
       ],
-      "tierPoints": 5,
+      "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-arcane-arcane-resilience",
       "descTr": "Armor'unu Intellect'inin %50'si kadar artırır.",
-      "changeTr": "Maksimum rank 1'den 2'ye değişti. Tier 3'ten tier 2'ye taşındı. Efekt değiştirildi.",
+      "changeTr": "Maksimum rank 1'den 2'ye çıktı. Tier 3'ten Tier 1'e taşındı. Etki değişti.",
       "ranksTr": [
         "Armor'unu Intellect'inin %25'si kadar artırır.",
         "Armor'unu Intellect'inin %50'si kadar artırır."
@@ -12641,11 +12590,11 @@
       "tree": "Arcane",
       "tier": 1,
       "row": 1,
-      "col": 3,
+      "col": 2,
       "maxRank": 5,
       "desc": "Gives your Arcane Missiles spell a 100% chance and your Arcane Blast and Arcane Wrath spells a 70% chance to not lose casting time when you take damage.",
       "status": "changed",
-      "change": "Classic Era is called Enhanced Arcane Missiles. Effect rewrite.",
+      "change": "Classic Era is called Enhanced Arcane Missiles. Moved from column 3 to column 2. Effect override.",
       "ranks": [
         "Gives your Arcane Missiles spell a 20% chance and your Arcane Blast and Arcane Wrath spells a 14% chance to not lose casting time when you take damage.",
         "Gives your Arcane Missiles spell a 40% chance and your Arcane Blast and Arcane Wrath spells a 28% chance to not lose casting time when you take damage.",
@@ -12656,7 +12605,7 @@
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-arcane-improved-channeling",
       "descTr": "Arcane Missiles büyüne %100, Arcane Blast ve Arcane Wrath büyülerine %70 şansla hasar aldığında cast süresini kaybetmeme özelliği verir.",
-      "changeTr": "Classic Era'daki adı Improved Arcane Missiles. Efekt yeniden yazıldı.",
+      "changeTr": "Classic Era'da adı Enhanced Arcane Missiles. Sütun 3'ten sütun 2'ye taşındı. Etki değişti.",
       "ranksTr": [
         "Arcane Missiles büyüne %20, Arcane Blast ve Arcane Wrath büyülerine %14 şansla hasar aldığında cast süresini kaybetmeme özelliği verir.",
         "Arcane Missiles büyüne %40, Arcane Blast ve Arcane Wrath büyülerine %28 şansla hasar aldığında cast süresini kaybetmeme özelliği verir.",
@@ -12726,8 +12675,8 @@
       "icon": "ability_mage_missilebarrage",
       "class": "mage",
       "tree": "Arcane",
-      "tier": 1,
-      "row": 1,
+      "tier": 2,
+      "row": 2,
       "col": 4,
       "maxRank": 2,
       "desc": "Gives your Arcane Blast spell a 40% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
@@ -12737,7 +12686,7 @@
         "Gives your Arcane Blast spell a 20% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
         "Gives your Arcane Blast spell a 40% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
       ],
-      "tierPoints": 0,
+      "tierPoints": 5,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-arcane-missile-barrage",
       "descTr": "Arcane Blast büyüne %40, Arcane Wrath, Fireball, Frostbolt ve Frostfire Bolt büyülerine %20 şansla bir sonraki Arcane Missiles büyünün kanal süresini %50 azaltma, Mana maliyetini %100 azaltma ve füzelerin her 0,5 saniyede bir ateşlenmesi özelliği verir.",
       "changeTr": "Forever'ın yeni talent'ı.",
@@ -12794,6 +12743,39 @@
       "ranksTr": [
         "Wand'larla verdiğin hasarı %13 artırır.",
         "Wand'larla verdiğin hasarı %25 artırır."
+      ]
+    },
+    {
+      "id": "talent/calc-mage-fire-accelerant",
+      "kind": "talent",
+      "name": "Improved Fireball",
+      "icon": "spell_fire_flamebolt",
+      "class": "mage",
+      "tree": "Fire",
+      "tier": 1,
+      "row": 1,
+      "col": 3,
+      "maxRank": 5,
+      "desc": "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.5 sec.",
+      "status": "changed",
+      "change": "Classic Era is called Improved Fireball. Moved from column 2 to column 3. Value unchanged, wording changed.",
+      "ranks": [
+        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.1 sec.",
+        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.2 sec.",
+        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.3 sec.",
+        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.4 sec.",
+        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.5 sec."
+      ],
+      "tierPoints": 0,
+      "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-fire-accelerant",
+      "descTr": "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.5 saniye kısaltır.",
+      "changeTr": "Classic Era'da adı Improved Fireball. Sütun 2'den sütun 3'e taşındı. Değer aynı, ifade değişti.",
+      "ranksTr": [
+        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.1 saniye kısaltır.",
+        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.2 saniye kısaltır.",
+        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.3 saniye kısaltır.",
+        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.4 saniye kısaltır.",
+        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.5 saniye kısaltır."
       ]
     },
     {
@@ -12886,27 +12868,21 @@
       "tier": 5,
       "row": 5,
       "col": 2,
-      "maxRank": 5,
+      "maxRank": 3,
       "desc": "Increases the critical strike chance of your Fire spells by 10%.",
-      "status": "changed",
-      "change": "Maximum rating changed from 3 to 5.",
+      "status": "unchanged",
       "ranks": [
-        "Increases the critical strike chance of your Fire spells by 2%.",
-        "Increases the critical strike chance of your Fire spells by 4%.",
-        "Increases the critical strike chance of your Fire spells by 6%.",
-        "Increases the critical strike chance of your Fire spells by 8%.",
-        "Increases the critical strike chance of your Fire spells by 10%."
+        "Increases the critical strike chance of your fire spells by 2%.",
+        "Increases the critical strike chance of your fire spells by 4%.",
+        "Increases the critical strike chance of your fire spells by 6%."
       ],
       "tierPoints": 20,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-fire-critical-mass",
       "descTr": "Fire büyülerinin kritik vuruş şansını %10 artırır.",
-      "changeTr": "Maksimum rank 3'ten 5'e değişti.",
       "ranksTr": [
         "Fire büyülerinin kritik vuruş şansını %2 artırır.",
         "Fire büyülerinin kritik vuruş şansını %4 artırır.",
-        "Fire büyülerinin kritik vuruş şansını %6 artırır.",
-        "Fire büyülerinin kritik vuruş şansını %8 artırır.",
-        "Fire büyülerinin kritik vuruş şansını %10 artırır."
+        "Fire büyülerinin kritik vuruş şansını %6 artırır."
       ]
     },
     {
@@ -13032,21 +13008,21 @@
       "icon": "spell_fire_lavaspawn",
       "class": "mage",
       "tree": "Fire",
-      "tier": 1,
-      "row": 1,
-      "col": 1,
+      "tier": 3,
+      "row": 3,
+      "col": 4,
       "maxRank": 2,
       "desc": "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards.",
       "status": "changed",
-      "change": "Max rank changed from 3 to 2. Moved from tier 2 to tier 1. Effect override.",
+      "change": "Max rank changed from 3 to 2. Moved from tier 2 to tier 3. Effect override.",
       "ranks": [
         "Reduces the cooldown of your Fire Blast spell by 1 sec and increases its range by 8 yards.",
         "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards."
       ],
-      "tierPoints": 0,
+      "tierPoints": 10,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-fire-improved-fire-blast",
       "descTr": "Fire Blast büyünün bekleme süresini 2 saniye azaltır ve menzilini 15 yard artırır.",
-      "changeTr": "Maksimum rank 3'ten 2'ye değişti. Tier 2'den tier 1'e taşındı. Efekt değiştirildi.",
+      "changeTr": "Maksimum rank 3'ten 2'ye düştü. Tier 2'den Tier 3'e taşındı. Etki değişti.",
       "ranksTr": [
         "Fire Blast büyünün bekleme süresini 1 saniye azaltır ve menzilini 8 yard artırır.",
         "Fire Blast büyünün bekleme süresini 2 saniye azaltır ve menzilini 15 yard artırır."
@@ -13075,39 +13051,6 @@
       "ranksTr": [
         "Fire Ward aktifken Fire büyülerini %10 şansla geri yansıtır.",
         "Fire Ward aktifken Fire büyülerini %20 şansla geri yansıtır."
-      ]
-    },
-    {
-      "id": "talent/calc-mage-fire-improved-fireball",
-      "kind": "talent",
-      "name": "Improved Fireball",
-      "icon": "spell_fire_flamebolt",
-      "class": "mage",
-      "tree": "Fire",
-      "tier": 1,
-      "row": 1,
-      "col": 3,
-      "maxRank": 5,
-      "desc": "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.5 sec.",
-      "status": "changed",
-      "change": "Moved from column 2 to column 3. Values unchanged, wording adjusted.",
-      "ranks": [
-        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.1 sec.",
-        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.2 sec.",
-        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.3 sec.",
-        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.4 sec.",
-        "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.5 sec."
-      ],
-      "tierPoints": 0,
-      "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-fire-improved-fireball",
-      "descTr": "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.5 saniye kısaltır.",
-      "changeTr": "Sütun 2'den sütun 3'e taşındı. Değerler aynı, metin düzenlendi.",
-      "ranksTr": [
-        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.1 saniye kısaltır.",
-        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.2 saniye kısaltır.",
-        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.3 saniye kısaltır.",
-        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.4 saniye kısaltır.",
-        "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.5 saniye kısaltır."
       ]
     },
     {
@@ -13176,23 +13119,27 @@
       "tier": 1,
       "row": 1,
       "col": 2,
-      "maxRank": 3,
-      "desc": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 6%.",
+      "maxRank": 5,
+      "desc": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 30%.",
       "status": "changed",
-      "change": "Classic Era is called Burn Out. Maximum rank changed from 2 to 3. Moved from Tier 3 to Tier 1. Values unchanged, wording changed.",
+      "change": "Classic Era is called Burn Out. Maximum rank changed from 2 to 5. Moved from Tier 3 to Tier 1. Values unchanged, wording changed.",
       "ranks": [
         "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 2%.",
         "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 4%.",
-        "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 6%."
+        "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 6%.",
+        "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 24%.",
+        "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 30%."
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-fire-incineration",
-      "descTr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch'un kritik vuruş şansını %6 artırır.",
-      "changeTr": "Classic Era'daki adı Burn Out. Maksimum rank 2'den 3'e değişti. Tier 3'ten tier 1'e taşındı. Değerler aynı, metin değişti.",
+      "descTr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %30 artırır.",
+      "changeTr": "Classic Era'da adı Burn Out. Maksimum rank 2'den 5'e çıktı. Tier 3'ten Tier 1'e taşındı. Değerler aynı, ifade değişti.",
       "ranksTr": [
-        "Fire Blast, Ice Lance, Arcane Blast ve Scorch'un kritik vuruş şansını %2 artırır.",
-        "Fire Blast, Ice Lance, Arcane Blast ve Scorch'un kritik vuruş şansını %4 artırır.",
-        "Fire Blast, Ice Lance, Arcane Blast ve Scorch'un kritik vuruş şansını %6 artırır."
+        "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %2 artırır.",
+        "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %4 artırır.",
+        "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %6 artırır.",
+        "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %24 artırır.",
+        "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %30 artırır."
       ]
     },
     {
@@ -13299,35 +13246,6 @@
       "changeTr": "Tier 3'ten tier 5'e taşındı. Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Diğer tüm Frost büyülerinin kalan bekleme süresini sıfırlar."
-      ]
-    },
-    {
-      "id": "talent/calc-mage-frost-elemental-precision",
-      "kind": "talent",
-      "name": "Elemental Precision",
-      "icon": "spell_ice_magicdamage",
-      "class": "mage",
-      "tree": "Frost",
-      "tier": 1,
-      "row": 1,
-      "col": 3,
-      "maxRank": 3,
-      "desc": "Improves your chance to hit with Frost and Fire spells by 5%.",
-      "status": "changed",
-      "change": "The values remain unchanged, the wording is adjusted.",
-      "ranks": [
-        "Increases the hit chance of your Frost and Fire spells by 2%.",
-        "Increases the chance of your Frost and Fire spells to hit by 4%.",
-        "Increases the hit rate of your Frost and Fire spells by 6%."
-      ],
-      "tierPoints": 0,
-      "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-elemental-precision",
-      "descTr": "Frost ve Fire büyülerinin isabet şansını %5 artırır.",
-      "changeTr": "Değerler aynı, metin düzenlendi.",
-      "ranksTr": [
-        "Frost ve Fire büyülerinin isabet şansını %2 artırır.",
-        "Frost ve Fire büyülerinin isabet şansını %4 artırır.",
-        "Frost ve Fire büyülerinin isabet şansını %6 artırır."
       ]
     },
     {
@@ -13693,6 +13611,35 @@
         "Chill etkilerinin süresini %11 uzatır ve hedefin hızını ek %3 azaltır.",
         "Chill etkilerinin süresini %22 uzatır ve hedefin hızını ek %7 azaltır.",
         "Chill etkilerinin süresini %33 uzatır ve hedefin hızını ek %10 azaltır."
+      ]
+    },
+    {
+      "id": "talent/calc-mage-frost-precision",
+      "kind": "talent",
+      "name": "Elemental Precision",
+      "icon": "spell_ice_magicdamage",
+      "class": "mage",
+      "tree": "Frost",
+      "tier": 1,
+      "row": 1,
+      "col": 3,
+      "maxRank": 3,
+      "desc": "Improves your chance to hit with Frost and Fire spells by 5%.",
+      "status": "changed",
+      "change": "Classic Era is named Element Precision. The value remains unchanged, and the wording is adjusted.",
+      "ranks": [
+        "Increases the hit chance of your Frost and Fire spells by 2%.",
+        "Increases the chance of your Frost and Fire spells to hit by 4%.",
+        "Increases the hit rate of your Frost and Fire spells by 6%."
+      ],
+      "tierPoints": 0,
+      "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/mage#t=calc-mage-frost-precision",
+      "descTr": "Frost ve Fire büyülerinin isabet şansını %5 artırır.",
+      "changeTr": "Classic Era'da adı Element Precision. Değer aynı, ifade değişti.",
+      "ranksTr": [
+        "Frost ve Fire büyülerinin isabet şansını %2 artırır.",
+        "Frost ve Fire büyülerinin isabet şansını %4 artırır.",
+        "Frost ve Fire büyülerinin isabet şansını %6 artırır."
       ]
     },
     {
@@ -22185,8 +22132,8 @@
       ],
       "tierPoints": 0,
       "sourceUrl": "https://wowforever.wclbox.com/en/tianfu/druid#t=druid-nature-s-focus",
-      "changeTr": "Tier 2'den tier 1'e taşındı. Değerler aynı, metin düzenlendi.",
       "descTr": "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %70 yapar.",
+      "changeTr": "Tier 2'den tier 1'e taşındı. Değerler aynı, metin düzenlendi.",
       "ranksTr": [
         "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %14 yapar.",
         "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %28 yapar.",
