@@ -24,7 +24,7 @@ const hasCover = existsSync(join(process.cwd(), 'public', cover));
 <a class="story-banner class-story-banner talent-banner" href={withBase(`/${lang}/talents/${classId}/`)} style={`--class-accent: ${color}`}>
   {
     hasCover ? (
-      <img class="story-banner-bg" src={withBase(cover)} alt="" loading="lazy" style="--pos:30% 40%" />
+      <img class="story-banner-bg" src={withBase(cover)} alt="" width="1800" height="686" loading="lazy" style="--pos:0% 38%;--pos-m:0% 30%" />
     ) : (
       <div class="story-banner-grad" style={`background: radial-gradient(circle at 80% 50%, color-mix(in srgb, ${color} 25%, transparent), transparent 70%), linear-gradient(135deg, #161922 0%, #0e1015 100%)`} />
     )
