@@ -92,6 +92,13 @@ Node 22.12+.
   `src/pages/robots.txt.ts`. Cloudflare Web Analytics (cookie-free) is added only in production builds when
   `PUBLIC_CF_WEB_ANALYTICS_TOKEN` is set — the deploy workflow fills it from the `CF_WEB_ANALYTICS_TOKEN` repository
   variable. Keep the privacy page (`src/i18n/privacy.ts`) in line with it.
+- App mode: the mobile app shows the stories in a web view whose User-Agent ends in `ForeverCampfire/<version>`.
+  An inline script in `BaseLayout.astro` then adds `html.in-app` (global.css hides the site header and footer and
+  turns off tap highlight, text selection and the long-press menu), turns off pinch zoom and skips the Cloudflare
+  beacon (the app's own statistics, with their off switch, cover those screens). Links inside a page are routed by
+  the app (another story = a new app screen, race/class/talent links = its native screens). Any page works in app
+  mode, so keep `.site-header` / `.site-footer` as the only chrome. `/data/v1/races.json` and `classes.json` carry
+  `story` (slug, site-relative cover, lead in TR + EN, or null; `src/lib/stories/refs.ts`) for the app's story banners.
 - `scripts/sync/` — wclbox parsers (`parse.ts`), wowforevertools chunk reader (`wowforevertools.ts`, acorn, literals only — never eval) and the sync entry point. `scripts/check-updates.ts`.
 - `docs/scheduled-job.md` — instructions for the daily scheduled writer job.
 

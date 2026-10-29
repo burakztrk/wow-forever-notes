@@ -25,6 +25,8 @@ export const CODEX_ICONS = {
   classes: [{ d: 'M6.5,17.5 L17.6,6.4', stroke: 2 }, { d: 'M16.4,5.2 L21,3 L18.8,7.6 Z' }, { d: 'M4.5,15.5 L8.5,19.5 M3.5,20.5 L5.5,18.5', stroke: 2 }, { d: 'M19,19 L8,8', stroke: 2 }, { d: 'M5.8,2.8 A2.6,2.6 0 1,0 5.8,8 A2.6,2.6 0 1,0 5.8,2.8 Z' }],
   // Search: a scrying lens with a glint.
   search: [{ d: 'M10.5,3.5 A7,7 0 1,0 10.5,17.5 A7,7 0 1,0 10.5,3.5 Z', stroke: 2 }, { d: 'M15.6,15.6 L20.5,20.5', stroke: 3 }, { d: 'M8,7 L8.7,8.8 L10.5,9.5 L8.7,10.2 L8,12 L7.3,10.2 L5.5,9.5 L7.3,8.8 Z' }],
+  // Stories: an open tome, lines of lore on the left page, a ribbon bookmark on the right.
+  stories: [{ d: 'M12,6.8 C9.8,5.2 6.8,4.7 3.5,5.2 V18.4 C6.8,17.9 9.8,18.4 12,20 C14.2,18.4 17.2,17.9 20.5,18.4 V5.2 C17.2,4.7 14.2,5.2 12,6.8 Z', stroke: 2 }, { d: 'M12,6.8 V20', stroke: 2 }, { d: 'M6.2,9.4 C7.4,9.2 8.4,9.3 9.4,9.7 M6.2,12.6 C7.4,12.4 8.4,12.5 9.4,12.9', stroke: 1.6 }, { d: 'M14.8,5.6 L17.6,5.1 V11.2 L16.2,9.8 L14.8,11.2 Z' }],
   // Create a character: a hooded hero with a spark of creation.
   creator: [{ d: 'M10,4 C7.4,4 5.5,6.2 5.5,9 C5.5,11.6 7.5,13.5 10,13.5 C12.5,13.5 14.5,11.6 14.5,9 C14.5,6.2 12.6,4 10,4 Z', stroke: 2 }, { d: 'M3,20.5 C3,16.6 6.2,14.5 10,14.5 C13.8,14.5 17,16.6 17,20.5', stroke: 2 }, { d: 'M19.5,2.5 L20.3,4.7 L22.5,5.5 L20.3,6.3 L19.5,8.5 L18.7,6.3 L16.5,5.5 L18.7,4.7 Z' }],
 } satisfies Record<string, CodexIconPath[]>;

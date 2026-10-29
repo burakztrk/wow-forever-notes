@@ -77,6 +77,18 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      // The mobile app shows some pages (the stories) in a web view whose User-Agent carries
+      // "ForeverCampfire/<version>". There the app draws its own bars: html.in-app hides the
+      // site's header and footer (global.css), pinch zoom is off and the visit statistics
+      // below are not loaded (the app's own statistics, with their off switch, cover it).
+      if (/\bForeverCampfire\//.test(navigator.userAgent)) {
+        document.documentElement.classList.add('in-app');
+        document
+          .querySelector('meta[name="viewport"]')
+          ?.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+      }
+    </script>
     <title>{pageTitle}</title>
     <meta name="description" content={metaDescription} />
     {noindex && <meta name="robots" content="noindex" />}
@@ -112,12 +124,16 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
     <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
     {
       cfBeacon && (
-        <script
-          defer
-          is:inline
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon={JSON.stringify({ token: cfBeacon })}
-        />
+        <script is:inline data-beacon={JSON.stringify({ token: cfBeacon })}>
+          // not inside the app (see the in-app script above)
+          if (!document.documentElement.classList.contains('in-app')) {
+            const beacon = document.createElement('script');
+            beacon.defer = true;
+            beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+            beacon.setAttribute('data-cf-beacon', document.currentScript.getAttribute('data-beacon'));
+            document.head.appendChild(beacon);
+          }
+        </script>
       )
     }
     <link rel="preconnect" href="https://fonts.googleapis.com" />
