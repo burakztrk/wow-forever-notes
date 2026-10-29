@@ -32,7 +32,7 @@ The October 15 maintenance moved the beta realm to build **1.60.1.70425**. Playe
 
 ::class[Mage]
 
-- New spell: :spell[Frost Blast], learned at level 24. It's a 1.5 second cast that deals damage and slows the target by 40%. Every talent that affects Frostbolt also affects it. The developers added it to cover what Rank 1 :spell[Frostbolt] used to do, now that down-ranking is penalized.
+- New spell: Frost Blast, learned at level 24. It's a 1.5 second cast that deals damage and slows the target by 40%. Every talent that affects Frostbolt also affects it. The developers added it to cover what Rank 1 :spell[Frostbolt] used to do, now that down-ranking is penalized.
 - :spell[Arcane Blast] has been redesigned:
   - It's now a 1.5 second cast.
   - Each cast gives the Mage spell damage equal to 15% of Intellect, stacking up to 4 times.

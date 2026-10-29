@@ -32,7 +32,7 @@ Beta realm 15 Ekim bakımında **1.60.1.70425** build'ine güncellendi. Eski bui
 
 ::class[Mage]
 
-- Yeni büyü :spell[Frost Blast] 24. seviyede öğreniliyor. 1,5 saniyelik cast'le hasar veriyor ve hedefi %40 yavaşlatıyor. Frostbolt'u etkileyen tüm talentlerden yararlanıyor. Geliştiricilerin açıklaması: down-rank cezası yüzünden Rank 1 :spell[Frostbolt]'un gördüğü işi bu büyü üstleniyor.
+- Yeni büyü Frost Blast 24. seviyede öğreniliyor. 1,5 saniyelik cast'le hasar veriyor ve hedefi %40 yavaşlatıyor. Frostbolt'u etkileyen tüm talentlerden yararlanıyor. Geliştiricilerin açıklaması: down-rank cezası yüzünden Rank 1 :spell[Frostbolt]'un gördüğü işi bu büyü üstleniyor.
 - :spell[Arcane Blast] yeniden tasarlandı. Artık 1,5 saniyelik cast. Her kullanımda Mage'e Intellect'inin %15'i kadar ek spell damage veriyor ve en fazla 4 kez stack oluyor. Etki ilk uygulandığı andan itibaren 15 saniye sürüyor. Hasar ve spell damage katsayıları %40 düşürüldü.
 - :talent[Missile Barrage] ilk sıraya taşındı ve 2 puanlık bir talent oldu. Artık :spell[Arcane Missiles] isabetleri de tetikleyebiliyor.
 - Yeni 16 puanlık talent :talent[Arcane Wrath]: 3,5 saniyelik cast, 6 saniye cooldown. Hasarı, Mage'in maksimum manasının %5'i kadar ek spell power'ı varmış gibi hesaplanıyor.
