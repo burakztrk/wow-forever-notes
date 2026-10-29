@@ -85,8 +85,39 @@ function initCarousel(root: HTMLElement) {
     track.scrollTo({ left: leftFor(p), behavior: 'auto' });
   }
 
+  // The glide is driven here, not by `scrollTo({ behavior: 'smooth' })`: some browsers (Safari) snap straight to the
+  // target inside a mandatory scroll-snap strip, so the cards would only fade and scale into place. Snapping is off
+  // while the glide runs and back on after it; a touch, a click or the wheel stops it.
+  let glide = 0;
+  const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  function stopGlide() {
+    if (!glide) return;
+    cancelAnimationFrame(glide);
+    glide = 0;
+    track.style.scrollSnapType = '';
+  }
+
   function go(p: number) {
-    track.scrollTo({ left: leftFor(Math.max(0, Math.min(n + 1, p))), behavior: reduce ? 'auto' : 'smooth' });
+    const to = leftFor(Math.max(0, Math.min(n + 1, p)));
+    stopGlide();
+    const from = track.scrollLeft;
+    if (reduce || Math.abs(to - from) < 1) {
+      track.scrollTo({ left: to, behavior: 'auto' });
+      return;
+    }
+    const duration = 650;
+    const t0 = performance.now();
+    track.style.scrollSnapType = 'none';
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / duration);
+      track.scrollLeft = from + (to - from) * ease(t);
+      if (t < 1) glide = requestAnimationFrame(step);
+      else {
+        glide = 0;
+        track.style.scrollSnapType = '';
+      }
+    };
+    glide = requestAnimationFrame(step);
   }
 
   // a scroll that has stopped on a copy continues on the original (same picture, so nothing moves)
@@ -148,7 +179,15 @@ function initCarousel(root: HTMLElement) {
   track.addEventListener('pointercancel', release);
   new IntersectionObserver(([e]) => hold('offscreen', !e.isIntersecting), { threshold: 0.4 }).observe(root);
   document.addEventListener('visibilitychange', () => hold('hidden', document.hidden));
-  addEventListener('resize', () => jump(Math.max(realPos(pos), 1)));
+  // keep the centred card centred when the strip's width really changes (not on the mobile address bar showing and hiding)
+  let width = track.clientWidth;
+  new ResizeObserver(() => {
+    if (track.clientWidth === width) return;
+    width = track.clientWidth;
+    stopGlide();
+    jump(Math.max(realPos(pos), 1));
+  }).observe(track);
+  for (const type of ['pointerdown', 'wheel', 'touchstart'] as const) track.addEventListener(type, stopGlide, { passive: true });
 
   jump(1); // start on the first real card, the copy of the last one peeks in on its left
   sync();
