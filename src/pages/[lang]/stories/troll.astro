@@ -6,6 +6,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import RaceChips from '../../../components/stories/RaceChips.astro';
 import StoryEnd from '../../../components/stories/StoryEnd.astro';
 import StoryHeader from '../../../components/stories/StoryHeader.astro';
+import StoryLinks from '../../../components/stories/StoryLinks.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
 import { STORY_UI, TROLL_ART_LABELS, TROLL_STORY } from '../../../i18n/stories';
@@ -66,6 +67,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           </div>
         </div>
       </div>
+      <StoryLinks lang={lang} kind="race" slug="troll" />
     </section>
 
     <section class="facts" aria-label="Troll">
