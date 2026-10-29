@@ -21,7 +21,13 @@ const story = entry?.slug ? CLASS_STORIES[entry.slug as keyof typeof CLASS_STORI
   entry && story && (
     <a class="story-banner class-story-banner" href={withBase(`/${lang}/stories/${entry.slug}/`)} style={`--class-accent: ${entry.color}`}>
       {entry.cover ? (
-        <img class="story-banner-bg" src={withBase(entry.cover.src)} alt="" loading="lazy" style={`object-position:${entry.cover.position}`} />
+        <img
+          class="story-banner-bg"
+          src={withBase(entry.cover.src)}
+          alt=""
+          loading="lazy"
+          style={`--pos:${entry.cover.position};--pos-m:${entry.cover.mobilePosition ?? entry.cover.position}`}
+        />
       ) : (
         <div class="story-banner-grad" style={`background: radial-gradient(circle at 80% 50%, color-mix(in srgb, ${entry.color} 25%, transparent), transparent 70%), linear-gradient(135deg, #161922 0%, #0e1015 100%)`} />
       )}

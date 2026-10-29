@@ -46,7 +46,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <StoryHeader lang={lang} chapters={chapters} icon={ic.shamanBrand} />
 
     <section class="hero shaman-hero" aria-labelledby="h-shaman">
-      <div class="hero-accent-bg" aria-hidden="true"></div>
+      <div class="hero-bg" aria-hidden="true"><img src={withBase('/stories/class/shaman.webp')} alt="" width="1200" height="896" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <canvas id="snow" data-fx="embers" aria-hidden="true"></canvas>
       <div class="wrap hero-in">

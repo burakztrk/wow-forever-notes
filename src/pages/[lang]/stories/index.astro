@@ -2,21 +2,9 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import {
-  DWARF_STORY,
-  GNOME_STORY,
-  HUMAN_STORY,
-  NIGHT_ELF_STORY,
-  ORC_STORY,
-  SKYBORNE_STORY,
-  TAUREN_STORY,
-  TROLL_STORY,
-  UNDEAD_STORY,
-} from '../../../i18n/stories';
 import { TIMELINE_UI } from '../../../i18n/timeline';
-import { racesByFaction } from '../../../lib/codex';
-import { STORY_CLASSES } from '../../../lib/stories/classes';
-import { storySlug } from '../../../lib/stories/races';
+import StoryCarousel from '../../../components/stories/StoryCarousel.astro';
+import { classSlides, FACTION_ORDER, pickSlides, raceSlides } from '../../../lib/stories/slides';
 import { withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -27,84 +15,12 @@ const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/`)])) as Record<Lang, string>;
 const tl = TIMELINE_UI[lang];
-const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
-// Written stories, newest first; every other race shows as "coming soon" (src/lib/stories/races.ts).
-const features = [
-  {
-    slug: 'skyborne',
-    name: 'Skyborne',
-    faction: 'Alliance · Horde',
-    story: SKYBORNE_STORY[lang],
-    bg: { src: '/stories/skyborne/cover.webp', w: 1600, h: 923 },
-    hero: undefined,
-  },
-  {
-    slug: 'tauren',
-    name: 'Tauren',
-    faction: 'Horde',
-    story: TAUREN_STORY[lang],
-    bg: { src: '/stories/tauren/mulgore.webp', w: 848, h: 664 },
-    hero: '/stories/tauren/cairne.webp',
-  },
-  {
-    slug: 'undead',
-    name: 'Undead',
-    faction: 'Horde',
-    story: UNDEAD_STORY[lang],
-    bg: { src: '/stories/undead/tirisfal.webp', w: 1024, h: 431 },
-    hero: '/stories/undead/sylvanas.webp',
-  },
-  {
-    slug: 'troll',
-    name: 'Troll',
-    faction: 'Horde',
-    story: TROLL_STORY[lang],
-    bg: { src: '/stories/troll/durotar.webp', w: 1210, h: 1619 },
-    hero: '/stories/troll/voljin.webp',
-    soft: true,
-  },
-  {
-    slug: 'orc',
-    name: 'Orc',
-    faction: 'Horde',
-    story: ORC_STORY[lang],
-    bg: { src: '/stories/orc/orgrimmar.webp', w: 739, h: 415 },
-    hero: '/stories/orc/thrall.webp',
-    soft: true, // a painting with its own sky: fade its edges
-  },
-  {
-    slug: 'night-elf',
-    name: 'Night Elf',
-    faction: 'Alliance',
-    story: NIGHT_ELF_STORY[lang],
-    bg: { src: '/stories/night-elf/well-of-eternity.webp', w: 1600, h: 1068 },
-    hero: '/stories/night-elf/azshara.webp',
-  },
-  {
-    slug: 'human',
-    name: 'Human',
-    faction: 'Alliance',
-    story: HUMAN_STORY[lang],
-    bg: { src: '/stories/human/stormwind-gate.webp', w: 1920, h: 810 },
-    hero: undefined,
-  },
-  {
-    slug: 'dwarf',
-    name: 'Dwarf',
-    faction: 'Alliance',
-    story: DWARF_STORY[lang],
-    bg: { src: '/stories/dwarf/ironforge-forge.webp', w: 1920, h: 864 },
-    hero: '/stories/dwarf/magni.webp',
-  },
-  {
-    slug: 'gnome',
-    name: 'Gnome',
-    faction: 'Alliance',
-    story: GNOME_STORY[lang],
-    bg: { src: '/stories/gnome/ironforge.webp', w: 1767, h: 863 },
-    hero: '/stories/gnome/mekkatorque.webp',
-  },
-];
+const slides = raceSlides(lang);
+const factions = (['alliance', 'horde'] as const).map((key) => ({
+  key,
+  name: key === 'alliance' ? 'Alliance' : 'Horde',
+  list: pickSlides(slides, FACTION_ORDER[key]),
+}));
 ---
 
 <BaseLayout title={t.storiesTitle} description={t.storiesIntro} lang={lang} alternates={alternates} wide>
@@ -122,82 +38,20 @@ const features = [
       </span>
     </a>
 
-    <div class="story-features">
+    <div class="story-factions">
       {
-        features.map((f) => (
-          <a class="story-feature" href={withBase(`/${lang}/stories/${f.slug}/`)}>
-            {f.bg && <img class="story-feature-bg" src={withBase(f.bg.src)} alt="" width={f.bg.w} height={f.bg.h} loading="lazy" />}
-            {f.hero && <img class:list={['story-feature-hero', { soft: f.soft }]} src={withBase(f.hero)} alt="" width="300" height="300" loading="lazy" />}
-            <span class="story-feature-text">
-              <span class="story-feature-over">
-                {f.story.overline} · <span lang="en">{f.faction}</span>
-              </span>
-              <span class="story-feature-name">{f.name}</span>
-              <span class="story-feature-lead">{f.story.lead}</span>
-              <span class="story-feature-cta">{t.storiesRead}</span>
-            </span>
-          </a>
+        factions.map(({ key, name, list }) => (
+          <section class="story-faction">
+            <h2 class:list={['codex-section', `faction-title--${key}`]}>{name}</h2>
+            <StoryCarousel lang={lang} slides={list} label={name} />
+          </section>
         ))
       }
     </div>
 
-    {
-      racesByFaction().map(([faction, list]) => (
-        <section>
-          <h2 class:list={['codex-section', `faction-title--${faction.toLowerCase()}`]}>{faction}</h2>
-          <ul class="story-grid">
-            {list.map((race) => {
-              const slug = storySlug(race.id);
-              const head = (
-                <>
-                  {race.icon ? <img src={icon(race.icon)} alt="" width="40" height="40" loading="lazy" /> : <span class="blank" />}
-                  <span class="story-card-name">{race.name}</span>
-                  <span class="story-card-state">{slug ? t.storiesRead : t.storiesSoon}</span>
-                </>
-              );
-              return (
-                <li>
-                  {slug ? (
-                    <a class="story-card" href={withBase(`/${lang}/stories/${slug}/`)}>
-                      {head}
-                    </a>
-                  ) : (
-                    <span class="story-card soon">{head}</span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      ))
-    }
-
     <section>
       <h2 class="codex-section">{lang === 'tr' ? 'Sınıflar' : 'Classes'}</h2>
-      <ul class="story-grid">
-        {
-          STORY_CLASSES.map((c) => {
-            const head = (
-              <>
-                <img src={withBase(`/icons/${c.icon}.jpg`)} alt="" width="40" height="40" loading="lazy" />
-                <span class="story-card-name" style={`color: ${c.color}`}>{c.name}</span>
-                <span class="story-card-state">{c.slug ? t.storiesRead : t.storiesSoon}</span>
-              </>
-            );
-            return (
-              <li>
-                {c.slug ? (
-                  <a class="story-card" href={withBase(`/${lang}/stories/${c.slug}/`)}>
-                    {head}
-                  </a>
-                ) : (
-                  <span class="story-card soon">{head}</span>
-                )}
-              </li>
-            );
-          })
-        }
-      </ul>
+      <StoryCarousel lang={lang} slides={classSlides(lang)} label={lang === 'tr' ? 'Sınıflar' : 'Classes'} />
     </section>
   </div>
 </BaseLayout>
