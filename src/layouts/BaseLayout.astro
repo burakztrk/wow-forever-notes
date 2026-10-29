@@ -38,7 +38,6 @@ const navItems = [
   { key: '', href: langHome(lang) },
   { key: 'notes', href: withBase(`/${lang}/notes/`) },
   { key: 'races', href: withBase(`/${lang}/races/`) },
-  { key: 'classes', href: withBase(`/${lang}/classes/`) },
   { key: 'talents', href: withBase(`/${lang}/talents/`) },
   { key: 'professions', href: withBase(`/${lang}/professions/`) },
   { key: 'legacy', href: withBase(`/${lang}/legacy/`) },
@@ -53,15 +52,20 @@ const labels: Record<string, string> = {
   '': t.navHome,
   notes: t.navNotes,
   races: t.navRaces,
-  classes: t.navClasses,
-  talents: t.navTalents,
+  talents: t.navClasses, // the classes list lives at /talents/ (its cards open /classes/<id>/)
   professions: t.navProfessions,
   legacy: t.navLegacy,
   stories: t.navStories,
   search: t.navSearch,
 };
 const isCurrent = (key: string) =>
-  key === '' ? section === '' : key === 'notes' ? section === 'notes' || section === 'blog' : section === key;
+  key === ''
+    ? section === ''
+    : key === 'notes'
+      ? section === 'notes' || section === 'blog'
+      : key === 'talents'
+        ? section === 'talents' || section === 'classes'
+        : section === key;
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const metaDescription = description ?? t.tagline;
 const canonical = absoluteUrl(Astro.url.pathname, Astro.site);

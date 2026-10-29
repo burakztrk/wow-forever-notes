@@ -13,6 +13,8 @@ export default defineConfig({
   output: 'static',
   site,
   base,
+  // the classes list moved to /<lang>/talents/
+  redirects: { '/tr/classes': '/tr/talents/', '/en/classes': '/en/talents/' },
   integrations: [
     sitemap({
       filter: (page) => !unlisted.has(page),

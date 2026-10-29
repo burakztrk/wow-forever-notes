@@ -33,10 +33,9 @@ const href = (path: string) => withBase(`/${lang}/${path}/`);
 
 // Same icons as the app's bottom bar, quick sheet and dashboard (CodexIcons.kt).
 const features: { icon: CodexIconName; title: string; hint: string; stat?: string; href: string; builds?: boolean }[] = [
-  { icon: 'talents', title: t.navTalents, hint: t.tileTalents, href: href('talents'), builds: true },
   { icon: 'notes', title: t.navNotes, hint: t.tileNotes, stat: posts.length ? fill(t.notesN, { n: posts.length }) : undefined, href: href('notes') },
   { icon: 'races', title: t.navRaces, hint: t.tileRaces, stat: fill(t.racesN, { n: races.length }), href: href('races') },
-  { icon: 'classes', title: t.navClasses, hint: t.tileClasses, stat: fill(t.classesN, { n: classList.length }), href: href('classes') },
+  { icon: 'classes', title: t.navClasses, hint: t.tileClasses, stat: fill(t.classesN, { n: classList.length }), href: href('talents') },
   {
     icon: 'professions',
     title: t.navProfessions,

@@ -24,7 +24,7 @@ const title = `${info.name} · ${t.talentsTitle}`;
 ---
 
 <BaseLayout title={title} description={fill(t.metaTalents, { name: info.name })} lang={lang} alternates={alternates} wide>
-  <a class="back-nav" href={withBase(`/${lang}/talents/`)}>← {t.talentsTitle}</a>
+  <a class="back-nav" href={withBase(`/${lang}/classes/${cls}/`)}>← {info.name}</a>
   <header class="calc-head" style={`--class-color: var(--class-${cls})`}>
     <h1>{info.name}</h1>
     <p class="calc-build-name" data-saved-name hidden></p>
