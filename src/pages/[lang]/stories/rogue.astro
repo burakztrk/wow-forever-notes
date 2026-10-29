@@ -5,6 +5,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ClassChips from '../../../components/stories/ClassChips.astro';
 import StoryEnd from '../../../components/stories/StoryEnd.astro';
 import StoryHeader from '../../../components/stories/StoryHeader.astro';
+import StoryLinks from '../../../components/stories/StoryLinks.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
 import { ROGUE_STORY } from '../../../i18n/class-stories';
@@ -60,6 +61,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
           </div>
         </div>
       </div>
+      <StoryLinks lang={lang} kind="class" slug="rogue" />
     </section>
 
     <section class="facts" aria-label="Rogue">

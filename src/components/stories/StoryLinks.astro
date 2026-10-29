@@ -1,0 +1,77 @@
+---
+// Two link cards at the bottom of a race or class story's hero: the matching codex page and the next stop.
+// Class story: /classes/<class>/ ("Skills, Class Notes & Stats") and the talent planner. Race story: /races/<race>/
+// ("Racials, Race Notes & Stats") and the classes list. Styles: .hero-links in src/styles/stories.css.
+import CodexIcon from '../CodexIcon.astro';
+import type { Lang } from '../../config';
+import { races } from '../../lib/codex';
+import { STORY_CLASSES } from '../../lib/stories/classes';
+import { STORY_RACES } from '../../lib/stories/races';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+  kind: 'race' | 'class';
+  /** Story slug (gnome, mage, …). */
+  slug: string;
+}
+
+const { lang, kind, slug } = Astro.props;
+const tr = lang === 'tr';
+const cls = STORY_CLASSES.find((c) => c.slug === slug);
+const race = STORY_RACES.find((r) => r.slug === slug);
+const raceIcon = race ? races.find((r) => r.id === race.id)?.icon : undefined;
+
+const cards =
+  kind === 'class' && cls
+    ? [
+        {
+          href: withBase(`/${lang}/classes/${cls.id}/`),
+          img: withBase(`/icons/${cls.icon}.jpg`),
+          over: cls.name,
+          title: tr ? 'Skiller, Class Notları ve Statlar' : 'Skills, Class Notes & Stats',
+        },
+        {
+          href: withBase(`/${lang}/talents/${cls.id}/`),
+          icon: 'talents' as const,
+          over: 'Talent',
+          title: tr ? 'Talent Ağacı ve Planlayıcı' : 'Talent Tree & Planner',
+        },
+      ]
+    : race
+      ? [
+          {
+            href: withBase(`/${lang}/races/${race.id}/`),
+            img: raceIcon ? withBase(`/icons/${raceIcon}.jpg`) : undefined,
+            over: race.name,
+            title: tr ? 'Irk Yetenekleri, Notlar ve Statlar' : 'Racials, Race Notes & Stats',
+          },
+          {
+            href: withBase(`/${lang}/talents/`),
+            icon: 'classes' as const,
+            over: tr ? 'Class\'lar' : 'Classes',
+            title: tr ? 'Oynanabilir Class\'lar ve Skiller' : 'Playable Classes & Skills',
+          },
+        ]
+      : [];
+const color = cls ? cls.color : (race?.color ?? 'var(--gold)');
+---
+
+{
+  cards.length > 0 && (
+    <div class="hero-links" style={`--link-color: ${color}`}>
+      <div class="wrap">
+        {cards.map((c) => (
+          <a class="hero-link" href={c.href}>
+            {c.img ? <img src={c.img} alt="" width="44" height="44" loading="lazy" /> : c.icon ? <span class="hero-link-icon"><CodexIcon name={c.icon} /></span> : null}
+            <span class="hero-link-text">
+              <span class="hero-link-over" lang="en">{c.over}</span>
+              <span class="hero-link-title">{c.title}</span>
+            </span>
+            <span class="hero-link-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}
