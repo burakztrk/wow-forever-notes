@@ -1,7 +1,7 @@
 ---
 // Wide banner on a class page that opens the class's talent planner (replaces the plain "Talent planner →" link).
-// Same look as the story banner. Cover art: public/stories/class-talents/<class>.webp (when the file is missing the
-// banner shows a gradient in the class colour).
+// Same look as the story banner. Cover art: one picture for every class, public/stories/talent-tree.webp (when the
+// file is missing the banner shows a gradient in the class colour).
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Lang } from '../../config';
@@ -17,7 +17,7 @@ interface Props {
 const { lang, classId, name } = Astro.props;
 const t = ui(lang);
 const color = `var(--class-${classId})`;
-const cover = `/stories/class-talents/${classId}.webp`;
+const cover = '/stories/talent-tree.webp';
 const hasCover = existsSync(join(process.cwd(), 'public', cover));
 ---
 
