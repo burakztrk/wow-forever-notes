@@ -1,7 +1,7 @@
 ---
 // Three rows of squircle icons (race stories, then class stories) gliding in alternating directions, endlessly;
 // every second row is shifted half an icon so its icons start at the first icon's centre. Each icon links to its
-// race or class page. Pure CSS (styles in src/styles/stories.css): hover pauses and slides the icon's name out, pushing the icons after it aside; prefers-reduced-motion stops it.
+// race or class page; on hover its name slides out with two links, the page and the story ("Lore"). Pure CSS (styles in src/styles/stories.css): hover pauses and slides the icon's name out, pushing the icons after it aside; prefers-reduced-motion stops it.
 import type { Lang } from '../../config';
 import { marqueeRows } from '../../lib/stories/slides';
 import { withBase } from '../../utils/url';
@@ -18,9 +18,10 @@ const PITCH = 86; // icon + gap, px
 // The edge fade widens row by row (x, 2x, 3x; % of the row), so the visible area narrows towards the bottom like a V.
 const FADE_TOP = 20;
 const FADE_BOTTOM = 60;
-// The name that slides out of an icon on hover needs room: width of the text (estimated per character) plus padding, px.
+// What slides out of an icon on hover (its name and two stacked links, to the race or class page and to its story) needs room: the name's width (estimated per character) plus padding and the links, px.
 const LABEL_CHAR = 9.2;
-const LABEL_PAD = 30;
+const LABEL_PAD = 40; // paddings and the gap before the links
+const LINKS_WIDTH = 70; // the stacked "Class ↗" / "Lore ↗" links
 const SPEED = 10.56; // px per second, the same for every row
 const lanes = rows.map((row, i) => {
   const reps = Math.ceil(1600 / (row.length * PITCH));
@@ -35,17 +36,22 @@ const lanes = rows.map((row, i) => {
         <div class="story-marquee-track" style={`--dur:${Math.round(width / SPEED)}s;--count:${half.length}`}>
           {[0, 1].map((copy) =>
             half.map((icon) => (
-              <a
-                href={icon.href}
-                aria-label={icon.name}
+              <div
                 class:list={['story-icon', { 'story-icon--both': icon.bothFactions }]}
-                style={`--label:${Math.round(icon.name.length * LABEL_CHAR + LABEL_PAD)}px${icon.color ? `;--edge:${icon.color}` : ''}`}
+                style={`--label:${Math.round(icon.name.length * LABEL_CHAR + LABEL_PAD + LINKS_WIDTH)}px${icon.color ? `;--edge:${icon.color}` : ''}`}
                 aria-hidden={copy === 1 ? 'true' : undefined}
-                tabindex={copy === 1 ? -1 : undefined}
               >
-                <img src={withBase(`/icons/${icon.icon}.jpg`)} alt="" width="72" height="72" loading="lazy" />
-                <span class="story-icon-name" aria-hidden="true">{icon.name}</span>
-              </a>
+                <a class="story-icon-img" href={icon.href} aria-label={icon.name} tabindex={copy === 1 ? -1 : undefined}>
+                  <img src={withBase(`/icons/${icon.icon}.jpg`)} alt="" width="72" height="72" loading="lazy" />
+                </a>
+                <span class="story-icon-name">
+                  <span class="story-icon-title">{icon.name}</span>
+                  <span class="story-icon-links">
+                    <a href={icon.href} tabindex={copy === 1 ? -1 : undefined}>{icon.pageLabel}<i aria-hidden="true">↗</i></a>
+                    <a href={icon.loreHref} tabindex={copy === 1 ? -1 : undefined}>Lore<i aria-hidden="true">↗</i></a>
+                  </span>
+                </span>
+              </div>
             )),
           )}
         </div>
