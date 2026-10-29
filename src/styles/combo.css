@@ -670,6 +670,22 @@
   height: var(--bar-h);
   align-items: center;
 }
+/* Between 1000 and 1419px the middle column is too narrow for nine class buttons in one row (they wrapped out of
+   the fixed-height box): five per row, two rows, and the faction panel follows the taller --bar-h. */
+@media (min-width: 1000px) and (max-width: 1419px) {
+  .combo {
+    --bar-h: 196px;
+  }
+  .class-bar {
+    column-gap: 8px;
+    row-gap: 10px;
+    align-content: center;
+  }
+  .class-bar .class-btn {
+    flex: 0 0 calc((100% - 32px) / 5);
+    width: auto;
+  }
+}
 .panel--faction {
   height: var(--bar-h);
   padding-top: 10px;
