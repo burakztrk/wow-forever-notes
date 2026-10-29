@@ -7,7 +7,7 @@ import type { Lang } from '../../config';
 import { races } from '../../lib/codex';
 import { STORY_CLASSES } from '../../lib/stories/classes';
 import { STORY_RACES } from '../../lib/stories/races';
-import { withBase } from '../../utils/url';
+import { creatorUrl, withBase } from '../../utils/url';
 
 interface Props {
   lang: Lang;
@@ -47,7 +47,7 @@ const cards =
             title: tr ? 'Irk Yetenekleri, Notlar ve Statlar' : 'Racials, Race Notes & Stats',
           },
           {
-            href: withBase(`/${lang}/talents/`),
+            href: `${creatorUrl(lang)}#race=${race.id}`,
             icon: 'classes' as const,
             over: tr ? 'Class\'lar' : 'Classes',
             title: tr ? 'Oynanabilir Class\'lar ve Skiller' : 'Playable Classes & Skills',
