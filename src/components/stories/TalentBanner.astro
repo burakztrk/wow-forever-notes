@@ -1,0 +1,38 @@
+---
+// Wide banner on a class page that opens the class's talent planner (replaces the plain "Talent planner →" link).
+// Same look as the story banner. Cover art: public/stories/class-talents/<class>.webp (when the file is missing the
+// banner shows a gradient in the class colour).
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import type { Lang } from '../../config';
+import { ui } from '../../i18n';
+import { withBase } from '../../utils/url';
+
+interface Props {
+  lang: Lang;
+  classId: string;
+  name: string;
+}
+
+const { lang, classId, name } = Astro.props;
+const t = ui(lang);
+const color = `var(--class-${classId})`;
+const cover = `/stories/class-talents/${classId}.webp`;
+const hasCover = existsSync(join(process.cwd(), 'public', cover));
+---
+
+<a class="story-banner class-story-banner talent-banner" href={withBase(`/${lang}/talents/${classId}/`)} style={`--class-accent: ${color}`}>
+  {
+    hasCover ? (
+      <img class="story-banner-bg" src={withBase(cover)} alt="" loading="lazy" style="--pos:30% 40%" />
+    ) : (
+      <div class="story-banner-grad" style={`background: radial-gradient(circle at 80% 50%, color-mix(in srgb, ${color} 25%, transparent), transparent 70%), linear-gradient(135deg, #161922 0%, #0e1015 100%)`} />
+    )
+  }
+  <span class="story-banner-text">
+    <span class="story-banner-over" lang="en">{name}</span>
+    <span class="story-banner-name" style={`color: ${color}`}>{t.plannerBannerOver}</span>
+    <span class="story-banner-lead">{t.plannerBannerLead}</span>
+    <span class="story-banner-cta">{t.plannerBannerCta}</span>
+  </span>
+</a>

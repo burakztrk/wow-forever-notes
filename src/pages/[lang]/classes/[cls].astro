@@ -2,6 +2,7 @@
 import GlossaryRow from '../../../components/GlossaryRow.astro';
 import PatchNotes from '../../../components/PatchNotes.astro';
 import ClassStoryBanner from '../../../components/stories/ClassStoryBanner.astro';
+import TalentBanner from '../../../components/stories/TalentBanner.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { fill, ui } from '../../../i18n';
@@ -44,7 +45,7 @@ const tips = tooltipPayload(
       <div class="codex-meta">{fill(t.spellCount, { n: total })}</div>
     </div>
   </header>
-  <a class="planner-link" href={withBase(`/${lang}/talents/${info.id}/`)}>{t.openPlanner}</a>
+  <TalentBanner lang={lang} classId={info.id} name={info.name} />
 
   <ClassStoryBanner lang={lang} classId={info.id} />
 
