@@ -4,8 +4,8 @@ import type { Lang } from '../../config';
 import { STORY_UI } from '../../i18n/stories';
 import { STORY_RACES } from '../../lib/stories/races';
 import { storyUrl } from '../../lib/stories/urls';
-import HeroTransition from './HeroTransition.astro';
 import { withBase } from '../../utils/url';
+import HeroTransition from './HeroTransition.astro';
 
 interface Props {
   lang: Lang;
@@ -30,7 +30,7 @@ const u = STORY_UI[lang];
         );
       if (race.slug)
         return (
-          <a class:list={['chip', { h, ah: both }]} role="listitem" href={storyUrl(lang, race.slug!)}>
+          <a class:list={['chip', { h, ah: both }]} role="listitem" href={storyUrl(lang, race.slug!)} data-cover={race.cover ? withBase(race.cover.src) : undefined}>
             <i />
             {race.name}
           </a>

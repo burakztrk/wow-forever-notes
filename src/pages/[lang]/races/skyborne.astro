@@ -61,7 +61,7 @@ const img = (name: string) => withBase(`/stories/skyborne/${name}`);
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Skyborne · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
+<BaseLayout title={`Skyborne · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore skyborne" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 

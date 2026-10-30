@@ -74,3 +74,39 @@
     }
   }
 </style>
+
+<script is:inline>
+  // A transition only looks right when the new hero is ready: over a real network the new cover image used to arrive
+  // in the middle of the wipe and pop in. So (1) every story page preloads its cover as a render-blocking <link>
+  // (BaseLayout `heroImage`), so the first frame already has it, (2) the page and cover of a chip are fetched as soon
+  // as the pointer, a finger or the keyboard reaches it, and (3) if the new page still has no cover at its first
+  // frame, the animation is skipped and the page just shows.
+  (function () {
+    var warmed = {};
+    function warm(a) {
+      if (!a || warmed[a.href]) return;
+      warmed[a.href] = 1;
+      var l = document.createElement('link');
+      l.rel = 'prefetch';
+      l.href = a.href;
+      document.head.appendChild(l);
+      if (a.dataset.cover) new Image().src = a.dataset.cover;
+    }
+    function onStrip(e) {
+      var a = e.target.closest && e.target.closest('.hero-in > .races a');
+      if (a) warm(a);
+    }
+    ['pointerover', 'touchstart', 'focusin'].forEach(function (t) {
+      document.addEventListener(t, onStrip, { passive: true });
+    });
+    addEventListener('pagereveal', function (e) {
+      if (!e.viewTransition) return;
+      // the render-blocking preload has finished once the page is allowed to render; the <img> itself may not have
+      // been parsed yet at this point, so look at the resource, not only at the element
+      var pre = document.querySelector('link[rel="preload"][as="image"][blocking]');
+      var img = document.querySelector('.lore .hero-bg img');
+      var loaded = !!(pre && performance.getEntriesByName(pre.href).length) || !!(img && img.complete && img.naturalWidth);
+      if (!loaded) e.viewTransition.skipTransition();
+    });
+  })();
+</script>

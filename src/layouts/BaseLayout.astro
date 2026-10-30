@@ -21,6 +21,8 @@ interface Props {
   publishedTime?: Date; // article:published_time for posts
   jsonLd?: object; // schema.org block (src/lib/seo.ts)
   noindex?: boolean;
+  /** A story's hero image: preloaded and render-blocking, so the first frame (and a page transition) has it. */
+  heroImage?: string;
 }
 
 const {
@@ -34,6 +36,7 @@ const {
   publishedTime,
   jsonLd,
   noindex = false,
+  heroImage,
 } = Astro.props;
 // which nav item is current: the first path segment after /<lang>/
 const section = Astro.url.pathname.split(`/${lang}/`)[1]?.split('/')[0] ?? '';
@@ -103,6 +106,7 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
     </script>
     <title>{pageTitle}</title>
     <meta name="description" content={metaDescription} />
+    {heroImage && <link rel="preload" as="image" href={heroImage} fetchpriority="high" blocking="render" />}
     {noindex && <meta name="robots" content="noindex" />}
     {
       !noindex && (

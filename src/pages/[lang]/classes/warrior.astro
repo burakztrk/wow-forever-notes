@@ -42,7 +42,7 @@ const heroIcons = [CLASS_ART.stages.sword, CLASS_ART.stages.shield, CLASS_ART.st
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Warrior · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
+<BaseLayout title={`Warrior · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={withBase('/stories/class/warrior.webp')}>
   <div class="lore warrior" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.warriorBrand} />
 

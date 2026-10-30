@@ -47,7 +47,7 @@ const img = (name: string) => withBase(`/stories/undead/${name}`);
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Undead · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
+<BaseLayout title={`Undead · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('tirisfal.webp')}>
   <div class="lore undead" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
