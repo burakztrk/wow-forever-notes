@@ -59,10 +59,10 @@ body:has(.lore){overflow-x:clip}
 .lore .sil{position:absolute;z-index:1;bottom:0;right:max(-40px,calc(50% - 760px));width:clamp(280px,36vw,520px);aspect-ratio:1;max-width:100%;pointer-events:none;opacity:.26;-webkit-mask-image:linear-gradient(180deg,#000 35%,rgba(0,0,0,.5) 70%,transparent 96%);mask-image:linear-gradient(180deg,#000 35%,rgba(0,0,0,.5) 70%,transparent 96%);transform:translateY(calc(var(--s,0) * .08px))}
 .lore .sil img{display:block;width:100%;height:100%;object-fit:contain;object-position:50% 100%;filter:saturate(.8)}
 .lore #snow{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
-.lore .hero-in{position:relative;z-index:2;display:flex;justify-content:flex-end;min-height:clamp(560px,56vw,800px);padding-block:28px clamp(72px,9vw,120px)}
+.lore .hero-in{position:relative;z-index:2;display:flex;justify-content:flex-end;min-height:min(clamp(560px,56vw,800px),max(440px,calc(100svh - 110px)));padding-block:28px clamp(72px,9vw,120px)}
 .lore .hero-col{width:min(100%,640px);display:flex;flex-direction:column}
 .lore .hero-credit{position:relative;z-index:2;margin-top:-44px;padding-bottom:16px;font:500 11px/16px var(--f-sans);letter-spacing:.06em;color:var(--text-dim);text-shadow:0 1px 2px rgba(0,0,0,.7)}
-.lore .races{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-bottom:clamp(36px,6vw,72px)}
+.lore .races{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-bottom:clamp(24px,4vw,56px)}
 .lore .races::-webkit-scrollbar{display:none}
 .lore .races .ov{color:var(--text-dim);margin-right:4px;flex:none}
 .lore .chip{flex:none;display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--border);background:var(--bg-elev);font:500 12px/16px var(--f-sans);letter-spacing:.04em;color:var(--text-dim)}
@@ -1083,7 +1083,7 @@ body:has(.lore){overflow-x:clip}
 }
 
 /* Story heroes: two link cards at the bottom (StoryLinks.astro) */
-.lore .hero-links{position:absolute;z-index:3;left:0;right:0;bottom:clamp(18px,3vw,36px)}
+.lore .hero-links{position:absolute;z-index:3;left:0;right:0;bottom:clamp(12px,2vw,24px)}
 .lore .hero-links .wrap{display:flex;justify-content:space-between;gap:16px}
 .lore .hero-link{display:flex;align-items:center;gap:14px;flex:0 1 420px;min-width:0;padding:12px 16px;border:1px solid var(--gold-dim);border-radius:14px;background:rgba(14,16,21,.38);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--text);text-decoration:none;transition:border-color .2s,transform .2s}
 .lore .hero-link:hover,.lore .hero-link:focus-visible{border-color:var(--link-color,var(--gold));transform:translateY(-2px);outline:none}
@@ -1098,3 +1098,5 @@ body:has(.lore){overflow-x:clip}
   .lore .hero-links .wrap{flex-direction:column;gap:10px}
   .lore .hero-link{flex:none}
 }
+/* short windows: smaller link cards so they stay inside the first screen */
+@media (max-height:700px) and (min-width:761px){.lore .hero-link{padding:8px 12px;gap:10px}.lore .hero-link img,.lore .hero-link-icon{width:36px;height:36px}.lore .hero-link-icon svg{width:20px;height:20px}.lore .hero-link-title{font-size:.88rem}}
