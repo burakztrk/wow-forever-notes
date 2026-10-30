@@ -32,7 +32,8 @@ export const RACE_STORIES = {
 } as const;
 
 export interface StoryRef {
-  /** Page slug: /<lang>/stories/<slug>/ */
+  /** Page slug: race stories at /<lang>/stories/<slug>/, class stories at /<lang>/classes/<slug>/ (the old
+   * /<lang>/stories/<class>/ URLs redirect there). */
   slug: string;
   /** Cover art, site-relative (/stories/…), or null when the story has none yet. */
   cover: string | null;

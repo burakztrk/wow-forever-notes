@@ -64,7 +64,7 @@ const isCurrent = (key: string) =>
     : key === 'notes'
       ? section === 'notes' || section === 'blog'
       : key === 'classes'
-        ? section === 'classes' || section === 'talents'
+        ? section === 'classes' || section === 'talents' || section === 'stats'
         : section === key;
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const metaDescription = description ?? t.tagline;

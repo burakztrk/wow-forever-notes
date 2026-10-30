@@ -1,9 +1,10 @@
 ---
-// Wide banner on a class page that links to the class's story (src/pages/[lang]/stories/<slug>/).
+// Wide banner on a class page that links to the class's story (/<lang>/classes/<slug>/).
 import type { Lang } from '../../config';
 import { ui } from '../../i18n';
 import { CLASS_STORIES } from '../../i18n/class-stories';
 import { storyClass } from '../../lib/stories/classes';
+import { storyUrl } from '../../lib/stories/urls';
 import { withBase } from '../../utils/url';
 
 interface Props {
@@ -19,7 +20,7 @@ const story = entry?.slug ? CLASS_STORIES[entry.slug as keyof typeof CLASS_STORI
 
 {
   entry && story && (
-    <a class="story-banner class-story-banner" href={withBase(`/${lang}/stories/${entry.slug}/`)} style={`--class-accent: ${entry.color}`}>
+    <a class="story-banner class-story-banner" href={storyUrl(lang, entry.slug!)} style={`--class-accent: ${entry.color}`}>
       {entry.cover ? (
         <img
           class="story-banner-bg"

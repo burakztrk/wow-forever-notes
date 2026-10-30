@@ -51,7 +51,7 @@ describe('class story copy symmetry', () => {
 
   it('has page templates for every written class story', () => {
     for (const [slug] of Object.entries(CLASS_STORIES)) {
-      const pagePath = join(root, 'src/pages/[lang]/stories', `${slug}.astro`);
+      const pagePath = join(root, 'src/pages/[lang]/classes', `${slug}.astro`);
       expect(existsSync(pagePath), `Page exists for ${slug}`).toBe(true);
     }
   });

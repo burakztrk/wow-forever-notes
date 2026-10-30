@@ -5,8 +5,8 @@ import { STORY_UI } from '../../i18n/stories';
 import { TIMELINE_UI } from '../../i18n/timeline';
 import { STORY_CLASSES } from '../../lib/stories/classes';
 import { STORY_RACES } from '../../lib/stories/races';
+import { storyUrl } from '../../lib/stories/urls';
 import { timelineUrl } from '../../lib/stories/timeline';
-import { withBase } from '../../utils/url';
 
 interface Props {
   lang: Lang;
@@ -41,7 +41,7 @@ const slug = STORY_RACES.find((r) => r.name === next)?.slug ?? STORY_CLASSES.fin
       Astro.slots.has('default') ? (
         <slot />
       ) : slug ? (
-        <a class="next live rv" style="--d:.1s" href={withBase(`/${lang}/stories/${slug}/`)}>
+        <a class="next live rv" style="--d:.1s" href={storyUrl(lang, slug)}>
           <p class="ov next-ov">{u.nextLabel}</p>
           <p class="nm" lang="en">{next}</p>
           <p>{nextText}</p>

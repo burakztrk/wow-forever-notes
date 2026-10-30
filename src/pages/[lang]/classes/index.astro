@@ -29,7 +29,7 @@ const cards = classes.map((c) => {
   const own = talents.filter((e) => e.class === c.id);
   return {
     ...c,
-    href: withBase(`/${lang}/stories/${storyClassSlug(c.id) ?? c.id}/`), // a card opens the class's story; its hero links on to the class page and the planner
+    href: withBase(`/${lang}/classes/${storyClassSlug(c.id) ?? c.id}/`), // a card opens the class's story; its hero links on to the stats page and the planner
     total: own.length,
     fresh: own.filter((e) => e.status === 'new').length,
     trees: c.trees.map((name, i) => ({

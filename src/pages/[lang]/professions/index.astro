@@ -319,7 +319,7 @@ const tips = professionTips(lang, {
           const pickFor = guide.classes[c.id];
           return (
             <li class="pick-card" style={`--class-color: var(--class-${c.id})`}>
-              <a class="pick-head" href={withBase(`/${lang}/classes/${c.id}/`)}>
+              <a class="pick-head" href={withBase(`/${lang}/stats/${c.id}/`)}>
                 {c.icon && <img src={iconUrl(c.icon)} alt="" width="32" height="32" loading="lazy" />}
                 <span>{c.name}</span>
               </a>

@@ -17,6 +17,7 @@ import { TIMELINE_UI } from '../../i18n/timeline';
 import { races } from '../codex';
 import { STORY_CLASSES } from './classes';
 import { STORY_RACES } from './races';
+import { statsUrl, storyUrl } from './urls';
 import { withBase } from '../../utils/url';
 
 export interface StorySlide {
@@ -159,7 +160,7 @@ export function classSlides(lang: Lang): StorySlide[] {
     const story = CLASS_STORIES[c.slug!][lang];
     return {
       slug: c.slug!,
-      href: withBase(`/${lang}/stories/${c.slug}/`),
+      href: storyUrl(lang, c.slug!),
       name: c.name,
       over: `${story.overline} · Class`,
       lead: story.lead,
@@ -187,7 +188,7 @@ export interface MarqueeIcon {
   bothFactions?: boolean;
 }
 
-/** The icon marquee on the home page (each icon opens its race or class page, /<lang>/races/<id>/ or /classes/<id>/; on hover it also links the story): the race stories, then the class stories, in three rows of equal length. */
+/** The icon marquee on the home page (each icon opens the race page /<lang>/races/<id>/ or the class's stats /<lang>/stats/<id>/; on hover it also links the story): the race stories, then the class stories, in three rows of equal length. */
 export function marqueeRows(lang: Lang): MarqueeIcon[][] {
   const iconOf = (id: string) => races.find((r) => r.id === id)?.icon;
   const raceRow = STORY_RACES.filter((r) => r.slug && iconOf(r.id)).map((r) => ({
@@ -200,8 +201,8 @@ export function marqueeRows(lang: Lang): MarqueeIcon[][] {
     bothFactions: r.faction === 'ah',
   }));
   const classRow = STORY_CLASSES.filter((c) => c.slug).map((c) => ({
-    href: withBase(`/${lang}/classes/${c.id}/`),
-    loreHref: withBase(`/${lang}/stories/${c.slug}/`),
+    href: statsUrl(lang, c.id),
+    loreHref: storyUrl(lang, c.slug!),
     pageLabel: 'Class',
     name: c.name,
     icon: c.icon,
