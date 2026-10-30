@@ -1,0 +1,76 @@
+---
+// The animation between two story pages of the same kind reached through the chip strip (class stories and race
+// stories share it): see the comment in the style block. Render it once per page next to the strip.
+---
+
+<style is:global>
+  /* Moving between class (or race) stories with the chips (cross-document view transitions; only pages with this strip opt in,
+     browsers without support simply load the next page):
+     - the hero (cover, shade, link cards) is one picture clipped to its own box: the new cover wipes in from the right
+       while the old one drifts left;
+     - the title block slides out to the right and the new one slides in from the right;
+     - the chip strip and the rest of the page switch without a fade, so nothing seems to blink. */
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+      navigation: auto;
+    }
+    .lore .hero {
+      view-transition-name: story-hero;
+    }
+    .lore .hero-copy {
+      view-transition-name: story-copy;
+    }
+    .lore .hero-in > .races {
+      view-transition-name: story-strip;
+    }
+    ::view-transition-old(root),
+    ::view-transition-new(root),
+    ::view-transition-old(story-strip),
+    ::view-transition-new(story-strip) {
+      animation: none;
+    }
+    ::view-transition-group(story-hero),
+    ::view-transition-group(story-copy) {
+      overflow: clip;
+      animation-duration: 0.9s;
+    }
+    ::view-transition-old(story-hero) {
+      animation: story-hero-out 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    ::view-transition-new(story-hero) {
+      animation: story-hero-in 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    ::view-transition-old(story-copy) {
+      animation: story-copy-out 0.4s cubic-bezier(0.4, 0, 1, 1) both;
+    }
+    ::view-transition-new(story-copy) {
+      animation: story-copy-in 0.55s cubic-bezier(0, 0, 0.2, 1) 0.35s both;
+    }
+    @keyframes story-hero-out {
+      to {
+        transform: translateX(-12%);
+        filter: brightness(0.6);
+      }
+    }
+    @keyframes story-hero-in {
+      from {
+        clip-path: inset(0 0 0 100%);
+      }
+      to {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+    @keyframes story-copy-out {
+      to {
+        opacity: 0;
+        transform: translateX(90px);
+      }
+    }
+    @keyframes story-copy-in {
+      from {
+        opacity: 0;
+        transform: translateX(90px);
+      }
+    }
+  }
+</style>

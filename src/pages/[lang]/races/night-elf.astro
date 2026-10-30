@@ -57,8 +57,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="sil sil-queen" aria-hidden="true"><img src={img('azshara.webp')} alt="" width="387" height="516" /></div>
       <canvas id="snow" data-fx="wisps" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
+        <RaceChips lang={lang} current="night-elf" />
         <div class="hero-col">
-          <RaceChips lang={lang} current="night-elf" />
           <div class="hero-copy">
             <p class="ov">{s.overline} · <span lang="en">Alliance</span></p>
             <h1 class="h1" id="h-night-elf" lang="en">Night Elf</h1>

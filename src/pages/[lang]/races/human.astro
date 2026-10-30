@@ -66,8 +66,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="hero-bg" aria-hidden="true"><img src={img('stormwind-gate.webp')} alt="" width="1920" height="810" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="wrap hero-in">
+        <RaceChips lang={lang} current="human" />
         <div class="hero-col">
-          <RaceChips lang={lang} current="human" />
           <div class="hero-copy">
             <p class="ov">{s.overline} · <span lang="en">Alliance</span></p>
             <h1 class="h1" id="h-human">Human</h1>
