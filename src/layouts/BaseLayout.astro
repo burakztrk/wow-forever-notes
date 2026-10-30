@@ -38,7 +38,7 @@ const navItems = [
   { key: '', href: langHome(lang) },
   { key: 'notes', href: withBase(`/${lang}/notes/`) },
   { key: 'races', href: withBase(`/${lang}/races/`) },
-  { key: 'talents', href: withBase(`/${lang}/talents/`) },
+  { key: 'classes', href: withBase(`/${lang}/classes/`) },
   { key: 'professions', href: withBase(`/${lang}/professions/`) },
   { key: 'legacy', href: withBase(`/${lang}/legacy/`) },
   { key: 'stories', href: withBase(`/${lang}/stories/`) },
@@ -52,7 +52,7 @@ const labels: Record<string, string> = {
   '': t.navHome,
   notes: t.navNotes,
   races: t.navRaces,
-  talents: t.navClasses, // the classes list lives at /talents/ (its cards open /classes/<id>/)
+  classes: t.navClasses,
   professions: t.navProfessions,
   legacy: t.navLegacy,
   stories: t.navStories,
@@ -63,8 +63,8 @@ const isCurrent = (key: string) =>
     ? section === ''
     : key === 'notes'
       ? section === 'notes' || section === 'blog'
-      : key === 'talents'
-        ? section === 'talents' || section === 'classes'
+      : key === 'classes'
+        ? section === 'classes' || section === 'talents'
         : section === key;
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const metaDescription = description ?? t.tagline;

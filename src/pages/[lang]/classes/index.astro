@@ -16,7 +16,7 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const t = ui(lang);
-const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/talents/`)])) as Record<Lang, string>;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/classes/`)])) as Record<Lang, string>;
 const fill = (tpl: string, vars: Record<string, string | number>) => tpl.replace(/\{(\w+)\}/g, (_, k) => String(vars[k]));
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 

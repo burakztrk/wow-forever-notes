@@ -13,8 +13,8 @@ export default defineConfig({
   output: 'static',
   site,
   base,
-  // the classes list moved to /<lang>/talents/
-  redirects: { '/tr/classes': '/tr/talents/', '/en/classes': '/en/talents/' },
+  // the classes list lives at /<lang>/classes/; its short-lived home /<lang>/talents/ (the planner pages stay under it) redirects there
+  redirects: { '/tr/talents': '/tr/classes/', '/en/talents': '/en/classes/' },
   integrations: [
     sitemap({
       filter: (page) => !unlisted.has(page),
