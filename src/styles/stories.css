@@ -1100,3 +1100,5 @@ body:has(.lore){overflow-x:clip}
 }
 /* short windows: smaller link cards so they stay inside the first screen */
 @media (max-height:700px) and (min-width:761px){.lore .hero-link{padding:8px 12px;gap:10px}.lore .hero-link img,.lore .hero-link-icon{width:36px;height:36px}.lore .hero-link-icon svg{width:20px;height:20px}.lore .hero-link-title{font-size:.88rem}}
+/* a chip whose story is being fetched before the switch */
+.lore .races .chip[aria-busy]{opacity:.65;cursor:progress}

@@ -77,10 +77,10 @@
 
 <script is:inline>
   // A transition only looks right when the new hero is ready: over a real network the new cover image used to arrive
-  // in the middle of the wipe and pop in. So (1) every story page preloads its cover as a render-blocking <link>
-  // (BaseLayout `heroImage`), so the first frame already has it, (2) the page and cover of a chip are fetched as soon
-  // as the pointer, a finger or the keyboard reaches it, and (3) if the new page still has no cover at its first
-  // frame, the animation is skipped and the page just shows.
+  // in the middle of the wipe and pop in. So (1) the page and cover of a chip are fetched as soon as the pointer, a
+  // finger or the keyboard reaches it, (2) a click waits (up to 1.5 s) until the cover is there before it navigates,
+  // (3) every story page also preloads its cover as a render-blocking <link> (BaseLayout `heroImage`), and (4) if the
+  // new page still has no cover at its first frame, the animation is skipped and the page just shows.
   (function () {
     var warmed = {};
     function warm(a) {
@@ -98,6 +98,21 @@
     }
     ['pointerover', 'touchstart', 'focusin'].forEach(function (t) {
       document.addEventListener(t, onStrip, { passive: true });
+    });
+    // The click waits (at most 1.5 s) for the target's cover, so the new page's first frame has it: a render-blocking
+    // preload alone did not hold the first frame back for an image that was not cached yet.
+    document.addEventListener('click', function (e) {
+      if (!('onpagereveal' in window) || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest('.hero-in > .races a');
+      if (!a || !a.dataset.cover || a.getAttribute('aria-busy')) return;
+      e.preventDefault();
+      a.setAttribute('aria-busy', 'true');
+      var img = new Image();
+      img.src = a.dataset.cover;
+      var go = function () {
+        location.assign(a.href);
+      };
+      Promise.race([img.decode().catch(function () {}), new Promise(function (r) { setTimeout(r, 1500); })]).then(go, go);
     });
     addEventListener('pagereveal', function (e) {
       if (!e.viewTransition) return;
