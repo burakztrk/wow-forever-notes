@@ -880,6 +880,9 @@ body:has(.lore){overflow-x:clip}
 
 /* Class stories: strip, specs and figures */
 .story-banner-grad{position:absolute;inset:0;z-index:-2}
+/* class stories: the chip strip spans the hero, centred and wrapped so every class shows */
+.lore .hero-in:has(> .class-strip){flex-wrap:wrap;align-content:flex-start}
+.lore .hero-in > .class-strip{flex:0 0 100%;justify-content:center;flex-wrap:wrap;overflow:visible}
 .lore .class-strip .chip{transition:border-color .2s,background .2s}
 .lore .class-strip .chip.sel{border-color:var(--dot-color,var(--gold));color:var(--text);background:var(--bg-elev-2)}
 .lore .class-strip .chip.sel i{box-shadow:0 0 8px var(--dot-color,var(--gold))}

@@ -51,8 +51,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="hero-shade" aria-hidden="true"></div>
       <canvas id="snow" data-fx="embers" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
+        <ClassChips lang={lang} current="warrior" />
         <div class="hero-col">
-          <ClassChips lang={lang} current="warrior" />
           <div class="hero-copy">
             <p class="ov">{s.overline} · <span lang="en">Class</span></p>
             <h1 class="h1" id="h-warrior" lang="en" style="color: var(--class-warrior)">Warrior</h1>
