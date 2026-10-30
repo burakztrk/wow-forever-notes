@@ -42,3 +42,48 @@ const label = lang === 'tr' ? 'Sınıflar' : 'Classes';
     })
   }
 </div>
+
+<style is:global>
+  /* Moving between class stories with the chips: the cover cross-fades and settles from a slight zoom while the
+     chip strip stays put (cross-document view transitions; only pages with this strip opt in). Browsers without
+     support simply load the next page. */
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+      navigation: auto;
+    }
+    .lore .hero-bg {
+      view-transition-name: class-cover;
+    }
+    .lore .class-strip {
+      view-transition-name: class-strip;
+    }
+    ::view-transition-group(class-cover) {
+      animation-duration: 0.9s;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    ::view-transition-old(class-cover) {
+      animation: class-cover-out 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    ::view-transition-new(class-cover) {
+      animation: class-cover-in 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.35s;
+    }
+    @keyframes class-cover-out {
+      to {
+        opacity: 0;
+        transform: scale(1.04);
+        filter: blur(4px);
+      }
+    }
+    @keyframes class-cover-in {
+      from {
+        opacity: 0;
+        transform: scale(1.08);
+        filter: blur(6px);
+      }
+    }
+  }
+</style>
