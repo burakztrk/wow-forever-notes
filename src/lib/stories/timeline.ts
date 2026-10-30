@@ -3,6 +3,7 @@
 // same map and coordinates as the story drawings) and linked to the story chapters that tell it.
 // Copy (TR + EN) in src/i18n/timeline.ts; page in src/pages/[lang]/stories/timeline.astro,
 // behaviour in src/scripts/timeline.ts.
+import { storyUrl } from './urls';
 import type { Lang } from '../../config';
 import { CLASS_STORIES } from '../../i18n/class-stories';
 import {
@@ -237,7 +238,7 @@ export function storyRef(lang: Lang, ref: string): StoryRef | undefined {
     chapter,
     num: ROMAN[Object.keys(copy.chapters).indexOf(chapter)],
     chapterName: copy.chapters[chapter],
-    url: withBase(`/${lang}/stories/${slug}/#${chapter}`),
+    url: `${storyUrl(lang, slug)}#${chapter}`,
   };
 }
 
@@ -251,6 +252,6 @@ export function timelineSlugs(): string[] {
 
 /** Timeline URL filtered to one story, if the story has events on it; the slug comes from a story page's path. */
 export function timelineUrl(lang: Lang, pathname: string): string | undefined {
-  const slug = /\/stories\/([^/]+)\/?$/.exec(pathname)?.[1];
+  const slug = /\/(?:stories|classes)\/([^/]+)\/?$/.exec(pathname)?.[1];
   return slug && timelineSlugs().includes(slug) ? withBase(`/${lang}/stories/timeline/#s=${slug}`) : undefined;
 }

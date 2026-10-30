@@ -1,5 +1,5 @@
 // Classes shown in the story pages' class strip, in order. `slug` marks a written
-// story (src/pages/[lang]/stories/<slug>.astro); `id` matches src/data/classes.json.
+// story (src/pages/[lang]/classes/<slug>.astro, URL from src/lib/stories/urls.ts); `id` matches src/data/classes.json.
 export interface StoryClass {
   id: string;
   name: string;

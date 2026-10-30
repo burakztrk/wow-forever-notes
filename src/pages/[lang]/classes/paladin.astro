@@ -1,5 +1,5 @@
 ---
-// Class story: Priest. Copy in src/i18n/class-stories.ts, scroll effects in
+// Class story: Paladin. Copy in src/i18n/class-stories.ts, scroll effects in
 // src/scripts/story.ts, styles in src/styles/stories.css (all scoped under .lore).
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ClassChips from '../../../components/stories/ClassChips.astro';
@@ -8,7 +8,7 @@ import StoryHeader from '../../../components/stories/StoryHeader.astro';
 import StoryLinks from '../../../components/stories/StoryLinks.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
-import { PRIEST_STORY } from '../../../i18n/class-stories';
+import { PALADIN_STORY } from '../../../i18n/class-stories';
 import { STORY_UI } from '../../../i18n/stories';
 import { CLASS_ART } from '../../../lib/stories/class-art';
 import { loreHtml, loreIds, loreTips } from '../../../lib/stories/lore';
@@ -21,9 +21,9 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const t = ui(lang);
-const s = PRIEST_STORY[lang];
+const s = PALADIN_STORY[lang];
 const u = STORY_UI[lang];
-const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/priest/`)])) as Record<Lang, string>;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/classes/paladin/`)])) as Record<Lang, string>;
 const ic = CLASS_ART.icons;
 const lx = (text: string) => loreHtml(text);
 const tips = loreTips(lang, loreIds(s));
@@ -36,35 +36,35 @@ const chapters = [
   { id: 'five', num: 'V', name: s.chapters.five },
 ];
 
-const stageIcons = [CLASS_ART.stages.sun, CLASS_ART.stages.book, CLASS_ART.stages.eye, CLASS_ART.stages.sun];
-const templeIcons = [CLASS_ART.stages.sun, CLASS_ART.stages.eye, CLASS_ART.stages.totem, CLASS_ART.stages.book];
-const trialIcons = [CLASS_ART.stages.skull, CLASS_ART.stages.skull, CLASS_ART.stages.sun, CLASS_ART.stages.eye];
+const stageIcons = [CLASS_ART.stages.book, CLASS_ART.stages.hammer, CLASS_ART.stages.sun, CLASS_ART.stages.shield];
+const knightIcons = [CLASS_ART.stages.hammer, CLASS_ART.stages.sword, CLASS_ART.stages.shield, CLASS_ART.stages.sun];
+const fallIcons = [CLASS_ART.stages.skull, CLASS_ART.stages.sword, CLASS_ART.stages.hammer, CLASS_ART.stages.shield];
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Priest · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
-  <div class="lore priest" id="lore">
-    <StoryHeader lang={lang} chapters={chapters} icon={ic.priestBrand} />
+<BaseLayout title={`Paladin · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
+  <div class="lore paladin" id="lore">
+    <StoryHeader lang={lang} chapters={chapters} icon={ic.paladinBrand} />
 
-    <section class="hero priest-hero" aria-labelledby="h-priest">
-      <div class="hero-bg" aria-hidden="true"><img src={withBase('/stories/class/priest.webp')} alt="" width="1200" height="702" /></div>
+    <section class="hero paladin-hero" aria-labelledby="h-paladin">
+      <div class="hero-bg" aria-hidden="true"><img src={withBase('/stories/class/paladin.webp')} alt="" width="1200" height="896" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <canvas id="snow" data-fx="sun" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <div class="hero-col">
-          <ClassChips lang={lang} current="priest" />
+          <ClassChips lang={lang} current="paladin" />
           <div class="hero-copy">
             <p class="ov">{s.overline} · <span lang="en">Class</span></p>
-            <h1 class="h1" id="h-priest" lang="en" style="color: var(--class-priest)">Priest</h1>
+            <h1 class="h1" id="h-paladin" lang="en" style="color: var(--class-paladin)">Paladin</h1>
             <p class="lead">{s.lead}</p>
             <a class="cue" href="#origin">{u.cue} <b aria-hidden="true">↓</b></a>
           </div>
         </div>
       </div>
-      <StoryLinks lang={lang} kind="class" slug="priest" />
+      <StoryLinks lang={lang} kind="class" slug="paladin" />
     </section>
 
-    <section class="facts" aria-label="Priest">
+    <section class="facts" aria-label="Paladin">
       <dl class="wrap">
         {
           s.facts.map((fact) => (
@@ -120,7 +120,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
-    <!-- II · Temples -->
+    <!-- II · The First Five -->
     <section class="chap" id="two" aria-labelledby="h-two">
       <div class="wrap">
         <header class="ch-head rv">
@@ -136,7 +136,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             s.two.cards.map((card, i) => (
               <article class="card rv" style={delay(i % 2)}>
                 <div class="ic">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" set:html={templeIcons[i]} />
+                  <svg viewBox="0 0 64 64" aria-hidden="true" set:html={knightIcons[i]} />
                 </div>
                 <div class="t">
                   <h3 class="h3">{card.name}</h3>
@@ -156,7 +156,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
-    <!-- III · Trials -->
+    <!-- III · Stratholme & Schism -->
     <section class="chap" id="three" aria-labelledby="h-three">
       <div class="wrap">
         <header class="ch-head rv">
@@ -172,7 +172,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
             s.three.cards.map((card, i) => (
               <article class="card rv" style={delay(i % 2)}>
                 <div class="ic">
-                  <svg viewBox="0 0 64 64" aria-hidden="true" set:html={trialIcons[i]} />
+                  <svg viewBox="0 0 64 64" aria-hidden="true" set:html={fallIcons[i]} />
                 </div>
                 <div class="t">
                   <h3 class="h3">{card.name}</h3>
@@ -192,7 +192,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
-    <!-- IV · Specializations -->
+    <!-- IV · Virtues & Specs -->
     <section class="chap" id="four" aria-labelledby="h-four">
       <div class="wrap">
         <header class="ch-head rv">
@@ -223,7 +223,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
-    <!-- V · Shepherds -->
+    <!-- V · Modern Knights -->
     <section class="chap" id="five" aria-labelledby="h-five">
       <div class="wrap">
         <header class="ch-head rv">
@@ -249,7 +249,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       </div>
     </section>
 
-    <StoryEnd lang={lang} title={s.outro.title} text={s.outro.text} next="Shaman" nextText={s.outro.nextText} images="" />
+    <StoryEnd lang={lang} title={s.outro.title} text={s.outro.text} next="Warrior" nextText={s.outro.nextText} images="" />
   </div>
   <script slot="after" type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
 </BaseLayout>

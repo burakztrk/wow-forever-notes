@@ -13,8 +13,20 @@ export default defineConfig({
   output: 'static',
   site,
   base,
-  // the classes list moved to /<lang>/talents/
-  redirects: { '/tr/classes': '/tr/talents/', '/en/classes': '/en/talents/' },
+  // the classes list lives at /<lang>/classes/; its short-lived home /<lang>/talents/ (the planner pages stay under it) redirects there
+  redirects: {
+    '/tr/talents': '/tr/classes/',
+    '/en/talents': '/en/classes/',
+    // /<lang>/stats/<class>/ has no index of its own: the list is /<lang>/classes/
+    '/tr/stats': '/tr/classes/',
+    '/en/stats': '/en/classes/',
+    // class stories moved from /<lang>/stories/<class>/ to /<lang>/classes/<class>/ (src/lib/stories/urls.ts)
+    ...Object.fromEntries(
+      ['tr', 'en'].flatMap((l) =>
+        ['mage', 'hunter', 'paladin', 'warrior', 'rogue', 'priest', 'shaman', 'warlock', 'druid'].map((c) => [`/${l}/stories/${c}`, `/${l}/classes/${c}/`]),
+      ),
+    ),
+  },
   integrations: [
     sitemap({
       filter: (page) => !unlisted.has(page),

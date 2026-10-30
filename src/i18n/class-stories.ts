@@ -1,6 +1,6 @@
 import type { Lang } from '../config';
 
-// Class story pages (src/pages/[lang]/stories/<class>/).
+// Class story pages (src/pages/[lang]/classes/<class>.astro, served at /<lang>/classes/<class>/).
 // Game terms, spell names, order names, and proper names stay English in both languages.
 
 export interface ClassStoryData {

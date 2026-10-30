@@ -23,7 +23,7 @@ interface Props {
 const lang = Astro.params.lang as Lang;
 const { info } = Astro.props;
 const t = ui(lang);
-const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/classes/${info.id}/`)])) as Record<Lang, string>;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stats/${info.id}/`)])) as Record<Lang, string>;
 const groups = spellGroups(info);
 const total = groups.reduce((n, g) => n + g.spells.length, 0);
 const notes = await getPatchNotes(lang, 'class', info.id);
@@ -37,7 +37,7 @@ const tips = tooltipPayload(
   title={`${info.name} · ${t.classesTitle}`}
   description={fill(t.metaClass, { name: info.name })}
   lang={lang} alternates={alternates}>
-  <a class="back-nav" href={withBase(`/${lang}/talents/`)}>← {t.classesTitle}</a>
+  <a class="back-nav" href={withBase(`/${lang}/classes/`)}>← {t.classesTitle}</a>
   <header class="codex-head">
     {info.icon && <img class="codex-head-icon" src={withBase(`/icons/${info.icon}.jpg`)} alt="" width="64" height="64" />}
     <div>

@@ -8,6 +8,7 @@ import type { GlossaryFile } from '../../../lib/glossary-types';
 import { classList } from '../../../lib/codex';
 import { islandJson, tooltipPayload, treeTipId } from '../../../lib/tooltip-payload';
 import { classes } from '../../../lib/talents';
+import { storyClassSlug } from '../../../lib/stories/classes';
 import { withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -16,7 +17,7 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const t = ui(lang);
-const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/talents/`)])) as Record<Lang, string>;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/classes/`)])) as Record<Lang, string>;
 const fill = (tpl: string, vars: Record<string, string | number>) => tpl.replace(/\{(\w+)\}/g, (_, k) => String(vars[k]));
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 
@@ -28,7 +29,7 @@ const cards = classes.map((c) => {
   const own = talents.filter((e) => e.class === c.id);
   return {
     ...c,
-    href: withBase(`/${lang}/classes/${c.id}/`),
+    href: withBase(`/${lang}/classes/${storyClassSlug(c.id) ?? c.id}/`), // a card opens the class's story; its hero links on to the stats page and the planner
     total: own.length,
     fresh: own.filter((e) => e.status === 'new').length,
     trees: c.trees.map((name, i) => ({
@@ -68,7 +69,7 @@ const cards = classes.map((c) => {
                 </li>
               ))}
             </ul>
-            <span class="card-cta">{t.openClass}</span>
+            <span class="card-cta">{t.storiesRead}</span>
           </a>
         </li>
       ))

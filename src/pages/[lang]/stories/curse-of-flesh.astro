@@ -12,6 +12,7 @@ import { CURSE_ART_LABELS, CURSE_STORY, DWARF_STORY, GNOME_STORY, HUMAN_STORY, S
 import { fillArt } from '../../../lib/stories/art';
 import { CURSE_ART } from '../../../lib/stories/curse-art';
 import { STORY_RACES } from '../../../lib/stories/races';
+import { storyUrl } from '../../../lib/stories/urls';
 import { curseUrl, withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -135,7 +136,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
                 </p>
                 <p>{c.text}</p>
                 {c.slug && (
-                  <a class="go" href={withBase(`/${lang}/stories/${c.slug}/`)}>
+                  <a class="go" href={storyUrl(lang, c.slug)}>
                     {u.read} <b aria-hidden="true">→</b>
                   </a>
                 )}

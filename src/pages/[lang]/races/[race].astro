@@ -58,7 +58,7 @@ const tips = tooltipPayload([...racials.map((e) => e.id), ...patchNoteGlossaryId
     {
       classesOf(race).map((c) => (
         <li>
-          <a class="tile" href={withBase(`/${lang}/classes/${c.id}/`)} style={`--tile-color: var(--class-${c.id})`}>
+          <a class="tile" href={withBase(`/${lang}/stats/${c.id}/`)} style={`--tile-color: var(--class-${c.id})`}>
             <img src={icon(c.icon)} alt="" width="44" height="44" loading="lazy" />
             {c.name}
           </a>

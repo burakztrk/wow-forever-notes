@@ -3,7 +3,7 @@
 import type { Lang } from '../../config';
 import { STORY_UI } from '../../i18n/stories';
 import { STORY_CLASSES } from '../../lib/stories/classes';
-import { withBase } from '../../utils/url';
+import { storyUrl } from '../../lib/stories/urls';
 
 interface Props {
   lang: Lang;
@@ -28,7 +28,7 @@ const label = lang === 'tr' ? 'Sınıflar' : 'Classes';
         );
       if (c.slug)
         return (
-          <a class:list={['chip', `class-${c.id}`]} role="listitem" href={withBase(`/${lang}/stories/${c.slug}/`)} style={`--dot-color: ${c.color}`}>
+          <a class:list={['chip', `class-${c.id}`]} role="listitem" href={storyUrl(lang, c.slug!)} style={`--dot-color: ${c.color}`}>
             <i style={`background: ${c.color}`} />
             {c.name}
           </a>

@@ -23,7 +23,7 @@ const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const s = MAGE_STORY[lang];
 const u = STORY_UI[lang];
-const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/mage/`)])) as Record<Lang, string>;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/classes/mage/`)])) as Record<Lang, string>;
 const ic = CLASS_ART.icons;
 const lx = (text: string) => loreHtml(text);
 const tips = loreTips(lang, loreIds(s));

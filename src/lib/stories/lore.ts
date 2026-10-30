@@ -1,5 +1,6 @@
 // Lore tooltips in the story text: proper names (src/i18n/lore.ts) become hover/tap cards,
 // drawn by the site's shared tooltip (src/scripts/tooltip.ts, CardTip with kind "lore").
+import { storyUrl } from './urls';
 import type { Lang } from '../../config';
 import { LORE, LORE_UI, type LoreEntry } from '../../i18n/lore';
 import {
@@ -107,7 +108,7 @@ export interface LoreSearchEntry {
 export function loreSearch(lang: Lang): { cards: Record<string, CardTip>; lore: LoreSearchEntry[] } {
   const named = Object.entries(LORE_STORIES).map(([slug, story]) => ({
     name: STORY_RACES.find((r) => r.slug === slug)?.name ?? slug,
-    url: withBase(`/${lang}/stories/${slug}/`),
+    url: storyUrl(lang, slug),
     ids: new Set(loreIds(story[lang])),
   }));
   const cards: Record<string, CardTip> = {};
