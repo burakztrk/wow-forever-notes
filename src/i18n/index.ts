@@ -58,7 +58,7 @@ const strings = {
     openClass: 'Class’ı aç →',
     // races, classes, search, saved builds (same wording as the app)
     navRaces: 'Irklar',
-    navClasses: 'Class\'lar',
+    navClasses: 'Classlar',
     navSearch: 'Ara',
     navStories: 'Hikayeler',
     storiesTitle: 'Hikayeler',
