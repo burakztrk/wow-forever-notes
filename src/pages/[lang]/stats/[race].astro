@@ -9,6 +9,8 @@ import { getPatchNotes, patchNoteGlossaryIds } from '../../../lib/blog';
 import { classesOf, racialsOf, races } from '../../../lib/codex';
 import type { RaceInfo } from '../../../lib/glossary-types';
 import { islandJson, tooltipPayload } from '../../../lib/tooltip-payload';
+import { storyClassSlug } from '../../../lib/stories/classes';
+import { storyUrl } from '../../../lib/stories/urls';
 import { withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -58,7 +60,7 @@ const tips = tooltipPayload([...racials.map((e) => e.id), ...patchNoteGlossaryId
     {
       classesOf(race).map((c) => (
         <li>
-          <a class="tile" href={withBase(`/${lang}/stats/${c.id}/`)} style={`--tile-color: var(--class-${c.id})`}>
+          <a class="tile" href={storyUrl(lang, storyClassSlug(c.id) ?? c.id)} style={`--tile-color: var(--class-${c.id})`}>
             <img src={icon(c.icon)} alt="" width="44" height="44" loading="lazy" />
             {c.name}
           </a>
