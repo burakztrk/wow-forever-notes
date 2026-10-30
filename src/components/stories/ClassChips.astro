@@ -4,6 +4,7 @@ import type { Lang } from '../../config';
 import { STORY_UI } from '../../i18n/stories';
 import { STORY_CLASSES } from '../../lib/stories/classes';
 import { storyUrl } from '../../lib/stories/urls';
+import { withBase } from '../../utils/url';
 import HeroTransition from './HeroTransition.astro';
 
 interface Props {
@@ -29,7 +30,7 @@ const label = lang === 'tr' ? 'Sınıflar' : 'Classes';
         );
       if (c.slug)
         return (
-          <a class:list={['chip', `class-${c.id}`]} role="listitem" href={storyUrl(lang, c.slug!)} style={`--dot-color: ${c.color}`}>
+          <a class:list={['chip', `class-${c.id}`]} role="listitem" href={storyUrl(lang, c.slug!)} data-cover={c.cover ? withBase(c.cover.src) : undefined} style={`--dot-color: ${c.color}`}>
             <i style={`background: ${c.color}`} />
             {c.name}
           </a>

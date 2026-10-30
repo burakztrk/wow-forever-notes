@@ -42,7 +42,7 @@ const fallIcons = [CLASS_ART.stages.skull, CLASS_ART.stages.sword, CLASS_ART.sta
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Paladin · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full>
+<BaseLayout title={`Paladin · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={withBase('/stories/class/paladin.webp')}>
   <div class="lore paladin" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.paladinBrand} />
 
