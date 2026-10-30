@@ -38,6 +38,11 @@ const factions = (['alliance', 'horde'] as const).map((key) => ({
       </span>
     </a>
 
+    <section>
+      <h2 class="codex-section">{lang === 'tr' ? 'Sınıflar' : 'Classes'}</h2>
+      <StoryCarousel lang={lang} slides={classSlides(lang)} label={lang === 'tr' ? 'Sınıflar' : 'Classes'} />
+    </section>
+
     <div class="story-factions">
       {
         factions.map(({ key, name, list }) => (
@@ -48,10 +53,5 @@ const factions = (['alliance', 'horde'] as const).map((key) => ({
         ))
       }
     </div>
-
-    <section>
-      <h2 class="codex-section">{lang === 'tr' ? 'Sınıflar' : 'Classes'}</h2>
-      <StoryCarousel lang={lang} slides={classSlides(lang)} label={lang === 'tr' ? 'Sınıflar' : 'Classes'} />
-    </section>
   </div>
 </BaseLayout>
