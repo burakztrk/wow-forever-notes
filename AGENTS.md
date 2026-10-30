@@ -62,7 +62,7 @@ Node 22.12+.
   `/data/v1/legacy.json`.
 - `src/pages/[lang]/stories/` — race and class stories ("Hikayeler"/"Stories" in the nav, before the search icon): the index shows the
   Alliance and Horde races as two scroll-snap carousels, one below the other (`components/stories/StoryCarousel.astro`, slides and order in `src/lib/stories/slides.ts`, behaviour in `src/scripts/story-carousel.ts`; the home page opens with `components/stories/StoryMarquee.astro` (CSS only; each icon links to its race or class page, no search bar on the home page any more) and shows the same carousel below it: timeline first, then every race once; three rows of squircle race/class icons gliding in alternating directions, every second row shifted half an icon;
-  the Skyborne come last in both), then the classes; each written race is one scroll-told page (`gnome.astro`,
+  the Skyborne come last in both; the class carousel sits right under the timeline card, above the two race carousels); each written race is one scroll-told page (`gnome.astro`,
   `dwarf.astro`, `human.astro`, `night-elf.astro`, `orc.astro`, `troll.astro`, `tauren.astro`, `undead.astro`, `skyborne.astro`). `curse-of-flesh.astro` is a shorter lore page that is listed nowhere (index, race strip,
   nav, search): only the origin chapters that mention the curse link to it (`CurseLink.astro`, `curseUrl()`).
   The race strip, written-story slugs and next-story links come from `src/lib/stories/races.ts` (a people on both sides is one entry: the Skyborne have `faction: 'ah'`, a half blue, half red chip dot, and `ids` for both race ids, so `storySlug()` answers `skyborne` for either);
