@@ -1,9 +1,10 @@
 ---
-// Wide banner on a race page that links to the race's story (src/pages/[lang]/stories/).
+// Wide banner on a race page that links to the race's story (/<lang>/races/<slug>/).
 import type { Lang } from '../../config';
 import { ui } from '../../i18n';
 import { storyRace } from '../../lib/stories/races';
 import { RACE_STORIES } from '../../lib/stories/refs';
+import { storyUrl } from '../../lib/stories/urls';
 import { withBase } from '../../utils/url';
 
 interface Props {
@@ -20,7 +21,7 @@ const faction = { a: 'Alliance', h: 'Horde', ah: 'Alliance · Horde' };
 
 {
   entry && story && entry.cover && (
-    <a class="story-banner" href={withBase(`/${lang}/stories/${entry.slug}/`)}>
+    <a class="story-banner" href={storyUrl(lang, entry.slug!)}>
       <img class="story-banner-bg" src={withBase(entry.cover.src)} alt="" loading="lazy" style={`object-position:${entry.cover.position}`} />
       <span class="story-banner-text">
         <span class="story-banner-over">

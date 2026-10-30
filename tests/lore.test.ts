@@ -52,8 +52,8 @@ describe('loreSearch', () => {
     for (const l of lore) expect(l.stories.length, l.id).toBeGreaterThan(0);
     const bolvar = lore.find((l) => l.id === 'lore:bolvar')!;
     expect(bolvar.names).toContain('Bolvar Fordragon');
-    expect(bolvar.stories).toEqual([{ name: 'Human', url: '/tr/stories/human/' }]);
-    expect(loreSearch('en').lore.find((l) => l.id === 'lore:bolvar')!.stories[0].url).toBe('/en/stories/human/');
+    expect(bolvar.stories).toEqual([{ name: 'Human', url: '/tr/races/human/' }]);
+    expect(loreSearch('en').lore.find((l) => l.id === 'lore:bolvar')!.stories[0].url).toBe('/en/races/human/');
   });
 });
 

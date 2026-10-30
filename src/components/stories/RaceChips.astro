@@ -3,6 +3,7 @@
 import type { Lang } from '../../config';
 import { STORY_UI } from '../../i18n/stories';
 import { STORY_RACES } from '../../lib/stories/races';
+import { storyUrl } from '../../lib/stories/urls';
 import { withBase } from '../../utils/url';
 
 interface Props {
@@ -28,7 +29,7 @@ const u = STORY_UI[lang];
         );
       if (race.slug)
         return (
-          <a class:list={['chip', { h, ah: both }]} role="listitem" href={withBase(`/${lang}/stories/${race.slug}/`)}>
+          <a class:list={['chip', { h, ah: both }]} role="listitem" href={storyUrl(lang, race.slug!)}>
             <i />
             {race.name}
           </a>

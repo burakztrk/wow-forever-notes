@@ -126,7 +126,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
 ];
   return features.map((f) => ({
     slug: f.slug,
-    href: withBase(`/${lang}/stories/${f.slug}/`),
+    href: storyUrl(lang, f.slug),
     name: f.name,
     over: `${f.story.overline} · ${f.faction}`,
     lead: f.story.lead,
@@ -187,15 +187,15 @@ export interface MarqueeIcon {
 }
 
 /** The icon marquee on the home page: the race stories, then the class stories, in three rows of equal length.
- * An icon opens the story; on hover it also links "Race"/"Irk" (/<lang>/races/<id>/) and "Lore" (the story) for a
+ * An icon opens the story (/<lang>/races/<slug>/ or /<lang>/classes/<class>/); on hover it also links "Race"/"Irk" (/<lang>/stats/<id>/) and "Lore" (the story) for a
  * race, "Class" (the story, /<lang>/classes/<id>/) and "Stats" (/<lang>/stats/<id>/) for a class. */
 export function marqueeRows(lang: Lang): MarqueeIcon[][] {
   const iconOf = (id: string) => races.find((r) => r.id === id)?.icon;
   const raceRow = STORY_RACES.filter((r) => r.slug && iconOf(r.id)).map((r) => ({
-    href: withBase(`/${lang}/stories/${r.slug}/`),
+    href: storyUrl(lang, r.slug!),
     links: [
-      { label: lang === 'tr' ? 'Irk' : 'Race', href: withBase(`/${lang}/races/${r.id}/`) },
-      { label: 'Lore', href: withBase(`/${lang}/stories/${r.slug}/`) },
+      { label: lang === 'tr' ? 'Irk' : 'Race', href: statsUrl(lang, r.id) },
+      { label: 'Lore', href: storyUrl(lang, r.slug!) },
     ] as MarqueeIcon['links'],
     name: r.name,
     icon: iconOf(r.id)!,

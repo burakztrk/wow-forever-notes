@@ -25,7 +25,7 @@ const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const s = HUMAN_STORY[lang];
 const u = STORY_UI[lang];
-const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/human/`)])) as Record<Lang, string>;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/races/human/`)])) as Record<Lang, string>;
 const base = withBase('/');
 const art = (svg: string) => fillArt(svg, HUMAN_ART_LABELS[lang], base);
 const img = (name: string) => withBase(`/stories/human/${name}`);

@@ -252,6 +252,6 @@ export function timelineSlugs(): string[] {
 
 /** Timeline URL filtered to one story, if the story has events on it; the slug comes from a story page's path. */
 export function timelineUrl(lang: Lang, pathname: string): string | undefined {
-  const slug = /\/(?:stories|classes)\/([^/]+)\/?$/.exec(pathname)?.[1];
+  const slug = /\/(?:stories|classes|races)\/([^/]+)\/?$/.exec(pathname)?.[1];
   return slug && timelineSlugs().includes(slug) ? withBase(`/${lang}/stories/timeline/#s=${slug}`) : undefined;
 }

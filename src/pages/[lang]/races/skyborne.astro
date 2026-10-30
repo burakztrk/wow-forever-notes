@@ -27,7 +27,7 @@ const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const s = SKYBORNE_STORY[lang];
 const u = STORY_UI[lang];
-const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stories/skyborne/`)])) as Record<Lang, string>;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/races/skyborne/`)])) as Record<Lang, string>;
 const art = (svg: string) => fillArt(svg, SKYBORNE_ART_LABELS[lang], withBase('/'));
 const ic = SKYBORNE_ART.icons;
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);

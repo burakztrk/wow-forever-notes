@@ -20,11 +20,26 @@ export default defineConfig({
     // /<lang>/stats/<class>/ has no index of its own: the list is /<lang>/classes/
     '/tr/stats': '/tr/classes/',
     '/en/stats': '/en/classes/',
-    // class stories moved from /<lang>/stories/<class>/ to /<lang>/classes/<class>/ (src/lib/stories/urls.ts)
+    // class stories moved from /<lang>/stories/<class>/ to /<lang>/classes/<class>/, race stories from
+    // /<lang>/stories/<race>/ to /<lang>/races/<race>/ (src/lib/stories/urls.ts), and a race's own page
+    // /<lang>/races/<id>/ to /<lang>/stats/<id>/
     ...Object.fromEntries(
-      ['tr', 'en'].flatMap((l) =>
-        ['mage', 'hunter', 'paladin', 'warrior', 'rogue', 'priest', 'shaman', 'warlock', 'druid'].map((c) => [`/${l}/stories/${c}`, `/${l}/classes/${c}/`]),
-      ),
+      ['tr', 'en'].flatMap((l) => [
+        ...['mage', 'hunter', 'paladin', 'warrior', 'rogue', 'priest', 'shaman', 'warlock', 'druid'].map((c) => [`/${l}/stories/${c}`, `/${l}/classes/${c}/`]),
+        ...['gnome', 'dwarf', 'human', 'night-elf', 'orc', 'troll', 'tauren', 'undead', 'skyborne'].map((r) => [`/${l}/stories/${r}`, `/${l}/races/${r}/`]),
+        ...[
+          'alliance-human',
+          'alliance-dwarf',
+          'alliance-night-elf',
+          'alliance-gnome',
+          'alliance-skyborne-high-order',
+          'horde-orc',
+          'horde-undead',
+          'horde-tauren',
+          'horde-troll',
+          'horde-skyborne-windshaper',
+        ].map((r) => [`/${l}/races/${r}`, `/${l}/stats/${r}/`]),
+      ]),
     ),
   },
   integrations: [

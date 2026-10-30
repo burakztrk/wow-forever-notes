@@ -58,14 +58,18 @@ const labels: Record<string, string> = {
   stories: t.navStories,
   search: t.navSearch,
 };
+// /<lang>/stats/<id>/ is a class's or a race's (alliance-…, horde-…) stats page
+const raceStats = /^(alliance|horde)-/.test(Astro.url.pathname.split(`/${lang}/stats/`)[1] ?? '');
 const isCurrent = (key: string) =>
   key === ''
     ? section === ''
     : key === 'notes'
       ? section === 'notes' || section === 'blog'
       : key === 'classes'
-        ? section === 'classes' || section === 'talents' || section === 'stats'
-        : section === key;
+        ? section === 'classes' || section === 'talents' || (section === 'stats' && !raceStats)
+        : key === 'races'
+          ? section === 'races' || (section === 'stats' && raceStats)
+          : section === key;
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const metaDescription = description ?? t.tagline;
 const canonical = absoluteUrl(Astro.url.pathname, Astro.site);

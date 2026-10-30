@@ -4,6 +4,7 @@ import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
 import { classesOf, racesByFaction } from '../../../lib/codex';
 import { storyRace, storySlug } from '../../../lib/stories/races';
+import { statsUrl, storyUrl } from '../../../lib/stories/urls';
 import { withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -14,7 +15,7 @@ const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/races/`)])) as Record<Lang, string>;
 // A card opens the race's story (its hero links on to the race page); a race without a story keeps the race page.
-const cardHref = (raceId: string) => withBase(storySlug(raceId) ? `/${lang}/stories/${storySlug(raceId)}/` : `/${lang}/races/${raceId}/`);
+const cardHref = (raceId: string) => (storySlug(raceId) ? storyUrl(lang, storySlug(raceId)!) : statsUrl(lang, raceId));
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 ---
 
