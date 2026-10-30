@@ -173,12 +173,10 @@ export function classSlides(lang: Lang): StorySlide[] {
 }
 
 export interface MarqueeIcon {
-  /** The race or class page. */
+  /** Where the icon itself leads: the story (a race's /stories/<race>/, a class's /classes/<class>/). */
   href: string;
-  /** The written story ("Lore"). */
-  loreHref: string;
-  /** Label of the first link: "Race" (or "Irk") or "Class". */
-  pageLabel: string;
+  /** The two links that slide out on hover, stacked: label + target. */
+  links: [{ label: string; href: string }, { label: string; href: string }];
   name: string;
   /** Icon file name under public/icons/ (no extension). */
   icon: string;
@@ -188,22 +186,28 @@ export interface MarqueeIcon {
   bothFactions?: boolean;
 }
 
-/** The icon marquee on the home page (each icon opens the race page /<lang>/races/<id>/ or the class's stats /<lang>/stats/<id>/; on hover it also links the story): the race stories, then the class stories, in three rows of equal length. */
+/** The icon marquee on the home page: the race stories, then the class stories, in three rows of equal length.
+ * An icon opens the story; on hover it also links "Race"/"Irk" (/<lang>/races/<id>/) and "Lore" (the story) for a
+ * race, "Class" (the story, /<lang>/classes/<id>/) and "Stats" (/<lang>/stats/<id>/) for a class. */
 export function marqueeRows(lang: Lang): MarqueeIcon[][] {
   const iconOf = (id: string) => races.find((r) => r.id === id)?.icon;
   const raceRow = STORY_RACES.filter((r) => r.slug && iconOf(r.id)).map((r) => ({
-    href: withBase(`/${lang}/races/${r.id}/`),
-    loreHref: withBase(`/${lang}/stories/${r.slug}/`),
-    pageLabel: lang === 'tr' ? 'Irk' : 'Race',
+    href: withBase(`/${lang}/stories/${r.slug}/`),
+    links: [
+      { label: lang === 'tr' ? 'Irk' : 'Race', href: withBase(`/${lang}/races/${r.id}/`) },
+      { label: 'Lore', href: withBase(`/${lang}/stories/${r.slug}/`) },
+    ] as MarqueeIcon['links'],
     name: r.name,
     icon: iconOf(r.id)!,
     color: r.color,
     bothFactions: r.faction === 'ah',
   }));
   const classRow = STORY_CLASSES.filter((c) => c.slug).map((c) => ({
-    href: statsUrl(lang, c.id),
-    loreHref: storyUrl(lang, c.slug!),
-    pageLabel: 'Class',
+    href: storyUrl(lang, c.slug!),
+    links: [
+      { label: 'Class', href: storyUrl(lang, c.slug!) },
+      { label: 'Stats', href: statsUrl(lang, c.id) },
+    ] as MarqueeIcon['links'],
     name: c.name,
     icon: c.icon,
     color: c.color,

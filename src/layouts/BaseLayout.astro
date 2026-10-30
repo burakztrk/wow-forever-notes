@@ -36,9 +36,9 @@ const {
 const section = Astro.url.pathname.split(`/${lang}/`)[1]?.split('/')[0] ?? '';
 const navItems = [
   { key: '', href: langHome(lang) },
-  { key: 'notes', href: withBase(`/${lang}/notes/`) },
-  { key: 'races', href: withBase(`/${lang}/races/`) },
   { key: 'classes', href: withBase(`/${lang}/classes/`) },
+  { key: 'races', href: withBase(`/${lang}/races/`) },
+  { key: 'notes', href: withBase(`/${lang}/notes/`) },
   { key: 'professions', href: withBase(`/${lang}/professions/`) },
   { key: 'legacy', href: withBase(`/${lang}/legacy/`) },
   { key: 'stories', href: withBase(`/${lang}/stories/`) },
