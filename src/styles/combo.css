@@ -129,8 +129,10 @@
   cursor: pointer;
   overflow: hidden;
   transition:
-    box-shadow 0.15s,
-    transform 0.15s;
+    box-shadow 0.2s,
+    transform 0.2s,
+    opacity 0.2s,
+    filter 0.2s;
 }
 .race-btn img,
 .race-fallback {
@@ -153,9 +155,23 @@
   transform: translateY(-1px);
 }
 .race-btn[aria-pressed='true'] {
+  position: relative;
+  z-index: 2;
+  transform: scale(1.12);
   box-shadow:
-    0 0 0 2px var(--frame-hi),
-    0 0 14px 2px rgba(232, 199, 104, 0.55);
+    0 0 0 3px var(--frame-hi),
+    0 0 0 5px rgba(0, 0, 0, 0.55),
+    0 0 20px 6px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+/* the chosen race and class stand out: the others step back */
+.race-btn[aria-pressed='false'] {
+  opacity: 0.66;
+  filter: saturate(0.75);
+}
+.race-btn[aria-pressed='false']:hover,
+.race-btn[aria-pressed='false']:focus-visible {
+  opacity: 1;
+  filter: none;
 }
 
 /* ---- stage ---- */
@@ -301,8 +317,9 @@
   border-radius: 4px;
   box-shadow: 0 0 0 1px var(--frame);
   transition:
-    box-shadow 0.15s,
-    filter 0.15s;
+    box-shadow 0.2s,
+    filter 0.15s,
+    transform 0.2s;
 }
 .class-btn:hover img,
 .class-btn:focus-visible img {
@@ -310,11 +327,21 @@
 }
 .class-btn[aria-pressed='true'] {
   color: var(--class-color);
+  font-weight: 700;
 }
 .class-btn[aria-pressed='true'] img {
+  transform: scale(1.14);
   box-shadow:
-    0 0 0 2px var(--frame-hi),
-    0 0 14px 2px rgba(232, 199, 104, 0.55);
+    0 0 0 3px var(--frame-hi),
+    0 0 0 5px rgba(0, 0, 0, 0.55),
+    0 0 22px 6px color-mix(in srgb, var(--class-color) 65%, transparent);
+}
+.class-btn[aria-pressed='false']:not(.is-unavailable) {
+  opacity: 0.72;
+}
+.class-btn[aria-pressed='false']:not(.is-unavailable):hover,
+.class-btn[aria-pressed='false']:not(.is-unavailable):focus-visible {
+  opacity: 1;
 }
 .class-btn.is-unavailable {
   color: #6c6556;
@@ -669,6 +696,22 @@
 .class-bar {
   height: var(--bar-h);
   align-items: center;
+}
+/* Between 1000 and 1419px the middle column is too narrow for nine class buttons in one row (they wrapped out of
+   the fixed-height box): five per row, two rows, and the faction panel follows the taller --bar-h. */
+@media (min-width: 1000px) and (max-width: 1419px) {
+  .combo {
+    --bar-h: 196px;
+  }
+  .class-bar {
+    column-gap: 8px;
+    row-gap: 10px;
+    align-content: center;
+  }
+  .class-bar .class-btn {
+    flex: 0 0 calc((100% - 32px) / 5);
+    width: auto;
+  }
 }
 .panel--faction {
   height: var(--bar-h);
