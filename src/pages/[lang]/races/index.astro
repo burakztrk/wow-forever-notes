@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
 import { ui } from '../../../i18n';
 import { classesOf, racesByFaction } from '../../../lib/codex';
-import { storyRace } from '../../../lib/stories/races';
+import { storyRace, storySlug } from '../../../lib/stories/races';
 import { withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -13,6 +13,8 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const t = ui(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/races/`)])) as Record<Lang, string>;
+// A card opens the race's story (its hero links on to the race page); a race without a story keeps the race page.
+const cardHref = (raceId: string) => withBase(storySlug(raceId) ? `/${lang}/stories/${storySlug(raceId)}/` : `/${lang}/races/${raceId}/`);
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 ---
 
@@ -30,7 +32,7 @@ const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefin
               <li>
                 <a
                   class:list={['race-card', { 'has-cover': !!cover }]}
-                  href={withBase(`/${lang}/races/${race.id}/`)}
+                  href={cardHref(race.id)}
                   style={`--faction-color: ${faction === 'Horde' ? '#e0503c' : '#4a8fe7'}`}
                 >
                   {cover && (
