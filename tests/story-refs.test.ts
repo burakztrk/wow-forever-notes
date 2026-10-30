@@ -16,9 +16,9 @@ const expectComplete = (ref: StoryRef | null, slug: string | undefined) => {
   expect(ref?.slug).toBe(slug);
   for (const l of LANGS) expect(ref?.lead[l], `${slug} ${l}`).toBeTruthy();
   if (ref?.cover) expect(existsSync(join(root, 'public', ref.cover)), ref.cover).toBe(true);
-  // race stories live in stories/, class stories in classes/ (src/lib/stories/urls.ts)
+  // race stories live in races/, class stories in classes/ (src/lib/stories/urls.ts)
   const page = (dir: string) => existsSync(join(root, 'src/pages/[lang]', dir, `${slug}.astro`));
-  expect(page('stories') || page('classes'), slug).toBe(true);
+  expect(page('races') || page('classes'), slug).toBe(true);
 };
 
 describe('story refs for the app data', () => {

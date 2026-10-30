@@ -1,6 +1,6 @@
 ---
 // Two link cards at the bottom of a race or class story's hero: the matching codex page and the next stop.
-// Class story: /stats/<class>/ ("Skills, Class Notes & Stats") and the talent planner. Race story: /races/<race>/
+// Class story: /stats/<class>/ ("Skills, Class Notes & Stats") and the talent planner. Race story: /stats/<race id>/
 // ("Racials, Race Notes & Stats") and the classes list. Styles: .hero-links in src/styles/stories.css.
 import CodexIcon from '../CodexIcon.astro';
 import type { Lang } from '../../config';
@@ -41,7 +41,7 @@ const cards =
     : race
       ? [
           {
-            href: withBase(`/${lang}/races/${race.id}/`),
+            href: withBase(`/${lang}/stats/${race.id}/`),
             img: raceIcon ? withBase(`/icons/${raceIcon}.jpg`) : undefined,
             over: race.name,
             title: tr ? 'Irk Yetenekleri, Notlar ve Statlar' : 'Racials, Race Notes & Stats',

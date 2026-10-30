@@ -5,6 +5,9 @@ import LangSwitch from '../components/LangSwitch.astro';
 import { DEFAULT_LANG, LANGS, SITE_TITLE, type Lang } from '../config';
 import { ui } from '../i18n';
 import { OG_LOCALE, absoluteUrl, jsonLdString, ogImage } from '../lib/seo';
+import { STORY_CLASSES } from '../lib/stories/classes';
+import { STORY_RACES } from '../lib/stories/races';
+import { storyUrl } from '../lib/stories/urls';
 import { langHome, withBase } from '../utils/url';
 
 interface Props {
@@ -36,8 +39,9 @@ const {
 const section = Astro.url.pathname.split(`/${lang}/`)[1]?.split('/')[0] ?? '';
 const navItems = [
   { key: '', href: langHome(lang) },
-  { key: 'classes', href: withBase(`/${lang}/classes/`) },
-  { key: 'races', href: withBase(`/${lang}/races/`) },
+  // the nav opens the first class and the first race story (their chip strips list the rest)
+  { key: 'classes', href: storyUrl(lang, STORY_CLASSES[0].slug!) },
+  { key: 'races', href: storyUrl(lang, STORY_RACES[0].slug!) },
   { key: 'notes', href: withBase(`/${lang}/notes/`) },
   { key: 'professions', href: withBase(`/${lang}/professions/`) },
   { key: 'legacy', href: withBase(`/${lang}/legacy/`) },
@@ -58,14 +62,18 @@ const labels: Record<string, string> = {
   stories: t.navStories,
   search: t.navSearch,
 };
+// /<lang>/stats/<id>/ is a class's or a race's (alliance-…, horde-…) stats page
+const raceStats = /^(alliance|horde)-/.test(Astro.url.pathname.split(`/${lang}/stats/`)[1] ?? '');
 const isCurrent = (key: string) =>
   key === ''
     ? section === ''
     : key === 'notes'
       ? section === 'notes' || section === 'blog'
       : key === 'classes'
-        ? section === 'classes' || section === 'talents' || section === 'stats'
-        : section === key;
+        ? section === 'classes' || section === 'talents' || (section === 'stats' && !raceStats)
+        : key === 'races'
+          ? section === 'races' || (section === 'stats' && raceStats)
+          : section === key;
 const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
 const metaDescription = description ?? t.tagline;
 const canonical = absoluteUrl(Astro.url.pathname, Astro.site);

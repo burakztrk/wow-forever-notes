@@ -321,7 +321,7 @@ describe('story races', () => {
   it('lists real races and has a page for every written story', () => {
     for (const race of STORY_RACES) {
       expect(ids.has(race.id), race.id).toBe(true);
-      if (race.slug) expect(existsSync(join(root, 'src/pages/[lang]/stories', `${race.slug}.astro`)), race.slug).toBe(true);
+      if (race.slug) expect(existsSync(join(root, 'src/pages/[lang]/races', `${race.slug}.astro`)), race.slug).toBe(true);
     }
     expect(storySlug('alliance-dwarf')).toBe('dwarf');
     expect(storySlug('alliance-human')).toBe('human');
@@ -350,7 +350,7 @@ describe('story races', () => {
     expect(STORY_RACES.some((r) => r.slug === 'curse-of-flesh')).toBe(false);
     expect(readFileSync(join(pages, 'index.astro'), 'utf8')).not.toMatch(/curse/i);
     for (const slug of ['gnome', 'dwarf', 'human']) {
-      expect(readFileSync(join(pages, `${slug}.astro`), 'utf8'), slug).toMatch(/<CurseLink /);
+      expect(readFileSync(join(root, 'src/pages/[lang]/races', `${slug}.astro`), 'utf8'), slug).toMatch(/<CurseLink /);
     }
   });
 });

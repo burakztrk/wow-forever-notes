@@ -22,7 +22,7 @@ interface Props {
 const lang = Astro.params.lang as Lang;
 const { race } = Astro.props;
 const t = ui(lang);
-const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/races/${race.id}/`)])) as Record<Lang, string>;
+const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/stats/${race.id}/`)])) as Record<Lang, string>;
 const icon = (name?: string) => (name ? withBase(`/icons/${name}.jpg`) : undefined);
 const racials = racialsOf(race);
 const notes = await getPatchNotes(lang, 'race', race.id);

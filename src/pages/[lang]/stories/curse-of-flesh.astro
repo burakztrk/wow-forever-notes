@@ -186,7 +186,7 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <nav class="next-list rv" style="--d:.1s" aria-label={s.outro.storiesLabel}>
         {
           stories.map((race) => (
-            <a class="next live mini" href={withBase(`/${lang}/stories/${race.slug}/`)}>
+            <a class="next live mini" href={storyUrl(lang, race.slug!)}>
               <span class="ov next-ov">{overlines[race.slug!]}</span>
               <span class="nm" lang="en">
                 {race.name}
