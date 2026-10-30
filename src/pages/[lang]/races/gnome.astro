@@ -73,8 +73,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
       <div class="sil" aria-hidden="true"><img src={img('mekkatorque.webp')} alt="" width="300" height="300" /></div>
       <canvas id="snow" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
+        <RaceChips lang={lang} current="gnome" />
         <div class="hero-col">
-          <RaceChips lang={lang} current="gnome" />
           <div class="hero-copy">
             <p class="ov">{s.overline} · <span lang="en">Alliance</span></p>
             <h1 class="h1" id="h-gnome">Gnome</h1>

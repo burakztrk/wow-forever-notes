@@ -4,6 +4,7 @@ import type { Lang } from '../../config';
 import { STORY_UI } from '../../i18n/stories';
 import { STORY_RACES } from '../../lib/stories/races';
 import { storyUrl } from '../../lib/stories/urls';
+import HeroTransition from './HeroTransition.astro';
 import { withBase } from '../../utils/url';
 
 interface Props {
@@ -14,8 +15,8 @@ const { lang, current } = Astro.props;
 const u = STORY_UI[lang];
 ---
 
-<div class="races" role="list" aria-label={u.races}>
-  <span class="ov">{u.races}</span>
+<HeroTransition />
+<div class="races race-strip" role="list" aria-label={u.races}>
   {
     STORY_RACES.map((race) => {
       const h = race.faction === 'h';

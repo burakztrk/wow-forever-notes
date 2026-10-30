@@ -10,6 +10,8 @@ import { getPatchNotes, patchNoteGlossaryIds } from '../../../lib/blog';
 import { classList, racesFor, spellGroups } from '../../../lib/codex';
 import type { ClassInfo } from '../../../lib/glossary-types';
 import { islandJson, tooltipPayload } from '../../../lib/tooltip-payload';
+import { storyRace, storySlug } from '../../../lib/stories/races';
+import { storyUrl } from '../../../lib/stories/urls';
 import { withBase } from '../../../utils/url';
 
 export function getStaticPaths() {
@@ -52,11 +54,12 @@ const tips = tooltipPayload(
   <PatchNotes lang={lang} notes={notes} name={info.name} empty={t.noPatchNotes} />
 
   <h2 class="codex-section">{t.playableRaces}</h2>
-  <ul class="chip-row">
+  <ul class="tile-grid">
     {
       racesFor(info).map((r) => (
         <li>
-          <a class="chip-link" href={withBase(`/${lang}/stats/${r.id}/`)}>
+          <a class="tile" href={storyUrl(lang, storySlug(r.id) ?? r.id)} style={`--tile-color: ${storyRace(r.id)?.color ?? (r.faction === 'Horde' ? '#e0503c' : '#4a8fe7')}`}>
+            {r.icon && <img src={withBase(`/icons/${r.icon}.jpg`)} alt="" width="44" height="44" loading="lazy" />}
             {r.name}
           </a>
         </li>
