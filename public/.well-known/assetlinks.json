@@ -1,11 +1,16 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.booapps.forevercampfire",
       "sha256_cert_fingerprints": [
-        "91:CC:D1:61:CB:1A:9D:46:66:6B:DC:42:44:6B:3E:9B:F8:AE:FB:97:80:63:A0:0E:8D:91:A8:20:84:32:58:F5"
+        "91:CC:D1:61:CB:1A:9D:46:66:6B:DC:42:44:6B:3E:9B:F8:AE:FB:97:80:63:A0:0E:8D:91:A8:20:84:32:58:F5",
+        "B9:80:5C:AC:D9:B0:0D:8D:AF:CE:E6:69:BC:61:66:96:A0:A8:AF:59:B2:07:4D:8F:3D:B7:92:DA:45:5C:2C:BA",
+        "E4:0E:0F:52:37:24:B8:C2:50:C3:2A:9C:51:03:86:BF:92:78:6A:00:30:FF:C2:79:3D:8B:90:79:40:B4:68:EF"
       ]
     }
   }
