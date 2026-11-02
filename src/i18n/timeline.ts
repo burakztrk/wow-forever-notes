@@ -69,7 +69,7 @@ export const TIMELINE_UI: Record<
     storyLink: 'Zaman çizelgesi',
     storyCta: 'Bu hikayenin olaylarını zaman çizelgesinde gör',
     cardOver: 'Irklar ve sınıflar',
-    cardLead: 'Hikayelerdeki olaylar tek bir cetvelde: Well of Eternity’den bugüne, her biri haritada.',
+    cardLead: 'Tüm hikayelerin olayları, tek cetvelde.',
     cardCta: 'Çizelgeyi aç →',
   },
   en: {
@@ -100,7 +100,7 @@ export const TIMELINE_UI: Record<
     storyLink: 'Timeline',
     storyCta: 'See this story’s events on the timeline',
     cardOver: 'Races and classes',
-    cardLead: 'The events of every story on one ruler: from the Well of Eternity to today, each one on the map.',
+    cardLead: 'Every story’s events on one ruler.',
     cardCta: 'Open the timeline →',
   },
 };

@@ -146,7 +146,7 @@ export function timelineSlide(lang: Lang): StorySlide {
     over: tl.cardOver,
     lead: tl.cardLead,
     cta: tl.cardCta,
-    bg: { src: '/maps/azeroth.webp', w: 1002, h: 668 },
+    bg: { src: '/stories/timeline-banner.webp', w: 1024, h: 339 },
     timeline: true,
   };
 }
