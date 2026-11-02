@@ -355,17 +355,6 @@ body:has(.lore){overflow-x:clip}
   z-index: -1;
   background: linear-gradient(90deg, rgba(14, 16, 21, 0) 20%, rgba(14, 16, 21, 0.85) 58%, rgba(14, 16, 21, 0.92) 100%);
 }
-.story-feature-hero {
-  position: absolute;
-  right: -10px;
-  bottom: 0;
-  z-index: -1;
-  width: 230px;
-  height: auto;
-  opacity: 0.3;
-  -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent 96%);
-  mask-image: linear-gradient(180deg, #000 40%, transparent 96%);
-}
 .story-feature-text {
   display: flex;
   flex-direction: column;
@@ -514,11 +503,6 @@ body:has(.lore){overflow-x:clip}
 }
 .story-slide .story-feature-name {
   font-size: clamp(2rem, 5.5vw, 2.8rem);
-}
-.story-slide .story-feature-hero {
-  top: 0;
-  bottom: auto;
-  width: 190px;
 }
 .story-arrow {
   position: absolute;
@@ -790,7 +774,6 @@ body:has(.lore){overflow-x:clip}
 .lore .chap-art.dim img{opacity:.2}
 .lore .sil-guldan{z-index:0;top:clamp(700px,52vw,760px);bottom:auto;right:auto;left:max(16px,calc(50% - 570px));width:clamp(200px,22vw,300px);aspect-ratio:478/641;opacity:.55;transform:none;-webkit-mask-image:radial-gradient(closest-side at 50% 46%,#000 58%,rgba(0,0,0,.45) 80%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 46%,#000 58%,rgba(0,0,0,.45) 80%,transparent 100%)}
 @media (max-width:760px){.lore .sil-guldan{display:none}}
-.story-feature-hero.soft{-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);opacity:.5}
 /* Skyborne story: sky and wind, one people with two sides, the rising island */
 .lore.skyborne{--sky:#8fd0f0;--gale:#e6f6ff}
 .lore .chip.ah i{background:linear-gradient(90deg,var(--alliance) 50%,var(--horde) 50%)}

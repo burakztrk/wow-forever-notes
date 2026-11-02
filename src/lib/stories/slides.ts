@@ -33,8 +33,6 @@ export interface StorySlide {
   bgPosition?: string;
   /** Colour of the name (class stories). */
   color?: string;
-  hero?: string;
-  soft?: boolean;
   timeline?: boolean;
 }
 
@@ -55,7 +53,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Alliance · Horde',
     story: SKYBORNE_STORY[lang],
     bg: { src: '/stories/skyborne/cover-2.webp', w: 1024, h: 765 },
-    hero: undefined,
   },
   {
     slug: 'tauren',
@@ -63,7 +60,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Horde',
     story: TAUREN_STORY[lang],
     bg: { src: '/stories/tauren/cover.webp', w: 1024, h: 765 },
-    hero: '/stories/tauren/cairne.webp',
   },
   {
     slug: 'undead',
@@ -71,7 +67,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Horde',
     story: UNDEAD_STORY[lang],
     bg: { src: '/stories/undead/cover.webp', w: 1024, h: 765 },
-    hero: '/stories/undead/sylvanas.webp',
   },
   {
     slug: 'troll',
@@ -79,8 +74,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Horde',
     story: TROLL_STORY[lang],
     bg: { src: '/stories/troll/cover.webp', w: 1024, h: 765 },
-    hero: '/stories/troll/voljin.webp',
-    soft: true,
   },
   {
     slug: 'orc',
@@ -88,8 +81,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Horde',
     story: ORC_STORY[lang],
     bg: { src: '/stories/orc/cover.webp', w: 1024, h: 765 },
-    hero: '/stories/orc/thrall.webp',
-    soft: true, // a painting with its own sky: fade its edges
   },
   {
     slug: 'night-elf',
@@ -97,7 +88,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Alliance',
     story: NIGHT_ELF_STORY[lang],
     bg: { src: '/stories/night-elf/cover.webp', w: 1024, h: 765 },
-    hero: '/stories/night-elf/azshara.webp',
   },
   {
     slug: 'human',
@@ -105,7 +95,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Alliance',
     story: HUMAN_STORY[lang],
     bg: { src: '/stories/human/cover.webp', w: 1024, h: 765 },
-    hero: undefined,
   },
   {
     slug: 'dwarf',
@@ -113,7 +102,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Alliance',
     story: DWARF_STORY[lang],
     bg: { src: '/stories/dwarf/cover.webp', w: 1024, h: 765 },
-    hero: '/stories/dwarf/magni.webp',
   },
   {
     slug: 'gnome',
@@ -121,7 +109,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     faction: 'Alliance',
     story: GNOME_STORY[lang],
     bg: { src: '/stories/gnome/cover.webp', w: 1024, h: 765 },
-    hero: '/stories/gnome/mekkatorque.webp',
   },
 ];
   return features.map((f) => ({
@@ -132,8 +119,6 @@ export function raceSlides(lang: Lang): StorySlide[] {
     lead: f.story.lead,
     cta: t.storiesRead,
     bg: f.bg,
-    hero: f.hero ? withBase(f.hero) : undefined,
-    soft: 'soft' in f ? f.soft : undefined,
   }));
 }
 

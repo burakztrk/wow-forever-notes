@@ -21,7 +21,6 @@ const { lang, slides, label } = Astro.props;
         <li class="story-slide">
           <a class:list={['story-feature', { 'story-feature--timeline': f.timeline }]} href={f.href}>
             {f.bg && <img class="story-feature-bg" src={withBase(f.bg.src)} alt="" width={f.bg.w} height={f.bg.h} loading="lazy" style={f.bgPosition ? `object-position:${f.bgPosition}` : undefined} />}
-            {f.hero && <img class:list={['story-feature-hero', { soft: f.soft }]} src={f.hero} alt="" width="300" height="300" loading="lazy" />}
             <span class="story-feature-text">
               <span class="story-feature-over">{f.over}</span>
               <span class="story-feature-name" style={f.color ? `color:${f.color}` : undefined}>{f.name}</span>
