@@ -63,14 +63,13 @@ const anvil = '<path d="M5 14h27l11-3v6c0 3-3 5-7 5h-6c-3 0-5 2-5 5v3h6v5H17v-5h
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Gnome · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('ironforge.webp')}>
+<BaseLayout title={`Gnome · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={GNOME_ART.icons.brandCog} />
 
-    <section class="hero" aria-labelledby="h-gnome">
-      <div class="hero-bg" aria-hidden="true"><img src={img('ironforge.webp')} alt="" width="1767" height="863" /></div>
+    <section class="hero gnome-cover" aria-labelledby="h-gnome">
+      <div class="hero-bg" aria-hidden="true"><img src={img('cover.webp')} alt="" width="1024" height="765" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
-      <div class="sil" aria-hidden="true"><img src={img('mekkatorque.webp')} alt="" width="300" height="300" /></div>
       <canvas id="snow" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <RaceChips lang={lang} current="gnome" />

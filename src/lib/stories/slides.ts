@@ -120,7 +120,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Gnome',
     faction: 'Alliance',
     story: GNOME_STORY[lang],
-    bg: { src: '/stories/gnome/ironforge.webp', w: 1767, h: 863 },
+    bg: { src: '/stories/gnome/cover.webp', w: 1024, h: 765 },
     hero: '/stories/gnome/mekkatorque.webp',
   },
 ];
