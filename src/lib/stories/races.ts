@@ -29,7 +29,7 @@ export const STORY_RACES: StoryRace[] = [
     name: 'Skyborne',
     faction: 'ah',
     slug: 'skyborne',
-    cover: { src: '/stories/skyborne/cover.webp', position: '50% 55%' },
+    cover: { src: '/stories/skyborne/cover-2.webp', position: '50% 55%' },
   },
 ];
 

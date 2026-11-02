@@ -54,7 +54,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Skyborne',
     faction: 'Alliance · Horde',
     story: SKYBORNE_STORY[lang],
-    bg: { src: '/stories/skyborne/cover.webp', w: 1024, h: 765 },
+    bg: { src: '/stories/skyborne/cover-2.webp', w: 1024, h: 765 },
     hero: undefined,
   },
   {
