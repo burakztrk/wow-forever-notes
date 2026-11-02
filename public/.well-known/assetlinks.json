@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.booapps.forevercampfire",
+      "sha256_cert_fingerprints": [
+        "91:CC:D1:61:CB:1A:9D:46:66:6B:DC:42:44:6B:3E:9B:F8:AE:FB:97:80:63:A0:0E:8D:91:A8:20:84:32:58:F5"
+      ]
+    }
+  }
+]
