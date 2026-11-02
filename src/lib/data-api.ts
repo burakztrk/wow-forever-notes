@@ -10,6 +10,8 @@ import { guideGlossaryTerms } from './professions';
 import { postUrl } from '../utils/url';
 import { parseSections, sectionsAsBlocks } from './post-sections';
 import { classStoryRef, raceStoryRef } from './stories/refs';
+import appConfig from '../data/app-config.json';
+import { APP_ART } from './app-art';
 
 // Public read-only data API for the mobile app: /data/v1/*.json, generated at
 // build time and served by GitHub Pages (CORS: *). Bump DATA_SCHEMA when a
@@ -67,6 +69,11 @@ export async function manifestPayload() {
     gameBuild: glossary.build,
     assetBase: siteRoot(),
     iconUrl: `${siteRoot()}/icons/{icon}.jpg`,
+    // art slot → site-relative path (src/lib/app-art.ts); the app resolves it against assetBase
+    art: APP_ART,
+    // force update: the app compares its version with `<platform>.minVersion` (blocking screen) and
+    // `latestVersion` (soft prompt); src/data/app-config.json. `message` ({tr, en} or null) replaces the app's own text.
+    app: appConfig,
     files: Object.fromEntries(DATA_FILES.map((f) => [f, `${siteRoot()}/data/v1/${f}.json`])),
     counts: {
       glossary: glossary.entries.length,

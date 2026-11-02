@@ -117,5 +117,10 @@ Node 22.12+.
   changes buff values, class picks or blueprint drops, edit the guide by hand (both languages) and bump `updated`.
   Classic WoW Forever's content is CC BY 4.0: credit it with a link (page sources + footer). Legacy perk text is
   translated through the shared `src/data/i18n/tr.json` cache (`npm run translate`).
+- Mobile app art and updates live here, not in the app: `src/lib/app-art.ts` (`APP_ART`: slot → site-relative image, sent as `art` in
+  `/data/v1/manifest.json`) decides the pictures of the app's home tiles, timeline and planner banners, so swapping one needs no app
+  release (a new slot also needs a slot in the app's `ArtSlots.kt`). `src/data/app-config.json` (`app` in the manifest) is the force-update
+  switch: raise `<os>.minVersion` to block older builds behind an "Update" screen, `latestVersion` for the soft prompt, `storeUrl` for the
+  fallback link; raise `minVersion` only after the new build is live in the store. `tests/app-config.test.ts` checks both.
 - Public repo: no secrets, `.env*` is gitignored; scan before pushing.
 - Code comments and UI strings in English; Turkish lives in `src/i18n` and `src/content/blog/tr`.

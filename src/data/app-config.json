@@ -1,0 +1,13 @@
+{
+  "android": {
+    "minVersion": "1.0.0",
+    "latestVersion": "1.4.1",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.booapps.forevercampfire"
+  },
+  "ios": {
+    "minVersion": "1.0.0",
+    "latestVersion": "1.0.0",
+    "storeUrl": null
+  },
+  "message": null
+}
