@@ -16,7 +16,7 @@ export interface StoryRace {
 
 export const STORY_RACES: StoryRace[] = [
   { id: 'alliance-gnome', name: 'Gnome', faction: 'a', slug: 'gnome', color: '#f0b43c', cover: { src: '/stories/gnome/cover.webp', position: '60% 62%' } },
-  { id: 'alliance-dwarf', name: 'Dwarf', faction: 'a', slug: 'dwarf', color: '#b8c0cc', cover: { src: '/stories/dwarf/ironforge-forge.webp', position: '30% 50%' } },
+  { id: 'alliance-dwarf', name: 'Dwarf', faction: 'a', slug: 'dwarf', color: '#b8c0cc', cover: { src: '/stories/dwarf/cover.webp', position: '50% 55%' } },
   { id: 'alliance-human', name: 'Human', faction: 'a', slug: 'human', color: '#4a8fe7', cover: { src: '/stories/human/stormwind-gate.webp', position: '30% 45%' } },
   { id: 'alliance-night-elf', name: 'Night Elf', faction: 'a', slug: 'night-elf', color: '#8a6cf0', cover: { src: '/stories/night-elf/well-of-eternity.webp', position: '40% 50%' } },
   { id: 'horde-orc', name: 'Orc', faction: 'h', slug: 'orc', color: '#4fae4a', cover: { src: '/stories/orc/orgrimmar.webp', position: '30% 45%' } },

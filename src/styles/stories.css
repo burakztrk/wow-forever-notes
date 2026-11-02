@@ -1107,3 +1107,8 @@ body:has(.lore){overflow-x:clip}
 .lore .hero.gnome-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.7) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
 @media (max-width:760px){.lore .hero.gnome-cover .hero-bg img{object-position:62% 62%}
 .lore .hero.gnome-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
+.lore .hero.dwarf-cover .hero-bg img{object-position:50% 40%;filter:brightness(1.08) saturate(1.05) contrast(1.04)}
+.lore .hero.dwarf-cover .hero-in{justify-content:flex-start}
+.lore .hero.dwarf-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.7) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.dwarf-cover .hero-bg img{object-position:50% 45%}
+.lore .hero.dwarf-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}

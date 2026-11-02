@@ -59,14 +59,13 @@ const placeImages = [withBase('/maps/searing-gorge.webp'), img('blackrock.webp')
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Dwarf · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('ironforge-forge.webp')}>
+<BaseLayout title={`Dwarf · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brandCog} />
 
-    <section class="hero forge" aria-labelledby="h-dwarf">
-      <div class="hero-bg" aria-hidden="true"><img src={img('ironforge-forge.webp')} alt="" width="1920" height="864" /></div>
+    <section class="hero forge dwarf-cover" aria-labelledby="h-dwarf">
+      <div class="hero-bg" aria-hidden="true"><img src={img('cover.webp')} alt="" width="1024" height="765" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
-      <div class="sil" aria-hidden="true"><img src={img('magni.webp')} alt="" width="447" height="447" /></div>
       <canvas id="snow" data-fx="embers" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <RaceChips lang={lang} current="dwarf" />

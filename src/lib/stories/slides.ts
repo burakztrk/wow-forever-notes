@@ -112,7 +112,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Dwarf',
     faction: 'Alliance',
     story: DWARF_STORY[lang],
-    bg: { src: '/stories/dwarf/ironforge-forge.webp', w: 1920, h: 864 },
+    bg: { src: '/stories/dwarf/cover.webp', w: 1024, h: 765 },
     hero: '/stories/dwarf/magni.webp',
   },
   {
