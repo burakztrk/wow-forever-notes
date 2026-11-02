@@ -58,12 +58,12 @@ const throneColor = ['var(--gold)', 'var(--gold)', 'var(--alliance)'];
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Human · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('stormwind-gate.webp')}>
+<BaseLayout title={`Human · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
-    <section class="hero gate" aria-labelledby="h-human">
-      <div class="hero-bg" aria-hidden="true"><img src={img('stormwind-gate.webp')} alt="" width="1920" height="810" /></div>
+    <section class="hero gate human-cover" aria-labelledby="h-human">
+      <div class="hero-bg" aria-hidden="true"><img src={img('cover.webp')} alt="" width="1024" height="765" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="wrap hero-in">
         <RaceChips lang={lang} current="human" />
@@ -298,7 +298,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- V · today -->
-    <section class="chap" id="today" aria-labelledby="h-today">
+    <section class="chap chap-bg" id="today" aria-labelledby="h-today">
+      <div class="chap-art top pano dim" aria-hidden="true"><img src={img('stormwind-gate.webp')} alt="" width="1920" height="810" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">V</div>

@@ -54,7 +54,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Skyborne',
     faction: 'Alliance · Horde',
     story: SKYBORNE_STORY[lang],
-    bg: { src: '/stories/skyborne/cover.webp', w: 1600, h: 923 },
+    bg: { src: '/stories/skyborne/cover.webp', w: 1024, h: 765 },
     hero: undefined,
   },
   {
@@ -62,7 +62,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Tauren',
     faction: 'Horde',
     story: TAUREN_STORY[lang],
-    bg: { src: '/stories/tauren/mulgore.webp', w: 848, h: 664 },
+    bg: { src: '/stories/tauren/cover.webp', w: 1024, h: 765 },
     hero: '/stories/tauren/cairne.webp',
   },
   {
@@ -70,7 +70,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Undead',
     faction: 'Horde',
     story: UNDEAD_STORY[lang],
-    bg: { src: '/stories/undead/tirisfal.webp', w: 1024, h: 431 },
+    bg: { src: '/stories/undead/cover.webp', w: 1024, h: 765 },
     hero: '/stories/undead/sylvanas.webp',
   },
   {
@@ -78,7 +78,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Troll',
     faction: 'Horde',
     story: TROLL_STORY[lang],
-    bg: { src: '/stories/troll/durotar.webp', w: 1210, h: 1619 },
+    bg: { src: '/stories/troll/cover.webp', w: 1024, h: 765 },
     hero: '/stories/troll/voljin.webp',
     soft: true,
   },
@@ -87,7 +87,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Orc',
     faction: 'Horde',
     story: ORC_STORY[lang],
-    bg: { src: '/stories/orc/orgrimmar.webp', w: 739, h: 415 },
+    bg: { src: '/stories/orc/cover.webp', w: 1024, h: 765 },
     hero: '/stories/orc/thrall.webp',
     soft: true, // a painting with its own sky: fade its edges
   },
@@ -96,7 +96,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Night Elf',
     faction: 'Alliance',
     story: NIGHT_ELF_STORY[lang],
-    bg: { src: '/stories/night-elf/well-of-eternity.webp', w: 1600, h: 1068 },
+    bg: { src: '/stories/night-elf/cover.webp', w: 1024, h: 765 },
     hero: '/stories/night-elf/azshara.webp',
   },
   {
@@ -104,7 +104,7 @@ export function raceSlides(lang: Lang): StorySlide[] {
     name: 'Human',
     faction: 'Alliance',
     story: HUMAN_STORY[lang],
-    bg: { src: '/stories/human/stormwind-gate.webp', w: 1920, h: 810 },
+    bg: { src: '/stories/human/cover.webp', w: 1024, h: 765 },
     hero: undefined,
   },
   {

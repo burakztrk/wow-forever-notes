@@ -47,14 +47,13 @@ const leaderColor = ['var(--elune)', 'var(--leaf)', 'var(--text-mute)'];
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Night Elf · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('well-of-eternity.webp')}>
+<BaseLayout title={`Night Elf · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore night" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
-    <section class="hero well" aria-labelledby="h-night-elf">
-      <div class="hero-bg" aria-hidden="true"><img src={img('well-of-eternity.webp')} alt="" width="1600" height="1068" /></div>
+    <section class="hero well night-elf-cover" aria-labelledby="h-night-elf">
+      <div class="hero-bg" aria-hidden="true"><img src={img('cover.webp')} alt="" width="1024" height="765" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
-      <div class="sil sil-queen" aria-hidden="true"><img src={img('azshara.webp')} alt="" width="387" height="516" /></div>
       <canvas id="snow" data-fx="wisps" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <RaceChips lang={lang} current="night-elf" />

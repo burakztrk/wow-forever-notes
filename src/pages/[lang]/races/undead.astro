@@ -47,14 +47,13 @@ const img = (name: string) => withBase(`/stories/undead/${name}`);
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Undead · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('tirisfal.webp')}>
+<BaseLayout title={`Undead · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore undead" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
     <section class="hero undead-cover" aria-labelledby="h-undead">
-      <div class="hero-bg" aria-hidden="true"><img src={img('tirisfal.webp')} alt="" width="1024" height="431" /></div>
+      <div class="hero-bg" aria-hidden="true"><img src={img('cover.webp')} alt="" width="1024" height="765" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
-      <div class="sil sil-sylvanas" aria-hidden="true"><img src={img('sylvanas.webp')} alt="" width="508" height="969" /></div>
       <canvas id="snow" data-fx="plague" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <RaceChips lang={lang} current="undead" />
@@ -92,7 +91,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     </section>
 
     <!-- I · origin -->
-    <section class="chap" id="origin" aria-labelledby="h-origin">
+    <section class="chap chap-bg" id="origin" aria-labelledby="h-origin">
+      <div class="chap-art top pano dim" aria-hidden="true"><img src={img('tirisfal.webp')} alt="" width="1024" height="431" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">I</div>

@@ -47,14 +47,13 @@ const leaderColor = ['var(--horde)', 'var(--gold)', 'var(--frost)'];
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Orc · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('orgrimmar.webp')}>
+<BaseLayout title={`Orc · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore orc" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
-    <section class="hero orc-gate" aria-labelledby="h-orc">
-      <div class="hero-bg" aria-hidden="true"><img src={img('orgrimmar.webp')} alt="" width="739" height="415" /></div>
+    <section class="hero orc-gate orc-cover" aria-labelledby="h-orc">
+      <div class="hero-bg" aria-hidden="true"><img src={img('cover.webp')} alt="" width="1024" height="765" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
-      <div class="sil sil-thrall" aria-hidden="true"><img src={img('thrall.webp')} alt="" width="448" height="446" /></div>
       <canvas id="snow" data-fx="cinders" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <RaceChips lang={lang} current="orc" />
@@ -265,7 +264,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- V · today -->
-    <section class="chap" id="today" aria-labelledby="h-today">
+    <section class="chap chap-bg" id="today" aria-labelledby="h-today">
+      <div class="chap-art top pano dim" aria-hidden="true"><img src={img('orgrimmar.webp')} alt="" width="739" height="415" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">V</div>

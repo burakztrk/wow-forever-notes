@@ -759,8 +759,11 @@ body:has(.lore){overflow-x:clip}
 .lore #durotar svg{max-height:76vh}
 /* Troll story: jungle green, the Durotar cover with Vol'jin, the tribe list */
 .lore.troll{--jungle:#6fcf5a}
-.lore .hero.troll-cover .hero-bg img{object-position:50% 38%;filter:brightness(1.02) saturate(.95) contrast(1.05)}
-@media (max-width:760px){.lore .hero.troll-cover .hero-bg img{object-position:40% 38%}}
+.lore .hero.troll-cover .hero-bg img{object-position:50% 20%;filter:brightness(1.06) saturate(1.05) contrast(1.04)}
+.lore .hero.troll-cover .hero-in{justify-content:flex-start}
+.lore .hero.troll-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.72) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.troll-cover .hero-bg img{object-position:50% 45%}
+.lore .hero.troll-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
 .lore .sil-voljin{aspect-ratio:857/1200;width:clamp(240px,26vw,380px);opacity:.7;right:max(-20px,calc(50% - 720px));-webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 58%,rgba(0,0,0,.5) 80%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 50%,#000 58%,rgba(0,0,0,.5) 80%,transparent 100%)}
 @media (max-width:760px){.lore .sil-voljin{width:200px;opacity:.4}}
 .lore #today .chap-art.top img{object-position:50% 30%}
@@ -832,8 +835,11 @@ body:has(.lore){overflow-x:clip}
 .lore .split .col{display:flex;flex-direction:column;min-width:0}
 /* Undead story: Forsaken violet and blight green, plain hero until the cover arrives, the Frozen Throne figure */
 .lore.undead{--forsaken:#b28cff;--plague:#8bd46a}
-.lore .hero.undead-cover .hero-bg img{object-position:50% 50%;filter:brightness(1.02) saturate(.95) contrast(1.05)}
-@media (max-width:760px){.lore .hero.undead-cover .hero-bg img{object-position:62% 50%}}
+.lore .hero.undead-cover .hero-bg img{object-position:50% 20%;filter:brightness(1.08) saturate(1.05) contrast(1.04)}
+.lore .hero.undead-cover .hero-in{justify-content:flex-start}
+.lore .hero.undead-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.72) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.undead-cover .hero-bg img{object-position:50% 45%}
+.lore .hero.undead-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
 .lore .sil-sylvanas{aspect-ratio:508/969;width:clamp(190px,19vw,290px);opacity:.7;right:max(0px,calc(50% - 740px))}
 @media (max-width:760px){.lore .sil-sylvanas{width:150px;opacity:.35}}
 .lore .lordaeron-art{width:min(40%,460px)}
@@ -844,8 +850,11 @@ body:has(.lore){overflow-x:clip}
 .lore #tirisfal svg{max-height:76vh}
 /* Tauren story: Mulgore cover, Cairne Bloodhoof, Shu'halo and the chapter art */
 .lore.tauren{--earth:#7ec876;--sun:#e8a848}
-.lore .hero.tauren-cover .hero-bg img{object-position:45% 42%;filter:brightness(1.02) saturate(.95) contrast(1.05)}
-@media (max-width:760px){.lore .hero.tauren-cover .hero-bg img{object-position:38% 42%}}
+.lore .hero.tauren-cover .hero-bg img{object-position:50% 20%;filter:brightness(1.06) saturate(1.05) contrast(1.04)}
+.lore .hero.tauren-cover .hero-in{justify-content:flex-start}
+.lore .hero.tauren-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.72) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.tauren-cover .hero-bg img{object-position:50% 45%}
+.lore .hero.tauren-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
 .lore .sil-cairne{aspect-ratio:387/516;width:clamp(240px,26vw,380px);opacity:.48}
 @media (max-width:760px){.lore .sil-cairne{width:200px;opacity:.3}}
 .lore .sil-shuhalo{z-index:0;top:clamp(220px,24vw,320px);bottom:auto;right:max(-20px,calc(50% - 680px));width:clamp(220px,24vw,340px);aspect-ratio:387/516;opacity:.42;transform:none}
@@ -853,9 +862,11 @@ body:has(.lore){overflow-x:clip}
 .lore #desolacemap svg{max-height:78vh}
 .lore #mulgore svg{max-height:76vh}
 /* Skyborne story: cover, Tortheldrin and the chapter art */
-.lore .hero.sky-cover .hero-bg img{object-position:50% 40%;transform:scaleX(-1)}
-@media (max-width:760px){.lore .hero.sky-cover .hero-bg img{object-position:38% 40%}}
-.lore .hero.sky-cover .hero-shade{background:linear-gradient(90deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.1) 34%,rgba(14,16,21,.6) 56%,rgba(14,16,21,.78) 100%),linear-gradient(180deg,rgba(14,16,21,.45) 0%,rgba(14,16,21,0) 20%,rgba(14,16,21,0) 72%,var(--bg) 100%)}
+.lore .hero.sky-cover .hero-bg img{object-position:50% 20%;filter:brightness(.98) saturate(1.05) contrast(1.04)}
+.lore .hero.sky-cover .hero-in{justify-content:flex-start}
+.lore .hero.sky-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.1) 42%,rgba(14,16,21,.55) 70%,rgba(14,16,21,.78) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.sky-cover .hero-bg img{object-position:50% 45%}
+.lore .hero.sky-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.6) 0%,rgba(14,16,21,.45) 55%,rgba(14,16,21,.12) 80%,var(--bg) 100%)}}
 .lore .sil-tortheldrin{z-index:0;top:clamp(200px,22vw,300px);bottom:auto;right:max(-20px,calc(50% - 680px));width:clamp(200px,21vw,310px);aspect-ratio:610/585;opacity:.5;transform:none}
 @media (max-width:760px){.lore .sil-tortheldrin{display:none}}
 /* Story banner on the race pages: a wide, rounded strip above the patch notes */
@@ -1112,3 +1123,22 @@ body:has(.lore){overflow-x:clip}
 .lore .hero.dwarf-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.7) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
 @media (max-width:760px){.lore .hero.dwarf-cover .hero-bg img{object-position:9% 45%}
 .lore .hero.dwarf-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
+.lore .hero.human-cover .hero-bg img{object-position:50% 40%;filter:brightness(1.04) saturate(1.05) contrast(1.04)}
+.lore .hero.human-cover .hero-in{justify-content:flex-start}
+.lore .hero.human-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.72) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.human-cover .hero-bg img{object-position:50% 45%}
+.lore .hero.human-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
+.lore .hero.night-elf-cover .hero-col{width:min(100%,1040px)}
+.lore .hero.night-elf-cover .hero-copy{max-width:640px}
+.lore .hero.night-elf-cover .h1{white-space:nowrap}
+.lore .hero.night-elf-cover .hero-bg img{object-position:50% 100%;filter:brightness(1.1) saturate(1.05) contrast(1.04)}
+.lore .hero.night-elf-cover .hero-in{justify-content:flex-start}
+.lore .hero.night-elf-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.72) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.night-elf-cover .h1{white-space:normal}
+.lore .hero.night-elf-cover .hero-bg img{object-position:50% 45%}
+.lore .hero.night-elf-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}
+.lore .hero.orc-cover .hero-bg img{object-position:50% 20%;filter:brightness(1.06) saturate(1.05) contrast(1.04)}
+.lore .hero.orc-cover .hero-in{justify-content:flex-start}
+.lore .hero.orc-cover .hero-shade{background:linear-gradient(270deg,rgba(14,16,21,0) 0%,rgba(14,16,21,.08) 42%,rgba(14,16,21,.5) 70%,rgba(14,16,21,.72) 100%),linear-gradient(180deg,rgba(14,16,21,.3) 0%,rgba(14,16,21,0) 18%,rgba(14,16,21,0) 78%,var(--bg) 100%)}
+@media (max-width:760px){.lore .hero.orc-cover .hero-bg img{object-position:50% 45%}
+.lore .hero.orc-cover .hero-shade{background:linear-gradient(180deg,rgba(14,16,21,.55) 0%,rgba(14,16,21,.38) 55%,rgba(14,16,21,.1) 80%,var(--bg) 100%)}}

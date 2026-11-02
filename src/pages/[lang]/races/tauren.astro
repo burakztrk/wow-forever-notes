@@ -47,14 +47,13 @@ const leaderColor = ['var(--horde)', 'var(--earth)', 'var(--sun)'];
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Tauren · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('mulgore.webp')}>
+<BaseLayout title={`Tauren · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore tauren" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 
     <section class="hero tauren-cover" aria-labelledby="h-tauren">
-      <div class="hero-bg" aria-hidden="true"><img src={img('mulgore.webp')} alt="" width="848" height="664" /></div>
+      <div class="hero-bg" aria-hidden="true"><img src={img('cover.webp')} alt="" width="1024" height="765" /></div>
       <div class="hero-shade" aria-hidden="true"></div>
-      <div class="sil sil-cairne" aria-hidden="true"><img src={img('cairne.webp')} alt="" width="387" height="516" /></div>
       <canvas id="snow" data-fx="sun" aria-hidden="true"></canvas>
       <div class="wrap hero-in">
         <RaceChips lang={lang} current="tauren" />
@@ -130,7 +129,8 @@ const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
     <div class="wrap sep" aria-hidden="true"><svg viewBox="-16 -16 32 32"><path d={ic.sep} /></svg></div>
 
     <!-- II · the centaur raids in Desolace -->
-    <section class="chap" id="centaurs" aria-labelledby="h-centaurs">
+    <section class="chap chap-bg" id="centaurs" aria-labelledby="h-centaurs">
+      <div class="chap-art top dim" aria-hidden="true"><img src={img('mulgore.webp')} alt="" width="848" height="664" loading="lazy" /></div>
       <div class="wrap">
         <header class="ch-head rv">
           <div class="ch-num" aria-hidden="true">II</div>
