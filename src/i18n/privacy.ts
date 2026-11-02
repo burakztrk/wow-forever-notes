@@ -31,7 +31,7 @@ const ISSUES = 'https://github.com/burakztrk/wow-forever-notes/issues';
 export const privacy: Record<Lang, PrivacyPage> = {
   tr: {
     title: 'Gizlilik politikası',
-    updated: 'Son güncelleme: 29 Ekim 2026',
+    updated: 'Son güncelleme: 2 Kasım 2026',
     intro:
       'Bu politika Forever Campfire: Codex web sitesi ve mobil uygulaması için geçerlidir. İkisi de resmi olmayan, hayranlar tarafından yapılmış ve ücretsiz projelerdir. Hesap, reklam ya da çerez yoktur. Web sitesi kişisel veri içermeyen ziyaret istatistikleri tutar; Android uygulaması anonim kullanım istatistikleri ve çökme raporları gönderir, bunları Ayarlar\'dan kapatabilirsin.',
     sections: [
@@ -56,7 +56,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
       {
         heading: 'Uygulamanın kullanım istatistikleri ve çökme raporları',
         paragraphs: [
-          'Android uygulaması, hangi özelliklerin kullanıldığını görmek ve hataları düzeltmek için Google Firebase Analytics ve Firebase Crashlytics kullanır. Kaydedilenler: açtığın ekranlar ve gösterdikleri sayfa (ör. hangi class, ırk, meslek, hikaye ya da yama notu), dokunduğun işlemler (sekme değiştirme, paylaşma, dış bağlantı açma, talent build\'ini kaydetme ya da paylaşma ve dağıttığın puanlar, build ve karakter silme, dil değiştirme, verileri yenileme, büyü/talent açıklaması açma), uygulama içi aramada yazdığın arama terimleri ve uygulamanın dili. Karakter oluşturduğunda ırkı, class\'ı ve karaktere verdiğin ad gönderilir; bu yüzden karakter adına gerçek adını yazma. Build\'lere verdiğin adlar gönderilmez.',
+          'Android uygulaması, hangi özelliklerin kullanıldığını görmek ve hataları düzeltmek için Google Firebase Analytics ve Firebase Crashlytics kullanır. Kaydedilenler: açtığın ekranlar ve gösterdikleri sayfa (ör. hangi class, ırk, meslek, hikaye ya da yama notu), dokunduğun işlemler (sekme değiştirme, paylaşma, dış bağlantı açma, talent build\'ini kaydetme ya da paylaşma ve dağıttığın puanlar, build ve karakter silme, dil değiştirme, verileri yenileme, büyü/talent açıklaması ve item, kamp, perk kartı açma, talent ya da Legacy puanlarını sıfırlama, uygulama güncelleme isteminin gösterilmesi ve başlatılması), uygulama içi aramada yazdığın arama terimleri ve uygulamanın dili. Karakter oluşturduğunda ırkı, class\'ı ve karaktere verdiğin ad gönderilir; bu yüzden karakter adına gerçek adını yazma. Build\'lere verdiğin adlar gönderilmez.',
           'Bu kayıtları bir arada tutabilmek için uygulama her kurulumu Firebase Authentication\'da anonim bir kullanıcı olarak kaydeder. Bu kullanıcının adı, e-postası ya da şifresi yoktur; yalnızca rastgele bir kullanıcı kimliği vardır ve kullanım istatistikleri ile çökme raporları bu kimlikle eşleşir. Uygulamayı silince yeniden kurulumda yeni bir anonim kullanıcı oluşturulur.',
           'Firebase bunlara ek olarak uygulama sürümünü, cihaz modelini, işletim sistemi sürümünü, cihaz dilini, oturum sayısı ve süresini ve IP adresinden çıkarılan yaklaşık konumu (ülke, şehir) alır. Her kurulum için ayrıca rastgele bir uygulama kimliği oluşturulur ve uygulamayı silince sıfırlanır. Reklam kimliği okunmaz.',
           'Uygulama çökerse Crashlytics hata ayrıntılarını (hangi kodda çöktüğü), cihaz modeli ve sistem sürümünü, boş bellek ve depolamayı ve çökmeden hemen önce açılan ekranlarla işlemleri gönderir.',
@@ -101,7 +101,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
   },
   en: {
     title: 'Privacy policy',
-    updated: 'Last updated: 29 October 2026',
+    updated: 'Last updated: 2 November 2026',
     intro:
       'This policy covers the Forever Campfire: Codex website and mobile app. Both are unofficial, fan-made and free. There are no accounts, ads or cookies. The website keeps visit statistics that contain no personal data; the Android app sends anonymous usage statistics and crash reports, which you can turn off in Settings.',
     sections: [
@@ -126,7 +126,7 @@ export const privacy: Record<Lang, PrivacyPage> = {
       {
         heading: 'App usage statistics and crash reports',
         paragraphs: [
-          'The Android app uses Google Firebase Analytics and Firebase Crashlytics to see which features are used and to fix bugs. It records the screens you open and the page they show (for example which class, race, profession, story or patch note), the actions you tap (switching tabs, sharing, opening external links, saving or sharing a talent build and the points in it, deleting builds and characters, changing the language, refreshing the data, opening a spell or talent description), the search terms you type in the in-app search, and the app language. When you create a character, its race, class and the name you give it are sent, so do not use your real name as a character name. The names you give builds are not sent.',
+          'The Android app uses Google Firebase Analytics and Firebase Crashlytics to see which features are used and to fix bugs. It records the screens you open and the page they show (for example which class, race, profession, story or patch note), the actions you tap (switching tabs, sharing, opening external links, saving or sharing a talent build and the points in it, deleting builds and characters, changing the language, refreshing the data, opening a spell, talent, item, camp or perk description, resetting talent or Legacy points, seeing and starting an app update prompt), the search terms you type in the in-app search, and the app language. When you create a character, its race, class and the name you give it are sent, so do not use your real name as a character name. The names you give builds are not sent.',
           'To keep these records together, the app registers each installation as an anonymous user in Firebase Authentication. This user has no name, email or password, only a random user ID that the usage statistics and crash reports are linked to. After uninstalling, a reinstall creates a new anonymous user.',
           'Firebase also receives the app version, device model, operating system version, device language, the number and length of sessions, and an approximate location (country, city) derived from your IP address. Each installation also gets a random app identifier that is reset when you uninstall the app. The advertising ID is not read.',
           'If the app crashes, Crashlytics sends the error details (where in the code it crashed), the device model and system version, free memory and storage, and the screens and actions just before the crash.',
