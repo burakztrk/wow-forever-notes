@@ -41,8 +41,9 @@ const lanes = rows.map((row, i) => {
                 style={`--label:${Math.round(icon.name.length * LABEL_CHAR + LABEL_PAD + LINKS_WIDTH)}px${icon.color ? `;--edge:${icon.color}` : ''}`}
                 aria-hidden={copy === 1 ? 'true' : undefined}
               >
-                <a class="story-icon-img" href={icon.href} aria-label={icon.name} tabindex={copy === 1 ? -1 : undefined}>
-                  <img src={withBase(`/icons/${icon.icon}.jpg`)} alt="" width="72" height="72" loading="lazy" />
+                <a class="story-icon-img" href={icon.href} tabindex={copy === 1 ? -1 : undefined}>
+                  {/* the alt names the link (screen readers and crawlers read an image link by its alt) */}
+                  <img src={withBase(`/icons/${icon.icon}.jpg`)} alt={icon.name} width="72" height="72" loading="lazy" />
                 </a>
                 <span class="story-icon-name">
                   <span class="story-icon-title">{icon.name}</span>
