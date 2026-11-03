@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      indexnow_all:
+        description: "Announce every sitemap URL to IndexNow (Bing) after the deploy"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -40,3 +45,34 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tell Bing (IndexNow) which pages changed, once they are live: the posts this
+  # push added or edited and the pages that list them (scripts/indexnow.mjs).
+  # A failure here never fails the deploy.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Announce changed URLs
+        env:
+          BEFORE: ${{ github.event.before }}
+          ALL: ${{ inputs.indexnow_all }}
+        run: |
+          if [ "$ALL" = "true" ]; then
+            node scripts/indexnow.mjs --all
+            exit $?
+          fi
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BEFORE" 2>/dev/null; then
+            echo "indexnow: no previous commit to compare with, skipping"
+            exit 0
+          fi
+          git diff --name-only "$BEFORE" "$GITHUB_SHA" > changed.txt
+          xargs -a changed.txt node scripts/indexnow.mjs --changed

@@ -96,7 +96,7 @@ Node 22.12+.
   per page (`src/lib/seo.ts`: `Organization` + `WebSite`/SearchAction + the page node, `WebPage` by default, `pageType`
   or a `jsonLd` node such as `BlogPosting` + `BreadcrumbList` from `src/lib/breadcrumbs.ts`). Posts may carry `seoTitle`
   (≤ 60) and `updated`. `/<lang>/rss.xml` lists the posts, `/<lang>/about/` (`src/i18n/about.ts`) says who writes the site
-  and how; keep it true. No `llms.txt`: Google Search does not use it (docs/seo.md). `@astrojs/sitemap` (astro.config, tr/en alternates; root redirect and 404 left out) and
+  and how; keep it true. No `llms.txt`: Google Search does not use it (docs/seo.md). After each deploy the `indexnow` job of `.github/workflows/deploy.yml` announces changed posts and list pages to Bing (`scripts/indexnow.mjs`; the key file `public/<KEY>.txt` is public by design). `@astrojs/sitemap` (astro.config, tr/en alternates; root redirect and 404 left out) and
   `src/pages/robots.txt.ts`. Cloudflare Web Analytics (cookie-free) is added only in production builds when
   `PUBLIC_CF_WEB_ANALYTICS_TOKEN` is set — the deploy workflow fills it from the `CF_WEB_ANALYTICS_TOKEN` repository
   variable. Keep the privacy page (`src/i18n/privacy.ts`) in line with it.

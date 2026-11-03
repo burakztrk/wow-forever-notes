@@ -46,6 +46,8 @@ Bunu sayfa üretmeden (scaled content abuse riski) mevcut class/ırk/istatistik 
 | Güven (E-E-A-T) | `/tr/about/`, `/en/about/`: kim, kaynaklar, notların nasıl yazıldığı (AI yardımı açıkça), hata bildirimi. Footer'da About / Privacy / RSS. |
 | Hız | Google Fonts CSS'i ilk boyamayı bloklamıyor (preload + swap). |
 | Tazelik | Tagline'dan "beta" kalktı (oyun 4 Kasım'da çıktı). |
+| IndexNow | Her deploy'dan sonra değişen yazılar + ana/notlar/RSS sayfaları Bing'e bildirilir (`scripts/indexnow.mjs`, deploy workflow'unun `indexnow` işi). Anahtar `public/<KEY>.txt`, gizli değil. Tüm sitemap'i bir kez göndermek için: Actions → Deploy to GitHub Pages → Run workflow → `indexnow_all`. |
+| Görsel linkler | Ana sayfadaki kayan ırk/class ikonlarının alt metni ırk/class adı (sadece görselden oluşan link, Bing uyarısı). |
 
 ## Senin yapman gerekenler (elle, ~30 dk)
 
