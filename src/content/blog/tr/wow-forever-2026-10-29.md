@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notları: lansman tarihi 4 Kasım ve iki yeni oyuncu rehberi"
+seoTitle: "WoW Forever: lansman tarihi 4 Kasım ve yeni rehberler"
 date: 2026-10-29
 tags: [wow-forever, patch-notes]
 accent: warning

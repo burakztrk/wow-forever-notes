@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notes: Mage talent shuffle, Hunter tuning and a name-check fix (build 70685)"
+seoTitle: "WoW Forever patch notes: Mage talents, Hunter tuning"
 date: 2026-10-28
 tags: [wow-forever, patch-notes]
 accent: warning

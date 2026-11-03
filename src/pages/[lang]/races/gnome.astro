@@ -9,7 +9,7 @@ import StoryEnd from '../../../components/stories/StoryEnd.astro';
 import StoryHeader from '../../../components/stories/StoryHeader.astro';
 import StoryLinks from '../../../components/stories/StoryLinks.astro';
 import { LANGS, type Lang } from '../../../config';
-import { ui } from '../../../i18n';
+import { fill, ui } from '../../../i18n';
 import { GNOME_ART_LABELS, GNOME_STORY, STORY_UI } from '../../../i18n/stories';
 import { fillArt } from '../../../lib/stories/art';
 import { GNOME_ART } from '../../../lib/stories/gnome-art';
@@ -63,7 +63,7 @@ const anvil = '<path d="M5 14h27l11-3v6c0 3-3 5-7 5h-6c-3 0-5 2-5 5v3h6v5H17v-5h
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Gnome · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
+<BaseLayout title={fill(t.storyPageTitle, { name: 'Gnome' })} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={GNOME_ART.icons.brandCog} />
 

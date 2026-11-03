@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notları: Mage talent düzeni, Hunter ayarı ve isim kontrolü düzeltmesi (build 70685)"
+seoTitle: "WoW Forever yama notları: Mage talent'ları, Hunter ayarı"
 date: 2026-10-28
 tags: [wow-forever, patch-notes]
 accent: warning

@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notes: big class talent rework, new Shank and race tuning (build 70707)"
+seoTitle: "WoW Forever patch notes: talent rework, new Shank"
 date: 2026-10-30
 tags: [wow-forever, patch-notes]
 accent: warning

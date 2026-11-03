@@ -23,7 +23,7 @@ const factions = (['alliance', 'horde'] as const).map((key) => ({
 }));
 ---
 
-<BaseLayout title={t.storiesTitle} description={t.storiesIntro} lang={lang} alternates={alternates} wide>
+<BaseLayout title={`${t.storiesTitle} – WoW Forever`} description={t.storiesIntro} pageType="CollectionPage" lang={lang} alternates={alternates} wide>
   <div class="story-index">
     <h1>{t.storiesTitle}</h1>
     <p class="muted">{t.storiesIntro}</p>

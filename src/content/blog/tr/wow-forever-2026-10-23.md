@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notları: Beta kapandı, lansman 4 Kasım (build 70532)"
+seoTitle: "WoW Forever yama notları: beta kapandı, lansman 4 Kasım"
 date: 2026-10-23
 tags: [wow-forever, patch-notes]
 accent: success

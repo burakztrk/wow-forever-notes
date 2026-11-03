@@ -11,7 +11,11 @@ const blog = defineCollection({
   loader: glob({ pattern: '{tr,en}/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
+    // shorter <title> for search results when `title` is over 60 characters (the h1 keeps `title`)
+    seoTitle: z.string().max(60).optional(),
     date: z.date(),
+    // set when a published post is revised (shown on the page, dateModified in JSON-LD)
+    updated: z.date().optional(),
     tags: z.array(z.string()).default([]),
     accent: accent.default('warning'),
     excerpt: z.string().optional(),

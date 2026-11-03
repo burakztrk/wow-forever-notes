@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notes: Final racial trait pass and racial supplement (build 70634)"
+seoTitle: "WoW Forever patch notes: final racial trait pass"
 date: 2026-10-27
 tags: [wow-forever, patch-notes]
 accent: warning

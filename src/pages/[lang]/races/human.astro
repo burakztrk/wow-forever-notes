@@ -9,7 +9,7 @@ import StoryEnd from '../../../components/stories/StoryEnd.astro';
 import StoryHeader from '../../../components/stories/StoryHeader.astro';
 import StoryLinks from '../../../components/stories/StoryLinks.astro';
 import { LANGS, type Lang } from '../../../config';
-import { ui } from '../../../i18n';
+import { fill, ui } from '../../../i18n';
 import { HUMAN_ART_LABELS, HUMAN_STORY, STORY_UI } from '../../../i18n/stories';
 import { fillArt } from '../../../lib/stories/art';
 import { HUMAN_ART } from '../../../lib/stories/human-art';
@@ -58,7 +58,7 @@ const throneColor = ['var(--gold)', 'var(--gold)', 'var(--alliance)'];
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Human · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
+<BaseLayout title={fill(t.storyPageTitle, { name: 'Human' })} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 

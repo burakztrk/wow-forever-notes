@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notes: November 2 development notes, last round before launch (build 70753)"
+seoTitle: "WoW Forever patch notes Nov 2: last round before launch"
 date: 2026-11-02
 tags: [wow-forever, patch-notes]
 accent: warning

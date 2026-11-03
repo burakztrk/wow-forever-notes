@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notes: Beta closes, launch on November 4 (build 70532)"
+seoTitle: "WoW Forever patch notes: beta closes, launch Nov 4"
 date: 2026-10-23
 tags: [wow-forever, patch-notes]
 accent: success

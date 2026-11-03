@@ -14,7 +14,7 @@ const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/searc
 const config = { index: withBase(`/${lang}/search.json`), level: t.level, noResults: t.noResults, loading: t.loading };
 ---
 
-<BaseLayout title={t.searchTitle} description={t.searchHint} lang={lang} alternates={alternates}>
+<BaseLayout title={t.searchTitle} description={t.metaSearch} lang={lang} alternates={alternates}>
   <h1>{t.searchTitle}</h1>
   <form class="search-form" role="search" data-search-form>
     <input

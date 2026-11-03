@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notları: 2 Kasım geliştirme notları, lansman öncesi son tur (build 70753)"
+seoTitle: "WoW Forever yama notları 2 Kasım: lansman öncesi son tur"
 date: 2026-11-02
 tags: [wow-forever, patch-notes]
 accent: warning
