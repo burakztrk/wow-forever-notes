@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-29T23:00:24.336Z",
+  "generatedAt": "2026-11-03T10:12:30.192Z",
   "source": "https://wowforevertools.com/legacy (client text); https://wowforever.wclbox.com/en/chuancheng (rewards, challenges)",
-  "build": "1.60.1.70685",
+  "build": "1.60.1.70753",
   "maxPoints": 16,
   "pointsPerTier": 5,
   "unlockLevel": 25,
-  "totalChallenges": 81,
+  "totalChallenges": 65,
   "challenges": [
     {
       "key": "classes",
@@ -40,8 +40,8 @@
     {
       "key": "adventure",
       "name": "Adventure",
-      "count": 3,
-      "points": 18
+      "count": 2,
+      "points": 2
     }
   ],
   "trees": [

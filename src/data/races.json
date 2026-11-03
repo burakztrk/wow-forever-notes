@@ -15,7 +15,7 @@
     "racials": [
       "racial/racial-orc-blood-fury",
       "racial/racial-orc-shatter-curse",
-      "racial/racial-orc-savage",
+      "racial/racial-orc-command",
       "racial/racial-orc-hardiness"
     ]
   },
@@ -134,7 +134,7 @@
     "racials": [
       "racial/racial-dwarf-stoneform",
       "racial/racial-dwarf-find-treasure",
-      "racial/racial-dwarf-earth-fury",
+      "racial/racial-dwarf-artisan-s-precision",
       "racial/racial-dwarf-big-game-hunter"
     ]
   },
