@@ -35,10 +35,6 @@
     "en": "Feed your pet the selected item. Feeding your pet increases happiness. Using food close to the pet's level will have a better result.",
     "tr": "Pet'ini seçili eşyayla besler. Beslemek mutluluğunu artırır. Pet'in seviyesine yakın yiyecekler daha iyi sonuç verir."
   },
-  "02ff2b177f5dd510": {
-    "en": "When your Rupture ability deals periodic damage, the Energy cost of your next Hemorrhage or Backstab ability within 10 sec is reduced by 3, stacking up to 5 times.",
-    "tr": "Rupture periyodik hasar verdiğinde 10 saniye içindeki bir sonraki Hemorrhage veya Backstab'ının Enerji maliyeti 3 azalır; en fazla 5 kez birikir."
-  },
   "030f1bd2be37b6a1": {
     "en": "A balanced combat stance.",
     "tr": "Dengeli bir savaş duruşu."
@@ -83,10 +79,6 @@
     "en": "Maximum rank changed from 5 to 3. Moved from column 4 to column 3. Effect override.",
     "tr": "Maksimum rank 5'ten 3'e değişti. Sütun 4'ten sütun 3'e taşındı. Efekt değiştirildi."
   },
-  "049f61fcf9a81bf2": {
-    "en": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 30%.",
-    "tr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %30 artırır."
-  },
   "04d7b785088ee34c": {
     "en": "Summons a Fire Resistance Totem with 5 health at the feet of the caster for 5 min that increases the fire resistance of party or raid members within 30 yards by 60.",
     "tr": "Büyücünün ayaklarının dibinde 5 canlı bir Fire Resistance Totem çağırır; 5 dakika boyunca 30 yard içindeki parti veya raid üyelerinin fire direncini 60 artırır."
@@ -107,9 +99,21 @@
     "en": "Finishes the remaining cooldown on all your other Frost spells.",
     "tr": "Diğer tüm Frost büyülerinin kalan bekleme süresini sıfırlar."
   },
+  "0564ec0ccf4f99fe": {
+    "en": "Reduces the energy cost of your Sinister Strike and Bleeding abilities by 5.",
+    "tr": "Sinister Strike ve Hemorrhage yeteneklerinin enerji maliyetini 5 azaltır."
+  },
   "060036bac5a08e8f": {
     "en": "Increases the movement speed of your pets by 30%.",
     "tr": "Pet'lerinin hareket hızını %30 artırır."
+  },
+  "065c0212020aa782": {
+    "en": "Your Ferious Bite no longer converts extra energy into damage, but will still do extra damage based on your excess energy.",
+    "tr": "Ferocious Bite artık fazla enerjiyi hasara çevirmez, ama fazla enerjine göre ek hasar vermeye devam eder."
+  },
+  "066543056b136735": {
+    "en": "Increases your armor by 25% Intelligence.",
+    "tr": "Zırhını Intellect'inin %25'i kadar artırır."
   },
   "066873bfc2da4a80": {
     "en": "Rank 5:Cost: 230 mana (Classic Era: 580 mana)",
@@ -186,6 +190,10 @@
   "0b055b0827f38ed0": {
     "en": "Disarm the enemy's weapon for 10 sec.",
     "tr": "Düşmanı 10 saniye boyunca silahsız bırakır."
+  },
+  "0b6b7bf872877f93": {
+    "en": "Gives you a 15% chance to add one combo point to a target after dodging attacks or completely resisting spells.",
+    "tr": "Saldırıdan kaçındıktan ya da bir büyüye tamamen direndikten sonra hedefe %15 şansla 1 combo point ekler."
   },
   "0ba2775b24b9d122": {
     "en": "You hurl molten lava at the target, dealing 192 to 248 (+71.4% of spell power) Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage.",
@@ -319,6 +327,10 @@
     "en": "Increases your spell healing by up to 25% of your total Spirit and your spell damage by up to 8% of your total Spirit.",
     "tr": "Büyü iyileştirmeni toplam Spirit'inin en fazla %25'i, büyü hasarını toplam Spirit'inin en fazla %8'i kadar artırır."
   },
+  "111f1c7cc6ceaab4": {
+    "en": "Tactical Mastery-Allows you to retain up to 10 additional rage when changing stances.",
+    "tr": "Tactical Mastery: Duruş değiştirirken 10 ek Öfke korumanı sağlar."
+  },
   "114a70e12f1aaf30": {
     "en": "Creates a portal, teleporting group members that use it to Darnassus.",
     "tr": "Kullanan grup üyelerini Darnassus'a ışınlayan bir portal açar."
@@ -327,6 +339,14 @@
     "en": "Launches a volley of holy light at the target, causing 92 (+19% of spell power) Holy damage to an enemy, or 425 (+19% of spell power) healing to an ally, instantly and every 1 sec for 2 sec.",
     "tr": "Hedefe kutsal ışık yağdırır; anında ve 2 saniye boyunca her 1 saniyede düşmana 92 (+büyü gücünün %19'u) Holy hasar verir ya da müttefiki 425 (+büyü gücünün %19'u) iyileştirir."
   },
+  "1220c215b2b3bf7d": {
+    "en": "Shortens the cooldown of your Holy Strike by 4 seconds. In addition, Holy Strike uses your shield to attack instead, triggering your current Holy Shield and Shield Specialization talents without consuming their number of times or triggering their cooldown, and allows you to block spells in 6 seconds.",
+    "tr": "Holy Strike bekleme süresini 4 saniye kısaltır. Ayrıca Holy Strike kalkanınla vurur; mevcut Holy Shield ve Shield Specialization talent'larını kullanım sayısını harcamadan ve bekleme süresini başlatmadan tetikler ve 6 saniye boyunca büyüleri bloklamanı sağlar."
+  },
+  "1240aad3ec73bebf": {
+    "en": "Increases your casting and attack speed by 10% for 15 seconds.",
+    "tr": "15 saniye boyunca cast ve saldırı hızını %10 artırır."
+  },
   "12bf22f7c36a9dbf": {
     "en": "Heal your target for 633 to 714 (+85.7% of spell power).",
     "tr": "Hedefini 633 - 714 (+büyü gücünün %85.7'si) iyileştirir."
@@ -334,6 +354,10 @@
   "12cfce14bf37f393": {
     "en": "Displays the location of all nearby demons on a miniature map. Only one tracking skill can be activated at a time.",
     "tr": "Yakındaki tüm demon'ların yerini minimap'te gösterir. Aynı anda yalnızca bir izleme yeteneği aktif olabilir."
+  },
+  "1313c56b844eaade": {
+    "en": "Increases the damage dealt by your Seal and Judgement by 6%.",
+    "tr": "Seal ve Judgement hasarını %6 artırır."
   },
   "132313eede46fe4e": {
     "en": "Protects the caster, increasing armor by 120 and increases health regeneration by 5 health per 5 sec. for 30 min.",
@@ -415,17 +439,9 @@
     "en": "Places a spell on the target that heals them for 172 (+42.9% of spell power) the next time they take damage or receive non-periodic healing. When the heal occurs, Prayer of Mending jumps to a party or raid member within 20 yards. Jumps up to 5 times and lasts 30 sec after each jump. This spell can only be placed on one target at a time per caster.",
     "tr": "Hedefe, bir sonraki hasar aldığında veya periyodik olmayan iyileştirme aldığında onu 172 (+büyü gücünün %42.9'u) iyileştiren bir büyü koyar. İyileştirme olunca Prayer of Mending 20 yard içindeki bir grup veya raid üyesine sıçrar. En fazla 5 kez sıçrar ve her sıçramadan sonra 30 saniye sürer. Her cast eden bu büyüyü aynı anda yalnızca bir hedefe koyabilir."
   },
-  "16db9f1490ee6d62": {
-    "en": "Remove the Rescue or Group Rescue effect from target party or raid members.",
-    "tr": "Hedef grup veya raid üyelerinden Salvation ya da grup Salvation etkisini kaldırır."
-  },
   "171857d85b38acea": {
     "en": "Maximum rating changed from 5 to 3. Value unchanged, wording adjusted.",
     "tr": "Maksimum rank 5'ten 3'e değişti. Değer aynı, metin düzenlendi."
-  },
-  "178c948c0e41904c": {
-    "en": "Gives you a 100% chance to add one combo point to a target after dodging attacks or completely resisting spells.",
-    "tr": "Saldırılardan kaçındıktan veya büyülere tamamen direndikten sonra hedefe %100 şansla bir combo point ekler."
   },
   "17ff696bc5a8a748": {
     "en": "Sends bolts of holy power in all directions, causing 490 to 576 (+19% of spell power) Holy damage to all Undead and Demon targets within 20 yds and stunning them for 2 sec.",
@@ -447,10 +463,6 @@
     "en": "A slow casting spell that heals a single target for 1853 to 2067 (+85.7% of spell power).",
     "tr": "Tek bir hedefi 1853 - 2067 (+büyü gücünün %85.7'si) iyileştiren yavaş cast'li bir büyü."
   },
-  "1967e573e5dfaf9b": {
-    "en": "You hurl molten lava at the target, dealing 113 to 146 (+71.4% of spell power) Fire damage. If your Flame Shock is on the target, Lava Burst deals 20% increased damage.",
-    "tr": "Hedefe erimiş lav fırlatırsın; 113 ile 146 arasında (+büyü gücünün %71,4'ü) Fire hasarı verir. Hedefte Flame Shock'ın varsa Lava Burst %20 daha fazla hasar verir."
-  },
   "19afa0002e3224f6": {
     "en": "Moved from layer 3 to layer 2. Effect override.",
     "tr": "Katman 3'ten katman 2'ye taşındı. Efekt değiştirildi."
@@ -467,6 +479,10 @@
     "en": "Place up to 4 totems in the Totem Bar at the same time.",
     "tr": "Totem Bar'daki en fazla 4 totemi aynı anda yerleştirir."
   },
+  "1a2f8ce15f119b72": {
+    "en": "Every time you heal a target other than yourself with Flash Heal, you also recover 50% of your health. This heal does not pose a threat.",
+    "tr": "Flash Heal ile kendin dışındaki bir hedefi her iyileştirdiğinde canının %50'sini de sen geri kazanırsın. Bu iyileştirme tehdit yaratmaz."
+  },
   "1a7c7ac2d30ba414": {
     "en": "Increases chance to block by 30% for 10 sec, and deals 110 Holy damage for each attack blocked while active. Damage caused by Holy Shield causes 20% additional threat. Each block expends a charge. 4 charges.",
     "tr": "10 saniye boyunca blok şansını %30 artırır ve aktifken bloklanan her saldırı için 110 Holy hasar verir. Holy Shield'in verdiği hasar %20 ek tehdit üretir. Her blok bir şarj tüketir. 4 şarj."
@@ -479,6 +495,10 @@
     "en": "Heals a friendly target for 2139 to 2525 (+100% of spell power).",
     "tr": "Dost bir hedefi 2139 - 2525 (+büyü gücünün %100'ü) iyileştirir."
   },
+  "1ad634e67b8b143f": {
+    "en": "Skills that increase combo points have a 33% chance of adding an additional combo point to critical strikes.",
+    "tr": "Combo point artıran yeteneklerin kritik vuruşları %33 şansla fazladan 1 combo point ekler."
+  },
   "1af8e2110384fede": {
     "en": "Increases your Attack Power by 100% of your Intellect.",
     "tr": "Attack Power'ını Intellect'inin %100'ü kadar artırır."
@@ -490,10 +510,6 @@
   "1b664a13094e6793": {
     "en": "Immerse a weapon with poison. Lasts for 30 minutes.\nEach attack has a 30% chance to poison the enemy, dealing 72 Nature damage over 12 seconds. Can stack up to 5 times on a single target. Can be used 160 times.",
     "tr": "Silaha zehir sürer. 30 dakika sürer.\nHer saldırının düşmanı zehirleme şansı %30'dur; zehir 12 saniye boyunca 72 Nature hasarı verir. Tek bir hedefte en fazla 5 kez birikir. 160 kez kullanılabilir."
-  },
-  "1b6c701cd7378a90": {
-    "en": "Reduces the Energy cost of your Sinister Strike ability by 5.",
-    "tr": "Sinister Strike yeteneğinin Enerji maliyetini 5 azaltır."
   },
   "1b879c31f82aa446": {
     "en": "Increases your Parry chance by 5%.",
@@ -511,13 +527,25 @@
     "en": "Rank 8:Value: 209 (Classic Era: 230)",
     "tr": "Rank 8: Değer 209 (Classic Era: 230)"
   },
+  "1be9474fb1f8b7db": {
+    "en": "Increases the damage dealt by your Seal and Judgement by 3%.",
+    "tr": "Seal ve Judgement hasarını %3 artırır."
+  },
   "1c10efcddfaae8ea": {
     "en": "Reduces the gold price of items from all vendors by 10%.",
     "tr": "Tüm vendor'lardaki eşyaların altın fiyatı %10 düşer."
   },
+  "1c8b11ea12bddbbd": {
+    "en": "Increases the energy generated by your Lancing ability by 9 points and reduces the cooldown by 1.2 seconds.",
+    "tr": "Shank yeteneğinin ürettiği enerjiyi 9 puan artırır ve bekleme süresini 1,2 saniye kısaltır."
+  },
   "1c8ff6fb993c4d41": {
     "en": "Immerse a weapon with poison. Lasts for 30 minutes.\nEach attack has a 20% chance to poison the enemy, instantly dealing 62 to 80 Nature damage. Can be used 150 times.",
     "tr": "Silaha zehir sürer. 30 dakika sürer.\nHer saldırının düşmanı zehirleme şansı %20'dir; zehir anında 62 - 80 Nature hasarı verir. 150 kez kullanılabilir."
+  },
+  "1cbd5e7d78f02cee": {
+    "en": "Moved from Divine tree to Protection tree. Moved from column 3 to column 2.",
+    "tr": "Divine ağacından Protection ağacına taşındı. 3. sütundan 2. sütuna taşındı."
   },
   "1d43e7b448f8d455": {
     "en": "Regenerates 3% of your total Health over 6 sec after being the victim of a critical strike or suffering more than 20% of your maximum Health from a single attack.",
@@ -611,6 +639,10 @@
     "en": "Gives the Gift of the Wild to all party and raid members, increasing armor by 385, all attributes by 16 and all resistances by 27 for 1 hour.",
     "tr": "Tüm grup ve raid üyelerine Gift of the Wild verir: 1 saat boyunca Armor 385, tüm özellikler 16 ve tüm dirençler 27 artar."
   },
+  "210c8167cef2704d": {
+    "en": "Increases the damage dealt by your Seal and Judgement by 9%.",
+    "tr": "Seal ve Judgement hasarını %9 artırır."
+  },
   "211a3e7b4af34527": {
     "en": "Enemies Stunned by your Kidney Shot ability take 10% increased damage from your poisons and attacks.",
     "tr": "Kidney Shot ile sersemlettiğin düşmanlar zehirlerinden ve saldırılarından %10 daha fazla hasar alır."
@@ -626,6 +658,10 @@
   "216e9b4d607dd1c7": {
     "en": "Your Demonic Sacrifice effect is no longer cancelled by summoning a different Demon pet. Resummoning the sacrificed pet will still cancel the effect.",
     "tr": "Demonic Sacrifice etkin artık farklı bir Demon pet çağırınca iptal olmaz. Feda edilen pet'i yeniden çağırmak etkiyi yine iptal eder."
+  },
+  "219432b8e90e041f": {
+    "en": "Increases the threat generated by Holy Strike by 20%. When Righteous Fury is active, Holy Strike also reduces damage taken by 4% for 6 seconds.",
+    "tr": "Holy Strike'ın yarattığı tehdidi %20 artırır. Righteous Fury aktifken Holy Strike ayrıca 6 saniye boyunca aldığın hasarı %4 azaltır."
   },
   "2195cfc3799da158": {
     "en": "When activated, Dive into Shadow reduces the chance enemies will find you. Lasts until cancelled or moved. Using this ability in combat reduces the enemy's willingness to attack you, but the cooldown is increased to 2 minutes.",
@@ -647,6 +683,10 @@
     "en": "Increases the amount of Mana awarded by your Life Tap spell by 20%.",
     "tr": "Life Tap büyünün verdiği Mana miktarını %20 artırır."
   },
+  "22e87f741ee956b1": {
+    "en": "Gives your Flash of Light, Holy Light and Light's Vigil a 28% chance to take damage without losing cast time.",
+    "tr": "Flash of Light, Holy Light ve Light's Vigil büyülerine, hasar alırken cast süresini kaybetmeme şansını %28 verir."
+  },
   "23429b80e67e3602": {
     "en": "Max rank changed from 5 to 2. Effect override.",
     "tr": "Maksimum rank 5'ten 2'ye değişti. Efekt değiştirildi."
@@ -667,13 +707,13 @@
     "en": "Classic Era is called Enhanced Nature's Grasp. Maximum rank increased from 4 to 2. Moved from tier 1 to tier 5. Effect rewritten.",
     "tr": "Classic Era'daki adı Improved Nature's Grasp. Maksimum rank 4'ten 2'ye değişti. Tier 1'den tier 5'e taşındı. Efekt yeniden yazıldı."
   },
+  "23d793b67def1e51": {
+    "en": "Moved from Wild Combat tree to Restoration tree. Moved from Tier 6 to Tier 1. Effect rewritten.",
+    "tr": "Wild Combat ağacından Restoration ağacına taşındı. 6. kademeden 1. kademeye taşındı. Etkisi yeniden yazıldı."
+  },
   "23f62badbca75ff4": {
     "en": "Summons a Succubus under the command of the Warlock.",
     "tr": "Warlock'un emrinde bir Succubus çağırır."
-  },
-  "23ff56e08e4bde89": {
-    "en": "Spirit increased by 5%.",
-    "tr": "Spirit %5 artar."
   },
   "242ea14ed80b1be0": {
     "en": "Summons a Grounding Totem with 5 health at the feet of the caster that will redirect one harmful spell cast on a nearby party member to itself every 10 seconds. Will not redirect area of effect spells. Lasts 45 sec.",
@@ -686,10 +726,6 @@
   "2491b8b7a0dcb214": {
     "en": "Send your pet into a rage causing 50% additional damage for 18 sec. While enraged, the beast does not feel pity or remorse or fear and it cannot be stopped unless killed.",
     "tr": "Pet'ini öfkelendirir; 18 saniye boyunca %50 ek hasar verir. Öfkeliyken hayvan acıma, pişmanlık veya korku hissetmez ve ölmedikçe durdurulamaz."
-  },
-  "24c77f9f7c55faa8": {
-    "en": "Increases movement speed by 1% every 5 seconds while moving, up to 30%. Damage or standing still reduces this effect. In addition, increases movement speed by 3% while riding.",
-    "tr": "Hareket ederken her 5 saniyede hareket hızını %1 artırır, en fazla %30. Hasar almak veya durmak bu etkiyi azaltır. Ayrıca binek üzerindeyken hareket hızını %3 artırır."
   },
   "253dbe15064c90b9": {
     "en": "Increases your chance to Block attacks with your shield by 4% and grants you a 80% chance to generate 5 Rage when you Block.",
@@ -767,10 +803,6 @@
     "en": "Heals a friendly target for 291 to 325 (+42.9% of spell power).",
     "tr": "Dost bir hedefi 291 - 325 (+büyü gücünün %42.9'u) iyileştirir."
   },
-  "2ac8c4b473336e2e": {
-    "en": "Classic Era named Storm Coming. Effect rewritten.",
-    "tr": "Classic Era'daki adı Storm Coming. Efekt yeniden yazıldı."
-  },
   "2b2ad5da3a3a6b25": {
     "en": "Max rank changed from 3 to 2. Effect override.",
     "tr": "Maksimum rank 3'ten 2'ye değişti. Efekt değiştirildi."
@@ -802,6 +834,10 @@
   "2d09366867ea6165": {
     "en": "Summons a Healing Stream Totem with 5 health at the feet of the caster for 5 min that heals group members within 30 yards for 11 every 2 seconds.",
     "tr": "Cast edenin ayağının dibine 5 dakikalığına 5 canlı bir Healing Stream Totem çağırır; 30 yard içindeki grup üyelerini her 2 saniyede 11 iyileştirir."
+  },
+  "2d5579f9de5221ba": {
+    "en": "Make an oath to protect an allied target for 5 minutes, increasing the healing of Holy Light by up to 0, Flash of Light by up to 0, Holy Shock by up to 0. Paladins can only make one oath of Holy Light at a time.",
+    "tr": "Bir müttefik hedefi 5 dakika boyunca korumak için yemin et; Holy Light iyileştirmesini en fazla 0, Flash of Light iyileştirmesini en fazla 0, Holy Shock iyileştirmesini en fazla 0 artırır. Paladin'ler aynı anda yalnızca bir Holy Light yemini edebilir."
   },
   "2d66f8482b45c72e": {
     "en": "Levels 1 to 4 are learned earlier than Classic Era",
@@ -843,6 +879,10 @@
     "en": "Dispels 1 Curse or Bane from a friendly target.",
     "tr": "Dost bir hedeften 1 Curse veya Bane etkisini kaldırır."
   },
+  "3023cbafd144321d": {
+    "en": "Reduces the casting time of Fireball, Frostfire Bolt and Arcane Wrath by 0.3 seconds.",
+    "tr": "Fireball, Frostfire Bolt ve Arcane Wrath cast süresini 0,3 saniye kısaltır."
+  },
   "3028adf4d69c28d8": {
     "en": "Reduces the Rage cost of your Execute ability by 5.",
     "tr": "Execute yeteneğinin Öfke maliyetini 5 azaltır."
@@ -858,6 +898,10 @@
   "30e7a73f10580e18": {
     "en": "Reduces the Energy cost of your Expose Armor ability by 5, and refunds 1 Combo Point when cast with 5 Combo Points.",
     "tr": "Expose Armor yeteneğinin Enerji bedelini 5 azaltır; 5 Kombo Puanıyla cast edildiğinde 1 Kombo Puanı iade eder."
+  },
+  "30fb71c0c4a3c73e": {
+    "en": "Increases the maximum number of targets you can Sap simultaneously by 1 and increases your movement speed by 30% after Sap a target for 3 seconds.",
+    "tr": "Aynı anda Sap yapabileceğin hedef sayısını 1 artırır ve bir hedefe Sap yaptıktan sonra 3 saniye boyunca hareket hızını %30 artırır."
   },
   "3119e2ce17d1bc70": {
     "en": "Reduces the rage cost of your Cleave and Whirlwind by 3.",
@@ -891,6 +935,10 @@
     "en": "Heals a friendly target for 484 to 535 (+21.4% of spell power), an additional 445 (+50% of spell power) over 15 sec, and increases the effectiveness of your Chain Heal casts directly on that target by 25%.",
     "tr": "Dost bir hedefi 484 - 535 (+büyü gücünün %21.4'ü) iyileştirir, 15 saniye boyunca ek 445 (+büyü gücünün %50'si) iyileştirir ve doğrudan o hedefe cast ettiğin Chain Heal'lerin etkinliğini %25 artırır."
   },
+  "328c14d3797730a6": {
+    "en": "Increases the maximum number of targets you can Sap simultaneously by 1 and increases your movement speed by 15% after Sap a target for 3 seconds.",
+    "tr": "Aynı anda Sap yapabileceğin hedef sayısını 1 artırır ve bir hedefe Sap yaptıktan sonra 3 saniye boyunca hareket hızını %15 artırır."
+  },
   "32c2e90c5b174711": {
     "en": "Increases your Stoneclaw Totem health by 25%, Earthbind Totem radius by 10%.",
     "tr": "Stoneclaw Totem'in canını %25, Earthbind Totem'in yarıçapını %10 artırır."
@@ -923,9 +971,13 @@
     "en": "Ambush the target, causing 250% weapon damage plus 290 to the target. Must be stealthed and behind the target. Requires a dagger in the main hand. Awards 1 combo point.",
     "tr": "Hedefe pusu kurar; silah hasarının %250'si artı 290 hasar verir. Stealth'te ve hedefin arkasında olmak gerekir. Ana elde dagger gerekir. 1 combo puanı kazandırır."
   },
-  "33ae0790287d550c": {
-    "en": "Increases spell, melee and ranged haste by 3%.",
-    "tr": "Büyü, yakın dövüş ve menzilli Haste'i %3 artırır."
+  "33746e2438746deb": {
+    "en": "Gives your Flash of Light, Holy Light, and Light's Vigil a 56% chance to take damage without losing cast time.",
+    "tr": "Flash of Light, Holy Light ve Light's Vigil büyülerine, hasar alırken cast süresini kaybetmeme şansını %56 verir."
+  },
+  "33b25736da6890fa": {
+    "en": "Moved from Holy tree to Retribution tree. Moved from column 4 to column 2. Effect rewritten.",
+    "tr": "Holy ağacından Retribution ağacına taşındı. 4. sütundan 2. sütuna taşındı. Etkisi yeniden yazıldı."
   },
   "33ee58ad5a73a491": {
     "en": "Increases your critical strike chance while in Bear Form, Dire Bear Form, or Cat Form by 6%.",
@@ -970,10 +1022,6 @@
   "3604fb4250eb9fc7": {
     "en": "Instantly heals the caster for 1284 to 1515 (+42.9% of spell power).",
     "tr": "Cast edeni anında 1284 - 1515 (+büyü gücünün %42.9'u) iyileştirir."
-  },
-  "3609dbebc8343483": {
-    "en": "Classic Era is called Enhanced Seal of Righteousness. Maximum rank changed from 5 to 3. Effect rewritten.",
-    "tr": "Classic Era'daki adı Improved Seal of Righteousness. Maksimum rank 5'ten 3'e değişti. Efekt yeniden yazıldı."
   },
   "3659bfc7386a7aa6": {
     "en": "Increases the Bleed damage done by your Rend ability by 35%.",
@@ -1071,13 +1119,13 @@
     "en": "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 30%. In addition, gives your Frost Ward a 20% chance to reflect Frost spells and effects while active.",
     "tr": "Frost Armor ve Ice Armor büyülerinin verdiği Armor ve direnci %30 artırır. Ayrıca Frost Ward aktifken Frost büyülerini ve etkilerini %20 şansla geri yansıtır."
   },
-  "3b12e95aa6f90ee8": {
-    "en": "Total health increased by 5%, critical damage and healing bonus increased by 2%.",
-    "tr": "Toplam can %5, kritik hasar ve iyileştirme bonusu %2 artar."
-  },
   "3b138eaa8f9e2d4a": {
     "en": "Hurls a lightning bolt at the enemy, dealing 119 to 133 (+57.1% of spell power) Nature damage and then jumping to additional nearby enemies. Each jump reduces the damage by 30%. Affects 3 total targets.",
     "tr": "Düşmana bir yıldırım fırlatır; 119 - 133 (+büyü gücünün %57.1'i) Nature hasarı verir, ardından yakındaki ek düşmanlara sıçrar. Her sıçrama hasarı %30 azaltır. Toplam 3 hedefi etkiler."
+  },
+  "3b203fade126476a": {
+    "en": "Your Lancing ability has a 40% chance to add 2 combo points to your target.",
+    "tr": "Shank yeteneğin hedefe %40 şansla 2 combo point ekler."
   },
   "3b326c95456aa5a2": {
     "en": "While fishing with a Lure active, you have a 50% chance to catch an extra fish.",
@@ -1091,6 +1139,10 @@
     "en": "Attempts to remove 1 Frenzy effect from an enemy creature.",
     "tr": "Düşman bir yaratıktan 1 Frenzy etkisini kaldırmaya çalışır."
   },
+  "3beb75635c1c9a74": {
+    "en": "Increases your armor by 75% Intelligence.",
+    "tr": "Zırhını Intellect'inin %75'i kadar artırır."
+  },
   "3bf9fd4b00e4f201": {
     "en": "Increases the hit chance of your secondary attack by 7%.",
     "tr": "İkincil saldırının isabet ihtimalini %7 artırır."
@@ -1098,6 +1150,10 @@
   "3c02c94eadb7f877": {
     "en": "Creates a portal, teleporting group members that use it to Ironforge.",
     "tr": "Kullanan grup üyelerini Ironforge'a ışınlayan bir portal açar."
+  },
+  "3c49263be9c6171e": {
+    "en": "Increases the critical damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Bleed abilities by 10%.",
+    "tr": "Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike ve Hemorrhage yeteneklerinin kritik hasar bonusunu %10 artırır."
   },
   "3c5cd30470f3f0d0": {
     "en": "Damage dealt to elemental creatures increased by 5%.",
@@ -1119,10 +1175,6 @@
     "en": "A powerful kick that deals 100% melee weapon damage and increases movement speed by 30% for 3 sec.",
     "tr": "Yakın dövüş silah hasarının %100'ü kadar hasar veren ve 3 saniye boyunca hareket hızını %30 artıran güçlü bir tekme."
   },
-  "3d2a6d14dcc83b65": {
-    "en": "Max level changed from 1 to 2. Moved from Tier 7 to Tier 5. Value adjustment: 5 points (Classic Era: 10 points).",
-    "tr": "Maksimum seviye 1'den 2'ye değişti. Tier 7'den tier 5'e taşındı. Değer ayarı: 5 puan (Classic Era: 10 puan)."
-  },
   "3d9845c8359ae188": {
     "en": "Heals a friendly target for 799 to 883 (+21.4% of spell power), an additional 805 (+50% of spell power) over 15 sec, and increases the effectiveness of your Chain Heal casts directly on that target by 25%.",
     "tr": "Dost bir hedefi 799 - 883 (+büyü gücünün %21.4'ü) iyileştirir, 15 saniye boyunca ek 805 (+büyü gücünün %50'si) iyileştirir ve doğrudan o hedefe cast ettiğin Chain Heal'lerin etkinliğini %25 artırır."
@@ -1139,9 +1191,17 @@
     "en": "Your spells and attacks have a 20% chance of draining the target's health, up to 5% of your maximum health.",
     "tr": "Büyü ve saldırılarının hedefin canını emme şansı %20'dir; en fazla maksimum canının %5'i kadar."
   },
+  "3e600f6d71ec7f08": {
+    "en": "Consumes 25% of your base health, causing your next 4 melee attacks to generate 5 rage each. Lasts 8 seconds. 15 second cooldown.",
+    "tr": "Temel canının %25'ini harcar; sonraki 4 yakın dövüş saldırın 5'er Öfke üretir. 8 saniye sürer. 15 saniye bekleme süresi."
+  },
   "3e9fd17dd32cbb51": {
     "en": "Gives your pet a 100% chance to gain a 30% attack speed increase for 8 sec after dealing a critical strike.",
     "tr": "Pet'in kritik vuruş yaptıktan sonra %100 şansla 8 saniye boyunca %30 saldırı hızı artışı kazanır."
+  },
+  "3ecb3b7043bcff83": {
+    "en": "Tactical Mastery-Allows you to retain up to 5 additional rage when changing stances.",
+    "tr": "Tactical Mastery: Duruş değiştirirken 5 ek Öfke korumanı sağlar."
   },
   "3ef74b27aa31caa9": {
     "en": "Heals a friendly target for 775 to 865 (+42.9% of spell power).",
@@ -1162,14 +1222,6 @@
   "401f19528d2ff381": {
     "en": "\" Officially licensed version, with a built-in compass in the stock and a scoring device made by dwarfs.\"",
     "tr": "\"Resmî lisanslı sürüm; dipçiğinde yerleşik bir pusula ve cücelerin yaptığı bir puanlama aygıtı var.\""
-  },
-  "4042e0e8b36d4edb": {
-    "en": "Reduces the global cooldown by 0.5 seconds on your Rejuvenation, Swiftmend, and Wild Growth spells.",
-    "tr": "Rejuvenation, Swiftmend ve Wild Growth büyülerinde global bekleme süresini 0.5 saniye azaltır."
-  },
-  "404f1c12c977d474": {
-    "en": "Value adjustment: 50%(Classic Era: 15%).",
-    "tr": "Değer ayarı: %50 (Classic Era: %15)."
   },
   "4061e37992353c9a": {
     "en": "Attempts to cure 1 poison effect on the target, and 1 more poison effect every 2 seconds for 8 sec.",
@@ -1194,6 +1246,14 @@
   "422696408026bd21": {
     "en": "Rank 5:Effect Description Override",
     "tr": "Rank 5: Efekt açıklaması güncellendi"
+  },
+  "422e9bc44191f390": {
+    "en": "Gives your Flash of Light, Holy Light, and Light's Vigil a 42% chance to take damage without losing cast time.",
+    "tr": "Flash of Light, Holy Light ve Light's Vigil büyülerine, hasar alırken cast süresini kaybetmeme şansını %42 verir."
+  },
+  "4253b187af58a5ec": {
+    "en": "Increases the damage absorbed by your shield by 30%, and gives your block a 100% chance to restore 4% of its maximum mana. Triggers up to once every 3 seconds.",
+    "tr": "Kalkanının emdiği hasarı %30 artırır ve bloklarına maksimum manasının %4'ünü geri verme şansını %100 verir. En fazla 3 saniyede bir tetiklenir."
   },
   "42a0727ffbcf9f1f": {
     "en": "Cures 1 poison effect on the target.",
@@ -1283,6 +1343,10 @@
     "en": "Increases the target's Intellect by 31 for 1 hour.",
     "tr": "Hedefin Intellect'ini 1 saat boyunca 31 artırır."
   },
+  "46744fcf00b0ed9a": {
+    "en": "Increases the threat generated by Holy Strike by 10%. Holy Strike also reduces damage taken by 2% for 6 seconds while Righteous Fury is active.",
+    "tr": "Holy Strike'ın yarattığı tehdidi %10 artırır. Righteous Fury aktifken Holy Strike ayrıca 6 saniye boyunca aldığın hasarı %2 azaltır."
+  },
   "4685d32afb1d74e2": {
     "en": "Classic Era and Forever are both talents.",
     "tr": "Classic Era'da da Forever'da da talent."
@@ -1311,10 +1375,6 @@
     "en": "Reduces the casting time of your Healing Wave spell by 0.5 sec.",
     "tr": "Healing Wave büyünün cast süresini 0.5 saniye kısaltır."
   },
-  "477ccf0b81f78e08": {
-    "en": "8% chance to activate Overpower when using your main hand weapon to launch melee attacks against enemies affected by your Rip.",
-    "tr": "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %8 ihtimalle Overpower'ı etkinleştirir."
-  },
   "47bd7788153d3d7c": {
     "en": "Reduces the mana cost of all shapeshifting by 30%.",
     "tr": "Tüm form değiştirmelerin mana maliyetini %30 azaltır."
@@ -1339,9 +1399,25 @@
     "en": "Causes the enemy target to run in horror for 3 sec and causes 460 (+21.4% of spell power) Shadow damage. The caster gains 100% of the damage caused in health.",
     "tr": "Düşman hedefi 3 saniye boyunca dehşet içinde kaçırır ve 460 (+büyü gücünün %21.4'ü) Shadow hasarı verir. Cast eden verilen hasarın %100'ü kadar can kazanır."
   },
+  "48e3c86482076fce": {
+    "en": "Spirit increased by 10%.",
+    "tr": "Spirit %10 artar."
+  },
+  "48f10887c08ee11b": {
+    "en": "Maximum rank changed from 5 to 3. Moved from column 4 to column 2. Effect override.",
+    "tr": "Maksimum rank 5'ten 3'e düştü. 4. sütundan 2. sütuna taşındı. Etkisi değiştirildi."
+  },
+  "48fa6abbd6922c38": {
+    "en": "When a melee attack deals a critical hit, it increases the melee attack speed of your next 3 attacks by 20%.",
+    "tr": "Yakın dövüş saldırısı kritik vuruş yaptığında sonraki 3 saldırının yakın dövüş saldırı hızını %20 artırır."
+  },
   "49041afb08e816dc": {
     "en": "Blasts the target for 477 to 503 (+42.9% of spell power) Shadow damage, but causes a high amount of threat.",
     "tr": "Hedefe 477 - 503 (+büyü gücünün %42.9'u) Shadow hasarı verir, ancak yüksek tehdit üretir."
+  },
+  "4906e88bf9a8b457": {
+    "en": "Classic Era is called Enhanced Fireball. Moved from column 2 to column 3. Values remain the same, wording adjusted.",
+    "tr": "Classic Era'daki adı Enhanced Fireball. 2. sütundan 3. sütuna taşındı. Değerler aynı, ifade düzenlendi."
   },
   "490710a830f4a16f": {
     "en": "Increases the damage done by your spells by 3% and your critical strike chance by 3%.",
@@ -1395,10 +1471,6 @@
     "en": "Reduces the Mana cost of your Destruction spells by 10%.",
     "tr": "Destruction büyülerinin mana maliyetini %10 azaltır."
   },
-  "4b32641f3e107140": {
-    "en": "Classic Era is called Improved Fireball. Moved from column 2 to column 3. Value unchanged, wording changed.",
-    "tr": "Classic Era'da adı Improved Fireball. Sütun 2'den sütun 3'e taşındı. Değer aynı, ifade değişti."
-  },
   "4baf6494c1f7a507": {
     "en": "Afflicts the target with impending doom, causing 1742 (+400% of spell power) Shadow damage after 1 min. If the target dies from this damage, there is a chance that a Doomguard will be summoned. Cannot be cast on players. Only one Bane per Warlock can be active on any one target.",
     "tr": "Hedefe yaklaşan bir kıyamet bulaştırır; 1 dakika sonra 1742 (+büyü gücünün %400'ü) Shadow hasarı verir. Hedef bu hasarla ölürse bir Doomguard çağrılma şansı vardır. Oyunculara cast edilemez. Bir hedefte her Warlock'un yalnızca bir Bane'i aktif olabilir."
@@ -1427,13 +1499,13 @@
     "en": "You discover 100% more Scarce materials from Mining, Herbalism, and Skinning.",
     "tr": "Mining, Herbalism ve Skinning ile %100 daha fazla Scarce malzeme bulursun."
   },
-  "4c3cca9fdff6ba55": {
-    "en": "Move from column 3 to column 2. Effect override.",
-    "tr": "Sütun 3'ten sütun 2'ye taşındı. Efekt değiştirildi."
-  },
   "4c89b5fae5e10849": {
     "en": "Maims the enemy, causing 45 damage and slowing the enemy's movement by 50% for 15 sec.",
     "tr": "Düşmanı sakatlar; 45 hasar verir ve 15 saniye boyunca hareketini %50 yavaşlatır."
+  },
+  "4cd5d492fcf4c6b5": {
+    "en": "Reduces the casting time of Fireball, Frostfire Bolt and Arcane Wrath by 0.5 seconds.",
+    "tr": "Fireball, Frostfire Bolt ve Arcane Wrath cast süresini 0,5 saniye kısaltır."
   },
   "4d50dfde59786413": {
     "en": "Increases the maximum number of targets you may have affected by Entangling Roots by 2.",
@@ -1442,10 +1514,6 @@
   "4d8aa8f5bcb566d6": {
     "en": "Increases your spell damage and healing by up to 30% of your Intelligence.",
     "tr": "Büyü hasarını ve iyileştirmeni Intellect'inin en fazla %30'u kadar artırır."
-  },
-  "4d974a47e2aea0f2": {
-    "en": "Classic Era is called Blessing of Salvation",
-    "tr": "Classic Era'daki adı Blessing of Salvation"
   },
   "4e85daea0ed4701c": {
     "en": "Instantly counterattack any enemy that strikes you in melee for 15 sec. Melee attacks made from behind cannot be counterattacked. A maximum of 30 attacks will cause retaliation.",
@@ -1474,10 +1542,6 @@
   "4fe3b9c1f9fc1b29": {
     "en": "Assault the target's mind with Shadow energy, causing 390 (+50.1% of spell power) Shadow damage over 3 sec and slowing their movement speed by 50%.",
     "tr": "Hedefin zihnine Shadow enerjisiyle saldırır; 3 saniye boyunca 390 (+büyü gücünün %50.1'i) Shadow hasarı verir ve hareket hızını %50 yavaşlatır."
-  },
-  "4fe719c525954574": {
-    "en": "Increases your casting and attack speed by 10% for 10 seconds.",
-    "tr": "10 saniye boyunca cast ve saldırı hızını %10 artırır."
   },
   "50247ee133445b79": {
     "en": "Banishes the enemy target, preventing all action but making it invulnerable for up to 30 sec. Only one target can be banished at a time. Only works on Demons and Elementals.",
@@ -1514,10 +1578,6 @@
   "535e4920501afb2d": {
     "en": "Consumes health to generate 10 rage and 10 additional rage over 10 seconds.",
     "tr": "Can harcayarak 10 öfke ve 10 saniye boyunca ek 10 öfke üretir."
-  },
-  "5366ca084e4549e4": {
-    "en": "Grants you immunity to Silence and Interrupt effects for 6 sec.",
-    "tr": "6 saniye boyunca Silence ve kesinti etkilerine bağışıklık verir."
   },
   "53e062a34628dbf8": {
     "en": "When activated, your next Mage spell with a casting time less than 10 sec becomes an instant cast spell.",
@@ -1579,10 +1639,6 @@
     "en": "Summons a Forsaken Warhorse as a mount.",
     "tr": "Binek olarak bir Forsaken savaş atı çağırır."
   },
-  "569602809c5549d8": {
-    "en": "Heals a friendly target and the caster for 235 to 286 (+42.9% of spell power). Low threat.",
-    "tr": "Dost bir hedefi ve cast edeni 235 - 286 (+büyü gücünün %42.9'u) iyileştirir. Düşük tehdit üretir."
-  },
   "56d9ad4156eeeefe": {
     "en": "Place a Frost trap that creates an ice slick around itself for 30 sec when the first enemy approaches it. All enemies within 10 yards will be slowed by 60% while in the area of effect. Trap will exist for 1 min. Only one Frost trap can be active at a time.",
     "tr": "İlk düşman yaklaşınca çevresinde 30 saniye süren buzlu bir zemin oluşturan bir Frost tuzağı kurar. Alandaki 10 yard içindeki tüm düşmanlar %60 yavaşlar. Tuzak 1 dakika kalır. Aynı anda yalnızca bir Frost tuzağı aktif olabilir."
@@ -1627,6 +1683,10 @@
     "en": "Levels 2 to 4 no longer exist (Classic Era up to Level 4)",
     "tr": "Seviye 2-4 artık yok (Classic Era'da seviye 4'e kadar)"
   },
+  "5a407230d494dd68": {
+    "en": "Make an oath to protect an allied target for 5 minutes, increasing the healing of your Holy Light, Flash of Light, and Holy Shock by your level. Paladins can only make one Holy Oath at a time.",
+    "tr": "Bir müttefik hedefi 5 dakika boyunca korumak için yemin et; Holy Light, Flash of Light ve Holy Shock iyileştirmeni seviyen kadar artırır. Paladin'ler aynı anda yalnızca bir Holy Oath edebilir."
+  },
   "5a4b3af6092d051f": {
     "en": "Instantly attacks with both weapons for 75% weapon damage plus an additional 17 with each weapon. Damage increased by 20% against Poisoned targets. Awards 2 Combo Points.",
     "tr": "İki silahla anında saldırır; her silahla silah hasarının %75'i artı 17 ek hasar verir. Zehirli hedeflere hasar %20 artar. 2 combo puanı kazandırır."
@@ -1638,10 +1698,6 @@
   "5a8e8ed465409001": {
     "en": "Stuns the target for 4 sec.",
     "tr": "Hedefi 4 saniye sersemletir."
-  },
-  "5aca5afdcaaa252e": {
-    "en": "Reduces the cooldown of your The Power of Transformation spell by 8 seconds.",
-    "tr": "The Power of Transformation büyünün bekleme süresini 8 saniye azaltır."
   },
   "5b0440fef20cccfb": {
     "en": "Reduces the Energy cost of your Cheap Shot and Garrote abilities by 20, and your Garrote ability no longer requires you to be behind your target.",
@@ -1691,6 +1747,10 @@
     "en": "Maximum rank changed from 5 to 3. Moved from column 3 to column 4. Effect override.",
     "tr": "Maksimum rank 5'ten 3'e değişti. Sütun 3'ten sütun 4'e taşındı. Efekt değiştirildi."
   },
+  "5cb6192ac94c5d67": {
+    "en": "Instantly attacks the target, dealing 1 + 15% melee attack power and restoring 10% of your maximum health. Can only be used within 20 seconds of killing an enemy that gives you experience or honor.",
+    "tr": "Hedefe anında saldırır; 1 + yakın dövüş attack power'ın %15'i kadar hasar verir ve maksimum canının %10'unu geri verir. Yalnızca deneyim ya da onur kazandıran bir düşmanı öldürdükten sonraki 20 saniye içinde kullanılabilir."
+  },
   "5ce797b9929af6fe": {
     "en": "Reduces the cooldown of your Reincarnation spell by 20 min, increases your maximum health by 4%, and increases the amount of health and Mana you reincarnate with by an additional 20%.",
     "tr": "Reincarnation büyünün bekleme süresini 20 dakika azaltır, maksimum canını %4 artırır ve dirildiğin can ile Mana miktarını ek %20 artırır."
@@ -1702,6 +1762,10 @@
   "5d556b9236e0fcbe": {
     "en": "Increases the effect of your next Curse of Weakness or Bane of Agony by 50%, or your next Curse of Exhaustion by 0%. Lasts 30 sec.",
     "tr": "Bir sonraki Curse of Weakness veya Bane of Agony etkisini %50, bir sonraki Curse of Exhaustion etkisini ise %0 artırır. 30 saniye sürer."
+  },
+  "5d69fff374588aa7": {
+    "en": "Your finishing skill has a 20% chance to recover 25 energy for each combo point it consumes.",
+    "tr": "Bitirici yeteneğin harcadığı her combo point için %20 şansla 25 Enerji geri verir."
   },
   "5d90ac182505b923": {
     "en": "Your skin becomes as tough as bark. Physical damage taken is reduced by 20%. While you are protected, damaging attacks will not cause spellcasting delays. Lasts 15 sec.",
@@ -1722,10 +1786,6 @@
   "5e9211ffb78eee1c": {
     "en": "Upon death, the priest becomes the Spirit of Redemption for 15 sec. The Spirit of Redemption cannot move, attack, be attacked or targeted by any spells or effects. While in this form the priest can cast any healing spell free of cost. When the effect ends, the priest dies.",
     "tr": "Öldüğünde priest 15 saniye boyunca Spirit of Redemption'a dönüşür. Spirit of Redemption hareket edemez, saldıramaz, saldırıya uğramaz ve hiçbir büyü veya etkiyle hedef alınamaz. Bu formdayken priest her iyileştirme büyüsünü maliyetsiz cast edebilir. Etki bitince priest ölür."
-  },
-  "5edd182507607fa9": {
-    "en": "There is a 4% chance to activate Overpower when you use your main hand weapon to launch melee attacks against enemies affected by your Rip.",
-    "tr": "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %4 ihtimalle Overpower'ı etkinleştirir."
   },
   "5f00ea4fbf1ccd6c": {
     "en": "Immerse a weapon with poison. Lasts for 30 minutes.\nEach attack has a 30% chance to poison the enemy, reducing all healing effects by 165 for 15 seconds. Stacks up to 5 times on a single target. Can be used 160 times.",
@@ -1767,6 +1827,10 @@
     "en": "Summons a Felhunter under the command of the Warlock.",
     "tr": "Warlock'un emrinde bir Felhunter çağırır."
   },
+  "6020998bc2b43102": {
+    "en": "Attempted to draw power from the Junction of Elements to gain Blessing, increasing movement speed and riding speed by 15% for 30 seconds. If there is a Junction of Elements nearby, you gain a recharge effect for 1 hour, during which time the effect of this ability increases by 100%.",
+    "tr": "Elementlerin Kavşağı'ndan güç çekerek bir kutsama kazanmaya çalışır; 30 saniye boyunca hareket ve binek hızını %15 artırır. Yakında bir Elementlerin Kavşağı varsa 1 saat süren bir yeniden şarj etkisi kazanırsın ve bu sürede yeteneğin etkisi %100 artar."
+  },
   "6053e3b1b0078212": {
     "en": "Reduces the Mana cost of your Shots, Stings, and melee abilities by 15%.",
     "tr": "Shot, Sting ve yakın dövüş yeteneklerinin mana maliyetini %15 azaltır."
@@ -1775,9 +1839,25 @@
     "en": "Increases Stealth's chance to dodge by 50% for 15 seconds.",
     "tr": "15 saniye boyunca Stealth'teyken kaçınma şansını %50 artırır."
   },
+  "60af466fc6e51590": {
+    "en": "When your Rejuvenation or Heal expires at the end of its duration, the target immediately regains 100% of your Spirit. If one of these spells disappears due to being dispelled, the target regains 50% of your Spirit instead.",
+    "tr": "Rejuvenation ya da Heal süresi dolarak bittiğinde hedef anında Spirit'inin %100'ünü geri kazanır. Bu büyülerden biri dispel edilerek biterse hedef bunun yerine Spirit'inin %50'sini geri kazanır."
+  },
   "60b535dbfa66d812": {
     "en": "Moved from Tier 3 to Tier 5. Values unchanged, wording adjusted.",
     "tr": "Tier 3'ten tier 5'e taşındı. Değerler aynı, metin düzenlendi."
+  },
+  "61222461ffa96135": {
+    "en": "Increases the critical strike chance of all your spells and attacks by 6%.",
+    "tr": "Tüm büyü ve saldırılarının kritik vuruş şansını %6 artırır."
+  },
+  "612360d45017edff": {
+    "en": "Increases your spell damage by up to 60% of your Intelligence and reduces the cast time of your Hammer of Wrath by 1.0 seconds.",
+    "tr": "Büyü hasarını Intellect'inin en fazla %60'ı kadar artırır ve Hammer of Wrath cast süresini 1,0 saniye kısaltır."
+  },
+  "616edba3d3c06764": {
+    "en": "Increases the hit chance of all your spells by 4%.",
+    "tr": "Tüm büyülerinin isabet şansını %4 artırır."
   },
   "6181f9fef1b709fb": {
     "en": "After killing a non-trivial enemy, gives you a 40% increased critical strike chance on your next Sinister Strike, Backstab, Ambush, Mutilate, or Ghostly Strike. Lasts 20 sec.",
@@ -1807,6 +1887,10 @@
     "en": "Numerical adjustment: 5 seconds (Classic Era: 10 seconds), 1%(Classic Era: 2%).",
     "tr": "Sayısal ayar: 5 saniye (Classic Era: 10 saniye), %1 (Classic Era: %2)."
   },
+  "62e3720e4bbc7b83": {
+    "en": "Tactical Mastery-Allows you to retain up to 15 additional rage when changing stances.",
+    "tr": "Tactical Mastery: Duruş değiştirirken 15 ek Öfke korumanı sağlar."
+  },
   "62ef49dd1debcb69": {
     "en": "Causes all enemies within 10 yds to be Dazed, reducing movement speed by 50% for 6 sec.",
     "tr": "10 yard içindeki tüm düşmanları sersemletir (Dazed) ve 6 saniye boyunca hareket hızlarını %50 azaltır."
@@ -1818,6 +1902,10 @@
   "632539d840d632a8": {
     "en": "The caster is surrounded by 3 balls of lightning. When a spell, melee or ranged attack hits the caster, the attacker will be struck for 178 (+26.7% of spell power) Nature damage. This expends one lightning ball. Only one ball will fire every few seconds. Lasts 10 min.",
     "tr": "Cast edeni 3 yıldırım topu sarar. Bir büyü, yakın dövüş veya menzilli saldırı cast edene isabet ettiğinde saldırgan 178 (+büyü gücünün %26.7'si) Nature hasarı alır ve bir yıldırım topu harcanır. Birkaç saniyede bir yalnızca bir top ateşlenir. 10 dakika sürer."
+  },
+  "6325a1574a912a63": {
+    "en": "Your melee attacks store a copy of the current Seal for 15 seconds and stack up to 3 times. Hit with another Seal consumes all layers, and each layer causes the stored Seal to trigger once at its normal chance.",
+    "tr": "Yakın dövüş saldırıların mevcut Seal'ın bir kopyasını 15 saniye saklar ve en fazla 3 kez birikir. Başka bir Seal ile vurmak tüm birikimleri tüketir ve her birikim saklanan Seal'ı normal şansıyla bir kez tetikler."
   },
   "632eeed24cb068bb": {
     "en": "Fills the Paladin with divine fury for 30 sec, causing melee attacks to deal an additional 35 (+10% of spell power) Holy damage. While a shield is equipped, each attack also grants an absorb shield equal to 50% of the Holy damage dealt. Only one Seal can be active on the Paladin at any one time. Unleashing this Seal's energy inflicts 153 to 167 (+42.9% of spell power) Holy damage to an enemy and taunts the target to attack you for 4 sec.",
@@ -1863,17 +1951,9 @@
     "en": "Monster Killer in Classic Era. Max rank changed from 3 to 5. Moved from column 1 to column 2. Effect rewritten.",
     "tr": "Classic Era'da Monster Killer idi. Maksimum rank 3'ten 5'e değişti. Sütun 1'den sütun 2'ye taşındı. Efekt yeniden yazıldı."
   },
-  "64bb936a7fd84d6e": {
-    "en": "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.5 sec.",
-    "tr": "Fireball ve Frostfire Bolt büyülerinin cast süresini 0.5 saniye kısaltır."
-  },
   "64d5fc065b46083f": {
     "en": "Humans, Night Elves, Trolls, and Undead can now also learn Classic Era (Dwarves only)",
     "tr": "Classic Era'da yalnızca Dwarf öğrenebiliyordu; artık Human, Night Elf, Troll ve Undead de öğrenebiliyor"
-  },
-  "64f28c1086e41933": {
-    "en": "Moved from tier 6 to tier 1. Effect override.",
-    "tr": "Tier 6'dan tier 1'e taşındı. Efekt değiştirildi."
   },
   "654e1e6a56ded23d": {
     "en": "Moved from tier 7 to tier 4. Effect override.",
@@ -1890,6 +1970,10 @@
   "655f36c579833870": {
     "en": "Absorbs 920 shadow damage. Lasts 30 sec.",
     "tr": "920 Shadow hasarı emer. 30 saniye sürer."
+  },
+  "656e2e9c59496268": {
+    "en": "Reduces the energy cost of your next ability by 10 when you are fully charged and not in combat.",
+    "tr": "Enerjin doluyken ve savaş dışındayken bir sonraki yeteneğinin enerji maliyetini 10 azaltır."
   },
   "65825d6084d64343": {
     "en": "Rank 7:Value: 350 (Classic Era: 496), 412 points (Classic Era: 584 points)",
@@ -1939,6 +2023,10 @@
     "en": "Increases the melee attack power bonus of your Rockbiter Weapon by 20%, your Windfury Weapon effect by 40% and increases the damage caused by your Flametongue Weapon and Frostbrand Weapon by 15%.",
     "tr": "Rockbiter Weapon'ın yakın dövüş Attack Power bonusunu %20, Windfury Weapon etkisini %40 artırır; Flametongue Weapon ve Frostbrand Weapon'ın verdiği hasarı %15 artırır."
   },
+  "6770e3fc301035b6": {
+    "en": "Moved from tier 3 to tier 4. Effect override.",
+    "tr": "3. kademeden 4. kademeye taşındı. Etkisi değiştirildi."
+  },
   "678c61f24a20a375": {
     "en": "Immerse a weapon with poison. Lasts for 30 minutes.\nEach attack has a 30% chance to poison the enemy, dealing 56 Nature damage over 12 seconds. Can stack up to 5 times on a single target. Can be used 135 times.",
     "tr": "Silaha zehir sürer. 30 dakika sürer.\nHer saldırının düşmanı zehirleme şansı %30'dur; zehir 12 saniye boyunca 56 Nature hasarı verir. Tek bir hedefte en fazla 5 kez birikir. 135 kez kullanılabilir."
@@ -1986,6 +2074,10 @@
   "698dc12ab9131b53": {
     "en": "Displays the location of all nearby elemental creatures on a minimap. Only one tracking ability can be activated at a time.",
     "tr": "Yakındaki tüm elemental yaratıkların yerini minimap'te gösterir. Aynı anda yalnızca bir izleme yeteneği aktif olabilir."
+  },
+  "69dcab1f2558e2db": {
+    "en": "Increases movement speed by 2% every 5 seconds while moving, up to 60%. Taking damage or standing still reduces this effect.",
+    "tr": "Hareket ederken her 5 saniyede hareket hızını %2 artırır, en fazla %60. Hasar almak ya da durmak bu etkiyi azaltır."
   },
   "69f6a6a5d3e04c1d": {
     "en": "Rank 6:Value: 70 points (Classic Era: 54 points), 1 hour (Classic Era: 30 minutes)",
@@ -2035,6 +2127,10 @@
     "en": "Classic Era is called Enhanced Arcane Missiles. Moved from column 3 to column 2. Effect override.",
     "tr": "Classic Era'da adı Enhanced Arcane Missiles. Sütun 3'ten sütun 2'ye taşındı. Etki değişti."
   },
+  "6d0dc0c4d13a3d42": {
+    "en": "Increases the damage caused by your biting skills by 7%, and increases the damage and storage rate of Death Mark by 7%.",
+    "tr": "Eviscerate hasarını %7 artırır; Death Mark'ın hasarını ve depolama oranını %7 artırır."
+  },
   "6d102d6b751b2696": {
     "en": "Hurls an immense fiery boulder that causes 520 to 646 (+100% of spell power) Fire damage and an additional 212 (+60% of spell power) Fire damage over 12 sec.",
     "tr": "Devasa alevli bir kaya fırlatır; 520 - 646 (+büyü gücünün %100'ü) Fire hasarı ve 12 saniye boyunca ek 212 (+büyü gücünün %60'ı) Fire hasarı verir."
@@ -2051,9 +2147,9 @@
     "en": "Summons a Disease Cleansing Totem with 5 health at the feet of the caster that attempts to remove 1 disease effect from party members within 30 yards every 5 seconds. Lasts 5 min.",
     "tr": "Cast edenin ayağının dibine 5 canlı bir Disease Cleansing Totem çağırır; totem her 5 saniyede 30 yard içindeki grup üyelerinden 1 hastalık etkisini kaldırmaya çalışır. 5 dakika sürer."
   },
-  "6dc936e5a3f92e6b": {
-    "en": "Rank 6:Value: 138 (Classic Era: 81), 168 points (Classic Era: 99 points)",
-    "tr": "Rank 6: Değer 138 (Classic Era: 81), 168 puan (Classic Era: 99 puan)"
+  "6dd9e991cca05e91": {
+    "en": "Gives you 15% mana regeneration while casting.",
+    "tr": "Cast ederken mana yenilenmenin %15'ini korumanı sağlar."
   },
   "6df5a8b0558063ca": {
     "en": "Finishing move that causes damage over time. Damage increases per combo point and by your Attack Power: 1 point : 243 damage over 12 sec. 2 points: 396 damage over 12 sec. 3 points: 549 damage over 12 sec. 4 points: 702 damage over 12 sec. 5 points: 855 damage over 12 sec.",
@@ -2087,13 +2183,13 @@
     "en": "Increases the rogue's movement speed by 70% for 15 sec. Does not break stealth.",
     "tr": "Rogue'un hareket hızını 15 saniye boyunca %70 artırır. Stealth'i bozmaz."
   },
+  "6f1817d512ef8f17": {
+    "en": "Moved from Restoration talent tree to Feral Combat talent tree. Effect rewritten.",
+    "tr": "Restoration talent ağacından Feral Combat talent ağacına taşındı. Etkisi yeniden yazıldı."
+  },
   "6f818251cc890c9b": {
     "en": "A strong attack that deals melee weapon damage plus 70.",
     "tr": "Yakın dövüş silah hasarı artı 70 hasar veren güçlü bir saldırı."
-  },
-  "6fa4fa514b49f425": {
-    "en": "Numerical adjustment: 90 seconds (Classic Era: 1.5 minutes).",
-    "tr": "Sayısal ayar: 90 saniye (Classic Era: 1.5 dakika)."
   },
   "6fa5ec3d3955ce9e": {
     "en": "Max level changed from 1 to 5. Moved from tier 5 to tier 3. Value adjustment: 20%(Classic Era: 100%).",
@@ -2123,13 +2219,17 @@
     "en": "Gives your Hamstring ability a 15% chance to immobilize the target for 5 sec.",
     "tr": "Hamstring yeteneğine hedefi 5 saniye hareketsiz bırakma şansı %15 verir."
   },
+  "70a042a17646e2a4": {
+    "en": "Gives you a 30% chance to add one combo point to a target after dodging attacks or completely resisting spells.",
+    "tr": "Saldırıdan kaçındıktan ya da bir büyüye tamamen direndikten sonra hedefe %30 şansla 1 combo point ekler."
+  },
   "70e28578aaed6591": {
     "en": "Gives you an 80% chance to gain 10 rage when transforming into Bear Form or Dire Bear Form. When transforming into Cat Form, restores 80% of the energy you had when you were last in Cat Form, and restores 8 additional energy per second depending on how long you have been away from Bear Form and Dire Bear Form, for a total of up to 80 energy.",
     "tr": "Ayı Formu veya Dire Bear Formu'na dönüşürken %80 ihtimalle 10 Öfke kazanırsın. Kedi Formu'na dönüşürken en son Kedi Formu'nda sahip olduğun Enerji'nin %80'sini geri kazanırsın; ayrıca Ayı Formu ve Dire Bear Formu'ndan ne kadar uzak kaldığına bağlı olarak saniyede 8 ek Enerji geri kazanırsın (toplamda en fazla 80 Enerji)."
   },
-  "710bc46a8d4efaf6": {
-    "en": "Reduces the Mana cost of your Seal spells by 20%, and when you replace your Seal of Command, Seal of Righteousness, Seal of Fury, or Seal of Justice with a different Seal, you gain an Echo of that Seal. Your next melee attack applies the replaced Seal's effects, consuming the Echo.",
-    "tr": "Seal büyülerinin mana maliyetini %20 azaltır. Seal of Command, Seal of Righteousness, Seal of Fury veya Seal of Justice'i başka bir Seal ile değiştirdiğinde o Seal'in bir yankısını kazanırsın; bir sonraki yakın dövüş saldırın değiştirilen Seal'in etkilerini uygular ve yankıyı tüketir."
+  "7103e3169ea32894": {
+    "en": "Increases the energy cost of Be Poisoned To by 10 points.",
+    "tr": "Poised yeteneğinin enerji maliyeti indirimini 10 puan artırır."
   },
   "7115f0c5db22586f": {
     "en": "Rank 3:Value: 474 (Classic Era: 504), 522 points (Classic Era: 556 points)",
@@ -2142,10 +2242,6 @@
   "7162481df5c54aef": {
     "en": "Transfers 140 Mana every 1 sec from the target to the caster. Lasts 5 sec.",
     "tr": "Hedeften cast edene her 1 saniyede 140 Mana aktarır. 5 saniye sürer."
-  },
-  "716b127a1c48a18c": {
-    "en": "Attempt to activate the power of a nearby magic web, increasing HP and mana regeneration by 100%. Lasts for 30 seconds if there is no magic web nearby; lasts for 15 minutes if there is.",
-    "tr": "Yakındaki bir Ley Line'ın gücünü etkinleştirmeye çalışır; can ve Mana yenilenmesini %100 artırır. Yakınlarda Ley Line yoksa 30 saniye, varsa 15 dakika sürer."
   },
   "71b49020bfc26b54": {
     "en": "Blasts the target with Holy energy, causing 129 to 139 (+42.9% of spell power) Holy damage to an enemy, or 110 to 118 (+42.9% of spell power) healing to an ally.",
@@ -2175,9 +2271,13 @@
     "en": "Increases Armor by 200. If an enemy strikes the caster, they may have their movement slowed by 30% and the time between their attacks increased by 25% for 5 sec. Only one type of Armor spell can be active on the Mage at any time. Lasts 30 min.",
     "tr": "Armor'u 200 artırır. Cast edene vuran düşmanın hareketi 5 saniye boyunca %30 yavaşlayabilir ve saldırıları arasındaki süre %25 uzayabilir. Mage üzerinde aynı anda yalnızca bir Armor büyüsü aktif olabilir. 30 dakika sürer."
   },
-  "7285ec3741011090": {
-    "en": "Increases the hit chance of your Frost and Fire spells by 2%.",
-    "tr": "Frost ve Fire büyülerinin isabet şansını %2 artırır."
+  "727b3fd18fb4252d": {
+    "en": "Total HP increased by 5%.",
+    "tr": "Toplam canı %5 artırır."
+  },
+  "727fce458c76185a": {
+    "en": "Your finishing skill has an 8% chance to recover 25 energy for each combo point it consumes.",
+    "tr": "Bitirici yeteneğin harcadığı her combo point için %8 şansla 25 Enerji geri verir."
   },
   "730486aab696de8b": {
     "en": "Increases the damage you deal with two-handed melee weapons by 6%.",
@@ -2207,6 +2307,10 @@
     "en": "In Classic Era, it is called Deadly Shot. Moved from layer 2 to layer 1. The value remains unchanged, and the wording is adjusted.",
     "tr": "Classic Era'daki adı Deadly Shot. Katman 2'den katman 1'e taşındı. Değer aynı, metin düzenlendi."
   },
+  "74d6b968de72bcf8": {
+    "en": "Increases the energy generated by your Lancing skill by 6 points and reduces the cooldown by 0.8 seconds.",
+    "tr": "Shank yeteneğinin ürettiği enerjiyi 6 puan artırır ve bekleme süresini 0,8 saniye kısaltır."
+  },
   "74e6e3e4407ef83c": {
     "en": "Absorbs 913 Fire damage. Lasts 30 sec.",
     "tr": "913 Fire hasarı emer. 30 saniye sürer."
@@ -2214,6 +2318,10 @@
   "7510161a39a7b3e4": {
     "en": "Claw the enemy for 110% normal damage plus 115. Awards 1 combo point.",
     "tr": "Düşmanı normal hasarın %110'u artı 115 hasarla pençeler. 1 combo puanı kazandırır."
+  },
+  "75627ca112a30321": {
+    "en": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 8%.",
+    "tr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch'un kritik vuruş şansını %8 artırır."
   },
   "7568f7c5d0a730ca": {
     "en": "Reduces the damage taken from all attacks by 60% for 12 sec.",
@@ -2275,10 +2383,6 @@
     "en": "Rank 2:Value: 40 points (Classic Era: 33 points), 1 hour (Classic Era: 15 minutes)",
     "tr": "Rank 2: Değer 40 puan (Classic Era: 33 puan), 1 saat (Classic Era: 15 dakika)"
   },
-  "77ddc77ca63ab05d": {
-    "en": "Maximum rating changed from 5 to 3.",
-    "tr": "Maksimum rank 5'ten 3'e değişti."
-  },
   "77e4a3631371ee13": {
     "en": "Rank 3:Effect Description Override",
     "tr": "Rank 3: Efekt açıklaması güncellendi"
@@ -2290,6 +2394,14 @@
   "7809431220706aed": {
     "en": "Scares a beast, causing it to run in fear for up to 20 sec. Damage caused may interrupt the effect. Only one beast can be feared at a time.",
     "tr": "Bir beast'i korkutur ve en fazla 20 saniye kaçmasına neden olur. Verilen hasar etkiyi bozabilir. Aynı anda yalnızca bir beast korkutulabilir."
+  },
+  "7850f1fa72c9c7e4": {
+    "en": "Reduces the energy cost of your Sinister Strike and Bleeding abilities by 3.",
+    "tr": "Sinister Strike ve Hemorrhage yeteneklerinin enerji maliyetini 3 azaltır."
+  },
+  "785618332829b7ff": {
+    "en": "Increases spell, melee and ranged haste by 2%.",
+    "tr": "Büyü, yakın dövüş ve menzilli haste'i %2 artırır."
   },
   "785f3980cff6f473": {
     "en": "Summons your pet to you.",
@@ -2367,10 +2479,6 @@
     "en": "Immerse a weapon with poison. Lasts for 30 minutes.\nEach attack has a 20% chance to poison the enemy, instantly dealing 76 to 100 Nature damage. Can be used 175 times.",
     "tr": "Silaha zehir sürer. 30 dakika sürer.\nHer saldırının düşmanı zehirleme şansı %20'dir; zehir anında 76 - 100 Nature hasarı verir. 175 kez kullanılabilir."
   },
-  "79dc114ab613084a": {
-    "en": "Rank 3:Value: 2.0 (Classic Era: 2)",
-    "tr": "Rank 3: Değer 2.0 (Classic Era: 2)"
-  },
   "7a416f4411bf2665": {
     "en": "Shapeshift into Moonkin Form, increasing Omen of Clarity's chance to trigger by 100%, Armor contribution from items by 360%, and all party or raid members within 45 yards have their spell Critical Strike chance increased by 3%. Also protects the caster from Polymorph effects and prevents the use of healing spells. The act of shapeshifting frees the caster of Polymorph and Movement Impairing effects.",
     "tr": "Moonkin Form'a dönüşür; Omen of Clarity'nin tetiklenme şansını %100, eşyalardan gelen Zırh katkısını %360 artırır ve 45 yard içindeki tüm parti veya raid üyelerinin büyü kritik vuruş şansını %3 artırır. Ayrıca büyücüyü Polymorph etkilerinden korur ve iyileştirme büyülerinin kullanımını engeller. Şekil değiştirme eylemi büyücüyü Polymorph ve Hareketi Engelleyen etkilerden kurtarır."
@@ -2435,6 +2543,10 @@
     "en": "Rank 9:Cost: 525 mana (Classic Era: 880 mana)",
     "tr": "Rank 9: Maliyet 525 mana (Classic Era: 880 mana)"
   },
+  "7c7d1130218cd8b3": {
+    "en": "When Holy Shock is cast on allies unaffected by Holy Oath, the critical strike chance increases by 15%.",
+    "tr": "Holy Shock, Holy Oath'tan etkilenmeyen müttefiklere atıldığında kritik vuruş şansı %15 artar."
+  },
   "7cf0a7d4e82d9ae9": {
     "en": "Reduces the mana cost of your Shock, Lightning Bolt, Lava Burst, and Chain Lightning spells by 10%.",
     "tr": "Shock, Lightning Bolt, Lava Burst ve Chain Lightning büyülerinin mana maliyetini %10 azaltır."
@@ -2466,6 +2578,10 @@
   "7e137f6a3a1dec71": {
     "en": "Rank 6:Effect Description Override",
     "tr": "Rank 6: Efekt açıklaması güncellendi"
+  },
+  "7e23f8ac4e2c70a0": {
+    "en": "Reduces the casting time of Fireball, Frostfire Bolt and Arcane Wrath by 0.1 sec.",
+    "tr": "Fireball, Frostfire Bolt ve Arcane Wrath cast süresini 0,1 saniye kısaltır."
   },
   "7e3df7be3004a2b6": {
     "en": "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 40% for 1.5 sec.",
@@ -2563,9 +2679,21 @@
     "en": "Consumes the enemy in holy flames that cause 184 to 232 (+75% of spell power) Holy damage and an additional 75 (+25% of spell power) Holy damage over 10 sec.",
     "tr": "Düşmanı kutsal alevlere boğar; 184 - 232 (+büyü gücünün %75'i) Holy hasar ve 10 saniye boyunca ek 75 (+büyü gücünün %25'i) Holy hasar verir."
   },
+  "8132a6b3a235ff81": {
+    "en": "Your Lancing ability has a 60% chance to add 2 combo points to your target.",
+    "tr": "Shank yeteneğin hedefe %60 şansla 2 combo point ekler."
+  },
+  "814fbdd72eb4b008": {
+    "en": "Reduces the duration of Stun and Charm effects by 10%.",
+    "tr": "Stun ve Charm etkilerinin süresini %10 kısaltır."
+  },
   "81cdded2b8dd258b": {
     "en": "Your next Imp, Voidwalker, Succubus, Incubus, or Felhunter Summon spell has its casting time reduced by 5.5 sec and its Mana cost reduced by 50%.",
     "tr": "Bir sonraki Imp, Voidwalker, Succubus, Incubus veya Felhunter çağırma büyünün cast süresi 5,5 saniye kısalır ve mana maliyeti %50 azalır."
+  },
+  "81d89f17de41b8a7": {
+    "en": "Increases the hit chance of all your spells by 6%.",
+    "tr": "Tüm büyülerinin isabet şansını %6 artırır."
   },
   "81de1c51e1692c8b": {
     "en": "Allows the caster to see through the target's eyes for 1 min. Will not work if the target is in another instance or on another continent.",
@@ -2622,14 +2750,6 @@
   "855d776ea9a99bed": {
     "en": "Your next 5 melee attacks strike an additional nearby opponent.",
     "tr": "Sonraki 5 yakın dövüş saldırın yakındaki ek bir rakibe de isabet eder."
-  },
-  "856954d10d215501": {
-    "en": "Moved from tier 4 to tier 2. Effect override.",
-    "tr": "Tier 4'ten tier 2'ye taşındı. Efekt değiştirildi."
-  },
-  "85756f90e4f9cf28": {
-    "en": "16% chance to activate Overpower when using your main hand weapon to launch melee attacks against enemies affected by your Rip.",
-    "tr": "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %16 ihtimalle Overpower'ı etkinleştirir."
   },
   "85b1ded8e2d2b53e": {
     "en": "Reduces the cast time of your Ghost Wolf spell by 3.0 sec, and Ghost Wolf may be used indoors.",
@@ -2695,6 +2815,10 @@
     "en": "Fade out, discouraging enemies from attacking you for 10 sec. More effective than Fade (rank 5).",
     "tr": "Silikleşir ve 10 saniye boyunca düşmanların sana saldırma isteğini azaltır. Fade'den (rank 5) daha etkilidir."
   },
+  "88385fea681cc442": {
+    "en": "Your finishing skill has a 16% chance to recover 25 energy for every combo point it costs.",
+    "tr": "Bitirici yeteneğin harcadığı her combo point için %16 şansla 25 Enerji geri verir."
+  },
   "8845935bbed03065": {
     "en": "Your critical strikes from abilities that add Combo Points have a 100% chance to add an additional Combo Point.",
     "tr": "Combo puanı ekleyen yeteneklerle yaptığın kritik vuruşlar %100 şansla ek bir combo puanı ekler."
@@ -2747,10 +2871,6 @@
     "en": "Reduces the Energy cost of your Sap and Blind abilities by 50%.",
     "tr": "Sap ve Blind yeteneklerinin Enerji maliyetini %50 azaltır."
   },
-  "8a8803a3dbb71d25": {
-    "en": "Reduces the threat of all players of the same class as the target by 30% for 1 hour.",
-    "tr": "Hedefle aynı class'taki tüm oyuncuların tehdidini 1 saat boyunca %30 azaltır."
-  },
   "8a8fc9c47169a014": {
     "en": "Increases the duration of beneficial effects from eating food by 100%.",
     "tr": "Yemekten gelen faydalı etkilerin süresi %100 uzar."
@@ -2758,6 +2878,10 @@
   "8aa4b30faaec7539": {
     "en": "Increases your chance to Block attacks with your shield by 1% and grants you a 20% chance to generate 5 Rage when you Block.",
     "tr": "Kalkanınla saldırıları Block etme ihtimalini %1 artırır ve Block yaptığında %20 ihtimalle 5 Öfke kazandırır."
+  },
+  "8aa6909f1a6e94f1": {
+    "en": "Your Lancing ability has a 100% chance to add 2 combo points to your target.",
+    "tr": "Shank yeteneğin hedefe %100 şansla 2 combo point ekler."
   },
   "8aa8b80e419c293c": {
     "en": "Instantly removes and becomes immune to all bleed, poison, and disease effects, and reduces all physical damage taken by 10% for 8 seconds.",
@@ -2807,6 +2931,10 @@
     "en": "Increases Shadow Word: Death's critical strike chance on targets at or below 20% health by 30%.",
     "tr": "Canı %20 veya altında olan hedeflerde Shadow Word: Death'in kritik vuruş şansını %30 artırır."
   },
+  "8cb0151f60ad4324": {
+    "en": "Gives your Flash of Light, Holy Light and Light's Vigil a 14% chance to take damage without losing cast time.",
+    "tr": "Flash of Light, Holy Light ve Light's Vigil büyülerine, hasar alırken cast süresini kaybetmeme şansını %14 verir."
+  },
   "8cdb3d7548ec7033": {
     "en": "Increases your skill by 1 in your lowest tradeskill among your Primary and Secondary tradeskills. If you have already reached 300 skill in your two current Primary Tradeskills and all three Secondary Tradeskills, you will gain 2 to 4 of a random Elemental Essence.",
     "tr": "Ana ve ikincil mesleklerin arasında en düşük olanın skill'ini 1 artırır. İki ana mesleğin ve üç ikincil mesleğin zaten 300'deyse rastgele bir Elemental Essence'tan 2 ila 4 adet kazanırsın."
@@ -2831,13 +2959,21 @@
     "en": "Slam the target with your shield, causing 640 to 670 damage, increased by your Block Value, and has a 50% chance of dispelling 1 magic effect on the target. Causes a very high amount of threat.",
     "tr": "Hedefe kalkanınla çarparak Block Value ile artan 640 - 670 hasar verir ve hedefteki 1 büyü etkisini dağıtma şansı %50'dir. Çok yüksek tehdit üretir."
   },
+  "8db8b2e7557f38f0": {
+    "en": "Increases damage done by your sidekick weapon by 50%.",
+    "tr": "Off-hand silahının verdiği hasarı %50 artırır."
+  },
+  "8e0579590d077c93": {
+    "en": "Effective at the time of service opening: adjusted according to Blizzard's development instructions on November 2, client data is not included yet; new talent name is temporarily translated from this site, subject to the game after service opening.",
+    "tr": "Hizmet açılışında geçerli: Blizzard'ın 2 Kasım geliştirme açıklamalarına göre ayarlandı, istemci verisi henüz dahil değil; yeni talent adı geçici olarak bu siteden çevrildi, hizmet açılışından sonra oyundaki ad geçerli olur."
+  },
+  "8e962ca962c6065e": {
+    "en": "Move from Tier 3 to Tier 4. Value adjustment: 20 points (Classic Era: 10 points).",
+    "tr": "3. kademeden 4. kademeye taşındı. Değer ayarı: 20 puan (Classic Era: 10 puan)."
+  },
   "8ed5cdd438eb6489": {
     "en": "Stings the target, causing 555 Nature damage over 15 sec. Only one Sting per Hunter can be active on any one target.",
     "tr": "Hedefi sokar; 15 saniye boyunca 555 Nature hasarı verir. Bir hedefte her Hunter'ın yalnızca bir Sting'i aktif olabilir."
-  },
-  "8eee852dfd78fa2d": {
-    "en": "Improves your chance to hit with Frost and Fire spells by 5%.",
-    "tr": "Frost ve Fire büyülerinin isabet şansını %5 artırır."
   },
   "8f14772197f3f2f5": {
     "en": "Rank 7:Value: 438 (Classic Era: 822)",
@@ -2867,10 +3003,6 @@
     "en": "Summons a Flametongue Totem with 5 health at the feet of the caster. The totem enhances the melee attacks of all party or raid members within 30 yards. Each main hand hit causes 17 to 55 additional Fire damage, based on the speed of the weapon. Slower weapons cause more fire damage per swing. Lasts 5 min.",
     "tr": "Büyücünün ayaklarının dibinde 5 canlı bir Flametongue Totem çağırır. Totem, 30 yard içindeki tüm parti veya raid üyelerinin yakın dövüş saldırılarını güçlendirir. Her ana el vuruşu silahın hızına göre 17 ile 55 arasında ek Fire hasarı verir. Yavaş silahlar vuruş başına daha fazla Fire hasarı verir. 5 dakika sürer."
   },
-  "901892a6fd3b193c": {
-    "en": "Lightning Mastery in Classic Era. Max level increased from 5 to 3. Moved from Tier 6 to Tier 2. Effect rewritten.",
-    "tr": "Classic Era'da Lightning Mastery idi. Maksimum seviye 5'ten 3'e değişti. Tier 6'dan tier 2'ye taşındı. Efekt yeniden yazıldı."
-  },
   "903e79380801ea98": {
     "en": "Heals the friendly target for 473 to 540 (+71.4% of spell power), then jumps to heal additional nearby targets. If cast on a party member, the heal will only jump to other party members. Each jump is 50% as effective as the previous target. Heals 3 total targets.",
     "tr": "Dost hedefi 473 - 540 (+büyü gücünün %71.4'ü) iyileştirir, ardından yakındaki ek hedeflere sıçrayarak onları da iyileştirir. Bir grup üyesine cast edilirse yalnızca diğer grup üyelerine sıçrar. Her sıçrama bir öncekinin %50'si kadar etkilidir. Toplam 3 hedefi iyileştirir."
@@ -2879,6 +3011,14 @@
     "en": "Fills the Paladin with holy spirit for 30 sec, granting each melee attack an additional 22 to 75 Holy damage. Slower weapons cause more Holy damage per swing. Only one Seal can be active on the Paladin at any one time. Unleashing this Seal's energy will cause 170 to 187 (+42.9% of spell power) Holy damage to an enemy.",
     "tr": "Paladini 30 saniye boyunca kutsal ruhla doldurur; her yakın dövüş saldırısına ek 22 ile 75 arasında Holy hasarı kazandırır. Yavaş silahlar vuruş başına daha fazla Holy hasarı verir. Paladinde aynı anda yalnızca bir Seal etkin olabilir. Bu Seal'in enerjisini serbest bırakmak düşmana 170 ile 187 arasında (+büyü gücünün %42,9'u) Holy hasarı verir."
   },
+  "905c158a3acc4882": {
+    "en": "Increases the damage dealt by your Bite ability by 20%. Increases the damage and storage rate of Death Mark by 20%.",
+    "tr": "Eviscerate hasarını %20 artırır. Death Mark'ın hasarını ve depolama oranını %20 artırır."
+  },
+  "9071a393a807e6df": {
+    "en": "Increases the damage dealt by your Seal and Judgement by 12%.",
+    "tr": "Seal ve Judgement hasarını %12 artırır."
+  },
   "90a0468047214cc5": {
     "en": "Reduces the Rage cost of your offensive abilities by 3.",
     "tr": "Saldırı yeteneklerinin Öfke maliyetini 3 azaltır."
@@ -2886,6 +3026,14 @@
   "90d6ed93a556af78": {
     "en": "Cooldown: 30 seconds (Classic Era: 15 seconds)",
     "tr": "Bekleme süresi: 30 saniye (Classic Era: 15 saniye)"
+  },
+  "912c639378ffa3bd": {
+    "en": "Your finishing skill has a 4% chance to recover 25 energy for every combo point it costs.",
+    "tr": "Bitirici yeteneğin harcadığı her combo point için %4 şansla 25 Enerji geri verir."
+  },
+  "9151fd5daa2676c1": {
+    "en": "Bite the target, dealing 100% normal damage plus 42 damage, and generating a large threat.",
+    "tr": "Hedefi ısırarak normal hasarın %100'ü artı 42 hasar verir ve çok tehdit yaratır."
   },
   "91537e5948733b85": {
     "en": "Gives your arcane and nature spells a 42% chance to not lose cast time when you take damage.",
@@ -2910,10 +3058,6 @@
   "9265da2a098e3cf3": {
     "en": "Value adjustment: 100%(Classic Era: 75%).",
     "tr": "Değer ayarı: %100 (Classic Era: %75)."
-  },
-  "9290f33d5c6f9d91": {
-    "en": "Gives all members of the raid or group that share the same class with the target the Greater Blessing of Light, increasing the effects of Holy Light spells used on the target by up to 400 and the effect Flash of Light spells used on the target by up to 115. Lasts 1 hour. Players may only have one Blessing on them per Paladin at any one time.",
-    "tr": "Raid veya gruptaki hedefle aynı class'tan tüm üyelere Greater Blessing of Light verir; onlara kullanılan Holy Light büyülerinin etkisi en fazla 400, Flash of Light büyülerinin etkisi en fazla 115 artar. 1 saat sürer. Bir oyuncunun üzerinde her Paladin'den aynı anda yalnızca bir Blessing olabilir."
   },
   "92c35d6522b8b4ef": {
     "en": "Increases the initial damage of your Immolate by 40%, and your Burn has an 80% chance to stun the target and reduce movement speed by 50% for 5 seconds.",
@@ -2950,6 +3094,10 @@
   "93d1129dcc452f14": {
     "en": "Delays rage decay by 6 seconds after you leave combat.",
     "tr": "Savaştan çıktıktan sonra Öfke'nin azalmasını 6 saniye geciktirir."
+  },
+  "944bd5e94ee2254d": {
+    "en": "Gives you a 45% chance to add one combo point to a target after dodging attacks or completely resisting spells.",
+    "tr": "Saldırıdan kaçındıktan ya da bir büyüye tamamen direndikten sonra hedefe %45 şansla 1 combo point ekler."
   },
   "94503b98f52f2a45": {
     "en": "Reduces the threat generated by your spells by 15%.",
@@ -2999,9 +3147,9 @@
     "en": "Gives your Corruption, Drain Soul, Drain Life, and Wrack spells a 4% chance to cause you to enter a Shadow Trance after damaging the opponent. The Shadow Trance reduces the casting time of your next Shadow Bolt spell by 100%.",
     "tr": "Corruption, Drain Soul, Drain Life ve Wrack büyülerine rakibe hasar verdikten sonra seni Shadow Trance'a sokma şansı %4 verir. Shadow Trance bir sonraki Shadow Bolt büyünün cast süresini %100 azaltır."
   },
-  "973d8e638a5807da": {
-    "en": "Reduces threat generated by target party members by 30% for 1 hour.",
-    "tr": "Hedef grup üyelerinin ürettiği tehdidi 1 saat boyunca %30 azaltır."
+  "97492c6d68621fbd": {
+    "en": "When Holy Shock is cast on allies unaffected by Holy Oath, the critical strike chance increases by 30%.",
+    "tr": "Holy Shock, Holy Oath'tan etkilenmeyen müttefiklere atıldığında kritik vuruş şansı %30 artar."
   },
   "975c2d90b81d0478": {
     "en": "Increases the amount healed by your spells by 10%.",
@@ -3035,6 +3183,10 @@
     "en": "Stuns the target for 6 sec.",
     "tr": "Hedefi 6 saniye sersemletir."
   },
+  "98bbe299b8e31aac": {
+    "en": "Increases the critical strike chance of your Lightning Bolt and Chain Lightning by 5%.",
+    "tr": "Lightning Bolt ve Chain Lightning'in kritik vuruş şansını %5 artırır."
+  },
   "98c24e29fa976473": {
     "en": "Gives all members of the raid or group that share the same class with the target the Greater Blessing of Kings, increasing total stats by 10% for 1 hour. Players may only have one Blessing on them per Paladin at any one time.",
     "tr": "Raid veya gruptaki hedefle aynı class'tan tüm üyelere Greater Blessing of Kings verir; 1 saat boyunca toplam özellikleri %10 artar. Bir oyuncunun üzerinde her Paladin'den aynı anda yalnızca bir Blessing olabilir."
@@ -3051,6 +3203,10 @@
     "en": "Increases your total Intellect by 10%.",
     "tr": "Toplam Intellect'ini %10 artırır."
   },
+  "995c1011dc2e0a75": {
+    "en": "Increases damage done by your sidekick weapon by 25%.",
+    "tr": "Off-hand silahının verdiği hasarı %25 artırır."
+  },
   "999566da73aa92bc": {
     "en": "Fills the Paladin with the spirit of justice for 30 sec, giving each melee attack a chance to stun for 2 sec. Only one Seal can be active on the Paladin at any one time. Unleashing this Seal's energy will judge an enemy for 10 sec, preventing them from fleeing. Your melee strikes will refresh the spell's duration. Only one Judgement per Paladin can be active at any one time.",
     "tr": "Paladin'i 30 saniye boyunca adalet ruhuyla doldurur; her yakın dövüş saldırısına 2 saniye sersemletme şansı verir. Paladin üzerinde aynı anda yalnızca bir Seal aktif olabilir. Bu Seal'in enerjisini salmak bir düşmanı 10 saniye yargılar ve kaçmasını engeller. Yakın dövüş vuruşların süreyi yeniler. Her Paladin'in aynı anda yalnızca bir Judgement'ı aktif olabilir."
@@ -3059,6 +3215,10 @@
     "en": "Decrease the armor of the target by 505 for 40 sec. While affected, the target cannot stealth or turn invisible.",
     "tr": "Hedefin Armor'unu 40 saniye boyunca 505 azaltır. Etki altındaki hedef stealth'e giremez veya görünmez olamaz."
   },
+  "9a4b182cc6f815fd": {
+    "en": "Finish skill. Mark the target. Store part of the damage dealt by your attacks according to combo points. Garrote and Split damage are stored at twice the rate. After 6 seconds, the stored damage will be dealt once. The maximum damage increases with attack power and critical strike chance. Curse effect. 25 Energy, 20 yards range, 10 seconds cooldown.",
+    "tr": "Bitirici yetenek. Hedefi işaretler; saldırılarının verdiği hasarın bir kısmını combo point'e göre depolar. Garrote ve Rupture hasarı iki kat oranında depolanır. 6 saniye sonra depolanan hasar bir kerede verilir. En yüksek hasar attack power ve kritik vuruş şansıyla artar. Curse etkisi. 25 Enerji, 20 yard menzil, 10 saniye bekleme süresi."
+  },
   "9a636d117e0b5040": {
     "en": "You are protected from all physical attacks and spells for 8 sec, but during that time you cannot attack or use physical abilities yourself. Applies Forbearance for 1 min. Cannot be cast while Forbearance is active.",
     "tr": "8 saniye boyunca tüm fiziksel saldırı ve büyülerden korunursun, ancak bu sürede saldıramaz veya fiziksel yetenek kullanamazsın. 1 dakika boyunca Forbearance uygular. Forbearance aktifken kullanılamaz."
@@ -3066,10 +3226,6 @@
   "9ab8ccedd1446368": {
     "en": "Finishing move that stuns the target. Lasts longer per combo point: 1 point : 2 seconds 2 points: 3 seconds 3 points: 4 seconds 4 points: 5 seconds 5 points: 6 seconds",
     "tr": "Hedefi sersemleten bitirici hamle. Combo puanı başına daha uzun sürer: 1 puan: 2 saniye, 2 puan: 3 saniye, 3 puan: 4 saniye, 4 puan: 5 saniye, 5 puan: 6 saniye."
-  },
-  "9afdfb6a8c96c4d1": {
-    "en": "Value adjustment: 25%(Classic Era: 50%).",
-    "tr": "Değer ayarı: %25 (Classic Era: %50)."
   },
   "9b15afadf9ccdee7": {
     "en": "Moved from Tier 2 to Tier 1. Values unchanged, wording adjusted.",
@@ -3095,6 +3251,10 @@
     "en": "Increases the damage done by your Multi-Shot, Aimed Shot, and Volley abilities by 10%.",
     "tr": "Multi-Shot, Aimed Shot ve Volley yeteneklerinin verdiği hasarı %10 artırır."
   },
+  "9c3538ca9b2a5628": {
+    "en": "Cuts enemy targets, causing them to bleed for 15 seconds. Takes 20 damage. For every layer of cut on the target, the target takes 10% additional weapon damage. Causes a lot of threat. This effect stacks up to 5 times on the same target.",
+    "tr": "Düşman hedefi keserek 15 saniye kanatır. 20 hasar verir. Hedefteki her kesik birikimi için hedef %10 ek silah hasarı alır. Çok tehdit yaratır. Bu etki aynı hedefte en fazla 5 kez birikir."
+  },
   "9c39b5269e0de7c3": {
     "en": "When activated, your next Nature spell becomes an instant cast spell.",
     "tr": "Etkinleştirildiğinde bir sonraki Nature büyün anında cast edilir."
@@ -3119,13 +3279,13 @@
     "en": "Deals 136 to 161 Frost damage to an enemy target. Deals 200% increased damage to Frozen targets.",
     "tr": "Düşman hedefe 136 ile 161 arasında Frost hasarı verir. Frozen hedeflere %200 fazla hasar verir."
   },
-  "9cc6f4e89d7e7b33": {
-    "en": "Max level changed from 5 to 3. Moved from Tier 6 to Tier 4. Value adjustment: 10%(Classic Era: 6%).",
-    "tr": "Maksimum seviye 5'ten 3'e değişti. Tier 6'dan tier 4'e taşındı. Değer ayarı: %10 (Classic Era: %6)."
-  },
   "9ce505c09fd5858a": {
     "en": "An instant strike that deals 100% weapon damage (145% if a Dagger is equipped) and causes the target to take 15% increased Rupture damage from the Rogue. Lasts 15 sec. Awards 1 Combo Point.",
     "tr": "Silah hasarının %100'ü (Dagger kuşanılmışsa %145) kadar hasar veren anlık bir vuruş; hedefin bu Rogue'dan aldığı Rupture hasarını %15 artırır. 15 saniye sürer. 1 combo puanı kazandırır."
+  },
+  "9cf8b43e05168314": {
+    "en": "Increases the duration of your Split ability by 6 seconds and your Garrote ability by 9 seconds.",
+    "tr": "Rupture yeteneğinin süresini 6 saniye, Garrote yeteneğinin süresini 9 saniye uzatır."
   },
   "9d24057f0c032611": {
     "en": "Forces the enemy target to sleep for up to 40 sec. Any damage will awaken the target. Only one target can be forced to hibernate at a time. Only works on Beasts and Dragonkin.",
@@ -3174,10 +3334,6 @@
   "9f40c7dcf6012b99": {
     "en": "Blasts the target with Holy energy, causing 334 to 362 (+42.9% of spell power) Holy damage to an enemy, or 307 to 333 (+42.9% of spell power) healing to an ally.",
     "tr": "Hedefi Holy enerjiyle vurur; düşmana 334 - 362 (+büyü gücünün %42.9'u) Holy hasar verir ya da müttefiki 307 - 333 (+büyü gücünün %42.9'u) iyileştirir."
-  },
-  "9f633459ee74aced": {
-    "en": "Your Sinister Strike, Ghostly Strike, and Hemorrhage abilities cause 10% more damage against targets below 35% health.",
-    "tr": "Sinister Strike, Ghostly Strike ve Hemorrhage yeteneklerin canı %35'in altındaki hedeflere %10 daha fazla hasar verir."
   },
   "9f712a899708a874": {
     "en": "Rank 4:Value: 69 (Classic Era: 71), 77 points (Classic Era: 79 points)",
@@ -3263,13 +3419,13 @@
     "en": "Gives all members of the raid or group that share the same class with the target the Greater Blessing of Wisdom, restoring 40 mana every 5 seconds for 1 hour. Players may only have one Blessing on them per Paladin at any one time.",
     "tr": "Raid veya gruptaki hedefle aynı class'tan tüm üyelere Greater Blessing of Wisdom verir; 1 saat boyunca her 5 saniyede 40 mana yeniler. Bir oyuncunun üzerinde her Paladin'den aynı anda yalnızca bir Blessing olabilir."
   },
-  "a2a3d331bcd78e7f": {
-    "en": "Increases the critical strike chance of all your spells and abilities by 1%.",
-    "tr": "Tüm büyü ve yeteneklerinin kritik vuruş şansını %1 artırır."
-  },
   "a2e5330ebcc52898": {
     "en": "Places the Hunter's Mark on the target, increasing the Ranged Attack Power of all attackers against that target by 71. In addition, the target of this ability can always be seen by the hunter whether it stealths or turns invisible. The target also appears on the mini-map. Lasts for 2 min.",
     "tr": "Hedefe Hunter's Mark koyar; o hedefe saldıran herkesin menzilli Attack Power'ı 71 artar. Ayrıca hedef stealth'e girse veya görünmez olsa da hunter onu her zaman görür. Hedef minimap'te de görünür. 2 dakika sürer."
+  },
+  "a2f4b0d57815c4d7": {
+    "en": "Levels 1 to 5 are learned earlier than Classic Era",
+    "tr": "Rank 1 ile 5 arası Classic Era'dan daha erken öğrenilir."
   },
   "a322c126af358216": {
     "en": "Max rank changed from 5 to 3. Moved from tier 4 to tier 3. Effect override.",
@@ -3286,10 +3442,6 @@
   "a3582a945ca39264": {
     "en": "Consecrates the land beneath the Paladin, doing 96 Holy damage over 8 sec to enemies who enter the area. The first 4 enemies who enter the area will take an additional 216 damage over 8 sec.",
     "tr": "Paladin'in altındaki toprağı kutsar; alana giren düşmanlara 8 saniye boyunca 96 Holy hasar verir. Alana giren ilk 4 düşman 8 saniye boyunca ek 216 hasar alır."
-  },
-  "a38e1ecbd91f7bca": {
-    "en": "Increases the chance of your Holy spells to hit by 18%.",
-    "tr": "Holy büyülerinin isabet şansını %18 artırır."
   },
   "a398bbddb9133e02": {
     "en": "Attempt to finish off a wounded foe, causing 600 damage and converting each extra point of rage into 15 additional damage. Only usable on enemies that have 20% or less health.",
@@ -3311,6 +3463,10 @@
     "en": "When activated, this ability immediately finishes the cooldown on your other Rogue abilities.",
     "tr": "Etkinleştirildiğinde diğer Rogue yeteneklerinin bekleme süresini anında sıfırlar."
   },
+  "a5248941c4bc9360": {
+    "en": "Shortens the cooldown of Whirlwind by 1 second and increases the damage it deals to the nearest enemy by 15%.",
+    "tr": "Whirlwind bekleme süresini 1 saniye kısaltır ve en yakın düşmana verdiği hasarı %15 artırır."
+  },
   "a534b6eaa79bb7ec": {
     "en": "Gives the Paladin a chance to deal additional Holy damage equal to 70% of normal weapon damage. Only one Seal can be active on the Paladin at any one time. Lasts 30 sec. Unleashing this Seal's energy will judge an enemy, instantly causing 68 to 74 (+42.9% of spell power) Holy damage, 136 to 148 (+42.9% of spell power) if the target is stunned or incapacitated.",
     "tr": "Paladin'e normal silah hasarının %70'i kadar ek Holy hasar verme şansı kazandırır. Paladin üzerinde aynı anda yalnızca bir Seal aktif olabilir. 30 saniye sürer. Bu Seal'in enerjisini salmak bir düşmanı yargılar ve anında 68 - 74 (+büyü gücünün %42.9'u) Holy hasar verir; hedef sersemlemiş veya etkisizse 136 - 148 (+büyü gücünün %42.9'u)."
@@ -3331,17 +3487,9 @@
     "en": "Increases your reputation gains by 10%.",
     "tr": "Kazandığın itibar (reputation) %10 artar."
   },
-  "a742c0ebe9ef6563": {
-    "en": "Increases the chance of your Frost and Fire spells to hit by 4%.",
-    "tr": "Frost ve Fire büyülerinin isabet şansını %4 artırır."
-  },
   "a744ca7c72a8defe": {
     "en": "Rake the target for 61 damage and an additional 102 damage over 9 sec. Awards 1 combo point.",
     "tr": "Hedefi tırmalar; 61 hasar ve 9 saniye boyunca ek 102 hasar verir. 1 combo puanı kazandırır."
-  },
-  "a74814b27418f80e": {
-    "en": "Heal yourself and a friendly target for 772 to 911 (+42.9% of spell power). This causes low threat.",
-    "tr": "Kendini ve dost bir hedefi 772 - 911 (+büyü gücünün %42.9'u) iyileştirir. Düşük tehdit üretir."
   },
   "a7aba0b630641549": {
     "en": "Increases the damage done by your Fire spells by 3% per your Fire effects on the target, up to a maximum increase of 12%. Effects which mix multiple schools of magic do not qualify.",
@@ -3359,9 +3507,21 @@
     "en": "Allows 50% of your Mana regeneration to continue while casting.",
     "tr": "Cast ederken mana yenilenmenin %50'sinin devam etmesini sağlar."
   },
+  "a8d5315bb866e90d": {
+    "en": "Skills that increase combo points have a 100% chance of adding an additional combo point to critical strikes.",
+    "tr": "Combo point artıran yeteneklerin kritik vuruşları %100 şansla fazladan 1 combo point ekler."
+  },
   "a8d8c1f3dd12b3ec": {
     "en": "Maximum rank changed from 5 to 3. Moved from column 1 to column 2. Effect override.",
     "tr": "Maksimum rank 5'ten 3'e değişti. Sütun 1'den sütun 2'ye taşındı. Efekt değiştirildi."
+  },
+  "a8e25776c30b28f1": {
+    "en": "Moved from column 2 to column 1. Values unchanged, wording adjusted.",
+    "tr": "2. sütundan 1. sütuna taşındı. Değerler aynı, ifade düzenlendi."
+  },
+  "a912342ce4a5b8aa": {
+    "en": "Increases the critical damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Bleed abilities by 20%.",
+    "tr": "Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike ve Hemorrhage yeteneklerinin kritik hasar bonusunu %20 artırır."
   },
   "a912efaa260d9c34": {
     "en": "Finishing move that increases melee attack speed by 30%. Lasts longer per combo point: 1 point : 9 seconds 2 points: 12 seconds 3 points: 15 seconds 4 points: 18 seconds 5 points: 21 seconds",
@@ -3407,6 +3567,10 @@
     "en": "Instantly rid yourself of any movement restriction effects and become immune to them for 3 seconds.",
     "tr": "Hareket kısıtlayan tüm etkilerden anında kurtulursun ve 3 saniye boyunca bunlara bağışık olursun."
   },
+  "aa5bf822638ea282": {
+    "en": "Shortens the cast time of your Turn Undead by 1.0 seconds, reduces its cooldown by 10 seconds, and also makes it effective against demons.",
+    "tr": "Turn Undead cast süresini 1,0 saniye, bekleme süresini 10 saniye kısaltır ve Demon'lara karşı da etkili olmasını sağlar."
+  },
   "aa92d54e58f1fe24": {
     "en": "Increases the damage done by your Lightning Bolt, Chain Lightning, and Earth Shock spells by 5%.",
     "tr": "Lightning Bolt, Chain Lightning ve Earth Shock büyülerinin verdiği hasarı %5 artırır."
@@ -3451,10 +3615,6 @@
     "en": "Move from level 2 to level 3.",
     "tr": "Seviye 2'den seviye 3'e taşındı."
   },
-  "ac417912d318101d": {
-    "en": "Rank 8:Value: 415 (Classic Era: 490)",
-    "tr": "Rank 8: Değer 415 (Classic Era: 490)"
-  },
   "ac7c8d040c14d745": {
     "en": "Increases the critical strike damage bonus of your Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike, and Hemorrhage abilities by 20%.",
     "tr": "Sinister Strike, Gouge, Backstab, Mutilate, Ghostly Strike ve Hemorrhage yeteneklerinin kritik vuruş hasar bonusunu %20 artırır."
@@ -3470,6 +3630,10 @@
   "ad17ea00a0170eaa": {
     "en": "Instantly strike for normal weapon damage and increase the damage you deal to the target with your next Lightning Bolt, Chain Lightning, or Earth Shock spell by 20% for 12 sec.",
     "tr": "Anında normal silah hasarıyla vurur ve 12 saniye boyunca hedefe bir sonraki Lightning Bolt, Chain Lightning veya Earth Shock büyünle verdiğin hasarı %20 artırır."
+  },
+  "ad3a66e6b46020cf": {
+    "en": "Increases your spell damage by up to 36% of your Intelligence and reduces the cast time of your Hammer of Wrath by 0.6 seconds.",
+    "tr": "Büyü hasarını Intellect'inin en fazla %36'sı kadar artırır ve Hammer of Wrath cast süresini 0,6 saniye kısaltır."
   },
   "ad3f1758a8d79169": {
     "en": "Increases your dodge chance by 4%, and gives you a 80% chance to gain 5 Rage each time you dodge.",
@@ -3491,10 +3655,6 @@
     "en": "Your Counterspell also Silences the target for 4 sec.",
     "tr": "Counterspell ayrıca hedefi 4 saniye susturur."
   },
-  "adf60113512ad286": {
-    "en": "Increases the damage you deal with one-handed melee weapons by 10%.",
-    "tr": "Tek elli yakın dövüş silahlarıyla verdiğin hasarı %10 artırır."
-  },
   "ae031692d69ff02d": {
     "en": "Summons a Voidwalker under the command of the Warlock.",
     "tr": "Warlock'un emrinde bir Voidwalker çağırır."
@@ -3502,6 +3662,10 @@
   "ae8c74bfd46db57c": {
     "en": "Imbue the Shaman's weapon with frost. Each hit has a chance of causing 169 (+10% of spell power) additional Frost damage and slowing the target's movement speed by 25% for 8 sec. Lasts for 60 minutes.",
     "tr": "Shaman'ın silahına buz aşılar. Her vuruşun 169 (+büyü gücünün %10'u) ek Frost hasarı verme ve hedefin hareket hızını 8 saniye boyunca %25 yavaşlatma şansı vardır. 60 dakika sürer."
+  },
+  "aeb400161b8804be": {
+    "en": "Increases your armor by 50% Intelligence.",
+    "tr": "Zırhını Intellect'inin %50'si kadar artırır."
   },
   "aece9c366965ed81": {
     "en": "Gives you a 60% chance to generate 1 additional Rage when you deal melee damage with a weapon.",
@@ -3539,6 +3703,10 @@
     "en": "Cooldown: 15 minutes (Classic Era: 30 minutes)",
     "tr": "Bekleme süresi: 15 dakika (Classic Era: 30 dakika)"
   },
+  "b02ffa067cde1cbf": {
+    "en": "After a melee attack causes a critical hit, the melee attack speed of your next 3 attacks is increased by 30%.",
+    "tr": "Yakın dövüş saldırısı kritik vuruş yaptıktan sonra sonraki 3 saldırının yakın dövüş saldırı hızı %30 artar."
+  },
   "b030b919e7556296": {
     "en": "Reduces the casting time of your Mana Burn spell by 1.0 sec.",
     "tr": "Mana Burn büyünün cast süresini 1.0 saniye kısaltır."
@@ -3559,9 +3727,21 @@
     "en": "Attack and Spell Strength increased by 10%. Lasts for 15 seconds.",
     "tr": "Attack Power ve büyü gücü %10 artar. 15 saniye sürer."
   },
+  "b1fdf0d4ff74ddd1": {
+    "en": "Your Lancing ability has a 20% chance to add 2 combo points to your target.",
+    "tr": "Shank yeteneğin hedefe %20 şansla 2 combo point ekler."
+  },
   "b29f4492fa3405e4": {
     "en": "Rank 10:Effect Description Override",
     "tr": "Rank 10: Etki Açıklaması Geçersiz Kılma"
+  },
+  "b2aefabdcf2d7856": {
+    "en": "Skills that increase combo points have a 66% chance of adding an additional combo point to critical strikes.",
+    "tr": "Combo point artıran yeteneklerin kritik vuruşları %66 şansla fazladan 1 combo point ekler."
+  },
+  "b2cfe43a83195447": {
+    "en": "Rank 9:Value: 675 (Classic Era: 555)",
+    "tr": "Rank 9: Değer 675 (Classic Era: 555)"
   },
   "b2d7bf5ff2ced660": {
     "en": "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.5 sec and your Soul Fire spell by 2 sec.",
@@ -3615,6 +3795,10 @@
     "en": "You take on the aspects of a beast, becoming untrackable and increasing Melee Attack Power by 110. Only one Aspect can be active at a time.",
     "tr": "Bir canavarın özelliklerini kuşanırsın; izlenemez olursun ve yakın dövüş Saldırı Gücünü 110 artırırsın. Aynı anda yalnızca bir Aspect etkin olabilir."
   },
+  "b63c83fd6b2b5a7a": {
+    "en": "Move from layer 3 to layer 2. Numerical adjustment: 50%(Classic Era: 15%).",
+    "tr": "3. katmandan 2. katmana taşındı. Sayısal ayar: %50 (Classic Era: %15)."
+  },
   "b6586e2081ed72f1": {
     "en": "Moved from tier 5 to tier 2. Effect override.",
     "tr": "Tier 5'ten tier 2'ye taşındı. Efekt değiştirildi."
@@ -3655,6 +3839,10 @@
     "en": "Moved from Tier 3 to Tier 2. Value adjustment: 1.0 seconds (Classic Era: 1 second).",
     "tr": "Tier 3'ten tier 2'ye taşındı. Değer ayarı: 1.0 saniye (Classic Era: 1 saniye)."
   },
+  "b8dc02ed769d72e6": {
+    "en": "Max rank changed from 1 to 3. Moved from tier 3 to tier 1. Effect override.",
+    "tr": "Maksimum rank 1'den 3'e çıktı. 3. kademeden 1. kademeye taşındı. Etkisi değiştirildi."
+  },
   "b8f11dc51862715e": {
     "en": "Gives your Shadow damage spells a 10% chance to stun the target for 3 sec.",
     "tr": "Shadow hasar büyülerine hedefi 3 saniye sersemletme şansı %10 verir."
@@ -3662,6 +3850,10 @@
   "b935ed8b4331513e": {
     "en": "Stings the target, draining 1108 mana over 8 sec. Only one Sting per Hunter can be active on any one target.",
     "tr": "Hedefi sokar; 8 saniye boyunca 1108 mana emer. Bir hedefte her Hunter'ın yalnızca bir Sting'i aktif olabilir."
+  },
+  "b94fe7052dbc3ad5": {
+    "en": "Increases the damage absorbed by your shield by 15%, and gives your block a 50% chance to restore 4% of its maximum mana. Triggers up to once every 3 seconds.",
+    "tr": "Kalkanının emdiği hasarı %15 artırır ve bloklarına maksimum manasının %4'ünü geri verme şansını %50 verir. En fazla 3 saniyede bir tetiklenir."
   },
   "b978db87ab58b1b2": {
     "en": "Increases the damage done by your Bane of Agony by 10%.",
@@ -3771,9 +3963,17 @@
     "en": "Causes 350 to 412 (+100% of spell power) Arcane damage to the target.",
     "tr": "Hedefe 350 - 412 (+büyü gücünün %100'ü) Arcane hasarı verir."
   },
+  "beeac0d64ebf7235": {
+    "en": "Rank 8:Value: 280 (Classic Era: 183)",
+    "tr": "Rank 8: Değer 280 (Classic Era: 183)"
+  },
   "bf06a898e8239532": {
     "en": "Increases the critical strike chance of all your spells and attacks by 10% for 15 seconds.",
     "tr": "15 saniye boyunca tüm büyü ve saldırılarının kritik vuruş şansını %10 artırır."
+  },
+  "bf1d3b7531c6274f": {
+    "en": "Reduces the casting time of Fireball, Frostfire Bolt and Arcane Wrath by 0.2 seconds.",
+    "tr": "Fireball, Frostfire Bolt ve Arcane Wrath cast süresini 0,2 saniye kısaltır."
   },
   "bfa0e549cfba8ced": {
     "en": "Smite an enemy for 167 to 186 (+71.4% of spell power) Holy damage.",
@@ -3807,10 +4007,6 @@
     "en": "Tabard",
     "tr": "Tabard"
   },
-  "c03ebb010240a784": {
-    "en": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 24%.",
-    "tr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch büyülerinin kritik vuruş şansını %24 artırır."
-  },
   "c0560ad79d2d9dd6": {
     "en": "Launches a projectile of pure Arcane energy at the enemy target, causing 121 to 147 (+100% of spell power) Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana.",
     "tr": "Düşman hedefe saf Arcane enerjisinden bir mermi fırlatır; 121 ile 147 arasında (+büyü gücünün %100'ü) Arcane hasarı verir. Bu büyü, maksimum Mana değerinin %5'i kadar ek Büyü Hasarı kazanır."
@@ -3822,6 +4018,14 @@
   "c0681dee88869a87": {
     "en": "Rank 3:Value: 30 yards (Classic Era: 20 yards), 5 minutes (Classic Era: 2 minutes)",
     "tr": "Rank 3: Değer 30 yard (Classic Era: 20 yard), 5 dakika (Classic Era: 2 dakika)"
+  },
+  "c0ae5f7281114235": {
+    "en": "Allows you to maintain 30% mana regeneration while casting.",
+    "tr": "Cast ederken mana yenilenmenin %30'unu korumanı sağlar."
+  },
+  "c0b145ce86980d43": {
+    "en": "Reduces the duration of Stun and Charm effects by 20%.",
+    "tr": "Stun ve Charm etkilerinin süresini %20 kısaltır."
   },
   "c0ba63edf899ef2e": {
     "en": "Improves your chance to hit by 3%.",
@@ -3863,10 +4067,6 @@
     "en": "Conjures a mana citrine that can be used to instantly restore 775 to 925 mana. Conjured items disappear if logged out for more than 15 minutes.",
     "tr": "Anında 775 - 925 mana yenilemek için kullanılabilen bir mana sitrini yaratır. Yaratılan eşyalar 15 dakikadan uzun süre çevrimdışı kalınırsa kaybolur."
   },
-  "c1eb075d52a49e76": {
-    "en": "Rank 3:Value: 1 hour (Classic Era: 5 minutes)",
-    "tr": "Rank 3: Değer 1 saat (Classic Era: 5 dakika)"
-  },
   "c22f85dd6ccc39c2": {
     "en": "Increases the critical strike chance of your Conflagrate spell by 25%.",
     "tr": "Conflagrate büyünün kritik vuruş şansını %25 artırır."
@@ -3875,9 +4075,9 @@
     "en": "Rank 10:Value: 253 (Classic Era: 482), 283 points (Classic Era: 538 points)",
     "tr": "Rank 10: Değer 253 (Classic Era: 482), 283 puan (Classic Era: 538 puan)"
   },
-  "c2e32832dfcb122d": {
-    "en": "Move from Tier 3 to Tier 2. Value adjustment: 20 points (Classic Era: 10 points).",
-    "tr": "Tier 3'ten tier 2'ye taşındı. Değer ayarı: 20 puan (Classic Era: 10 puan)."
+  "c273aef6a214c32f": {
+    "en": "Your Lancing ability has an 80% chance to add 2 combo points to your target.",
+    "tr": "Shank yeteneğin hedefe %80 şansla 2 combo point ekler."
   },
   "c2eaa8fcffbdfe5a": {
     "en": "Increases your Parry chance by 6%.",
@@ -3887,13 +4087,13 @@
     "en": "Classic Era is called Healing Gift. Moved from Tier 3 to Tier 2. Value unchanged, wording adjusted.",
     "tr": "Classic Era'daki adı Healing Gift. Tier 3'ten tier 2'ye taşındı. Değer aynı, metin düzenlendi."
   },
+  "c3599d062f7a793c": {
+    "en": "Shortens the casting time of your Fireball, Frostfire Bolt and Arcane Wrath by 0.4 seconds.",
+    "tr": "Fireball, Frostfire Bolt ve Arcane Wrath cast süresini 0,4 saniye kısaltır."
+  },
   "c36c48b2b874903b": {
     "en": "Maximum rating changed from 5 to 3. Moved from column 3 to column 4. Numerical adjustment: 20%(Classic Era: 12%).",
     "tr": "Maksimum rank 5'ten 3'e değişti. Sütun 3'ten sütun 4'e taşındı. Sayısal ayar: %20 (Classic Era: %12)."
-  },
-  "c3ffc7221f3cf7e1": {
-    "en": "Classic Era is called Tactical Mastery. Effect rewriting.",
-    "tr": "Classic Era'daki adı Tactical Mastery. Efekt yeniden yazıldı."
   },
   "c40326a93edd04f2": {
     "en": "Increases your target's armor value by 25% for 15 sec after getting a critical effect from one of your healing spells.",
@@ -3947,9 +4147,9 @@
     "en": "Increases the critical strike chance of your fire spells by 6%.",
     "tr": "Fire büyülerinin kritik vuruş şansını %6 artırır."
   },
-  "c6ab8425fd5c19c3": {
-    "en": "There is a 12% chance to activate Overpower when you use your main hand weapon to launch melee attacks against enemies affected by your Rip.",
-    "tr": "Ana el silahınla Rip'in etkisindeki düşmanlara yakın dövüş saldırısı yaptığında %12 ihtimalle Overpower'ı etkinleştirir."
+  "c699249d6abf9fcd": {
+    "en": "Shortens the cooldown of Whirlwind by 2 seconds and increases the damage it does to the nearest enemy by 30%.",
+    "tr": "Whirlwind bekleme süresini 2 saniye kısaltır ve en yakın düşmana verdiği hasarı %30 artırır."
   },
   "c708e0183ef7e886": {
     "en": "A long-range shot that deals ranged damage plus 295 and increases the range of your next 3 Shots by 10 yards for 10 sec.",
@@ -3971,13 +4171,17 @@
     "en": "Teleports the caster to Orgrimmar.",
     "tr": "Cast edeni Orgrimmar'a ışınlar."
   },
+  "c8ec8ecde0ebe582": {
+    "en": "Increases your movement speed while Stealth by 5%, and reduces the cooldown of Stealth by 2 seconds.",
+    "tr": "Stealth'tayken hareket hızını %5 artırır ve Stealth bekleme süresini 2 saniye kısaltır."
+  },
+  "c8f8c49d3666780a": {
+    "en": "Increases your spell damage by up to 12% of your Intelligence and reduces the cast time of your Hammer of Wrath by 0.2 seconds.",
+    "tr": "Büyü hasarını Intellect'inin en fazla %12'si kadar artırır ve Hammer of Wrath cast süresini 0,2 saniye kısaltır."
+  },
   "c8fd1685d151f46c": {
     "en": "Gives your arcane and nature spells a 28% chance to not lose cast time when you take damage.",
     "tr": "Arcane ve Nature büyülerinin, hasar aldığında cast süresini kaybetmeme şansını %28 yapar."
-  },
-  "c8ffe5d8c2362c3c": {
-    "en": "Instantly attacks the target, dealing ${1+$apm*15/100} damage and regaining 10% of your maximum health. Can only be used within 20 seconds of killing an enemy that gives you EXP or Honor.",
-    "tr": "Hedefe anında saldırır, ${1+$apm*15/100} hasar verir ve azami canının %10'unu geri kazandırır. Yalnızca EXP veya Honor veren bir düşmanı öldürdükten sonraki 20 saniye içinde kullanılabilir."
   },
   "c95245bf268d3237": {
     "en": "Causes an explosion of holy light around the caster, causing 26 to 30 (+10.7% of spell power) Holy damage to all enemy targets within 10 yards and healing all party members within 10 yards for 50 to 57 (+10.7% of spell power). These effects cause no threat.",
@@ -3999,9 +4203,25 @@
     "en": "All non-periodic spell criticals grace you with a blessing of nature, increasing your spellcasting speed and reducing your global cooldown by 10% for 3 sec.",
     "tr": "Periyodik olmayan tüm büyü kritikleri seni doğanın kutsamasıyla güçlendirir; 3 saniye boyunca büyü cast hızın artar ve global bekleme süren %10 azalır."
   },
+  "c9d5bf030aac1e7e": {
+    "en": "When a melee attack deals a critical hit, it increases the melee attack speed of your next 3 attacks by 10%.",
+    "tr": "Yakın dövüş saldırısı kritik vuruş yaptığında sonraki 3 saldırının yakın dövüş saldırı hızını %10 artırır."
+  },
+  "ca1d118359293a89": {
+    "en": "Increases the energy generated by your Lancing ability by 12 points and reduces the cooldown by 1.6 seconds.",
+    "tr": "Shank yeteneğinin ürettiği enerjiyi 12 puan artırır ve bekleme süresini 1,6 saniye kısaltır."
+  },
   "ca73c1660fbe50a4": {
     "en": "Slows falling speed for 30 sec.",
     "tr": "30 saniye boyunca düşme hızını yavaşlatır."
+  },
+  "ca89105cb2d68976": {
+    "en": "Increases the hit chance of all your spells by 2%.",
+    "tr": "Tüm büyülerinin isabet şansını %2 artırır."
+  },
+  "caf029aa4839a8da": {
+    "en": "Reduces the cast time of your Turn Undead by 0.5 seconds, reduces its cooldown by 5 seconds, and also makes it effective against demons.",
+    "tr": "Turn Undead cast süresini 0,5 saniye, bekleme süresini 5 saniye kısaltır ve Demon'lara karşı da etkili olmasını sağlar."
   },
   "cb1a12cc1c5a1b25": {
     "en": "Curses the target for 5 min, reducing Magic resistances by 75 and increasing Magic damage taken by 10%. Only one Curse per Warlock can be active on any one target.",
@@ -4083,10 +4303,6 @@
     "en": "Causes Stealth to enter stealth mode, but reduces movement speed by 30%. The effect lasts until cancelled.",
     "tr": "Stealth moduna girer, ancak hareket hızı %30 azalır. İptal edilene kadar sürer."
   },
-  "ce597d5ae7bb598a": {
-    "en": "Max rank changed from 1 to 2. Moved from tier 3 to tier 1. Effect override.",
-    "tr": "Maksimum rank 1'den 2'ye çıktı. Tier 3'ten Tier 1'e taşındı. Etki değişti."
-  },
   "ce677f320d9b2d7f": {
     "en": "Reduces the cast time of Starfire by 0.5 sec and Starfire has a 15% chance to stun its target for 3 sec.",
     "tr": "Starfire'ın cast süresini 0.5 saniye kısaltır ve Starfire'ın hedefini 3 saniye sersemletme şansı %15'tir."
@@ -4143,10 +4359,6 @@
     "en": "Increases damage done by your Swipe ability by 10% and reduces the chance enemies have to detect you while Prowling as if you were 1 level higher.",
     "tr": "Swipe yeteneğinin verdiği hasarı %10 artırır ve Prowl modundayken düşmanların seni algılama ihtimalini, 1 seviye daha yüksekmişsin gibi azaltır."
   },
-  "d0205f552dff5b30": {
-    "en": "Places a Blessing on the friendly target, increasing the effects of Holy Light spells used on the target by up to 400 and the effect Flash of Light spells used on the target by up to 115. Lasts 1 hour. Players may only have one Blessing on them per Paladin at any one time.",
-    "tr": "Dost hedefe bir Blessing koyar; hedefe kullanılan Holy Light büyülerinin etkisi en fazla 400, Flash of Light büyülerinin etkisi en fazla 115 artar. 1 saat sürer. Bir oyuncunun üzerinde her Paladin'den aynı anda yalnızca bir Blessing olabilir."
-  },
   "d08744ae2b40e525": {
     "en": "Move from column 1 to column 4. Effect override.",
     "tr": "Sütun 1'den sütun 4'e taşındı. Efekt değiştirildi."
@@ -4186,6 +4398,10 @@
   "d20825c69f3168ec": {
     "en": "Instantly blasts the target for 65 to 74 (+42.9% of spell power) Shadow damage. If a non-trivial target dies within 8 sec of being hit with Shadowburn, the caster gains a Soul Shard.",
     "tr": "Hedefe anında 65 - 74 (+büyü gücünün %42.9'u) Shadow hasarı verir. Önemsiz olmayan bir hedef Shadowburn isabetinden sonraki 8 saniye içinde ölürse cast eden bir Soul Shard kazanır."
+  },
+  "d2907ae1f12c453c": {
+    "en": "Increases your chance to hit Holy spells by 4%, and reduces the duration of your Silence by 10%.",
+    "tr": "Holy büyülerinin isabet şansını %4 artırır ve Silence etkisinin süresini %10 kısaltır."
   },
   "d33cf54c8f1e6c3b": {
     "en": "Command a hawk to dive-bomb your targeted enemy, dealing 32 (+5% of ranged attack power) Physical damage and continuing its assault for 18 sec. Only 2 hawks can be active at once. Summon Hawk shares its cooldown with Arcane Shot.",
@@ -4282,10 +4498,6 @@
   "d651065c666d1604": {
     "en": "Move from column 2 to column 3.",
     "tr": "Sütun 2'den sütun 3'e taşındı."
-  },
-  "d68c58ff2b2b9654": {
-    "en": "Bite the target, dealing 100% normal damage plus 26 damage, and generating a large amount of threat.",
-    "tr": "Hedefi ısırır; %100 normal hasar artı 26 hasar verir ve büyük miktarda tehdit oluşturur."
   },
   "d697906b8bafc7e5": {
     "en": "Increases the Ranged Attack Power of party or raid members within 45 yds by 30.",
@@ -4391,6 +4603,10 @@
     "en": "Reduces your target's resistance to all your spells by 15 and reduces the threat caused by your Arcane spells by 30%.",
     "tr": "Hedefinin tüm büyülerine karşı direncini 15 azaltır ve Arcane büyülerinin ürettiği tehdidi %30 azaltır."
   },
+  "db5bfe3c4f16bdb2": {
+    "en": "Hunter and Warlock pets deal increased damage by 5%.",
+    "tr": "Hunter ve Warlock pet'lerinin hasarını %5 artırır."
+  },
   "db7282dd8facc273": {
     "en": "Summons a Grace of Air Totem with 5 health at the feet of the caster. The totem increases the agility of party or raid members within 30 yards by 89. Lasts 5 min.",
     "tr": "Büyücünün ayaklarının dibinde 5 canlı bir Grace of Air Totem çağırır. Totem, 30 yard içindeki parti veya raid üyelerinin agility değerini 89 artırır. 5 dakika sürer."
@@ -4443,6 +4659,10 @@
     "en": "Draws on the soul of the party member to shield them, absorbing 928 damage. Lasts 30 sec. While the shield holds, spellcasting will not be interrupted by damage. Once shielded, the target cannot be shielded again for 15 sec.",
     "tr": "Grup üyesinin ruhundan güç alarak onu kalkanla korur; 928 hasar emer. 30 saniye sürer. Kalkan dayandığı sürece hasar büyü cast'ini kesmez. Kalkanlanan hedef 15 saniye boyunca tekrar kalkanlanamaz."
   },
+  "de247d39e33667b1": {
+    "en": "Increases your movement speed while Stealth by 10%, and reduces the cooldown of Stealth by 4 seconds.",
+    "tr": "Stealth'tayken hareket hızını %10 artırır ve Stealth bekleme süresini 4 saniye kısaltır."
+  },
   "de524fe7cf8cb9ca": {
     "en": "Applies Light's Vigil to the target for 30 sec. Your next Holy Shock cast on them triggers no cooldown and causes enemy targets to suffer 175 to 189 (+42.9% of spell power) Holy damage and refund 75% of Light's Vigil's Mana cost, or allied targets to heal their party for 325 to 344 (+14.3% of spell power). You may only have one Light's Vigil active per party.",
     "tr": "Hedefe 30 saniye boyunca Light's Vigil uygular. Ona cast edeceğin bir sonraki Holy Shock bekleme süresi tetiklemez; düşman hedefse 175 - 189 (+büyü gücünün %42.9'u) Holy hasar verir ve Light's Vigil'in mana maliyetinin %75'ini iade eder, müttefik hedefse grubunu 325 - 344 (+büyü gücünün %14.3'ü) iyileştirir. Grup başına yalnızca bir Light's Vigil aktif olabilir."
@@ -4475,10 +4695,6 @@
     "en": "Pet",
     "tr": "Evcil hayvan"
   },
-  "df50a743c06d7b32": {
-    "en": "Increases the damage done by your Eviscerate ability by 20%.",
-    "tr": "Eviscerate yeteneğinin verdiği hasarı %20 artırır."
-  },
   "dfa211060bdffac1": {
     "en": "Forces all nearby enemies within 10 yards to focus attacks on you for 6 sec.",
     "tr": "10 yard içindeki yakındaki tüm düşmanları 6 saniye boyunca saldırılarını sana yöneltmeye zorlar."
@@ -4499,9 +4715,9 @@
     "en": "Gives your melee weapon attacks a benefit depending on the weapon. Axe/Polearm: Increases your critical strike chance by 5%. Mace/Staff: Your attacks ignore 15% of your target's armor. Sword: Your successful melee attacks have a 5% chance to trigger an extra attack on the target.",
     "tr": "Yakın dövüş silah saldırılarına silaha göre bir avantaj verir. Axe/Polearm: kritik vuruş şansını %5 artırır. Mace/Staff: saldırıların hedefin Armor'unun %15'ini yok sayar. Sword: başarılı yakın dövüş saldırılarının hedefe ek bir saldırı tetikleme şansı %5'tir."
   },
-  "e01a7147973c9cb2": {
-    "en": "Attempted to draw power from the Junction of Elements to gain blessings, increasing movement speed and riding speed by 10%. Lasts 30 seconds if there is no Junction nearby; lasts 15 minutes if there is.",
-    "tr": "Element Kavşağı'ndan güç çekerek kutsama almaya çalışır; hareket ve binek hızını %10 artırır. Yakında kavşak yoksa 30 saniye, varsa 15 dakika sürer."
+  "e0325aff9717e10c": {
+    "en": "Increases the energy generated by your Lancing ability by 3 points and reduces the cooldown by 0.4 seconds.",
+    "tr": "Shank yeteneğinin ürettiği enerjiyi 3 puan artırır ve bekleme süresini 0,4 saniye kısaltır."
   },
   "e07dec0499c8e5f0": {
     "en": "Moved from Tier 5 to Tier 2. Values unchanged, wording adjusted.",
@@ -4515,6 +4731,10 @@
     "en": "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 12% per each of your other Affliction effects active on the target, up to a maximum increase of 36%.",
     "tr": "Hedefteki diğer her Affliction etkin başına Drain Life, Drain Soul ve Wrack büyülerinin verdiği hasarı veya emdiği canı %12 artırır; en fazla %36."
   },
+  "e0b7aff56ddc76f5": {
+    "en": "Increases the energy cost of Be Poisoned To by 5 points.",
+    "tr": "Poised yeteneğinin enerji maliyeti indirimini 5 puan artırır."
+  },
   "e0ea202d70daf806": {
     "en": "Increases the duration of your Shadow Word: Pain spell by 6 sec.",
     "tr": "Shadow Word: Pain büyünün süresini 6 saniye uzatır."
@@ -4526,6 +4746,10 @@
   "e0fe75b4b68fcdbb": {
     "en": "Turns the Shaman into a Ghost Wolf, increasing speed by 40%. Only useable outdoors.",
     "tr": "Shaman'ı bir Ghost Wolf'a dönüştürür ve hızı %40 artar. Yalnızca açık alanda kullanılabilir."
+  },
+  "e1068526d0a00c1c": {
+    "en": "Classic Era is called Enhanced Seal of Righteousness. Values remain unchanged, wording adjusted.",
+    "tr": "Classic Era'daki adı Enhanced Seal of Righteousness. Değerler aynı, ifade düzenlendi."
   },
   "e15018de58b2c525": {
     "en": "Dwarves, Humans, Night Elves, and Trolls can now also learn Classic Era (undead only)",
@@ -4571,10 +4795,6 @@
     "en": "Creates a portal, teleporting group members that use it to Orgrimmar.",
     "tr": "Kullanan grup üyelerini Orgrimmar'a ışınlayan bir portal açar."
   },
-  "e22c859a034c2cc6": {
-    "en": "Classic Era is called Powerful Blessing of Salvation.",
-    "tr": "Classic Era'daki adı Greater Blessing of Salvation."
-  },
   "e29d776d852bb2cb": {
     "en": "Classic Era is called Improved Drains Life. Max level changed from 5 to 3. Moved from tier 2 to tier 5. Effect override.",
     "tr": "Classic Era'daki adı Improved Drain Life. Maksimum seviye 5'ten 3'e değişti. Tier 2'den tier 5'e taşındı. Efekt değiştirildi."
@@ -4586,6 +4806,10 @@
   "e31cb64f87ef684a": {
     "en": "Attacks the current target and up to 3 nearby bonus targets with a warhammer, dealing Holy damage to each target equal to 3 times the damage per second of the master weapon. Shared cooldown with Crusader Strike.",
     "tr": "Mevcut hedefe ve yakınındaki en fazla 3 ek hedefe savaş çekiciyle saldırır; her hedefe ana silahın saniye başı hasarının 3 katı kadar Holy hasar verir. Bekleme süresini Crusader Strike ile paylaşır."
+  },
+  "e3221995dccee57f": {
+    "en": "Increases the hit chance of all your spells and attacks by 1%.",
+    "tr": "Tüm büyü ve saldırılarının isabet şansını %1 artırır."
   },
   "e332fd3dd3400063": {
     "en": "Summons a Nature Resistance Totem with 5 health at the feet of the caster for 5 min that increases the nature resistance of party and raid members within 30 yards by 60.",
@@ -4618,6 +4842,10 @@
   "e3ed36a20c78147d": {
     "en": "A word of darkness that causes 762 (+120% of spell power) Shadow damage over 18 sec.",
     "tr": "Karanlık bir sözle 18 saniye boyunca 762 (+büyü gücünün %120'si) Shadow hasarı verir."
+  },
+  "e407f8b276a7e3f6": {
+    "en": "Gives your Flash of Light, Holy Light and Light's Vigil a 70% chance to take damage without losing cast time.",
+    "tr": "Flash of Light, Holy Light ve Light's Vigil büyülerine, hasar alırken cast süresini kaybetmeme şansını %70 verir."
   },
   "e42e834524a3bf7d": {
     "en": "Increases your chance to Block attacks with your shield by 3% and grants you a 60% chance to generate 5 Rage when you Block.",
@@ -4687,10 +4915,6 @@
     "en": "Rank 4:Value: 113 points (Classic Era: 75 points), 225 points (Classic Era: 150 points)",
     "tr": "Rank 4: Değer 113 puan (Classic Era: 75 puan), 225 puan (Classic Era: 150 puan)"
   },
-  "e68262518c4306d7": {
-    "en": "Max rank changed from 5 to 2. Moved from rage tree to weapon tree. Moved from tier 5 to tier 6. Effect rewritten.",
-    "tr": "Maksimum rank 5'ten 2'ye değişti. Fury ağacından Arms ağacına taşındı. Tier 5'ten tier 6'ya taşındı. Efekt yeniden yazıldı."
-  },
   "e6d6a7898a4ba3af": {
     "en": "Max level changed from 5 to 3. Moved from tier 1 to tier 2. Value adjustment: 10%(Classic Era: 3%).",
     "tr": "Maksimum seviye 5'ten 3'e değişti. Tier 1'den tier 2'ye taşındı. Değer ayarı: %10 (Classic Era: %3)."
@@ -4699,21 +4923,13 @@
     "en": "Shows the location of all nearby humanoids on the minimap. Only one form of tracking can be active at a time.",
     "tr": "Yakındaki tüm humanoid'lerin yerini minimap'te gösterir. Aynı anda yalnızca bir izleme türü aktif olabilir."
   },
-  "e6f4af18ab417cd0": {
-    "en": "Increases the hit rate of your Frost and Fire spells by 6%.",
-    "tr": "Frost ve Fire büyülerinin isabet şansını %6 artırır."
-  },
-  "e740c9c61975f91e": {
-    "en": "When Seal of Fury's shield is fully absorbed, restore 60 Mana, increased by 15% per level the attacker is above you, up to 45%.",
-    "tr": "Seal of Fury'nin kalkanı tamamen tükendiğinde 60 Mana yeniler; saldırgan senden yüksek seviyedeyse her seviye için %15 artar, en fazla %45."
-  },
   "e766083ffecb8c72": {
     "en": "Counterattack the enemy for melee weapon damage plus 57. Can only be performed after you dodge.",
     "tr": "Düşmana yakın dövüş silah hasarı artı 57 hasarla karşı saldırı yapar. Yalnızca kaçınmadan (dodge) sonra kullanılabilir."
   },
-  "e78c7272ae4d8e29": {
-    "en": "Moved from Surprise tree to Combat tree. Value modifier: 20%(Classic Era: 15%).",
-    "tr": "Subtlety ağacından Combat ağacına taşındı. Değer ayarı: %20 (Classic Era: %15)."
+  "e77af078366b15ec": {
+    "en": "Attempts to drain the power of a nearby magic net energy line, increasing your health and mana regeneration by 50% for 15 seconds. If there is a magic net energy line nearby, you gain resonance for 1 hour, increasing the effect of this ability by 100% during that time.",
+    "tr": "Yakındaki bir sihir ağı enerji hattının gücünü çekmeye çalışır; 15 saniye boyunca can ve mana yenilenmeni %50 artırır. Yakında bir enerji hattı varsa 1 saat süren bir rezonans kazanırsın ve bu sürede yeteneğin etkisi %100 artar."
   },
   "e7a41dbb330c6dca": {
     "en": "Increases the Dodge bonus of your Aspect of the Monkey by 6%. Additionally, your pet gains 50% of the effect of your Aspect of the Monkey ability.",
@@ -4743,10 +4959,6 @@
     "en": "Deals 28 to 33 Frost damage to an enemy target. Deals 200% increased damage to Frozen targets.",
     "tr": "Düşman hedefe 28 ile 33 arasında Frost hasarı verir. Frozen hedeflere %200 fazla hasar verir."
   },
-  "e9711ba26873bd1f": {
-    "en": "Rank 6:Value: 55 (Classic Era: 110)",
-    "tr": "Rank 6: Değer 55 (Classic Era: 110)"
-  },
   "e98cbe6081b790f4": {
     "en": "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 20% for 12 sec.",
     "tr": "Shadow Bolt kritik vuruşların, hedefin 12 saniye boyunca saldırılarından aldığı Shadow hasarını %20 artırır."
@@ -4766,10 +4978,6 @@
   "e9e7cffea0232d5b": {
     "en": "Rank 5:No change in values, no change in description wording",
     "tr": "Rank 5: Değerlerde ve açıklama metninde değişiklik yok"
-  },
-  "e9fa0a31ba9ab26c": {
-    "en": "Move from level 5 to level 4.",
-    "tr": "Seviye 5'ten seviye 4'e taşındı."
   },
   "ea3d82800735f0f5": {
     "en": "Bless friendly targets, increasing all stats by 10% for 1 hour. Each paladin can only bestow one blessing on a target at a time. Blessings of the same type cannot overlap.",
@@ -4791,10 +4999,6 @@
     "en": "The priest becomes surrounded with anti-magic energy. Any successful spell cast against the priest will burn 105 of the attacker's Mana, causing 1 Shadow damage for each point of Mana burned. Lasts 15 sec.",
     "tr": "Priest'i anti-büyü enerjisi sarar. Priest'e karşı başarılı olan her büyü, saldırganın 105 manasını yakar ve yakılan her mana puanı için 1 Shadow hasarı verir. 15 saniye sürer."
   },
-  "eb2b2b69deb1e8e4": {
-    "en": "Max rank changed from 5 to 3. Moved from tier 6 to tier 5. Effect override.",
-    "tr": "Maksimum rank 5'ten 3'e değişti. Tier 6'dan tier 5'e taşındı. Efekt değiştirildi."
-  },
   "eb7ea2093fb327d0": {
     "en": "Burns the enemy for 129 to 150 (+15% of spell power) Arcane damage and then an additional 240 (+52% of spell power) Arcane damage over 12 sec.",
     "tr": "Düşmanı 129 - 150 (+büyü gücünün %15'i) Arcane hasarıyla yakar, ardından 12 saniye boyunca ek 240 (+büyü gücünün %52'si) Arcane hasarı verir."
@@ -4810,6 +5014,10 @@
   "ebf7f051140ce256": {
     "en": "When activated, restores 7% of your total health and 7% of your total mana every 2 seconds for 10 seconds. Can only be used on humanoid or undead corpses within a 5 yard radius. Movement, action, or damage while eating will interrupt this effect.",
     "tr": "Etkinleştirildiğinde 10 saniye boyunca her 2 saniyede toplam canının %7'sini ve toplam mananın %7'sini yeniler. Yalnızca 5 yard yarıçapındaki humanoid veya undead cesetleri üzerinde kullanılabilir. Yerken hareket, eylem veya hasar etkiyi keser."
+  },
+  "ec1bf2d37c27c125": {
+    "en": "Increases the critical strike chance of all your spells and attacks by 4%.",
+    "tr": "Tüm büyü ve saldırılarının kritik vuruş şansını %4 artırır."
   },
   "ec1d435f7948ce37": {
     "en": "Increases the duration of your Slice and Dice ability by 45%.",
@@ -4923,10 +5131,6 @@
     "en": "Reduces the cast time of your Healing Touch spell by 0.5 sec and increases all damage you deal by 5%.",
     "tr": "Healing Touch büyünün cast süresini 0.5 saniye kısaltır ve verdiğin tüm hasarı %5 artırır."
   },
-  "f0150532bda6c6b4": {
-    "en": "Rank 8:Value: 217 (Classic Era: 183)",
-    "tr": "Rank 8: Değer 217 (Classic Era: 183)"
-  },
   "f021e16d48139983": {
     "en": "Places a spell on the target that heals them for 413 (+42.9% of spell power) the next time they take damage or receive non-periodic healing. When the heal occurs, Prayer of Mending jumps to a party or raid member within 20 yds. Jumps up to 5 times and lasts 30 sec after each jump. This spell can only be placed on one target at a time per caster.",
     "tr": "Hedefe, bir sonraki hasar aldığında veya periyodik olmayan iyileştirme aldığında onu 413 (+büyü gücünün %42.9'u) iyileştiren bir büyü koyar. İyileştirme olunca Prayer of Mending 20 yard içindeki bir grup veya raid üyesine sıçrar. En fazla 5 kez sıçrar ve her sıçramadan sonra 30 saniye sürer. Her cast eden bu büyüyü aynı anda yalnızca bir hedefe koyabilir."
@@ -4950,10 +5154,6 @@
   "f1cb51ad99d1a995": {
     "en": "Reduces the casting time of your Imp, Voidwalker, Succubus, Incubus, and Felhunter Summoning spells by 4 sec and the Mana cost by 40%.",
     "tr": "Imp, Voidwalker, Succubus, Incubus ve Felhunter çağırma büyülerinin cast süresini 4 saniye, mana maliyetini %40 azaltır."
-  },
-  "f1ccc953735cce8a": {
-    "en": "Value adjustment: 10%(Classic Era: 15%).",
-    "tr": "Değer ayarı: %10 (Classic Era: %15)."
   },
   "f1d34c0f9a15fdc8": {
     "en": "Fills the Paladin with divine light for 30 sec, giving each melee attack a chance to heal the Paladin for 94. Only one Seal can be active on the Paladin at any one time. Unleashing this Seal's energy will judge an enemy for 40 sec, granting melee attacks made against the judged enemy a chance of healing the attacker for 61. Your melee strikes will refresh the spell's duration. Only one Judgement per Paladin can be active at any one time.",
@@ -4987,25 +5187,17 @@
     "en": "Increases your Attack Power by an amount equal to 100% of your Intellect.",
     "tr": "Attack Power'ını Intellect'inin %100'ü kadar artırır."
   },
-  "f38abd2054d65d18": {
-    "en": "Immediately counters enemies, dealing 138 to 168 damage and a lot of threat. Revenge can only be used after a successful block, dodge, or parry.",
-    "tr": "Düşmanlara anında karşılık verir; 138 - 168 hasar ve yüksek tehdit üretir. Revenge yalnızca başarılı bir blok, kaçınma veya savuşturmadan sonra kullanılabilir."
-  },
   "f39a40b38f8ea03e": {
     "en": "Fireball, Frostfire Bolt, Fire Blast, and Scorch aperiodic critical strikes reduce the cast time of your next Pyroblast cast in 20 seconds by 25%, stacking up to 3 times. Fire Blast also stacks the effect an additional layer for each damage it deals.",
     "tr": "Fireball, Frostfire Bolt, Fire Blast ve Scorch'un periyodik olmayan kritik vuruşları, 20 saniye içindeki bir sonraki Pyroblast cast süresini %25 azaltır, en fazla 3 kez birikir. Fire Blast ayrıca verdiği her hasar için etkiye ek bir katman ekler."
   },
-  "f3bc8d37ccafb247": {
-    "en": "Reduces the cast time of your Hammer of Wrath by 1.0 sec, and reduces all threat you generate by 20% while Righteous Fury is not active.",
-    "tr": "Hammer of Wrath'in cast süresini 1.0 saniye kısaltır ve Righteous Fury aktif değilken ürettiğin tüm tehdidi %20 azaltır."
+  "f3bd266baa0b3624": {
+    "en": "Immediately counters enemies, dealing 138 + 22.5% melee attack power to 168 + 22.5% melee attack power damage, and dealing a lot of threat. Revenge can only be used after a successful block, dodge, or parry.",
+    "tr": "Düşmana anında karşılık vererek 138 + yakın dövüş attack power'ın %22,5'i ile 168 + yakın dövüş attack power'ın %22,5'i arasında hasar verir ve çok tehdit yaratır. Revenge yalnızca başarılı bir blok, savuşturma ya da parry sonrası kullanılabilir."
   },
-  "f417a5095aef2d2a": {
-    "en": "Increases all damage dealt by 4% against Humanoid and Giant targets.",
-    "tr": "Humanoid ve Giant hedeflere verilen tüm hasarı %4 artırır."
-  },
-  "f4be1aef7ca1b78b": {
-    "en": "Increases the radius of your Distract ability by 3 yds, and further reduces the Stealth detection of distracted enemies as though they were an additional 1 level lower.",
-    "tr": "Distract yeteneğinin yarıçapını 3 yard artırır ve dikkati dağılan düşmanların Stealth algılamasını 1 seviye daha düşükmüş gibi ek olarak azaltır."
+  "f4be4db0e5c020c0": {
+    "en": "Increase the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast and Scorch by 10%.",
+    "tr": "Fire Blast, Ice Lance, Arcane Blast ve Scorch'un kritik vuruş şansını %10 artırır."
   },
   "f4c3db2ab774d4a6": {
     "en": "Increases your total Stamina by 4% and reduces the cooldown of your Divine Shield, Divine Protection, and Templar's Bulwark spells by 60 sec.",
@@ -5014,14 +5206,6 @@
   "f4d1915903d035de": {
     "en": "Increases the amount of damage reduced by your Stoneskin Totem and Windwall Totem by 20% and reduces the cooldown of your Grounding Totem by 2 sec.",
     "tr": "Stoneskin Totem ve Windwall Totem'in azalttığı hasar miktarını %20 artırır ve Grounding Totem'in bekleme süresini 2 saniye azaltır."
-  },
-  "f4debb9fa196ba01": {
-    "en": "Allows dwarves to sense the location of nearby treasures and display them on minimaps.",
-    "tr": "Dwarf'ların yakındaki hazineleri algılamasını ve minimap'te göstermesini sağlar."
-  },
-  "f523f92749ad549a": {
-    "en": "Requires Cat Form, Bear Form, Dire Bear Form. Causes your Primal Bite ability to strike up to 3 targets, removes its cooldown, and increases the critical strike chance of your Combo Point-generating abilities by 100%. Clears and grants immunity to Fear effects for the duration. Lasts 15 sec.",
-    "tr": "Cat Form, Bear Form veya Dire Bear Form gerektirir. Primal Bite yeteneğinin en fazla 3 hedefe vurmasını sağlar, bekleme süresini kaldırır ve combo puanı üreten yeteneklerinin kritik vuruş şansını %100 artırır. Süre boyunca korku etkilerini temizler ve bunlara bağışıklık verir. 15 saniye sürer."
   },
   "f5386d60f5269032": {
     "en": "A mocking attack that causes 93 damage, a moderate amount of threat and forces the target to focus attacks on you for 6 sec.",
@@ -5039,13 +5223,13 @@
     "en": "Hurls an immense fiery boulder that causes 100 to 132 (+100% of spell power) Fire damage and an additional 44 (+60% of spell power) Fire damage over 12 sec.",
     "tr": "Devasa alevli bir kaya fırlatır; 100 - 132 (+büyü gücünün %100'ü) Fire hasarı ve 12 saniye boyunca ek 44 (+büyü gücünün %60'ı) Fire hasarı verir."
   },
+  "f5a324ecca9cd86b": {
+    "en": "Increases your spell damage by up to 48% of your Intelligence and reduces the casting time of your Hammer of Wrath by 0.8 seconds.",
+    "tr": "Büyü hasarını Intellect'inin en fazla %48'i kadar artırır ve Hammer of Wrath cast süresini 0,8 saniye kısaltır."
+  },
   "f5b67e64ef12ffee": {
     "en": "An aimed shot that increases ranged damage by 166. Aimed Shot shares its cooldown with Multi-Shot.",
     "tr": "Menzilli hasarı 166 artıran nişanlı bir atış. Aimed Shot, bekleme süresini Multi-Shot ile paylaşır."
-  },
-  "f5cc84e1156b2fbb": {
-    "en": "Increases the radius of your Distract ability by 5 yds, and further reduces the Stealth detection of distracted enemies as though they were an additional 2 levels lower.",
-    "tr": "Distract yeteneğinin yarıçapını 5 yard artırır ve dikkati dağılan düşmanların Stealth algılamasını 2 seviye daha düşükmüş gibi azaltır."
   },
   "f6493f41475cdab8": {
     "en": "Increases the effect of your Rejuvenation spell by 15%.",
@@ -5059,6 +5243,10 @@
     "en": "Power infuses all party and raid members, increasing their Shadow resistance by 60 for 20 min.",
     "tr": "Tüm grup ve raid üyelerine güç aşılar; 20 dakika boyunca Shadow dirençlerini 60 artırır."
   },
+  "f69e1680db8fe05c": {
+    "en": "Increases your movement speed while Stealth by 15%, and reduces the cooldown of Stealth by 6 seconds.",
+    "tr": "Stealth'tayken hareket hızını %15 artırır ve Stealth bekleme süresini 6 saniye kısaltır."
+  },
   "f6f9f908995d156f": {
     "en": "In a whirlwind of steel you attack up to 4 enemies within 8 yards, causing weapon damage from both melee weapons to each enemy.",
     "tr": "Çelik bir kasırga halinde 8 yard içindeki en fazla 4 düşmana saldırırsın; her düşmana iki yakın dövüş silahının hasarını verir."
@@ -5071,6 +5259,10 @@
     "en": "The hunter takes on the aspects of a monkey, increasing chance to dodge by 8%. Only one Aspect can be active at a time.",
     "tr": "Hunter bir maymunun özelliklerini alır ve kaçınma şansı %8 artar. Aynı anda yalnızca bir Aspect aktif olabilir."
   },
+  "f7a2fa70faf4e090": {
+    "en": "Allows dwarves to sense the location of nearby treasures and display them on minimaps, sometimes gaining more treasures. Lasts $d.",
+    "tr": "Cüceler yakındaki hazinelerin yerini hisseder ve bunları mini haritada gösterir; bazen daha fazla hazine kazandırır. $d sürer."
+  },
   "f7abe9449ab0440a": {
     "en": "Increases your chance to dodge by an additional 6%.",
     "tr": "Kaçınma şansını ek %6 artırır."
@@ -5082,10 +5274,6 @@
   "f7f084aa2b015e2d": {
     "en": "Causes 20 Holy damage to any creature that strikes a party member within 30 yards. Players may only have one Aura on them per Paladin at any one time.",
     "tr": "30 yard içindeki bir grup üyesine vuran her yaratığa 20 Holy hasar verir. Bir oyuncunun üzerinde her Paladin'den aynı anda yalnızca bir Aura olabilir."
-  },
-  "f884ba43fb056a3a": {
-    "en": "Increases your critical damage and healing bonus by 2%.",
-    "tr": "Kritik hasar ve iyileştirme bonusunu %2 artırır."
   },
   "f8aaf3cfb7ad02d6": {
     "en": "Displays the location of all nearby giants on the minimap. Only one tracking ability can be activated at a time.",
@@ -5102,10 +5290,6 @@
   "f9474e240fc89f8c": {
     "en": "Ice shards pelt the target area doing 1168 Frost damage over 8 sec.",
     "tr": "Buz parçaları hedef alanı döver; 8 saniye boyunca 1168 Frost hasarı verir."
-  },
-  "f97a4de951377c92": {
-    "en": "Your Backstab has a 15% chance to cause your next Ambush within 10 sec to not require Stealth.",
-    "tr": "Backstab'ın, 10 saniye içindeki bir sonraki Ambush'ının Stealth gerektirmemesini sağlama şansı %15'tir."
   },
   "f9904c91b1f7ffb0": {
     "en": "Deals 201 to 233 (+71.4% of spell power) Fire damage to your target and an additional 25% damage if the target is afflicted by Immolate.",
@@ -5127,6 +5311,10 @@
     "en": "Classic Era is called One-handed Weapon Specialization. The value remains the same, but the wording is adjusted.",
     "tr": "Classic Era'daki adı One-Handed Weapon Specialization. Değer aynı, metin düzenlendi."
   },
+  "fa0c18b9a5286784": {
+    "en": "Your finishing skill has a 12% chance to recover 25 energy for each combo point it consumes.",
+    "tr": "Bitirici yeteneğin harcadığı her combo point için %12 şansla 25 Enerji geri verir."
+  },
   "fa2231e7a3f699ff": {
     "en": "Immerse a weapon with poison. Lasts for 30 minutes.\nEach attack has a 20% chance of poisoning the enemy, extending the casting time by 60%, lasting for 14 seconds. Can be used 150 times.",
     "tr": "Silaha zehir sürer. 30 dakika sürer.\nHer saldırının düşmanı zehirleme şansı %20'dir; düşmanın cast süresi 14 saniye boyunca %60 uzar. 150 kez kullanılabilir."
@@ -5143,6 +5331,10 @@
     "en": "Your class abilities no longer require reagents purchasable from vendors.",
     "tr": "Class yeteneklerin artık vendor'dan alınabilen reagent'lara ihtiyaç duymaz."
   },
+  "fac536adcfb5c99e": {
+    "en": "Increases the damage dealt by your Seal and Judgement by 15%.",
+    "tr": "Seal ve Judgement hasarını %15 artırır."
+  },
   "fb35f4c50e862121": {
     "en": "Your Wrath spell reduces the cast time of your next 2 Starfire spells by 0.50 sec. Stores up to 4 charges. Lasts 15 sec.",
     "tr": "Wrath büyün sonraki 2 Starfire büyünün cast süresini 0.50 saniye kısaltır. En fazla 4 şarj biriktirir. 15 saniye sürer."
@@ -5150,6 +5342,14 @@
   "fb5bff459117457d": {
     "en": "Increases your chance to Block attacks with your shield by 2% and grants you a 40% chance to generate 5 Rage when you Block.",
     "tr": "Kalkanınla saldırıları Block etme ihtimalini %2 artırır ve Block yaptığında %40 ihtimalle 5 Öfke kazandırır."
+  },
+  "fb5f48f7e9a5a666": {
+    "en": "Increases the damage dealt by your Bite ability by 13%, and increases the damage and storage rate of Death Mark by 13%.",
+    "tr": "Eviscerate hasarını %13 artırır; Death Mark'ın hasarını ve depolama oranını %13 artırır."
+  },
+  "fbd84a06956477b4": {
+    "en": "Increases the threat generated by Holy Strike by 30%. Holy Strike also reduces damage taken by 6% for 6 seconds while Righteous Fury is active.",
+    "tr": "Holy Strike'ın yarattığı tehdidi %30 artırır. Righteous Fury aktifken Holy Strike ayrıca 6 saniye boyunca aldığın hasarı %6 azaltır."
   },
   "fbff62e7d15cc932": {
     "en": "Reduces the global cooldown and cast time of your Slam ability by 0.50 sec. In addition, Slam no longer interrupts or delays your melee swing and Slam's cooldown is reduced by 3.0 sec.",
@@ -5159,6 +5359,10 @@
     "en": "Gives you a 100% chance to increase your Spirit by 100% for 15 sec after killing a non-trivial target or when an enemy afflicted by your Vampiric Embrace dies. For the duration, 50% of your Mana regeneration will continue while casting.",
     "tr": "Önemsiz olmayan bir hedefi öldürdükten sonra ya da Vampiric Embrace etkisindeki bir düşman öldüğünde %100 şansla 15 saniye boyunca Spirit'ini %100 artırır. Bu süre boyunca cast ederken mana yenilenmenin %50'si devam eder."
   },
+  "fc163a42b9339acb": {
+    "en": "Increases the energy generated by your Lancing ability by 15 points and reduces the cooldown by 2.0 seconds.",
+    "tr": "Shank yeteneğinin ürettiği enerjiyi 15 puan artırır ve bekleme süresini 2,0 saniye kısaltır."
+  },
   "fc2f93b9df17f511": {
     "en": "Automatically shoots the target until cancelled.",
     "tr": "İptal edilene kadar hedefe otomatik olarak ateş eder."
@@ -5166,6 +5370,10 @@
   "fc48675112ba6418": {
     "en": "The values remain unchanged, the wording is adjusted.",
     "tr": "Değerler aynı, metin düzenlendi."
+  },
+  "fc56d112270fc6ba": {
+    "en": "Increases your spell damage by up to 24% of your Intelligence and reduces the cast time of your Hammer of Wrath by 0.4 seconds.",
+    "tr": "Büyü hasarını Intellect'inin en fazla %24'ü kadar artırır ve Hammer of Wrath cast süresini 0,4 saniye kısaltır."
   },
   "fc75402d26605ed3": {
     "en": "Your Scorch spell has a 100% chance to cause your target to be vulnerable to Fire damage. This vulnerability increases all Fire damage you deal to your target by 3% and lasts 30 sec, stacking up to 5 times.",
@@ -5198,6 +5406,14 @@
   "fd480ca22f23fcc1": {
     "en": "Shapeshift into Bear Form, increasing Attack Power by 120, Armor contribution from items by 180%, and Health by 180. Also protects the caster from Polymorph effects and allows the use of various bear abilities. The act of shapeshifting frees the caster of Polymorph and Movement Impairing effects.",
     "tr": "Bear Form'a dönüşür: Attack Power 120 artar, eşyalardan gelen Armor katkısı %180 artar ve can 180 artar. Ayrıca Polymorph etkilerinden korur ve çeşitli ayı yeteneklerini kullanmanı sağlar. Dönüşüm, Polymorph ve hareket kısıtlayan etkileri kaldırır."
+  },
+  "fd86e703989eb90a": {
+    "en": "Increases the critical strike chance of all your spells and attacks by 1%.",
+    "tr": "Tüm büyü ve saldırılarının kritik vuruş şansını %1 artırır."
+  },
+  "fdb54011592eb4cd": {
+    "en": "Increases your chance to hit Holy spells by 8%, and reduces the duration of your Silence effect by 20%.",
+    "tr": "Holy büyülerinin isabet şansını %8 artırır ve Silence etkisinin süresini %20 kısaltır."
   },
   "fdc8d8ce0a4f45c9": {
     "en": "Increases your Backstab critical strike chance by 30%, your Damage critical strike chance by 15%, and gives Backstab a 45% chance to add an additional combo point.",

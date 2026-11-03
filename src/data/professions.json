@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-29T23:00:23.629Z",
-  "build": "1.60.1.70685",
+  "generatedAt": "2026-11-03T10:12:29.333Z",
+  "build": "1.60.1.70753",
   "source": "https://wowforever.wclbox.com/en/zhuanye (新手盒子·魔兽世界无限数据库)",
   "professions": [
     {
@@ -466,7 +466,7 @@
       "icon": "trade_blacksmithing",
       "kind": "primary",
       "section": "crafting",
-      "newRecipes": 180,
+      "newRecipes": 195,
       "milestones": [
         {
           "skill": 150,
@@ -991,7 +991,7 @@
       "icon": "trade_engraving",
       "kind": "primary",
       "section": "crafting",
-      "newRecipes": 61,
+      "newRecipes": 65,
       "milestones": [
         {
           "skill": 150,
@@ -2021,7 +2021,7 @@
       "icon": "trade_leatherworking",
       "kind": "primary",
       "section": "crafting",
-      "newRecipes": 269,
+      "newRecipes": 287,
       "milestones": [
         {
           "skill": 150,
