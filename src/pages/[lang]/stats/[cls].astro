@@ -36,7 +36,7 @@ const tips = tooltipPayload(
 ---
 
 <BaseLayout
-  title={`${info.name} · ${t.classesTitle}`}
+  title={fill(t.statsClassTitle, { name: info.name })}
   description={fill(t.metaClass, { name: info.name })}
   lang={lang} alternates={alternates}>
   <a class="back-nav" href={withBase(`/${lang}/classes/`)}>← {t.classesTitle}</a>

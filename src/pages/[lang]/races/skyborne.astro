@@ -10,7 +10,7 @@ import StoryEnd from '../../../components/stories/StoryEnd.astro';
 import StoryHeader from '../../../components/stories/StoryHeader.astro';
 import StoryLinks from '../../../components/stories/StoryLinks.astro';
 import { LANGS, type Lang } from '../../../config';
-import { ui } from '../../../i18n';
+import { fill, ui } from '../../../i18n';
 import { SKYBORNE_ART_LABELS, SKYBORNE_STORY, STORY_UI } from '../../../i18n/stories';
 import { classesOf, races, racialsOf } from '../../../lib/codex';
 import { fillArt } from '../../../lib/stories/art';
@@ -61,7 +61,7 @@ const img = (name: string) => withBase(`/stories/skyborne/${name}`);
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Skyborne · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover-2.webp')}>
+<BaseLayout title={fill(t.storyPageTitle, { name: 'Skyborne' })} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover-2.webp')}>
   <div class="lore skyborne" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 

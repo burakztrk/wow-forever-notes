@@ -4,7 +4,21 @@ import CodexIcon from '../components/CodexIcon.astro';
 import LangSwitch from '../components/LangSwitch.astro';
 import { DEFAULT_LANG, LANGS, SITE_TITLE, type Lang } from '../config';
 import { ui } from '../i18n';
-import { OG_LOCALE, absoluteUrl, jsonLdString, ogImage } from '../lib/seo';
+import { breadcrumbs } from '../lib/breadcrumbs';
+import {
+  OG_LOCALE,
+  absoluteUrl,
+  breadcrumbJsonLd,
+  clampDescription,
+  jsonLdGraph,
+  jsonLdString,
+  ogImage,
+  organizationJsonLd,
+  pageTitle as fitTitle,
+  webPageJsonLd,
+  websiteJsonLd,
+  type PageType,
+} from '../lib/seo';
 import { STORY_CLASSES } from '../lib/stories/classes';
 import { STORY_RACES } from '../lib/stories/races';
 import { storyUrl } from '../lib/stories/urls';
@@ -17,12 +31,22 @@ interface Props {
   alternates: Record<Lang, string>;
   wide?: boolean; // wider main column (talent calculator)
   full?: boolean; // widest main column (home page race/class screen)
+  /** `title` is the whole `<title>` (the home page): no " · site name" after it. */
+  fullTitle?: boolean;
   ogType?: 'website' | 'article';
   publishedTime?: Date; // article:published_time for posts
-  jsonLd?: object; // schema.org block (src/lib/seo.ts)
+  modifiedTime?: Date; // article:modified_time for posts
+  /**
+   * The page's main schema.org node (src/lib/seo.ts, e.g. blogPostingJsonLd). Without it the page
+   * is described as `pageType`. Organization, WebSite and BreadcrumbList are always added.
+   */
+  jsonLd?: object;
+  pageType?: PageType;
   noindex?: boolean;
   /** A story's hero image: preloaded and render-blocking, so the first frame (and a page transition) has it. */
   heroImage?: string;
+  /** Share image (site-relative); defaults to the hero image, then the language's /og/<lang>.png. */
+  image?: string;
 }
 
 const {
@@ -32,11 +56,15 @@ const {
   alternates,
   wide = false,
   full = false,
+  fullTitle = false,
   ogType = 'website',
   publishedTime,
+  modifiedTime,
   jsonLd,
+  pageType = 'WebPage',
   noindex = false,
   heroImage,
+  image: shareImage,
 } = Astro.props;
 // which nav item is current: the first path segment after /<lang>/
 const section = Astro.url.pathname.split(`/${lang}/`)[1]?.split('/')[0] ?? '';
@@ -77,10 +105,32 @@ const isCurrent = (key: string) =>
         : key === 'races'
           ? section === 'races' || (section === 'stats' && raceStats)
           : section === key;
-const pageTitle = title ? `${title} · ${SITE_TITLE}` : SITE_TITLE;
-const metaDescription = description ?? t.tagline;
+const pageTitle = fullTitle && title ? title : fitTitle(title);
+const metaDescription = clampDescription(description ?? t.metaHome);
 const canonical = absoluteUrl(Astro.url.pathname, Astro.site);
-const image = ogImage(lang, Astro.site);
+const customImage = shareImage ?? heroImage;
+const image = customImage ? absoluteUrl(customImage, Astro.site) : ogImage(lang, Astro.site);
+// One JSON-LD graph per page: who publishes it, which site it belongs to, the page and its trail.
+const trail = breadcrumbs(lang, Astro.url.pathname, title);
+const graph = jsonLdGraph([
+  organizationJsonLd(Astro.site),
+  websiteJsonLd(lang, t.metaHome, Astro.site),
+  jsonLd ??
+    webPageJsonLd(
+      {
+        type: pageType,
+        name: title ?? SITE_TITLE,
+        description: metaDescription,
+        url: Astro.url.pathname,
+        lang,
+        image,
+        hasBreadcrumb: trail.length > 0,
+      },
+      Astro.site,
+    ),
+  trail.length > 0 && { ...breadcrumbJsonLd(trail, Astro.site), '@id': `${canonical}#breadcrumb` },
+]);
+const fontsCss = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&display=swap';
 // Cloudflare Web Analytics (cookie-free). The beacon token is public (it ends
 // up in the page source); it comes from the CF_WEB_ANALYTICS_TOKEN repository
 // variable at build time, and without it no script is added.
@@ -111,6 +161,8 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
     {
       !noindex && (
         <>
+          {/* large image previews (Discover, image results) and no snippet length cap (snippets, AI Overviews) */}
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
           <link rel="canonical" href={canonical} />
           {LANGS.map((l) => (
             <link rel="alternate" hreflang={l} href={absoluteUrl(alternates[l], Astro.site)} />
@@ -127,17 +179,27 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
     <meta property="og:locale" content={OG_LOCALE[lang]} />
     {LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={OG_LOCALE[l]} />)}
     <meta property="og:image" content={image} />
-    <meta property="og:image:width" content="1024" />
-    <meta property="og:image:height" content="500" />
-    <meta property="og:image:alt" content={SITE_TITLE} />
+    {
+      !customImage && (
+        <>
+          <meta property="og:image:width" content="1024" />
+          <meta property="og:image:height" content="500" />
+        </>
+      )
+    }
+    <meta property="og:image:alt" content={title ?? SITE_TITLE} />
     {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title ?? SITE_TITLE} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={image} />
-    {jsonLd && <script type="application/ld+json" is:inline set:html={jsonLdString(jsonLd)} />}
+    {!noindex && <script type="application/ld+json" is:inline set:html={jsonLdString(graph)} />}
+    <meta name="theme-color" content="#0e1015" />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="apple-touch-icon" href={withBase('/og/icon-512.png')} />
     <link rel="sitemap" href={withBase('/sitemap-index.xml')} />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE_TITLE} · ${t.navNotes}`} href={withBase(`/${lang}/rss.xml`)} />
     {
       cfBeacon && (
         <script is:inline data-beacon={JSON.stringify({ token: cfBeacon })}>
@@ -154,10 +216,9 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
     }
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
-    />
+    {/* the font stylesheet does not block the first paint (display=swap shows the fallback font meanwhile) */}
+    <link rel="preload" as="style" href={fontsCss} onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href={fontsCss} /></noscript>
   </head>
   <body>
     <header class="site-header">
@@ -204,6 +265,13 @@ const cfBeacon = import.meta.env.PROD ? import.meta.env.PUBLIC_CF_WEB_ANALYTICS_
           <a href="https://us.forums.blizzard.com/en/wow/" rel="noopener">Blizzard Forums</a>
           ·
           <a href="https://classicwowforever.com/" rel="noopener">Classic WoW Forever</a> (CC BY 4.0)
+        </p>
+        <p>
+          <a href={withBase(`/${lang}/about/`)}>About</a>
+          ·
+          <a href={withBase(`/${lang}/privacy/`)}>Privacy</a>
+          ·
+          <a href={withBase(`/${lang}/rss.xml`)}>RSS</a>
         </p>
       </div>
     </footer>

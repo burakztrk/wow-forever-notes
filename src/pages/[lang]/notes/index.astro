@@ -15,7 +15,7 @@ const posts = await getPosts(lang);
 const alternates = Object.fromEntries(LANGS.map((l) => [l, withBase(`/${l}/notes/`)])) as Record<Lang, string>;
 ---
 
-<BaseLayout title={t.navNotes} description={t.tagline} lang={lang} alternates={alternates}>
+<BaseLayout title={t.notesTitle} description={t.metaNotes} pageType="CollectionPage" lang={lang} alternates={alternates}>
   <section class="hero">
     <h1>{t.navNotes}</h1>
     <p class="muted">{t.tagline}</p>

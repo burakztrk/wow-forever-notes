@@ -90,9 +90,13 @@ Node 22.12+.
   Events, places and story-chapter links in `src/lib/stories/timeline.ts`, copy (TR + EN) in `src/i18n/timeline.ts`,
   behaviour in `src/scripts/timeline.ts`, styles in `src/styles/timeline.css`. Story pages link to their filtered view
   (header + closing section). A new written story needs at least one event (`tests/timeline.test.ts` checks it).
-- SEO + analytics: `src/layouts/BaseLayout.astro` writes canonical, hreflang (+ x-default), Open Graph/Twitter
-  (`public/og/<lang>.png`) and an optional JSON-LD block (`src/lib/seo.ts`: `WebSite` + SearchAction on the home pages,
-  `BlogPosting` on posts). `@astrojs/sitemap` (astro.config, tr/en alternates; root redirect and 404 left out) and
+- SEO + analytics (strategy, rules and the sources to follow: `docs/seo.md`): `src/layouts/BaseLayout.astro` writes the
+  title (site name only while it fits 60 characters), a description cut at 160, robots `max-image-preview:large`, canonical,
+  hreflang (+ x-default), Open Graph/Twitter (`public/og/<lang>.png`, or the story's hero image) and one JSON-LD `@graph`
+  per page (`src/lib/seo.ts`: `Organization` + `WebSite`/SearchAction + the page node, `WebPage` by default, `pageType`
+  or a `jsonLd` node such as `BlogPosting` + `BreadcrumbList` from `src/lib/breadcrumbs.ts`). Posts may carry `seoTitle`
+  (≤ 60) and `updated`. `/<lang>/rss.xml` lists the posts, `/<lang>/about/` (`src/i18n/about.ts`) says who writes the site
+  and how; keep it true. No `llms.txt`: Google Search does not use it (docs/seo.md). `@astrojs/sitemap` (astro.config, tr/en alternates; root redirect and 404 left out) and
   `src/pages/robots.txt.ts`. Cloudflare Web Analytics (cookie-free) is added only in production builds when
   `PUBLIC_CF_WEB_ANALYTICS_TOKEN` is set — the deploy workflow fills it from the `CF_WEB_ANALYTICS_TOKEN` repository
   variable. Keep the privacy page (`src/i18n/privacy.ts`) in line with it.

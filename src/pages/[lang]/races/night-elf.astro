@@ -8,7 +8,7 @@ import StoryEnd from '../../../components/stories/StoryEnd.astro';
 import StoryHeader from '../../../components/stories/StoryHeader.astro';
 import StoryLinks from '../../../components/stories/StoryLinks.astro';
 import { LANGS, type Lang } from '../../../config';
-import { ui } from '../../../i18n';
+import { fill, ui } from '../../../i18n';
 import { NIGHT_ELF_ART_LABELS, NIGHT_ELF_STORY, STORY_UI } from '../../../i18n/stories';
 import { fillArt } from '../../../lib/stories/art';
 import { loreHtml, loreIds, loreTips } from '../../../lib/stories/lore';
@@ -47,7 +47,7 @@ const leaderColor = ['var(--elune)', 'var(--leaf)', 'var(--text-mute)'];
 const delay = (i: number) => `--d:${(i * 0.08).toFixed(2)}s`;
 ---
 
-<BaseLayout title={`Night Elf · ${t.storiesTitle}`} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
+<BaseLayout title={fill(t.storyPageTitle, { name: 'Night Elf' })} description={s.metaDescription} lang={lang} alternates={alternates} full heroImage={img('cover.webp')}>
   <div class="lore night" id="lore">
     <StoryHeader lang={lang} chapters={chapters} icon={ic.brand} />
 

@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notları: büyük sınıf talent düzeni, yeni Shank ve ırk ayarları (build 70707)"
+seoTitle: "WoW Forever yama notları: talent düzeni ve yeni Shank"
 date: 2026-10-30
 tags: [wow-forever, patch-notes]
 accent: warning

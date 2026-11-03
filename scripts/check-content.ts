@@ -16,6 +16,17 @@ if (untranslated) {
   console.warn(`check-content: warning: ${untranslated} glossary entries have no Turkish text — run \`npm run translate\``);
 }
 
+// Search titles: a warning, not a failure (docs/seo.md). Google shows about 60
+// characters of a title. (The excerpt may be longer: it is the post's lede, and
+// the layout cuts the meta description at 160.)
+const blogDir = path.join(process.cwd(), 'src/content/blog');
+for (const p of posts) {
+  const head = readFileSync(path.join(blogDir, p.file), 'utf8').split('\n---')[0];
+  const field = (key: string) => head.match(new RegExp(`^${key}:\\s*"?(.*?)"?\\s*$`, 'm'))?.[1] ?? '';
+  const title = field('seoTitle') || field('title');
+  if (title.length > 60) console.warn(`check-content: warning: ${p.file}: title is ${title.length} characters — add a seoTitle of ≤ 60`);
+}
+
 if (problems.length) {
   console.error(`check-content: ${problems.length} problem(s)\n\n${problems.join('\n\n')}`);
   process.exit(1);

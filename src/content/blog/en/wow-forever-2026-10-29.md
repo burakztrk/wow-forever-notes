@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notes: launch date set for November 4 and two new player guides"
+seoTitle: "WoW Forever: launch date November 4 and new guides"
 date: 2026-10-29
 tags: [wow-forever, patch-notes]
 accent: warning

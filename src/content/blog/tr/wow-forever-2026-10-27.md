@@ -1,5 +1,6 @@
 ---
 title: "WoW Forever notları: Irk özelliklerinde son ayar ve ek liste (build 70634)"
+seoTitle: "WoW Forever yama notları: ırk özelliklerinde son ayar"
 date: 2026-10-27
 tags: [wow-forever, patch-notes]
 accent: warning

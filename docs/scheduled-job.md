@@ -56,10 +56,11 @@ Uyulacak kurallar:
 
   ```yaml
   title: "WoW Forever notları: <kısa başlık> (build <son build>)"   # EN: "WoW Forever notes: …"
+  seoTitle: "WoW Forever yama notları: <en önemli değişiklik>"   # yalnızca title 60 karakteri aşarsa; ≤ 60, EN: "WoW Forever patch notes: …"
   date: YYYY-MM-DD
   tags: [wow-forever, patch-notes]
   accent: warning
-  excerpt: "<tek cümle özet>"
+  excerpt: "<1–2 cümle özet; ilk 160 karakter en önemli 2–3 değişikliği adlarıyla söylesin (arama sonucunda o kadarı görünür)>"
   draft: false
   build: "<son build id, ör. 1.60.1.70425>"
   sources:
