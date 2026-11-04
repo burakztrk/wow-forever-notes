@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { MAX_NOTE_LENGTH } from '../src/lib/build-note';
 import { MAX_NAME_LENGTH, loadBuilds, removeBuild, saveBuild, updateBuild, type KeyValue } from '../src/lib/saved-builds';
 
 // Same vectors as the mobile app's BuildStoreTest.kt.
@@ -50,5 +51,21 @@ describe('saved builds', () => {
 
   it('caps names at 50 characters like the app', () => {
     expect(saveBuild(memory(), 'mage', ` ${'a'.repeat(80)} `, '5')[0].name).toHaveLength(MAX_NAME_LENGTH);
+  });
+
+  it('keeps a trimmed, capped note and leaves an empty one out', () => {
+    const store = memory();
+    const [frost] = saveBuild(store, 'mage', 'Frost', '05', '  Frostbolt spam \n');
+    expect(frost.note).toBe('Frostbolt spam');
+    expect(saveBuild(store, 'mage', 'Fire', '-5', '   ')[0]).toEqual({ id: 'b2', cls: 'mage', name: 'Fire', code: '-5' });
+    expect(saveBuild(store, 'mage', 'Long', '5', 'x'.repeat(6000))[0].note).toHaveLength(MAX_NOTE_LENGTH);
+  });
+
+  it('update keeps the note unless one is given', () => {
+    const store = memory();
+    const [frost] = saveBuild(store, 'mage', 'Frost', '05', 'first');
+    expect(updateBuild(store, frost.id, '055')[0].note).toBe('first');
+    expect(updateBuild(store, frost.id, '055', 'second')[0].note).toBe('second');
+    expect(updateBuild(store, frost.id, '055', '')[0]).toEqual({ id: frost.id, cls: 'mage', name: 'Frost', code: '055' });
   });
 });

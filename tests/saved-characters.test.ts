@@ -46,6 +46,14 @@ describe('saved characters', () => {
     expect(updateCharacterBuild(store, 'nope', '1')).toEqual(loadCharacters(store));
   });
 
+  it('saves the note with the build, keeps it unless one is given', () => {
+    const store = memory();
+    addCharacter(store, 'A', 'alliance-human', 'mage');
+    expect(updateCharacterBuild(store, 'c1', '05', ' Ice Barrier first ')[0].note).toBe('Ice Barrier first');
+    expect(updateCharacterBuild(store, 'c1', '055')[0].note).toBe('Ice Barrier first');
+    expect(updateCharacterBuild(store, 'c1', '055', '')[0]).not.toHaveProperty('note');
+  });
+
   it('removes and reuses no taken id', () => {
     const store = memory();
     addCharacter(store, 'A', 'alliance-human', 'mage');

@@ -1,9 +1,11 @@
 import { browserStore, loadBuilds, removeBuild, saveBuild, updateBuild, type SavedBuild } from '../lib/saved-builds';
 import { loadCharacters, updateCharacterBuild, type SavedCharacter } from '../lib/saved-characters';
+import { buildNote } from './build-note';
 
 // Saved builds UI: the list on the talents page and the save dialog on a
 // class's calculator. Config comes from #wf-saved-builds. A calculator opened
 // from a saved character (?character=<id>) saves into that character instead.
+// The note field (build-note.ts) is saved together with the build.
 
 interface Config {
   cls?: string; // set on a class page: save dialog + only this class's builds
@@ -71,9 +73,11 @@ function init(config: Config) {
   const character = (): SavedCharacter | undefined =>
     characterId ? loadCharacters(store).find((c) => c.id === characterId && c.cls === config.cls) : undefined;
   let current: SavedBuild | undefined;
-  function setCurrent(id: string | null) {
+  function setCurrent(id: string | null, loadNote = false) {
     current = id ? loadBuilds(store).find((b) => b.id === id && b.cls === config.cls) : undefined;
     const own = character();
+    // only on page load: a save in another tab must not wipe what is being typed here
+    if (loadNote) noteField?.load((own ? own.note : current?.note) ?? '');
     // a character shows its race too: "Arthas · Human"
     const name = own ? [own.name, config.raceNames[own.race]].filter(Boolean).join(' · ') : current?.name;
     if (nameEl) {
@@ -91,20 +95,23 @@ function init(config: Config) {
     note.hidden = false;
     setTimeout(() => (note.hidden = true), 2500);
   }
-  if (config.cls) setCurrent(new URLSearchParams(location.search).get('saved'));
   const saveBtn = document.querySelector<HTMLElement>('[data-save-open]');
   if (saveBtn && character()) saveBtn.textContent = config.strings.saveCharacter;
+  const noteField = config.cls && saveBtn ? buildNote(() => saveBtn.click(), saveBtn.textContent ?? '') : null;
+  if (config.cls) setCurrent(new URLSearchParams(location.search).get('saved'), true);
 
   saveBtn?.addEventListener('click', () => {
     const own = character();
     if (own) {
-      updateCharacterBuild(store, own.id, currentCode());
+      updateCharacterBuild(store, own.id, currentCode(), noteField?.value());
+      noteField?.saved();
       saved(config.strings.characterSaved);
       return;
     }
     if (current && config.cls) {
       // already a saved build: overwrite it, no name prompt
-      render(updateBuild(store, current.id, currentCode()));
+      render(updateBuild(store, current.id, currentCode(), noteField?.value()));
+      noteField?.saved();
       saved();
       return;
     }
@@ -117,8 +124,9 @@ function init(config: Config) {
   dialog?.querySelector('form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!config.cls || !nameInput) return;
-    const builds = saveBuild(store, config.cls, nameInput.value, currentCode());
+    const builds = saveBuild(store, config.cls, nameInput.value, currentCode(), noteField?.value() ?? '');
     render(builds);
+    noteField?.saved();
     dialog.close();
     setCurrent(builds[0].id); // from now on Save overwrites this one
     saved();

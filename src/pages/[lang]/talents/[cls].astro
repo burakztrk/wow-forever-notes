@@ -1,4 +1,5 @@
 ---
+import BuildNote from '../../../components/BuildNote.astro';
 import SavedBuilds from '../../../components/SavedBuilds.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { LANGS, type Lang } from '../../../config';
@@ -88,6 +89,7 @@ const title = `${info.name} · ${t.talentsTitle}`;
     }
   </div>
 
+  <BuildNote lang={lang} cls={cls} />
   <SavedBuilds lang={lang} cls={cls} />
 
   <script slot="after" type="application/json" id="wf-talents" is:inline set:html={islandJson(data)} />
