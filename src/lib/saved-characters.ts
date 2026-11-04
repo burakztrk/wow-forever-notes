@@ -1,9 +1,10 @@
-import { MAX_NAME_LENGTH, type KeyValue } from './saved-builds';
+import { MAX_NAME_LENGTH, withNote, type KeyValue } from './saved-builds';
 
 // Characters the reader saved from the creator, kept in localStorage. Same
 // shape and rules as the mobile app's CharacterStore: a name, the race and
 // class picked on the creator, and the character's talent build (the #b=
-// share code, "" until one is saved). Newest first.
+// share code, "" until one is saved) with its note (src/lib/build-note.ts,
+// left out when empty). Newest first.
 
 export interface SavedCharacter {
   id: string;
@@ -11,6 +12,7 @@ export interface SavedCharacter {
   race: string;
   cls: string;
   code: string;
+  note?: string;
 }
 
 const KEY = 'wf-saved-characters';
@@ -46,13 +48,14 @@ export function addCharacter(store: KeyValue | null, name: string, race: string,
   return write(store, [{ id: `c${n}`, name: clean, race, cls, code }, ...list]);
 }
 
-// Saves the character's talent build and moves it to the top. Unknown ids
-// leave the list as it is.
-export function updateCharacterBuild(store: KeyValue | null, id: string, code: string): SavedCharacter[] {
+// Saves the character's talent build (and its note, when one is given) and
+// moves it to the top. Unknown ids leave the list as it is.
+export function updateCharacterBuild(store: KeyValue | null, id: string, code: string, note?: string): SavedCharacter[] {
   const list = loadCharacters(store);
   const character = list.find((c) => c.id === id);
   if (!character) return list;
-  return write(store, [{ ...character, code }, ...list.filter((c) => c.id !== id)]);
+  const next = note === undefined ? { ...character, code } : withNote({ ...character, code }, note);
+  return write(store, [next, ...list.filter((c) => c.id !== id)]);
 }
 
 export function removeCharacter(store: KeyValue | null, id: string): SavedCharacter[] {

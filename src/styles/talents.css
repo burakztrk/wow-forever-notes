@@ -22,6 +22,13 @@
   padding: 0.15em 0.6em;
   font-size: 0.75rem;
 }
+.calc-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.calc-btn:disabled:hover {
+  border-color: var(--gold-dim);
+}
 .calc-btn[aria-pressed='true'] {
   background: var(--rage);
   border-color: var(--rage);

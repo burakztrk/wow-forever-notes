@@ -1,12 +1,16 @@
+import { MAX_NOTE_LENGTH } from './build-note';
+
 // Talent builds the reader saved by name, kept in localStorage. Same shape and
 // rules as the mobile app's BuildStore: the code is the #b= share code, newest
-// first, saving the same class + name again replaces the old entry.
+// first, saving the same class + name again replaces the old entry. `note` is
+// the reader's text for the build (src/lib/build-note.ts), left out when empty.
 
 export interface SavedBuild {
   id: string;
   cls: string;
   name: string;
   code: string;
+  note?: string;
 }
 
 export interface KeyValue {
@@ -18,6 +22,13 @@ const KEY = 'wf-saved-builds';
 
 // Longest build name; the app's MAX_NAME_LENGTH.
 export const MAX_NAME_LENGTH = 50;
+
+// A note as it is stored: trimmed, cut to MAX_NOTE_LENGTH, absent when empty.
+export function withNote<T extends { note?: string }>(item: T, note: string): T {
+  const { note: _old, ...rest } = item;
+  const clean = note.trim().slice(0, MAX_NOTE_LENGTH);
+  return (clean ? { ...rest, note: clean } : rest) as T;
+}
 
 export function loadBuilds(store: KeyValue | null): SavedBuild[] {
   try {
@@ -37,7 +48,7 @@ function write(store: KeyValue | null, list: SavedBuild[]): SavedBuild[] {
   return list;
 }
 
-export function saveBuild(store: KeyValue | null, cls: string, name: string, code: string): SavedBuild[] {
+export function saveBuild(store: KeyValue | null, cls: string, name: string, code: string, note = ''): SavedBuild[] {
   const builds = loadBuilds(store);
   const clean = name.trim().slice(0, MAX_NAME_LENGTH) || code || '—';
   const existing = builds.find((b) => b.cls === cls && b.name.toLowerCase() === clean.toLowerCase());
@@ -48,16 +59,17 @@ export function saveBuild(store: KeyValue | null, cls: string, name: string, cod
     while (taken.has(`b${n}`)) n++;
     id = `b${n}`;
   }
-  return write(store, [{ id, cls, name: clean, code }, ...builds.filter((b) => b.id !== id)]);
+  return write(store, [withNote({ id, cls, name: clean, code }, note), ...builds.filter((b) => b.id !== id)]);
 }
 
-// Overwrites a saved build's code, keeping its name, and moves it to the top.
-// Unknown ids leave the list as it is.
-export function updateBuild(store: KeyValue | null, id: string, code: string): SavedBuild[] {
+// Overwrites a saved build's code (and its note, when one is given), keeping
+// its name, and moves it to the top. Unknown ids leave the list as it is.
+export function updateBuild(store: KeyValue | null, id: string, code: string, note?: string): SavedBuild[] {
   const builds = loadBuilds(store);
   const build = builds.find((b) => b.id === id);
   if (!build) return builds;
-  return write(store, [{ ...build, code }, ...builds.filter((b) => b.id !== id)]);
+  const next = note === undefined ? { ...build, code } : withNote({ ...build, code }, note);
+  return write(store, [next, ...builds.filter((b) => b.id !== id)]);
 }
 
 export function removeBuild(store: KeyValue | null, id: string): SavedBuild[] {

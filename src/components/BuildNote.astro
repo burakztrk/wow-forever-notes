@@ -1,0 +1,113 @@
+---
+import glossaryData from '../data/glossary.json';
+import type { Lang } from '../config';
+import { ui } from '../i18n';
+import { MAX_NOTE_LENGTH, noteTerms } from '../lib/build-note';
+import type { GlossaryFile } from '../lib/glossary-types';
+import { islandJson, tooltipPayload } from '../lib/tooltip-payload';
+
+// The note field of a class's talent planner. Saved with the build by the Save
+// button (src/scripts/saved-builds.ts); shown with tooltips on the class's
+// spell / talent names and the racials, and with clickable links.
+
+interface Props {
+  lang: Lang;
+  cls: string;
+}
+
+const { lang, cls } = Astro.props;
+const t = ui(lang);
+const terms = noteTerms((glossaryData as GlossaryFile).entries, cls);
+const tips = tooltipPayload(Object.values(terms), lang);
+---
+
+<section class="build-note" data-note>
+  <header class="note-head">
+    <h2 class="codex-section">{t.buildNote}</h2>
+    <button type="button" class="calc-btn small" data-note-toggle disabled>{t.notePreview}</button>
+  </header>
+  <div class="note-view" data-note-view hidden></div>
+  <div data-note-editor>
+    <textarea
+      class="note-input"
+      name="note"
+      rows="5"
+      maxlength={MAX_NOTE_LENGTH}
+      placeholder={t.notePlaceholder}
+      aria-label={t.buildNote}></textarea>
+    <div class="note-foot">
+      <span class="note-hint">{t.noteHint}</span>
+      <span class="note-count" data-note-count aria-live="polite">0 / {MAX_NOTE_LENGTH}</span>
+      <button type="button" class="calc-btn primary small" data-note-save>{t.saveBuild}</button>
+    </div>
+  </div>
+</section>
+
+<script
+  type="application/json"
+  id="wf-note"
+  is:inline
+  set:html={islandJson({ terms, strings: { preview: t.notePreview, edit: t.noteEdit } })}
+/>
+<script type="application/json" id="wf-glossary" is:inline set:html={islandJson(tips)} />
+
+<style>
+  .build-note {
+    margin: 28px 0 8px;
+  }
+  .note-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .note-head h2 {
+    flex: 1;
+    margin: 0;
+  }
+  .note-view {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+    padding: 12px 14px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+  .note-input {
+    display: block;
+    width: 100%;
+    min-height: 7.5em;
+    resize: vertical;
+    padding: 10px 12px;
+    font: inherit;
+    line-height: 1.5;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+  .note-input:focus {
+    outline: none;
+    border-color: var(--gold-dim);
+  }
+  .note-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: var(--text-mute);
+  }
+  .note-hint {
+    flex: 1;
+    min-width: 12em;
+  }
+  .note-count {
+    font-variant-numeric: tabular-nums;
+  }
+  .note-count.full {
+    color: var(--status-changed);
+  }
+</style>
